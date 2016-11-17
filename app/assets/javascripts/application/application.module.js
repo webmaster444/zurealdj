@@ -39,6 +39,30 @@
                 });
             // generated routes:
             $stateProvider
+                .state('new_event',{
+                    url: '/event/new',
+                    templateUrl: 'application/templates/events/form.html',
+                    controller: 'EventsController'
+                })
+            $stateProvider
+                .state('show_event',{
+                    url: '/event/:id',
+                    templateUrl: 'application/templates/events/show.html',
+                    controller: 'EventsController'
+                });
+            $stateProvider
+                .state('edit_event',{
+                    url: '/event/:id/edit',
+                    templateUrl: 'application/templates/events/form.html',
+                    controller: 'EventsController'
+                })
+            $stateProvider
+                .state('events',{
+                    url: '/events',
+                    templateUrl: 'application/templates/events/index.html',
+                    controller: 'EventsController'
+                })
+            $stateProvider
                 .state('new_genre',{
                     url: '/genre/new',
                     templateUrl: 'application/templates/genres/form.html',

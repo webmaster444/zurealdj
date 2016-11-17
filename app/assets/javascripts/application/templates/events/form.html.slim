@@ -1,0 +1,134 @@
+.wrapper.wrapper-content
+  .row.animated.fadeInRight
+    .col-md-12
+      .ibox.float-e-margins
+        .ibox-title
+          h3 ng-show="$state.current.name == 'new_event'"
+            | {{ I18n.t('event.new' ) }}
+          h3 ng-show="$state.current.name == 'edit_event'"
+            | {{ I18n.t('event.edit' ) }}
+        .ibox-content
+          form ng-submit="submitEvent()" name="EventForm" novalidate=true
+            .form-group
+              .row
+                .col-sm-2
+                  label.control-label
+                    | {{ I18n.t('event.fields.title') }}:
+                .col-sm-10
+                  input.form-control type="text" placeholder="{{ I18n.t('event.fields.title') }}" required=true class="{{ EventForm.title.$invalid && submitted ? 'validation-error' : ''}}" name="title" ng-model="event.title"
+                  .error ng-show="EventsForm.title.$invalid && submitted"
+                    | {{ I18n.t('validations.cant_be_blank')}}
+
+                  .error ng-repeat="error in validation_errors['title']"
+                    | {{ error }}
+
+              .hr-line-dashed
+            .form-group
+              .row
+                .col-sm-2
+                  label.control-label
+                    | {{ I18n.t('event.fields.city') }}:
+                .col-sm-10
+                  input.form-control type="text" placeholder="{{ I18n.t('event.fields.city') }}" required=true class="{{ EventForm.city.$invalid && submitted ? 'validation-error' : ''}}" name="city" ng-model="event.city"
+                  .error ng-show="EventsForm.city.$invalid && submitted"
+                    | {{ I18n.t('validations.cant_be_blank')}}
+
+                  .error ng-repeat="error in validation_errors['city']"
+                    | {{ error }}
+
+              .hr-line-dashed
+            .form-group
+              .row
+                .col-sm-2
+                  label.control-label
+                    | {{ I18n.t('event.fields.country') }}:
+                .col-sm-10
+                  .btn-group uib-dropdown="" style="width: 100%;"
+                    a#events-country-dropdown ng-disabled="disabled" uib-dropdown-toggle=""
+                      span ng-hide="events.country"
+                        | Please choose a country
+                      span ng-show="events.country"
+                        span.flag class="{{ events.country.code }}"
+                        | {{ events.country.title }}
+                    ul.dropdown-menu aria-labelledby="events-country-dropdown" role="menu" uib-dropdown-menu=""
+                      li ng-repeat="flag in flags"
+                        a ng-click="events.country = flag" style="cursor: pointer"
+                          span.flag class="{{ flag.code }}"
+                          | {{ flag.title }}
+                  .error ng-show="EventsForm.country.$invalid && submitted"
+                    | {{ I18n.t('validations.cant_be_blank')}}
+
+                  .error ng-repeat="error in validation_errors['country']"
+                    | {{ error }}
+
+              .hr-line-dashed
+            .form-group
+              .row
+                .col-sm-2
+                  label.control-label
+                    | {{ I18n.t('event.fields.address') }}:
+                .col-sm-10
+                  input.form-control type="text" placeholder="{{ I18n.t('event.fields.address') }}" required=true class="{{ EventForm.address.$invalid && submitted ? 'validation-error' : ''}}" name="address" ng-model="event.address"
+                  .error ng-show="EventsForm.address.$invalid && submitted"
+                    | {{ I18n.t('validations.cant_be_blank')}}
+
+                  .error ng-repeat="error in validation_errors['address']"
+                    | {{ error }}
+
+              .hr-line-dashed
+            .form-group
+              .row
+                .col-sm-2
+                  label.control-label
+                    | {{ I18n.t('event.fields.start_date') }}:
+                .col-sm-10
+                  p.input-group
+                    input type="text" class="form-control" datepicker-popup="{{ 'dd-MMMM-yyyy' }}" ng-model="event.start_date" is-open="start_date_opened" ng-required="true" close-text="Close" ng-disabled="true"
+                    span.input-group-btn
+                      button type="button" class="btn btn-default" ng-click="start_date_opened = true" style="padding: 9px 12px; border-color: #ccc;"
+                        i.glyphicon.glyphicon-calendar
+                  .error ng-show="EventsForm.start_date.$invalid && submitted"
+                    | {{ I18n.t('validations.cant_be_blank')}}
+
+                  .error ng-repeat="error in validation_errors['start_date']"
+                    | {{ error }}
+
+              .hr-line-dashed
+            .form-group
+              .row
+                .col-sm-2
+                  label.control-label
+                    | {{ I18n.t('event.fields.end_date') }}:
+                .col-sm-10
+                  p.input-group
+                    input type="text" class="form-control" datepicker-popup="{{ 'dd-MMMM-yyyy' }}" ng-model="event.end_date" is-open="end_date_opened" ng-required="true" close-text="Close" ng-disabled="true"
+                    span.input-group-btn
+                      button type="button" class="btn btn-default" ng-click="end_date_opened = true" style="padding: 9px 12px; border-color: #ccc;"
+                        i.glyphicon.glyphicon-calendar
+                  .error ng-show="EventsForm.end_date.$invalid && submitted"
+                    | {{ I18n.t('validations.cant_be_blank')}}
+
+                  .error ng-repeat="error in validation_errors['end_date']"
+                    | {{ error }}
+
+              .hr-line-dashed
+            .form-group
+              .row
+                .col-sm-2
+                  label.control-label
+                    | {{ I18n.t('event.fields.image') }}:
+                .col-sm-10
+                  div image=true ng-model="event.image"
+                  .error ng-show="EventsForm.image.$invalid && submitted"
+                    | {{ I18n.t('validations.cant_be_blank')}}
+
+                  .error ng-repeat="error in validation_errors['image']"
+                    | {{ error }}
+
+              .hr-line-dashed
+
+            .form-group
+              .row
+                .col-sm-4.col-sm-offset-2
+                  button.ladda-button.btn.btn-info data-style="expand-left" ladda="formPending"
+                    | {{ I18n.t('actions.submit') }}

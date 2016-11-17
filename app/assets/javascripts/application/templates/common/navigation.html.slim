@@ -18,6 +18,18 @@ nav.navbar-default.navbar-static-side.ng-scope role="navigation"
           .logo-element
             | Zurealdj
         / menu links
+        li ng-class=("{active: $state.current.name.includes('event')}")
+          a href="#"
+            i.fa.fa-car
+            span.nav-label.ng-binding EVENT
+            span.fa.arrow
+          ul.nav.nav-second-level.collapse ng-class=("{in: $state.current.name.includes('event')}")
+            li.active ui-sref-active="active"
+              a.ng-binding href="#events"
+                | {{ I18n.t('headers.events') }}
+            li.active ui-sref-active="active"
+              a.ng-binding href="#event/new"
+                | {{ I18n.t('event.new') }}
         li ng-class=("{active: $state.current.name.includes('genre')}")
           a href="#"
             i.fa.fa-car
