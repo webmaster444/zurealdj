@@ -41,6 +41,7 @@ en:
     cant_be_blank: "Can't be blank."
 
   headers:
+    organizations: 'Organizations'
     djs: 'Djs'
     bookings: 'Bookings'
     events: 'Events'
@@ -219,3 +220,21 @@ en:
       updated_at: "Updated at"
     messages:
       success_upsert: 'Dj successfully saved.'
+
+  organization:
+    new: "New Organization"
+    edit: "Edit Organization"
+    fields:
+      first_name: "First name"
+      last_name: "Last name"
+      city: "City"
+      country: "Country"
+      address: "Address"
+      about: "About"
+      instagram_link: "Instagram link"
+      facebook_link: "Facebook link"
+      soundcloud_link: "Soundcloud link"
+      created_at: "Created at"
+      updated_at: "Updated at"
+    messages:
+      success_upsert: 'Organization successfully saved.'

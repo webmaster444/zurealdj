@@ -39,6 +39,30 @@
                 });
             // generated routes:
             $stateProvider
+                .state('new_organization',{
+                    url: '/organization/new',
+                    templateUrl: 'application/templates/organizations/form.html',
+                    controller: 'OrganizationsController'
+                })
+            $stateProvider
+                .state('show_organization',{
+                    url: '/organization/:id',
+                    templateUrl: 'application/templates/organizations/show.html',
+                    controller: 'OrganizationsController'
+                });
+            $stateProvider
+                .state('edit_organization',{
+                    url: '/organization/:id/edit',
+                    templateUrl: 'application/templates/organizations/form.html',
+                    controller: 'OrganizationsController'
+                })
+            $stateProvider
+                .state('organizations',{
+                    url: '/organizations',
+                    templateUrl: 'application/templates/organizations/index.html',
+                    controller: 'OrganizationsController'
+                })
+            $stateProvider
                 .state('new_dj',{
                     url: '/dj/new',
                     templateUrl: 'application/templates/djs/form.html',

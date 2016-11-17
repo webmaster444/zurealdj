@@ -1,0 +1,74 @@
+.wrapper.wrapper-content
+  .row.animated.fadeInRight
+    .col-md-12
+      .ibox.float-e-margins
+        .ibox-title
+          h3
+            | {{ I18n.t('headers.organizations' ) }}
+        .ibox-content
+          .pull-left
+            #organizations-pagination ng-hide="count < 11"
+          .pull-right
+
+            button.btn-xs.btn.btn-info ui-sref="new_organization"
+              | {{ I18n.t('organization.new') }}
+
+          table.table.table-striped.table-responsive
+            thead
+              tr
+                th
+                  | {{ I18n.t('organization.fields.first_name') }}
+                th
+                  | {{ I18n.t('organization.fields.last_name') }}
+                th
+                  | {{ I18n.t('organization.fields.city') }}
+                th
+                  | {{ I18n.t('organization.fields.country') }}
+                th
+                  | {{ I18n.t('organization.fields.address') }}
+                th
+                  | {{ I18n.t('organization.fields.about') }}
+                th
+                  | {{ I18n.t('organization.fields.instagram_link') }}
+                th
+                  | {{ I18n.t('organization.fields.facebook_link') }}
+                th
+                  | {{ I18n.t('organization.fields.soundcloud_link') }}
+                th
+                  | Created At
+                th
+                  | Actions
+            tbody
+              tr ng-repeat="organization in organizations"
+                td
+                  | {{ organizations.first_name }}
+                td
+                  | {{ organizations.last_name }}
+                td
+                  | {{ organizations.city }}
+                td
+                  span.flag class="{{ organizations.country.code }}"
+                  | {{ organizations.country.title }}
+                td
+                  | {{ organizations.address }}
+                td
+                  | {{ organizations.about }}
+                td
+                  | {{ organizations.instagram_link }}
+                td
+                  | {{ organizations.facebook_link }}
+                td
+                  | {{ organizations.soundcloud_link }}
+                td
+                  | {{ organizations.created_at }}
+                td.text-right
+
+                  a.btn-xs.btn.btn-info.btn-outline href="#organizations/{{organizations.id}}"
+                    | {{ I18n.t('actions.view') }}
+
+                  a.btn-xs.btn.btn-warning.btn-outline href="#organizations/{{organizations.id}}/edit"
+                    | {{ I18n.t('actions.edit') }}
+
+
+                  a.btn-xs.btn.btn-danger.btn-outline ng-click="destroy(organizations.id)"
+                    | {{ I18n.t('actions.delete') }}

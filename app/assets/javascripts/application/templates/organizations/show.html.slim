@@ -1,0 +1,119 @@
+.wrapper.wrapper-content
+  .row.animated.fadeInRight
+    .col-md-12
+      .ibox.float-e-margins
+        .ibox-title
+          h2
+            | {{ organization.first_name }}
+        .ibox-content
+
+          .form-group
+            .row
+              .col-lg-2
+                label.control-label
+                  | {{ I18n.t('organization.fields.first_name') }}:
+              .col-lg-10
+                p.form-control-static
+                  | {{ organization.first_name }}
+            .hr-line-dashed
+
+          .form-group
+            .row
+              .col-lg-2
+                label.control-label
+                  | {{ I18n.t('organization.fields.last_name') }}:
+              .col-lg-10
+                p.form-control-static
+                  | {{ organization.last_name }}
+            .hr-line-dashed
+
+          .form-group
+            .row
+              .col-lg-2
+                label.control-label
+                  | {{ I18n.t('organization.fields.city') }}:
+              .col-lg-10
+                p.form-control-static
+                  | {{ organization.city }}
+            .hr-line-dashed
+
+          .form-group
+            .row
+              .col-lg-2
+                label.control-label
+                  | {{ I18n.t('organization.fields.country') }}:
+              .col-lg-10
+                span.flag class="{{ organizations.country.code }}"
+                | {{ organizations.country.title }}
+            .hr-line-dashed
+
+          .form-group
+            .row
+              .col-lg-2
+                label.control-label
+                  | {{ I18n.t('organization.fields.address') }}:
+              .col-lg-10
+                p.form-control-static
+                  | {{ organization.address }}
+            .hr-line-dashed
+
+          .form-group
+            .row
+              .col-lg-2
+                label.control-label
+                  | {{ I18n.t('organization.fields.about') }}:
+              .col-lg-10
+                p.form-control-static
+                  | {{ organization.about }}
+            .hr-line-dashed
+
+          .form-group
+            .row
+              .col-lg-2
+                label.control-label
+                  | {{ I18n.t('organization.fields.instagram_link') }}:
+              .col-lg-10
+                p.form-control-static
+                  | {{ organization.instagram_link }}
+            .hr-line-dashed
+
+          .form-group
+            .row
+              .col-lg-2
+                label.control-label
+                  | {{ I18n.t('organization.fields.facebook_link') }}:
+              .col-lg-10
+                p.form-control-static
+                  | {{ organization.facebook_link }}
+            .hr-line-dashed
+
+          .form-group
+            .row
+              .col-lg-2
+                label.control-label
+                  | {{ I18n.t('organization.fields.soundcloud_link') }}:
+              .col-lg-10
+                p.form-control-static
+                  | {{ organization.soundcloud_link }}
+            .hr-line-dashed
+
+          .form-group
+            .row
+              .col-lg-2
+                label.control-label
+                  | {{ I18n.t('organization.fields.created_at') }}:
+              .col-lg-10
+                p.form-control-static
+                  | {{ organization.created_at }}
+            .hr-line-dashed
+
+          .form-group
+            .row
+              .col-lg-2
+                label.control-label
+                  | {{ I18n.t('organization.fields.updated_at') }}:
+              .col-lg-10
+                p.form-control-static
+                  | {{ organization.updated_at }}
+            .hr-line-dashed
+
