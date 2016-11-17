@@ -41,6 +41,7 @@ en:
     cant_be_blank: "Can't be blank."
 
   headers:
+    terms_n_conditions_pages: 'Terms n conditions pages'
     cancelations_pages: 'Cancelations pages'
 
   datetime:
@@ -66,3 +67,13 @@ en:
       updated_at: "Updated at"
     messages:
       success_upsert: 'Cancelations page successfully saved.'
+
+  terms_n_conditions_page:
+    new: "New Terms n conditions page"
+    edit: "Edit Terms n conditions page"
+    fields:
+      content: "Content"
+      created_at: "Created at"
+      updated_at: "Updated at"
+    messages:
+      success_upsert: 'Terms n conditions page successfully saved.'

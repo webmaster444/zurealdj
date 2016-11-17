@@ -39,6 +39,30 @@
                 });
             // generated routes:
             $stateProvider
+                .state('new_terms_n_conditions_page',{
+                    url: '/terms_n_conditions_page/new',
+                    templateUrl: 'application/templates/terms_n_conditions_pages/form.html',
+                    controller: 'TermsNConditionsPagesController'
+                })
+            $stateProvider
+                .state('show_terms_n_conditions_page',{
+                    url: '/terms_n_conditions_page/:id',
+                    templateUrl: 'application/templates/terms_n_conditions_pages/show.html',
+                    controller: 'TermsNConditionsPagesController'
+                });
+            $stateProvider
+                .state('edit_terms_n_conditions_page',{
+                    url: '/terms_n_conditions_page/:id/edit',
+                    templateUrl: 'application/templates/terms_n_conditions_pages/form.html',
+                    controller: 'TermsNConditionsPagesController'
+                })
+            $stateProvider
+                .state('terms_n_conditions_pages',{
+                    url: '/terms_n_conditions_pages',
+                    templateUrl: 'application/templates/terms_n_conditions_pages/index.html',
+                    controller: 'TermsNConditionsPagesController'
+                })
+            $stateProvider
                 .state('new_cancelations_page',{
                     url: '/cancelations_page/new',
                     templateUrl: 'application/templates/cancelations_pages/form.html',
