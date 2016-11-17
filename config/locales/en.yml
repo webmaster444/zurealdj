@@ -41,6 +41,7 @@ en:
     cant_be_blank: "Can't be blank."
 
   headers:
+    policies_pages: 'Policies pages'
     terms_n_conditions_pages: 'Terms n conditions pages'
     cancelations_pages: 'Cancelations pages'
 
@@ -77,3 +78,13 @@ en:
       updated_at: "Updated at"
     messages:
       success_upsert: 'Terms n conditions page successfully saved.'
+
+  policies_page:
+    new: "New Policies page"
+    edit: "Edit Policies page"
+    fields:
+      content: "Content"
+      created_at: "Created at"
+      updated_at: "Updated at"
+    messages:
+      success_upsert: 'Policies page successfully saved.'
