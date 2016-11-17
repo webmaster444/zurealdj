@@ -39,6 +39,30 @@
                 });
             // generated routes:
             $stateProvider
+                .state('new_equipment',{
+                    url: '/equipment/new',
+                    templateUrl: 'application/templates/equipments/form.html',
+                    controller: 'EquipmentsController'
+                })
+            $stateProvider
+                .state('show_equipment',{
+                    url: '/equipment/:id',
+                    templateUrl: 'application/templates/equipments/show.html',
+                    controller: 'EquipmentsController'
+                });
+            $stateProvider
+                .state('edit_equipment',{
+                    url: '/equipment/:id/edit',
+                    templateUrl: 'application/templates/equipments/form.html',
+                    controller: 'EquipmentsController'
+                })
+            $stateProvider
+                .state('equipments',{
+                    url: '/equipments',
+                    templateUrl: 'application/templates/equipments/index.html',
+                    controller: 'EquipmentsController'
+                })
+            $stateProvider
                 .state('new_who_we_are_page',{
                     url: '/who_we_are_page/new',
                     templateUrl: 'application/templates/who_we_are_pages/form.html',

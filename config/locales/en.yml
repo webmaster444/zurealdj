@@ -41,6 +41,7 @@ en:
     cant_be_blank: "Can't be blank."
 
   headers:
+    equipments: 'Equipments'
     who_we_are_pages: 'Who we are pages'
     crew_pages: 'Crew pages'
     how_we_work_pages: 'How we work pages'
@@ -121,3 +122,14 @@ en:
       updated_at: "Updated at"
     messages:
       success_upsert: 'Who we are page successfully saved.'
+
+  equipment:
+    new: "New Equipment"
+    edit: "Edit Equipment"
+    fields:
+      icon: "Icon"
+      title: "Title"
+      created_at: "Created at"
+      updated_at: "Updated at"
+    messages:
+      success_upsert: 'Equipment successfully saved.'
