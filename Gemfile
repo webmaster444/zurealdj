@@ -1,10 +1,8 @@
 source 'https://rubygems.org'
 
-
+gem 'ng_rails', path: '~/dev/ng_rails'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.0.0', '>= 5.0.0.1'
-# Use sqlite3 as the database for Active Record
-gem 'sqlite3'
 # Use Puma as the app server
 gem 'puma', '~> 3.0'
 # Use SCSS for stylesheets
@@ -46,3 +44,24 @@ end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+
+gem 'pg'
+gem 'slim'
+gem 'slim-rails'
+gem 'angularjs-rails'
+gem 'angular-rails-templates'
+gem 'bootstrap-sass'
+gem 'will_paginate-bootstrap', '~> 1.0.1'
+gem 'font-awesome-rails'
+gem 'cancancan', '~> 1.10'
+gem 'paperclip', '~> 4.2'
+gem 'will_paginate', '~> 3.0.6'
+gem 'selectize-rails'
+gem 'i18n-js', '>= 3.0.0.rc8'
+gem 'bootstrap-tooltip-rails'
+gem 'wow-rails'
+gem 'icheck-rails'
+gem 'ladda-rails'
+gem 'figaro'
+gem 'faker'
+gem 'bower-rails', '~> 0.10.0'
