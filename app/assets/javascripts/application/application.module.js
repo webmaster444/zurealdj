@@ -39,6 +39,30 @@
                 });
             // generated routes:
             $stateProvider
+                .state('new_booking',{
+                    url: '/booking/new',
+                    templateUrl: 'application/templates/bookings/form.html',
+                    controller: 'BookingsController'
+                })
+            $stateProvider
+                .state('show_booking',{
+                    url: '/booking/:id',
+                    templateUrl: 'application/templates/bookings/show.html',
+                    controller: 'BookingsController'
+                });
+            $stateProvider
+                .state('edit_booking',{
+                    url: '/booking/:id/edit',
+                    templateUrl: 'application/templates/bookings/form.html',
+                    controller: 'BookingsController'
+                })
+            $stateProvider
+                .state('bookings',{
+                    url: '/bookings',
+                    templateUrl: 'application/templates/bookings/index.html',
+                    controller: 'BookingsController'
+                })
+            $stateProvider
                 .state('new_event',{
                     url: '/event/new',
                     templateUrl: 'application/templates/events/form.html',

@@ -41,6 +41,7 @@ en:
     cant_be_blank: "Can't be blank."
 
   headers:
+    bookings: 'Bookings'
     events: 'Events'
     genres: 'Genres'
     cancelations: 'Cancelations'
@@ -183,3 +184,14 @@ en:
       updated_at: "Updated at"
     messages:
       success_upsert: 'Event successfully saved.'
+
+  booking:
+    new: "New Booking"
+    edit: "Edit Booking"
+    fields:
+      user: "User"
+      event: "Event"
+      created_at: "Created at"
+      updated_at: "Updated at"
+    messages:
+      success_upsert: 'Booking successfully saved.'
