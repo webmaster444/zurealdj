@@ -41,6 +41,7 @@ en:
     cant_be_blank: "Can't be blank."
 
   headers:
+    djs: 'Djs'
     bookings: 'Bookings'
     events: 'Events'
     genres: 'Genres'
@@ -195,3 +196,26 @@ en:
       updated_at: "Updated at"
     messages:
       success_upsert: 'Booking successfully saved.'
+
+  dj:
+    new: "New Dj"
+    edit: "Edit Dj"
+    fields:
+      first_name: "First name"
+      last_name: "Last name"
+      city: "City"
+      country: "Country"
+      about: "About"
+      sample: "Sample"
+      instagram_link: "Instagram link"
+      facebook_link: "Facebook link"
+      soundcloud_link: "Soundcloud link"
+      weekday_price_from: "Weekday price from"
+      weekday_price_to: "Weekday price to"
+      weekend_price_from: "Weekend price from"
+      weekend_price_to: "Weekend price to"
+      photo: "Photo"
+      created_at: "Created at"
+      updated_at: "Updated at"
+    messages:
+      success_upsert: 'Dj successfully saved.'

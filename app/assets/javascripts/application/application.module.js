@@ -39,6 +39,30 @@
                 });
             // generated routes:
             $stateProvider
+                .state('new_dj',{
+                    url: '/dj/new',
+                    templateUrl: 'application/templates/djs/form.html',
+                    controller: 'DjsController'
+                })
+            $stateProvider
+                .state('show_dj',{
+                    url: '/dj/:id',
+                    templateUrl: 'application/templates/djs/show.html',
+                    controller: 'DjsController'
+                });
+            $stateProvider
+                .state('edit_dj',{
+                    url: '/dj/:id/edit',
+                    templateUrl: 'application/templates/djs/form.html',
+                    controller: 'DjsController'
+                })
+            $stateProvider
+                .state('djs',{
+                    url: '/djs',
+                    templateUrl: 'application/templates/djs/index.html',
+                    controller: 'DjsController'
+                })
+            $stateProvider
                 .state('new_booking',{
                     url: '/booking/new',
                     templateUrl: 'application/templates/bookings/form.html',

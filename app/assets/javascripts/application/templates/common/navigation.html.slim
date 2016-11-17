@@ -18,6 +18,18 @@ nav.navbar-default.navbar-static-side.ng-scope role="navigation"
           .logo-element
             | Zurealdj
         / menu links
+        li ng-class=("{active: $state.current.name.includes('dj')}")
+          a href="#"
+            i.fa.fa-car
+            span.nav-label.ng-binding DJ
+            span.fa.arrow
+          ul.nav.nav-second-level.collapse ng-class=("{in: $state.current.name.includes('dj')}")
+            li.active ui-sref-active="active"
+              a.ng-binding href="#djs"
+                | {{ I18n.t('headers.djs') }}
+            li.active ui-sref-active="active"
+              a.ng-binding href="#dj/new"
+                | {{ I18n.t('dj.new') }}
         li ng-class=("{active: $state.current.name.includes('booking')}")
           a href="#"
             i.fa.fa-car

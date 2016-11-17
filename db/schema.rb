@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161117105955) do
+ActiveRecord::Schema.define(version: 20161117110251) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -51,6 +51,27 @@ ActiveRecord::Schema.define(version: 20161117105955) do
     t.text     "content"
     t.datetime "created_at"
     t.datetime "updated_at"
+  end
+
+  create_table "djs", force: :cascade do |t|
+    t.string   "first_name"
+    t.string   "last_name"
+    t.string   "city"
+    t.string   "country_flag_code"
+    t.text     "about"
+    t.integer  "sample_id"
+    t.string   "instagram_link"
+    t.string   "facebook_link"
+    t.string   "soundcloud_link"
+    t.integer  "weekday_price_from"
+    t.integer  "weekday_price_to"
+    t.integer  "weekend_price_from"
+    t.integer  "weekend_price_to"
+    t.integer  "photo_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.index ["photo_id"], name: "index_djs_on_photo_id", using: :btree
+    t.index ["sample_id"], name: "index_djs_on_sample_id", using: :btree
   end
 
   create_table "equipments", force: :cascade do |t|
