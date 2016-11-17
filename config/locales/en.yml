@@ -41,6 +41,7 @@ en:
     cant_be_blank: "Can't be blank."
 
   headers:
+    cancelations: 'Cancelations'
     event_categories: 'Event categories'
     equipments: 'Equipments'
     who_we_are_pages: 'Who we are pages'
@@ -144,3 +145,13 @@ en:
       updated_at: "Updated at"
     messages:
       success_upsert: 'Event category successfully saved.'
+
+  cancelation:
+    new: "New Cancelation"
+    edit: "Edit Cancelation"
+    fields:
+      title: "Title"
+      created_at: "Created at"
+      updated_at: "Updated at"
+    messages:
+      success_upsert: 'Cancelation successfully saved.'

@@ -39,6 +39,30 @@
                 });
             // generated routes:
             $stateProvider
+                .state('new_cancelation',{
+                    url: '/cancelation/new',
+                    templateUrl: 'application/templates/cancelations/form.html',
+                    controller: 'CancelationsController'
+                })
+            $stateProvider
+                .state('show_cancelation',{
+                    url: '/cancelation/:id',
+                    templateUrl: 'application/templates/cancelations/show.html',
+                    controller: 'CancelationsController'
+                });
+            $stateProvider
+                .state('edit_cancelation',{
+                    url: '/cancelation/:id/edit',
+                    templateUrl: 'application/templates/cancelations/form.html',
+                    controller: 'CancelationsController'
+                })
+            $stateProvider
+                .state('cancelations',{
+                    url: '/cancelations',
+                    templateUrl: 'application/templates/cancelations/index.html',
+                    controller: 'CancelationsController'
+                })
+            $stateProvider
                 .state('new_event_category',{
                     url: '/event_category/new',
                     templateUrl: 'application/templates/event_categories/form.html',
