@@ -1,0 +1,38 @@
+
+.loginColumns.animated.fadeInDown
+  .row
+    .col-md-6
+      h2.font-bold
+        | Welcome to&nbsp;
+        a href="#/"
+          | Zurealdj
+      p
+        | Perfectly designed and precisely prepared admin theme with over 50 pages with extra new web app views.
+      p
+        | When an unknown printer took a galley of type and scrambled it to make a type specimen book.
+      p
+        small It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.
+    .col-md-6
+      .ibox-content
+        form.m-t role="form" novalidate=true ng-submit="submitLoginCredentials()"
+          .form-group
+            input.form-control placeholder="Username" required="" type="email" ng-model="session.email"
+          .form-group
+            input.form-control placeholder="Password" required="" type="password" ng-model="session.password"
+          div ng-show="validation_errors"
+            .error ng-repeat="error in validation_errors"
+              | {{ error }}
+          input.btn.btn-primary.block.full-width.m-b type="submit" value="Login"
+          a href="#forgot_password"
+            small Forgot password?
+          p.text-muted.text-center
+            small Do not have an account?
+          a.btn.btn-sm.btn-white.btn-block href="#register"  Create an account
+        p.m-t
+          small Inspinia we app framework base on Bootstrap 3 © 2014
+  hr
+  .row
+    .col-md-6
+      | Copyright Zurealdj
+    .col-md-6.text-right
+      small © 2015
