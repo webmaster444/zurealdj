@@ -1,0 +1,38 @@
+.wrapper.wrapper-content
+  .row.animated.fadeInRight
+    .col-md-12
+      .ibox.float-e-margins
+        .ibox-title
+          h2
+            | {{ who_we_are_page.content }}
+        .ibox-content
+
+          .form-group
+            .row
+              .col-lg-2
+                label.control-label
+                  | {{ I18n.t('who_we_are_page.fields.content') }}:
+              .col-lg-10
+                div ng-bind-html="getHtml(who_we_are_page.content)"
+            .hr-line-dashed
+
+          .form-group
+            .row
+              .col-lg-2
+                label.control-label
+                  | {{ I18n.t('who_we_are_page.fields.created_at') }}:
+              .col-lg-10
+                p.form-control-static
+                  | {{ who_we_are_page.created_at }}
+            .hr-line-dashed
+
+          .form-group
+            .row
+              .col-lg-2
+                label.control-label
+                  | {{ I18n.t('who_we_are_page.fields.updated_at') }}:
+              .col-lg-10
+                p.form-control-static
+                  | {{ who_we_are_page.updated_at }}
+            .hr-line-dashed
+

@@ -39,6 +39,30 @@
                 });
             // generated routes:
             $stateProvider
+                .state('new_who_we_are_page',{
+                    url: '/who_we_are_page/new',
+                    templateUrl: 'application/templates/who_we_are_pages/form.html',
+                    controller: 'WhoWeArePagesController'
+                })
+            $stateProvider
+                .state('show_who_we_are_page',{
+                    url: '/who_we_are_page/:id',
+                    templateUrl: 'application/templates/who_we_are_pages/show.html',
+                    controller: 'WhoWeArePagesController'
+                });
+            $stateProvider
+                .state('edit_who_we_are_page',{
+                    url: '/who_we_are_page/:id/edit',
+                    templateUrl: 'application/templates/who_we_are_pages/form.html',
+                    controller: 'WhoWeArePagesController'
+                })
+            $stateProvider
+                .state('who_we_are_pages',{
+                    url: '/who_we_are_pages',
+                    templateUrl: 'application/templates/who_we_are_pages/index.html',
+                    controller: 'WhoWeArePagesController'
+                })
+            $stateProvider
                 .state('new_crew_page',{
                     url: '/crew_page/new',
                     templateUrl: 'application/templates/crew_pages/form.html',

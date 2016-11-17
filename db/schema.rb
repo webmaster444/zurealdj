@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161117105003) do
+ActiveRecord::Schema.define(version: 20161117105052) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -75,6 +75,12 @@ ActiveRecord::Schema.define(version: 20161117105003) do
     t.boolean "confirmed"
     t.string  "confirmation_token"
     t.integer "role_id"
+  end
+
+  create_table "who_we_are_pages", force: :cascade do |t|
+    t.text     "content"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
 end
