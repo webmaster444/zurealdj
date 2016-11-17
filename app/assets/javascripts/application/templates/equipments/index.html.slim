@@ -27,11 +27,11 @@
             tbody
               tr ng-repeat="equipment in equipments"
                 td
-                  | {{ equipments.icon }}
+                  | {{ equipment.icon }}
                 td
-                  | {{ equipments.title }}
+                  | {{ equipment.title }}
                 td
-                  | {{ equipments.created_at }}
+                  | {{ equipment.created_at }}
                 td.text-right
 
                   a.btn-xs.btn.btn-info.btn-outline href="#equipments/{{equipments.id}}"

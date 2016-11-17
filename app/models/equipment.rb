@@ -1,4 +1,4 @@
-class Equipment < ActiveRecord::Base
+class Equipment < ApplicationRecord
 
   attr_accessor :icon
 

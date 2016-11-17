@@ -7,7 +7,7 @@
                 var fd = new FormData();
 
                 if(genres.title){
-                    fd.append('genres[title]', genres.title );
+                    fd.append('genre[title]', genres.title );
                 }
 
                 if(genres.id){

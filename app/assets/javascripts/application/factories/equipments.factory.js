@@ -7,13 +7,13 @@
                 var fd = new FormData();
 
 
-                fd.append('equipments[icon][file]', equipments.icon.file );
+                fd.append('equipment[icon][file]', equipments.icon.file );
                 if(equipments.icon.id != undefined){
-                    fd.append('equipments[icon][id]', equipments.icon.id );
-                    fd.append('equipments[icon][removed]', !!equipments.icon.removed );
+                    fd.append('equipment[icon][id]', equipments.icon.id );
+                    fd.append('equipment[icon][removed]', !!equipments.icon.removed );
                 }
                 if(equipments.title){
-                    fd.append('equipments[title]', equipments.title );
+                    fd.append('equipment[title]', equipments.title );
                 }
 
                 if(equipments.id){

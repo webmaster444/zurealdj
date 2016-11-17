@@ -7,28 +7,28 @@
                 var fd = new FormData();
 
                 if(events.title){
-                    fd.append('events[title]', events.title );
+                    fd.append('event[title]', events.title );
                 }
                 if(events.city){
-                    fd.append('events[city]', events.city );
+                    fd.append('event[city]', events.city );
                 }
                 if(events.country){
-                    fd.append('events[country_flag_code]', events.country.code );
+                    fd.append('event[country_flag_code]', events.country.code );
                 }
                 if(events.address){
-                    fd.append('events[address]', events.address );
+                    fd.append('event[address]', events.address );
                 }
                 if(events.start_date){
-                    fd.append('events[start_date]', events.start_date );
+                    fd.append('event[start_date]', events.start_date );
                 }
                 if(events.end_date){
-                    fd.append('events[end_date]', events.end_date );
+                    fd.append('event[end_date]', events.end_date );
                 }
 
-                fd.append('events[image][file]', events.image.file );
+                fd.append('event[image][file]', events.image.file );
                 if(events.image.id != undefined){
-                    fd.append('events[image][id]', events.image.id );
-                    fd.append('events[image][removed]', !!events.image.removed );
+                    fd.append('event[image][id]', events.image.id );
+                    fd.append('event[image][removed]', !!events.image.removed );
                 }
 
                 if(events.id){

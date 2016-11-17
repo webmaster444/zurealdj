@@ -15,10 +15,10 @@
                 var fd = new FormData();
 
                 if(bookings.user){
-                    fd.append('bookings[user]', bookings.user );
+                    fd.append('booking[user]', bookings.user );
                 }
                 if(bookings.event){
-                    fd.append('bookings[event]', bookings.event );
+                    fd.append('booking[event]', bookings.event );
                 }
 
                 if(bookings.id){

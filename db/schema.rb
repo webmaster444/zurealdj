@@ -74,12 +74,12 @@ ActiveRecord::Schema.define(version: 20161117110443) do
     t.index ["sample_id"], name: "index_djs_on_sample_id", using: :btree
   end
 
-  create_table "equipments", force: :cascade do |t|
+  create_table "equipment", force: :cascade do |t|
     t.integer  "icon_id"
     t.string   "title"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.index ["icon_id"], name: "index_equipments_on_icon_id", using: :btree
+    t.index ["icon_id"], name: "index_equipment_on_icon_id", using: :btree
   end
 
   create_table "event_categories", force: :cascade do |t|

@@ -7,7 +7,7 @@
                 var fd = new FormData();
 
                 if(event_categories.title){
-                    fd.append('event_categories[title]', event_categories.title );
+                    fd.append('event_category[title]', event_categories.title );
                 }
 
                 if(event_categories.id){

@@ -7,7 +7,7 @@
                 var fd = new FormData();
 
                 if(cancelations.title){
-                    fd.append('cancelations[title]', cancelations.title );
+                    fd.append('cancelation[title]', cancelations.title );
                 }
 
                 if(cancelations.id){

@@ -25,9 +25,9 @@
             tbody
               tr ng-repeat="event_category in event_categories"
                 td
-                  | {{ event_categories.title }}
+                  | {{ event_category.title }}
                 td
-                  | {{ event_categories.created_at }}
+                  | {{ event_category.created_at }}
                 td.text-right
 
                   a.btn-xs.btn.btn-info.btn-outline href="#event_categories/{{event_categories.id}}"

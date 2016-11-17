@@ -25,17 +25,17 @@
             tbody
               tr ng-repeat="genre in genres"
                 td
-                  | {{ genres.title }}
+                  | {{ genre.title }}
                 td
-                  | {{ genres.created_at }}
+                  | {{ genre.created_at }}
                 td.text-right
 
-                  a.btn-xs.btn.btn-info.btn-outline href="#genres/{{genres.id}}"
+                  a.btn-xs.btn.btn-info.btn-outline href="#genre/{{genre.id}}"
                     | {{ I18n.t('actions.view') }}
 
-                  a.btn-xs.btn.btn-warning.btn-outline href="#genres/{{genres.id}}/edit"
+                  a.btn-xs.btn.btn-warning.btn-outline href="#genre/{{genre.id}}/edit"
                     | {{ I18n.t('actions.edit') }}
 
 
-                  a.btn-xs.btn.btn-danger.btn-outline ng-click="destroy(genres.id)"
+                  a.btn-xs.btn.btn-danger.btn-outline ng-click="destroy(genre.id)"
                     | {{ I18n.t('actions.delete') }}

@@ -7,31 +7,31 @@
                 var fd = new FormData();
 
                 if(organizations.first_name){
-                    fd.append('organizations[first_name]', organizations.first_name );
+                    fd.append('organization[first_name]', organizations.first_name );
                 }
                 if(organizations.last_name){
-                    fd.append('organizations[last_name]', organizations.last_name );
+                    fd.append('organization[last_name]', organizations.last_name );
                 }
                 if(organizations.city){
-                    fd.append('organizations[city]', organizations.city );
+                    fd.append('organization[city]', organizations.city );
                 }
                 if(organizations.country){
-                    fd.append('organizations[country_flag_code]', organizations.country.code );
+                    fd.append('organization[country_flag_code]', organizations.country.code );
                 }
                 if(organizations.address){
-                    fd.append('organizations[address]', organizations.address );
+                    fd.append('organization[address]', organizations.address );
                 }
                 if(organizations.about){
-                    fd.append('organizations[about]', organizations.about );
+                    fd.append('organization[about]', organizations.about );
                 }
                 if(organizations.instagram_link){
-                    fd.append('organizations[instagram_link]', organizations.instagram_link );
+                    fd.append('organization[instagram_link]', organizations.instagram_link );
                 }
                 if(organizations.facebook_link){
-                    fd.append('organizations[facebook_link]', organizations.facebook_link );
+                    fd.append('organization[facebook_link]', organizations.facebook_link );
                 }
                 if(organizations.soundcloud_link){
-                    fd.append('organizations[soundcloud_link]', organizations.soundcloud_link );
+                    fd.append('organization[soundcloud_link]', organizations.soundcloud_link );
                 }
 
                 if(organizations.id){
