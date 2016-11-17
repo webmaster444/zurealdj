@@ -41,6 +41,7 @@ en:
     cant_be_blank: "Can't be blank."
 
   headers:
+    genres: 'Genres'
     cancelations: 'Cancelations'
     event_categories: 'Event categories'
     equipments: 'Equipments'
@@ -155,3 +156,13 @@ en:
       updated_at: "Updated at"
     messages:
       success_upsert: 'Cancelation successfully saved.'
+
+  genre:
+    new: "New Genre"
+    edit: "Edit Genre"
+    fields:
+      title: "Title"
+      created_at: "Created at"
+      updated_at: "Updated at"
+    messages:
+      success_upsert: 'Genre successfully saved.'

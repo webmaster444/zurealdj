@@ -39,6 +39,30 @@
                 });
             // generated routes:
             $stateProvider
+                .state('new_genre',{
+                    url: '/genre/new',
+                    templateUrl: 'application/templates/genres/form.html',
+                    controller: 'GenresController'
+                })
+            $stateProvider
+                .state('show_genre',{
+                    url: '/genre/:id',
+                    templateUrl: 'application/templates/genres/show.html',
+                    controller: 'GenresController'
+                });
+            $stateProvider
+                .state('edit_genre',{
+                    url: '/genre/:id/edit',
+                    templateUrl: 'application/templates/genres/form.html',
+                    controller: 'GenresController'
+                })
+            $stateProvider
+                .state('genres',{
+                    url: '/genres',
+                    templateUrl: 'application/templates/genres/index.html',
+                    controller: 'GenresController'
+                })
+            $stateProvider
                 .state('new_cancelation',{
                     url: '/cancelation/new',
                     templateUrl: 'application/templates/cancelations/form.html',
