@@ -39,6 +39,30 @@
                 });
             // generated routes:
             $stateProvider
+                .state('new_how_we_work_page',{
+                    url: '/how_we_work_page/new',
+                    templateUrl: 'application/templates/how_we_work_pages/form.html',
+                    controller: 'HowWeWorkPagesController'
+                })
+            $stateProvider
+                .state('show_how_we_work_page',{
+                    url: '/how_we_work_page/:id',
+                    templateUrl: 'application/templates/how_we_work_pages/show.html',
+                    controller: 'HowWeWorkPagesController'
+                });
+            $stateProvider
+                .state('edit_how_we_work_page',{
+                    url: '/how_we_work_page/:id/edit',
+                    templateUrl: 'application/templates/how_we_work_pages/form.html',
+                    controller: 'HowWeWorkPagesController'
+                })
+            $stateProvider
+                .state('how_we_work_pages',{
+                    url: '/how_we_work_pages',
+                    templateUrl: 'application/templates/how_we_work_pages/index.html',
+                    controller: 'HowWeWorkPagesController'
+                })
+            $stateProvider
                 .state('new_policies_page',{
                     url: '/policies_page/new',
                     templateUrl: 'application/templates/policies_pages/form.html',

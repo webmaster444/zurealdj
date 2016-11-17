@@ -41,6 +41,7 @@ en:
     cant_be_blank: "Can't be blank."
 
   headers:
+    how_we_work_pages: 'How we work pages'
     policies_pages: 'Policies pages'
     terms_n_conditions_pages: 'Terms n conditions pages'
     cancelations_pages: 'Cancelations pages'
@@ -88,3 +89,13 @@ en:
       updated_at: "Updated at"
     messages:
       success_upsert: 'Policies page successfully saved.'
+
+  how_we_work_page:
+    new: "New How we work page"
+    edit: "Edit How we work page"
+    fields:
+      content: "Content"
+      created_at: "Created at"
+      updated_at: "Updated at"
+    messages:
+      success_upsert: 'How we work page successfully saved.'
