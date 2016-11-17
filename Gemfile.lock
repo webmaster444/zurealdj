@@ -1,5 +1,5 @@
 PATH
-  remote: ~/dev/ng_rails
+  remote: ~/dev/ng_scaffold
   specs:
     ng_rails (0.1.0)
 

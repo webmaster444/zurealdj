@@ -38,6 +38,30 @@
                     controller: 'UsersController'
                 });
             // generated routes:
+            $stateProvider
+                .state('new_cancelations_page',{
+                    url: '/cancelations_page/new',
+                    templateUrl: 'application/templates/cancelations_pages/form.html',
+                    controller: 'CancelationsPagesController'
+                })
+            $stateProvider
+                .state('show_cancelations_page',{
+                    url: '/cancelations_page/:id',
+                    templateUrl: 'application/templates/cancelations_pages/show.html',
+                    controller: 'CancelationsPagesController'
+                });
+            $stateProvider
+                .state('edit_cancelations_page',{
+                    url: '/cancelations_page/:id/edit',
+                    templateUrl: 'application/templates/cancelations_pages/form.html',
+                    controller: 'CancelationsPagesController'
+                })
+            $stateProvider
+                .state('cancelations_pages',{
+                    url: '/cancelations_pages',
+                    templateUrl: 'application/templates/cancelations_pages/index.html',
+                    controller: 'CancelationsPagesController'
+                })
     }]);
 
     ZurealdjApp.run(['$http', '$rootScope', function($http, $rootScope){

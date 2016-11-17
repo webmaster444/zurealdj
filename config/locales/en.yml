@@ -41,6 +41,7 @@ en:
     cant_be_blank: "Can't be blank."
 
   headers:
+    cancelations_pages: 'Cancelations pages'
 
   datetime:
     ago: 'ago'
@@ -55,3 +56,13 @@ en:
     edit: 'Edit'
     delete: 'Delete'
     view: 'View'
+
+  cancelations_page:
+    new: "New Cancelations page"
+    edit: "Edit Cancelations page"
+    fields:
+      content: "Content"
+      created_at: "Created at"
+      updated_at: "Updated at"
+    messages:
+      success_upsert: 'Cancelations page successfully saved.'

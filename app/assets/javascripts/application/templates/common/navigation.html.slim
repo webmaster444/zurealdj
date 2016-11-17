@@ -18,3 +18,15 @@ nav.navbar-default.navbar-static-side.ng-scope role="navigation"
           .logo-element
             | Zurealdj
         / menu links
+        li ng-class=("{active: $state.current.name.includes('cancelations_pag')}")
+          a href="#"
+            i.fa.fa-car
+            span.nav-label.ng-binding CANCELATIONS_PAGE
+            span.fa.arrow
+          ul.nav.nav-second-level.collapse ng-class=("{in: $state.current.name.includes('cancelations_pag')}")
+            li.active ui-sref-active="active"
+              a.ng-binding href="#cancelations_pages"
+                | {{ I18n.t('headers.cancelations_pages') }}
+            li.active ui-sref-active="active"
+              a.ng-binding href="#cancelations_page/new"
+                | {{ I18n.t('cancelations_page.new') }}

@@ -1,0 +1,31 @@
+.wrapper.wrapper-content
+  .row.animated.fadeInRight
+    .col-md-12
+      .ibox.float-e-margins
+        .ibox-title
+          h3 ng-show="$state.current.name == 'new_cancelations_page'"
+            | {{ I18n.t('cancelations_page.new' ) }}
+          h3 ng-show="$state.current.name == 'edit_cancelations_page'"
+            | {{ I18n.t('cancelations_page.edit' ) }}
+        .ibox-content
+          form ng-submit="submitCancelationsPage()" name="CancelationsPageForm" novalidate=true
+            .form-group
+              .row
+                .col-sm-2
+                  label.control-label
+                    | {{ I18n.t('cancelations_page.fields.content') }}:
+                .col-sm-10
+                  div redactor=true required=true ng-model="cancelations_page.content" file-upload-path="/attachments/cancelations_page_content"
+                  .error ng-show="CancelationsPageForm.content.$invalid && submitted"
+                    | {{ I18n.t('validations.cant_be_blank')}}
+
+                  .error ng-repeat="error in validation_errors['content']"
+                    | {{ error }}
+
+              .hr-line-dashed
+
+            .form-group
+              .row
+                .col-sm-4.col-sm-offset-2
+                  button.ladda-button.btn.btn-info data-style="expand-left" ladda="formPending"
+                    | {{ I18n.t('actions.submit') }}

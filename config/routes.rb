@@ -2,6 +2,13 @@ Rails.application.routes.draw do
   resources :country_flags, only: [:index]
   root to: 'pages#index'
   scope '(:locale)' do
+    resources :attachments, only: [] do
+      collection do
+        post '/:entity_type', to: 'attachments#create'
+      end
+    end
+  resources :cancelations_pages, only: [:index, :create, :update, :destroy, :show]
+
     resources :pages, only:[] do
        get :check_session
     end
