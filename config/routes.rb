@@ -2,6 +2,8 @@ Rails.application.routes.draw do
   resources :country_flags, only: [:index]
   root to: 'pages#index'
   scope '(:locale)' do
+  resources :event_categories, only: [:index, :create, :update, :destroy, :show]
+
   resources :equipments, only: [:index, :create, :update, :destroy, :show]
 
   resources :who_we_are_pages, only: [:index, :create, :update, :destroy, :show]

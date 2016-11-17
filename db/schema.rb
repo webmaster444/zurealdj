@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161117105307) do
+ActiveRecord::Schema.define(version: 20161117105432) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -44,6 +44,12 @@ ActiveRecord::Schema.define(version: 20161117105307) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.index ["icon_id"], name: "index_equipments_on_icon_id", using: :btree
+  end
+
+  create_table "event_categories", force: :cascade do |t|
+    t.string   "title"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "how_we_work_pages", force: :cascade do |t|

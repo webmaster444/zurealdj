@@ -1,0 +1,39 @@
+.wrapper.wrapper-content
+  .row.animated.fadeInRight
+    .col-md-12
+      .ibox.float-e-margins
+        .ibox-title
+          h2
+            | {{ event_category.title }}
+        .ibox-content
+
+          .form-group
+            .row
+              .col-lg-2
+                label.control-label
+                  | {{ I18n.t('event_category.fields.title') }}:
+              .col-lg-10
+                p.form-control-static
+                  | {{ event_category.title }}
+            .hr-line-dashed
+
+          .form-group
+            .row
+              .col-lg-2
+                label.control-label
+                  | {{ I18n.t('event_category.fields.created_at') }}:
+              .col-lg-10
+                p.form-control-static
+                  | {{ event_category.created_at }}
+            .hr-line-dashed
+
+          .form-group
+            .row
+              .col-lg-2
+                label.control-label
+                  | {{ I18n.t('event_category.fields.updated_at') }}:
+              .col-lg-10
+                p.form-control-static
+                  | {{ event_category.updated_at }}
+            .hr-line-dashed
+

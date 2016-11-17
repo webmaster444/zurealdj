@@ -39,6 +39,30 @@
                 });
             // generated routes:
             $stateProvider
+                .state('new_event_category',{
+                    url: '/event_category/new',
+                    templateUrl: 'application/templates/event_categories/form.html',
+                    controller: 'EventCategoriesController'
+                })
+            $stateProvider
+                .state('show_event_category',{
+                    url: '/event_category/:id',
+                    templateUrl: 'application/templates/event_categories/show.html',
+                    controller: 'EventCategoriesController'
+                });
+            $stateProvider
+                .state('edit_event_category',{
+                    url: '/event_category/:id/edit',
+                    templateUrl: 'application/templates/event_categories/form.html',
+                    controller: 'EventCategoriesController'
+                })
+            $stateProvider
+                .state('event_categories',{
+                    url: '/event_categories',
+                    templateUrl: 'application/templates/event_categories/index.html',
+                    controller: 'EventCategoriesController'
+                })
+            $stateProvider
                 .state('new_equipment',{
                     url: '/equipment/new',
                     templateUrl: 'application/templates/equipments/form.html',
