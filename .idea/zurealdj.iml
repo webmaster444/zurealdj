@@ -21,18 +21,6 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="module-library">
-      <library name="ng_rails (v0.1.0, /home/misha/dev/ng_scaffold) [path][gem]">
-        <CLASSES>
-          <root url="file://$MODULE_DIR$/../ng_scaffold/bin" />
-          <root url="file://$MODULE_DIR$/../ng_scaffold/lib" />
-        </CLASSES>
-        <SOURCES>
-          <root url="file://$MODULE_DIR$/../ng_scaffold/bin" />
-          <root url="file://$MODULE_DIR$/../ng_scaffold/lib" />
-        </SOURCES>
-      </library>
-    </orderEntry>
   </component>
   <component name="RModuleSettingsStorage">
     <LOAD_PATH number="0" />
