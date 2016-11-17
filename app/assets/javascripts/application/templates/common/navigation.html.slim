@@ -18,6 +18,18 @@ nav.navbar-default.navbar-static-side.ng-scope role="navigation"
           .logo-element
             | Zurealdj
         / menu links
+        li ng-class=("{active: $state.current.name.includes('crew_pag')}")
+          a href="#"
+            i.fa.fa-car
+            span.nav-label.ng-binding CREW_PAGE
+            span.fa.arrow
+          ul.nav.nav-second-level.collapse ng-class=("{in: $state.current.name.includes('crew_pag')}")
+            li.active ui-sref-active="active"
+              a.ng-binding href="#crew_pages"
+                | {{ I18n.t('headers.crew_pages') }}
+            li.active ui-sref-active="active"
+              a.ng-binding href="#crew_page/new"
+                | {{ I18n.t('crew_page.new') }}
         li ng-class=("{active: $state.current.name.includes('how_we_work_pag')}")
           a href="#"
             i.fa.fa-car
