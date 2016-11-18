@@ -12,24 +12,14 @@ class ApplicationController < ActionController::Base
 
   def authenticate_user
     if current_user
-      if Time.now - current_session.updated_at > 30.minutes
+      if Time.now - current_session.updated_at > 3.hours
         current_session.destroy
         respond_with_errors
       else
         current_session.update_attribute :updated_at, Time.now
       end
     else
-      if params[:session]
-        user = User.find_by_email params[:session][:email].to_s.downcase
-
-        if user && user.authenticate(params[:session][:password])
-          sign_in user
-        else
-          render json: { errors: 'Wrong email or password.' }, status: :unauthorized and return
-        end
-      else
-        respond_with_errors
-      end
+      respond_with_errors
     end
   end
 

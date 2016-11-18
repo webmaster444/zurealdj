@@ -1,12 +1,19 @@
 class PagesController < ApplicationController
-    skip_before_filter :authenticate_user
+  skip_before_filter :authenticate_user
 
+  def index
+    render layout: 'landing'
+  end
 
-    def index
-        render layout: 'landing'
-    end
+  def admin
+    render layout: 'admin'
+  end
 
-    def app
+  def djs
+    render layout: 'dj'
+  end
 
-    end
+  def organizers
+    render layout: 'organizer'
+  end
 end

@@ -41,7 +41,7 @@ en:
     cant_be_blank: "Can't be blank."
 
   headers:
-    organizations: 'Organizations'
+    organizers: 'Organizers'
     djs: 'Djs'
     bookings: 'Bookings'
     events: 'Events'
@@ -221,9 +221,9 @@ en:
     messages:
       success_upsert: 'Dj successfully saved.'
 
-  organization:
-    new: "New Organization"
-    edit: "Edit Organization"
+  organizer:
+    new: "New Organizer"
+    edit: "Edit Organizer"
     fields:
       first_name: "First name"
       last_name: "Last name"
@@ -237,4 +237,4 @@ en:
       created_at: "Created at"
       updated_at: "Updated at"
     messages:
-      success_upsert: 'Organization successfully saved.'
+      success_upsert: 'Organizer successfully saved.'

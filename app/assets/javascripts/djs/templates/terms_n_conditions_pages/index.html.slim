@@ -1,0 +1,37 @@
+.wrapper.wrapper-content
+  .row.animated.fadeInRight
+    .col-md-12
+      .ibox.float-e-margins
+        .ibox-title
+          h3
+            | {{ I18n.t('headers.terms_n_conditions_pages' ) }}
+        .ibox-content
+          .pull-left
+            #terms_n_conditions_pages-pagination ng-hide="count < 11"
+          .pull-right
+
+            button.btn-xs.btn.btn-info ui-sref="new_terms_n_conditions_page"
+              | {{ I18n.t('terms_n_conditions_page.new') }}
+
+          table.table.table-striped.table-responsive
+            thead
+              tr
+                th
+                  | Created At
+                th
+                  | Actions
+            tbody
+              tr ng-repeat="terms_n_conditions_page in terms_n_conditions_pages"
+                td
+                  | {{ terms_n_conditions_page.created_at }}
+                td.text-right
+
+                  a.btn-xs.btn.btn-info.btn-outline href="#terms_n_conditions_page/{{terms_n_conditions_page.id}}"
+                    | {{ I18n.t('actions.view') }}
+
+                  a.btn-xs.btn.btn-warning.btn-outline href="#terms_n_conditions_page/{{terms_n_conditions_page.id}}/edit"
+                    | {{ I18n.t('actions.edit') }}
+
+
+                  a.btn-xs.btn.btn-danger.btn-outline ng-click="destroy(terms_n_conditions_page.id)"
+                    | {{ I18n.t('actions.delete') }}

@@ -1,0 +1,41 @@
+.wrapper.wrapper-content
+  .row.animated.fadeInRight
+    .col-md-12
+      .ibox.float-e-margins
+        .ibox-title
+          h3
+            | {{ I18n.t('headers.genres' ) }}
+        .ibox-content
+          .pull-left
+            #genres-pagination ng-hide="count < 11"
+          .pull-right
+
+            button.btn-xs.btn.btn-info ui-sref="new_genre"
+              | {{ I18n.t('genre.new') }}
+
+          table.table.table-striped.table-responsive
+            thead
+              tr
+                th
+                  | {{ I18n.t('genre.fields.title') }}
+                th
+                  | Created At
+                th
+                  | Actions
+            tbody
+              tr ng-repeat="genre in genres"
+                td
+                  | {{ genre.title }}
+                td
+                  | {{ genre.created_at }}
+                td.text-right
+
+                  a.btn-xs.btn.btn-info.btn-outline href="#genre/{{genre.id}}"
+                    | {{ I18n.t('actions.view') }}
+
+                  a.btn-xs.btn.btn-warning.btn-outline href="#genre/{{genre.id}}/edit"
+                    | {{ I18n.t('actions.edit') }}
+
+
+                  a.btn-xs.btn.btn-danger.btn-outline ng-click="destroy(genre.id)"
+                    | {{ I18n.t('actions.delete') }}

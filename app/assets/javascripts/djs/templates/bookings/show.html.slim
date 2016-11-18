@@ -1,0 +1,49 @@
+.wrapper.wrapper-content
+  .row.animated.fadeInRight
+    .col-md-12
+      .ibox.float-e-margins
+        .ibox-title
+          h2
+            | {{ booking.user }}
+        .ibox-content
+
+          .form-group
+            .row
+              .col-lg-2
+                label.control-label
+                  | {{ I18n.t('booking.fields.user') }}:
+              .col-lg-10
+                p.form-control-static
+                  | {{ booking.user }}
+            .hr-line-dashed
+
+          .form-group
+            .row
+              .col-lg-2
+                label.control-label
+                  | {{ I18n.t('booking.fields.event') }}:
+              .col-lg-10
+                p.form-control-static
+                  | {{ booking.event }}
+            .hr-line-dashed
+
+          .form-group
+            .row
+              .col-lg-2
+                label.control-label
+                  | {{ I18n.t('booking.fields.created_at') }}:
+              .col-lg-10
+                p.form-control-static
+                  | {{ booking.created_at }}
+            .hr-line-dashed
+
+          .form-group
+            .row
+              .col-lg-2
+                label.control-label
+                  | {{ I18n.t('booking.fields.updated_at') }}:
+              .col-lg-10
+                p.form-control-static
+                  | {{ booking.updated_at }}
+            .hr-line-dashed
+

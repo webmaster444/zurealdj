@@ -3,6 +3,13 @@
 angular.module('AuthHttp', ['toaster']);
 
 angular.module('AuthHttp').service('AuthHttp', ['$http', 'toaster', function($http, toaster){
+
+    var defaults = {
+        unauthorizedAction: function(){
+            window.location = '/';
+        }
+    };
+
     var qw = function(){
         return {
             success: function (callback) {
@@ -14,7 +21,7 @@ angular.module('AuthHttp').service('AuthHttp', ['$http', 'toaster', function($ht
                 return this;
             },
             request: function (method, url, data) {
-                url = I18n.locale + '/' + url
+                url = '/' + I18n.locale + url;
                 var self = this;
 
                 var success = function(data, status, headers, config){
@@ -31,7 +38,7 @@ angular.module('AuthHttp').service('AuthHttp', ['$http', 'toaster', function($ht
                         }
                     }
                     if (status == 401) {
-                        window.location = '/#/login'
+                        defaults.unauthorizedAction();
                     }
                     self.callbacks.error(data, status, headers, config);
                 };
@@ -116,6 +123,9 @@ angular.module('AuthHttp').service('AuthHttp', ['$http', 'toaster', function($ht
     };
 
     return {
+        setDefaults: function(key, value){
+            defaults[key] = value
+        },
         get: function (url) {
             var ins = new qw;
             ins.request('GET', url);

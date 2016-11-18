@@ -1,0 +1,48 @@
+.wrapper.wrapper-content
+  .row.animated.fadeInRight
+    .col-md-12
+      .ibox.float-e-margins
+        .ibox-title
+          h2
+            | {{ equipment.icon }}
+        .ibox-content
+
+          .form-group
+            .row
+              .col-lg-2
+                label.control-label
+                  | {{ I18n.t('equipment.fields.icon') }}:
+              .col-lg-10
+                img ng-src="{{ equipments.icon.url }}" style="max-width: 100%"
+            .hr-line-dashed
+
+          .form-group
+            .row
+              .col-lg-2
+                label.control-label
+                  | {{ I18n.t('equipment.fields.title') }}:
+              .col-lg-10
+                p.form-control-static
+                  | {{ equipment.title }}
+            .hr-line-dashed
+
+          .form-group
+            .row
+              .col-lg-2
+                label.control-label
+                  | {{ I18n.t('equipment.fields.created_at') }}:
+              .col-lg-10
+                p.form-control-static
+                  | {{ equipment.created_at }}
+            .hr-line-dashed
+
+          .form-group
+            .row
+              .col-lg-2
+                label.control-label
+                  | {{ I18n.t('equipment.fields.updated_at') }}:
+              .col-lg-10
+                p.form-control-static
+                  | {{ equipment.updated_at }}
+            .hr-line-dashed
+

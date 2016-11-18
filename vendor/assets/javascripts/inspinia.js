@@ -125,7 +125,7 @@ $(document).ready(function () {
                 railOpacity: 0.9
             });
         }
-    })
+    });
 
     // Move right sidebar top after scroll
     $(window).scroll(function(){
@@ -137,9 +137,7 @@ $(document).ready(function () {
     });
 
     $(window).bind("load resize scroll", function() {
-        if(!$("body").hasClass('body-small')) {
-            fix_height();
-        }
+        fix_height();
     });
 
     //$("[data-toggle=popover]")
@@ -153,13 +151,13 @@ $(document).ready(function () {
 
 
 // Minimalize menu when screen is less than 768px
-$(window).bind("resize", function () {
-    if ($(this).width() < 769) {
-        $('body').addClass('body-small')
-    } else {
-        $('body').removeClass('body-small')
-    }
-});
+// $(window).bind("resize", function () {
+//     if ($(this).width() < 769) {
+//         $('body').addClass('body-small')
+//     } else {
+//         $('body').removeClass('body-small')
+//     }
+// });
 
 // Local Storage functions
 // Set proper body class and plugins based on user configuration

@@ -1,0 +1,132 @@
+.wrapper.wrapper-content
+  .row.animated.fadeInRight
+    .col-md-12
+      .ibox.float-e-margins
+        .ibox-content
+
+          h3 ng-show="$state.current.name == 'new_organizer'"
+            | {{ I18n.t('organizer.new' ) }}
+          h3 ng-show="$state.current.name == 'edit_organizer'"
+            | {{ I18n.t('organizer.edit' ) }}
+
+          form ng-submit="submitOrganization()" name="OrganizationForm" novalidate=true
+            .form-group
+              .row
+                .col-sm-2.text-right
+                  label.control-label
+                    | {{ I18n.t('organizer.fields.first_name') }}:
+                .col-sm-10
+                  input.form-control type="text" placeholder="{{ I18n.t('organizer.fields.first_name') }}" required=true class="{{ OrganizationForm.first_name.$invalid && submitted ? 'validation-error' : ''}}" name="first_name" ng-model="organizer.first_name"
+                  .error ng-show="OrganizationsForm.first_name.$invalid && submitted"
+                    | {{ I18n.t('validations.cant_be_blank')}}
+
+                  .error ng-repeat="error in validation_errors['first_name']"
+                    | {{ error }}
+
+            .form-group
+              .row
+                .col-sm-2.text-right
+                  label.control-label
+                    | {{ I18n.t('organizer.fields.last_name') }}:
+                .col-sm-10
+                  input.form-control type="text" placeholder="{{ I18n.t('organizer.fields.last_name') }}" required=true class="{{ OrganizationForm.last_name.$invalid && submitted ? 'validation-error' : ''}}" name="last_name" ng-model="organizer.last_name"
+                  .error ng-show="OrganizationsForm.last_name.$invalid && submitted"
+                    | {{ I18n.t('validations.cant_be_blank')}}
+
+                  .error ng-repeat="error in validation_errors['last_name']"
+                    | {{ error }}
+
+            .form-group
+              .row
+                .col-sm-2.text-right
+                  label.control-label
+                    | {{ I18n.t('organizer.fields.city') }}:
+                .col-sm-10
+                  input.form-control type="text" placeholder="{{ I18n.t('organizer.fields.city') }}" required=true class="{{ OrganizationForm.city.$invalid && submitted ? 'validation-error' : ''}}" name="city" ng-model="organizer.city"
+                  .error ng-show="OrganizationsForm.city.$invalid && submitted"
+                    | {{ I18n.t('validations.cant_be_blank')}}
+
+                  .error ng-repeat="error in validation_errors['city']"
+                    | {{ error }}
+
+            .form-group
+              .row
+                .col-sm-2.text-right
+                  label.control-label
+                    | {{ I18n.t('organizer.fields.country') }}:
+                .col-sm-10
+                  div country=true ng-model="organizer.country_flag_code"
+                  .error ng-repeat="error in validation_errors.country_flag_code"
+                    | {{ error }}
+
+            .form-group
+              .row
+                .col-sm-2.text-right
+                  label.control-label
+                    | {{ I18n.t('organizer.fields.address') }}:
+                .col-sm-10
+                  input.form-control type="text" placeholder="{{ I18n.t('organizer.fields.address') }}" required=true class="{{ OrganizationForm.address.$invalid && submitted ? 'validation-error' : ''}}" name="address" ng-model="organizer.address"
+                  .error ng-show="OrganizationsForm.address.$invalid && submitted"
+                    | {{ I18n.t('validations.cant_be_blank')}}
+
+                  .error ng-repeat="error in validation_errors['address']"
+                    | {{ error }}
+
+            .form-group
+              .row
+                .col-sm-2.text-right
+                  label.control-label
+                    | {{ I18n.t('organizer.fields.about') }}:
+                .col-sm-10
+                  textarea.form-control placeholder="{{ I18n.t('organizer.fields.about') }}" required=true class="{{ OrganizationForm.about.$invalid && submitted ? 'validation-error' : ''}}" name="about" ng-model="organizer.about" style="width: 100%"
+                  .error ng-show="OrganizationsForm.about.$invalid && submitted"
+                    | {{ I18n.t('validations.cant_be_blank')}}
+
+                  .error ng-repeat="error in validation_errors['about']"
+                    | {{ error }}
+
+            .form-group
+              .row
+                .col-sm-2.text-right
+                  label.control-label
+                    | {{ I18n.t('organizer.fields.instagram_link') }}:
+                .col-sm-10
+                  input.form-control type="text" placeholder="{{ I18n.t('organizer.fields.instagram_link') }}" required=true class="{{ OrganizationForm.instagram_link.$invalid && submitted ? 'validation-error' : ''}}" name="instagram_link" ng-model="organizer.instagram_link"
+                  .error ng-show="OrganizationsForm.instagram_link.$invalid && submitted"
+                    | {{ I18n.t('validations.cant_be_blank')}}
+
+                  .error ng-repeat="error in validation_errors['instagram_link']"
+                    | {{ error }}
+
+            .form-group
+              .row
+                .col-sm-2.text-right
+                  label.control-label
+                    | {{ I18n.t('organizer.fields.facebook_link') }}:
+                .col-sm-10
+                  input.form-control type="text" placeholder="{{ I18n.t('organizer.fields.facebook_link') }}" required=true class="{{ OrganizationForm.facebook_link.$invalid && submitted ? 'validation-error' : ''}}" name="facebook_link" ng-model="organizer.facebook_link"
+                  .error ng-show="OrganizationsForm.facebook_link.$invalid && submitted"
+                    | {{ I18n.t('validations.cant_be_blank')}}
+
+                  .error ng-repeat="error in validation_errors['facebook_link']"
+                    | {{ error }}
+
+            .form-group
+              .row
+                .col-sm-2.text-right
+                  label.control-label
+                    | {{ I18n.t('organizer.fields.soundcloud_link') }}:
+                .col-sm-10
+                  input.form-control type="text" placeholder="{{ I18n.t('organizer.fields.soundcloud_link') }}" required=true class="{{ OrganizationForm.soundcloud_link.$invalid && submitted ? 'validation-error' : ''}}" name="soundcloud_link" ng-model="organizer.soundcloud_link"
+                  .error ng-show="OrganizationsForm.soundcloud_link.$invalid && submitted"
+                    | {{ I18n.t('validations.cant_be_blank')}}
+
+                  .error ng-repeat="error in validation_errors['soundcloud_link']"
+                    | {{ error }}
+
+
+            .form-group
+              .row
+                .col-sm-4.col-sm-offset-2
+                  button.ladda-button.btn.btn-info data-style="expand-left" ladda="formPending"
+                    | {{ I18n.t('actions.submit') }}

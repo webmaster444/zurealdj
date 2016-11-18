@@ -1,0 +1,58 @@
+.wrapper.wrapper-content
+  .row.animated.fadeInRight
+    .col-md-12
+      .ibox.float-e-margins
+        .ibox-content
+          h2
+            | {{ I18n.t('headers.organizers' ) }}
+          .pull-left
+            #organizations-pagination ng-hide="count <= 10"
+          .pull-right
+
+            button.btn-xs.btn.btn-info ui-sref="new_organizer"
+              | {{ I18n.t('organizer.new') }}
+
+          table.table.table-striped.table-responsive
+            thead
+              tr
+                th
+                  | Name
+                th
+                  | {{ I18n.t('organizer.fields.city') }}
+                th
+                  | {{ I18n.t('organizer.fields.country') }}
+                th
+                  | {{ I18n.t('organizer.fields.address') }}
+                th
+                  | Social links
+                th
+                  | Created At
+                th
+            tbody
+              tr ng-repeat="organizer in organizers"
+                td
+                  | {{ organizer.first_name }} {{ organizer.last_name }}
+                td
+                  | {{ organizer.city }}
+                td
+                  span.flag class="{{ organizer.country_flag_code }}"
+                  | {{ organizer.country.title }}
+                td
+                  | {{ organizer.address }}
+                td
+                  a> href="{{ organizer.instagram_link }}" ng-show="organizer.instagram_link"
+                    i.fa.fa-instagram
+                  a> href="{{ organizer.facebook_link }}" ng-show="organizer.facebook_link"
+                    i.fa.fa-facebook
+                  a> href="{{ organizer.soundcloud_link }}" ng-show="organizer.soundcloud_link"
+                    i.fa.fa-soundcloud
+                td
+                  | {{ organizer.created_at }}
+                td.text-right
+
+                  a.btn-xs.btn.btn-warning.btn-outline href="#organizer/{{organizer.id}}/edit"
+                    | {{ I18n.t('actions.edit') }}
+
+
+                  a.btn-xs.btn.btn-danger.btn-outline ng-click="destroy(organizer.id)"
+                    | {{ I18n.t('actions.delete') }}

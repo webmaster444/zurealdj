@@ -1,0 +1,31 @@
+.wrapper.wrapper-content
+  .row.animated.fadeInRight
+    .col-md-12
+      .ibox.float-e-margins
+        .ibox-title
+          h3 ng-show="$state.current.name == 'new_policies_page'"
+            | {{ I18n.t('policies_page.new' ) }}
+          h3 ng-show="$state.current.name == 'edit_policies_page'"
+            | {{ I18n.t('policies_page.edit' ) }}
+        .ibox-content
+          form ng-submit="submitPoliciesPage()" name="PoliciesPageForm" novalidate=true
+            .form-group
+              .row
+                .col-sm-2
+                  label.control-label
+                    | {{ I18n.t('policies_page.fields.content') }}:
+                .col-sm-10
+                  div redactor=true required=true ng-model="policies_page.content" file-upload-path="/attachments/policies_page_content"
+                  .error ng-show="PoliciesPageForm.content.$invalid && submitted"
+                    | {{ I18n.t('validations.cant_be_blank')}}
+
+                  .error ng-repeat="error in validation_errors['content']"
+                    | {{ error }}
+
+              .hr-line-dashed
+
+            .form-group
+              .row
+                .col-sm-4.col-sm-offset-2
+                  button.ladda-button.btn.btn-info data-style="expand-left" ladda="formPending"
+                    | {{ I18n.t('actions.submit') }}

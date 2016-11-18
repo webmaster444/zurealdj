@@ -1,0 +1,39 @@
+.wrapper.wrapper-content
+  .row.animated.fadeInRight
+    .col-md-12
+      .ibox.float-e-margins
+        .ibox-title
+          h2
+            | {{ cancelation.title }}
+        .ibox-content
+
+          .form-group
+            .row
+              .col-lg-2
+                label.control-label
+                  | {{ I18n.t('cancelation.fields.title') }}:
+              .col-lg-10
+                p.form-control-static
+                  | {{ cancelation.title }}
+            .hr-line-dashed
+
+          .form-group
+            .row
+              .col-lg-2
+                label.control-label
+                  | {{ I18n.t('cancelation.fields.created_at') }}:
+              .col-lg-10
+                p.form-control-static
+                  | {{ cancelation.created_at }}
+            .hr-line-dashed
+
+          .form-group
+            .row
+              .col-lg-2
+                label.control-label
+                  | {{ I18n.t('cancelation.fields.updated_at') }}:
+              .col-lg-10
+                p.form-control-static
+                  | {{ cancelation.updated_at }}
+            .hr-line-dashed
+

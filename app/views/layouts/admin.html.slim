@@ -1,0 +1,14 @@
+html(lang="en")
+    head
+        = stylesheet_link_tag "admin", :media => "all"
+        = javascript_include_tag "admin"
+        = csrf_meta_tags
+    body#page-top.md-skin.fixed-sidebar.fixed-nav.pace-done landing-scrollspy="" ng-app="ZurealdjAdminApp" ng-controller="HomeController" ng-init="flash = { message: '#{ flash[:message] }', error: '#{ flash[:error] }' }"
+        div
+            #wrapper.ng-scope
+                div ng-include="'admin/templates/common/navigation.html'"
+                #page-wrapper.gray-bg class="dashboards.dashboard_1" style=("min-height: 184px;")
+                    div ng-include="'admin/templates/common/topnavbar.html'"
+                    div ui-view=""
+                    div ng-include="'admin/templates/common/footer.html'"
+        div toaster-container='' toaster-options="{'close-button': true}"

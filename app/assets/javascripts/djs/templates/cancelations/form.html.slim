@@ -1,0 +1,31 @@
+.wrapper.wrapper-content
+  .row.animated.fadeInRight
+    .col-md-12
+      .ibox.float-e-margins
+        .ibox-title
+          h3 ng-show="$state.current.name == 'new_cancelation'"
+            | {{ I18n.t('cancelation.new' ) }}
+          h3 ng-show="$state.current.name == 'edit_cancelation'"
+            | {{ I18n.t('cancelation.edit' ) }}
+        .ibox-content
+          form ng-submit="submitCancelation()" name="CancelationForm" novalidate=true
+            .form-group
+              .row
+                .col-sm-2
+                  label.control-label
+                    | {{ I18n.t('cancelation.fields.title') }}:
+                .col-sm-10
+                  input.form-control type="text" placeholder="{{ I18n.t('cancelation.fields.title') }}" required=true class="{{ CancelationForm.title.$invalid && submitted ? 'validation-error' : ''}}" name="title" ng-model="cancelation.title"
+                  .error ng-show="CancelationsForm.title.$invalid && submitted"
+                    | {{ I18n.t('validations.cant_be_blank')}}
+
+                  .error ng-repeat="error in validation_errors['title']"
+                    | {{ error }}
+
+              .hr-line-dashed
+
+            .form-group
+              .row
+                .col-sm-4.col-sm-offset-2
+                  button.ladda-button.btn.btn-info data-style="expand-left" ladda="formPending"
+                    | {{ I18n.t('actions.submit') }}
