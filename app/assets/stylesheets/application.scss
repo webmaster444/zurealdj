@@ -20,6 +20,13 @@
 //= require angular-bootstrap/ui-bootstrap-csp
 //= require_tree .
 
+@font-face {
+  font-family: 'CeraPro';
+  src: url('/cera_pro/CeraPro-Regular.otf');
+  font-weight: normal;
+  font-style: normal;
+}
+
 form{
   margin-bottom: 0;
 }

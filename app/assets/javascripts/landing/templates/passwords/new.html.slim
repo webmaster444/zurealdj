@@ -1,19 +1,30 @@
-.passwordBox.animated.fadeInDown
-  .row
-    .col-md-12
-      .ibox-content
-        h2.font-bold Forgot password
-        p
-          | Enter your email address and your password will be reset and emailed to you.
-        .row
-          .col-lg-12
-            form.m-t role="form" novalidate=true ng-submit="submit()"
-              .form-group
-                input.form-control placeholder=("Email address") required="" type="email" /
-              button.btn.btn-primary.block.full-width.m-b type="submit"  Send new password
-  hr
-  .row
-    .col-md-6
-      | Copyright GARAGE
-    .col-md-6.text-right
-      small © 2014-2015
+div ng-include="'landing/templates/home/index.html'"
+a href="#"
+  div.page-gray
+div.login-alert.animated.fadeInDown
+  .text-center
+    div style="margin-bottom: 30px"
+      .h1-text
+        | Recovery account
+    div
+      .text-description
+        | Enter your email address and we will
+      .text-description
+        | send you a link to reset your
+      .text-description
+        | password
+
+  form.m-t role="form" novalidate=true ng-submit="submit()"
+
+    .form-group
+      input.landing-input placeholder=("Email address") required="" type="email" /
+
+    .hr-line-dashed
+
+    button.btn-submit type="submit"  Submit
+
+    div.text-center style="margin-top: 15px"
+      .text-description style="color: #8a8a8a"
+        | Remember your credentials?
+        a.text-description.current-color href="#login"
+          |  Log in

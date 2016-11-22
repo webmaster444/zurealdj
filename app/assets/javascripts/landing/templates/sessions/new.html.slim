@@ -1,38 +1,38 @@
+div ng-include="'landing/templates/home/index.html'"
+a href="#"
+  div.page-gray
+div.login-alert.animated.fadeInDown
+  .text-center
+    .h1-text
+      | Welcome to
+  .text-center
+    .h1-text
+      | ZUREAL
+  div.text-center
+    .btn.btn-white.border-right-none
+      | Sign in
+    a.btn.btn-white.border-left-none  href="#register"  Sign up
 
-.loginColumns.animated.fadeInDown
-  .row
-    .col-md-6
-      h2.font-bold
-        | Welcome to&nbsp;
-        a href="#/"
-          | Zurealdj
-      p
-        | Perfectly designed and precisely prepared admin theme with over 50 pages with extra new web app views.
-      p
-        | When an unknown printer took a galley of type and scrambled it to make a type specimen book.
-      p
-        small It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.
-    .col-md-6
-      .ibox-content
-        form.m-t role="form" novalidate=true ng-submit="submitLoginCredentials()"
-          .form-group
-            input.form-control placeholder="Username" required="" type="email" ng-model="session.email"
-          .form-group
-            input.form-control placeholder="Password" required="" type="password" ng-model="session.password"
-          div ng-show="validation_errors"
-            .error ng-repeat="error in validation_errors"
-              | {{ error }}
-          input.btn.btn-primary.block.full-width.m-b type="submit" value="Login"
-          a href="#forgot_password"
-            small Forgot password?
-          p.text-muted.text-center
-            small Do not have an account?
-          a.btn.btn-sm.btn-white.btn-block href="#register"  Create an account
-        p.m-t
-          small Inspinia we app framework base on Bootstrap 3 © 2014
-  hr
-  .row
-    .col-md-6
-      | Copyright Zurealdj
-    .col-md-6.text-right
-      small © 2015
+  form.m-t role="form" novalidate=true ng-submit="submitLoginCredentials()"
+
+    .form-group
+      input.landing-input placeholder="Email address" required="" type="email" ng-model="session.email"
+
+    .form-group
+      input.landing-input placeholder="Password" required="" type="password" ng-model="session.password"
+    div ng-show="validation_errors"
+      .error ng-repeat="error in validation_errors"
+        | {{ error }}
+    .hr-line-dashed
+
+    input.btn-submit type="submit" value="Sign in"
+
+    .text-center style="margin: 15px auto"
+      a.blue href=""
+        | Sign in with Facebook
+
+    .hr-line-dashed
+
+    .text-center style="margin: 15px auto"
+      a.current-color href="#forgot_password"
+        | Forgot password?

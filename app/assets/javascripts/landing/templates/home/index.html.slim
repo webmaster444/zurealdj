@@ -1,152 +1,192 @@
-.pace.pace-inactive
-  .pace-progress.progress.ng-isolate-scope data-progress="99" data-progress-text="100%" ng-transclude="" style="transform: translate3d(100%), 0px, 0px);"
-    .pace-progress-inner.ng-scope
-  .pace-activity
-/! Main view
-/! uiView:
-.ng-scope ui-view=""
-  .navbar-wrapper.ng-scope
-    nav.navbar.navbar-default.navbar-fixed-top.navbar-scroll role="navigation"
-      .container
-        .navbar-header.page-scroll
-          button.navbar-toggle.collapsed aria-controls="navbar" aria-expanded="false" data-target="#navbar" data-toggle="collapse" type="button"
-            span.sr-only Toggle navigation
-            span.icon-bar
-            span.icon-bar
-            span.icon-bar
-          a.navbar-brand href="#/"
-            | Zurealdj
-        #navbar.navbar-collapse.collapse
-          ul.nav.navbar-nav.navbar-right
-            li
-              a.page-scroll href="#page-top" page-scroll=""  Home
-            li.active
-              a.page-scroll href="#features" page-scroll=""  Features
-            li
-              a.page-scroll href="#team" page-scroll=""  Team
-            li
-              a.page-scroll href="#testimonials" page-scroll=""  Testimonials
-            li
-              a.page-scroll href="#pricing" page-scroll=""  Pricing
-            li
-              a.page-scroll href="#contact" page-scroll=""  Contact
-  #inSlider.carousel.slide.carousel-fade.ng-scope data-ride="carousel" ng-non-bindable=""
-    ol.carousel-indicators
-      li data-slide-to="0" data-target="inSlider"
-      li.active data-slide-to="1" data-target="inSlider"
-    .carousel-inner role="listbox"
-      .item
-        .container
-          .carousel-caption
-            h1
-              | We craft
-              br
-              | brands, web apps,
-              br
-              | and user interfaces
-              br
-              | we are IN+ studio
-            p Lorem Ipsum is simply dummy text of the printing.
-            p
-              a.btn.btn-lg.btn-primary href="#login" role="button"
-                | TRY IT NOW !
-              a.caption-link href="#" role="button"  Inspinia Theme
-          .carousel-image.wow.zoomIn
-            img href='/images/laptop.png'
-        /! Set background for slide in css
-        .header-back.one
-      .item.active
-        .container
-          .carousel-caption.blank
-            h1
-              | We create meaningful
-              br/
-              | interfaces that inspire.
-            p Cras justo odio, dapibus ac facilisis in, egestas eget quam.
-            p
-              a.btn.btn-lg.btn-primary href="#login" role="button"
-                | TRY IT NOW !
-        /! Set background for slide in css
-        .header-back.two
-    a.left.carousel-control data-slide="prev" data-target="#inSlider" role="button"
-      span.glyphicon.glyphicon-chevron-left aria-hidden="true"
-      span.sr-only Previous
-    a.right.carousel-control data-slide="next" data-target="#inSlider" role="button"
-      span.glyphicon.glyphicon-chevron-right aria-hidden="true"
-      span.sr-only Next
-  section#features.container.services.ng-scope
-    .row
-      .col-sm-3
-        h2 Full responsive
-        p Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. Nullam id dolor id nibh ultricies vehicula ut id elit. Morbi leo risus.
-        p
-          a.navy-link href="#" role="button"  Details »
-      .col-sm-3
-        h2 LESS/SASS Files
-        p Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. Nullam id dolor id nibh ultricies vehicula ut id elit. Morbi leo risus.
-        p
-          a.navy-link href="#" role="button"  Details »
-      .col-sm-3
-        h2 6 Charts Library
-        p Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. Nullam id dolor id nibh ultricies vehicula ut id elit. Morbi leo risus.
-        p
-          a.navy-link href="#" role="button"  Details »
-      .col-sm-3
-        h2 Advanced Forms
-        p Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. Nullam id dolor id nibh ultricies vehicula ut id elit. Morbi leo risus.
-        p
-          a.navy-link href="#" role="button"  Details »
-  javascript:
-    $(document).ready(function () {
+div.page
+  div.page-head
+    div.head-nav.page-block
+      img.small-logo src="/images/icons/img-logo-zu-small.png"
+      .pull-right
+        a.head-link href="#login"
+          span
+            | Sign in
+        a.head-link href="#register"
+          span
+            | Sign up
 
-      $('body').scrollspy({
-        target: '.navbar-fixed-top',
-        offset: 80
-      });
+    .text-center.txt
+      | ZuRealDJ Your No.1 Booking Platform for DJs and Event Organizers
+    img.big-logo src="/images/icons/img-logo-zu-big.png"
+    div.button-block.text-center
+      a.btn-link href="" style="margin-right: 24px"
+        | Are you a DJ?
+      a.btn-link href=""
+        | Need a DJ?
+    div style="width: 100%; height: calc(100% - 10% - 630px)"
+    img.img-mouse.text-center src="/images/icons/ic-mouse@2x.png"
+    div.small-text.text-center
+      | Scroll to see more
 
-      // Page scrolling feature
-      $('a.page-scroll').bind('click', function (event) {
-        var link = $(this);
-        $('html, body').stop().animate({
-          scrollTop: $(link.attr('href')).offset().top - 50
-        }, 500);
-        event.preventDefault();
-      });
-    });
+  div.page-content-dark.transform style="margin-top: -50px"
+    div.page-block.how-it-works.transform-none
+      .text-center.h1-text
+        | HOW IT WORKS
+      div.content.text-center
+        .col-md-12
+          .col-md-6
+            .col-md-3
+              .row
+                div.circle-white
+                  img.content-icon src="/images/icons/ic-profile.png"
+              .row
+                span.text-h2
+                  | Become a member
+              .row
+                span.text-description
+                  | Join ZuReal and fill your profile info
 
-    var cbpAnimatedHeader = (function () {
-      var docElem = document.documentElement,
-              header = document.querySelector('.navbar-default'),
-              didScroll = false,
-              changeHeaderOn = 200;
+            .col-md-3
+              .row
+                div.circle-white
+                  img.content-icon src="/images/icons/ic-event.png"
+              .row
+                span.text-h2
+                  | Create an event
+              .row
+                span.text-description
+                  | Create and describe your events as you like
 
-      function init() {
-        window.addEventListener('scroll', function (event) {
-          if (!didScroll) {
-            didScroll = true;
-            setTimeout(scrollPage, 250);
-          }
-        }, false);
-      }
+          .col-md-6
+            .col-md-3
+              .row
+                div.circle-white
+                  img.content-icon src="/images/icons/ic-book-dj.png"
+              .row
+                span.text-h2
+                  | Book DJs
+              .row
+                span.text-description
+                  | Explore our DJ data base and find the best
 
-      function scrollPage() {
-        var sy = scrollY();
-        if (sy >= changeHeaderOn) {
-          $(header).addClass('navbar-scroll')
-        }
-        else {
-          $(header).removeClass('navbar-scroll')
-        }
-        didScroll = false;
-      }
+            .col-md-3
+              .row
+                div.circle-white
+                  img.content-icon src="/images/icons/ic-play-live.png"
+              .row
+                span.text-h2
+                  | Play Live
+              .row
+                span.text-description
+                  | DJs are hired for various events Australia wide
+      div style="height: 190px; width: 100%; clear: both"
 
-      function scrollY() {
-        return window.pageYOffset || docElem.scrollTop;
-      }
+  div.page-content-light.transform
+    div.page-block.djs.transform-none
+      .text-center.h1-text
+        | HOT RIGHT NOW
+      div.content
+        .col-md-10 style="width: auto; margin: 0; padding: 0"
+          .col-md-4.text-center
+            .row
+              img.content-icon src="/images/djs/img-dj-1.png"
+            .row
+              span.text-name
+                | Brian Stone
+            .row
+              span.text-description
+                | My whole world is in front of tourntables!
 
-      init();
+          .col-md-4.text-center
+            .row
+              img.content-icon src="/images/djs/img-dj-2.png"
+            .row
+              span.text-name
+                | Alex Hunter
+            .row
+              span.text-description
+                | Two decades of experience known for playing Hardcore
 
-    })();
+          .col-md-4.text-center
+            .row
+              img.content-icon src="/images/djs/img-dj-3.png"
+            .row
+              span.text-name
+                | Luna Jenkins
+            .row
+              span.text-description
+                | There are individuals who are innovators
+      div style="height: 60px; width: 100%; clear: both"
 
-    // Activate WOW.js plugin for animation on scrol
-    new WOW().init();
+  div.page-content-dark.transform
+    div.page-block.transform-none
+      .text-center.h1-text
+        | ZUREAL THEORY
+      img.ic_quote src="/images/icons/ic-quote.png"
+
+  div.page-content-light.transform
+    div.instagram-feed.page-block.text-center.transform-none
+      .h1-text
+        | INSTAGRAM FEED
+      div.news
+        .row
+          .col-md-6
+            .col-md-3
+              img src="/images/instagram/img-inst-7.png"
+            .col-md-3
+              img src="/images/instagram/img-inst-8.png"
+          .col-md-6
+            .col-md-3
+              img src="/images/instagram/img-inst-6.png"
+            .col-md-3
+              img src="/images/instagram/img-inst-5.png"
+        .row
+          .col-md-6
+            .col-md-3
+              img src="/images/instagram/img-inst-4.png"
+            .col-md-3
+              img src="/images/instagram/img-inst-3.png"
+          .col-md-6
+            .col-md-3
+              img src="/images/instagram/img-inst-2.png"
+            .col-md-3
+              img src="/images/instagram/img-inst-1.png"
+
+  div.page-footer.transform
+  div.page-footer style="margin-top: -150px"
+    div.page-block.text-center
+      div.content.text-center
+        .col-md-4
+          .text-left.col-menu
+            .row.title
+              a.footer-text.color-white href=""
+                | Company
+            .row
+              a.footer-text.color-gray href=""
+                | Contact Us
+            .row
+              a.footer-text.color-gray href=""
+                | Courses
+
+        .col-md-4
+          .text-left.col-menu
+            .row.title
+              a.footer-text.color-white href=""
+                | Support
+            .row
+              a.footer-text.color-gray href=""
+                | Terms & Conditions
+            .row
+              a.footer-text.color-gray href=""
+                | Help Center
+
+        .col-md-4
+          .text-left.col-menu
+            .row.title
+              a.footer-text.color-white href=""
+                | Follow Us
+            .row
+              a.col-social href="" style="margin-left: 0"
+                .ic-mixcloud.icon
+              a.col-social href=""
+                .ic-facebook.icon
+              a.col-social href=""
+                .ic-instagram.icon
+
+      .col-md-12.text-center.footer-text.color-gray style="margin-top: 133px"
+        | © 2016 ZuReal
