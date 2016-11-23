@@ -1,0 +1,104 @@
+.wrapper.wrapper-content
+  .row.animated.fadeInRight
+    .col-md-12
+      .ibox.float-e-margins
+        .ibox-title
+          h3
+            | {{ I18n.t('headers.email_sender') }}
+        .ibox-content
+          form ng-submit="save()" name="EmailSenderForm" novalidate=true
+            .form-group
+              .row
+                .col-sm-2
+                  label.control-label
+                    | {{ I18n.t('email_sender.fields.address') }}:
+                .col-sm-10
+                  input.form-control [type="text" placeholder="{{ I18n.t('email_sender.fields.address') }}"
+                    required=true class="{{ EmailSenderForm.address.$invalid && submitted ? 'validation-error' : ''}}"
+                    name="address" ng-model="email_sender.address"]
+                  .error ng-show="EmailSenderForm.address.$invalid && submitted"
+                    | {{ I18n.t('validations.cant_be_blank')}}
+                  .error ng-repeat="error in validation_errors['address']"
+                    | {{ error }}
+
+            .form-group
+              .row
+                .col-sm-2
+                  label.control-label
+                    | {{ I18n.t('email_sender.fields.port') }}:
+                .col-sm-10
+                  input.form-control [ type="text" placeholder="{{ I18n.t('email_sender.fields.port') }}"
+                    required=true class="{{ EmailSenderForm.port.$invalid && submitted ? 'validation-error' : ''}}"
+                    name="port" ng-model="email_sender.port"]
+                  .error ng-show="EmailSenderForm.port.$invalid && submitted"
+                    | {{ I18n.t('validations.cant_be_blank')}}
+                  .error ng-repeat="error in validation_errors['port']"
+                    | {{ error }}
+            .form-group
+              .row
+                .col-sm-2
+                  label.control-label
+                    | {{ I18n.t('email_sender.fields.domain') }}:
+                .col-sm-10
+                  input.form-control [ type="text" placeholder="{{ I18n.t('email_sender.fields.domain') }}"
+                    required=true class="{{ EmailSenderForm.domain.$invalid && submitted ? 'validation-error' : ''}}"
+                    name="domain" ng-model="email_sender.domain"]
+                  .error ng-show="EmailSenderForm.domain.$invalid && submitted"
+                    | {{ I18n.t('validations.cant_be_blank')}}
+                  .error ng-repeat="error in validation_errors['domain']"
+                    | {{ error }}
+            .form-group
+              .row
+                .col-sm-2
+                  label.control-label
+                    | {{ I18n.t('email_sender.fields.authentication') }}:
+                .col-sm-10
+                  input.form-control [ type="text" placeholder="{{ I18n.t('email_sender.fields.authentication') }}"
+                    required=true class="{{ EmailSenderForm.authentication.$invalid && submitted ? 'validation-error' : ''}}"
+                    name="authentication" ng-model="email_sender.authentication"]
+                  .error ng-show="EmailSenderForm.authentication.$invalid && submitted"
+                    | {{ I18n.t('validations.cant_be_blank')}}
+                  .error ng-repeat="error in validation_errors['authentication']"
+                    | {{ error }}
+            .form-group
+              .row
+                .col-sm-2
+                  label.control-label
+                    | {{ I18n.t('email_sender.fields.user_name') }}:
+                .col-sm-10
+                  input.form-control [ type="text" placeholder="{{ I18n.t('email_sender.fields.user_name') }}"
+                    required=true class="{{ EmailSenderForm.user_name.$invalid && submitted ? 'validation-error' : ''}}"
+                    name="user_name" ng-model="email_sender.user_name"]
+                  .error ng-show="EmailSenderForm.user_name.$invalid && submitted"
+                    | {{ I18n.t('validations.cant_be_blank')}}
+                  .error ng-repeat="error in validation_errors['user_name']"
+                    | {{ error }}
+            .form-group
+              .row
+                .col-sm-2
+                  label.control-label
+                    | {{ I18n.t('email_sender.fields.password') }}:
+                .col-sm-10
+                  input.form-control [ type="password" placeholder="{{ I18n.t('email_sender.fields.password') }}"
+                    required=true class="{{ EmailSenderForm.username.$invalid && submitted ? 'validation-error' : ''}}"
+                    name="password" ng-model="email_sender.password"]
+                  .error ng-show="EmailSenderForm.password.$invalid && submitted"
+                    | {{ I18n.t('validations.cant_be_blank')}}
+                  .error ng-repeat="error in validation_errors['password']"
+                    | {{ error }}
+            .form-group
+              .row
+                .col-sm-2
+                  label.control-label
+                    | {{ I18n.t('email_sender.fields.enable_starttls_auto') }}:
+                .col-sm-10
+                  .onoffswitch
+                    input#tls-on-off-switch.onoffswitch-checkbox ng-model="email_sender.enable_starttls_auto" type="checkbox"
+                    label.onoffswitch-label for="tls-on-off-switch"
+                      span.onoffswitch-inner
+                      span.onoffswitch-switch
+            .form-group
+              .row
+                .col-sm-4.col-sm-offset-2
+                  button.ladda-button.btn.btn-info data-style="expand-left" ladda="pending" ng-click="save()"
+                    | {{ I18n.t('actions.submit') }}

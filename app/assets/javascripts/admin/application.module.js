@@ -323,6 +323,11 @@
                     templateUrl: 'admin/templates/cancelations_pages/index.html',
                     controller: 'CancelationsPagesController'
                 })
+                .state('email_sender',{
+                    url: '/email_sender',
+                    templateUrl: 'admin/templates/email_sender/form.html',
+                    controller: 'EmailSenderController'
+                })
     }]);
 
     ZurealdjAdminApp.run(['$http', '$rootScope', 'AuthHttp', '$state', '$timeout', function($http, $rootScope, AuthHttp, $state, $timeout){

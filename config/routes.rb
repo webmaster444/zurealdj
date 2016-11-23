@@ -20,6 +20,12 @@ Rails.application.routes.draw do
       resources :terms_n_conditions_pages, only: [:index, :create, :update, :destroy, :show]
       resources :organizers, only: [:index, :create, :update, :destroy, :show]
       resources :cancelations_pages, only: [:index, :create, :update, :destroy, :show]
+      resources :email_sender, only: [] do
+        collection do
+          get :show
+          put :update
+        end
+      end
     end
 
     resources :attachments, only: [] do

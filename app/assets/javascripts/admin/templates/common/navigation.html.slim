@@ -166,3 +166,12 @@ nav.navbar-default.navbar-static-side.ng-scope role="navigation"
             li.active ui-sref-active="active"
               a.ng-binding href="#cancelations_page/new"
                 | {{ I18n.t('cancelations_page.new') }}
+        li ng-class=("{active: $state.current.name.includes('config_pag')}")
+          a href="#"
+            i.fa.fa-car
+            span.nav-label.ng-binding Configuration
+            span.fa.arrow
+          ul.nav.nav-second-level.collapse ng-class=("{in: $state.current.name.includes('cancelations_pag')}")
+            li.active ui-sref-active="active"
+              a.ng-binding href="#email_sender"
+                | {{ I18n.t('headers.email_sender') }}

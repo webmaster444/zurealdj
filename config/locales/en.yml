@@ -55,6 +55,7 @@ en:
     policies_pages: 'Policies pages'
     terms_n_conditions_pages: 'Terms n conditions pages'
     cancelations_pages: 'Cancelations pages'
+    email_sender: "Email sender"
 
   datetime:
     ago: 'ago'
@@ -79,6 +80,16 @@ en:
       updated_at: "Updated at"
     messages:
       success_upsert: 'Cancelations page successfully saved.'
+
+  email_sender:
+    fields:
+      address: "Addsess"
+      port: "Port"
+      domain: "Domain"
+      authentication: "Authentication"
+      user_name: "User Name"
+      password: "Password"
+      enable_starttls_auto: "Enable Starttls Auto"
 
   terms_n_conditions_page:
     new: "New Terms n conditions page"
