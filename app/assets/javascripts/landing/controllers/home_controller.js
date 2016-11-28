@@ -13,5 +13,6 @@
                         toaster.pop('success', "", $scope.flash.message);
                     }
                 }, 1000)
+
             }])
 }());

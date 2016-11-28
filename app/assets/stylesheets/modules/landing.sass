@@ -5,7 +5,6 @@
   padding: 0 20px
   margin: auto
 
-
 .page-head
   margin: 0
   padding-top: 12px
@@ -127,11 +126,9 @@
     margin-bottom: 40px
   .content
     .col-md-4
+      padding: 0
       padding-top: 40px
-      .col-menu
-        display: inline-block
-        margin: auto
-        width: 150px
+      min-width: 220px
 
 
 .how-it-works
@@ -140,14 +137,6 @@
     .col-md-3
       width: 200px
       margin: 30px 45px
-    .col-md-6
-      display: inline-block
-      width: auto
-      padding: 0
-      margin: 0 auto
-    .col-md-12
-      margin: 0 auto
-      padding: 0
     .text-h2
       font-family: CeraPro
       font-size: 18px
@@ -178,12 +167,6 @@
     .col-md-3
       margin: auto
       padding: 20px
-      width: auto
-    .col-md-6
-      display: inline-block
-      width: auto
-      padding: 0
-      margin: 0 auto
     img
       width: 260px
       height: 245px
@@ -216,12 +199,19 @@
       display: block
       margin-top: 20px
     .col-md-4
-      width: auto
-      margin: 30px auto
+      margin: 30px 20px
+      vertical-align: top
     .text-description
       margin: 0 auto
       display: block
       width: 340px
+
+.col-center
+  display: inline-block
+  width: auto
+  padding: 0
+  margin: 0 auto
+  float: none
 
 
 .page-content-dark
@@ -270,7 +260,7 @@
 
 .page-gray
   width: 100%
-  height: 100%
+  min-height: 100%
   position: fixed
   top: 0
   left: 0
@@ -292,6 +282,7 @@
   border-radius: 5px
   padding: 40px 30px
   overflow: auto
+  max-height: calc(100% - 150px)
   a
     margin: 15px 0
   a.current-color
