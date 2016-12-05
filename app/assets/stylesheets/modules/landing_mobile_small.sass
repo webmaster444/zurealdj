@@ -1,0 +1,197 @@
+@import "variables_and_functions"
+
+[device='mobile'][size='small']
+  min-width: 320px
+  overflow: auto
+  .page-block
+    max-width: $max-width
+    padding: 0 20px
+    margin: auto
+
+  .page-head
+    min-height: $height
+    .head-nav
+      margin-top: calch(5)
+      a
+        font-size: calc-h-small(14)
+        margin-right: calcw(9)
+    .big-logo
+      width: calcw(59)
+      height: calch(11)
+      margin-top: calch(7)
+    .txt
+      font-size: calc-h-small(16)
+      font-weight: 300
+      font-style: normal
+      font-stretch: normal
+      line-height: 1.5
+      width: calcw(93)
+      height: calch(12)
+      letter-spacing: calc-h-small(0.7)
+      margin-top: calch(7)
+    .button-block
+      margin-top: calch(8)
+      .btn-link
+        min-width: calcw(37)
+        padding: calch(2) calcw(7)
+        font-size: calch(2)
+        margin-top: calch(8)
+    #space
+      width: 100%
+      height: calch(15)
+    .img-mouse
+      width: calcw(5)
+      height: calch(4)
+    .small-text
+      font-size: calch(2)
+      margin-top: calch(3)
+
+  .page-footer
+    padding-bottom: calch(5.3)
+    .footer-text
+      font-size: calch(2.8)
+      letter-spacing: calcw(0.34)
+    .ic-mixcloud
+      width: calcw(9.375)
+      height: calcw(5.625)
+    .ic-facebook
+      width: calcw(2.8)
+      height: calcw(5.625)
+    .ic-instagram
+      width: calcw(6.56)
+      height: calcw(6.56)
+    .col-social
+      margin: auto calcw(6.25)
+    .row
+      margin-top: calch(4.4)
+    .title
+      margin-bottom: calch(2)
+    .content
+      .col-md-4
+        padding-top: calch(7)
+
+  .how-it-works
+    .content
+      margin-top: calch(1.76)
+      .col-md-3
+        width: calcw(62.5)
+        margin: calch(5.3) auto
+      .text-h2
+        font-size: calch(3.17)
+        letter-spacing: calcw(0.31)
+        margin-bottom: 10px
+      .circle-white
+        width: calcw(43.75)
+        height: calcw(43.75)
+        border-radius: calcw(31)
+        padding: calcw(10.625)
+        margin-bottom: calch(3.52)
+        .content-icon
+          width: calcw(22.5)
+          height: calcw(22.5)
+
+  .djs
+    .content
+      margin-top: calch(5.3)
+      img
+        width: calcw(78.125)
+        height: calch(42.6)
+      .text-name
+        font-size: calch(3.5)
+        letter-spacing: calch(0.44)
+        margin-top: calch(3.52)
+      .col-md-4
+        margin: calch(5.3) auto
+      .text-description
+        width: calcw(78)
+
+  .instagram-feed
+    .news
+      margin: calch(10) auto
+      .col-md-3
+        padding: calch(1)
+      img
+        width: calcw(45)
+        height: calcw(45)
+
+  .page-content-light
+    padding-top: calch(15.85)
+
+  .page-content-dark
+    padding-top: calch(15.85)
+
+  .h1-text
+    font-size: calch(3.5)
+    letter-spacing: calch(0.44)
+
+  .text-description
+    font-size: calch(2.8)
+
+  .transform
+    transform: skewY(-5deg)
+
+  .transform-none
+    transform: skewY(5deg)
+
+  .login-alert
+    min-width: 320px !important
+    width: 100vmin - calc-w-small(40)
+    min-height: 568px
+    overflow: auto
+    display: block
+    margin: calc-h-small(30) auto
+    a
+      display: block
+      margin: calc-h-small(15) 0
+    a.current-color
+      font-size: calc-w-small(14)
+      letter-spacing: 1.7px
+    a.blue
+      font-size: calc-w-small(14)
+      line-height: calc-h-small(1.43)
+      letter-spacing: calc-w-small(1.3)
+    .h1-text
+      letter-spacing: calc-w-small(0.7)
+      font-weight: 500 !important
+      line-height: 1.5
+      font-size: calc-w-small(16)
+    .btn-white
+      margin-top: calc-h-small(30)
+      display: inline-block
+    .btn-tab-left
+      border-right: none
+      border-radius: calc-h-small(40) 0 0 calc-h-small(40)
+      border-right: calc-h-small(1) solid #c890fc
+    .btn-tab-right
+      border-radius: 0 calc-h-small(40) calc-h-small(40) 0
+    .hr-line-dashed
+      margin: calc-h-small(5) 0
+    .text-description
+      line-height: 1.43
+      font-size: calc-w-small(14)
+    .btn-check
+      outline: none
+      font-size: calc-w-small(16)
+      margin: calc-w-small(10)
+      &:hover, &:active
+        .circle-white
+          box-shadow: 0 calc-w-small(2) calc-h-small(30) 0 rgba(0, 0, 0, 0.08)
+      .circle-white
+        width: calc-w-small(80)
+        height: calc-w-small(80)
+        border-radius: calc-w-small(100)
+        padding: calc-w-small(15)
+        background-size: calc-w-small(50) calc-w-small(50)
+        margin-bottom: calc-h-small(10)
+    .btn-close
+      width: calc-w-small(16)
+      height: calc-w-small(16)
+      top: calc-w-small(10)
+      right: calc-w-small(25)
+
+[device='mobile'][size='small'][orientation='landscape']
+  .page-head
+    min-height: calc(107vmax)
+  .page-footer
+    .content
+      margin-top: calc-h-small(50)

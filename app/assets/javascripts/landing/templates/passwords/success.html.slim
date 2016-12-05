@@ -1,0 +1,16 @@
+div version='true'
+  div.background-header ng-include="'landing/templates/common/header.html'" ng-hide="isMobile()"
+
+  a href="#" ng-hide="isMobile()"
+    div.page-gray
+
+  div.login-alert
+    a.btn-close href='#' ng-show='isMobile()'
+
+    .text-center
+      .h1-text
+        | Success!
+    .text-description
+      | Email sent successfully
+    a.btn-white href="#login"
+      |  Log in

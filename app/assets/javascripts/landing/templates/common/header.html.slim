@@ -1,0 +1,37 @@
+div.page-head
+  div.head-nav.page-block
+    img.small-logo ng-hide="isMobile()" src="/images/icons/img-logo-zu-small.png"
+    .pull-right ng-hide="isMobile()"
+      a.head-link href="#login"
+        span
+          | Sign in
+      a.head-link href="#register" style="margin-right: 0"
+        span
+          | Sign up
+
+    .text-center ng-show="isMobile()"
+      a.head-link href="#login"
+        span
+          | Sign in
+      a.head-link href="#register" style="margin-right: 0"
+        span
+          | Sign up
+
+  .text-center.txt ng-hide="isMobile()"
+    | ZuRealDJ Your No.1 Booking Platform for DJs and Event Organizers
+  img.big-logo src="/images/icons/img-logo-zu-big.png"
+  .text-center.txt ng-show="isMobile()"
+    | ZuRealDJ Your No.1 Booking Platform for DJs and Event Organizers
+  div.button-block.text-center
+    a.btn-link href="" style="margin-right: 24px"
+      | Are you a DJ?
+    a.btn-link href=""
+      | Need a DJ?
+  div#space
+  img.img-mouse.text-center src="/images/icons/ic-mouse@2x.png" ng-hide="isMobile()"
+  div.small-text.text-center ng-hide="isMobile()"
+    | Scroll to see more
+
+  img.img-mouse.text-center src="/images/icons/ic-swipe.png" ng-show="isMobile()"
+  div.small-text.text-center ng-show="isMobile()"
+    | Swipe to see more

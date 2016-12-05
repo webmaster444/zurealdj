@@ -49,3 +49,27 @@
 $(document).ready ->
   $('#side-menu').slimScroll
     height: '100%'
+
+  resize = ->
+    type = if (if window.navigator.userAgent.match(/iPhone|iPad|iPod|Android|BlackBerry|Opera Mini|IEMobile/i) then true else false) then 'mobile' else 'desktop'
+    size = undefined
+    console.log 'func'
+    orientation = 'portrait'
+    if type == 'mobile'
+      if window.screen.width < 768 or window.screen.height < 768
+        size = 'small'
+      else
+        size = 'full'
+    else
+      size = 'full'
+    if window.screen.width >= window.screen.height
+      orientation = 'landscape'
+    $('[version=\'true\']').attr 'device', type
+    $('[version=\'true\']').attr 'size', size
+    $('[version=\'true\']').attr 'orientation', orientation
+    return
+
+  window.addEventListener 'resize', resize
+  window.addEventListener 'hashchange', resize
+
+  resize()

@@ -1,51 +1,51 @@
-div ng-include="'landing/templates/home/index.html'"
+div version='true'
+  div.background-header ng-include="'landing/templates/common/header.html'" ng-hide="isMobile()"
 
-a href="#"
-  div.page-gray
+  a href="#" ng-hide="isMobile()"
+    div.page-gray
 
-div.login-alert.animated.fadeInDown
-  .text-center
-    .h1-text
-      | Welcome to
-  .text-center
-    .h1-text
-      | ZUREAL
-  div.text-center
-    a.btn.btn-white.border-right-none href="#login"
-      | Sign in
-    .btn.btn-white.border-left-none
-      | Sign up
+  div.login-alert
+    a.btn-close href='#' ng-show='isMobile()'
 
-  div.text-center.text-description style="color: #555555; margin-top: 40px; margin-bottom: 20px"
-    | How can we best represent you?
+    .text-center#welcome-to-zureal
+      .h1-text
+        | Welcome to ZUREAL
+    .text-center.btn-tab
+      a.btn-white.btn-tab.btn-tab-left href="#login"
+        | Sign in
+      a.btn-white.btn-tab.btn-tab-right.btn-tab-light
+        | Sign up
 
-  div.text-center
-    .btn.btn-check.btn-orginizer style="margin-right: 40px"
-      .circle-white
-      span
-        | Orginizer
+    div.text-center.text-description style="color: #555555; margin-top: 40px; margin-bottom: 20px"
+      | How can we best represent you?
 
-    .btn.btn-check.btn-artist style="margin-left: 40px"
-      .circle-white
-      span
-        | Artist
+    div.text-center
+      .btn.btn-check.btn-orginizer style="margin-right: 40px"
+        .circle-white
+        span
+          | Orginizer
+
+      .btn.btn-check.btn-artist style="margin-left: 40px"
+        .circle-white
+        span
+          | Artist
 
 
-  form.m-t role="form" novalidate=true ng-submit="submitLoginCredentials()"
+    form.m-t role="form" novalidate=true ng-submit="submitLoginCredentials()"
 
-    .form-group
-      input.landing-input placeholder="Full name" required=true type="text" ng-model="user.login" name="login"
+      .form-group
+        input.landing-input placeholder="Full name" required=true type="text" ng-model="user.login" name="login"
 
-    .form-group
-      input.landing-input placeholder="Email" required=true ng-model="user.email" name="email" emailvalidate=true
+      .form-group
+        input.landing-input placeholder="Email" required=true ng-model="user.email" name="email" emailvalidate=true
 
-    .form-group
-      input.landing-input placeholder="Password" required=true type="password" ng-model="user.password" name="password"
+      .form-group
+        input.landing-input placeholder="Password" required=true type="password" ng-model="user.password" name="password"
 
-    .hr-line-dashed
+      .hr-line-dashed
 
-    input.btn-submit type="submit" value="Create Account"
+      input.btn-submit type="submit" value="Create Account"
 
-    .text-center style="margin: 15px auto"
-      a.blue href=""
-        | Sign up with Facebook
+      .text-center style="margin: 15px auto"
+        a.blue href=""
+          | Sign up with Facebook

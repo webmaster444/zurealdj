@@ -1,15 +1,36 @@
-@import 'colors'
+@import 'variables_and_functions'
 
 .landing-input
-  -webkit-border-radius: 20px
-  -moz-border-radius: 20px
-  border-radius: 25px
-  margin: 15px auto
-  padding: 13px 30px
   border: 1px solid #e6e6e6
   outline: none
   width: 100%
-  font-size: 16px
   font-weight: normal
   line-height: 1.5
   color: #c6bfc7
+
+[device='mobile'][size='small']
+  .landing-input
+    -webkit-border-radius: calc-h-small(40)
+    -moz-border-radius: calc-h-small(40)
+    border-radius: calc-h-small(40)
+    margin: calc-h-small(15) auto
+    padding: calc-h-small(8) calc-w-small(30)
+    font-size: calc-h-small(16)
+
+[device='mobile'][size='full']
+  .landing-input
+    -webkit-border-radius: calc-h-full(40)
+    -moz-border-radius: calc-h-full(40)
+    border-radius: calc-h-full(40)
+    margin: calc-h-full(15) auto
+    padding: calc-h-full(8) calc-w-full(30)
+    font-size: calc-h-full(16)
+
+[device='desktop']
+  .landing-input
+    -webkit-border-radius: 20px
+    -moz-border-radius: 20px
+    border-radius: 25px
+    margin: 15px auto
+    padding: 13px 30px
+    font-size: 16px

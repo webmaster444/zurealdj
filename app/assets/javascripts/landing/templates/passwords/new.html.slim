@@ -1,30 +1,35 @@
-div ng-include="'landing/templates/home/index.html'"
-a href="#"
-  div.page-gray
-div.login-alert.animated.fadeInDown
-  .text-center
-    div style="margin-bottom: 30px"
-      .h1-text
-        | Recovery account
-    div
-      .text-description
-        | Enter your email address and we will
-      .text-description
-        | send you a link to reset your
-      .text-description
-        | password
+div version='true'
+  div.background-header ng-include="'landing/templates/common/header.html'" ng-hide="isMobile()"
 
-  form.m-t role="form" novalidate=true ng-submit="submit()"
+  a href="#" ng-hide="isMobile()"
+    div.page-gray
 
-    .form-group
-      input.landing-input placeholder=("Email address") required="" type="email" /
+  div.login-alert
+    a.btn-close href='#' ng-show='isMobile()'
 
-    .hr-line-dashed
+    .text-center
+      div style="margin-bottom: 30px"
+        .h1-text
+          | Recovery account
+      div
+        .text-description
+          | Enter your email address and we will
+        .text-description
+          | send you a link to reset your
+        .text-description
+          | password
 
-    button.btn-submit type="submit"  Submit
+    form.m-t role="form" novalidate=true ng-submit="submit()"
 
-    div.text-center style="margin-top: 15px"
-      .text-description style="color: #8a8a8a"
-        | Remember your credentials?
-        a.text-description.current-color href="#login"
-          |  Log in
+      .form-group
+        input.landing-input placeholder=("Email address") required="" type="email" /
+
+      .hr-line-dashed
+
+      button.btn-submit type="submit"  Submit
+
+      div.text-center style="margin-top: 15px"
+        .text-description style="color: #8a8a8a"
+          | Remember your credentials?
+          a.text-description.current-color href="#login"
+            |  Log in

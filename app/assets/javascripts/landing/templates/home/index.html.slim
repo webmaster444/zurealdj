@@ -1,27 +1,5 @@
-div.page
-  div.page-head
-    div.head-nav.page-block
-      img.small-logo src="/images/icons/img-logo-zu-small.png"
-      .pull-right
-        a.head-link href="#login"
-          span
-            | Sign in
-        a.head-link href="#register" style="margin-right: 0"
-          span
-            | Sign up
-
-    .text-center.txt
-      | ZuRealDJ Your No.1 Booking Platform for DJs and Event Organizers
-    img.big-logo src="/images/icons/img-logo-zu-big.png"
-    div.button-block.text-center
-      a.btn-link href="" style="margin-right: 24px"
-        | Are you a DJ?
-      a.btn-link href=""
-        | Need a DJ?
-    div style="width: 100%; height: calc(100% - 10% - 630px)"
-    img.img-mouse.text-center src="/images/icons/ic-mouse@2x.png"
-    div.small-text.text-center
-      | Scroll to see more
+div.page version='true'
+  div ng-include="'landing/templates/common/header.html'"
 
   div.page-content-dark.transform style="margin-top: -50px"
     div.page-block.how-it-works.transform-none
@@ -73,7 +51,7 @@ div.page
             .row
               span.text-description
                 | DJs are hired for various events Australia wide
-      div style="height: 190px; width: 100%; clear: both"
+      div style="height: 130px; width: 100%; clear: both"
 
   div.page-content-light.transform
     div.page-block.djs.transform-none
@@ -133,7 +111,7 @@ div.page
               img src="/images/instagram/img-inst-6.png"
             .col-md-3.col-center
               img src="/images/instagram/img-inst-5.png"
-        .row
+        .row ng-hide="isMobile()"
           .col-center
             .col-md-3.col-center
               img src="/images/instagram/img-inst-4.png"
@@ -145,43 +123,4 @@ div.page
             .col-md-3.col-center
               img src="/images/instagram/img-inst-1.png"
 
-  div.page-footer.transform
-  div.page-footer style="margin-top: -150px"
-    div.page-block.text-center
-      div.content.text-center
-        .col-md-4
-          .row.title
-            a.footer-text.color-white href=""
-              | Company
-          .row
-            a.footer-text.color-gray href=""
-              | Contact Us
-          .row
-            a.footer-text.color-gray href=""
-              | Courses
-
-        .col-md-4
-          .row.title
-            a.footer-text.color-white href=""
-              | Support
-          .row
-            a.footer-text.color-gray href=""
-              | Terms & Conditions
-          .row
-            a.footer-text.color-gray href=""
-              | Help Center
-
-        .col-md-4
-          .row.title
-            a.footer-text.color-white href=""
-              | Follow Us
-          .row
-            a.col-social href="" style="margin-left: 0"
-              .ic-mixcloud.icon
-            a.col-social href=""
-              .ic-facebook.icon
-            a.col-social href="" style="margin-right: 0"
-              .ic-instagram.icon
-
-      .col-md-12.text-center.footer-text.color-gray style="margin-top: 133px"
-        | © 2016 ZuReal
+  div ng-include="'landing/templates/common/footer.html'"

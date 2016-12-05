@@ -1,38 +1,39 @@
-div ng-include="'landing/templates/home/index.html'"
-a href="#"
-  div.page-gray
-div.login-alert.animated.fadeInDown
-  .text-center
-    .h1-text
-      | Welcome to
-  .text-center
-    .h1-text
-      | ZUREAL
-  div.text-center
-    .btn.btn-white.border-right-none
-      | Sign in
-    a.btn.btn-white.border-left-none  href="#register"  Sign up
+div version='true'
+  div.background-header ng-include="'landing/templates/common/header.html'" ng-hide="isMobile()"
+  a href="#" ng-hide="isMobile()"
+    div.page-gray
 
-  form.m-t role="form" novalidate=true ng-submit="submitLoginCredentials()"
+  div.login-alert
+    a.btn-close href='#' ng-show='isMobile()'
+    .text-center#welcome-to-zureal
+      .h1-text
+        | Welcome to ZUREAL
+    .text-center.btn-tab
+      a.btn-white.btn-tab.btn-tab-left.btn-tab-light
+        | Sign in
+      a.btn-white.btn-tab.btn-tab-right href="#register"
+        | Sign up
 
-    .form-group
-      input.landing-input placeholder="Email address" required="" type="email" ng-model="session.email"
+    form.m-t role="form" novalidate=true ng-submit="submitLoginCredentials()"
 
-    .form-group
-      input.landing-input placeholder="Password" required="" type="password" ng-model="session.password"
-    div ng-show="validation_errors"
-      .error ng-repeat="error in validation_errors"
-        | {{ error }}
-    .hr-line-dashed
+      .form-group
+        input.landing-input placeholder="Email address" required="" type="email" ng-model="session.email"
 
-    input.btn-submit type="submit" value="Sign in"
+      .form-group
+        input.landing-input placeholder="Password" required="" type="password" ng-model="session.password"
+      div ng-show="validation_errors"
+        .error ng-repeat="error in validation_errors"
+          | {{ error }}
+      .hr-line-dashed
 
-    .text-center style="margin: 15px auto"
-      a.blue href=""
-        | Sign in with Facebook
+      input.btn-submit type="submit" value="Sign in"
 
-    .hr-line-dashed
+      .text-center style="margin: 15px auto"
+        a.blue href=""
+          | Sign in with Facebook
 
-    .text-center style="margin: 15px auto"
-      a.current-color href="#forgot_password"
-        | Forgot password?
+      .hr-line-dashed
+
+      .text-center style="margin: 15px auto"
+        a.current-color href="#forgot_password"
+          | Forgot password?
