@@ -1,5 +1,7 @@
 class Admin::PoliciesPagesController < Admin::BaseController
 
+  load_and_authorize_resource :policies_page
+
   def index
 
   end

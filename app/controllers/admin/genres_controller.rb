@@ -1,4 +1,4 @@
-class GenresController < ApplicationController
+class Admin::GenresController < ApplicationController
 
   load_and_authorize_resource :genre
 

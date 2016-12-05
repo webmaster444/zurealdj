@@ -11,12 +11,12 @@
                 }
 
                 if(event_categories.id){
-                    return $http.put('/event_categories/' + event_categories.id, fd, {
+                    return $http.put('/admin/event_categories/' + event_categories.id, fd, {
                         transformRequest: angular.identity,
                         headers: {'Content-Type': undefined}
                     });
                 }else{
-                    return $http.post('/event_categories', fd, {
+                    return $http.post('/admin/event_categories', fd, {
                         transformRequest: angular.identity,
                         headers: {'Content-Type': undefined}
                     });
@@ -24,15 +24,15 @@
             },
 
             all: function(options){
-                return $http.get('/event_categories.json?page=' + options.page);
+                return $http.get('/admin/event_categories.json?page=' + options.page);
             },
 
             show: function(id){
-                return $http.get('/event_categories/' + id + '.json');
+                return $http.get('/admin/event_categories/' + id + '.json');
             },
 
             destroy: function(id){
-                return $http.delete('/event_categories/' + id)
+                return $http.delete('/admin/event_categories/' + id)
             }
         }
     }])

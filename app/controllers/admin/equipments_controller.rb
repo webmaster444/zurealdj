@@ -1,4 +1,4 @@
-class EquipmentsController < ApplicationController
+class Admin::EquipmentsController < ApplicationController
 
   load_and_authorize_resource :equipment
 

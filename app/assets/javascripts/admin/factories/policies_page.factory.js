@@ -21,6 +21,10 @@
 
             show: function(id){
                 return $http.get('/admin/policies_pages/' + id + '.json');
+            },
+
+            destroy: function(id){
+                return $http.delete('/admin/policies_pages/' + id)
             }
         }
     }])

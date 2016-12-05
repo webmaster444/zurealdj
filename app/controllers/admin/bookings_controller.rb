@@ -1,4 +1,4 @@
-class BookingsController < ApplicationController
+class Admin::BookingsController < ApplicationController
 
   load_and_authorize_resource :booking
 

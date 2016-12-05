@@ -21,6 +21,10 @@
 
             show: function(id){
                 return $http.get('/admin/crew_pages/' + id + '.json');
+            },
+
+            destroy: function(id){
+                return $http.delete('/admin/crew_pages/' + id)
             }
         }
     }])

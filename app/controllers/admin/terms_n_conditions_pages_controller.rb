@@ -1,4 +1,4 @@
-class TermsNConditionsPagesController < ApplicationController
+class Admin::TermsNConditionsPagesController < ApplicationController
 
   load_and_authorize_resource :terms_n_conditions_page
 

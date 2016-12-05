@@ -1,4 +1,4 @@
-class EventCategoriesController < ApplicationController
+class Admin::EventCategoriesController < ApplicationController
 
   load_and_authorize_resource :event_category
 

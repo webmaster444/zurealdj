@@ -1,4 +1,4 @@
-class CancelationsController < ApplicationController
+class Admin::CancelationsController < ApplicationController
 
   load_and_authorize_resource :cancelation
 

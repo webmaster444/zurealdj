@@ -11,12 +11,12 @@
                 }
 
                 if(genres.id){
-                    return $http.put('/genres/' + genres.id, fd, {
+                    return $http.put('/admin/genres/' + genres.id, fd, {
                         transformRequest: angular.identity,
                         headers: {'Content-Type': undefined}
                     });
                 }else{
-                    return $http.post('/genres', fd, {
+                    return $http.post('/admin/genres', fd, {
                         transformRequest: angular.identity,
                         headers: {'Content-Type': undefined}
                     });
@@ -24,15 +24,15 @@
             },
 
             all: function(options){
-                return $http.get('/genres.json?page=' + options.page);
+                return $http.get('/admin/genres.json?page=' + options.page);
             },
 
             show: function(id){
-                return $http.get('/genres/' + id + '.json');
+                return $http.get('/admin/genres/' + id + '.json');
             },
 
             destroy: function(id){
-                return $http.delete('/genres/' + id)
+                return $http.delete('/admin/genres/' + id)
             }
         }
     }])

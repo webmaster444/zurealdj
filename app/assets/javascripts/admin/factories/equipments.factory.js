@@ -17,12 +17,12 @@
                 }
 
                 if(equipments.id){
-                    return $http.put('/equipments/' + equipments.id, fd, {
+                    return $http.put('/admin/equipments/' + equipments.id, fd, {
                         transformRequest: angular.identity,
                         headers: {'Content-Type': undefined}
                     });
                 }else{
-                    return $http.post('/equipments', fd, {
+                    return $http.post('/admin/equipments', fd, {
                         transformRequest: angular.identity,
                         headers: {'Content-Type': undefined}
                     });
@@ -30,15 +30,15 @@
             },
 
             all: function(options){
-                return $http.get('/equipments.json?page=' + options.page);
+                return $http.get('/admin/equipments.json?page=' + options.page);
             },
 
             show: function(id){
-                return $http.get('/equipments/' + id + '.json');
+                return $http.get('/admin/equipments/' + id + '.json');
             },
 
             destroy: function(id){
-                return $http.delete('/equipments/' + id)
+                return $http.delete('/admin/equipments/' + id)
             }
         }
     }])

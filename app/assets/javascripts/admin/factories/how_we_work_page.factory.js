@@ -11,12 +11,12 @@
                 }
 
                 if(how_we_work_page.id){
-                    return $http.put('/how_we_work_pages/' + how_we_work_page.id, fd, {
+                    return $http.put('/admin/how_we_work_pages/' + how_we_work_page.id, fd, {
                         transformRequest: angular.identity,
                         headers: {'Content-Type': undefined}
                     });
                 }else{
-                    return $http.post('/how_we_work_pages', fd, {
+                    return $http.post('/admin/how_we_work_pages', fd, {
                         transformRequest: angular.identity,
                         headers: {'Content-Type': undefined}
                     });
@@ -24,15 +24,15 @@
             },
 
             all: function(options){
-                return $http.get('/how_we_work_pages.json?page=' + options.page);
+                return $http.get('/admin/how_we_work_pages.json?page=' + options.page);
             },
 
             show: function(id){
-                return $http.get('/how_we_work_pages/' + id + '.json');
+                return $http.get('/admin/how_we_work_pages/' + id + '.json');
             },
 
             destroy: function(id){
-                return $http.delete('/how_we_work_pages/' + id)
+                return $http.delete('/admin/how_we_work_pages/' + id)
             }
         }
     }])

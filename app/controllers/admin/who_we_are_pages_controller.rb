@@ -1,4 +1,4 @@
-class WhoWeArePagesController < ApplicationController
+class Admin::WhoWeArePagesController < ApplicationController
 
   load_and_authorize_resource :who_we_are_page
 

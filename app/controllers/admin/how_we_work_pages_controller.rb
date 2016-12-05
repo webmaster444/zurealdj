@@ -1,4 +1,4 @@
-class HowWeWorkPagesController < ApplicationController
+class Admin::HowWeWorkPagesController < ApplicationController
 
   load_and_authorize_resource :how_we_work_page
 

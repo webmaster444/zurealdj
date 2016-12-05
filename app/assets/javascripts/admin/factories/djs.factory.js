@@ -56,12 +56,12 @@
                 }
 
                 if(djs.id){
-                    return $http.put('/djs/' + djs.id, fd, {
+                    return $http.put('/admin/djs/' + djs.id, fd, {
                         transformRequest: angular.identity,
                         headers: {'Content-Type': undefined}
                     });
                 }else{
-                    return $http.post('/djs', fd, {
+                    return $http.post('/admin/djs', fd, {
                         transformRequest: angular.identity,
                         headers: {'Content-Type': undefined}
                     });
@@ -82,7 +82,7 @@
             },
 
             show: function(id){
-                return $http.get('/djs/' + id + '.json');
+                return $http.get('/admin/djs/' + id + '.json');
             },
 
             destroy: function(id){

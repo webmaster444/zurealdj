@@ -11,12 +11,12 @@
                 }
 
                 if(who_we_are_page.id){
-                    return $http.put('/who_we_are_pages/' + who_we_are_page.id, fd, {
+                    return $http.put('/admin/who_we_are_pages/' + who_we_are_page.id, fd, {
                         transformRequest: angular.identity,
                         headers: {'Content-Type': undefined}
                     });
                 }else{
-                    return $http.post('/who_we_are_pages', fd, {
+                    return $http.post('/admin/who_we_are_pages', fd, {
                         transformRequest: angular.identity,
                         headers: {'Content-Type': undefined}
                     });
@@ -24,15 +24,15 @@
             },
 
             all: function(options){
-                return $http.get('/who_we_are_pages.json?page=' + options.page);
+                return $http.get('/admin/who_we_are_pages.json?page=' + options.page);
             },
 
             show: function(id){
-                return $http.get('/who_we_are_pages/' + id + '.json');
+                return $http.get('/admin/who_we_are_pages/' + id + '.json');
             },
 
             destroy: function(id){
-                return $http.delete('/who_we_are_pages/' + id)
+                return $http.delete('/admin/who_we_are_pages/' + id)
             }
         }
     }])

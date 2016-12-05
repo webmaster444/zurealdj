@@ -32,12 +32,12 @@
                 }
 
                 if(events.id){
-                    return $http.put('/events/' + events.id, fd, {
+                    return $http.put('/admin/events/' + events.id, fd, {
                         transformRequest: angular.identity,
                         headers: {'Content-Type': undefined}
                     });
                 }else{
-                    return $http.post('/events', fd, {
+                    return $http.post('/admin/events', fd, {
                         transformRequest: angular.identity,
                         headers: {'Content-Type': undefined}
                     });
@@ -45,15 +45,15 @@
             },
 
             all: function(options){
-                return $http.get('/events.json?page=' + options.page);
+                return $http.get('/admin/events.json?page=' + options.page);
             },
 
             show: function(id){
-                return $http.get('/events/' + id + '.json');
+                return $http.get('/admin/events/' + id + '.json');
             },
 
             destroy: function(id){
-                return $http.delete('/events/' + id)
+                return $http.delete('/admin/events/' + id)
             }
         }
     }])

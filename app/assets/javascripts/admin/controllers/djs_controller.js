@@ -53,8 +53,10 @@
 
                             if($scope.count > 0){
                                 pagination.twbsPagination({
+
                                     totalPages: Math.ceil($scope.count / $scope.filters.per_page),
                                     startPage: $scope.filters.page,
+
                                     visiblePages: 9,
                                     onPageClick: function (event, page) {
                                         $scope.filters.page = page;

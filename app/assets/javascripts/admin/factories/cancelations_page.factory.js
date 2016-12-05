@@ -11,12 +11,12 @@
                 }
 
                 if(cancelations_page.id){
-                    return $http.put('/cancelations_pages/' + cancelations_page.id, fd, {
+                    return $http.put('/admin/cancelations_pages/' + cancelations_page.id, fd, {
                         transformRequest: angular.identity,
                         headers: {'Content-Type': undefined}
                     });
                 }else{
-                    return $http.post('/cancelations_pages', fd, {
+                    return $http.post('/admin/cancelations_pages', fd, {
                         transformRequest: angular.identity,
                         headers: {'Content-Type': undefined}
                     });
@@ -24,15 +24,15 @@
             },
 
             all: function(options){
-                return $http.get('/cancelations_pages.json?page=' + options.page);
+                return $http.get('/admin/cancelations_pages.json?page=' + options.page);
             },
 
             show: function(id){
-                return $http.get('/cancelations_pages/' + id + '.json');
+                return $http.get('/admin/cancelations_pages/' + id + '.json');
             },
 
             destroy: function(id){
-                return $http.delete('/cancelations_pages/' + id)
+                return $http.delete('/admin/cancelations_pages/' + id)
             }
         }
     }])

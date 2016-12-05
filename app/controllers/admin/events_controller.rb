@@ -1,4 +1,4 @@
-class EventsController < ApplicationController
+class Admin::EventsController < ApplicationController
 
   load_and_authorize_resource :event
 
