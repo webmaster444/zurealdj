@@ -11,151 +11,55 @@ nav.navbar-default.navbar-static-side.ng-scope role="navigation"
             i.fa.fa-beer
             span.nav-label.ng-binding Organizers
         li ng-class=("{active: $state.current.name.includes('dj')}")
-          a href="#"
-            i.fa.fa-headphones
+          a href="#djs"
+            i.fa.fa-car
             span.nav-label.ng-binding DJ
-            span.fa.arrow
-          ul.nav.nav-second-level.collapse ng-class=("{in: $state.current.name.includes('dj')}")
-            li.active ui-sref-active="active"
-              a.ng-binding href="#djs"
-                | {{ I18n.t('headers.djs') }}
-            li.active ui-sref-active="active"
-              a.ng-binding href="#dj/new"
-                | {{ I18n.t('dj.new') }}
         li ng-class=("{active: $state.current.name.includes('booking')}")
-          a href="#"
+          a href="#bookings"
             i.fa.fa-car
             span.nav-label.ng-binding BOOKING
-            span.fa.arrow
-          ul.nav.nav-second-level.collapse ng-class=("{in: $state.current.name.includes('booking')}")
-            li.active ui-sref-active="active"
-              a.ng-binding href="#bookings"
-                | {{ I18n.t('headers.bookings') }}
-            li.active ui-sref-active="active"
-              a.ng-binding href="#booking/new"
-                | {{ I18n.t('booking.new') }}
         li ng-class=("{active: $state.current.name.includes('event')}")
-          a href="#"
+          a href="#events"
             i.fa.fa-car
             span.nav-label.ng-binding EVENT
-            span.fa.arrow
-          ul.nav.nav-second-level.collapse ng-class=("{in: $state.current.name.includes('event')}")
-            li.active ui-sref-active="active"
-              a.ng-binding href="#events"
-                | {{ I18n.t('headers.events') }}
-            li.active ui-sref-active="active"
-              a.ng-binding href="#event/new"
-                | {{ I18n.t('event.new') }}
         li ng-class=("{active: $state.current.name.includes('genre')}")
-          a href="#"
+          a href="#genres"
             i.fa.fa-car
-            span.nav-label.ng-binding GENRE
-            span.fa.arrow
-          ul.nav.nav-second-level.collapse ng-class=("{in: $state.current.name.includes('genre')}")
-            li.active ui-sref-active="active"
-              a.ng-binding href="#genres"
-                | {{ I18n.t('headers.genres') }}
-            li.active ui-sref-active="active"
-              a.ng-binding href="#genre/new"
-                | {{ I18n.t('genre.new') }}
+            span.nav-label.ng-binding GENRES
         li ng-class=("{active: $state.current.name.includes('cancelation')}")
-          a href="#"
+          a href="#cancelations"
             i.fa.fa-car
             span.nav-label.ng-binding CANCELATION
-            span.fa.arrow
-          ul.nav.nav-second-level.collapse ng-class=("{in: $state.current.name.includes('cancelation')}")
-            li.active ui-sref-active="active"
-              a.ng-binding href="#cancelations"
-                | {{ I18n.t('headers.cancelations') }}
-            li.active ui-sref-active="active"
-              a.ng-binding href="#cancelation/new"
-                | {{ I18n.t('cancelation.new') }}
         li ng-class=("{active: $state.current.name.includes('event_categorie')}")
-          a href="#"
+          a href="#event_categories"
             i.fa.fa-car
-            span.nav-label.ng-binding EVENT_CATEGORY
-            span.fa.arrow
-          ul.nav.nav-second-level.collapse ng-class=("{in: $state.current.name.includes('event_categorie')}")
-            li.active ui-sref-active="active"
-              a.ng-binding href="#event_categories"
-                | {{ I18n.t('headers.event_categories') }}
-            li.active ui-sref-active="active"
-              a.ng-binding href="#event_category/new"
-                | {{ I18n.t('event_category.new') }}
+            span.nav-label.ng-binding EVENT CATEGORY
         li ng-class=("{active: $state.current.name.includes('equipment')}")
-          a href="#"
+          a href="#equipments"
             i.fa.fa-car
             span.nav-label.ng-binding EQUIPMENT
-            span.fa.arrow
-          ul.nav.nav-second-level.collapse ng-class=("{in: $state.current.name.includes('equipment')}")
-            li.active ui-sref-active="active"
-              a.ng-binding href="#equipments"
-                | {{ I18n.t('headers.equipments') }}
-            li.active ui-sref-active="active"
-              a.ng-binding href="#equipment/new"
-                | {{ I18n.t('equipment.new') }}
         li ng-class=("{active: $state.current.name.includes('who_we_are_pag')}")
-          a href="#"
+          a href="#who_we_are_pages"
             i.fa.fa-car
-            span.nav-label.ng-binding WHO_WE_ARE_PAGE
-            span.fa.arrow
-          ul.nav.nav-second-level.collapse ng-class=("{in: $state.current.name.includes('who_we_are_pag')}")
-            li.active ui-sref-active="active"
-              a.ng-binding href="#who_we_are_pages"
-                | {{ I18n.t('headers.who_we_are_pages') }}
-            li.active ui-sref-active="active"
-              a.ng-binding href="#who_we_are_page/new"
-                | {{ I18n.t('who_we_are_page.new') }}
+            span.nav-label.ng-binding WHO WE ARE PAGES
         li ng-class=("{active: $state.current.name.includes('crew_pag')}")
-          a href="#"
+          a href="#crew_pages"
             i.fa.fa-car
-            span.nav-label.ng-binding CREW_PAGE
-            span.fa.arrow
-          ul.nav.nav-second-level.collapse ng-class=("{in: $state.current.name.includes('crew_pag')}")
-            li.active ui-sref-active="active"
-              a.ng-binding href="#crew_pages"
-                | {{ I18n.t('headers.crew_pages') }}
-            li.active ui-sref-active="active"
-              a.ng-binding href="#crew_page/new"
-                | {{ I18n.t('crew_page.new') }}
+            span.nav-label.ng-binding CREW PAGES
         li ng-class=("{active: $state.current.name.includes('how_we_work_pag')}")
-          a href="#"
+          a href="#how_we_work_pages"
             i.fa.fa-car
-            span.nav-label.ng-binding HOW_WE_WORK_PAGE
-            span.fa.arrow
-          ul.nav.nav-second-level.collapse ng-class=("{in: $state.current.name.includes('how_we_work_pag')}")
-            li.active ui-sref-active="active"
-              a.ng-binding href="#how_we_work_pages"
-                | {{ I18n.t('headers.how_we_work_pages') }}
-            li.active ui-sref-active="active"
-              a.ng-binding href="#how_we_work_page/new"
-                | {{ I18n.t('how_we_work_page.new') }}
+            span.nav-label.ng-binding HOW WE WORK PAGES
         li ng-class=("{active: $state.current.name.includes('policies_pag')}")
-          a href="#"
+          a href="#policies_pages"
             i.fa.fa-car
-            span.nav-label.ng-binding POLICIES_PAGE
-            span.fa.arrow
-          ul.nav.nav-second-level.collapse ng-class=("{in: $state.current.name.includes('policies_pag')}")
-            li.active ui-sref-active="active"
-              a.ng-binding href="#policies_pages"
-                | {{ I18n.t('headers.policies_pages') }}
-            li.active ui-sref-active="active"
-              a.ng-binding href="#policies_page/new"
-                | {{ I18n.t('policies_page.new') }}
+            span.nav-label.ng-binding POLICIES PAGES
         li ng-class=("{active: $state.current.name.includes('terms_n_conditions_pag')}")
-          a href="#"
+          a href="#terms_n_conditions_pages"
             i.fa.fa-car
-            span.nav-label.ng-binding TERMS_N_CONDITIONS_PAGE
-            span.fa.arrow
-          ul.nav.nav-second-level.collapse ng-class=("{in: $state.current.name.includes('terms_n_conditions_pag')}")
-            li.active ui-sref-active="active"
-              a.ng-binding href="#terms_n_conditions_pages"
-                | {{ I18n.t('headers.terms_n_conditions_pages') }}
-            li.active ui-sref-active="active"
-              a.ng-binding href="#terms_n_conditions_page/new"
-                | {{ I18n.t('terms_n_conditions_page.new') }}
+            span.nav-label.ng-binding TERMS N CONDITIONS PAGES
         li ng-class=("{active: $state.current.name.includes('cancelations_pag')}")
-          a href="#"
+          a href="#cancelations_page/new"
             i.fa.fa-car
             span.nav-label.ng-binding Static pages
             span.fa.arrow
