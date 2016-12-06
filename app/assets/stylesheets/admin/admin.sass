@@ -1,0 +1,56 @@
+$current-color: #b05dfc
+$lasur-light: #c890fc
+
+body
+  font-family: 'CeraPro'
+
+input.form-control
+  border-radius: 25px
+  padding: 0 20px
+
+.btn-gray
+  background-color: white
+  border: 1px solid gray
+  &:hover, &:active
+    background-color: gray
+    color: white
+
+.filters-bar
+  font-size: 16px
+  margin-bottom: 10px
+  .filter-descriptions
+    font-size: 16px
+  .btn-filters
+    margin: 0 10px
+    margin-bottom: 3px
+    border-radius: 3px !important
+  .fa.fa-filter
+    margin-right: 5px
+  .btn-group.dropdown
+    height: 35px
+    margin: 0 10px
+    margin-bottom: 3px
+    #split-button
+      text-align: center
+      height: 100% !important
+      background-color: white
+      border: 1px solid gray
+      border-radius: 3px 0 0 3px
+      outline: none
+    .dropdown-toggle
+      height: 100%
+      background-color: white
+      border: 1px solid gray
+      border-radius: 0 3px 3px 0
+      &:hover, &active
+        background-color: gray
+        color: white
+  .pagination
+    font-size: 14px
+    a:hover
+      background-color: #e0c2fc
+      color: $current-color
+    .page.active
+      a
+        background-color: $current-color
+        color: white

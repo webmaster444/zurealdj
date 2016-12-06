@@ -6,12 +6,7 @@
           h3
             | {{ I18n.t('headers.genres' ) }}
         .ibox-content
-          .pull-left
-            #genres-pagination ng-hide="count < 11"
-          .pull-right
-
-            button.btn-xs.btn.btn-info ui-sref="new_genre"
-              | {{ I18n.t('genre.new') }}
+          .filters-bar ng-include="'admin/templates/common/filters-bar.html'"
 
           table.table.table-striped.table-responsive
             thead
@@ -20,7 +15,7 @@
                   | {{ I18n.t('genre.fields.title') }}
                 th
                   | Created At
-                th
+                th.text-right
                   | Actions
             tbody
               tr ng-repeat="genre in genres"

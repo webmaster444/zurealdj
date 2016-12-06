@@ -6,12 +6,7 @@
           h3
             | {{ I18n.t('headers.equipments' ) }}
         .ibox-content
-          .pull-left
-            #equipments-pagination ng-hide="count < 11"
-          .pull-right
-
-            button.btn-xs.btn.btn-info ui-sref="new_equipment"
-              | {{ I18n.t('equipment.new') }}
+          .filters-bar ng-include="'admin/templates/common/filters-bar.html'"
 
           table.table.table-striped.table-responsive
             thead
@@ -22,7 +17,7 @@
                   | {{ I18n.t('equipment.fields.title') }}
                 th
                   | Created At
-                th
+                th.text-right
                   | Actions
             tbody
               tr ng-repeat="equipment in equipments"

@@ -17,7 +17,12 @@ class Admin::OrganizersController < Admin::BaseController
 
     count_query = query.clone.project('COUNT(*)')
 
-    @organizers = Organizer.find_by_sql(query.take(10).skip((params[:page].to_i - 1) * 10).to_sql)
+    @page = params[:page].to_i
+    @page = 1 if @page < 1
+    @per_page = params[:per_page].to_i
+    @per_page = 10 if @per_page < 1
+
+    @organizers = Organizer.find_by_sql(query.take(@per_page).skip((@page - 1) * @per_page).to_sql)
     @count = Organizer.find_by_sql(count_query.to_sql).count
   end
 

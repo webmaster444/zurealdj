@@ -9,7 +9,9 @@
             $scope._ = _;
             $scope.$state = $state;
 
-            $scope.session = {};
+            $scope.session = {
+                per_page: 10
+            };
 
             $scope.$watch('current_user', function() {
                 $scope.user = $scope.current_user;

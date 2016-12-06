@@ -14,7 +14,9 @@
                 };
 
 
-                $scope.filters = {};
+                $scope.filters = {
+                    per_page: 10
+                };
 
                 if($state.current.name == 'event_categories'){
                     $scope.event_category = [];
@@ -25,6 +27,7 @@
                             $timeout.cancel(timer)
                         }
                         timer= $timeout(function(){
+                            if($scope.page > Math.ceil($scope.count / $scope.filters.per_page)) $scope.page = 1;
                             $scope.retrieveEventCategories();
                         }, 500)
                     }, true);
@@ -42,7 +45,7 @@
 
                             if($scope.count > 0){
                                 pagination.twbsPagination({
-                                    totalPages: Math.ceil($scope.count / 9),
+                                    totalPages: Math.ceil($scope.count / $scope.filters.per_page),
                                     startPage: $scope.page,
                                     visiblePages: 9,
                                     onPageClick: function (event, page) {

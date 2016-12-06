@@ -14,17 +14,20 @@
                     return $sce.trustAsHtml(html);
                 };
 
-                $scope.filters = {};
-
                 if($state.current.name == 'organizers'){
-                    $scope.organization = [];
+                    $scope.organizers = [];
+
+                    $scope.filters = {
+                        per_page: 10
+                    };
 
                     var timer = false;
                     $scope.$watch('filters', function(){
                         if(timer){
                             $timeout.cancel(timer)
                         }
-                        timer= $timeout(function(){
+                        timer = $timeout(function(){
+                            if($scope.page > Math.ceil($scope.count / $scope.filters.per_page)) $scope.page = 1;
                             $scope.retrieveOrganizers();
                         }, 500)
                     }, true);
@@ -40,9 +43,9 @@
                             pagination.removeData('twbs-pagination');
                             pagination.unbind('page');
 
-                            if($scope.count > 0){
+                            if ($scope.count > 0) {
                                 pagination.twbsPagination({
-                                    totalPages: Math.ceil($scope.count / 10),
+                                    totalPages: Math.ceil($scope.count / $scope.filters.per_page),
                                     startPage: $scope.page,
                                     visiblePages: 9,
                                     onPageClick: function (event, page) {

@@ -17,7 +17,9 @@
                     $scope.flags = data.flags;
                 });
 
-                $scope.filters = {};
+                $scope.filters = {
+                    per_page: 10
+                };
 
                 if($state.current.name == 'djs'){
                     $scope.dj = [];
@@ -37,6 +39,7 @@
                             $timeout.cancel(timer)
                         }
                         timer= $timeout(function(){
+                            if($scope.page > Math.ceil($scope.count / $scope.filters.per_page)) $scope.page = 1;
                             $scope.retrieveDjs();
                         }, 500)
                     }, true);

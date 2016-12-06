@@ -5,12 +5,7 @@
         .ibox-content
           h2
             | {{ I18n.t('headers.organizers' ) }}
-          .pull-left
-            #organizations-pagination ng-hide="count <= 10"
-          .pull-right
-
-            button.btn-xs.btn.btn-info ui-sref="new_organizer"
-              | {{ I18n.t('organizer.new') }}
+          .filters-bar ng-include="'admin/templates/common/filters-bar.html'"
 
           table.table.table-striped.table-responsive
             thead
@@ -27,7 +22,8 @@
                   | Social links
                 th
                   | Created At
-                th
+                th.text-right
+                  | Actions
             tbody
               tr ng-repeat="organizer in organizers"
                 td

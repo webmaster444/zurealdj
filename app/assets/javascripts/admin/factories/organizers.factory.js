@@ -30,7 +30,16 @@
             },
 
             all: function(options){
-                return $http.get('/admin/organizers.json?page=' + options.page);
+                var url = '/admin/organizers.json?';
+                if(options.page)
+                    url = url + 'page=' + options.page + '&';
+
+                _.each(Object.keys(options.query), function(key){
+                    if(options.query[key])
+                        url = url + key + '=' + options.query[key] + '&';
+                });
+
+                return $http.get(url);
             },
 
             show: function(id){

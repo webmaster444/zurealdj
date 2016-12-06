@@ -6,12 +6,38 @@
           h3
             | {{ I18n.t('headers.event_categories' ) }}
         .ibox-content
-          .pull-left
-            #event_categories-pagination ng-hide="count < 11"
-          .pull-right
+          .filters-bar
+            .pull-left
+              div id="{{ $state.current.name }}-pagination" ng-hide="count <= 10"
+            .pull-right
+              span.filter-descriptions
+                | {{ count }} {{ $state.current.name }} found
 
-            button.btn-xs.btn.btn-info ui-sref="new_event_category"
-              | {{ I18n.t('event_category.new') }}
+              .btn-group< uib-dropdown=true
+                button#split-button.btn type="button"
+                  | {{ filters.per_page }}
+                button.btn type="button" uib-dropdown-toggle=true
+                  span.caret
+
+                ul.dropdown-menu uib-dropdown-menu=true role="menu"
+                  li role="menuitem"
+                    a ng-click="filters.per_page = 10"
+                      | 10
+                  li role="menuitem"
+                    a ng-click="filters.per_page = 20"
+                      | 20
+                  li role="menuitem"
+                    a ng-click="filters.per_page = 50"
+                      | 50
+              span.filter-descriptions<
+                | per page
+              .button.btn.btn-filters.btn-gray data-toggle="collapse" data-target=".filters-container"
+                .fa.fa-filter
+                | Filters
+              button.btn.btn-info ui-sref="new_event_category"
+                | {{ I18n.t('event_category.new') }}
+
+            .clearfix
 
           table.table.table-striped.table-responsive
             thead
@@ -20,7 +46,7 @@
                   | {{ I18n.t('event_category.fields.title') }}
                 th
                   | Created At
-                th
+                th.text-right
                   | Actions
             tbody
               tr ng-repeat="event_category in event_categories"

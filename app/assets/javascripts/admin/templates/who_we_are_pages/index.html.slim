@@ -6,19 +6,14 @@
           h3
             | {{ I18n.t('headers.who_we_are_pages' ) }}
         .ibox-content
-          .pull-left
-            #who_we_are_pages-pagination ng-hide="count < 11"
-          .pull-right
-
-            button.btn-xs.btn.btn-info ui-sref="new_who_we_are_page"
-              | {{ I18n.t('who_we_are_page.new') }}
+          .filters-bar ng-include="'admin/templates/common/filters-bar.html'"
 
           table.table.table-striped.table-responsive
             thead
               tr
                 th
                   | Created At
-                th
+                th.text-right
                   | Actions
             tbody
               tr ng-repeat="who_we_are_page in who_we_are_pages"
