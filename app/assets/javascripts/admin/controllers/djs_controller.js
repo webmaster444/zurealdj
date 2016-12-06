@@ -22,9 +22,18 @@
                 if($state.current.name == 'djs'){
                     $scope.dj = [];
 
+                    $scope.resetFilters = function(){
+                        $scope.filters = {
+                            page: 1,
+                            per_page: 10
+                        };
+                    };
+                    $scope.resetFilters();
+
                     var timer = false;
                     $scope.$watch('filters', function(){
                         if(timer){
+                            $scope.page = 1;
                             $timeout.cancel(timer)
                         }
                         timer= $timeout(function(){
@@ -32,7 +41,6 @@
                         }, 500)
                     }, true);
 
-                    $scope.page = 1;
                     $scope.retrieveDjs = function(){
                         djs.all({page: $scope.page, query: $scope.filters}).success(function (data) {
                             $scope.djs = data.djs;
@@ -45,11 +53,11 @@
 
                             if($scope.count > 0){
                                 pagination.twbsPagination({
-                                    totalPages: Math.ceil($scope.count / 9),
-                                    startPage: $scope.page,
+                                    totalPages: Math.ceil($scope.count / $scope.filters.per_page),
+                                    startPage: $scope.filters.page,
                                     visiblePages: 9,
                                     onPageClick: function (event, page) {
-                                        $scope.page = page;
+                                        $scope.filters.page = page;
                                         $scope.retrieveDjs();
                                     }
                                 })
@@ -60,6 +68,10 @@
                     };
 
                     $scope.retrieveDjs();
+
+                    $scope.downloadCSV = function () {
+                        console.log(djs.downloadCSV({query: $scope.filters}))
+                    }
                 }
 
                 $scope.destroy = function(id){

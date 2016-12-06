@@ -1,24 +1,30 @@
-class DjsController < ApplicationController
+class Admin::DjsController < Admin::BaseController
 
   load_and_authorize_resource :dj
 
   def index
-    djs = Dj.arel_table
 
-    query = djs
-            .project(Arel.star)
-            .group(djs[:id])
+    page = params[:page].to_i
+    page = 1 if page < 1
 
-    if !params[:sort_column].blank? && ['asc', 'desc'].include?(params[:sort_type])
-        query = query.order(djs[params[:sort_column.to_sym]].send(params[:sort_type] == 'asc' ? :asc : :desc))
-    else
-        query = query.order(djs[:id].desc)
+    per_page = params[:per_page].to_i
+    per_page = 10 if per_page < 1
+
+    respond_to do |f|
+      f.json do
+        query = Dj.search_query(params)
+        count_query = Dj.search_query(params.merge({count: true}))
+        @djs = Dj.find_by_sql(query.take(per_page).skip((page - 1) * per_page).to_sql)
+        @count = Dj.find_by_sql(count_query.to_sql).count
+      end
+      f.csv do
+        headers["Content-Type"]        = "text/csv"
+        headers["Content-disposition"] = "attachment; filename=djs.csv"
+        headers["Last-Modified"]       = Time.now.ctime.to_s
+        self.response_body = DjsStreamer.new(params)
+        puts self.response_body
+      end
     end
-
-    count_query = query.clone.project('COUNT(*)')
-
-    @djs = Dj.find_by_sql(query.take(10).skip((params[:page].to_i - 1) * 10).to_sql)
-    @count = Dj.find_by_sql(count_query.to_sql).count
   end
 
     def create
@@ -45,7 +51,7 @@ class DjsController < ApplicationController
   end
 
   def show
-
+    render json: {ok: true}
   end
 
   # related models actions

@@ -145,6 +145,19 @@ angular.module('AuthHttp').service('AuthHttp', ['$http', 'toaster', function($ht
             var ins = new qw;
             ins.request('DELETE', url, data);
             return ins;
+        },
+        download: function(url, options){
+            var input;
+            var button = $('<button type="submit">Download!</button>');
+            var form = $('<form method="get" action="' + url + '"></form>');
+            _.each(Object.keys(options.query), function(key){
+                input = $('<input type="text" name="'+ key +'" value="' + options.query[key] +'" />');
+                form.append(input)
+            });
+            form.append(button);
+            $('body').append(form);
+            button.click();
+            form.remove();
         }
     }
 }]);

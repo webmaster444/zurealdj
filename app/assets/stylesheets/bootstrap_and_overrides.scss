@@ -3,3 +3,57 @@
 
 @import 'icheck/square/blue';
 @import 'icheck/square/green';
+
+.uib-datepicker-popup.dropdown-menu .btn-default {
+  display: block;
+  float: none;
+  margin: 0;
+  background-color: #ffffff;
+  color: #676a6c;
+  border: none;
+}
+
+.btn-group > .btn + .dropdown-toggle {
+  height: 2.4em;
+}
+
+.uib-datepicker-popup.dropdown-menu {
+  -webkit-box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175);
+  box-shadow: 0 6px 12px;
+  li:focus {
+    outline:none;
+  }
+  .btn-danger {
+    background-color: #aa322d;
+    border-color: #aa322d;
+    color: white;
+  }
+  .btn-success {
+    background-color: #8d8d8d;
+    border-color: #8d8d8d;
+    color: white;
+  }
+  .btn-info {
+    background-color: #aa322d;
+    border-color: #aa322d;
+    color: white;
+  }
+}
+
+.pagination {
+  margin-top: 5px !important;
+  margin-bottom: -4px !important;
+  display: inline-block;
+  padding-left: 0;
+  margin: 20px 0;
+  border-radius: 4px;
+}
+
+ul, .nav-tabs {
+  border: none;
+  margin-bottom: 25px;
+}
+
+.pagination > li > a, .pagination > li > span {
+  line-height: 1.92 !important;
+}

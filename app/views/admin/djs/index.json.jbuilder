@@ -1,7 +1,7 @@
 json.djs @djs.each do |dj|
   json.id dj.id
-  json.created_at time_ago_in_words(dj.created_at) + ' ' + t('datetime.ago') + ' ' + t('datetime.at') + ' ' + dj.created_at.strftime("%H:%M")
-  
+  json.created_at dj.created_at.strftime("%d/%m/%Y")
+
   json.first_name dj.first_name
   json.last_name dj.last_name
   json.city dj.city

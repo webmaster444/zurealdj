@@ -14,6 +14,7 @@
         'formInput.images',
         'formInput.image',
         'formInput.country',
+        'tablesort',
         'toaster',
         'angular-ladda',
         'AuthHttp',

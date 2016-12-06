@@ -38,6 +38,7 @@
 #= require angular-auth-http.service
 #= require sweetalert/dist/sweetalert.min
 #= require ngSweetAlert/SweetAlert
+#= require angular-table-sort.directive
 # load angular modules
 #= require ./admin/application.module.js
 #= require_tree ./admin/factories
