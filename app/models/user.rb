@@ -28,6 +28,15 @@ class User < ActiveRecord::Base
     super
   end
 
+  def send_password_reset
+    self.update_attribute :reset_password_token, encrypt(Time.now.to_s)
+    #begin
+    UserMailer.password_reset(self.id).deliver_now
+    #rescue Exception => e
+
+    #end
+  end
+
   private
 
   def validate_password?

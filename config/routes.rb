@@ -20,7 +20,9 @@ Rails.application.routes.draw do
       resources :terms_n_conditions_pages, only: [:index, :create, :update, :destroy, :show]
       resources :organizers, only: [:index, :create, :update, :destroy, :show]
       resources :cancelations_pages, only: [:index, :create, :update, :destroy, :show]
-      resources :email_sender, only: [] do
+      resources :password_resets, only: [:create, :update, :show, :edit]
+      resources :passwords, only: [:create]
+      resources :email_sender, only: [:index, :create] do
         collection do
           get :show
           put :update
@@ -45,7 +47,11 @@ Rails.application.routes.draw do
       end
     end
 
-    get '/app', to: 'pages#app'
+    resources :passwords, only: [:create]
+
+    resources :password_resets, only: [:create, :update, :show, :edit]
+
+    resources :email_sender, only: [:index, :create]
 
     resources :users, only: [:create] do
       collection do

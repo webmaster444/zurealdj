@@ -19,14 +19,15 @@ div version='true'
         .text-description
           | password
 
-    form.m-t role="form" novalidate=true ng-submit="submit()"
+    form.m-t role="form" novalidate=true ng-submit="submitForgotPassword()"
 
       .form-group
-        input.landing-input placeholder=("Email address") required="" type="email" /
+        input.landing-input placeholder=("Email address") type="email" ng-model="email"
 
       .hr-line-dashed
 
-      button.btn-submit type="submit"  Submit
+      button.btn-submit.ladda-button type="submit"  data-style="expand-left" ladda="formPending"
+       | Submit
 
       div.text-center style="margin-top: 15px"
         .text-description style="color: #8a8a8a"

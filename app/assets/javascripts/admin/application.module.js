@@ -309,6 +309,16 @@
                     templateUrl: 'admin/templates/email_sender/form.html',
                     controller: 'EmailSenderController'
                 })
+                .state('forgot_password',{
+                    url: '/forgot_password',
+                    templateUrl: 'admin/templates/passwords/new.html',
+                    controller: 'PasswordsController'
+                })
+                .state('restore_password',{
+                    url: '/restore_password',
+                    templateUrl: 'admin/templates/passwords/restore.html',
+                    controller: 'PasswordsController'
+                });
     }]);
 
     ZurealdjAdminApp.run(['$http', '$rootScope', 'AuthHttp', '$state', '$timeout', function($http, $rootScope, AuthHttp, $state, $timeout){

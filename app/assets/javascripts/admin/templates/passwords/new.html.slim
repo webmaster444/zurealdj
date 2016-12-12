@@ -1,0 +1,14 @@
+.row
+  .col-md-4.col-md-offset-4
+    form.login-logout-form.forgot-password-form.text-center novalidate=true ng-submit="submitForgotPassword()"
+      h3
+        p Forgot password
+        p.text-center.login-logout-text
+          | Enter your email address below to receive your password reset instructions. If you remember your password
+          a< href="#login" style="color: #aa322d; margin-top: 0; float: none;"
+            | sign in
+        label
+          | Email
+        input.form-control placeholder="Email" type="text" ng-model="email" name='email'
+        button.btn.ladda-button.btn-info type="submit" data-style="expand-left" ladda="formPending"
+          | Send

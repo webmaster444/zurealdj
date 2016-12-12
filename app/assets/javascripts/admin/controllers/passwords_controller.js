@@ -2,16 +2,12 @@
 
     "use strict";
 
-    angular.module('ZurealdjLandingApp')
+    angular.module('ZurealdjAdminApp')
         .controller('PasswordsController', ['$scope', '$state', 'ngDialog', '$stateParams', '$timeout', '$sce', 'PasswordsFactory',
             function ($scope, $state, ngDialog, $stateParams, $timeout, $sce, passwords) {
                 $scope.I18n = I18n;
                 $scope._ = _;
                 $scope.$state = $state;
-
-                $scope.isMobile = function(){
-                    return window.navigator.userAgent.match(/iPhone|iPad|iPod|Android|BlackBerry|Opera Mini|IEMobile/i)? true: false;
-                };
 
                 $scope.submitForgotPassword = function(){
                     $scope.submitted = true;

@@ -34,9 +34,14 @@
                   controller: 'SessionsController'
                 })
                 .state('forgot_password',{
-                  url: '/forgot_password',
-                  templateUrl: 'landing/templates/passwords/new.html',
-                  controller: 'PasswordsController'
+                    url: '/forgot_password',
+                    templateUrl: 'landing/templates/passwords/new.html',
+                    controller: 'PasswordsController'
+                })
+                .state('restore_password',{
+                    url: '/restore_password',
+                    templateUrl: 'landing/templates/passwords/restore.html',
+                    controller: 'PasswordsController'
                 })
                 .state('register',{
                   url: '/register',
