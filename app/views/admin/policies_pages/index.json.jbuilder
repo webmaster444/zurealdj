@@ -1,9 +1,6 @@
-json.policies_pages @policies_pages.each do |policies_page|
-  json.id policies_page.id
-  json.created_at time_ago_in_words(policies_page.created_at) + ' ' + t('datetime.ago') + ' ' + t('datetime.at') + ' ' + policies_page.created_at.strftime("%H:%M")
-  
-  json.content policies_page.content
-  
-  
+json.policies_pages Language.all.each do |flag|
+  article = PoliciesPage.where(country_flag_code: flag[:code]).first_or_create
+  json.country_code article.country_flag_code
+  json.country_title article.country_flag[:title]
+  json.content article.content
 end
-json.count @count

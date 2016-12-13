@@ -8,30 +8,18 @@
         .ibox-content
           .pull-left
             #crew_pages-pagination ng-hide="count < 11"
-          .pull-right
 
-            button.btn-xs.btn.btn-info ui-sref="new_crew_page"
-              | {{ I18n.t('crew_page.new') }}
-
-          table.table.table-striped.table-responsive
+          table.table.table-striped.table-responsive.bklv-table
             thead
               tr
                 th
-                  | Created At
+                  | {{ I18n.t('crew_page.fields.language') }}
                 th
-                  | Actions
             tbody
               tr ng-repeat="crew_page in crew_pages"
                 td
-                  | {{ crew_page.created_at }}
+                  span.flag class="{{ crew_page.country_code }}"
+                  | {{ crew_page.country_title }}
                 td.text-right
-
-                  a.btn-xs.btn.btn-info.btn-outline href="#crew_page/{{crew_page.id}}"
-                    | {{ I18n.t('actions.view') }}
-
-                  a.btn-xs.btn.btn-warning.btn-outline href="#crew_page/{{crew_page.id}}/edit"
+                  a.btn-xs.btn.btn-warning.btn-outline href="#crew_page/{{crew_page.country_code}}/edit"
                     | {{ I18n.t('actions.edit') }}
-
-
-                  a.btn-xs.btn.btn-danger.btn-outline ng-click="destroy(crew_page.id)"
-                    | {{ I18n.t('actions.delete') }}

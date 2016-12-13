@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161118144425) do
+ActiveRecord::Schema.define(version: 20161213150524) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -51,6 +51,7 @@ ActiveRecord::Schema.define(version: 20161118144425) do
     t.text     "content"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "country_flag_code"
   end
 
   create_table "djs", force: :cascade do |t|
@@ -123,20 +124,6 @@ ActiveRecord::Schema.define(version: 20161118144425) do
     t.datetime "updated_at"
   end
 
-  create_table "organizations", force: :cascade do |t|
-    t.string   "first_name"
-    t.string   "last_name"
-    t.string   "city"
-    t.string   "country_flag_code"
-    t.string   "address"
-    t.text     "about"
-    t.string   "instagram_link"
-    t.string   "facebook_link"
-    t.string   "soundcloud_link"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
   create_table "organizers", force: :cascade do |t|
     t.string   "first_name"
     t.string   "last_name"
@@ -155,6 +142,7 @@ ActiveRecord::Schema.define(version: 20161118144425) do
     t.text     "content"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "country_flag_code"
   end
 
   create_table "roles", force: :cascade do |t|
@@ -182,6 +170,7 @@ ActiveRecord::Schema.define(version: 20161118144425) do
     t.boolean "confirmed"
     t.string  "confirmation_token"
     t.integer "role_id"
+    t.string  "reset_password_token"
   end
 
   create_table "who_we_are_pages", force: :cascade do |t|

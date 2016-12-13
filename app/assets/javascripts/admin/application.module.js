@@ -224,16 +224,6 @@
                     templateUrl: 'admin/templates/who_we_are_pages/index.html',
                     controller: 'WhoWeArePagesController'
                 })
-                .state('new_crew_page',{
-                    url: '/crew_page/new',
-                    templateUrl: 'admin/templates/crew_pages/form.html',
-                    controller: 'CrewPagesController'
-                })
-                .state('show_crew_page',{
-                    url: '/crew_page/:id',
-                    templateUrl: 'admin/templates/crew_pages/show.html',
-                    controller: 'CrewPagesController'
-                })
                 .state('edit_crew_page',{
                     url: '/crew_page/:id/edit',
                     templateUrl: 'admin/templates/crew_pages/form.html',
@@ -263,16 +253,6 @@
                     url: '/how_we_work_pages',
                     templateUrl: 'admin/templates/how_we_work_pages/index.html',
                     controller: 'HowWeWorkPagesController'
-                })
-                .state('new_policies_page',{
-                    url: '/policies_page/new',
-                    templateUrl: 'admin/templates/policies_pages/form.html',
-                    controller: 'PoliciesPagesController'
-                })
-                .state('show_policies_page',{
-                    url: '/policies_page/:id',
-                    templateUrl: 'admin/templates/policies_pages/show.html',
-                    controller: 'PoliciesPagesController'
                 })
                 .state('edit_policies_page',{
                     url: '/policies_page/:id/edit',

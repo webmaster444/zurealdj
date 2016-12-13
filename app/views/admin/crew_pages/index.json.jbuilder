@@ -1,9 +1,6 @@
-json.crew_pages @crew_pages.each do |crew_page|
-  json.id crew_page.id
-  json.created_at time_ago_in_words(crew_page.created_at) + ' ' + t('datetime.ago') + ' ' + t('datetime.at') + ' ' + crew_page.created_at.strftime("%H:%M")
-  
-  json.content crew_page.content
-  
-  
+json.crew_pages Language.all.each do |flag|
+  article = CrewPage.where(country_flag_code: flag[:code]).first_or_create
+  json.country_code article.country_flag_code
+  json.country_title article.country_flag[:title]
+  json.content article.content
 end
-json.count @count

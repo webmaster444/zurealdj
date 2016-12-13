@@ -13,6 +13,9 @@
                     return $sce.trustAsHtml(html);
                 };
 
+                flags.all().success(function(data){
+                    $scope.flags = data.flags;
+                });
 
                 $scope.filters = {};
 
@@ -22,6 +25,7 @@
                     var timer = false;
                     $scope.$watch('filters', function(){
                         if(timer){
+                            $scope.page = 1;
                             $timeout.cancel(timer)
                         }
                         timer= $timeout(function(){
@@ -42,7 +46,7 @@
 
                             if($scope.count > 0){
                                 pagination.twbsPagination({
-                                    totalPages: Math.ceil($scope.count / 9),
+                                    totalPages: Math.ceil($scope.count / 10),
                                     startPage: $scope.page,
                                     visiblePages: 9,
                                     onPageClick: function (event, page) {
@@ -59,50 +63,20 @@
                     $scope.retrieveCrewPages();
                 }
 
-                $scope.destroy = function(id){
-                    var scope = $scope;
-                    SweetAlert.swal({
-                            title: "Are you sure?",
-                            text: "Your will not be able to recover this crew_page!",
-                            type: "warning",
-                            showCancelButton: true,
-                            confirmButtonColor: "#DD6B55",confirmButtonText: "Yes, delete it!",
-                            cancelButtonText: "No, cancel plx!",
-                            closeOnConfirm: true,
-                            closeOnCancel: true,
-                            allowOutsideClick: true },
-                        function(isConfirm){
-                            if (isConfirm) {
-                                crew_pages.destroy(id).success(function(){
-                                    $scope.retrieveCrewPages();
-                                });
-                            } else {
-
-                            }
-                        }
-                    );
-                };
-
-                if($state.current.name == 'new_crew_page' || $state.current.name == 'edit_crew_page'){
+                if($state.current.name == 'edit_crew_page'){
 
                     $scope.crew_page = {};
 
-
-                    if($state.current.name == 'edit_crew_page'){
-                        crew_pages.show($stateParams.id)
-                            .success(function(data){
+                    crew_pages.show($stateParams.id)
+                        .success(function(data){
                                 $timeout(function(){
                                     $scope.crew_page = data.crew_page;
                                 }, 0);
                             }
-                        )
-                    }
+                        );
 
-                    $scope.submitCrewPage = function(){
+                    $scope.save = function(){
                         $scope.submitted = true;
-                        if($scope.CrewPageForm.$invalid ){
-                            return false;
-                        }
 
                         $scope.formPending = true;
                         crew_pages.upsert($scope.crew_page)
@@ -126,3 +100,4 @@
             }])
 
 }());
+

@@ -6,33 +6,21 @@
             upsert: function(policies_page){
                 var fd = new FormData();
 
-                if(policies_page.content){
-                    fd.append('policies_page[content]', policies_page.content );
-                }
+                fd.append('policies_page[content]', policies_page.content || '');
+                fd.append('policies_page[language]', policies_page.language || '');
 
-                if(policies_page.id){
-                    return $http.put('/policies_pages/' + policies_page.id, fd, {
-                        transformRequest: angular.identity,
-                        headers: {'Content-Type': undefined}
-                    });
-                }else{
-                    return $http.post('/policies_pages', fd, {
-                        transformRequest: angular.identity,
-                        headers: {'Content-Type': undefined}
-                    });
-                }
+                return $http.put('/admin/policies_pages/' + policies_page.country_code, fd, {
+                    transformRequest: angular.identity,
+                    headers: {'Content-Type': undefined}
+                });
             },
 
             all: function(options){
-                return $http.get('/policies_pages.json?page=' + options.page);
+                return $http.get('/admin/policies_pages.json?page=' + options.page);
             },
 
             show: function(id){
-                return $http.get('/policies_pages/' + id + '.json');
-            },
-
-            destroy: function(id){
-                return $http.delete('/policies_pages/' + id)
+                return $http.get('/admin/policies_pages/' + id + '.json');
             }
         }
     }])

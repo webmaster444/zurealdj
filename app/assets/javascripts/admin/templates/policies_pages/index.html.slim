@@ -8,30 +8,22 @@
         .ibox-content
           .pull-left
             #policies_pages-pagination ng-hide="count < 11"
-          .pull-right
+          //.pull-right
 
-            button.btn-xs.btn.btn-info ui-sref="new_policies_page"
+            //button.btn-xs.btn.btn-info ui-sref="new_policies_page"
               | {{ I18n.t('policies_page.new') }}
 
-          table.table.table-striped.table-responsive
+          table.table.table-striped.table-responsive.bklv-table
             thead
               tr
                 th
-                  | Created At
+                  | {{ I18n.t('policies_page.fields.language') }}
                 th
-                  | Actions
             tbody
               tr ng-repeat="policies_page in policies_pages"
                 td
-                  | {{ policies_page.created_at }}
+                  span.flag class="{{ policies_page.country_code }}"
+                  | {{ policies_page.country_title }}
                 td.text-right
-
-                  a.btn-xs.btn.btn-info.btn-outline href="#policies_page/{{policies_page.id}}"
-                    | {{ I18n.t('actions.view') }}
-
-                  a.btn-xs.btn.btn-warning.btn-outline href="#policies_page/{{policies_page.id}}/edit"
+                  a.btn-xs.btn.btn-warning.btn-outline href="#policies_page/{{policies_page.country_code}}/edit"
                     | {{ I18n.t('actions.edit') }}
-
-
-                  a.btn-xs.btn.btn-danger.btn-outline ng-click="destroy(policies_page.id)"
-                    | {{ I18n.t('actions.delete') }}
