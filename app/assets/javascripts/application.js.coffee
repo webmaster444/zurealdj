@@ -4,11 +4,11 @@
 #= require bootstrap-sprockets
 #= require angular
 #= require angular-rails-templates
+#= require angular-resource
 #= require angular-ui-router
-#= require angular-ng-dialog
+#= require ng-dialog/js/ngDialog
 #= require angular-input-match
 #= require angular-email-available
-#= require angular-file-input
 #= require angular-redactor.directive
 #= require angular-images.directive
 #= require angular-image.directive
@@ -19,8 +19,8 @@
 #= require angular-range-slider
 #= require_tree ../../../vendor/assets/javascripts/redactor
 #= require twbs-pagination.js
+#= require angular-bootstrap/ui-bootstrap
 #= require angular-bootstrap/ui-bootstrap-tpls
-#= require selectize
 #= require angular-bootstrap-lightbox
 #= require metisMenu/jquery.metisMenu.js
 #= require pace/pace.min.js
@@ -29,22 +29,25 @@
 #= require inspinia.js
 #= require wow
 #= require scrollspy
-#= require icheck
 #= require spin
-#= require slick/slick
 #= require ladda
 #= require angular-ladda
 #= require angular-auth-http.service
 #= require sweetalert/dist/sweetalert.min
 #= require ngSweetAlert/SweetAlert
 #= require angular-table-sort.directive
-# load angular modules
 #= require ./landing/application.module.js
-#= require ./admin/application.module.js
-#= require_tree ./admin/factories
-#= require_tree ./admin/controllers
-#= require_tree ./admin/templates
-#= require_tree .
+#= require_tree ./landing/factories
+#= require_tree ./landing/controllers
+#= require_tree ./landing/templates
+#= require ./djs/application.module.js
+#= require_tree ./djs/factories
+#= require_tree ./djs/controllers
+#= require_tree ./djs/templates
+#= require ./organizers/application.module.js
+#= require_tree ./organizers/factories
+#= require_tree ./organizers/controllers
+#= require_tree ./organizers/templates
 
 $(document).ready ->
   $('#side-menu').slimScroll
@@ -53,7 +56,7 @@ $(document).ready ->
   resize = ->
     type = if (if window.navigator.userAgent.match(/iPhone|iPad|iPod|Android|BlackBerry|Opera Mini|IEMobile/i) then true else false) then 'mobile' else 'desktop'
     size = undefined
-    console.log 'func'
+
     orientation = 'portrait'
     if type == 'mobile'
       if window.screen.width < 768 or window.screen.height < 768

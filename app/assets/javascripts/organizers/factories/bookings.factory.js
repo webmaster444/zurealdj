@@ -1,6 +1,6 @@
 (function () {
     'use strict';
-    angular.module('ZurealdjApp').factory('BookingsFactory', ['AuthHttp', function($http){
+    angular.module('ZurealdjOrganizerApp').factory('BookingsFactory', ['AuthHttp', function($http){
         return {
 
             users: function(){

@@ -1,6 +1,6 @@
 (function () {
     'use strict';
-    angular.module('ZurealdjApp').factory('SessionsFactory', ['AuthHttp', function($http){
+    angular.module('ZurealdjDjApp').factory('SessionsFactory', ['AuthHttp', function($http){
         return {
             check: function(){
                 return $http.get('/sessions/check');

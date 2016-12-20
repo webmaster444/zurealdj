@@ -1,6 +1,6 @@
 (function () {
     'use strict';
-    angular.module('ZurealdjApp').factory('CountryFlagsFactory', ['$http', function($http){
+    angular.module('ZurealdjOrganizerApp').factory('CountryFlagsFactory', ['$http', function($http){
         return {
             all: function(){
                 var request = '/country_flags.json';

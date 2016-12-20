@@ -6,7 +6,6 @@
         'ngDialog',
         'validation.match',
         'validation.email',
-        'fileread',
         'ui.bootstrap',
         'bootstrapLightbox',
         'ui-rangeSlider',

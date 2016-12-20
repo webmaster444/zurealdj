@@ -2,7 +2,7 @@
 
     "use strict";
 
-    angular.module('ZurealdjApp')
+    angular.module('ZurealdjOrganizerApp')
         .controller('UsersController', ['$scope', '$state', 'ngDialog', '$stateParams', '$timeout', '$sce', 'UsersFactory',
         function ($scope, $state, ngDialog, $stateParams, $timeout, $sce, users) {
             $scope.I18n = I18n;

@@ -9,11 +9,11 @@ class PagesController < ApplicationController
     render layout: 'admin'
   end
 
-  def djs
+  def dj
     render layout: 'dj'
   end
 
-  def organizers
+  def organizer
     render layout: 'organizer'
   end
 end

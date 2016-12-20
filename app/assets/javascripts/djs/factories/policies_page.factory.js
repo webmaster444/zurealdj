@@ -1,6 +1,6 @@
 (function () {
     'use strict';
-    angular.module('ZurealdjApp').factory('PoliciesPagesFactory', ['AuthHttp', function($http){
+    angular.module('ZurealdjDjApp').factory('PoliciesPagesFactory', ['AuthHttp', function($http){
         return {
 
             upsert: function(policies_page){

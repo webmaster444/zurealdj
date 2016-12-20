@@ -2,7 +2,7 @@
 
     "use strict";
 
-    angular.module('ZurealdjApp')
+    angular.module('ZurealdjDjApp')
         .controller('CancelationsController', ['$scope', '$state', 'ngDialog', '$stateParams', '$timeout', '$sce', 'SweetAlert', 'CancelationsFactory', 'CountryFlagsFactory',
             function ($scope, $state, ngDialog, $stateParams, $timeout, $sce, SweetAlert, cancelations, flags) {
                 $scope.I18n = I18n;

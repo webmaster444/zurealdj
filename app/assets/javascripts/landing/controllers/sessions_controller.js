@@ -17,17 +17,13 @@
 
                     $scope.processing = true;
                     sessions.login($scope.session)
-                        .success(function(){
+                        .success(function(data){
                             $scope.processing = false;
-                            window.location = '/app'
+                            window.location = '/' + data.redirect_url;
                         })
                         .error(function(data){
                             $scope.processing = false;
                         })
-                };
-
-                $scope.isMobile = function(){
-                    return window.navigator.userAgent.match(/iPhone|iPad|iPod|Android|BlackBerry|Opera Mini|IEMobile/i)? true: false;
                 };
             }])
 }());

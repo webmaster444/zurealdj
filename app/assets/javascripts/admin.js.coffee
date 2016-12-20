@@ -5,10 +5,9 @@
 #= require angular
 #= require angular-rails-templates
 #= require angular-ui-router
-#= require angular-ng-dialog
+#= require ng-dialog/js/ngDialog
 #= require angular-input-match
 #= require angular-email-available
-#= require angular-file-input
 #= require angular-redactor.directive
 #= require angular-images.directive
 #= require angular-image.directive
@@ -21,7 +20,6 @@
 #= require_tree ../../../vendor/assets/javascripts/redactor
 #= require twbs-pagination.js
 #= require angular-bootstrap/ui-bootstrap-tpls
-#= require selectize
 #= require angular-bootstrap-lightbox
 #= require metisMenu/jquery.metisMenu.js
 #= require pace/pace.min.js
@@ -30,9 +28,7 @@
 #= require inspinia.js
 #= require wow
 #= require scrollspy
-#= require icheck
 #= require spin
-#= require slick/slick
 #= require ladda
 #= require angular-ladda
 #= require angular-auth-http.service

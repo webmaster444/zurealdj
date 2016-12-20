@@ -2,16 +2,17 @@
     "use strict";
     var ZurealdjLandingApp = angular.module('ZurealdjLandingApp', [
         'ui.router',
+        'ui.bootstrap',
         'templates',
         'ngDialog',
         'validation.match',
         'validation.email',
-        'fileread',
         'ui.bootstrap',
         'bootstrapLightbox',
         'formInput.images',
         'formInput.image',
         'toaster',
+        'angular-ladda',
         'AuthHttp'
     ]);
 
@@ -28,11 +29,7 @@
                   templateUrl: 'landing/templates/home/index.html',
                   controller: 'HomeController'
                 })
-                .state('login',{
-                  url: '/login',
-                  templateUrl: 'landing/templates/sessions/new.html',
-                  controller: 'SessionsController'
-                })
+
                 .state('forgot_password',{
                     url: '/forgot_password',
                     templateUrl: 'landing/templates/passwords/new.html',
@@ -43,11 +40,6 @@
                     templateUrl: 'landing/templates/passwords/restore.html',
                     controller: 'PasswordsController'
                 })
-                .state('register',{
-                  url: '/register',
-                  templateUrl: 'landing/templates/users/new.html',
-                  controller: 'UsersController'
-                });
     }]);
 
     ZurealdjLandingApp.run(['$http', '$rootScope', function($http, $rootScope){

@@ -1,8 +1,4 @@
 div version='true'
-  div.background-header ng-include="'landing/templates/common/header.html'" ng-hide="isMobile()"
-  a href="#" ng-hide="isMobile()"
-    div.page-gray
-
   div.login-alert
     a.btn-close href='#' ng-show='isMobile()'
     .text-center#welcome-to-zureal
@@ -14,7 +10,7 @@ div version='true'
       a.btn-white.btn-tab.btn-tab-right href="#register"
         | Sign up
 
-    form.m-t role="form" novalidate=true ng-submit="submitLoginCredentials()"
+    form.m-t role="form" novalidate=true
 
       .form-group
         input.landing-input placeholder="Email address" required="" type="email" ng-model="session.email"
@@ -26,7 +22,8 @@ div version='true'
           | {{ error }}
       .hr-line-dashed
 
-      input.btn-submit type="submit" value="Sign in"
+      a.btn-submit.ladda-button data-style="expand-left" ladda="processing" type="submit" ng-click="submitLoginCredentials()"
+        | Sign in
 
       .text-center style="margin: 15px auto"
         a.blue href=""

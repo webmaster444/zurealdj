@@ -1,6 +1,6 @@
 (function () {
     'use strict';
-    angular.module('ZurealdjApp').factory('GenresFactory', ['AuthHttp', function($http){
+    angular.module('ZurealdjOrganizerApp').factory('GenresFactory', ['AuthHttp', function($http){
         return {
 
             upsert: function(genres){

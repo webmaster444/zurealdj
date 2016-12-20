@@ -1,6 +1,6 @@
 (function () {
     'use strict';
-    angular.module('ZurealdjApp').factory('DjsFactory', ['AuthHttp', function($http){
+    angular.module('ZurealdjOrganizerApp').factory('DjsFactory', ['AuthHttp', function($http){
         return {
 
             upsert: function(djs){

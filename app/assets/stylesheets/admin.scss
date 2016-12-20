@@ -1,14 +1,10 @@
 //= require bootstrap_and_overrides
 //= require animate/animate.css
-//= require angular-ng-dialog
-//= require angular-ng-dialog-theme-default
+//= require ng-dialog/css/ngDialog
+//= require ng-dialog/css/ngDialog-theme-default
 //= require font-awesome
 //= require redactor/redactor
 //= require angular-range-slider
-//= require slick/slick.css
-//= require slick/slick-theme.css
-//= require selectize
-//= require selectize.default
 //= require angular-bootstrap-lightbox
 //= require country_select/css/msdropdown/dd
 //= require country_select/css/msdropdown/flags
@@ -17,7 +13,6 @@
 //= require toastr
 //= require ladda
 //= require sweetalert/dist/sweetalert
-//= require angular-bootstrap/ui-bootstrap-csp
 //= require admin_modules/search
 //= require admin_modules/table
 //= require_tree ./admin

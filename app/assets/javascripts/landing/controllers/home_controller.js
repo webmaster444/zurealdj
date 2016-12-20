@@ -15,8 +15,15 @@
                     }
                 }, 1000);
 
-                $scope.isMobile = function(){
-                    return window.navigator.userAgent.match(/iPhone|iPad|iPod|Android|BlackBerry|Opera Mini|IEMobile/i)? true: false;
+                $scope.openLoginDialog = function(){
+                    ngDialog.open({
+                        templateUrl: 'landing/templates/sessions/new.html',
+                        controller: 'SessionsController'
+                    });
                 };
+
+                $scope.openRegistrationDialog = function(){
+
+                }
             }])
 }());

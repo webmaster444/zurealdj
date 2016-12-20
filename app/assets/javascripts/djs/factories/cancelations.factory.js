@@ -1,6 +1,6 @@
 (function () {
     'use strict';
-    angular.module('ZurealdjApp').factory('CancelationsFactory', ['AuthHttp', function($http){
+    angular.module('ZurealdjDjApp').factory('CancelationsFactory', ['AuthHttp', function($http){
         return {
 
             upsert: function(cancelations){

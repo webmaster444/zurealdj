@@ -2,7 +2,7 @@
 
     "use strict";
 
-    angular.module('ZurealdjApp')
+    angular.module('ZurealdjOrganizerApp')
         .controller('OrganizationsController', ['$scope', '$state', 'ngDialog', '$stateParams', '$timeout', '$sce', 'SweetAlert', 'OrganizationsFactory', 'CountryFlagsFactory',
             function ($scope, $state, ngDialog, $stateParams, $timeout, $sce, SweetAlert, organizations, flags) {
                 $scope.I18n = I18n;

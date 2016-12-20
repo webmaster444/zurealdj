@@ -1,9 +1,6 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
-@import 'icheck/square/blue';
-@import 'icheck/square/green';
-
 .uib-datepicker-popup.dropdown-menu .btn-default {
   display: block;
   float: none;
@@ -56,4 +53,8 @@ ul, .nav-tabs {
 
 .pagination > li > a, .pagination > li > span {
   line-height: 1.92 !important;
+}
+
+.ngdialog.ngdialog-theme-default .ngdialog-content {
+  padding: 0 !important;
 }

@@ -1,7 +1,7 @@
 class Role < ActiveRecord::Base
   has_many :users
 
-  NAMES = [:admin, :user]
+  NAMES = [:admin, :dj, :organizer]
 
   class << self
     NAMES.each do |name_constant|

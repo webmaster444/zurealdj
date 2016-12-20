@@ -8,6 +8,7 @@ class SessionsController < ApplicationController
   end
 
   def create
+    sleep 1
     @user = User.find_by_email params[:email]
 
     if @user && !@user.confirmed?
@@ -16,7 +17,7 @@ class SessionsController < ApplicationController
 
     if @user && @user.authenticate(params[:password])
       sign_in @user
-      render json: { session_token: current_session.token}
+      render json: { session_token: current_session.token, redirect_url: current_user.role.name }
     else
       render json: { errors: ['Wrong email/password combination.'] }, status: :unprocessable_entity
     end

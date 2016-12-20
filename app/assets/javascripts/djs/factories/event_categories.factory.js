@@ -1,6 +1,6 @@
 (function () {
     'use strict';
-    angular.module('ZurealdjApp').factory('EventCategoriesFactory', ['AuthHttp', function($http){
+    angular.module('ZurealdjDjApp').factory('EventCategoriesFactory', ['AuthHttp', function($http){
         return {
 
             upsert: function(event_categories){
