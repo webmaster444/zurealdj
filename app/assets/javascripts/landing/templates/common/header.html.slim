@@ -10,10 +10,10 @@ div.page-head
           | Sign up
 
     .text-center ng-show="isMobile()"
-      a.head-link href="#login"
+      a.head-link ng-click="openLoginDialog()"
         span
           | Sign in
-      a.head-link href="#register" style="margin-right: 0"
+      a.head-link ng-click="openRegistrationDialog()" style="margin-right: 0"
         span
           | Sign up
 

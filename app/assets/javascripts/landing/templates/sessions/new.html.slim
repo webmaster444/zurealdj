@@ -1,13 +1,13 @@
-div version='true' device="desktop"
+div version='true'
   div.login-alert
-    a.btn-close href='#' ng-show='isMobile()'
+    a.btn-close href='#' ng-show='isMobile()' ng-click="$parent.ngDialogClose()"
     .text-center#welcome-to-zureal
       .h1-text
         | Welcome to ZUREAL
     .text-center.btn-tab
-      a.btn-white.btn-tab.btn-tab-left.btn-tab-light
+      a.btn-white.btn-tab.btn-tab-left
         | Sign in
-      a.btn-white.btn-tab.btn-tab-right ng-click="openRegistrationDialog()"
+      a.btn-white.btn-tab.btn-tab-right.btn-tab-light ng-click="openRegistrationDialog()"
         | Sign up
 
     form.m-t role="form" novalidate=true

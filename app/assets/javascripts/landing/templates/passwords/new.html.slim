@@ -1,7 +1,7 @@
-div version='true' device="desktop"
+div version='true'
 
   div.login-alert
-    a.btn-close href='#' ng-show='isMobile()'
+    a.btn-close href='#' ng-show='isMobile()' ng-click="$parent.ngDialogClose()"
 
     .text-center
       div style="margin-bottom: 30px"

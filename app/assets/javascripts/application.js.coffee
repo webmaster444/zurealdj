@@ -72,6 +72,7 @@ $(document).ready ->
     $('[version=\'true\']').attr 'orientation', orientation
     return
 
+  window.onresize = resize
   window.addEventListener 'resize', resize
   window.addEventListener 'hashchange', resize
 

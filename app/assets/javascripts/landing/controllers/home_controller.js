@@ -15,12 +15,26 @@
                     }
                 }, 1000);
 
+                $scope.isMobile = function(){
+                    return window.navigator.userAgent.match(/iPhone|iPad|iPod|Android|BlackBerry|Opera Mini|IEMobile/i)? true: false;
+                };
+
+                $scope.ngDialogClose = ngDialog.closeAll;
+
+                $scope.ngDialogParams = {
+                    width: $scope.isMobile()? 'auto' : 400,
+                    className: $scope.isMobile()? 'zdj-ngdialog': 'ngdialog-theme-default'
+                };
+
                 $scope.openLoginDialog = function(){
                     ngDialog.closeAll();
                     ngDialog.open({
                         templateUrl: 'landing/templates/sessions/new.html',
                         controller: 'SessionsController',
-                        scope: $scope
+                        scope: $scope,
+                        width: $scope.ngDialogParams.width,
+                        className: $scope.ngDialogParams.className,
+                        disableAnimation: true
                     });
                 };
 
@@ -29,7 +43,10 @@
                     ngDialog.open({
                         templateUrl: 'landing/templates/users/new.html',
                         controller: 'UsersController',
-                        scope: $scope
+                        scope: $scope,
+                        width: $scope.ngDialogParams.width,
+                        className: $scope.ngDialogParams.className,
+                        disableAnimation: true
                     });
                 };
 
@@ -38,7 +55,10 @@
                     ngDialog.open({
                         templateUrl: 'landing/templates/passwords/new.html',
                         controller: 'PasswordsController',
-                        scope: $scope
+                        scope: $scope,
+                        width: $scope.ngDialogParams.width,
+                        className: $scope.ngDialogParams.className,
+                        disableAnimation: true
                     });
                 };
 
@@ -48,6 +68,9 @@
                         templateUrl: 'landing/templates/passwords/restore.html',
                         controller: 'PasswordsController',
                         scope: $scope,
+                        width: $scope.ngDialogParams.width,
+                        className: $scope.ngDialogParams.className,
+                        disableAnimation: true,
                         preCloseCallback: function() {
                             $state.go('home');
                             return true;

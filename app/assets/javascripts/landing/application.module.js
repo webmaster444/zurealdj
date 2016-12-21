@@ -45,6 +45,15 @@
     ZurealdjLandingApp.run(['$http', '$rootScope', function($http, $rootScope){
         var csrf_token = $('meta[name="csrf-token"]').attr('content');
         $http.defaults.headers.common['X-CSRF-Token'] = csrf_token;
+
+        $rootScope.$on('ngDialog.opened', function (e) {
+            if (window.navigator.userAgent.match(/iPhone|iPad|iPod|Android|BlackBerry|Opera Mini|IEMobile/i)) {
+                $(".zdj-ngdialog").css({"background-color": "#fff", "margin": 0, "padding": 0});
+                $(".ngdialog-overlay").css({"display": "none"});
+            }
+            else $(".ngdialog-close").css({"display": "none"});
+            window.onresize();
+        });
     }]);
 
 }());
