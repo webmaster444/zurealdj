@@ -14,6 +14,7 @@ class User < ActiveRecord::Base
 
   validates :password, presence: true, confirmation: true, if: :validate_password?
   validates :password_confirmation, presence: true, if: :validate_password?
+  validates :role_id, presence: true
 
   Role::NAMES.each do |name_constant|
     define_method("#{name_constant}?") { self.role.try(:name) == name_constant.to_s }
@@ -46,7 +47,7 @@ class User < ActiveRecord::Base
   def send_confirmation_email
     return if self.confirmed
     self.update_attribute :confirmation_token, encrypt(self.email)
-    UserMailer.confirmation_instructions(self.id).deliver_later
+    UserMailer.email_confirmation(self.id).deliver_now
   end
 
   def downcase_email

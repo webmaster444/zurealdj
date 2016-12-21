@@ -16,14 +16,21 @@
                 }, 1000);
 
                 $scope.openLoginDialog = function(){
+                    ngDialog.closeAll();
                     ngDialog.open({
                         templateUrl: 'landing/templates/sessions/new.html',
-                        controller: 'SessionsController'
+                        controller: 'SessionsController',
+                        scope: $scope
                     });
                 };
 
                 $scope.openRegistrationDialog = function(){
-
+                    ngDialog.closeAll();
+                    ngDialog.open({
+                        templateUrl: 'landing/templates/users/new.html',
+                        controller: 'UsersController',
+                        scope: $scope
+                    });
                 }
             }])
 }());

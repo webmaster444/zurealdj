@@ -1,0 +1,10 @@
+html
+  head
+    meta content=('text/html; charset=UTF-8') http-equiv="Content-Type"
+  body
+    h1 Welcome to ZuRealDj.
+    p
+      | Code to confirm your email:
+      = @user.confirmation_token
+      |.
+    p Thanks for collaborating and have a great day!

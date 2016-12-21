@@ -7,7 +7,7 @@ div version='true'
       .h1-text
         | Welcome to ZUREAL
     .text-center.btn-tab
-      a.btn-white.btn-tab.btn-tab-left href="#login"
+      a.btn-white.btn-tab.btn-tab-left ng-click="openLoginDialog()"
         | Sign in
       a.btn-white.btn-tab.btn-tab-right.btn-tab-light
         | Sign up
@@ -16,21 +16,24 @@ div version='true'
       | How can we best represent you?
 
     div.text-center
-      .btn.btn-check.btn-orginizer style="margin-right: 40px"
-        .circle-white
-        span
-          | Orginizer
+      label
+        .btn.btn-check.btn-orginizer style="margin-right: 40px"
+          .circle-white
+          span
+            | Orginizer
+        input.hide type="radio" name="user_type" value="organizer" ng-model="user.user_type"
 
-      .btn.btn-check.btn-artist style="margin-left: 40px"
-        .circle-white
-        span
-          | Artist
+      label
+        .btn.btn-check.btn-artist style="margin-left: 40px"
+          .circle-white
+          span
+            | Artist
+        input.hide type="radio" name="user_type" value="dj" ng-model="user.user_type"
 
-
-    form.m-t role="form" novalidate=true ng-submit="submitLoginCredentials()"
+    form.m-t role="form" novalidate=true
 
       .form-group
-        input.landing-input placeholder="Full name" required=true type="text" ng-model="user.login" name="login"
+        input.landing-input placeholder="Full name" required=true type="text" ng-model="user.name" name="login"
 
       .form-group
         input.landing-input placeholder="Email" required=true ng-model="user.email" name="email" emailvalidate=true
@@ -40,7 +43,8 @@ div version='true'
 
       .hr-line-dashed
 
-      input.btn-submit type="submit" value="Create Account"
+      a.btn-submit.ladda-button data-style="expand-left" ladda="processing" ng-click="submit()"
+        | Create Account
 
       .text-center style="margin: 15px auto"
         a.blue href=""

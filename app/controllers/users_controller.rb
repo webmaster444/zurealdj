@@ -53,7 +53,10 @@ class UsersController < ApplicationController
   private
 
   def create_params
-    params.require(:user).permit(:email, :password, :password_confirmation, :login)
+    allowed_params = params.permit(:email, :password, :password_confirmation, :login)
+    allowed_params[:password_confirmation] = params[:password] if params[:password].present?
+    allowed_params[:role_id] = Role.send(params[:user_type]).id if %(dj organizer).include?(params[:user_type])
+    allowed_params
   end
 
   def update_params

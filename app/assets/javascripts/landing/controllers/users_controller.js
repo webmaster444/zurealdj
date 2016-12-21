@@ -3,15 +3,26 @@
     "use strict";
 
     angular.module('ZurealdjLandingApp')
-        .controller('UsersController', ['$scope', '$state', 'ngDialog', '$stateParams', '$timeout', '$sce',
-            'SessionsFactory',
-            function ($scope, $state, ngDialog, $stateParams, $timeout, $sce, users) {
+        .controller('UsersController', ['$scope', '$state', 'ngDialog', 'UsersFactory', 'SweetAlert',
+            function ($scope, $state, ngDialog, users, SweetAlert) {
                 $scope.I18n = I18n;
                 $scope._ = _;
                 $scope.$state = $state;
 
-                $scope.isMobile = function(){
-                    return window.navigator.userAgent.match(/iPhone|iPad|iPod|Android|BlackBerry|Opera Mini|IEMobile/i)? true: false;
-                };
+                $scope.submit = function(){
+                    $scope.processing = true;
+                    users.create($scope.user)
+                        .success(function(data){
+                            $scope.processing = false;
+                            ngDialog.closeAll();
+
+                            SweetAlert.swal("Good job!", data.message, "success");
+
+                        })
+                        .error(function(){
+
+                            $scope.processing = false;
+                        })
+                }
             }])
 }());

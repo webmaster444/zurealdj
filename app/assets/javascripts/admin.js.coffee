@@ -32,8 +32,8 @@
 #= require ladda
 #= require angular-ladda
 #= require angular-auth-http.service
-#= require sweetalert/dist/sweetalert.min
-#= require ngSweetAlert/SweetAlert
+#= require sweetalert/lib/sweet-alert
+#= require angular-sweetalert/SweetAlert
 #= require angular-table-sort.directive
 # load angular modules
 #= require ./admin/application.module.js

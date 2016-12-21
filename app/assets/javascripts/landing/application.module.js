@@ -13,7 +13,8 @@
         'formInput.image',
         'toaster',
         'angular-ladda',
-        'AuthHttp'
+        'AuthHttp',
+        'oitozero.ngSweetAlert'
     ]);
 
     ZurealdjLandingApp.config(['$urlRouterProvider', '$stateProvider', '$httpProvider',
@@ -29,7 +30,6 @@
                   templateUrl: 'landing/templates/home/index.html',
                   controller: 'HomeController'
                 })
-
                 .state('forgot_password',{
                     url: '/forgot_password',
                     templateUrl: 'landing/templates/passwords/new.html',
