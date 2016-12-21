@@ -8,7 +8,7 @@ class UsersController < ApplicationController
     if @user.save
       render json: { message: "Thank you for registering. Please check your email for a confirmation request with a link that will confirm your account. Once you click the link, your registration will be complete."}
     else
-      render json: { errors: @user.errors.full_messages }, status: :unprocessable_entity
+      render json: { validation_errors: @user.errors }, status: :unprocessable_entity
     end
   end
 
@@ -43,7 +43,7 @@ class UsersController < ApplicationController
       @user.update_attributes confirmation_token: nil, confirmed: true
       sign_in @user
       flash[:message] = 'Email confirmed successfully !'
-      redirect_to app_path
+      redirect_to self.send("#{ @user.role.name }_path")
     else
       flash[:error] = 'Wrong confirmation token !'
       redirect_to root_path
@@ -53,9 +53,9 @@ class UsersController < ApplicationController
   private
 
   def create_params
-    allowed_params = params.permit(:email, :password, :password_confirmation, :login)
+    allowed_params = params.permit(:name, :email, :password, :password_confirmation, :login)
     allowed_params[:password_confirmation] = params[:password] if params[:password].present?
-    allowed_params[:role_id] = Role.send(params[:user_type]).id if %(dj organizer).include?(params[:user_type])
+    allowed_params[:role_id] = Role.send(params[:user_type]).id if params[:user_type].present? && %(dj organizer).include?(params[:user_type])
     allowed_params
   end
 

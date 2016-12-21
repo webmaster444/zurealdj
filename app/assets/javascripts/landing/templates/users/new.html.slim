@@ -16,6 +16,8 @@ div version='true'
       | How can we best represent you?
 
     div.text-center
+      .error ng-repeat="error in validation_errors.role_id"
+        | {{ error }}
       label
         .btn.btn-check.btn-orginizer style="margin-right: 40px"
           .circle-white
@@ -33,12 +35,18 @@ div version='true'
     form.m-t role="form" novalidate=true
 
       .form-group
+        .error ng-repeat="error in validation_errors.name"
+          | {{ error }}
         input.landing-input placeholder="Full name" required=true type="text" ng-model="user.name" name="login"
 
       .form-group
-        input.landing-input placeholder="Email" required=true ng-model="user.email" name="email" emailvalidate=true
+        .error ng-repeat="error in validation_errors.email"
+          | {{ error }}
+        input.landing-input placeholder="Email" required=true ng-model="user.email" name="email"
 
       .form-group
+        .error ng-repeat="error in validation_errors.password"
+          | {{ error }}
         input.landing-input placeholder="Password" required=true type="password" ng-model="user.password" name="password"
 
       .hr-line-dashed

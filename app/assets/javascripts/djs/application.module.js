@@ -28,7 +28,7 @@
             $stateProvider.state('home',{
                   url: '',
                   templateUrl: 'djs/templates/home/index.html',
-                  controller: 'HomeController'
+                  controller: 'DashboardController'
                 })
                 .state('profile',{
                     url: '/profile',

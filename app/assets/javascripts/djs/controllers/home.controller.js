@@ -22,8 +22,6 @@
                 $scope.checkSession();
             }
 
-            $scope.$state = $state;
-
             $scope.logout = function(){
                 session.logout().success(function(){
                     window.location = '/'
