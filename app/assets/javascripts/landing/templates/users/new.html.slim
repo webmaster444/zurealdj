@@ -19,14 +19,14 @@ div version='true'
       .error ng-repeat="error in validation_errors.role_id"
         | {{ error }}
       label
-        .btn.btn-check.btn-orginizer style="margin-right: 40px"
+        .btn.btn-check class="btn-orginizer{{ user.user_type == 'organizer'? '-active': '-passive' }}" style="margin-right: 40px"
           .circle-white
           span
             | Orginizer
         input.hide type="radio" name="user_type" value="organizer" ng-model="user.user_type"
 
       label
-        .btn.btn-check.btn-artist style="margin-left: 40px"
+        .btn.btn-check class="btn-artist{{ user.user_type == 'dj'? '-active': '-passive' }}" style="margin-left: 40px"
           .circle-white
           span
             | Artist

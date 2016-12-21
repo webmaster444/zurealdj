@@ -202,8 +202,6 @@
     text-align: center
     color: #c6bfc7
     line-height: 1.5
-    &:hover, &:active
-      color: $current-color
     .circle-white
       background-repeat: no-repeat
       object-fit: cover
@@ -211,21 +209,23 @@
       background-position: center
       border: solid 1px #f5f5f5
 
-  .btn-orginizer
+  .btn-orginizer-passive
     .circle-white
       background-image: url(/images/icons/ic-organ-passive.png)
 
-    &:hover, &:active
-      .circle-white
-        background-image: url(/images/icons/ic-organ-active.png)
+  .btn-orginizer-active
+    color: $current-color
+    .circle-white
+      background-image: url(/images/icons/ic-organ-active.png)
 
-  .btn-artist
+  .btn-artist-passive
     .circle-white
       background-image: url(/images/icons/ic-artist-passive.png)
 
-    &:hover, &:active
-      .circle-white
-        background-image: url(/images/icons/ic-artist-active.png)
+  .btn-artist-active
+    color: $current-color
+    .circle-white
+      background-image: url(/images/icons/ic-artist-active.png)
 
   .btn-close
     background-image: url(/images/icons/ic-close-grey@2x.png)
