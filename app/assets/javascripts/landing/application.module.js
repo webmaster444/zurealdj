@@ -36,9 +36,9 @@
                     controller: 'PasswordsController'
                 })
                 .state('restore_password',{
-                    url: '/restore_password',
-                    templateUrl: 'landing/templates/passwords/restore.html',
-                    controller: 'PasswordsController'
+                    url: '/restore_password/:token',
+                    templateUrl: 'landing/templates/home/index.html',
+                    controller: 'HomeController'
                 })
     }]);
 

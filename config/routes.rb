@@ -51,7 +51,7 @@ Rails.application.routes.draw do
 
     resources :passwords, only: [:create]
 
-    resources :password_resets, only: [:create, :update, :show, :edit]
+    resources :password_resets, only: [:create, :update, :show]
 
     resources :email_sender, only: [:index, :create]
 

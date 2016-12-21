@@ -1,4 +1,4 @@
-div version='true'
+div version='true' device="desktop"
 
   div.login-alert
     a.btn-close href='#' ng-show='isMobile()'
@@ -23,10 +23,10 @@ div version='true'
       .hr-line-dashed
 
       button.btn-submit.ladda-button type="submit"  data-style="expand-left" ladda="formPending"
-       | Submit
+        | Submit
 
       div.text-center style="margin-top: 15px"
         .text-description style="color: #8a8a8a"
           | Remember your credentials?
-          a.text-description.current-color href="#login"
+          a.text-description.current-color ng-click="openLoginDialog()"
             |  Log in

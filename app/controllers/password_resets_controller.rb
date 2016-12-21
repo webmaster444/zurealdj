@@ -31,19 +31,7 @@ class PasswordResetsController < ApplicationController
     @user = User.find_by_reset_password_token params[:id]
 
     if @user
-      path = @user.admin? ? edit_admin_password_reset_path: edit_password_reset_path
-      redirect_to path + '#restore_password', id: params[:id]
-    else
-      flash[:error] = 'User with given token not found.'
-      redirect_to root_path
-    end
-  end
-
-  def edit
-    @user = User.find_by_reset_password_token params[:id]
-
-    if @user
-
+      redirect_to root_path + '#/restore_password/' + params[:id]
     else
       flash[:error] = 'User with given token not found.'
       redirect_to root_path

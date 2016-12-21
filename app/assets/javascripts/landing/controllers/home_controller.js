@@ -31,6 +31,32 @@
                         controller: 'UsersController',
                         scope: $scope
                     });
+                };
+
+                $scope.openForgotPasswordDialog = function(){
+                    ngDialog.closeAll();
+                    ngDialog.open({
+                        templateUrl: 'landing/templates/passwords/new.html',
+                        controller: 'PasswordsController',
+                        scope: $scope
+                    });
+                };
+
+                $scope.openRestorePasswordDialog = function(){
+                    ngDialog.closeAll();
+                    ngDialog.open({
+                        templateUrl: 'landing/templates/passwords/restore.html',
+                        controller: 'PasswordsController',
+                        scope: $scope,
+                        preCloseCallback: function() {
+                            $state.go('home');
+                            return true;
+                        }
+                    });
+                };
+
+                if($state.current.name == 'restore_password'){
+                    $scope.openRestorePasswordDialog();
                 }
             }])
 }());

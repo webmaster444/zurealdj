@@ -1,4 +1,4 @@
-div version='true'
+div version='true' device="desktop"
   div.login-alert
     a.btn-close href='#' ng-show='isMobile()'
     .text-center#welcome-to-zureal
@@ -32,5 +32,5 @@ div version='true'
       .hr-line-dashed
 
       .text-center style="margin: 15px auto"
-        a.current-color href="#forgot_password"
+        a.current-color ng-click="openForgotPasswordDialog()"
           | Forgot password?

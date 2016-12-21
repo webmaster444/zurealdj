@@ -20,7 +20,8 @@
                     passwords.forgot($scope.email)
                         .success(function(data){
                             $scope.formPending = false;
-                            $state.go('login');
+                            ngDialog.closeAll();
+                            SweetAlert.swal("Good job!", data.message, "success");
                         })
                         .error(function(data){
                             $scope.formPending = false;
@@ -31,10 +32,10 @@
                     $scope.submitted = true;
 
                     $scope.formPending = true;
-                    passwords.reset($scope.password, $scope.password_confirmation)
+                    passwords.reset($scope.password, $scope.password_confirmation, $stateParams.token)
                         .success(function(data){
                             $scope.formPending = false;
-                            $state.go('login');
+                            $state.go('home');
                         })
                         .error(function(data){
                             $scope.formPending = false;
