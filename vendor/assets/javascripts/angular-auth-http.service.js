@@ -7,6 +7,9 @@ angular.module('AuthHttp').service('AuthHttp', ['$http', 'toaster', function($ht
     var defaults = {
         unauthorizedAction: function(){
             window.location = '/';
+        },
+        notFinishedProfileAction: function(){
+
         }
     };
 
@@ -39,6 +42,9 @@ angular.module('AuthHttp').service('AuthHttp', ['$http', 'toaster', function($ht
                     }
                     if (status == 401) {
                         defaults.unauthorizedAction();
+                    }
+                    if (status == 405) {
+                        defaults.notFinishedProfileAction(data);
                     }
                     self.callbacks.error(data, status, headers, config);
                 };

@@ -168,11 +168,6 @@
                     templateUrl: 'admin/templates/event_categories/form.html',
                     controller: 'EventCategoriesController'
                 })
-                .state('show_event_category',{
-                    url: '/event_category/:id',
-                    templateUrl: 'admin/templates/event_categories/show.html',
-                    controller: 'EventCategoriesController'
-                })
                 .state('edit_event_category',{
                     url: '/event_category/:id/edit',
                     templateUrl: 'admin/templates/event_categories/form.html',

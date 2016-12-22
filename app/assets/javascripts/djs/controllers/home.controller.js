@@ -18,9 +18,8 @@
                             $scope.current_user = false;
                         });
             };
-            if($state.current.name != 'login'){
-                $scope.checkSession();
-            }
+
+            $scope.checkSession();
 
             $scope.logout = function(){
                 session.logout().success(function(){

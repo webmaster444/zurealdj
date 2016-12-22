@@ -55,13 +55,7 @@
                 td
                   | {{ event_category.created_at }}
                 td.text-right
-
-                  a.btn-xs.btn.btn-info.btn-outline href="#event_categories/{{event_categories.id}}"
-                    | {{ I18n.t('actions.view') }}
-
-                  a.btn-xs.btn.btn-warning.btn-outline href="#event_categories/{{event_categories.id}}/edit"
+                  a.btn-xs.btn.btn-warning.btn-outline href="#event_category/{{event_category.id}}/edit"
                     | {{ I18n.t('actions.edit') }}
-
-
-                  a.btn-xs.btn.btn-danger.btn-outline ng-click="destroy(event_categories.id)"
+                  a.btn-xs.btn.btn-danger.btn-outline ng-click="destroy(event_category.id)"
                     | {{ I18n.t('actions.delete') }}

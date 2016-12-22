@@ -23,10 +23,11 @@
 
             $httpProvider.defaults.headers.common['X-Requested-With'] = 'AngularXMLHttpRequest';
 
-            $urlRouterProvider.otherwise('home');
+            $urlRouterProvider.otherwise('/');
 
-            $stateProvider.state('home',{
-                  url: '',
+            $stateProvider
+                .state('home',{
+                  url: '/',
                   templateUrl: 'djs/templates/home/index.html',
                   controller: 'DashboardController'
                 })
@@ -35,7 +36,18 @@
                     templateUrl: 'djs/templates/users/edit.html',
                     controller: 'UsersController'
                 })
-            // generated routes:
+
+                .state('step_event_types',{
+                    url: '/event_types_step',
+                    templateUrl: 'djs/templates/steps/event_types.html',
+                    controller: 'StepEventTypesController'
+                })
+                .state('step_genres',{
+                    url: '/genres_step',
+                    templateUrl: 'djs/templates/steps/genres.html',
+                    controller: 'StepGenresController'
+                })
+
                 .state('new_organization',{
                     url: '/organization/new',
                     templateUrl: 'djs/templates/organizations/form.html',
@@ -55,26 +67,6 @@
                     url: '/organizations',
                     templateUrl: 'djs/templates/organizations/index.html',
                     controller: 'OrganizationsController'
-                })
-                .state('new_dj',{
-                    url: '/dj/new',
-                    templateUrl: 'djs/templates/djs/form.html',
-                    controller: 'DjsController'
-                })
-                .state('show_dj',{
-                    url: '/dj/:id',
-                    templateUrl: 'djs/templates/djs/show.html',
-                    controller: 'DjsController'
-                })
-                .state('edit_dj',{
-                    url: '/dj/:id/edit',
-                    templateUrl: 'djs/templates/djs/form.html',
-                    controller: 'DjsController'
-                })
-                .state('djs',{
-                    url: '/djs',
-                    templateUrl: 'djs/templates/djs/index.html',
-                    controller: 'DjsController'
                 })
                 .state('new_booking',{
                     url: '/booking/new',
@@ -196,106 +188,6 @@
                     templateUrl: 'djs/templates/equipments/index.html',
                     controller: 'EquipmentsController'
                 })
-                .state('new_who_we_are_page',{
-                    url: '/who_we_are_page/new',
-                    templateUrl: 'djs/templates/who_we_are_pages/form.html',
-                    controller: 'WhoWeArePagesController'
-                })
-                .state('show_who_we_are_page',{
-                    url: '/who_we_are_page/:id',
-                    templateUrl: 'djs/templates/who_we_are_pages/show.html',
-                    controller: 'WhoWeArePagesController'
-                })
-                .state('edit_who_we_are_page',{
-                    url: '/who_we_are_page/:id/edit',
-                    templateUrl: 'djs/templates/who_we_are_pages/form.html',
-                    controller: 'WhoWeArePagesController'
-                })
-                .state('who_we_are_pages',{
-                    url: '/who_we_are_pages',
-                    templateUrl: 'djs/templates/who_we_are_pages/index.html',
-                    controller: 'WhoWeArePagesController'
-                })
-                .state('new_crew_page',{
-                    url: '/crew_page/new',
-                    templateUrl: 'djs/templates/crew_pages/form.html',
-                    controller: 'CrewPagesController'
-                })
-                .state('show_crew_page',{
-                    url: '/crew_page/:id',
-                    templateUrl: 'djs/templates/crew_pages/show.html',
-                    controller: 'CrewPagesController'
-                })
-                .state('edit_crew_page',{
-                    url: '/crew_page/:id/edit',
-                    templateUrl: 'djs/templates/crew_pages/form.html',
-                    controller: 'CrewPagesController'
-                })
-                .state('crew_pages',{
-                    url: '/crew_pages',
-                    templateUrl: 'djs/templates/crew_pages/index.html',
-                    controller: 'CrewPagesController'
-                })
-                .state('new_how_we_work_page',{
-                    url: '/how_we_work_page/new',
-                    templateUrl: 'djs/templates/how_we_work_pages/form.html',
-                    controller: 'HowWeWorkPagesController'
-                })
-                .state('show_how_we_work_page',{
-                    url: '/how_we_work_page/:id',
-                    templateUrl: 'djs/templates/how_we_work_pages/show.html',
-                    controller: 'HowWeWorkPagesController'
-                })
-                .state('edit_how_we_work_page',{
-                    url: '/how_we_work_page/:id/edit',
-                    templateUrl: 'djs/templates/how_we_work_pages/form.html',
-                    controller: 'HowWeWorkPagesController'
-                })
-                .state('how_we_work_pages',{
-                    url: '/how_we_work_pages',
-                    templateUrl: 'djs/templates/how_we_work_pages/index.html',
-                    controller: 'HowWeWorkPagesController'
-                })
-                .state('new_policies_page',{
-                    url: '/policies_page/new',
-                    templateUrl: 'djs/templates/policies_pages/form.html',
-                    controller: 'PoliciesPagesController'
-                })
-                .state('show_policies_page',{
-                    url: '/policies_page/:id',
-                    templateUrl: 'djs/templates/policies_pages/show.html',
-                    controller: 'PoliciesPagesController'
-                })
-                .state('edit_policies_page',{
-                    url: '/policies_page/:id/edit',
-                    templateUrl: 'djs/templates/policies_pages/form.html',
-                    controller: 'PoliciesPagesController'
-                })
-                .state('policies_pages',{
-                    url: '/policies_pages',
-                    templateUrl: 'djs/templates/policies_pages/index.html',
-                    controller: 'PoliciesPagesController'
-                })
-                .state('new_terms_n_conditions_page',{
-                    url: '/terms_n_conditions_page/new',
-                    templateUrl: 'djs/templates/terms_n_conditions_pages/form.html',
-                    controller: 'TermsNConditionsPagesController'
-                })
-                .state('show_terms_n_conditions_page',{
-                    url: '/terms_n_conditions_page/:id',
-                    templateUrl: 'djs/templates/terms_n_conditions_pages/show.html',
-                    controller: 'TermsNConditionsPagesController'
-                })
-                .state('edit_terms_n_conditions_page',{
-                    url: '/terms_n_conditions_page/:id/edit',
-                    templateUrl: 'djs/templates/terms_n_conditions_pages/form.html',
-                    controller: 'TermsNConditionsPagesController'
-                })
-                .state('terms_n_conditions_pages',{
-                    url: '/terms_n_conditions_pages',
-                    templateUrl: 'djs/templates/terms_n_conditions_pages/index.html',
-                    controller: 'TermsNConditionsPagesController'
-                })
                 .state('new_cancelations_page',{
                     url: '/cancelations_page/new',
                     templateUrl: 'djs/templates/cancelations_pages/form.html',
@@ -318,9 +210,13 @@
                 })
     }]);
 
-    ZurealdjDjApp.run(['$http', '$rootScope', function($http, $rootScope){
+    ZurealdjDjApp.run(['$http', '$rootScope', 'AuthHttp', '$state', function($http, $rootScope, AuthHttp, $state){
         var csrf_token = $('meta[name="csrf-token"]').attr('content');
         $http.defaults.headers.common['X-CSRF-Token'] = csrf_token;
+
+        AuthHttp.setDefaults('notFinishedProfileAction', function(response){
+            $state.go('step_' + response.step);
+        })
     }]);
 
 }());

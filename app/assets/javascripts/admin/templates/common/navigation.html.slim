@@ -30,10 +30,6 @@ nav.navbar-default.navbar-static-side.ng-scope role="navigation"
           a href="#cancelations"
             i.fa.fa-car
             span.nav-label.ng-binding CANCELATION
-        li ng-class=("{active: $state.current.name.includes('event_categorie')}")
-          a href="#event_categories"
-            i.fa.fa-car
-            span.nav-label.ng-binding EVENT CATEGORY
         li ng-class=("{active: $state.current.name.includes('equipment')}")
           a href="#equipments"
             i.fa.fa-car
@@ -63,6 +59,17 @@ nav.navbar-default.navbar-static-side.ng-scope role="navigation"
             i.fa.fa-car
             span.nav-label.ng-binding
               | {{ I18n.t('headers.cancelations_pages') }}
+
+        li ng-class=("{active: [event_categories].includes($state.current.name) }")
+          a href="#"
+            i.fa.fa-file-text-o
+            span.nav-label.ng-binding Content
+            span.fa.arrow
+          ul.nav.nav-second-level.collapse ng-class=("{in: [event_categories].includes($state.current.name) }")
+            li.active ui-sref-active="active"
+              a.ng-binding href="#event_categories"
+                | Event types
+
         li ng-class=("{active: $state.current.name.includes('config_pag')}")
           a href="#"
             i.fa.fa-gear

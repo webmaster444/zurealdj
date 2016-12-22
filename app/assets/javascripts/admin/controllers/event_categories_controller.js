@@ -119,13 +119,6 @@
                             })
                     };
                 }
-
-                if($state.current.name == 'show_event_category'){
-                    event_categories.show($stateParams.id).success(function(data){
-                        $scope.event_category = data.event_category;
-
-                    });
-                }
             }])
 
 }());

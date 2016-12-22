@@ -1,5 +1,6 @@
 class User < ActiveRecord::Base
   has_many :sessions, dependent: :destroy
+  has_and_belongs_to_many :event_categories
 
   has_attached_file :avatar, styles: { medium: '300x300>', thumb: '100x100>' }, default_url: '/images/missing_picture.png'
 
@@ -19,6 +20,12 @@ class User < ActiveRecord::Base
   validates :role_id, presence: true
 
   validates_attachment_content_type :avatar, content_type: /\Aimage\/.*\Z/
+
+  enum step: {
+      event_types: 1,
+      genres: 2,
+      completed: 3
+  }
 
   Role::NAMES.each do |name_constant|
     define_method("#{name_constant}?") { self.role.try(:name) == name_constant.to_s }

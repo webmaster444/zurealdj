@@ -32,6 +32,20 @@ Rails.application.routes.draw do
       end
     end
 
+    namespace :dj do
+      resources :sessions, only: [] do
+        collection do
+          get :check
+        end
+      end
+      resources :event_categories, only: [:index]
+      resources :users, only: [] do
+        collection do
+          post :event_types
+        end
+      end
+    end
+
     resources :attachments, only: [] do
       collection do
         post '/:entity_type', to: 'attachments#create'
