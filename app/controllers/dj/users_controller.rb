@@ -19,6 +19,10 @@ class Dj::UsersController < Dj::BaseController
     render json: { step: @user.step }
   end
 
+  def profile
+    @user = current_user
+  end
+
   private
 
   def step_params

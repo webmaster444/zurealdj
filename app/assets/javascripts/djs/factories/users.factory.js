@@ -30,6 +30,12 @@
                 })
             },
 
+            submit_personal_url: function(user){
+                return $http.post('/dj/users/step', {
+                    personal_url: user.personal_url
+                })
+            },
+
             step_back: function(){
                 return $http.post('/dj/users/step_back')
             }

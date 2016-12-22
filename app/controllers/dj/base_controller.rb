@@ -13,6 +13,6 @@ class Dj::BaseController < ApplicationController
     render json:{
         errors: ['Profile not finished.'],
         step: current_user.step
-    }, status: 405 and return if current_user.step != 'finished'
+    }, status: 405 and return if current_user.step != 'completed'
   end
 end

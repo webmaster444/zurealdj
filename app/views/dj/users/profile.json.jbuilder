@@ -1,0 +1,1 @@
+json.personal_url @user.personal_url

@@ -54,8 +54,8 @@
                 })
                 .state('step_personal_url',{
                     url: '/personal_url_step',
-                    templateUrl: 'djs/templates/steps/equipments.html',
-                    controller: 'StepEquipmentsController'
+                    templateUrl: 'djs/templates/steps/personal_url.html',
+                    controller: 'StepPersonalUrlController'
                 })
 
                 .state('new_organization',{

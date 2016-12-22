@@ -33,6 +33,7 @@ Rails.application.routes.draw do
     end
 
     namespace :dj do
+      get :profile, to: "users#profile"
       resources :sessions, only: [] do
         collection do
           get :check
