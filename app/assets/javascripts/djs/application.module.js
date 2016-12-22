@@ -47,6 +47,11 @@
                     templateUrl: 'djs/templates/steps/genres.html',
                     controller: 'StepGenresController'
                 })
+                .state('step_equipments',{
+                    url: '/equipments_step',
+                    templateUrl: 'djs/templates/steps/equipments.html',
+                    controller: 'StepEquipmentsController'
+                })
 
                 .state('new_organization',{
                     url: '/organization/new',
@@ -107,26 +112,6 @@
                     url: '/events',
                     templateUrl: 'djs/templates/events/index.html',
                     controller: 'EventsController'
-                })
-                .state('new_genre',{
-                    url: '/genre/new',
-                    templateUrl: 'djs/templates/genres/form.html',
-                    controller: 'GenresController'
-                })
-                .state('show_genre',{
-                    url: '/genre/:id',
-                    templateUrl: 'djs/templates/genres/show.html',
-                    controller: 'GenresController'
-                })
-                .state('edit_genre',{
-                    url: '/genre/:id/edit',
-                    templateUrl: 'djs/templates/genres/form.html',
-                    controller: 'GenresController'
-                })
-                .state('genres',{
-                    url: '/genres',
-                    templateUrl: 'djs/templates/genres/index.html',
-                    controller: 'GenresController'
                 })
                 .state('new_cancelation',{
                     url: '/cancelation/new',

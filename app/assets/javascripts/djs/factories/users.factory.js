@@ -12,6 +12,14 @@
                 return $http.post('/dj/users/event_types', {
                     event_category_ids: event_types
                 })
+            },
+
+            submit_genres: function(genres){
+                genres = _.select(genres, function(i){ return i.selected });
+                genres = _.map(genres, function(i){ return i.id });
+                return $http.post('/dj/users/genres', {
+                    genre_ids: genres
+                })
             }
         }
     }])

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161222153234) do
+ActiveRecord::Schema.define(version: 20161222193827) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -99,6 +99,13 @@ ActiveRecord::Schema.define(version: 20161222153234) do
     t.datetime "updated_at"
   end
 
+  create_table "event_categories_users", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "event_category_id"
+    t.index ["event_category_id"], name: "index_event_categories_users_on_event_category_id", using: :btree
+    t.index ["user_id"], name: "index_event_categories_users_on_user_id", using: :btree
+  end
+
   create_table "events", force: :cascade do |t|
     t.string   "title"
     t.string   "city"
@@ -116,6 +123,13 @@ ActiveRecord::Schema.define(version: 20161222153234) do
     t.string   "title"
     t.datetime "created_at"
     t.datetime "updated_at"
+  end
+
+  create_table "genres_users", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "genre_id"
+    t.index ["genre_id"], name: "index_genres_users_on_genre_id", using: :btree
+    t.index ["user_id"], name: "index_genres_users_on_user_id", using: :btree
   end
 
   create_table "how_we_work_pages", force: :cascade do |t|
@@ -178,6 +192,7 @@ ActiveRecord::Schema.define(version: 20161222153234) do
     t.string   "avatar_content_type"
     t.integer  "avatar_file_size"
     t.datetime "avatar_updated_at"
+    t.integer  "step",                 default: 1
   end
 
   create_table "who_we_are_pages", force: :cascade do |t|

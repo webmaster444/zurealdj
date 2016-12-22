@@ -3,7 +3,7 @@
     "use strict";
 
     angular.module('ZurealdjDjApp')
-        .controller('StepGenresController', ['$scope', '$state', 'GenresFactory', 'UsersFactory',
+        .controller('StepEquipmentsController', ['$scope', '$state', 'GenresFactory', 'UsersFactory',
             function ($scope, $state, genres, users) {
 
                 $scope.I18n = I18n;

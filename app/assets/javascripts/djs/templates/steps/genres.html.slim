@@ -13,10 +13,10 @@
 
   hr
   .text-center
-    .error ng-repeat="error in validation_errors.event_types"
+    .error ng-repeat="error in validation_errors.genres"
       | {{ error }}
     ul
-      li ng-repeat="event_type in event_types"
+      li ng-repeat="genre in genres"
         label
-          input type="checkbox" value="{{ event_type.id }}" ng-model="event_type.selected"
-          | {{ event_type.title }}
+          input type="checkbox" value="{{ genre.id }}" ng-model="genre.selected"
+          | {{ genre.title }}

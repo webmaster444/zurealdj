@@ -2,10 +2,9 @@
   .row.animated.fadeInRight
     .col-md-12
       .ibox.float-e-margins
-        .ibox-title
+        .ibox-content
           h3
             | {{ I18n.t('headers.event_categories' ) }}
-        .ibox-content
           .filters-bar
             .pull-left
               div id="{{ $state.current.name }}-pagination" ng-hide="count <= 10"

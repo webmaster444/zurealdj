@@ -2,12 +2,11 @@
   .row.animated.fadeInRight
     .col-md-12
       .ibox.float-e-margins
-        .ibox-title
+        .ibox-content
           h3 ng-show="$state.current.name == 'new_genre'"
             | {{ I18n.t('genre.new' ) }}
           h3 ng-show="$state.current.name == 'edit_genre'"
             | {{ I18n.t('genre.edit' ) }}
-        .ibox-content
           form ng-submit="submitGenre()" name="GenreForm" novalidate=true
             .form-group
               .row
@@ -21,8 +20,6 @@
 
                   .error ng-repeat="error in validation_errors['title']"
                     | {{ error }}
-
-              .hr-line-dashed
 
             .form-group
               .row

@@ -39,9 +39,12 @@ Rails.application.routes.draw do
         end
       end
       resources :event_categories, only: [:index]
+      resources :genres, only: [:index]
       resources :users, only: [] do
         collection do
           post :event_types
+          post :genres
+          post :step_back
         end
       end
     end

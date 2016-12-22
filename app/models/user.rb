@@ -1,6 +1,7 @@
 class User < ActiveRecord::Base
   has_many :sessions, dependent: :destroy
   has_and_belongs_to_many :event_categories
+  has_and_belongs_to_many :genres
 
   has_attached_file :avatar, styles: { medium: '300x300>', thumb: '100x100>' }, default_url: '/images/missing_picture.png'
 
@@ -24,7 +25,8 @@ class User < ActiveRecord::Base
   enum step: {
       event_types: 1,
       genres: 2,
-      completed: 3
+      equipments: 3,
+      completed: 4
   }
 
   Role::NAMES.each do |name_constant|

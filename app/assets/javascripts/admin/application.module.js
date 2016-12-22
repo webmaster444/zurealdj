@@ -128,11 +128,6 @@
                     templateUrl: 'admin/templates/genres/form.html',
                     controller: 'GenresController'
                 })
-                .state('show_genre',{
-                    url: '/genre/:id',
-                    templateUrl: 'admin/templates/genres/show.html',
-                    controller: 'GenresController'
-                })
                 .state('edit_genre',{
                     url: '/genre/:id/edit',
                     templateUrl: 'admin/templates/genres/form.html',

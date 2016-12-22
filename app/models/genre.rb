@@ -1,7 +1,5 @@
 class Genre < ActiveRecord::Base
 
-
-
-  private
+  has_and_belongs_to_many :users
 
 end
