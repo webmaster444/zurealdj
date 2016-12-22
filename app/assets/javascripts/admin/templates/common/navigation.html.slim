@@ -26,10 +26,6 @@ nav.navbar-default.navbar-static-side.ng-scope role="navigation"
           a href="#cancelations"
             i.fa.fa-car
             span.nav-label.ng-binding CANCELATION
-        li ng-class=("{active: $state.current.name.includes('equipment')}")
-          a href="#equipments"
-            i.fa.fa-car
-            span.nav-label.ng-binding EQUIPMENT
         li ng-class=("{active: $state.current.name.includes('who_we_are_pag')}")
           a href="#who_we_are_pages"
             i.fa.fa-car
@@ -56,18 +52,21 @@ nav.navbar-default.navbar-static-side.ng-scope role="navigation"
             span.nav-label.ng-binding
               | {{ I18n.t('headers.cancelations_pages') }}
 
-        li ng-class=("{active: ['genres', 'event_categories'].includes($state.current.name) }")
+        li ng-class=("{active: ['equipments', 'genres', 'event_categories'].includes($state.current.name) }")
           a href="#"
             i.fa.fa-file-text-o
             span.nav-label.ng-binding Content
             span.fa.arrow
-          ul.nav.nav-second-level.collapse ng-class=("{in: ['genres', 'event_categories'].includes($state.current.name) }")
+          ul.nav.nav-second-level.collapse ng-class=("{in: ['equipments', 'genres', 'event_categories'].includes($state.current.name) }")
             li.active ui-sref-active="active"
               a.ng-binding href="#event_categories"
                 | Event types
             li.active ui-sref-active="active"
               a.ng-binding href="#genres"
                 | Genres
+            li.active ui-sref-active="active"
+              a.ng-binding href="#equipments"
+                | Equipments
 
         li ng-class=("{active: $state.current.name.includes('config_pag')}")
           a href="#"

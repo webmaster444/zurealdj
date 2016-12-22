@@ -7,10 +7,8 @@
                 var fd = new FormData();
 
 
-                fd.append('equipment[icon][file]', equipments.icon.file );
-                if(equipments.icon.id != undefined){
-                    fd.append('equipment[icon][id]', equipments.icon.id );
-                    fd.append('equipment[icon][removed]', !!equipments.icon.removed );
+                if(equipments.icon.file){
+                    fd.append('equipment[icon]', equipments.icon.file );
                 }
                 if(equipments.title){
                     fd.append('equipment[title]', equipments.title );

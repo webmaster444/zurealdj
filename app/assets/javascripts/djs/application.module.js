@@ -52,6 +52,11 @@
                     templateUrl: 'djs/templates/steps/equipments.html',
                     controller: 'StepEquipmentsController'
                 })
+                .state('step_personal_url',{
+                    url: '/personal_url_step',
+                    templateUrl: 'djs/templates/steps/equipments.html',
+                    controller: 'StepEquipmentsController'
+                })
 
                 .state('new_organization',{
                     url: '/organization/new',
@@ -152,26 +157,6 @@
                     url: '/event_categories',
                     templateUrl: 'djs/templates/event_categories/index.html',
                     controller: 'EventCategoriesController'
-                })
-                .state('new_equipment',{
-                    url: '/equipment/new',
-                    templateUrl: 'djs/templates/equipments/form.html',
-                    controller: 'EquipmentsController'
-                })
-                .state('show_equipment',{
-                    url: '/equipment/:id',
-                    templateUrl: 'djs/templates/equipments/show.html',
-                    controller: 'EquipmentsController'
-                })
-                .state('edit_equipment',{
-                    url: '/equipment/:id/edit',
-                    templateUrl: 'djs/templates/equipments/form.html',
-                    controller: 'EquipmentsController'
-                })
-                .state('equipments',{
-                    url: '/equipments',
-                    templateUrl: 'djs/templates/equipments/index.html',
-                    controller: 'EquipmentsController'
                 })
                 .state('new_cancelations_page',{
                     url: '/cancelations_page/new',

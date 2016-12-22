@@ -178,11 +178,6 @@
                     templateUrl: 'admin/templates/equipments/form.html',
                     controller: 'EquipmentsController'
                 })
-                .state('show_equipment',{
-                    url: '/equipment/:id',
-                    templateUrl: 'admin/templates/equipments/show.html',
-                    controller: 'EquipmentsController'
-                })
                 .state('edit_equipment',{
                     url: '/equipment/:id/edit',
                     templateUrl: 'admin/templates/equipments/form.html',

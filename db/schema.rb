@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161222193827) do
+ActiveRecord::Schema.define(version: 20161222202354) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -90,7 +90,18 @@ ActiveRecord::Schema.define(version: 20161222193827) do
     t.string   "title"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "icon_file_name"
+    t.string   "icon_content_type"
+    t.integer  "icon_file_size"
+    t.datetime "icon_updated_at"
     t.index ["icon_id"], name: "index_equipment_on_icon_id", using: :btree
+  end
+
+  create_table "equipment_users", force: :cascade do |t|
+    t.integer "equipment_id"
+    t.integer "user_id"
+    t.index ["equipment_id"], name: "index_equipment_users_on_equipment_id", using: :btree
+    t.index ["user_id"], name: "index_equipment_users_on_user_id", using: :btree
   end
 
   create_table "event_categories", force: :cascade do |t|

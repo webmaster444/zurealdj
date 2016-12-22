@@ -40,10 +40,10 @@ Rails.application.routes.draw do
       end
       resources :event_categories, only: [:index]
       resources :genres, only: [:index]
+      resources :equipments, only: [:index]
       resources :users, only: [] do
         collection do
-          post :event_types
-          post :genres
+          post :step
           post :step_back
         end
       end

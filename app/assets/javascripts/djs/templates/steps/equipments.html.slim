@@ -1,0 +1,25 @@
+.wrapper.animated.fadeInRight
+  .step-header style="position: relative"
+    .text-center
+      | Step 3 of 5
+    a.btn.btn-submit ng-click="next()" style="position: absolute; top: -10px; right: 100px;"
+      | Next
+    a.btn.btn-submit ng-click="back()" style="position: absolute; top: -10px; left: 100px;"
+      | Back
+  hr
+  .text-center
+    h1
+      | What equipment do you use?
+  .text-center
+    | Personalize your profile by creating your technical rider
+
+  hr
+  .text-center
+    .error ng-repeat="error in validation_errors.equipments"
+      | {{ error }}
+    ul
+      li ng-repeat="equipment in equipments"
+        label
+          input type="checkbox" value="{{ genre.id }}" ng-model="equipment.selected"
+          | {{ equipment.title }}
+          img ng-src="{{equipment.icon}}" style="height: 100px;"

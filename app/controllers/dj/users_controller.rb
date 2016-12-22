@@ -2,21 +2,10 @@ class Dj::UsersController < Dj::BaseController
 
   skip_before_filter :not_finished_profile
 
-  def event_types
-    allowed_params = params.permit(event_category_ids: []).merge({step: 'genres'})
-
+  def step
     @user = current_user
-    if @user.update_attributes allowed_params
-      render json: {next_step: @user.step}
-    else
-      render json: {validation_errors: @user.errors}, status: :unprocessable_entity
-    end
-  end
+    allowed_params = step_params.merge({step: User.steps.key(User.steps[@user.step] + 1)})
 
-  def genres
-    allowed_params = params.permit(genre_ids: []).merge({step: 'equipments'})
-
-    @user = current_user
     if @user.update_attributes allowed_params
       render json: {next_step: @user.step}
     else
@@ -28,5 +17,11 @@ class Dj::UsersController < Dj::BaseController
     @user = current_user
     @user.update_attribute :step, User.steps.key(User.steps[@user.step] - 1)
     render json: { step: @user.step }
+  end
+
+  private
+
+  def step_params
+    params.permit :personal_url, event_category_ids: [], genre_ids: [], equipment_ids: []
   end
 end
