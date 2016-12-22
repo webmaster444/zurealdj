@@ -42,7 +42,7 @@
                 })
     }]);
 
-    ZurealdjLandingApp.run(['$http', '$rootScope', function($http, $rootScope){
+    ZurealdjLandingApp.run(['$http', '$rootScope', 'AuthHttp', function($http, $rootScope, AuthHttp){
         var csrf_token = $('meta[name="csrf-token"]').attr('content');
         $http.defaults.headers.common['X-CSRF-Token'] = csrf_token;
 
@@ -54,6 +54,8 @@
             else $(".ngdialog-close").css({"display": "none"});
             window.onresize();
         });
+
+        AuthHttp.setDefaults('unauthorizedAction', function(){})
     }]);
 
 }());

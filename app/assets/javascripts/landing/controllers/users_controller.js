@@ -9,6 +9,8 @@
                 $scope._ = _;
                 $scope.$state = $state;
 
+                $scope.user = {};
+
                 $scope.submit = function(){
                     $scope.processing = true;
                     users.create($scope.user)
@@ -23,6 +25,31 @@
                             $scope.validation_errors = data.validation_errors;
                             $scope.processing = false;
                         })
+                };
+
+                $scope.signupViaFacebook = function(){
+                    var loginCallback = function(token){
+                        $scope.processing = true;
+                        users.facebook($scope.user, token)
+                            .success(function(data){
+                                $scope.processing = false;
+                                window.location = '/' + data.redirect_url;
+                            })
+                            .error(function(data){
+                                $scope.validation_errors = data.validation_errors;
+                                $scope.processing = false;
+                            })
+                    };
+
+                    FB.getLoginStatus(function(response){
+                        if(response.authResponse){
+                            loginCallback(response.authResponse.accessToken)
+                        }else{
+                            FB.login(function(response){
+                                loginCallback(response.authResponse.accessToken)
+                            }, {scope: 'email'})
+                        }
+                    });
                 }
             }])
 }());

@@ -44,6 +44,7 @@ Rails.application.routes.draw do
 
     resources :sessions, only: [:create] do
       collection do
+        post :facebook
         delete :destroy
         get :check
       end
@@ -56,6 +57,9 @@ Rails.application.routes.draw do
     resources :email_sender, only: [:index, :create]
 
     resources :users, only: [:create] do
+      collection do
+        post :facebook
+      end
       collection do
         post :email_available
         get :confirm_email

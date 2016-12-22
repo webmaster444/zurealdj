@@ -50,6 +50,42 @@ class UsersController < ApplicationController
     end
   end
 
+  def facebook
+    begin
+      fb_user = FbGraph2::User.me(params[:access_token]).fetch(fields: [:name, :email])
+    rescue Exception => e
+      render json: {errors: [e.message]}, status: 422 and return
+    end
+
+    if @user = User.find_by_email(fb_user.email)
+      @user.facebook_id = fb_user.id
+      @user.save
+      sign_in @user
+      render json: { session_token: current_session.token, redirect_url: current_user.role.name } and return
+    end
+
+    @user = User.find_by_facebook_id fb_user.id
+    if @user
+      sign_in @user
+      render json: { session_token: current_session.token, redirect_url: current_user.role.name } and return
+    else
+      @user = User.new email: fb_user.email,
+                       name: fb_user.name,
+                       facebook_id: fb_user.id
+
+      @user.avatar_from_url "https://graph.facebook.com/v2.7/#{fb_user.id}/picture?width=1000"
+      @user.role_id = Role.send(params[:user_type]).id if params[:user_type].present? && %(dj organizer).include?(params[:user_type])
+
+      @user.confirmed = true
+      if @user.save
+        sign_in @user
+        render json: { session_token: current_session.token, redirect_url: current_user.role.name }
+      else
+        render json: { validation_errors: @user.errors }, status: 422
+      end
+    end
+  end
+
   private
 
   def create_params

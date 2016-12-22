@@ -10,6 +10,11 @@
                     email: session.email,
                     password: session.password
                 })
+            },
+            facebook: function(access_token){
+                return $http.post('/sessions/facebook', {
+                    access_token: access_token
+                })
             }
         }
     }])

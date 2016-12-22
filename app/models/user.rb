@@ -1,6 +1,8 @@
 class User < ActiveRecord::Base
   has_many :sessions, dependent: :destroy
 
+  has_attached_file :avatar, styles: { medium: '300x300>', thumb: '100x100>' }, default_url: '/images/missing_picture.png'
+
   attr_accessor :password, :password_confirmation
   validates :email, uniqueness: { case_sensitive: false, message: "This email address is already registered." },
                     format: { with: /.*\@.*\..*/, message: "is incorrect"},
@@ -15,6 +17,8 @@ class User < ActiveRecord::Base
   validates :password, presence: true, confirmation: true, if: :validate_password?
   validates :password_confirmation, presence: true, if: :validate_password?
   validates :role_id, presence: true
+
+  validates_attachment_content_type :avatar, content_type: /\Aimage\/.*\Z/
 
   Role::NAMES.each do |name_constant|
     define_method("#{name_constant}?") { self.role.try(:name) == name_constant.to_s }
@@ -31,11 +35,11 @@ class User < ActiveRecord::Base
 
   def send_password_reset
     self.update_attribute :reset_password_token, encrypt(Time.now.to_s)
-    #begin
     UserMailer.password_reset(self.id).deliver_now
-    #rescue Exception => e
+  end
 
-    #end
+  def avatar_from_url(url)
+    self.avatar = open(url) if url
   end
 
   private

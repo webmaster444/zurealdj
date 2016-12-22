@@ -25,5 +25,25 @@
                             $scope.processing = false;
                         })
                 };
+
+                $scope.loginViaFacebook = function(){
+
+                    var loginCallback = function(token){
+                        sessions.facebook(token).success(function(){
+                            $scope.processing = false;
+                            // window.location = '/' + data.redirect_url;
+                        });
+                    };
+
+                    FB.getLoginStatus(function(response){
+                        if(response.authResponse){
+                            loginCallback(response.authResponse.accessToken)
+                        }else{
+                            FB.login(function(response){
+                                loginCallback(response.authResponse.accessToken)
+                            })
+                        }
+                    })
+                }
             }])
 }());
