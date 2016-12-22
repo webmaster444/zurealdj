@@ -1,4 +1,4 @@
-(function () {
+(function() {
 
     "use strict";
 
@@ -17,9 +17,7 @@
                     $scope.flags = data.flags;
                 });
 
-                $scope.filters = {
-                    per_page: 10
-                };
+                $scope.filters = {};
 
                 if($state.current.name == 'policies_pages'){
                     $scope.policies_page = [];
@@ -31,7 +29,6 @@
                             $timeout.cancel(timer)
                         }
                         timer= $timeout(function(){
-                            if($scope.page > Math.ceil($scope.count / $scope.filters.per_page)) $scope.page = 1;
                             $scope.retrievePoliciesPages();
                         }, 500)
                     }, true);
@@ -49,7 +46,7 @@
 
                             if($scope.count > 0){
                                 pagination.twbsPagination({
-                                    totalPages: Math.ceil($scope.count / $scope.filters.per_page),
+                                    totalPages: Math.ceil($scope.count / 10),
                                     startPage: $scope.page,
                                     visiblePages: 9,
                                     onPageClick: function (event, page) {

@@ -6,27 +6,21 @@
           h3
             | {{ I18n.t('headers.who_we_are_pages' ) }}
         .ibox-content
-          .filters-bar ng-include="'admin/templates/common/filters-bar.html'"
+          .pull-left
+            #who_we_are_pages-pagination ng-hide="count < 11"
 
-          table.table.table-striped.table-responsive
+          table.table.table-striped.table-responsive.bklv-table
             thead
               tr
                 th
-                  | Created At
-                th.text-right
-                  | Actions
+                  | {{ I18n.t('languages.language') }}
+                th
+
             tbody
               tr ng-repeat="who_we_are_page in who_we_are_pages"
                 td
-                  | {{ who_we_are_page.created_at }}
+                  span.flag class="{{ who_we_are_page.country_code }}"
+                  | {{ who_we_are_page.country_title }}
                 td.text-right
-
-                  a.btn-xs.btn.btn-info.btn-outline href="#who_we_are_page/{{who_we_are_page.id}}"
-                    | {{ I18n.t('actions.view') }}
-
-                  a.btn-xs.btn.btn-warning.btn-outline href="#who_we_are_page/{{who_we_are_page.id}}/edit"
+                  a.btn-xs.btn.btn-warning.btn-outline href="#who_we_are_page/{{who_we_are_page.country_code}}/edit"
                     | {{ I18n.t('actions.edit') }}
-
-
-                  a.btn-xs.btn.btn-danger.btn-outline ng-click="destroy(who_we_are_page.id)"
-                    | {{ I18n.t('actions.delete') }}

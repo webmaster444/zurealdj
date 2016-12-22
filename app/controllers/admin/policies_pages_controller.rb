@@ -1,17 +1,15 @@
 class Admin::PoliciesPagesController < Admin::BaseController
 
-  load_and_authorize_resource :policies_page
-
   def index
 
   end
 
   def show
-    @article = PoliciesPage.where(country_flag_code: params[:id]).first_or_create
+    @article = PoliciesPage.find_by_country_flag_code params[:id]
   end
 
   def update
-    @article = PoliciesPage.where(country_flag_code: params[:id]).first_or_create
+    @article = PoliciesPage.find_by_country_flag_code params[:id]
 
     if @article.update_attributes policies_page_params
       render json: {message: 'Policies page notice updated.'}

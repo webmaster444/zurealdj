@@ -203,16 +203,6 @@
                     templateUrl: 'admin/templates/equipments/index.html',
                     controller: 'EquipmentsController'
                 })
-                .state('new_who_we_are_page',{
-                    url: '/who_we_are_page/new',
-                    templateUrl: 'admin/templates/who_we_are_pages/form.html',
-                    controller: 'WhoWeArePagesController'
-                })
-                .state('show_who_we_are_page',{
-                    url: '/who_we_are_page/:id',
-                    templateUrl: 'admin/templates/who_we_are_pages/show.html',
-                    controller: 'WhoWeArePagesController'
-                })
                 .state('edit_who_we_are_page',{
                     url: '/who_we_are_page/:id/edit',
                     templateUrl: 'admin/templates/who_we_are_pages/form.html',
@@ -232,16 +222,6 @@
                     url: '/crew_pages',
                     templateUrl: 'admin/templates/crew_pages/index.html',
                     controller: 'CrewPagesController'
-                })
-                .state('new_how_we_work_page',{
-                    url: '/how_we_work_page/new',
-                    templateUrl: 'admin/templates/how_we_work_pages/form.html',
-                    controller: 'HowWeWorkPagesController'
-                })
-                .state('show_how_we_work_page',{
-                    url: '/how_we_work_page/:id',
-                    templateUrl: 'admin/templates/how_we_work_pages/show.html',
-                    controller: 'HowWeWorkPagesController'
                 })
                 .state('edit_how_we_work_page',{
                     url: '/how_we_work_page/:id/edit',

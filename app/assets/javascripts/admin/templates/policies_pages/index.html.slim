@@ -8,16 +8,12 @@
         .ibox-content
           .pull-left
             #policies_pages-pagination ng-hide="count < 11"
-          //.pull-right
-
-            //button.btn-xs.btn.btn-info ui-sref="new_policies_page"
-              | {{ I18n.t('policies_page.new') }}
 
           table.table.table-striped.table-responsive.bklv-table
             thead
               tr
                 th
-                  | {{ I18n.t('policies_page.fields.language') }}
+                  | {{ I18n.t('languages.language') }}
                 th
             tbody
               tr ng-repeat="policies_page in policies_pages"

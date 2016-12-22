@@ -13,6 +13,9 @@
                     return $sce.trustAsHtml(html);
                 };
 
+                flags.all().success(function(data){
+                    $scope.flags = data.flags;
+                });
 
                 $scope.filters = {
                     per_page: 10
@@ -62,50 +65,20 @@
                     $scope.retrieveWhoWeArePages();
                 }
 
-                $scope.destroy = function(id){
-                    var scope = $scope;
-                    SweetAlert.swal({
-                            title: "Are you sure?",
-                            text: "Your will not be able to recover this who_we_are_page!",
-                            type: "warning",
-                            showCancelButton: true,
-                            confirmButtonColor: "#DD6B55",confirmButtonText: "Yes, delete it!",
-                            cancelButtonText: "No, cancel plx!",
-                            closeOnConfirm: true,
-                            closeOnCancel: true,
-                            allowOutsideClick: true },
-                        function(isConfirm){
-                            if (isConfirm) {
-                                who_we_are_pages.destroy(id).success(function(){
-                                    $scope.retrieveWhoWeArePages();
-                                });
-                            } else {
-
-                            }
-                        }
-                    );
-                };
-
-                if($state.current.name == 'new_who_we_are_page' || $state.current.name == 'edit_who_we_are_page'){
+                if($state.current.name == 'edit_who_we_are_page'){
 
                     $scope.who_we_are_page = {};
 
-
-                    if($state.current.name == 'edit_who_we_are_page'){
-                        who_we_are_pages.show($stateParams.id)
-                            .success(function(data){
+                    who_we_are_pages.show($stateParams.id)
+                        .success(function(data){
                                 $timeout(function(){
                                     $scope.who_we_are_page = data.who_we_are_page;
                                 }, 0);
                             }
-                        )
-                    }
+                        );
 
-                    $scope.submitWhoWeArePage = function(){
+                    $scope.save = function(){
                         $scope.submitted = true;
-                        if($scope.WhoWeArePageForm.$invalid ){
-                            return false;
-                        }
 
                         $scope.formPending = true;
                         who_we_are_pages.upsert($scope.who_we_are_page)

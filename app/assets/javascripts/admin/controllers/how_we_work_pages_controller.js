@@ -13,10 +13,11 @@
                     return $sce.trustAsHtml(html);
                 };
 
+                flags.all().success(function(data){
+                    $scope.flags = data.flags;
+                });
 
-                $scope.filters = {
-                    per_page: 10
-                };
+                $scope.filters = {};
 
                 if($state.current.name == 'how_we_work_pages'){
                     $scope.how_we_work_page = [];
@@ -24,10 +25,10 @@
                     var timer = false;
                     $scope.$watch('filters', function(){
                         if(timer){
+                            $scope.page = 1;
                             $timeout.cancel(timer)
                         }
                         timer= $timeout(function(){
-                            if($scope.page > Math.ceil($scope.count / $scope.filters.per_page)) $scope.page = 1;
                             $scope.retrieveHowWeWorkPages();
                         }, 500)
                     }, true);
@@ -45,7 +46,7 @@
 
                             if($scope.count > 0){
                                 pagination.twbsPagination({
-                                    totalPages: Math.ceil($scope.count / $scope.filters.per_page),
+                                    totalPages: Math.ceil($scope.count / 10),
                                     startPage: $scope.page,
                                     visiblePages: 9,
                                     onPageClick: function (event, page) {
@@ -62,50 +63,20 @@
                     $scope.retrieveHowWeWorkPages();
                 }
 
-                $scope.destroy = function(id){
-                    var scope = $scope;
-                    SweetAlert.swal({
-                            title: "Are you sure?",
-                            text: "Your will not be able to recover this how_we_work_page!",
-                            type: "warning",
-                            showCancelButton: true,
-                            confirmButtonColor: "#DD6B55",confirmButtonText: "Yes, delete it!",
-                            cancelButtonText: "No, cancel plx!",
-                            closeOnConfirm: true,
-                            closeOnCancel: true,
-                            allowOutsideClick: true },
-                        function(isConfirm){
-                            if (isConfirm) {
-                                how_we_work_pages.destroy(id).success(function(){
-                                    $scope.retrieveHowWeWorkPages();
-                                });
-                            } else {
-
-                            }
-                        }
-                    );
-                };
-
-                if($state.current.name == 'new_how_we_work_page' || $state.current.name == 'edit_how_we_work_page'){
+                if($state.current.name == 'edit_how_we_work_page'){
 
                     $scope.how_we_work_page = {};
 
-
-                    if($state.current.name == 'edit_how_we_work_page'){
-                        how_we_work_pages.show($stateParams.id)
-                            .success(function(data){
+                    how_we_work_pages.show($stateParams.id)
+                        .success(function(data){
                                 $timeout(function(){
                                     $scope.how_we_work_page = data.how_we_work_page;
                                 }, 0);
                             }
-                        )
-                    }
+                        );
 
-                    $scope.submitHowWeWorkPage = function(){
+                    $scope.save = function(){
                         $scope.submitted = true;
-                        if($scope.HowWeWorkPageForm.$invalid ){
-                            return false;
-                        }
 
                         $scope.formPending = true;
                         how_we_work_pages.upsert($scope.how_we_work_page)
@@ -129,3 +100,4 @@
             }])
 
 }());
+

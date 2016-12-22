@@ -10,17 +10,14 @@
                     fd.append('how_we_work_page[content]', how_we_work_page.content );
                 }
 
-                if(how_we_work_page.id){
-                    return $http.put('/admin/how_we_work_pages/' + how_we_work_page.id, fd, {
-                        transformRequest: angular.identity,
-                        headers: {'Content-Type': undefined}
-                    });
-                }else{
-                    return $http.post('/admin/how_we_work_pages', fd, {
-                        transformRequest: angular.identity,
-                        headers: {'Content-Type': undefined}
-                    });
+                if(how_we_work_page.language){
+                    fd.append('how_we_work_page[language]', how_we_work_page.language );
                 }
+
+                return $http.put('/admin/how_we_work_pages/' + how_we_work_page.country_code, fd, {
+                    transformRequest: angular.identity,
+                    headers: {'Content-Type': undefined}
+                });
             },
 
             all: function(options){
@@ -29,10 +26,6 @@
 
             show: function(id){
                 return $http.get('/admin/how_we_work_pages/' + id + '.json');
-            },
-
-            destroy: function(id){
-                return $http.delete('/admin/how_we_work_pages/' + id)
             }
         }
     }])

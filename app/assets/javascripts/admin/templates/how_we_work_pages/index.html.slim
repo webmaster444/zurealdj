@@ -6,27 +6,20 @@
           h3
             | {{ I18n.t('headers.how_we_work_pages' ) }}
         .ibox-content
-          .filters-bar ng-include="'admin/templates/common/filters-bar.html'"
+          .pull-left
+            #how_we_work_pages-pagination ng-hide="count < 11"
 
-          table.table.table-striped.table-responsive
+          table.table.table-striped.table-responsive.bklv-table
             thead
               tr
                 th
-                  | Created At
-                th.text-right
-                  | Actions
+                  | {{ I18n.t('languages.language') }}
+                th
             tbody
               tr ng-repeat="how_we_work_page in how_we_work_pages"
                 td
-                  | {{ how_we_work_page.created_at }}
+                  span.flag class="{{ how_we_work_page.country_code }}"
+                  | {{ how_we_work_page.country_title }}
                 td.text-right
-
-                  a.btn-xs.btn.btn-info.btn-outline href="#how_we_work_page/{{how_we_work_page.id}}"
-                    | {{ I18n.t('actions.view') }}
-
-                  a.btn-xs.btn.btn-warning.btn-outline href="#how_we_work_page/{{how_we_work_page.id}}/edit"
+                  a.btn-xs.btn.btn-warning.btn-outline href="#how_we_work_page/{{how_we_work_page.country_code}}/edit"
                     | {{ I18n.t('actions.edit') }}
-
-
-                  a.btn-xs.btn.btn-danger.btn-outline ng-click="destroy(how_we_work_page.id)"
-                    | {{ I18n.t('actions.delete') }}

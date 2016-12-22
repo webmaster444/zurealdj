@@ -1,9 +1,6 @@
-json.who_we_are_pages @who_we_are_pages.each do |who_we_are_page|
-  json.id who_we_are_page.id
-  json.created_at time_ago_in_words(who_we_are_page.created_at) + ' ' + t('datetime.ago') + ' ' + t('datetime.at') + ' ' + who_we_are_page.created_at.strftime("%H:%M")
-  
-  json.content who_we_are_page.content
-  
-  
+json.who_we_are_pages Language.all.each do |flag|
+  article = WhoWeArePage.where(country_flag_code: flag[:code]).first_or_create
+  json.country_code article.country_flag_code
+  json.country_title article.country_flag[:title]
+  json.content article.content
 end
-json.count @count

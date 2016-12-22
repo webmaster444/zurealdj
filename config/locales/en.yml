@@ -24,6 +24,7 @@ en:
   languages:
     english: 'English'
     ukrainian: 'Ukrainian'
+    language: "Language"
 
   profile:
     edit_profile: 'Edit profile'
@@ -108,7 +109,6 @@ en:
       content: "Content"
       created_at: "Created at"
       updated_at: "Updated at"
-      language: "Language"
     messages:
       success_upsert: 'Policies page successfully saved.'
 
@@ -129,7 +129,6 @@ en:
       content: "Content"
       created_at: "Created at"
       updated_at: "Updated at"
-      language: "Language"
     messages:
       success_upsert: 'Crew page successfully saved.'
 

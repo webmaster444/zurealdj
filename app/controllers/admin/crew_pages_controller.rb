@@ -1,7 +1,5 @@
 class Admin::CrewPagesController < ApplicationController
 
-  load_and_authorize_resource :crew_page
-
   def index
 
   end

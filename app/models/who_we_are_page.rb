@@ -4,6 +4,10 @@ class WhoWeArePage < ActiveRecord::Base
     Attachment.where entity_id: self.id, entity_type: 'who_we_are_page_content'
   end
 
+  def country_flag
+    CountryFlag.find(country_flag_code)
+  end
+
   after_destroy :destroy_attachments
   after_save :update_attachments
 
