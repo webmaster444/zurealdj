@@ -19,6 +19,12 @@
                         .error(function(data){
                             $scope.validation_errors = data.validation_errors;
                         });
+                };
+
+                $scope.back = function(){
+                    users.step_back().success(function(response){
+                        $state.go('step_' + response.step);
+                    });
                 }
             }])
 }());

@@ -29,6 +29,9 @@ class User < ActiveRecord::Base
       completed: 4
   }
 
+  validate :at_least_one_event_category, if: -> { User.steps[step] >= User.steps[:event_types]}
+  validate :at_least_one_genre, if: -> { User.steps[step] >= User.steps[:genres]}
+
   Role::NAMES.each do |name_constant|
     define_method("#{name_constant}?") { self.role.try(:name) == name_constant.to_s }
   end
@@ -82,5 +85,17 @@ class User < ActiveRecord::Base
 
   def secure_hash(string)
     Digest::SHA2.hexdigest(string)
+  end
+
+  def at_least_one_genre
+    if genres.count == 0
+      self.errors.add :genres, 'must be at least one'
+    end
+  end
+
+  def at_least_one_event_category
+    if event_categories.count == 0
+      self.errors.add :event_categories, 'must be at least one'
+    end
   end
 end

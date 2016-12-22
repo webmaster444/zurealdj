@@ -23,4 +23,10 @@ class Dj::UsersController < Dj::BaseController
       render json: {validation_errors: @user.errors}, status: :unprocessable_entity
     end
   end
+
+  def step_back
+    @user = current_user
+    @user.update_attribute :step, User.steps.key(User.steps[@user.step] - 1)
+    render json: { step: @user.step }
+  end
 end

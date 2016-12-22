@@ -20,6 +20,10 @@
                 return $http.post('/dj/users/genres', {
                     genre_ids: genres
                 })
+            },
+
+            step_back: function(){
+                return $http.post('/dj/users/step_back')
             }
         }
     }])
