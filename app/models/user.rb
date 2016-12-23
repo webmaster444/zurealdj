@@ -24,6 +24,7 @@ class User < ActiveRecord::Base
   validates_attachment_content_type :avatar, content_type: /\Aimage\/.*\Z/
 
   enum step: {
+      just_created: 0,
       event_types: 1,
       genres: 2,
       equipments: 3,
