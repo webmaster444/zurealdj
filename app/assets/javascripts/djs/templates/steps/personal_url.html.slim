@@ -1,22 +1,25 @@
-.wrapper.animated.fadeInRight
-  .step-header style="position: relative"
-    .text-center
+div.page-block.registration
+  .title.text-center
+    | ZUREALDJ
+  .navigation-bar.text-center
+    .step.small-text
+      .pull-left
+        a.slider-btn.back ng-click="back()"
+          | Back
       | Step 4 of 5
-    a.btn.btn-submit ng-click="next()" style="position: absolute; top: -10px; right: 100px;"
-      | Next
-    a.btn.btn-submit ng-click="back()" style="position: absolute; top: -10px; left: 100px;"
-      | Back
-  hr
-  .text-center
-    h1
+      .pull-right
+        a.small-text.slider-btn.next ng-click="next()"
+          | Next
+  div
+    .question.text-center
       | Enter an unique url for your profile
-  .text-center
-    | You will only be able to update it once later, so choose wisely!
-
-  hr
-  .text-center
-    .error ng-repeat="error in validation_errors.equipments"
-      | {{ error }}
-    input type="text" ng-model="user.personal_url"
-  .text-center
-    | Leave it blank, if you want the system to decide a url for you
+    .select.text-center.small-text
+      | You will only be able to update it once later, so choose wisely!
+    .container
+      .error ng-repeat="error in validation_errors.equipments"
+        | {{ error }}
+      .text-center
+        input.register-input.text-left type="text" ng-model="user.personal_url"
+    .text-center.leave-it-blanck
+      | Leave it blank, if you want the system to decide a url for you
+  div.tmp
