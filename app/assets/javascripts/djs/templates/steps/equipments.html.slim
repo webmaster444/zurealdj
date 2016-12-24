@@ -1,25 +1,27 @@
-.wrapper.animated.fadeInRight
-  .step-header style="position: relative"
-    .text-center
+div.page-block.registration
+  .title.text-center
+    | ZUREALDJ
+  .navigation-bar.text-center
+    .step.small-text
+      .pull-left
+        a.slider-btn.back ng-click="back()"
+          | Back
       | Step 3 of 5
-    a.btn.btn-submit ng-click="next()" style="position: absolute; top: -10px; right: 100px;"
-      | Next
-    a.btn.btn-submit ng-click="back()" style="position: absolute; top: -10px; left: 100px;"
-      | Back
-  hr
-  .text-center
-    h1
+      .pull-right
+        a.small-text.slider-btn.next ng-click="next()"
+          | Next
+  div
+    .question.text-center
       | What equipment do you use?
-  .text-center
-    | Personalize your profile by creating your technical rider
-
-  hr
-  .text-center
-    .error ng-repeat="error in validation_errors.equipments"
-      | {{ error }}
-    ul
-      li ng-repeat="equipment in equipments"
-        label
-          input type="checkbox" value="{{ genre.id }}" ng-model="equipment.selected"
-          | {{ equipment.title }}
-          img ng-src="{{equipment.icon}}" style="height: 100px;"
+    .select.text-center.small-text
+      | Personalize your profile by creating your technical rider
+    .equipments-container
+      .error ng-repeat="error in validation_errors.equipments"
+        | {{ error }}
+      label.select-button ng-repeat="equipment in equipments"
+        .btn-equipment.text-center class="{{ equipment.selected? 'active': '' }}"
+          img ng-src="{{ equipment.icon }}"
+          .title
+            | {{ equipment.title }}
+        input.hide type="checkbox" value="{{ equipment.id }}" ng-model="equipment.selected"
+    div.tmp
