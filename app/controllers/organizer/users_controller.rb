@@ -26,6 +26,6 @@ class Organizer::UsersController < Organizer::BaseController
   private
 
   def step_params
-    params.permit :personal_url, cancelation_ids: [], event_category_ids: [], genre_ids: [], equipment_ids: []
+    params.permit :personal_url, :company_name, cancelation_ids: [], event_category_ids: [], genre_ids: [], equipment_ids: []
   end
 end

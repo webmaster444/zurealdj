@@ -35,6 +35,12 @@
                     personal_url: user.personal_url
                 })
             },
+
+            submit_company_name: function(user){
+                return $http.post('/organizer/users/step', {
+                    company_name: user.company_name
+                })
+            },
             
             step_back: function(){
                 return $http.post('/organizer/users/step_back')

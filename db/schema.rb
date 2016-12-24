@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161224185443) do
+ActiveRecord::Schema.define(version: 20161224195937) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -217,6 +217,7 @@ ActiveRecord::Schema.define(version: 20161224185443) do
     t.integer  "weekend_rate_to"
     t.integer  "dj_step",              default: 0
     t.integer  "organizer_step",       default: 0
+    t.string   "company_name"
   end
 
   create_table "who_we_are_pages", force: :cascade do |t|

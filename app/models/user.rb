@@ -38,10 +38,9 @@ class User < ActiveRecord::Base
       organizer_just_created: 0,
       organizer_event_types: 1,
       organizer_genres: 2,
-      organizer_equipments: 3,
+      organizer_company_name: 3,
       organizer_personal_url: 4,
-      organizer_cancelations: 5,
-      organizer_completed: 6
+      organizer_completed: 5
   }
 
   def step
@@ -49,7 +48,7 @@ class User < ActiveRecord::Base
   end
 
   def next_step
-    dj? ? User.dj_steps.key(User.dj_steps[step] + 1) : User.organizer_steps.key(User.organizer_steps[step] + 1)
+    dj? ? User.dj_steps.key(User.dj_steps[step].to_i + 1) : User.organizer_steps.key(User.organizer_steps[step].to_i + 1)
   end
 
   def previous_step

@@ -1,0 +1,25 @@
+div.page-block.registration
+  .title.text-center
+    | ZUREALDJ
+  .navigation-bar.text-center
+    .step.small-text
+      .pull-left
+        a.slider-btn.back ng-click="back()"
+          | Back
+      | Step 3 of 4
+      .pull-right
+        a.small-text.slider-btn.next ng-click="next()"
+          | Next
+  div
+    .question.text-center
+      | Enter the company or agency name which you represent
+    .select.text-center.small-text
+      | You're almost ready to create an event and start booking artists!
+    .container
+      .error ng-repeat="error in validation_errors.company_name"
+        | {{ error }}
+      .text-center
+        input.register-input.text-left type="text" ng-model="user.company_name"
+    .text-center.leave-it-blanck
+      | (Optional)
+  div.tmp
