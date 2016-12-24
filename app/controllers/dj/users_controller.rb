@@ -4,10 +4,10 @@ class Dj::UsersController < Dj::BaseController
 
   def step
     @user = current_user
-    allowed_params = step_params.merge({step: User.steps.key(User.steps[@user.step] + 1)})
+    allowed_params = step_params.merge({dj_step: @user.next_step})
 
     if @user.update_attributes allowed_params
-      render json: {next_step: User.steps.key(User.steps[@user.step] + 1)}
+      render json: {next_step: @user.next_step.try(:gsub, 'dj_', '')}
     else
       render json: {validation_errors: @user.errors}, status: :unprocessable_entity
     end
@@ -15,8 +15,8 @@ class Dj::UsersController < Dj::BaseController
 
   def step_back
     @user = current_user
-    @user.update_attribute :step, User.steps.key(User.steps[@user.step] - 1)
-    render json: { step: User.steps.key(User.steps[@user.step] + 1) }
+    @user.update_attribute :dj_step, @user.previous_step
+    render json: { step: @user.next_step.gsub('dj_', '') }
   end
 
   def profile

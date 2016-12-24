@@ -51,6 +51,25 @@ Rails.application.routes.draw do
       end
     end
 
+    namespace :organizer do
+      get :profile, to: "users#profile"
+      resources :sessions, only: [] do
+        collection do
+          get :check
+        end
+      end
+      resources :event_categories, only: [:index]
+      resources :genres, only: [:index]
+      resources :equipments, only: [:index]
+      resources :cancelations, only: [:index]
+      resources :users, only: [] do
+        collection do
+          post :step
+          post :step_back
+        end
+      end
+    end
+
     resources :attachments, only: [] do
       collection do
         post '/:entity_type', to: 'attachments#create'

@@ -3,16 +3,10 @@
     angular.module('ZurealdjOrganizerApp').factory('SessionsFactory', ['AuthHttp', function($http){
         return {
             check: function(){
-                return $http.get('/sessions/check');
-            },
-            login: function(session){
-                return $http.post('/sessions', {
-                    email: session.email,
-                    password: session.password
-                })
+                return $http.get('/organizer/sessions/check');
             },
             logout: function(){
-                return $http.delete('/sessions')
+                return $http.delete('/organizer/sessions')
             }
         }
     }])

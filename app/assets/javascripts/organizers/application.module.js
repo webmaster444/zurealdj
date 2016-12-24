@@ -25,52 +25,20 @@
 
             $urlRouterProvider.otherwise('home');
 
-            $stateProvider.state('home',{
-                  url: '',
-                  templateUrl: 'organizers/templates/home/index.html',
-                  controller: 'HomeController'
-                })
+            $stateProvider
                 .state('profile',{
                     url: '/profile',
                     templateUrl: 'organizers/templates/users/edit.html',
                     controller: 'UsersController'
                 })
             // generated routes:
-                .state('new_organization',{
-                    url: '/organization/new',
-                    templateUrl: 'organizers/templates/organizations/form.html',
-                    controller: 'OrganizationsController'
+
+                .state('step_event_types',{
+                    url: '/event_types_step',
+                    templateUrl: 'organizers/templates/steps/event_types.html',
+                    controller: 'StepEventTypesController'
                 })
-                .state('show_organization',{
-                    url: '/organization/:id',
-                    templateUrl: 'organizers/templates/organizations/show.html',
-                    controller: 'OrganizationsController'
-                })
-                .state('edit_organization',{
-                    url: '/organization/:id/edit',
-                    templateUrl: 'organizers/templates/organizations/form.html',
-                    controller: 'OrganizationsController'
-                })
-                .state('organizations',{
-                    url: '/organizations',
-                    templateUrl: 'organizers/templates/organizations/index.html',
-                    controller: 'OrganizationsController'
-                })
-                .state('new_dj',{
-                    url: '/dj/new',
-                    templateUrl: 'organizers/templates/djs/form.html',
-                    controller: 'DjsController'
-                })
-                .state('show_dj',{
-                    url: '/dj/:id',
-                    templateUrl: 'organizers/templates/djs/show.html',
-                    controller: 'DjsController'
-                })
-                .state('edit_dj',{
-                    url: '/dj/:id/edit',
-                    templateUrl: 'organizers/templates/djs/form.html',
-                    controller: 'DjsController'
-                })
+
                 .state('djs',{
                     url: '/djs',
                     templateUrl: 'organizers/templates/djs/index.html',
@@ -196,131 +164,15 @@
                     templateUrl: 'organizers/templates/equipments/index.html',
                     controller: 'EquipmentsController'
                 })
-                .state('new_who_we_are_page',{
-                    url: '/who_we_are_page/new',
-                    templateUrl: 'organizers/templates/who_we_are_pages/form.html',
-                    controller: 'WhoWeArePagesController'
-                })
-                .state('show_who_we_are_page',{
-                    url: '/who_we_are_page/:id',
-                    templateUrl: 'organizers/templates/who_we_are_pages/show.html',
-                    controller: 'WhoWeArePagesController'
-                })
-                .state('edit_who_we_are_page',{
-                    url: '/who_we_are_page/:id/edit',
-                    templateUrl: 'organizers/templates/who_we_are_pages/form.html',
-                    controller: 'WhoWeArePagesController'
-                })
-                .state('who_we_are_pages',{
-                    url: '/who_we_are_pages',
-                    templateUrl: 'organizers/templates/who_we_are_pages/index.html',
-                    controller: 'WhoWeArePagesController'
-                })
-                .state('new_crew_page',{
-                    url: '/crew_page/new',
-                    templateUrl: 'organizers/templates/crew_pages/form.html',
-                    controller: 'CrewPagesController'
-                })
-                .state('show_crew_page',{
-                    url: '/crew_page/:id',
-                    templateUrl: 'organizers/templates/crew_pages/show.html',
-                    controller: 'CrewPagesController'
-                })
-                .state('edit_crew_page',{
-                    url: '/crew_page/:id/edit',
-                    templateUrl: 'organizers/templates/crew_pages/form.html',
-                    controller: 'CrewPagesController'
-                })
-                .state('crew_pages',{
-                    url: '/crew_pages',
-                    templateUrl: 'organizers/templates/crew_pages/index.html',
-                    controller: 'CrewPagesController'
-                })
-                .state('new_how_we_work_page',{
-                    url: '/how_we_work_page/new',
-                    templateUrl: 'organizers/templates/how_we_work_pages/form.html',
-                    controller: 'HowWeWorkPagesController'
-                })
-                .state('show_how_we_work_page',{
-                    url: '/how_we_work_page/:id',
-                    templateUrl: 'organizers/templates/how_we_work_pages/show.html',
-                    controller: 'HowWeWorkPagesController'
-                })
-                .state('edit_how_we_work_page',{
-                    url: '/how_we_work_page/:id/edit',
-                    templateUrl: 'organizers/templates/how_we_work_pages/form.html',
-                    controller: 'HowWeWorkPagesController'
-                })
-                .state('how_we_work_pages',{
-                    url: '/how_we_work_pages',
-                    templateUrl: 'organizers/templates/how_we_work_pages/index.html',
-                    controller: 'HowWeWorkPagesController'
-                })
-                .state('new_policies_page',{
-                    url: '/policies_page/new',
-                    templateUrl: 'organizers/templates/policies_pages/form.html',
-                    controller: 'PoliciesPagesController'
-                })
-                .state('show_policies_page',{
-                    url: '/policies_page/:id',
-                    templateUrl: 'organizers/templates/policies_pages/show.html',
-                    controller: 'PoliciesPagesController'
-                })
-                .state('edit_policies_page',{
-                    url: '/policies_page/:id/edit',
-                    templateUrl: 'organizers/templates/policies_pages/form.html',
-                    controller: 'PoliciesPagesController'
-                })
-                .state('policies_pages',{
-                    url: '/policies_pages',
-                    templateUrl: 'organizers/templates/policies_pages/index.html',
-                    controller: 'PoliciesPagesController'
-                })
-                .state('new_terms_n_conditions_page',{
-                    url: '/terms_n_conditions_page/new',
-                    templateUrl: 'organizers/templates/terms_n_conditions_pages/form.html',
-                    controller: 'TermsNConditionsPagesController'
-                })
-                .state('show_terms_n_conditions_page',{
-                    url: '/terms_n_conditions_page/:id',
-                    templateUrl: 'organizers/templates/terms_n_conditions_pages/show.html',
-                    controller: 'TermsNConditionsPagesController'
-                })
-                .state('edit_terms_n_conditions_page',{
-                    url: '/terms_n_conditions_page/:id/edit',
-                    templateUrl: 'organizers/templates/terms_n_conditions_pages/form.html',
-                    controller: 'TermsNConditionsPagesController'
-                })
-                .state('terms_n_conditions_pages',{
-                    url: '/terms_n_conditions_pages',
-                    templateUrl: 'organizers/templates/terms_n_conditions_pages/index.html',
-                    controller: 'TermsNConditionsPagesController'
-                })
-                .state('new_cancelations_page',{
-                    url: '/cancelations_page/new',
-                    templateUrl: 'organizers/templates/cancelations_pages/form.html',
-                    controller: 'CancelationsPagesController'
-                })
-                .state('show_cancelations_page',{
-                    url: '/cancelations_page/:id',
-                    templateUrl: 'organizers/templates/cancelations_pages/show.html',
-                    controller: 'CancelationsPagesController'
-                })
-                .state('edit_cancelations_page',{
-                    url: '/cancelations_page/:id/edit',
-                    templateUrl: 'organizers/templates/cancelations_pages/form.html',
-                    controller: 'CancelationsPagesController'
-                })
-                .state('cancelations_pages',{
-                    url: '/cancelations_pages',
-                    templateUrl: 'organizers/templates/cancelations_pages/index.html',
-                    controller: 'CancelationsPagesController'
-                })
     }]);
 
-    ZurealdjOrganizerApp.run(['$http', '$rootScope', function($http, $rootScope){
+    ZurealdjOrganizerApp.run(['$http', '$rootScope', '$state', 'AuthHttp', function($http, $rootScope, $state, AuthHttp){
         var csrf_token = $('meta[name="csrf-token"]').attr('content');
         $http.defaults.headers.common['X-CSRF-Token'] = csrf_token;
+
+        AuthHttp.setDefaults('notFinishedProfileAction', function(response){
+            $state.go('step_' + response.step);
+        })
     }]);
 
 }());

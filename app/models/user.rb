@@ -24,24 +24,48 @@ class User < ActiveRecord::Base
 
   validates_attachment_content_type :avatar, content_type: /\Aimage\/.*\Z/
 
-  enum step: {
-      just_created: 0,
-      event_types: 1,
-      genres: 2,
-      equipments: 3,
-      personal_url: 4,
-      cancelations: 5,
-      completed: 6
+  enum dj_step: {
+      dj_just_created: 0,
+      dj_event_types: 1,
+      dj_genres: 2,
+      dj_equipments: 3,
+      dj_personal_url: 4,
+      dj_cancelations: 5,
+      dj_completed: 6
   }
 
-  validate :at_least_one_event_category,        if: -> { dj? && User.steps[step] >= User.steps[:event_types]}
-  validate :at_least_one_genre,                 if: -> { dj? && User.steps[step] >= User.steps[:genres]}
-  validate :at_least_one_equipment,             if: -> { dj? && User.steps[step] >= User.steps[:equipments]}
-  validate :at_least_one_cancelation,           if: -> { dj? && User.steps[step] >= User.steps[:cancelations]}
-  validates :weekday_rate_from, presence: true, if: -> { dj? && User.steps[step] >= User.steps[:cancelations]}
-  validates :weekday_rate_to, presence: true,   if: -> { dj? && User.steps[step] >= User.steps[:cancelations]}
-  validates :weekend_rate_from, presence: true, if: -> { dj? && User.steps[step] >= User.steps[:cancelations]}
-  validates :weekend_rate_to, presence: true,   if: -> { dj? && User.steps[step] >= User.steps[:cancelations]}
+  enum organizer_step: {
+      organizer_just_created: 0,
+      organizer_event_types: 1,
+      organizer_genres: 2,
+      organizer_equipments: 3,
+      organizer_personal_url: 4,
+      organizer_cancelations: 5,
+      organizer_completed: 6
+  }
+
+  def step
+    dj? ? dj_step : organizer_step
+  end
+
+  def next_step
+    dj? ? User.dj_steps.key(User.dj_steps[step] + 1) : User.organizer_steps.key(User.organizer_steps[step] + 1)
+  end
+
+  def previous_step
+    dj? ? User.dj_steps.key(User.dj_steps[step] - 1) : User.organizer_steps.key(User.organizer_steps[step] - 1)
+  end
+
+  validate :at_least_one_event_category,        if: -> { dj? && User.dj_steps[step] >= User.dj_steps[:dj_event_types]}
+  validate :at_least_one_genre,                 if: -> { dj? && User.dj_steps[step] >= User.dj_steps[:dj_genres]}
+  validate :at_least_one_equipment,             if: -> { dj? && User.dj_steps[step] >= User.dj_steps[:dj_equipments]}
+  validate :at_least_one_cancelation,           if: -> { dj? && User.dj_steps[step] >= User.dj_steps[:dj_cancelations]}
+  validates :weekday_rate_from, presence: true, if: -> { dj? && User.dj_steps[step] >= User.dj_steps[:dj_cancelations]}
+  validates :weekday_rate_to, presence: true,   if: -> { dj? && User.dj_steps[step] >= User.dj_steps[:dj_cancelations]}
+  validates :weekend_rate_from, presence: true, if: -> { dj? && User.dj_steps[step] >= User.dj_steps[:dj_cancelations]}
+  validates :weekend_rate_to, presence: true,   if: -> { dj? && User.dj_steps[step] >= User.dj_steps[:dj_cancelations]}
+
+  validate :at_least_one_event_category,        if: -> { organizer? && User.organizer_steps[step] >= User.organizer_steps[:organizer_event_types]}
 
   Role::NAMES.each do |name_constant|
     define_method("#{name_constant}?") { self.role.try(:name) == name_constant.to_s }

@@ -1,0 +1,22 @@
+div.page-block.registration
+  .title.text-center
+    | ZUREALDJ
+  .navigation-bar.text-center
+    .step.small-text style="margin-left: 120px"
+      | Step 1 of 5
+      .pull-right
+        a.small-text.slider-btn.next ng-click="next()"
+          | Next
+  div
+    .question.text-center
+      | What type of events do you generally book?
+    .select.text-center.small-text
+      | Select all that apply
+    .container
+      .error ng-repeat="error in validation_errors.event_categories"
+        | {{ error }}
+      label.select-button ng-repeat="event_type in event_types"
+        .btn-checkbox.text-center class="{{ event_type.selected? 'active': '' }}"
+          | {{ event_type.title }}
+        input.hide type="checkbox" value="{{ event_type.id }}" ng-model="event_type.selected"
+  div.tmp

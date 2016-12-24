@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161224173838) do
+ActiveRecord::Schema.define(version: 20161224185443) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -210,12 +210,13 @@ ActiveRecord::Schema.define(version: 20161224173838) do
     t.string   "avatar_content_type"
     t.integer  "avatar_file_size"
     t.datetime "avatar_updated_at"
-    t.integer  "step",                 default: 0
     t.string   "personal_url"
     t.integer  "weekday_rate_from"
     t.integer  "weekday_rate_to"
     t.integer  "weekend_rate_from"
     t.integer  "weekend_rate_to"
+    t.integer  "dj_step",              default: 0
+    t.integer  "organizer_step",       default: 0
   end
 
   create_table "who_we_are_pages", force: :cascade do |t|
