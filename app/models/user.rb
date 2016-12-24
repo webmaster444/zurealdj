@@ -3,6 +3,7 @@ class User < ActiveRecord::Base
   has_and_belongs_to_many :event_categories
   has_and_belongs_to_many :genres
   has_and_belongs_to_many :equipments
+  has_and_belongs_to_many :cancelations
 
   has_attached_file :avatar, styles: { medium: '300x300>', thumb: '100x100>' }, default_url: '/images/missing_picture.png'
 
@@ -29,12 +30,18 @@ class User < ActiveRecord::Base
       genres: 2,
       equipments: 3,
       personal_url: 4,
-      completed: 5
+      cancelations: 5,
+      completed: 6
   }
 
-  validate :at_least_one_event_category,       if: -> { User.steps[step] >= User.steps[:event_types]}
-  validate :at_least_one_genre,                if: -> { User.steps[step] >= User.steps[:genres]}
-  validate :at_least_one_equipment,            if: -> { User.steps[step] >= User.steps[:equipments]}
+  validate :at_least_one_event_category,        if: -> { dj? && User.steps[step] >= User.steps[:event_types]}
+  validate :at_least_one_genre,                 if: -> { dj? && User.steps[step] >= User.steps[:genres]}
+  validate :at_least_one_equipment,             if: -> { dj? && User.steps[step] >= User.steps[:equipments]}
+  validate :at_least_one_cancelation,           if: -> { dj? && User.steps[step] >= User.steps[:cancelations]}
+  validates :weekday_rate_from, presence: true, if: -> { dj? && User.steps[step] >= User.steps[:cancelations]}
+  validates :weekday_rate_to, presence: true,   if: -> { dj? && User.steps[step] >= User.steps[:cancelations]}
+  validates :weekend_rate_from, presence: true, if: -> { dj? && User.steps[step] >= User.steps[:cancelations]}
+  validates :weekend_rate_to, presence: true,   if: -> { dj? && User.steps[step] >= User.steps[:cancelations]}
 
   Role::NAMES.each do |name_constant|
     define_method("#{name_constant}?") { self.role.try(:name) == name_constant.to_s }
@@ -102,9 +109,16 @@ class User < ActiveRecord::Base
       self.errors.add :event_categories, 'must be at least one'
     end
   end
+
   def at_least_one_equipment
     if equipments.count == 0
       self.errors.add :equipments, 'must be at least one'
+    end
+  end
+
+  def at_least_one_cancelation
+    if cancelations.count == 0
+      self.errors.add :cancelations, 'must be at least one'
     end
   end
 end

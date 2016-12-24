@@ -57,6 +57,11 @@
                     templateUrl: 'djs/templates/steps/personal_url.html',
                     controller: 'StepPersonalUrlController'
                 })
+                .state('step_cancelations',{
+                    url: '/cancelations_step',
+                    templateUrl: 'djs/templates/steps/cancelations.html',
+                    controller: 'StepCancelationsController'
+                })
 
                 .state('new_organization',{
                     url: '/organization/new',
@@ -117,66 +122,6 @@
                     url: '/events',
                     templateUrl: 'djs/templates/events/index.html',
                     controller: 'EventsController'
-                })
-                .state('new_cancelation',{
-                    url: '/cancelation/new',
-                    templateUrl: 'djs/templates/cancelations/form.html',
-                    controller: 'CancelationsController'
-                })
-                .state('show_cancelation',{
-                    url: '/cancelation/:id',
-                    templateUrl: 'djs/templates/cancelations/show.html',
-                    controller: 'CancelationsController'
-                })
-                .state('edit_cancelation',{
-                    url: '/cancelation/:id/edit',
-                    templateUrl: 'djs/templates/cancelations/form.html',
-                    controller: 'CancelationsController'
-                })
-                .state('cancelations',{
-                    url: '/cancelations',
-                    templateUrl: 'djs/templates/cancelations/index.html',
-                    controller: 'CancelationsController'
-                })
-                .state('new_event_category',{
-                    url: '/event_category/new',
-                    templateUrl: 'djs/templates/event_categories/form.html',
-                    controller: 'EventCategoriesController'
-                })
-                .state('show_event_category',{
-                    url: '/event_category/:id',
-                    templateUrl: 'djs/templates/event_categories/show.html',
-                    controller: 'EventCategoriesController'
-                })
-                .state('edit_event_category',{
-                    url: '/event_category/:id/edit',
-                    templateUrl: 'djs/templates/event_categories/form.html',
-                    controller: 'EventCategoriesController'
-                })
-                .state('event_categories',{
-                    url: '/event_categories',
-                    templateUrl: 'djs/templates/event_categories/index.html',
-                    controller: 'EventCategoriesController'
-                })
-                .state('new_cancelations_page',{
-                    url: '/cancelations_page/new',
-                    templateUrl: 'djs/templates/cancelations_pages/form.html',
-                    controller: 'CancelationsPagesController'
-                })
-                .state('show_cancelations_page',{
-                    url: '/cancelations_page/:id',
-                    templateUrl: 'djs/templates/cancelations_pages/show.html',
-                    controller: 'CancelationsPagesController'
-                })
-                .state('edit_cancelations_page',{
-                    url: '/cancelations_page/:id/edit',
-                    templateUrl: 'djs/templates/cancelations_pages/form.html',
-                    controller: 'CancelationsPagesController'
-                })
-                .state('cancelations_pages',{
-                    url: '/cancelations_pages',
-                    templateUrl: 'djs/templates/cancelations_pages/index.html',
-                    controller: 'CancelationsPagesController'
                 })
     }]);
 

@@ -2,12 +2,11 @@
   .row.animated.fadeInRight
     .col-md-12
       .ibox.float-e-margins
-        .ibox-title
+        .ibox-content
           h3 ng-show="$state.current.name == 'new_cancelation'"
             | {{ I18n.t('cancelation.new' ) }}
           h3 ng-show="$state.current.name == 'edit_cancelation'"
             | {{ I18n.t('cancelation.edit' ) }}
-        .ibox-content
           form ng-submit="submitCancelation()" name="CancelationForm" novalidate=true
             .form-group
               .row

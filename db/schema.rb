@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161223083746) do
+ActiveRecord::Schema.define(version: 20161224173838) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -45,6 +45,13 @@ ActiveRecord::Schema.define(version: 20161223083746) do
     t.text     "content"
     t.datetime "created_at"
     t.datetime "updated_at"
+  end
+
+  create_table "cancelations_users", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "cancelation_id"
+    t.index ["cancelation_id"], name: "index_cancelations_users_on_cancelation_id", using: :btree
+    t.index ["user_id"], name: "index_cancelations_users_on_user_id", using: :btree
   end
 
   create_table "crew_pages", force: :cascade do |t|
@@ -205,6 +212,10 @@ ActiveRecord::Schema.define(version: 20161223083746) do
     t.datetime "avatar_updated_at"
     t.integer  "step",                 default: 0
     t.string   "personal_url"
+    t.integer  "weekday_rate_from"
+    t.integer  "weekday_rate_to"
+    t.integer  "weekend_rate_from"
+    t.integer  "weekend_rate_to"
   end
 
   create_table "who_we_are_pages", force: :cascade do |t|

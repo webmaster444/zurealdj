@@ -14,11 +14,7 @@
                 $scope.next = function(){
                     users.submit_personal_url($scope.user)
                         .success(function(data){
-                            if(data.next_step == 'completed'){
-                                $state.go('profile')
-                            }else{
-                                $state.go('step_' + data.next_step);
-                            }
+                            $state.go('step_' + data.next_step);
                         })
                         .error(function(data){
                             $scope.validation_errors = data.validation_errors;

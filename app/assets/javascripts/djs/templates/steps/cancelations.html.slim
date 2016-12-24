@@ -1,0 +1,45 @@
+div.page-block.registration
+  .title.text-center
+    | ZUREALDJ
+  .navigation-bar.text-center
+    .step.small-text
+      .pull-left
+        a.slider-btn.back ng-click="back()"
+          | Back
+      | Step 5 of 5
+      .pull-right
+        a.small-text.slider-btn.next ng-click="next()"
+          | Next
+  div
+    .question.text-center
+      | Enter some estimated rates below
+    .select.text-center.small-text
+      | Weekday Rate:
+      .error ng-repeat="error in validation_errors.weekday_rate_from"
+        | {{ error }}
+      .text-center
+        input.register-input type="number" ng-model="user.weekday_rate_from" placeholder="from"
+      .error ng-repeat="error in validation_errors.weekday_rate_to"
+        | {{ error }}
+      .text-center
+        input.register-input type="number" ng-model="user.weekday_rate_to" placeholder="to"
+    .select.text-center.small-text
+      | Weekend Rate:
+      .error ng-repeat="error in validation_errors.weekend_rate_from"
+        | {{ error }}
+      .text-center
+        input.register-input type="number" ng-model="user.weekend_rate_from" placeholder="from"
+      .error ng-repeat="error in validation_errors.weekend_rate_to"
+        | {{ error }}
+      .text-center
+        input.register-input type="number" ng-model="user.weekend_rate_to" placeholder="to"
+    .select.text-center.small-text
+      | Cancelations:
+    .container
+      .error ng-repeat="error in validation_errors.cancelations"
+        | {{ error }}
+      label.select-button ng-repeat="cancelation in cancelations"
+        .btn-checkbox.text-center class="{{ cancelation.selected? 'active': '' }}"
+          | {{ cancelation.title }}
+        input.hide type="checkbox" value="{{ cancelation.id }}" ng-model="cancelation.selected"
+  div.tmp

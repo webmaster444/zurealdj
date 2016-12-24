@@ -143,11 +143,6 @@
                     templateUrl: 'admin/templates/cancelations/form.html',
                     controller: 'CancelationsController'
                 })
-                .state('show_cancelation',{
-                    url: '/cancelation/:id',
-                    templateUrl: 'admin/templates/cancelations/show.html',
-                    controller: 'CancelationsController'
-                })
                 .state('edit_cancelation',{
                     url: '/cancelation/:id/edit',
                     templateUrl: 'admin/templates/cancelations/form.html',

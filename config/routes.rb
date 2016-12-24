@@ -42,6 +42,7 @@ Rails.application.routes.draw do
       resources :event_categories, only: [:index]
       resources :genres, only: [:index]
       resources :equipments, only: [:index]
+      resources :cancelations, only: [:index]
       resources :users, only: [] do
         collection do
           post :step

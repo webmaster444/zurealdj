@@ -10,9 +10,12 @@ class Dj::BaseController < ApplicationController
   end
 
   def not_finished_profile
+    puts "==========="
+    puts current_user.step
+    puts "==========="
     render json:{
         errors: ['Profile not finished.'],
-        step: current_user.step
-    }, status: 405 and return if current_user.step != 'completed'
+        step: User.steps.key(User.steps[current_user.step] + 1)
+    }, status: 405 and return unless current_user.completed?
   end
 end

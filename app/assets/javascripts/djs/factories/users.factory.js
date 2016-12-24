@@ -36,6 +36,18 @@
                 })
             },
 
+            submit_cancelations: function(user, cancelations){
+                cancelations = _.select(cancelations, function(i){ return i.selected });
+                cancelations = _.map(cancelations, function(i){ return i.id });
+                return $http.post('/dj/users/step', {
+                    weekday_rate_from: user.weekday_rate_from,
+                    weekday_rate_to: user.weekday_rate_to,
+                    weekend_rate_from: user.weekend_rate_from,
+                    weekend_rate_to: user.weekend_rate_to,
+                    cancelation_ids: cancelations
+                })
+            },
+
             step_back: function(){
                 return $http.post('/dj/users/step_back')
             }
