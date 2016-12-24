@@ -1,0 +1,25 @@
+div.page-block.registration
+  .title.text-center
+    | ZUREALDJ
+  .navigation-bar.text-center
+    .step.small-text
+      .pull-left
+        a.slider-btn.back ng-click="back()"
+          | Back
+      | Step 2 of 5
+      .pull-right
+        a.small-text.slider-btn.next ng-click="next()"
+          | Next
+  div
+    .question.text-center
+      | What type of genres do you generally play?
+    .select.text-center.small-text
+      | Select all that apply
+    .container
+      .error ng-repeat="error in validation_errors.genres"
+        | {{ error }}
+      label.select-button ng-repeat="genre in genres"
+        .btn-checkbox.text-center class="{{ genre.selected? 'active': '' }}"
+          | {{ genre.title }}
+        input.hide type="checkbox" value="{{ genre.id }}" ng-model="genre.selected"
+  div.tmp

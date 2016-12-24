@@ -38,6 +38,11 @@
                     templateUrl: 'organizers/templates/steps/event_types.html',
                     controller: 'StepEventTypesController'
                 })
+                .state('step_genres',{
+                    url: '/genres_step',
+                    templateUrl: 'organizers/templates/steps/genres.html',
+                    controller: 'StepGenresController'
+                })
 
                 .state('djs',{
                     url: '/djs',

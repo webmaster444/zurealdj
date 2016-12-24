@@ -66,6 +66,7 @@ class User < ActiveRecord::Base
   validates :weekend_rate_to, presence: true,   if: -> { dj? && User.dj_steps[step] >= User.dj_steps[:dj_cancelations]}
 
   validate :at_least_one_event_category,        if: -> { organizer? && User.organizer_steps[step] >= User.organizer_steps[:organizer_event_types]}
+  validate :at_least_one_genre,                 if: -> { organizer? && User.organizer_steps[step] >= User.organizer_steps[:organizer_genres]}
 
   Role::NAMES.each do |name_constant|
     define_method("#{name_constant}?") { self.role.try(:name) == name_constant.to_s }

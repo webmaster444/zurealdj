@@ -15,8 +15,8 @@ class Organizer::UsersController < Organizer::BaseController
 
   def step_back
     @user = current_user
-    @user.update_attribute :step, @user.previous_step
-    render json: { step: @user.next_step }
+    @user.update_attribute :organizer_step, @user.previous_step
+    render json: { step: @user.next_step.gsub('organizer_', '') }
   end
 
   def profile
