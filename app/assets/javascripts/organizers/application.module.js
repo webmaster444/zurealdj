@@ -48,6 +48,11 @@
                     templateUrl: 'organizers/templates/steps/company_name.html',
                     controller: 'StepCompanyNameController'
                 })
+                .state('step_personal_url',{
+                    url: '/personal_url_step',
+                    templateUrl: 'organizers/templates/steps/personal_url.html',
+                    controller: 'StepPersonalUrlController'
+                })
 
                 .state('djs',{
                     url: '/djs',

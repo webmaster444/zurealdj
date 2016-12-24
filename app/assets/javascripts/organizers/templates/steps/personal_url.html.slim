@@ -1,0 +1,25 @@
+div.page-block.registration
+  .title.text-center
+    | ZUREALDJ
+  .navigation-bar.text-center
+    .step.small-text
+      .pull-left
+        a.slider-btn.back ng-click="back()"
+          | Back
+      | Step 4 of 4
+      .pull-right
+        a.small-text.slider-btn.next ng-click="next()"
+          | Next
+  div
+    .question.text-center
+      | Enter an unique url for your profile
+    .select.text-center.small-text
+      | You will only be able to update it once later, so choose wisely!
+    .container
+      .error ng-repeat="error in validation_errors.equipments"
+        | {{ error }}
+      .text-center
+        input.register-input.text-left type="text" ng-model="user.personal_url"
+    .text-center.leave-it-blanck
+      | Leave it blank, if you want the system to decide a url for you
+  div.tmp

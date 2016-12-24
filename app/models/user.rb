@@ -48,11 +48,31 @@ class User < ActiveRecord::Base
   end
 
   def next_step
-    dj? ? User.dj_steps.key(User.dj_steps[step].to_i + 1) : User.organizer_steps.key(User.organizer_steps[step].to_i + 1)
+    if dj?
+      step_number = User.dj_steps[step] + 1
+      step_number = 0 if step_number < 0
+      step_number = 6 if step_number > 6
+      User.dj_steps.key(step_number)
+    elsif organizer?
+      step_number = User.organizer_steps[step] + 1
+      step_number = 0 if step_number < 0
+      step_number = 6 if step_number > 5
+      User.organizer_steps.key(step_number)
+    end
   end
 
   def previous_step
-    dj? ? User.dj_steps.key(User.dj_steps[step] - 1) : User.organizer_steps.key(User.organizer_steps[step] - 1)
+    if dj?
+      step_number = User.dj_steps[step] - 1
+      step_number = 0 if step_number < 0
+      step_number = 6 if step_number > 6
+      User.dj_steps.key(step_number)
+    elsif organizer?
+      step_number = User.organizer_steps[step] - 1
+      step_number = 0 if step_number < 0
+      step_number = 6 if step_number > 5
+      User.organizer_steps.key(step_number)
+    end
   end
 
   validate :at_least_one_event_category,        if: -> { dj? && User.dj_steps[step] >= User.dj_steps[:dj_event_types]}
