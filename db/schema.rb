@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161224195937) do
+ActiveRecord::Schema.define(version: 20161225162530) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -61,6 +61,14 @@ ActiveRecord::Schema.define(version: 20161224195937) do
     t.string   "country_flag_code"
   end
 
+  create_table "dj_stars", force: :cascade do |t|
+    t.integer "dj_id"
+    t.integer "organizer_id"
+    t.integer "stars",        default: 0
+    t.index ["dj_id"], name: "index_dj_stars_on_dj_id", using: :btree
+    t.index ["organizer_id"], name: "index_dj_stars_on_organizer_id", using: :btree
+  end
+
   create_table "djs", force: :cascade do |t|
     t.string   "first_name"
     t.string   "last_name"
@@ -78,8 +86,10 @@ ActiveRecord::Schema.define(version: 20161224195937) do
     t.integer  "photo_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "user_id"
     t.index ["photo_id"], name: "index_djs_on_photo_id", using: :btree
     t.index ["sample_id"], name: "index_djs_on_sample_id", using: :btree
+    t.index ["user_id"], name: "index_djs_on_user_id", using: :btree
   end
 
   create_table "email_senders", force: :cascade do |t|
@@ -169,6 +179,8 @@ ActiveRecord::Schema.define(version: 20161224195937) do
     t.string   "soundcloud_link"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "user_id"
+    t.index ["user_id"], name: "index_organizers_on_user_id", using: :btree
   end
 
   create_table "policies_pages", force: :cascade do |t|

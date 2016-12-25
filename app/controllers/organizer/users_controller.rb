@@ -7,6 +7,9 @@ class Organizer::UsersController < Organizer::BaseController
     allowed_params = step_params.merge({organizer_step: @user.next_step})
 
     if @user.update_attributes allowed_params
+      if @user.next_step == 'organizer_completed'
+        @user.update_attribute :organizer_step, 'organizer_completed'
+      end
       render json: {next_step: @user.next_step.try(:gsub, 'organizer_', '')}
     else
       render json: {validation_errors: @user.errors}, status: :unprocessable_entity

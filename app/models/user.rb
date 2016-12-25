@@ -4,6 +4,8 @@ class User < ActiveRecord::Base
   has_and_belongs_to_many :genres
   has_and_belongs_to_many :equipments
   has_and_belongs_to_many :cancelations
+  has_one :dj, dependent: :destroy
+  has_one :organizer, dependent: :destroy
 
   has_attached_file :avatar, styles: { medium: '300x300>', thumb: '100x100>' }, default_url: '/images/missing_picture.png'
 
@@ -15,6 +17,7 @@ class User < ActiveRecord::Base
   before_save :encrypt_password
   before_validation :downcase_email
   after_create :send_confirmation_email
+  after_create :create_dependent_record
 
   belongs_to :role
 
@@ -75,17 +78,14 @@ class User < ActiveRecord::Base
     end
   end
 
-  validate :at_least_one_event_category,        if: -> { dj? && User.dj_steps[step] >= User.dj_steps[:dj_event_types]}
-  validate :at_least_one_genre,                 if: -> { dj? && User.dj_steps[step] >= User.dj_steps[:dj_genres]}
+  validate :at_least_one_event_category,        if: -> { (dj? && User.dj_steps[step] >= User.dj_steps[:dj_event_types]) || (organizer? && User.organizer_steps[step] >= User.organizer_steps[:organizer_event_types])}
+  validate :at_least_one_genre,                 if: -> { (dj? && User.dj_steps[step] >= User.dj_steps[:dj_genres]) || (organizer? && User.organizer_steps[step] >= User.organizer_steps[:organizer_genres])}
   validate :at_least_one_equipment,             if: -> { dj? && User.dj_steps[step] >= User.dj_steps[:dj_equipments]}
   validate :at_least_one_cancelation,           if: -> { dj? && User.dj_steps[step] >= User.dj_steps[:dj_cancelations]}
   validates :weekday_rate_from, presence: true, if: -> { dj? && User.dj_steps[step] >= User.dj_steps[:dj_cancelations]}
   validates :weekday_rate_to, presence: true,   if: -> { dj? && User.dj_steps[step] >= User.dj_steps[:dj_cancelations]}
   validates :weekend_rate_from, presence: true, if: -> { dj? && User.dj_steps[step] >= User.dj_steps[:dj_cancelations]}
   validates :weekend_rate_to, presence: true,   if: -> { dj? && User.dj_steps[step] >= User.dj_steps[:dj_cancelations]}
-
-  validate :at_least_one_event_category,        if: -> { organizer? && User.organizer_steps[step] >= User.organizer_steps[:organizer_event_types]}
-  validate :at_least_one_genre,                 if: -> { organizer? && User.organizer_steps[step] >= User.organizer_steps[:organizer_genres]}
 
   Role::NAMES.each do |name_constant|
     define_method("#{name_constant}?") { self.role.try(:name) == name_constant.to_s }
@@ -110,6 +110,14 @@ class User < ActiveRecord::Base
   end
 
   private
+
+  def create_dependent_record
+    if dj?
+      create_dj
+    elsif organizer?
+      create_organizer
+    end
+  end
 
   def validate_password?
     !password.nil? || !password_confirmation.nil?
@@ -149,9 +157,7 @@ class User < ActiveRecord::Base
   end
 
   def at_least_one_event_category
-    if event_categories.count == 0
-      self.errors.add :event_categories, 'must be at least one'
-    end
+    self.errors.add :event_categories, 'must be at least one' if event_categories.blank?
   end
 
   def at_least_one_equipment

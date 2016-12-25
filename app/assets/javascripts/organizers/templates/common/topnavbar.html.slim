@@ -1,24 +1,9 @@
 .row.border-bottom.ng-scope
   nav.navbar.navbar-fixed-top role="navigation" style=("margin-bottom: 0")
     .navbar-header
-      span minimaliza-sidebar=""
-        a.navbar-minimalize.minimalize-styl-2.btn.btn-primary href="" ng-click="minimalize()"
-          i.fa.fa-bars
-      form.navbar-form-custom.ng-pristine.ng-valid action="views/search_results.html" method="post" role="search"
-        .form-group
-          input#top-search.form-control name="top-search" placeholder=("Search for something...") type="text" /
+      h1
+        | ZUREALDJ
     ul.nav.navbar-top-links.navbar-right
-      /! <li
-      /! <span class="m-r-sm text-muted welcome-message">Welcome to INSPINIA+ Admin Theme.</span
-      /! </li
-      li.dropdown dropdown=""
-        a.dropdown-toggle.count-info aria-expanded="false" aria-haspopup="true" dropdown-toggle="" href=""
-          | Language
-        ul.dropdown-menu.animated.fadeInRight.m-t-xs.ng-scope
-          li
-            a ng-click="changeLanguage('en')"  {{ I18n.t('languages.english') }}
-          li
-            a ng-click="changeLanguage('ua')"  {{ I18n.t('languages.ukrainian') }}
       li.dropdown dropdown=""
         a.dropdown-toggle.count-info aria-expanded="false" aria-haspopup="true" dropdown-toggle="" href=""
           i.fa.fa-envelope
@@ -96,10 +81,29 @@
               a href="/miscellaneous/notify" ui-sref="miscellaneous.notify"
                 strong See All Alerts
                 i.fa.fa-angle-right
-      li
-        a ng-click="logout()" href="#"
-          i.fa.fa-sign-out
-          | Log out
-      li
-        a ng-click=("$root.rightSidebar = !$root.rightSidebar")
-          i.fa.fa-tasks
+
+      li.dropdown dropdown=""
+        a.dropdown-toggle.count-info aria-expanded="false" aria-haspopup="true" dropdown-toggle="" href=""
+          i.fa.fa-user
+        ul.dropdown-menu.dropdown-alerts
+          li
+            a ng-click="logout()" href="#"
+              i.fa.fa-sign-out
+              | Log out
+
+ul.second-menu
+  li ng-class="{active: $state.current.name == 'djs' }"
+    a href="#djs"
+      | Browse DJs
+  li ng-class="{active: $state.current.name == 'profile' }"
+    a href="#profile"
+      | Profile
+  li
+    a href="#bookings"
+      | Bookings
+  li
+    a href="#favorites"
+      | Favorites
+  li
+    a href="#settings"
+      | Settings

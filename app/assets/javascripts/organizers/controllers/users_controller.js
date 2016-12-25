@@ -8,6 +8,7 @@
             $scope.I18n = I18n;
             $scope._ = _;
             $scope.$state = $state;
+            $scope.$parent.no_second_navbar = false;
 
             $scope.session = {};
 

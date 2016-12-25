@@ -68,6 +68,11 @@ Rails.application.routes.draw do
           post :step_back
         end
       end
+      resources :djs, only: [:index, :show] do
+        member do
+          post :rate
+        end
+      end
     end
 
     resources :attachments, only: [] do

@@ -23,7 +23,7 @@
 
             $httpProvider.defaults.headers.common['X-Requested-With'] = 'AngularXMLHttpRequest';
 
-            $urlRouterProvider.otherwise('home');
+            $urlRouterProvider.otherwise('djs');
 
             $stateProvider
                 .state('profile',{
@@ -31,8 +31,6 @@
                     templateUrl: 'organizers/templates/users/edit.html',
                     controller: 'UsersController'
                 })
-            // generated routes:
-
                 .state('step_event_types',{
                     url: '/event_types_step',
                     templateUrl: 'organizers/templates/steps/event_types.html',
@@ -53,12 +51,12 @@
                     templateUrl: 'organizers/templates/steps/personal_url.html',
                     controller: 'StepPersonalUrlController'
                 })
-
                 .state('djs',{
                     url: '/djs',
                     templateUrl: 'organizers/templates/djs/index.html',
                     controller: 'DjsController'
                 })
+
                 .state('new_booking',{
                     url: '/booking/new',
                     templateUrl: 'organizers/templates/bookings/form.html',

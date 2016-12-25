@@ -6,7 +6,7 @@
                 return $http.get('/organizer/sessions/check');
             },
             logout: function(){
-                return $http.delete('/organizer/sessions')
+                return $http.delete('/sessions')
             }
         }
     }])
