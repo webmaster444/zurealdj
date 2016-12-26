@@ -67,9 +67,10 @@ $(document).ready ->
       size = 'full'
     if window.screen.width >= window.screen.height
       orientation = 'landscape'
-    $('[version=\'true\']').attr 'device', type
-    $('[version=\'true\']').attr 'size', size
-    $('[version=\'true\']').attr 'orientation', orientation
+    $('body').attr 'device', type
+    $('body').attr 'size', size
+    $('body').attr 'orientation', orientation
+    console.log("Resize")
     return
 
   window.onresize = resize

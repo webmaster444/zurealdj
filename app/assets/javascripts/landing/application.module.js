@@ -51,7 +51,7 @@
                 $(".zdj-ngdialog").css({"background-color": "#fff", "margin": 0, "padding": 0});
                 $(".ngdialog-overlay").css({"display": "none"});
             }
-            else $(".ngdialog-close").css({"display": "none"});
+            $(".ngdialog-close").css({"display": "none"});
             window.onresize();
         });
 
