@@ -13,33 +13,36 @@ div.page-block.registration
   div
     .question.text-center
       | Enter some estimated rates below
-    .select.text-center.small-text
-      | Weekday Rate:
+    .form-row.small-text
       .error ng-repeat="error in validation_errors.weekday_rate_from"
         | {{ error }}
-      .text-center
-        input.register-input type="number" ng-model="user.weekday_rate_from" placeholder="from"
       .error ng-repeat="error in validation_errors.weekday_rate_to"
         | {{ error }}
-      .text-center
-        input.register-input type="number" ng-model="user.weekday_rate_to" placeholder="to"
-    .select.text-center.small-text
-      | Weekend Rate:
+      | Weekday Rate:
+      .inline-block
+        input.register-input.step-5-input type="number" ng-model="user.weekday_rate_from" placeholder="from"
+        span.dash
+          | -
+        input.register-input.step-5-input type="number" ng-model="user.weekday_rate_to" placeholder="to"
+    .form-row.small-text
       .error ng-repeat="error in validation_errors.weekend_rate_from"
         | {{ error }}
-      .text-center
-        input.register-input type="number" ng-model="user.weekend_rate_from" placeholder="from"
       .error ng-repeat="error in validation_errors.weekend_rate_to"
         | {{ error }}
-      .text-center
-        input.register-input type="number" ng-model="user.weekend_rate_to" placeholder="to"
-    .select.text-center.small-text
-      | Cancelations:
-    .container
+      | Weekend Rate:
+      .inline-block
+        input.register-input.step-5-input type="number" ng-model="user.weekend_rate_from" placeholder="from"
+        span.dash
+          | -
+        input.register-input.step-5-input type="number" ng-model="user.weekend_rate_to" placeholder="to"
+    .form-row.text-center
       .error ng-repeat="error in validation_errors.cancelations"
         | {{ error }}
-      label.select-button ng-repeat="cancelation in cancelations"
-        .btn-checkbox.text-center class="{{ cancelation.selected? 'active': '' }}"
-          | {{ cancelation.title }}
-        input.hide type="checkbox" value="{{ cancelation.id }}" ng-model="cancelation.selected"
+      .small-text.inline-block
+        | Cancelations:
+      .cancelations-container.inline-block.text-left
+        label.select-button ng-repeat="cancelation in cancelations"
+          .btn-checkbox.text-center class="{{ cancelation.selected? 'active': '' }}"
+            | {{ cancelation.title }}
+          input.hide type="checkbox" value="{{ cancelation.id }}" ng-model="cancelation.selected"
   div.tmp
