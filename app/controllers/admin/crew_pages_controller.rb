@@ -1,15 +1,11 @@
 class Admin::CrewPagesController < ApplicationController
 
-  def index
-
-  end
-
   def show
-    @article = CrewPage.where(country_flag_code: params[:id]).first_or_create
+    @article = CrewPage.first_or_create
   end
 
   def update
-    @article = CrewPage.where(country_flag_code: params[:id]).first_or_create
+    @article = CrewPage.first_or_create
 
     if @article.update_attributes crew_page_params
       render json: {message: 'Crew page notice updated.'}

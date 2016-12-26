@@ -10,22 +10,14 @@
                     fd.append('who_we_are_page[content]', who_we_are_page.content );
                 }
 
-                if(who_we_are_page.language){
-                    fd.append('who_we_are_page[language]', who_we_are_page.language );
-                }
-
-                return $http.put('/admin/who_we_are_pages/' + who_we_are_page.country_code, fd, {
+                return $http.put('/admin/who_we_are_pages/1', fd, {
                     transformRequest: angular.identity,
                     headers: {'Content-Type': undefined}
                 });
             },
 
-            all: function(options){
-                return $http.get('/admin/who_we_are_pages.json?page=' + options.page);
-            },
-
             show: function(id){
-                return $http.get('/admin/who_we_are_pages/' + id + '.json');
+                return $http.get('/admin/who_we_are_pages/1.json');
             }
         }
     }])

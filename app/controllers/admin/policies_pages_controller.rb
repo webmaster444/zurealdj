@@ -1,15 +1,11 @@
 class Admin::PoliciesPagesController < Admin::BaseController
 
-  def index
-
-  end
-
   def show
-    @article = PoliciesPage.find_by_country_flag_code params[:id]
+    @article = PoliciesPage.first_or_create
   end
 
   def update
-    @article = PoliciesPage.find_by_country_flag_code params[:id]
+    @article = PoliciesPage.first_or_create
 
     if @article.update_attributes policies_page_params
       render json: {message: 'Policies page notice updated.'}

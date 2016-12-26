@@ -10,22 +10,14 @@
                     fd.append('how_we_work_page[content]', how_we_work_page.content );
                 }
 
-                if(how_we_work_page.language){
-                    fd.append('how_we_work_page[language]', how_we_work_page.language );
-                }
-
-                return $http.put('/admin/how_we_work_pages/' + how_we_work_page.country_code, fd, {
+                return $http.put('/admin/how_we_work_pages/1', fd, {
                     transformRequest: angular.identity,
                     headers: {'Content-Type': undefined}
                 });
             },
 
-            all: function(options){
-                return $http.get('/admin/how_we_work_pages.json?page=' + options.page);
-            },
-
             show: function(id){
-                return $http.get('/admin/how_we_work_pages/' + id + '.json');
+                return $http.get('/admin/how_we_work_pages/1.json');
             }
         }
     }])

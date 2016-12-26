@@ -7,20 +7,15 @@
                 var fd = new FormData();
 
                 fd.append('policies_page[content]', policies_page.content || '');
-                fd.append('policies_page[language]', policies_page.language || '');
 
-                return $http.put('/admin/policies_pages/' + policies_page.country_code, fd, {
+                return $http.put('/admin/policies_pages/1', fd, {
                     transformRequest: angular.identity,
                     headers: {'Content-Type': undefined}
                 });
             },
 
-            all: function(options){
-                return $http.get('/admin/policies_pages.json?page=' + options.page);
-            },
-
             show: function(id){
-                return $http.get('/admin/policies_pages/' + id + '.json');
+                return $http.get('/admin/policies_pages/1.json');
             }
         }
     }])

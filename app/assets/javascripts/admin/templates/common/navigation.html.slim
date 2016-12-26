@@ -22,26 +22,6 @@ nav.navbar-default.navbar-static-side.ng-scope role="navigation"
           a href="#events"
             i.fa.fa-car
             span.nav-label.ng-binding EVENT
-        li ng-class=("{active: $state.current.name.includes('who_we_are_pag')}")
-          a href="#who_we_are_pages"
-            i.fa.fa-car
-            span.nav-label.ng-binding WHO WE ARE PAGES
-        li ng-class=("{active: $state.current.name.includes('crew_pag')}")
-          a href="#crew_pages"
-            i.fa.fa-car
-            span.nav-label.ng-binding CREW PAGES
-        li ng-class=("{active: $state.current.name.includes('how_we_work_pag')}")
-          a href="#how_we_work_pages"
-            i.fa.fa-car
-            span.nav-label.ng-binding HOW WE WORK PAGES
-        li ng-class=("{active: $state.current.name.includes('policies_pag')}")
-          a href="#policies_pages"
-            i.fa.fa-car
-            span.nav-label.ng-binding POLICIES PAGES
-        li ng-class=("{active: $state.current.name.includes('terms_n_conditions_pag')}")
-          a href="#terms_n_conditions_pages"
-            i.fa.fa-car
-            span.nav-label.ng-binding TERMS N CONDITIONS PAGES
         li ng-class=("{active: $state.current.name.includes('cancelations_pag')}")
           a href="#cancelations_page/new"
             i.fa.fa-car
@@ -66,7 +46,21 @@ nav.navbar-default.navbar-static-side.ng-scope role="navigation"
             li.active ui-sref-active="active"
               a.ng-binding href="#cancelations"
                 | Cancelations
-
+            li.active ui-sref-active="active"
+              a.ng-binding href="#who_we_are_page/edit"
+                | Who we are pages
+            li.active ui-sref-active="active"
+              a.ng-binding href="#crew_page/edit"
+                | Crew pages
+            li.active ui-sref-active="active"
+              a.ng-binding href="#how_we_work_page/edit"
+                |  How we work pages
+            li.active ui-sref-active="active"
+              a.ng-binding href="#policies_page/edit"
+                | Policies pages
+            li.active ui-sref-active="active"
+              a.ng-binding href="#terms_n_conditions_pages"
+                | Terms n conditions pages
         li ng-class=("{active: $state.current.name.includes('config_pag')}")
           a href="#"
             i.fa.fa-gear

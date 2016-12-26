@@ -1,15 +1,11 @@
 class Admin::HowWeWorkPagesController < ApplicationController
 
-  def index
-
-  end
-
   def show
-    @article = HowWeWorkPage.where(country_flag_code: params[:id]).first_or_create
+    @article = HowWeWorkPage.first_or_create
   end
 
   def update
-    @article = HowWeWorkPage.where(country_flag_code: params[:id]).first_or_create
+    @article = HowWeWorkPage.first_or_create
 
     if @article.update_attributes how_we_work_page_params
       render json: {message: 'How We Work page notice updated.'}

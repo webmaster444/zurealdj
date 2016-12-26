@@ -2,15 +2,15 @@
   .row.animated.fadeInRight
     .col-md-12
       .ibox.float-e-margins
-        .ibox-title
-          h3 ng-show="$state.current.name == 'edit_how_we_work_page'"
-            | {{ I18n.t('how_we_work_page.edit' ) }}
-          .pull-right
-            a.btn.btn-default type="submit" href="#how_we_work_pages"
-              | Cancel
-            a.btn.ladda-button.btn-info data-style="expand-left" ladda="formPending" ng-click="save()"
-              | Save
         .ibox-content
+          .page-title
+            h3 ng-show="$state.current.name == 'edit_how_we_work_page'"
+              | {{ I18n.t('how_we_work_page.edit' ) }}
+            .pull-right
+              a.btn.btn-default type="submit" href="#how_we_work_pages"
+                | Cancel
+              a.btn.ladda-button.btn-info data-style="expand-left" ladda="formPending" ng-click="save()"
+                | Save
           .row
             .col-sm-2
               label.control-label

@@ -7,24 +7,15 @@
                 var fd = new FormData();
 
                 fd.append('crew_page[content]', crew_page.content || '');
-                fd.append('crew_page[language]', crew_page.language || '');
 
-                return $http.put('/admin/crew_pages/' + crew_page.country_code, fd, {
+                return $http.put('/admin/crew_pages/1', fd, {
                     transformRequest: angular.identity,
                     headers: {'Content-Type': undefined}
                 });
             },
 
-            all: function(options){
-                return $http.get('/admin/crew_pages.json?page=' + options.page);
-            },
-
             show: function(id){
-                return $http.get('/admin/crew_pages/' + id + '.json');
-            },
-
-            destroy: function(id){
-                return $http.delete('/admin/crew_pages/' + id)
+                return $http.get('/admin/crew_pages/1.json');
             }
         }
     }])

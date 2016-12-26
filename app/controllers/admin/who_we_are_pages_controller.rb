@@ -5,11 +5,11 @@ class Admin::WhoWeArePagesController < ApplicationController
   end
 
   def show
-    @article = WhoWeArePage.where(country_flag_code: params[:id]).first_or_create
+    @article = WhoWeArePage.first_or_create
   end
 
   def update
-    @article = WhoWeArePage.where(country_flag_code: params[:id]).first_or_create
+    @article = WhoWeArePage.first_or_create
 
     if @article.update_attributes who_we_are_page_params
       render json: {message: 'Who We Are page notice updated.'}

@@ -184,43 +184,23 @@
                     controller: 'EquipmentsController'
                 })
                 .state('edit_who_we_are_page',{
-                    url: '/who_we_are_page/:id/edit',
+                    url: '/who_we_are_page/edit',
                     templateUrl: 'admin/templates/who_we_are_pages/form.html',
                     controller: 'WhoWeArePagesController'
                 })
-                .state('who_we_are_pages',{
-                    url: '/who_we_are_pages',
-                    templateUrl: 'admin/templates/who_we_are_pages/index.html',
-                    controller: 'WhoWeArePagesController'
-                })
                 .state('edit_crew_page',{
-                    url: '/crew_page/:id/edit',
+                    url: '/crew_page/edit',
                     templateUrl: 'admin/templates/crew_pages/form.html',
                     controller: 'CrewPagesController'
                 })
-                .state('crew_pages',{
-                    url: '/crew_pages',
-                    templateUrl: 'admin/templates/crew_pages/index.html',
-                    controller: 'CrewPagesController'
-                })
                 .state('edit_how_we_work_page',{
-                    url: '/how_we_work_page/:id/edit',
+                    url: '/how_we_work_page/edit',
                     templateUrl: 'admin/templates/how_we_work_pages/form.html',
                     controller: 'HowWeWorkPagesController'
                 })
-                .state('how_we_work_pages',{
-                    url: '/how_we_work_pages',
-                    templateUrl: 'admin/templates/how_we_work_pages/index.html',
-                    controller: 'HowWeWorkPagesController'
-                })
                 .state('edit_policies_page',{
-                    url: '/policies_page/:id/edit',
+                    url: '/policies_page/edit',
                     templateUrl: 'admin/templates/policies_pages/form.html',
-                    controller: 'PoliciesPagesController'
-                })
-                .state('policies_pages',{
-                    url: '/policies_pages',
-                    templateUrl: 'admin/templates/policies_pages/index.html',
                     controller: 'PoliciesPagesController'
                 })
                 .state('new_terms_n_conditions_page',{

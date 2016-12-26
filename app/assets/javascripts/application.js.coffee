@@ -70,7 +70,6 @@ $(document).ready ->
     $('body').attr 'device', type
     $('body').attr 'size', size
     $('body').attr 'orientation', orientation
-    console.log("Resize")
     return
 
   window.onresize = resize
