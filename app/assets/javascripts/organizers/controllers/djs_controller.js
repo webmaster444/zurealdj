@@ -71,6 +71,32 @@
                             .error(function(data){
 
                             });
+                    };
+
+                    var favorites_timer = false;
+
+                    $scope.removeFromFavorites = function(dj){
+                        if(favorites_timer){
+                            $timeout.cancel(favorites_timer)
+                        }
+                        favorites_timer = $timeout(function(){
+                            djs.removeFromFavorites(dj.dj_id)
+                                .success(function(){
+                                    dj.in_favorites = false;
+                                })
+                        }, 500)
+                    };
+
+                    $scope.addToFavorites = function(dj){
+                        if(favorites_timer){
+                            $timeout.cancel(favorites_timer)
+                        }
+                        favorites_timer = $timeout(function(){
+                            djs.addToFavorites(dj.dj_id)
+                                .success(function(){
+                                    dj.in_favorites = true;
+                                })
+                        }, 500)
                     }
                 }
 

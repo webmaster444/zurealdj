@@ -5,6 +5,7 @@ html(lang="en")
     = csrf_meta_tags
   body ng-app="ZurealdjOrganizerApp" ng-controller="HomeController" ng-init="flash = { message: '#{ flash[:message] }', error: '#{ flash[:error] }' }"
     div.organizer-page version='true'
+      div ng-include="'organizers/templates/common/topnavbar.html'" ng-hide="no_second_navbar"
       div ui-view=""
       div ng-include="'organizers/templates/common/footer.html'"
     div toaster-container='' toaster-options="{'close-button': true}"

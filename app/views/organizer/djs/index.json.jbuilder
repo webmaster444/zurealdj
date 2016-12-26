@@ -7,5 +7,6 @@ json.djs @djs.each do |dj|
   json.country CountryFlag.find(dj['country_flag_code']).try(:[], :title)
   json.genres dj['genres'].map{|g| g['title']}.join(' | ')
   json.rating dj['votes_count'] == 0 ? 0 : dj['stars_count']/dj['votes_count']
+  json.in_favorites current_user.organizer.favorite_djs.include?(dj.dj)
 end
 json.has_more @has_more

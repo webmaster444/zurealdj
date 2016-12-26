@@ -11,3 +11,7 @@
       h4
         | {{ dj.genres }}
       span.rating-icons rating=true ng-model="dj.rating" max="5" ng-change="rate(dj)"
+      a ng-click="addToFavorites(dj)" ng-hide="dj.in_favorites"
+        | Add to favorites
+      a ng-click="removeFromFavorites(dj)" ng-show="dj.in_favorites"
+        | Remove from favorites

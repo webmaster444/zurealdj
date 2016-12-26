@@ -73,6 +73,7 @@ Rails.application.routes.draw do
           post :rate
         end
       end
+      resources :favorite_djs, only: [:index, :update, :destroy]
     end
 
     resources :attachments, only: [] do
