@@ -1,30 +1,40 @@
-.profile-header-container
+.profile
   .profile-header style="background-image: url({{ user.avatar.url }})"
-  .container
-    .name
-      | {{ user.name }}
-    .company
-      | {{ user.company_name }}({{ user.city}}, {{user.country.title }})
-    div rating=true ng-model="user.stars"
-    .genres
-      | {{ user.genres_string }}
-.container.profile-avatar-container
-  .profile-avatar
-    img ng-src="{{user.avatar.url}}"
-    a.btn.btn-info href="#edit_profile"
-      | Edit
-    h3
-      | About
-    | {{ user.about }}
-    h3
-      | Social
-    a href="{{ user.facebook_link }}"
-      i.fa.fa-facebook
-    a href="{{ user.instagram_link }}"
-      i.fa.fa-instagram
-    a href="{{ user.soundcloud_link }}"
-      i.fa.fa-soundcloud
-.container.profile-container
-  .content-header
-    | Genres Information
-  | {{ user.genres_string }}
+    .page-block
+      .tmp
+      .inf-container
+        .name
+          | {{ user.name }}
+        .small-text.company
+          | {{ user.company_name }}({{ user.city}}, {{user.country.title }})
+        div.stars rating=true ng-model="user.stars"
+        .small-text.genres
+          | {{ user.genres_string }} | Organizer
+  .profile-content
+    .page-block
+      .profile-avatar
+        img ng-src="{{ user.avatar.url }}"
+        a.btn-edit.small-text href="#edit_profile"
+          | Edit
+        .content
+          .title
+            | About
+          .text
+            | {{ user.about }}
+          .title
+            | Social
+          .row
+            a.col-social#first href="{{ user.soundcloud_link }}"
+              .ic-mixcloud.icon
+            a.col-social href="{{ user.facebook_link }}"
+              .ic-facebook.icon
+            a.col-social href="{{ user.instagram_link }}"
+              .ic-instagram.icon
+
+      .general
+        .block-title
+          | Genres Information
+        .title
+          | Genres:
+        .description
+          | {{ user.genres_string }}

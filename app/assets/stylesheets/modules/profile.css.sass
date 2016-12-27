@@ -1,47 +1,119 @@
-.profile-header-container
-  height: 360px
-  position: relative
+@import "variables_and_functions"
+
+.profile
+  clear: both
+  height: auto
+  padding-bottom: 100px
   .profile-header
-    position: absolute
-    top: 0
-    left: 0
     width: 100%
-    height: 100%
+    height: 360px
     background-color: rgba(84, 84, 84, 0.7)
     background-repeat: no-repeat
     background-size: cover
     background-position: bottom
-    filter: blur(5px)
-    -webkit-filter: blur(5px)
-    z-index: -1
-  .container
-    padding: 100px 0px 0px 400px
+    -webkit-backdrop-filter: blur(10px)
+    backdrop-filter: blur(10px)
+  .profile-content
+    margin-top: -360px
+    .profile-avatar
+      display: inline-block
+      width: 360px
+      margin-top: 70px
+      border-radius: 4px
+      background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.2), rgba(255, 255, 255, 0) 50%, rgba(0, 0, 0, 0.2))
+      img
+        width: 360px
+        max-height: 360px
+      .btn-edit
+        border-radius: 100px
+        background-color: $current-color
+        color: white
+        padding: 15px 92px
+        margin-left: 70px
+        margin-top: -80px
+        display: inline-block
+      .content
+        padding: 30px
+        background-color: white
+        color: #555555
+        font-size: 16px
+        letter-spacing: 1px
+        .title
+          font-weight: 500
+          margin-bottom: 15px
+        .text
+          line-height: 1.5
+          margin-bottom: 15px
+      a
+        display: inline-block
+      .icon
+        display: inline-block
+        background-position: center
+        background-size: contain
+        background-repeat: no-repeat
+      .ic-mixcloud
+        width: 30px
+        height: 18px
+        background-image: url(/images/icons/ic-mixcloud.png)
+      .ic-facebook
+        width: 9px
+        height: 18px
+        background-image: url(/images/icons/ic-facebook.png)
+      .ic-instagram
+        width: 21px
+        height: 21px
+        background-image: url(/images/icons/ic-instagram.png)
+      .col-social
+        margin: auto 20px
+        padding: 0
+        display: inline-block
+      .col-social#first
+        margin-left: 20px
+  .small-text
+    font-size: 16px
+    font-weight: 500
+    letter-spacing: 1.5px
+  .tmp
+    height: 360px
+    display: inline-block
+  .inf-container
+    display: inline-block
+    margin-left: 400px
+    vertical-align: bottom
+    padding-bottom: 35px
     .name
-      font-family: CeraPro
       font-size: 32px
       letter-spacing: 3px
-      color: #ffffff
+      color: white
+      margin-bottom: 10px
     .company
-      font-family: CeraPro
-      font-size: 16px
-      letter-spacing: 1.5px
-      color: #ffffff
+      color: white
     .genres
-      font-family: CeraPro
-      font-size: 16px
-      line-height: 1.5
+      color: white
       letter-spacing: 1px
-      color: #ffffff
-.profile-container
-  padding: 10px 0px 0px 400px
-
-.profile-avatar-container
-  position: relative
-  .profile-avatar
-    background-color: white
-    top: -300px
-    left: 0
-    position: absolute
-    width: 360px
-    img
-      width: 100%
+    .stars
+      display: inline-block
+      outline: none
+      margin: 30px 0
+  .general
+    margin-left: 400px
+    margin-top: -40px
+    .block-title
+      font-size: 20px
+      font-weight: 500
+      letter-spacing: 1.3px
+      color: #555555
+      margin-bottom: 25px
+    .title
+      font-size: 16px
+      line-height: 1.88
+      letter-spacing: 1px
+      color: #8a8a8a
+      display: inline-block
+      width: 160px
+    .description
+      font-size: 16px
+      line-height: 1.88
+      letter-spacing: 1px
+      color: #555555
+      display: inline-block
