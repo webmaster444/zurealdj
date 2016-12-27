@@ -14,7 +14,6 @@ class Admin::EmailSenderController  < ApplicationController
 
   def show
     @email_sender = EmailSender.first_or_create
-    render json: {"email_sender":@email_sender}
   end
 
   def index
