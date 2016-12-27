@@ -2,6 +2,10 @@ class Dj < ActiveRecord::Base
 
   has_many :dj_stars
 
+  has_attached_file :sample
+
+  validates_attachment_content_type :sample, :content_type => %w(audio/mpeg audio/x-mpeg audio/mp3 audio/x-mp3 audio/mpeg3 audio/x-mpeg3 audio/mpg audio/x-mpg audio/x-mpegaudio)
+
   def country_flag
     CountryFlag.find(country_flag_code)
   end

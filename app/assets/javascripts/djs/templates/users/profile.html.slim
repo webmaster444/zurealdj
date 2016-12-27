@@ -26,6 +26,10 @@
       i.fa.fa-soundcloud
 .container.profile-container.registration
   .content-header
+    | Listen
+  audio controls=true data-ng-src="{{ trustSrc(user.sample_url) }}" ng-show="user.sample_url"
+  hr
+  .content-header
     | Equipment
   label.select-button ng-repeat="equipment in user.equipments"
     .btn-equipment.text-center.active ng-show="equipment.selected"

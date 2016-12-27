@@ -61,8 +61,12 @@
                 fd.append('facebook_link', user.facebook_link || '');
                 fd.append('instagram_link', user.instagram_link || '');
                 fd.append('soundcloud_link', user.soundcloud_link || '');
+                fd.append('weekday_rate_from', user.weekday_rate_from || '');
+                fd.append('weekday_rate_to', user.weekday_rate_to || '');
+                fd.append('weekend_rate_from', user.weekend_rate_from || '');
+                fd.append('weekend_rate_to', user.weekend_rate_to || '');
                 if(user.sample){
-
+                    fd.append('dj_attributes[sample]', user.sample);
                 }
                 _.each(user.event_types, function(i){
                     if(i.selected)
@@ -75,6 +79,10 @@
                 _.each(user.equipments, function(i){
                     if(i.selected)
                         fd.append('equipment_ids[]', i.id)
+                });
+                _.each(user.cancelations, function(i){
+                    if(i.selected)
+                        fd.append('cancelation_ids[]', i.id)
                 });
 
                 if(user.avatar.file){
