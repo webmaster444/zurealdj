@@ -7,6 +7,8 @@ class User < ActiveRecord::Base
   has_one :dj, dependent: :destroy
   has_one :organizer, dependent: :destroy
 
+  accepts_nested_attributes_for :organizer
+
   has_attached_file :avatar, styles: { medium: '300x300>', thumb: '100x100>' }, default_url: '/images/missing_picture.png'
 
   attr_accessor :password, :password_confirmation
@@ -24,6 +26,7 @@ class User < ActiveRecord::Base
   validates :password, presence: true, confirmation: true, if: :validate_password?
   validates :password_confirmation, presence: true, if: :validate_password?
   validates :role_id, presence: true
+  validates :name, presence: true
 
   validates_attachment_content_type :avatar, content_type: /\Aimage\/.*\Z/
 

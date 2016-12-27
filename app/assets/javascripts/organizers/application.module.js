@@ -28,6 +28,11 @@
             $stateProvider
                 .state('profile',{
                     url: '/profile',
+                    templateUrl: 'organizers/templates/users/profile.html',
+                    controller: 'UsersController'
+                })
+                .state('edit_profile',{
+                    url: '/edit_profile',
                     templateUrl: 'organizers/templates/users/edit.html',
                     controller: 'UsersController'
                 })

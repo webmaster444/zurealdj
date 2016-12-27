@@ -74,6 +74,11 @@ Rails.application.routes.draw do
         end
       end
       resources :favorite_djs, only: [:index, :update, :destroy]
+      resources :users, only: [] do
+        collection do
+          post :update_profile
+        end
+      end
     end
 
     resources :attachments, only: [] do

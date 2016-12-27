@@ -1,0 +1,30 @@
+.profile-header-container
+  .profile-header style="background-image: url({{ user.avatar.url }})"
+  .container
+    .name
+      | {{ user.name }}
+    .company
+      | {{ user.company_name }}({{ user.city}}, {{user.country.title }})
+    div rating=true ng-model="user.stars"
+    .genres
+      | {{ user.genres_string }}
+.container.profile-avatar-container
+  .profile-avatar
+    img ng-src="{{user.avatar.url}}"
+    a.btn.btn-info href="#edit_profile"
+      | Edit
+    h3
+      | About
+    | {{ user.about }}
+    h3
+      | Social
+    a href="{{ user.facebook_link }}"
+      i.fa.fa-facebook
+    a href="{{ user.instagram_link }}"
+      i.fa.fa-instagram
+    a href="{{ user.soundcloud_link }}"
+      i.fa.fa-soundcloud
+.container.profile-container
+  .content-header
+    | Genres Information
+  | {{ user.genres_string }}

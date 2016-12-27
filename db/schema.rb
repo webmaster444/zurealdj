@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161226120145) do
+ActiveRecord::Schema.define(version: 20161227083347) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -74,11 +74,7 @@ ActiveRecord::Schema.define(version: 20161226120145) do
     t.string   "last_name"
     t.string   "city"
     t.string   "country_flag_code"
-    t.text     "about"
     t.integer  "sample_id"
-    t.string   "instagram_link"
-    t.string   "facebook_link"
-    t.string   "soundcloud_link"
     t.integer  "weekday_price_from"
     t.integer  "weekday_price_to"
     t.integer  "weekend_price_from"
@@ -174,16 +170,20 @@ ActiveRecord::Schema.define(version: 20161226120145) do
     t.string   "country_flag_code"
   end
 
+  create_table "organizer_stars", force: :cascade do |t|
+    t.integer "dj_id"
+    t.integer "organizer_id"
+    t.integer "stars",        default: 0
+    t.index ["dj_id"], name: "index_organizer_stars_on_dj_id", using: :btree
+    t.index ["organizer_id"], name: "index_organizer_stars_on_organizer_id", using: :btree
+  end
+
   create_table "organizers", force: :cascade do |t|
     t.string   "first_name"
     t.string   "last_name"
     t.string   "city"
     t.string   "country_flag_code"
     t.string   "address"
-    t.text     "about"
-    t.string   "instagram_link"
-    t.string   "facebook_link"
-    t.string   "soundcloud_link"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "user_id"
@@ -237,6 +237,10 @@ ActiveRecord::Schema.define(version: 20161226120145) do
     t.integer  "dj_step",              default: 0
     t.integer  "organizer_step",       default: 0
     t.string   "company_name"
+    t.text     "about"
+    t.string   "instagram_link"
+    t.string   "facebook_link"
+    t.string   "soundcloud_link"
   end
 
   create_table "who_we_are_pages", force: :cascade do |t|

@@ -26,7 +26,21 @@ class Organizer::UsersController < Organizer::BaseController
     @user = current_user
   end
 
+  def update_profile
+    @user = current_user
+    if @user.update_attributes profile_params
+      render json: {message: 'Profile updated.'}
+    else
+      render json: {validation_errors: @users.errors}, status: :unprocessable_entity
+    end
+  end
+
   private
+
+  def profile_params
+    params.permit(:name, :avatar, :company_name, :about, :facebook_link, :instagram_link, :soundcloud_link,
+                  organizer_attributes: [:city, :country_flag_code], event_category_ids: [], genre_ids: [])
+  end
 
   def step_params
     params.permit :personal_url, :company_name, cancelation_ids: [], event_category_ids: [], genre_ids: [], equipment_ids: []
