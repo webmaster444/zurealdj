@@ -5,6 +5,7 @@ html(lang="en")
         = csrf_meta_tags
     body ng-app="ZurealdjDjApp" ng-controller="HomeController" ng-init="flash = { message: '#{ flash[:message] }', error: '#{ flash[:error] }' }"
       div.dj-page
+        div ng-include="'djs/templates/common/topnavbar.html'" ng-hide="no_second_navbar"
         div ui-view=""
         div ng-include="'landing/templates/common/footer.html'"
       div toaster-container='' toaster-options="{'close-button': true}"

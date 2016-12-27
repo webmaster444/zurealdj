@@ -13,10 +13,6 @@ class Admin::EmailSenderController  < ApplicationController
   end
 
   def show
-    @email_sender = EmailSender.first_or_create
-  end
-
-  def index
     @sender = EmailSender.first_or_create
   end
 

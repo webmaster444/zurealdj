@@ -8,6 +8,7 @@ class User < ActiveRecord::Base
   has_one :organizer, dependent: :destroy
 
   accepts_nested_attributes_for :organizer
+  accepts_nested_attributes_for :dj
 
   has_attached_file :avatar, styles: { medium: '300x300>', thumb: '100x100>' }, default_url: '/images/missing_picture.png'
 

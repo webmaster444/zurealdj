@@ -23,17 +23,17 @@
 
             $httpProvider.defaults.headers.common['X-Requested-With'] = 'AngularXMLHttpRequest';
 
-            $urlRouterProvider.otherwise('/');
+            $urlRouterProvider.otherwise('profile');
 
             $stateProvider
-                .state('home',{
-                  url: '/',
-                  templateUrl: 'djs/templates/home/index.html',
-                  controller: 'DashboardController'
+                .state('edit_profile',{
+                    url: '/edit_profile',
+                    templateUrl: 'djs/templates/users/edit.html',
+                    controller: 'UsersController'
                 })
                 .state('profile',{
                     url: '/profile',
-                    templateUrl: 'djs/templates/users/edit.html',
+                    templateUrl: 'djs/templates/users/profile.html',
                     controller: 'UsersController'
                 })
 

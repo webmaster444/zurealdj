@@ -50,6 +50,41 @@
 
             step_back: function(){
                 return $http.post('/dj/users/step_back')
+            },
+
+            save: function(user){
+                var fd = new FormData();
+                fd.append('name', user.name || '');
+                fd.append('dj_attributes[city]', user.city || '');
+                fd.append('dj_attributes[country_flag_code]', user.country ? user.country.code : '');
+                fd.append('about', user.about || '');
+                fd.append('facebook_link', user.facebook_link || '');
+                fd.append('instagram_link', user.instagram_link || '');
+                fd.append('soundcloud_link', user.soundcloud_link || '');
+                if(user.sample){
+
+                }
+                _.each(user.event_types, function(i){
+                    if(i.selected)
+                        fd.append('event_category_ids[]', i.id)
+                });
+                _.each(user.genres, function(i){
+                    if(i.selected)
+                        fd.append('genre_ids[]', i.id)
+                });
+                _.each(user.equipments, function(i){
+                    if(i.selected)
+                        fd.append('equipment_ids[]', i.id)
+                });
+
+                if(user.avatar.file){
+                    fd.append('avatar', user.avatar.file);
+                }
+
+                return $http.post('/dj/users/update_profile', fd, {
+                    transformRequest: angular.identity,
+                    headers: {'Content-Type': undefined}
+                })
             }
         }
     }])

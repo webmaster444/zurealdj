@@ -1,0 +1,53 @@
+.profile-header-container
+  .profile-header style="background-image: url({{ user.avatar.url }})"
+  .container
+    .name
+      | {{ user.name }}
+    .company
+      | {{ user.city}}, {{user.country.title }}
+    div rating=true ng-model="user.stars"
+    .genres
+      | {{ user.genres_string }}
+.container.profile-avatar-container
+  .profile-avatar
+    img ng-src="{{user.avatar.url}}"
+    a.btn.btn-info href="#edit_profile"
+      | Edit
+    h3
+      | About
+    | {{ user.about }}
+    h3
+      | Social
+    a href="{{ user.facebook_link }}"
+      i.fa.fa-facebook
+    a href="{{ user.instagram_link }}"
+      i.fa.fa-instagram
+    a href="{{ user.soundcloud_link }}"
+      i.fa.fa-soundcloud
+.container.profile-container.registration
+  .content-header
+    | Equipment
+  label.select-button ng-repeat="equipment in user.equipments"
+    .btn-equipment.text-center.active ng-show="equipment.selected"
+      img ng-src="{{ equipment.icon }}"
+      .title
+        | {{ equipment.title }}
+  hr
+  .content-header
+    | Booking information
+  table
+    tr
+      td
+        | Weekday Rate:
+      td
+        | ${{ user.weekday_rate_from }}-${{user.weekday_rate_to}}
+    tr
+      td
+        | Weekday Rate:
+      td
+        | ${{ user.weekend_rate_from }}-${{user.weekend_rate_to}}
+    tr
+      td
+        | Cancelations:
+      td
+        | {{ user.cancelations_string }}

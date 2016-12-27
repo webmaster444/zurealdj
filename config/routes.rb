@@ -47,6 +47,7 @@ Rails.application.routes.draw do
         collection do
           post :step
           post :step_back
+          post :update_profile
         end
       end
     end
@@ -66,6 +67,7 @@ Rails.application.routes.draw do
         collection do
           post :step
           post :step_back
+          post :update_profile
         end
       end
       resources :djs, only: [:index, :show] do
@@ -74,11 +76,6 @@ Rails.application.routes.draw do
         end
       end
       resources :favorite_djs, only: [:index, :update, :destroy]
-      resources :users, only: [] do
-        collection do
-          post :update_profile
-        end
-      end
     end
 
     resources :attachments, only: [] do

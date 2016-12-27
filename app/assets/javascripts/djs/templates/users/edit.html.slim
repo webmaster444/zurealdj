@@ -1,50 +1,107 @@
-.wrapper.wrapper-content
-  .row.animated.fadeInRight
-    .col-md-12
-      .ibox.float-e-margins
-        .ibox-title
-          h5
-            | {{ I18n.t('profile.edit_profile') }}
-        .ibox-content
-          form.form-horizontal ng-submit="submit()" name="currentUserForm" novalidate=true
-            .form-group
-              label.col-lg-2.control-label Email:
-              .col-lg-10
-                p.form-control-static
-                  | {{ current_user.email }}
-            .hr-line-dashed
+.container.registration
+  .content-header
+    | Main info
+  .row
+    .col-md-5
+      div image=true ng-model="user.avatar"
+    .col-md-7
+      .form-group
+        label
+          | Name
+        input.form-control type="text" ng-model="user.name"
+        .error ng-repeat="error in validation_errors.name"
+          | {{ error }}
+      .form-group
+        label
+          | City
+        input.form-control type="text" ng-model="user.city"
+        .error ng-repeat="error in validation_errors.city"
+          | {{ error }}
+      .form-group
+        .row
+          .col-sm-2
+            label.control-label
+              | Country:
+          .col-sm-10
+            .btn-group dropdown=true style="width: 100%;"
+              a#country-dropdown ng-disabled="disabled" dropdown-toggle=true
+                span ng-hide="user.country"
+                  | Please choose a country
+                span ng-show="user.country"
+                  span.flag class="{{ user.country.code }}"
+                  | {{ user.country.title }}
+              ul.dropdown-menu aria-labelledby="country-dropdown" role="menu" dropdown-menu=true
+                li ng-repeat="country in countries"
+                  a ng-click="user.country = country" style="cursor: pointer"
+                    span.flag class="{{ country.code }}"
+                    | {{ country.title }}
+            .error ng-repeat="error in validation_errors.country"
+              | {{ error }}
+      .form-group
+        label
+          | About
+        textarea.form-control type="text" ng-model="user.about"
+        .error ng-repeat="error in validation_errors.about"
+          | {{ error }}
+      .form-group
+        label
+          i.fa.fa-facebook
+        input.form-control type="text" ng-model="user.facebook_link"
+        .error ng-repeat="error in validation_errors.facebook_link"
+          | {{ error }}
+      .form-group
+        label
+          i.fa.fa-instagram
+        input.form-control type="text" ng-model="user.instagram_link"
+        .error ng-repeat="error in validation_errors.instagram_link"
+          | {{ error }}
+      .form-group
+        label
+          i.fa.fa-soundcloud
+        input.form-control type="text" ng-model="user.soundcloud_link"
+        .error ng-repeat="error in validation_errors.soundcloud_link"
+          | {{ error }}
 
-            .form-group
-              label.col-sm-2.control-label
-                | {{ I18n.t('profile.labels.login') }}
-              .col-sm-10
-                input.form-control type="text" ng-model="user.login" required=true name="login"
-                .error ng-show="currentUserForm.login.$error.required && currentUserForm.$submitted"
-                  | {{ I18n.t('validations.cant_be_blank') }}
+  .content-header.text-center
+    | Types of Events
+  .error ng-repeat="error in validation_errors.event_categories"
+    | {{ error }}
+  label.select-button ng-repeat="event_type in user.event_types"
+    .btn-checkbox.text-center class="{{ event_type.selected? 'active': '' }}"
+      | {{ event_type.title }}
+    input.hide type="checkbox" value="{{ event_type.id }}" ng-model="event_type.selected"
+  hr
+  .content-header.text-center
+    | Genres
+  .error ng-repeat="error in validation_errors.genres"
+    | {{ error }}
+  label.select-button ng-repeat="genre in user.genres"
+    .btn-checkbox.text-center class="{{ genre.selected? 'active': '' }}"
+      | {{ genre.title }}
+    input.hide type="checkbox" value="{{ genre.id }}" ng-model="genre.selected"
+  hr
+  .content-header.text-center
+    | Listen
+  .error ng-repeat="error in validation_errors.sample"
+    | {{ error }}
+  .text-center
+    audio controls=true data-ng-src="{{ trustSrc(user.sample_url) }}" ng-show="user.sample_url"
+    label style="cursor: pointer"
+      | Upload
+      input.hide#sample-input type="file"
 
-            .hr-line-dashed
-
-            .form-group
-              label.col-sm-2.control-label
-                | {{ I18n.t('profile.labels.password') }}
-              .col-sm-10
-                input.form-control type="password" name="password" ng-model="current_user.password"
-                span.help-block.m-b-none
-                  | {{ I18n.t('profile.labels.leave_blank') }}
-            .hr-line-dashed
-            .form-group
-              label.col-sm-2.control-label
-                | {{ I18n.t('profile.labels.password_confirmation') }}
-              .col-sm-10
-                input.form-control name="password_confirmation" type="password" ng-model="current_user.password_confirmation"
-            .hr-line-dashed
-            .form-group
-              label.col-sm-2.control-label
-                | {{ I18n.t('profile.labels.current_password') }}
-              .col-sm-10
-                input.form-control type="password" ng-model="current_user.current_password"
-            .hr-line-dashed
-            .form-group
-              .col-sm-4.col-sm-offset-2
-                button.btn.btn-primary type="submit"
-                  | {{ I18n.t('actions.update') }}
+  hr
+  .content-header.text-center
+    | Equipment
+  .error ng-repeat="error in validation_errors.equipments"
+    | {{ error }}
+  label.select-button ng-repeat="equipment in user.equipments"
+    .btn-equipment.text-center class="{{ equipment.selected? 'active': '' }}"
+      img ng-src="{{ equipment.icon }}"
+      .title
+        | {{ equipment.title }}
+    input.hide type="checkbox" value="{{ equipment.id }}" ng-model="equipment.selected"
+  hr
+  .text-center
+    a.btn-submit.ladda-button data-style="expand-left" ladda="processing" type="submit" ng-click="save()"
+      | Save
