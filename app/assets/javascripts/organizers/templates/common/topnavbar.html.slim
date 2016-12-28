@@ -7,18 +7,19 @@
           .count
             | 3
         li.bell.i-bell-passive
-        li.dropdown dropdown=""
-          a.dropdown-toggle.count-info aria-expanded="false" aria-haspopup="true" dropdown-toggle="" href=""
-            .user-dropdown
-              img ng-src="{{ user.avatar.url }}"
-              | {{ user.name }}
-          ul.dropdown-menu.dropdown-alerts
-            li
-              a href="#profile"
-                | Profile
-            li
-              a ng-click="logout()" href="#"
-                | Sign out
+        li.zureal-btn-dropdown
+          .dropdown dropdown=""
+            a.dropdown-toggle.count-info aria-expanded="false" aria-haspopup="true" dropdown-toggle="" href=""
+              .user-dropdown
+                img ng-src="{{ user.avatar.url }}"
+                | {{ user.name }}
+            ul.dropdown-menu.dropdown-alerts
+              li
+                a href="#profile"
+                  | Profile
+              li
+                a ng-click="logout()" href="#"
+                  | Sign out
     .title
       | ZUREALDJ
 
@@ -28,7 +29,7 @@
       li#first class="{{ $state.current.name == 'djs'? 'active' : '' }}"
         a href="#djs"
           | Browse DJs
-      li class="{{ $state.current.name == 'profile'? 'active' : '' }}"
+      li class="{{ $state.current.name == 'profile' || $state.current.name == 'edit_profile'? 'active' : '' }}"
         a href="#profile"
           | Profile
       li class="{{ $state.current.name == 'bookings'? 'active' : '' }}"

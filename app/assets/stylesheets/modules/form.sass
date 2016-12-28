@@ -34,13 +34,81 @@
     margin: 15px auto
     padding: 13px 30px
     font-size: 16px
+  .register-input
+    width: 400px
+    padding: 15px 30px
+    border-radius: 100px
+    background-color: white
+    border: solid 1px #e6e6e6
+    outline: none
+    margin-bottom: 50px
+    font-size: 16px
+    font-weight: 500
+    color: #938e94
+    &:focus
+      border: solid 1px #e1c3fd
+  .zureal-textarea
+    outline: none
+    width: 400px
+    border-radius: 20px
+    border: solid 1px #e6e6e6
+    padding: 15px 30px
+    font-size: 16px
+    font-weight: 500
+    color: #938e94
+    display: inline-block
+    &:focus
+      border: solid 1px #e1c3fd
+  .zureal-btn-dropdown
+    display: inline-block
+    a.zureal-dropdown
+      width: 400px
+      border-radius: 100px
+      border: solid 1px #e6e6e6
+      display: inline-block
+      padding: 15px 30px
+      font-size: 16px
+      font-weight: 500
+      line-height: 1.5
+      color: #555555
+      span
+        display: inline-block
+        width: 100%
+        background-position: right
+        background-size: 9px
+        background-repeat: no-repeat
+        background-image: url(/images/icons/ic-drop-grey@3x.png)
+    .open
+      a.zureal-dropdown
+        border: solid 1px #e1c3fd
+        box-shadow: 0 2px 30px 0 rgba(0, 0, 0, 0.08)
+        span
+          background-image: url(/images/icons/ic-drop-black@3x.png)
+    .dropdown-menu
+      border-radius: 4px
+      background-color: white
+      box-shadow: 0 2px 20px 0 rgba(0, 0, 0, 0.08)
+      margin-top: 13px
+      width: 400px
+      text-align: left
+      padding: 0 !important
+      li
+        padding: 15px 30px
+        margin: 0 !important
+        width: 400px
+        border-bottom: dotted 1px #ddd
+      a
+        padding: 0
+        margin: 0
+        font-size: 16px
+        color: #555555
+        &:hover, &:active
+          background-color: white
+
 
 .content-header
   font-family: CeraPro
   font-size: 32px
-  font-weight: normal
-  font-style: normal
-  font-stretch: normal
   letter-spacing: 3px
   text-align: center
   color: #555555
