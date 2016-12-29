@@ -7,6 +7,7 @@
             function ($scope, $state, genres, users) {
 
                 $scope.I18n = I18n;
+                $scope.$parent.no_second_navbar = true;
                 genres.all().success(function(data){
                     $scope.genres = data.genres;
                 });

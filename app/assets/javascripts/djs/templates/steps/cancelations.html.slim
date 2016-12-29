@@ -38,7 +38,7 @@ div.page-block.registration
     .form-row.text-center
       .error ng-repeat="error in validation_errors.cancelations"
         | {{ error }}
-      .small-text.inline-block
+      .small-text.inline-block#cancelations-title
         | Cancelations:
       .cancelations-container.inline-block.text-left
         label.select-button ng-repeat="cancelation in cancelations"

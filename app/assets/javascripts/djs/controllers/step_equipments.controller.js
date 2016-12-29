@@ -7,6 +7,7 @@
             function ($scope, $state, equipments, users) {
 
                 $scope.I18n = I18n;
+                $scope.$parent.no_second_navbar = true;
                 equipments.all().success(function(data){
                     $scope.equipments = data.equipments;
                 });

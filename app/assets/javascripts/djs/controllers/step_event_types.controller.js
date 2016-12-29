@@ -7,6 +7,7 @@
             function ($scope, $state, event_types, users) {
 
                 $scope.I18n = I18n;
+                $scope.$parent.no_second_navbar = true;
                 event_types.all().success(function(data){
                     $scope.event_types = data.event_types;
                 });
