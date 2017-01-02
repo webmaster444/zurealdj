@@ -8,8 +8,15 @@ body
   padding-bottom: 50px
 
 input.form-control
-  border-radius: 25px
-  padding: 0 20px
+  border-radius: 100px
+  padding: 15px 20px
+  border: solid 1px #e6e6e6
+  font-size: 16px
+  font-weight: 500
+  color: lightgray
+  &:focus
+    border-color: #e1c3fd !important
+    color: gray
 
 .btn-gray
   background-color: white
@@ -29,25 +36,6 @@ input.form-control
     border-radius: 3px !important
   .fa.fa-filter
     margin-right: 5px
-  .btn-group.dropdown
-    height: 35px
-    margin: 0 10px
-    margin-bottom: 3px
-    #split-button
-      text-align: center
-      height: 100% !important
-      background-color: white
-      border: 1px solid gray
-      border-radius: 3px 0 0 3px
-      outline: none
-    .dropdown-toggle
-      height: 100%
-      background-color: white
-      border: 1px solid gray
-      border-radius: 0 3px 3px 0
-      &:hover, &active
-        background-color: gray
-        color: white
   .pagination
     font-size: 14px
     a:hover
@@ -57,3 +45,41 @@ input.form-control
       a
         background-color: $current-color
         color: white
+  .filter-dropdown
+    display: inline-block
+    margin: 0 10px
+    a.dropdown-toggle
+      border-radius: 3px
+      border: solid 1px gray
+      display: inline-block
+      padding: 5px 15px
+      font-size: 16px
+      font-weight: 500
+      line-height: 1.5
+      color: gray
+      .caret
+        display: inline-block
+        margin-left: 5px
+    .open
+      a.dropdown-toggle
+        box-shadow: 0 2px 50px 0 rgba(0, 0, 0, 0.08)
+        background-color: gray
+        color: white
+    .dropdown-menu
+      border-radius: 4px
+      background-color: white
+      box-shadow: 0 2px 50px 0 rgba(0, 0, 0, 0.08)
+      margin-top: 13px
+      width: 65px !important
+      min-width: 50px !important
+      padding: 0 !important
+      li
+        padding: 5px 0 !important
+        border-bottom: dotted 1px #ddd
+      a
+        padding: 0 !important
+        font-size: 16px
+        color: gray
+        text-align: center
+        &:hover, &:active
+          background-color: white

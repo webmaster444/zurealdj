@@ -6,14 +6,18 @@
           h3
             | {{ I18n.t('headers.genres' ) }}
           .filters-bar ng-include="'admin/templates/common/filters-bar.html'"
+          .filters-container.collapse
+            .col-sm-3
+              input.form-control type="text" ng-model="filters.title" placeholder="{{ I18n.t('genre.fields.title') }}"
+            .row
+              .col-sm-offset-9.col-sm-3
+                .button.btn.btn-danger.btn-outline ng-models="filters" ng-click="resetFilters()" style="margin-top: 20px; float: right;" Reset
 
           table.table.table-striped.table-responsive
             thead
               tr
-                th
-                  | {{ I18n.t('genre.fields.title') }}
-                th
-                  | Created At
+                th ng-model="filters" tablesort=true tablesort-name="title" tablesort-title="{{ I18n.t('genre.fields.title') }}"
+                th ng-model="filters" tablesort=true tablesort-name="created_at" tablesort-title="Created At"
                 th.text-right
                   | Actions
             tbody
