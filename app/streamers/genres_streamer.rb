@@ -17,7 +17,7 @@ class GenresStreamer
       results = Genre.find_by_sql(query.take(limit).skip(offset))
       offset += limit
       results_present = results.size > 0
-      results.each do |promo_code|
+      results.each do |genre|
         yield CSV::Row.new([], [
             genre.id,
             genre.title,

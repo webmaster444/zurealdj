@@ -28,6 +28,7 @@
                             $timeout.cancel(timer)
                         }
                         timer= $timeout(function(){
+                            if($scope.page > Math.ceil($scope.count / $scope.filters.per_page)) $scope.page = 1;
                             $scope.retrieveGenres();
                         }, 500)
                     }, true);

@@ -13,13 +13,14 @@
                     return $sce.trustAsHtml(html);
                 };
 
-
-                $scope.filters = {
-                    per_page: 10
-                };
-
                 if($state.current.name == 'cancelations'){
                     $scope.cancelation = [];
+                    $scope.resetFilters = function(){
+                        $scope.filters = {
+                            per_page: 10
+                        };
+                    };
+                    $scope.resetFilters();
 
                     var timer = false;
                     $scope.$watch('filters', function(){
@@ -60,6 +61,10 @@
                     };
 
                     $scope.retrieveCancelations();
+
+                    $scope.downloadCSV = function () {
+                        cancelations.downloadCSV({query: $scope.filters})
+                    }
                 }
 
                 $scope.destroy = function(id){

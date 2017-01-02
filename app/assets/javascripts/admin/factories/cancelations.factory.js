@@ -24,7 +24,16 @@
             },
 
             all: function(options){
-                return $http.get('/admin/cancelations.json?page=' + options.page);
+                var url = '/admin/cancelations.json?';
+                if(options.page)
+                    url = url + 'page=' + options.page + '&';
+
+                _.each(Object.keys(options.query), function(key){
+                    if(options.query[key])
+                        url = url + key + '=' + options.query[key] + '&';
+                });
+
+                return $http.get(url);
             },
 
             show: function(id){
@@ -33,6 +42,18 @@
 
             destroy: function(id){
                 return $http.delete('/admin/cancelations/' + id)
+            },
+
+            downloadCSV: function(options){
+                var url = '/admin/cancelations.csv?';
+
+                _.each(Object.keys(options.query), function(key){
+                    if(options.query[key]){
+                        url = url + key + '=' + options.query[key] + '&';
+                    }
+                });
+
+                $http.download(url, options);
             }
         }
     }])
