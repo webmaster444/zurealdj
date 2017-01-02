@@ -24,7 +24,16 @@
             },
 
             all: function(options){
-                return $http.get('/admin/event_categories.json?page=' + options.page);
+                var url = '/admin/event_categories.json?';
+                if(options.page)
+                    url = url + 'page=' + options.page + '&';
+
+                _.each(Object.keys(options.query), function(key){
+                    if(options.query[key])
+                        url = url + key + '=' + options.query[key] + '&';
+                });
+
+                return $http.get(url);
             },
 
             show: function(id){
@@ -33,6 +42,18 @@
 
             destroy: function(id){
                 return $http.delete('/admin/event_categories/' + id)
+            },
+
+            downloadCSV: function(options){
+                var url = '/admin/event_categories.csv?';
+
+                _.each(Object.keys(options.query), function(key){
+                    if(options.query[key]){
+                        url = url + key + '=' + options.query[key] + '&';
+                    }
+                });
+
+                $http.download(url, options);
             }
         }
     }])

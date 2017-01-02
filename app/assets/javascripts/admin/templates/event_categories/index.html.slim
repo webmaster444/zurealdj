@@ -9,25 +9,27 @@
             .pull-left
               div id="{{ $state.current.name }}-pagination" ng-hide="count <= 10"
             .pull-right
+              .button.btn.btn-info> ng-click="downloadCSV()"
+                i.fa.fa-download
+                | Export CSV
               span.filter-descriptions
-                | {{ count }} {{ $state.current.name }} found
+                | {{ count }} event categories found
 
-              .btn-group< uib-dropdown=true
-                button#split-button.btn type="button"
-                  | {{ filters.per_page }}
-                button.btn type="button" uib-dropdown-toggle=true
-                  span.caret
-
-                ul.dropdown-menu uib-dropdown-menu=true role="menu"
-                  li role="menuitem"
-                    a ng-click="filters.per_page = 10"
-                      | 10
-                  li role="menuitem"
-                    a ng-click="filters.per_page = 20"
-                      | 20
-                  li role="menuitem"
-                    a ng-click="filters.per_page = 50"
-                      | 50
+              .filter-dropdown
+                .dropdown dropdown=""
+                  a.dropdown-toggle aria-expanded="false" aria-haspopup="true" dropdown-toggle="" href=""
+                    | {{ filters.per_page }}
+                    .caret
+                  ul.dropdown-menu.dropdown-alerts
+                    li
+                      a ng-click="filters.per_page = 10"
+                        | 10
+                    li
+                      a ng-click="filters.per_page = 20"
+                        | 20
+                    li
+                      a ng-click="filters.per_page = 50"
+                        | 50
               span.filter-descriptions<
                 | per page
               .button.btn.btn-filters.btn-gray data-toggle="collapse" data-target=".filters-container"
@@ -37,14 +39,18 @@
                 | {{ I18n.t('event_category.new') }}
 
             .clearfix
+            .filters-container.collapse
+              .col-sm-3
+                input.form-control type="text" ng-model="filters.title" placeholder="{{ I18n.t('genre.fields.title') }}"
+              .row
+                .col-sm-offset-9.col-sm-3
+                  .button.btn.btn-danger.btn-outline ng-models="filters" ng-click="resetFilters()" style="margin-top: 20px; float: right;" Reset
 
           table.table.table-striped.table-responsive
             thead
               tr
-                th
-                  | {{ I18n.t('event_category.fields.title') }}
-                th
-                  | Created At
+                th ng-model="filters" tablesort=true tablesort-name="title" tablesort-title="{{ I18n.t('event_category.fields.title') }}"
+                th ng-model="filters" tablesort=true tablesort-name="created_at" tablesort-title="Created At"
                 th.text-right
                   | Actions
             tbody

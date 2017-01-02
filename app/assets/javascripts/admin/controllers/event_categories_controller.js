@@ -13,13 +13,14 @@
                     return $sce.trustAsHtml(html);
                 };
 
-
-                $scope.filters = {
-                    per_page: 10
-                };
-
                 if($state.current.name == 'event_categories'){
-                    $scope.event_category = [];
+                    $scope.event_categorie = [];
+                    $scope.resetFilters = function(){
+                        $scope.filters = {
+                            per_page: 10
+                        };
+                    };
+                    $scope.resetFilters();
 
                     var timer = false;
                     $scope.$watch('filters', function(){
@@ -60,6 +61,10 @@
                     };
 
                     $scope.retrieveEventCategories();
+
+                    $scope.downloadCSV = function () {
+                        event_categories.downloadCSV({query: $scope.filters})
+                    }
                 }
 
                 $scope.destroy = function(id){
