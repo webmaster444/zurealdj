@@ -28,7 +28,16 @@
             },
 
             all: function(options){
-                return $http.get('/admin/equipments.json?page=' + options.page);
+                var url = '/admin/equipments.json?';
+                if(options.page)
+                    url = url + 'page=' + options.page + '&';
+
+                _.each(Object.keys(options.query), function(key){
+                    if(options.query[key])
+                        url = url + key + '=' + options.query[key] + '&';
+                });
+
+                return $http.get(url);
             },
 
             show: function(id){
@@ -37,6 +46,18 @@
 
             destroy: function(id){
                 return $http.delete('/admin/equipments/' + id)
+            },
+
+            downloadCSV: function(options){
+                var url = '/admin/equipments.csv?';
+
+                _.each(Object.keys(options.query), function(key){
+                    if(options.query[key]){
+                        url = url + key + '=' + options.query[key] + '&';
+                    }
+                });
+
+                $http.download(url, options);
             }
         }
     }])

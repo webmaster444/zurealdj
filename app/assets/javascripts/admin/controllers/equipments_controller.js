@@ -13,13 +13,14 @@
                     return $sce.trustAsHtml(html);
                 };
 
-
-                $scope.filters = {
-                    per_page: 10
-                };
-
                 if($state.current.name == 'equipments'){
                     $scope.equipment = [];
+                    $scope.resetFilters = function(){
+                        $scope.filters = {
+                            per_page: 10
+                        };
+                    };
+                    $scope.resetFilters();
 
                     var timer = false;
                     $scope.$watch('filters', function(){
@@ -27,7 +28,6 @@
                             $timeout.cancel(timer)
                         }
                         timer= $timeout(function(){
-                            if($scope.page > Math.ceil($scope.count / $scope.filters.per_page)) $scope.page = 1;
                             $scope.retrieveEquipments();
                         }, 500)
                     }, true);
@@ -60,6 +60,10 @@
                     };
 
                     $scope.retrieveEquipments();
+
+                    $scope.downloadCSV = function () {
+                        equipments.downloadCSV({query: $scope.filters})
+                    }
                 }
 
                 $scope.destroy = function(id){
