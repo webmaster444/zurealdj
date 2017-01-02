@@ -40,13 +40,6 @@
                             })
                     };
                 }
-
-                if($state.current.name == 'show_crew_page'){
-                    crew_pages.show($stateParams.id).success(function(data){
-                        $scope.crew_page = data.crew_page;
-
-                    });
-                }
             }])
 
 }());

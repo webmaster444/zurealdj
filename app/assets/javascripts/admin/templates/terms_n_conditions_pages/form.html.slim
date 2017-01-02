@@ -2,30 +2,18 @@
   .row.animated.fadeInRight
     .col-md-12
       .ibox.float-e-margins
-        .ibox-title
-          h3 ng-show="$state.current.name == 'new_terms_n_conditions_page'"
-            | {{ I18n.t('terms_n_conditions_page.new' ) }}
-          h3 ng-show="$state.current.name == 'edit_terms_n_conditions_page'"
-            | {{ I18n.t('terms_n_conditions_page.edit' ) }}
         .ibox-content
-          form ng-submit="submitTermsNConditionsPage()" name="TermsNConditionsPageForm" novalidate=true
-            .form-group
-              .row
-                .col-sm-2
-                  label.control-label
-                    | {{ I18n.t('terms_n_conditions_page.fields.content') }}:
-                .col-sm-10
-                  div redactor=true required=true ng-model="terms_n_conditions_page.content" file-upload-path="/attachments/terms_n_conditions_page_content"
-                  .error ng-show="TermsNConditionsPageForm.content.$invalid && submitted"
-                    | {{ I18n.t('validations.cant_be_blank')}}
-
-                  .error ng-repeat="error in validation_errors['content']"
-                    | {{ error }}
-
-              .hr-line-dashed
-
-            .form-group
-              .row
-                .col-sm-4.col-sm-offset-2
-                  button.ladda-button.btn.btn-info data-style="expand-left" ladda="formPending"
-                    | {{ I18n.t('actions.submit') }}
+          .page-title
+            h3
+              | {{ I18n.t('terms_n_conditions_page.edit' ) }}
+            .pull-right
+              a.btn.btn-default href="#home"
+                | Cancel
+              a.btn.ladda-button.btn-info data-style="expand-left" ladda="formPending" ng-click="save()"
+                | Save
+          .row
+            .col-sm-2
+              label.control-label
+                | {{ I18n.t('terms_n_conditions_page.fields.content') }}:
+            .col-sm-10
+              div redactor=true required=true ng-model="terms_n_conditions_page.content" file-upload-path="/attachments/terms_n_conditions_page_content"

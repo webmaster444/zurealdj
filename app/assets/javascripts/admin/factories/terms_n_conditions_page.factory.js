@@ -8,29 +8,14 @@
 
                 fd.append('terms_n_conditions_page[content]', terms_n_conditions_page.content || '');
 
-                if(terms_n_conditions_page.id){
-                    return $http.put('/admin/terms_n_conditions_pages/' + terms_n_conditions_page.id, fd, {
-                        transformRequest: angular.identity,
-                        headers: {'Content-Type': undefined}
-                    });
-                }else{
-                    return $http.post('/admin/terms_n_conditions_pages', fd, {
-                        transformRequest: angular.identity,
-                        headers: {'Content-Type': undefined}
-                    });
-                }
-            },
-
-            all: function(options){
-                return $http.get('/admin/terms_n_conditions_pages.json?page=' + options.page);
+                return $http.put('/admin/terms_n_conditions_pages/1', fd, {
+                    transformRequest: angular.identity,
+                    headers: {'Content-Type': undefined}
+                });
             },
 
             show: function(id){
-                return $http.get('/admin/terms_n_conditions_pages/' + id + '.json');
-            },
-
-            destroy: function(id){
-                return $http.delete('/admin/terms_n_conditions_pages/' + id)
+                return $http.get('/admin/terms_n_conditions_pages/1.json');
             }
         }
     }])

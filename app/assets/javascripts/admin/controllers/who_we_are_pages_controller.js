@@ -40,13 +40,6 @@
                             })
                     };
                 }
-
-                if($state.current.name == 'show_who_we_are_page'){
-                    who_we_are_pages.show($stateParams.id).success(function(data){
-                        $scope.who_we_are_page = data.who_we_are_page;
-
-                    });
-                }
             }])
 
 }());

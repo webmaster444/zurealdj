@@ -4,11 +4,11 @@
       .ibox.float-e-margins
         .ibox-content
 
-          h3 ng-show="$state.current.name == 'edit_policies_page'"
+          h3
             | {{ I18n.t('policies_page.edit' ) }}
           .page-title
             .pull-right
-              a.btn.btn-default type="submit" href="#policies_pages"
+              a.btn.btn-default href="#home"
                 | Cancel
               a.btn.ladda-button.btn-info data-style="expand-left" ladda="formPending" ng-click="save()"
                 | Save

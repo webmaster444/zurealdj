@@ -19,7 +19,7 @@ Rails.application.routes.draw do
       resources :crew_pages, only: [:update, :show]
       resources :how_we_work_pages, only: [:update, :show]
       resources :policies_pages, only: [:update, :show]
-      resources :terms_n_conditions_pages, only: [:index, :create, :update, :destroy, :show]
+      resources :terms_n_conditions_pages, only: [:update, :show]
       resources :organizers, only: [:index, :create, :update, :destroy, :show]
       resources :cancelations_pages, only: [:index, :create, :update, :destroy, :show]
       resources :password_resets, only: [:create, :update, :show, :edit]

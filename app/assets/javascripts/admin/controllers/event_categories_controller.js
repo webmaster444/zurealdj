@@ -14,7 +14,7 @@
                 };
 
                 if($state.current.name == 'event_categories'){
-                    $scope.event_categorie = [];
+                    $scope.event_category = [];
                     $scope.resetFilters = function(){
                         $scope.filters = {
                             per_page: 10

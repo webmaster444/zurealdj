@@ -40,13 +40,6 @@
                             })
                     };
                 }
-
-                if($state.current.name == 'show_how_we_work_page'){
-                    how_we_work_pages.show($stateParams.id).success(function(data){
-                        $scope.how_we_work_page = data.how_we_work_page;
-
-                    });
-                }
             }])
 
 }());

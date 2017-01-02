@@ -203,24 +203,14 @@
                     templateUrl: 'admin/templates/policies_pages/form.html',
                     controller: 'PoliciesPagesController'
                 })
-                .state('new_terms_n_conditions_page',{
-                    url: '/terms_n_conditions_page/new',
-                    templateUrl: 'admin/templates/terms_n_conditions_pages/form.html',
-                    controller: 'TermsNConditionsPagesController'
-                })
                 .state('show_terms_n_conditions_page',{
-                    url: '/terms_n_conditions_page/:id',
+                    url: '/terms_n_conditions_page',
                     templateUrl: 'admin/templates/terms_n_conditions_pages/show.html',
                     controller: 'TermsNConditionsPagesController'
                 })
                 .state('edit_terms_n_conditions_page',{
-                    url: '/terms_n_conditions_page/:id/edit',
+                    url: '/terms_n_conditions_page/edit',
                     templateUrl: 'admin/templates/terms_n_conditions_pages/form.html',
-                    controller: 'TermsNConditionsPagesController'
-                })
-                .state('terms_n_conditions_pages',{
-                    url: '/terms_n_conditions_pages',
-                    templateUrl: 'admin/templates/terms_n_conditions_pages/index.html',
                     controller: 'TermsNConditionsPagesController'
                 })
                 .state('new_cancelations_page',{

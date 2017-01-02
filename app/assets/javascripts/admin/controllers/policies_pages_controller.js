@@ -40,13 +40,6 @@
                             })
                     };
                 }
-
-                if($state.current.name == 'show_policies_page'){
-                    policies_pages.show($stateParams.id).success(function(data){
-                        $scope.policies_page = data.policies_page;
-
-                    });
-                }
             }])
 
 }());
