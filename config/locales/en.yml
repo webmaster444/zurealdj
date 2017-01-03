@@ -251,6 +251,8 @@ en:
       soundcloud_link: "Soundcloud link"
       created_at: "Created at"
       updated_at: "Updated at"
+      photo: "Photo"
+      name: "Name"
     messages:
       success_upsert: 'Organizer successfully saved.'
 

@@ -4,8 +4,8 @@
 
     angular.module('ZurealdjAdminApp')
         .controller('OrganizersController', ['$scope', '$state', 'ngDialog', '$stateParams', '$timeout', '$sce', 'SweetAlert',
-            'OrganizersFactory',
-            function ($scope, $state, ngDialog, $stateParams, $timeout, $sce, SweetAlert, organizers) {
+            'OrganizersFactory', 'CountryFlagsFactory',
+            function ($scope, $state, ngDialog, $stateParams, $timeout, $sce, SweetAlert, organizers, flags) {
                 $scope.I18n = I18n;
                 $scope._ = _;
                 $scope.$state = $state;
@@ -14,12 +14,20 @@
                     return $sce.trustAsHtml(html);
                 };
 
+                flags.all().success(function(data){
+                    $scope.flags = data.flags;
+                });
+
                 if($state.current.name == 'organizers'){
                     $scope.organizers = [];
 
-                    $scope.filters = {
-                        per_page: 10
+                    $scope.resetFilters = function(){
+                        $scope.filters = {
+                            page: 1,
+                            per_page: 10
+                        };
                     };
+                    $scope.resetFilters();
 
                     var timer = false;
                     $scope.$watch('filters', function(){
@@ -60,6 +68,10 @@
                     };
 
                     $scope.retrieveOrganizers();
+
+                    $scope.downloadCSV = function () {
+                        console.log(organizers.downloadCSV({query: $scope.filters}))
+                    }
                 }
 
                 $scope.destroy = function(id){
@@ -86,7 +98,7 @@
                     );
                 };
 
-                if($state.current.name == 'new_organizer' || $state.current.name == 'edit_organizer'){
+                if($state.current.name == 'edit_organizer'){
 
                     $scope.organizer = {};
 

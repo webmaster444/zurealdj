@@ -6,10 +6,24 @@
             upsert: function(organizations){
                 var fd = new FormData();
 
+                if(organizations.name){
+                    fd.append('organizer[name]', organizations.name );
+                }
+                if(organizations.email){
+                    fd.append('organizer[email]', organizations.email );
+                }
+                if(organizations.personal_url){
+                    fd.append('organizer[personal_url]', organizations.personal_url );
+                }
+                if(organizations.country){
+                    fd.append('organizer[country_flag_code]', organizations.country.code );
+                }
+                if(organizations.avatar.file){
+                    fd.append('organizer[avatar]', organizations.avatar.file);
+                }
                 fd.append('organizer[first_name]', organizations.first_name || '');
                 fd.append('organizer[last_name]', organizations.last_name || '');
                 fd.append('organizer[city]', organizations.city || '' );
-                fd.append('organizer[country_flag_code]', organizations.country_flag_code || '');
                 fd.append('organizer[address]', organizations.address || '');
                 fd.append('organizer[about]', organizations.about || '');
                 fd.append('organizer[instagram_link]', organizations.instagram_link || '');
@@ -48,6 +62,18 @@
 
             destroy: function(id){
                 return $http.delete('/admin/organizers/' + id)
+            },
+
+            downloadCSV: function(options){
+                var url = '/admin/organizers.csv?';
+
+                _.each(Object.keys(options.query), function(key){
+                    if(options.query[key]){
+                        url = url + key + '=' + options.query[key] + '&';
+                    }
+                });
+
+                $http.download(url, options);
             }
         }
     }])

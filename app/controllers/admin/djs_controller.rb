@@ -10,7 +10,7 @@ class Admin::DjsController < Admin::BaseController
     respond_to do |f|
       f.json do
         @djs = User.find_by_sql(query.take(@per_page).skip((@page - 1) * @per_page).to_sql)
-        @has_more = User.find_by_sql(query(count: true))
+        @count = User.find_by_sql(query.to_sql).count
       end
 
       f.csv do
@@ -34,7 +34,7 @@ class Admin::DjsController < Admin::BaseController
     if @user.save && @dj.save
       render json: { message: I18n.t('dj.messages.success_upsert') }
     else
-      render json: { errors: @user.errors.full_messages }, status: :unprocessable_entity
+      render json: { errors: @user.errors.full_messages +  @dj.errors.full_messages }, status: :unprocessable_entity
     end
   end
   

@@ -17,10 +17,6 @@
                     $scope.flags = data.flags;
                 });
 
-                $scope.filters = {
-                    per_page: 10
-                };
-
                 if($state.current.name == 'djs'){
                     $scope.dj = [];
 
@@ -103,7 +99,7 @@
                     );
                 };
 
-                if($state.current.name == 'new_dj' || $state.current.name == 'edit_dj'){
+                if($state.current.name == 'edit_dj'){
 
                     $scope.dj = {};
 

@@ -11,5 +11,7 @@ json.organizers @organizers.each do |organization|
   json.instagram_link organization.instagram_link
   json.facebook_link organization.facebook_link
   json.soundcloud_link organization.soundcloud_link
+  json.avatar organization.avatar.url
+  json.name organization.name
 end
 json.count @count

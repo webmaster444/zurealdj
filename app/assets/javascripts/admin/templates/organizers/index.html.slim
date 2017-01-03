@@ -5,50 +5,105 @@
         .ibox-content
           h2
             | {{ I18n.t('headers.organizers' ) }}
-          .filters-bar ng-include="'admin/templates/common/filters-bar.html'"
+          .filters-bar
+            .pull-left
+              div id="{{ $state.current.name }}-pagination" ng-hide="count <= 10"
+            .pull-right
+              .button.btn.btn-info> ng-click="downloadCSV()"
+                i.fa.fa-download
+                | Export CSV
+              span.filter-descriptions
+                | {{ count }} {{ $state.current.name }} found
+
+              .filter-dropdown
+                .dropdown dropdown=""
+                  a.dropdown-toggle aria-expanded="false" aria-haspopup="true" dropdown-toggle="" href=""
+                    | {{ filters.per_page }}
+                    .caret
+                  ul.dropdown-menu.dropdown-alerts
+                    li
+                      a ng-click="filters.per_page = 10"
+                        | 10
+                    li
+                      a ng-click="filters.per_page = 20"
+                        | 20
+                    li
+                      a ng-click="filters.per_page = 50"
+                        | 50
+              span.filter-descriptions<
+                | per page
+              .button.btn.btn-filters.btn-gray data-toggle="collapse" data-target=".filters-container"
+                .fa.fa-filter
+                | Filters
+            .clearfix
+
+            .filters-container.collapse
+              .row
+                .col-sm-12
+                  .row
+                    .col-sm-3
+                      | {{ I18n.t('dj.fields.name') }}
+                      input.form-control type="text" ng-model="filters.name"
+                    .col-sm-3
+                      | {{ I18n.t('dj.fields.city') }}
+                      input.form-control type="text" ng-model="filters.city"
+                    .col-sm-3
+                      | {{ I18n.t('dj.fields.country') }}
+                      input.form-control type="text" ng-model="filters.country"
+                  .row
+                    .col-sm-3
+                      p.input-group style="margin: 0;"
+                        | Created At:
+                        input.form-control.pull-right type="text" placeholder="from" uib-datepicker-popup="{{ 'dd-MMMM-yyyy' }}" ng-model="filters.date_from" is-open="date_from_opened" close-text="Close" readonly="readonly"
+                        span.input-group-btn
+                          button type="button" class="btn btn-default" ng-click="date_from_opened = true" style="margin-top: 15px;"
+                            i.glyphicon.glyphicon-calendar
+                    .col-sm-3
+                      p.input-group
+                        | Created date:
+                        input.form-control.pull-right type="text" placeholder="to" uib-datepicker-popup="{{ 'dd-MMMM-yyyy' }}" ng-model="filters.date_to" is-open="date_to_opened" close-text="Close" readonly="readonly"
+                        span.input-group-btn
+                          button type="button" class="btn btn-default" ng-click="date_to_opened = true" style="margin-top: 15px;"
+                            i.glyphicon.glyphicon-calendar
+                  .row
+                    .col-sm-offset-9.col-sm-3
+                      .button.btn.btn-danger.btn-outline ng-models="filters" ng-click="resetFilters()" style="margin-top: 20px; float: right;" Reset
 
           table.table.table-striped.table-responsive
             thead
               tr
                 th
-                  | Name
-                th
-                  | {{ I18n.t('organizer.fields.city') }}
-                th
-                  | {{ I18n.t('organizer.fields.country') }}
-                th
-                  | {{ I18n.t('organizer.fields.address') }}
+                  | {{ I18n.t('organizer.fields.photo') }}
+                th ng-model="filters" tablesort=true tablesort-name="name" tablesort-title="{{ I18n.t('organizer.fields.name') }}"
+                th ng-model="filters" tablesort=true tablesort-name="city" tablesort-title="{{ I18n.t('organizer.fields.city') }}"
+                th ng-model="filters" tablesort=true tablesort-name="country_flag_code" tablesort-title="{{ I18n.t('organizer.fields.country') }}"
+                th ng-model="filters" tablesort=true tablesort-name="address" tablesort-title="{{ I18n.t('organizer.fields.address') }}"
                 th
                   | Social links
-                th
-                  | Created At
+                th ng-model="filters" tablesort=true tablesort-name="created_at"  tablesort-title="{{ I18n.t('organizer.fields.created_at') }}"
                 th.text-right
                   | Actions
             tbody
               tr ng-repeat="organizer in organizers"
+                td.td-photo
+                  img ng-src="{{ organizer.avatar }}"
                 td
                   | {{ organizer.first_name }} {{ organizer.last_name }}
                 td
                   | {{ organizer.city }}
-                td
-                  span.flag class="{{ organizer.country_flag_code }}"
+                td.col-flag
+                  span.flag class="{{ organizer.country.code }}"
                   | {{ organizer.country.title }}
                 td
                   | {{ organizer.address }}
-                td
-                  a> href="{{ organizer.instagram_link }}" ng-show="organizer.instagram_link"
-                    i.fa.fa-instagram
-                  a> href="{{ organizer.facebook_link }}" ng-show="organizer.facebook_link"
-                    i.fa.fa-facebook
-                  a> href="{{ organizer.soundcloud_link }}" ng-show="organizer.soundcloud_link"
-                    i.fa.fa-soundcloud
+                td.col-social
+                  a.social-icon.instagram href="{{ organizer.instagram_link }}" ng-show="organizer.instagram_link" target="blank"
+                  a.social-icon.facebook href="{{ organizer.facebook_link }}" ng-show="organizer.facebook_link" target="blank"
+                  a.social-icon.soundcloud href="{{ organizer.soundcloud_link }}" ng-show="organizer.soundcloud_link" target="blank"
                 td
                   | {{ organizer.created_at }}
                 td.text-right
-
                   a.btn-xs.btn.btn-warning.btn-outline href="#organizer/{{organizer.id}}/edit"
                     | {{ I18n.t('actions.edit') }}
-
-
                   a.btn-xs.btn.btn-danger.btn-outline ng-click="destroy(organizer.id)"
                     | {{ I18n.t('actions.delete') }}

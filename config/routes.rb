@@ -8,7 +8,7 @@ Rails.application.routes.draw do
 
   scope '(:locale)' do
     namespace :admin do
-      resources :djs, only: [:index, :create, :update, :destroy, :show]
+      resources :djs, only: [:index, :update, :destroy, :show]
       resources :bookings, only: [:index, :create, :update, :destroy, :show]
       resources :events, only: [:index, :create, :update, :destroy, :show]
       resources :genres, only: [:index, :create, :update, :destroy, :show]
@@ -20,7 +20,7 @@ Rails.application.routes.draw do
       resources :how_we_work_pages, only: [:update, :show]
       resources :policies_pages, only: [:update, :show]
       resources :terms_n_conditions_pages, only: [:update, :show]
-      resources :organizers, only: [:index, :create, :update, :destroy, :show]
+      resources :organizers, only: [:index, :update, :destroy, :show]
       resources :cancelations_pages, only: [:update, :show]
       resources :password_resets, only: [:create, :update, :show, :edit]
       resources :passwords, only: [:create]

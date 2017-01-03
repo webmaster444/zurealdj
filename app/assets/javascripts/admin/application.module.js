@@ -43,16 +43,6 @@
                     templateUrl: 'admin/templates/sessions/login.html',
                     controller: 'SessionsController'
                 })
-                .state('new_organizer',{
-                    url: '/organizer/new',
-                    templateUrl: 'admin/templates/organizers/form.html',
-                    controller: 'OrganizersController'
-                })
-                .state('show_oorganizer',{
-                    url: '/organizer/:id',
-                    templateUrl: 'admin/templates/organizers/show.html',
-                    controller: 'OrganizersController'
-                })
                 .state('edit_organizer',{
                     url: '/organizer/:id/edit',
                     templateUrl: 'admin/templates/organizers/form.html',

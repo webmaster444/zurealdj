@@ -4,15 +4,74 @@
       .ibox.float-e-margins
         .ibox-content
 
-          h3 ng-show="$state.current.name == 'new_organizer'"
-            | {{ I18n.t('organizer.new' ) }}
-          h3 ng-show="$state.current.name == 'edit_organizer'"
+          h3
             | {{ I18n.t('organizer.edit' ) }}
 
           form ng-submit="submitOrganization()" name="OrganizationForm" novalidate=true
+
             .form-group
               .row
-                .col-sm-2.text-right
+                .col-sm-2
+                  label.control-label
+                    | {{ I18n.t('organizer.fields.photo') }}:
+                .col-sm-10
+                  div image=true ng-model="organizer.avatar"
+                  .error ng-show="organizersForm.avatar.$invalid && submitted"
+                    | {{ I18n.t('validations.cant_be_blank')}}
+
+                  .error ng-repeat="error in validation_errors['avatar']"
+                    | {{ error }}
+
+              .hr-line-dashed
+
+            .form-group
+              .row
+                .col-sm-2
+                  label.control-label
+                    | {{ I18n.t('organizer.fields.name') }}:
+                .col-sm-10
+                  input.form-control type="text" placeholder="{{ I18n.t('organizer.fields.name') }}" required=true class="{{ organizerForm.name.$invalid && submitted ? 'validation-error' : ''}}" name="name" ng-model="organizer.name"
+                  .error ng-show="organizersForm.name.$invalid && submitted"
+                    | {{ I18n.t('validations.cant_be_blank')}}
+
+                  .error ng-repeat="error in validation_errors['name']"
+                    | {{ error }}
+
+              .hr-line-dashed
+
+            .form-group
+              .row
+                .col-sm-2
+                  label.control-label
+                    | {{ I18n.t('user.fields.email') }}:
+                .col-sm-10
+                  input.form-control type="text" placeholder="{{ I18n.t('user.fields.email') }}" required=true class="{{ organizerForm.email.$invalid && submitted ? 'validation-error' : ''}}" name="email" ng-model="organizer.email"
+                  .error ng-show="organizersForm.email.$invalid && submitted"
+                    | {{ I18n.t('validations.cant_be_blank')}}
+
+                  .error ng-repeat="error in validation_errors['email']"
+                    | {{ error }}
+
+              .hr-line-dashed
+
+            .form-group
+              .row
+                .col-sm-2
+                  label.control-label
+                    | {{ I18n.t('user.fields.personal_url') }}:
+                .col-sm-10
+                  input.form-control type="text" placeholder="{{ I18n.t('user.fields.personal_url') }}" required=true class="{{ organizerForm.personal_url.$invalid && submitted ? 'validation-error' : ''}}" name="personal_url" ng-model="organizer.personal_url"
+                  .error ng-show="organizersForm.personal_url.$invalid && submitted"
+                    | {{ I18n.t('validations.cant_be_blank')}}
+
+                  .error ng-repeat="error in validation_errors['personal_url']"
+                    | {{ error }}
+
+              .hr-line-dashed
+          
+            .form-group
+              .row
+                .col-sm-2
                   label.control-label
                     | {{ I18n.t('organizer.fields.first_name') }}:
                 .col-sm-10
@@ -25,7 +84,7 @@
 
             .form-group
               .row
-                .col-sm-2.text-right
+                .col-sm-2
                   label.control-label
                     | {{ I18n.t('organizer.fields.last_name') }}:
                 .col-sm-10
@@ -38,7 +97,7 @@
 
             .form-group
               .row
-                .col-sm-2.text-right
+                .col-sm-2
                   label.control-label
                     | {{ I18n.t('organizer.fields.city') }}:
                 .col-sm-10
@@ -51,17 +110,30 @@
 
             .form-group
               .row
-                .col-sm-2.text-right
+                .col-sm-2
                   label.control-label
                     | {{ I18n.t('organizer.fields.country') }}:
                 .col-sm-10
-                  div country=true ng-model="organizer.country_flag_code"
-                  .error ng-repeat="error in validation_errors.country_flag_code"
-                    | {{ error }}
+                  .zureal-btn-dropdown
+                    .btn-group dropdown=true
+                      a.zureal-dropdown#country-dropdown ng-disabled="disabled" dropdown-toggle=true
+                        span ng-hide="organizer.country"
+                          | Please choose a country
+
+                        span ng-show="organizer.country"
+                          span.flag class="{{ organizer.country.code }}"
+                          | {{ organizer.country.title }}
+                      ul.dropdown-menu aria-labelledby="country-dropdown" role="menu" dropdown-menu=true
+                        li ng-repeat="country in flags"
+                          a ng-click="organizer.country = country" style="cursor: pointer"
+                            span.flag class="{{ country.code }}"
+                            | {{ country.title }}
+                    .error ng-repeat="error in validation_errors.country"
+                      | {{ error }}
 
             .form-group
               .row
-                .col-sm-2.text-right
+                .col-sm-2
                   label.control-label
                     | {{ I18n.t('organizer.fields.address') }}:
                 .col-sm-10
@@ -74,7 +146,7 @@
 
             .form-group
               .row
-                .col-sm-2.text-right
+                .col-sm-2
                   label.control-label
                     | {{ I18n.t('organizer.fields.about') }}:
                 .col-sm-10
@@ -87,7 +159,7 @@
 
             .form-group
               .row
-                .col-sm-2.text-right
+                .col-sm-2
                   label.control-label
                     | {{ I18n.t('organizer.fields.instagram_link') }}:
                 .col-sm-10
@@ -100,7 +172,7 @@
 
             .form-group
               .row
-                .col-sm-2.text-right
+                .col-sm-2
                   label.control-label
                     | {{ I18n.t('organizer.fields.facebook_link') }}:
                 .col-sm-10
@@ -113,7 +185,7 @@
 
             .form-group
               .row
-                .col-sm-2.text-right
+                .col-sm-2
                   label.control-label
                     | {{ I18n.t('organizer.fields.soundcloud_link') }}:
                 .col-sm-10
