@@ -1,5 +1,4 @@
-$current-color: #b05dfc
-$lasur-light: #c890fc
+@import "variables"
 
 body
   font-family: 'CeraPro'
@@ -8,6 +7,50 @@ body
   font-stretch: normal
   min-width: 1200px
   overflow: scroll
+  .navbar
+    margin-left: 220px
+  .navbar-default, .navbar-static-side
+    margin-top: 0 !important
+  .zureal-logo
+    width: 200px
+    margin: 30px 10px
+  #side-menu
+    li
+      text-align: center
+      text-transform: uppercase
+      .djs-nav-icon
+        background-image: url('/images/icons/ic-artist-passive@3x.png')
+      .organizers-nav-icon
+        background-image: url('/images/icons/ic-organ-passive@3x.png')
+      .events-nav-icon
+        background-image: url('/images/icons/ic-cd-act@3x.png')
+      .other-nav-icon
+        background-image: url('/images/icons/ic-play@3x.png')
+      &.active .nav-icon
+        -webkit-filter: none
+        filter: none
+      &.active .events-nav-icon
+        -webkit-filter: grayscale(70%) !important
+        filter: grayscale(70%) !important
+      &.active .other-nav-icon
+        background-image: url('/images/icons/ic-pause@3x.png')
+        -webkit-filter: grayscale(70%) !important
+        filter: grayscale(70%) !important
+    .nav-second-level
+      li
+        text-align: left !important
+        margin-left: 0 !important
+        padding-left: 0 !important
+        text-transform: none !important
+
+    .nav-icon
+      height: 40px
+      background-position: center
+      background-size: contain
+      background-repeat: no-repeat
+      margin-bottom: 5px
+      -webkit-filter: grayscale(100%)
+      filter: grayscale(100%)
 
 .ibox-content
   white-space: pre-wrap
@@ -162,62 +205,3 @@ textarea.form-control
   &:hover, &:active
     background-color: gray
     color: white
-
-.filters-bar
-  font-size: 16px
-  margin-bottom: 10px
-  .filter-descriptions
-    font-size: 16px
-  .btn-filters
-    margin: 0 10px
-    margin-bottom: 3px
-    border-radius: 3px !important
-  .fa.fa-filter
-    margin-right: 5px
-  .pagination
-    font-size: 14px
-    a:hover
-      background-color: #e0c2fc
-      color: $current-color
-    .page.active
-      a
-        background-color: $current-color
-        color: white
-  .filter-dropdown
-    display: inline-block
-    margin: 0 10px
-    a.dropdown-toggle
-      border-radius: 3px
-      border: solid 1px gray
-      display: inline-block
-      padding: 5px 15px
-      font-size: 16px
-      font-weight: 500
-      line-height: 1.5
-      color: gray
-      .caret
-        display: inline-block
-        margin-left: 5px
-    .open
-      a.dropdown-toggle
-        box-shadow: 0 2px 50px 0 rgba(0, 0, 0, 0.08)
-        background-color: gray
-        color: white
-    .dropdown-menu
-      border-radius: 4px
-      background-color: white
-      box-shadow: 0 2px 50px 0 rgba(0, 0, 0, 0.08)
-      margin-top: 13px
-      width: 65px !important
-      min-width: 50px !important
-      padding: 0 !important
-      li
-        padding: 5px 0 !important
-        border-bottom: dotted 1px #ddd
-      a
-        padding: 0 !important
-        font-size: 16px
-        color: gray
-        text-align: center
-        &:hover, &:active
-          background-color: white
