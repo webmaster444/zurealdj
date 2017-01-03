@@ -2,10 +2,48 @@
   .row.animated.fadeInRight
     .col-md-12
       .ibox.float-e-margins
-        .ibox-title
-          h2
-            | {{ dj.first_name }}
+        h2
+          | {{ dj.first_name }}
         .ibox-content
+
+          .form-group
+            .row
+              .col-lg-2
+                label.control-label
+                  | {{ I18n.t('dj.fields.photo') }}:
+              .col-lg-10
+                img ng-src="{{ dj.avatar.url }}" style="max-width: 300px"
+            .hr-line-dashed
+
+          .form-group
+            .row
+              .col-lg-2
+                label.control-label
+                  | {{ I18n.t('dj.fields.name') }}:
+              .col-lg-10
+                p.form-control-static
+                  | {{ dj.name }}
+            .hr-line-dashed
+
+          .form-group
+            .row
+              .col-lg-2
+                label.control-label
+                  | {{ I18n.t('user.fields.email') }}:
+              .col-lg-10
+                p.form-control-static
+                  | {{ dj.email }}
+            .hr-line-dashed
+
+          .form-group
+            .row
+              .col-lg-2
+                label.control-label
+                  | {{ I18n.t('user.fields.personal_url') }}:
+              .col-lg-10
+                p.form-control-static
+                  | {{ dj.personal_url }}
+            .hr-line-dashed
 
           .form-group
             .row
@@ -43,8 +81,8 @@
                 label.control-label
                   | {{ I18n.t('dj.fields.country') }}:
               .col-lg-10
-                span.flag class="{{ djs.country.code }}"
-                | {{ djs.country.title }}
+                span.flag class="{{ dj.country.code }}"
+                | {{ dj.country.title }}
             .hr-line-dashed
 
           .form-group
@@ -63,37 +101,19 @@
                 label.control-label
                   | {{ I18n.t('dj.fields.sample') }}:
               .col-lg-10
-                img ng-src="{{ djs.sample.url }}" style="max-width: 100%"
+                audio controls=true data-ng-src="{{ trustSrc(dj.sample_url) }}"
             .hr-line-dashed
 
           .form-group
             .row
               .col-lg-2
                 label.control-label
-                  | {{ I18n.t('dj.fields.instagram_link') }}:
+                  | {{ I18n.t('dj.fields.social_links') }}:
               .col-lg-10
-                p.form-control-static
-                  | {{ dj.instagram_link }}
-            .hr-line-dashed
-
-          .form-group
-            .row
-              .col-lg-2
-                label.control-label
-                  | {{ I18n.t('dj.fields.facebook_link') }}:
-              .col-lg-10
-                p.form-control-static
-                  | {{ dj.facebook_link }}
-            .hr-line-dashed
-
-          .form-group
-            .row
-              .col-lg-2
-                label.control-label
-                  | {{ I18n.t('dj.fields.soundcloud_link') }}:
-              .col-lg-10
-                p.form-control-static
-                  | {{ dj.soundcloud_link }}
+                .col-social
+                  a.social-icon.instagram href="{{ dj.instagram_link }}" ng-show="dj.instagram_link" target="blank"
+                  a.social-icon.facebook href="{{ dj.facebook_link }}" ng-show="dj.facebook_link" target="blank"
+                  a.social-icon.soundcloud href="{{ dj.soundcloud_link }}" ng-show="dj.soundcloud_link" target="blank"
             .hr-line-dashed
 
           .form-group
@@ -140,15 +160,6 @@
             .row
               .col-lg-2
                 label.control-label
-                  | {{ I18n.t('dj.fields.photo') }}:
-              .col-lg-10
-                img ng-src="{{ djs.photo.url }}" style="max-width: 100%"
-            .hr-line-dashed
-
-          .form-group
-            .row
-              .col-lg-2
-                label.control-label
                   | {{ I18n.t('dj.fields.created_at') }}:
               .col-lg-10
                 p.form-control-static
@@ -164,4 +175,3 @@
                 p.form-control-static
                   | {{ dj.updated_at }}
             .hr-line-dashed
-

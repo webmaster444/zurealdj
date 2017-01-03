@@ -2,41 +2,39 @@
   .row.animated.fadeInRight
     .col-md-12
       .ibox.float-e-margins
-        .ibox-title
-          h3
-            | {{ I18n.t('headers.djs' ) }}
+        h3
+          | {{ I18n.t('headers.djs' ) }}
         .ibox-content
-          .pull-left
-            .button.btn.btn-success> ng-click="downloadCSV()" style="margin-bottom: 20px"
-              i.fa.fa-download
-              | Export CSV
-            #djs-pagination ng-hide="count < 11" style="padding: 0 10px 0 4px;display: inline-block;"
-          .pull-right
-            span
-              | {{ count }} DJs found
-            .btn-group< uib-dropdown=true
-              button#split-button.btn type="button"
-                | {{ filters.per_page }}
-              button.btn type="button" uib-dropdown-toggle=true
-                span.caret
+          .filters-bar
+            .pull-left
+              div id="{{ $state.current.name }}-pagination" ng-hide="count <= 10"
+            .pull-right
+              .button.btn.btn-info> ng-click="downloadCSV()"
+                i.fa.fa-download
+                | Export CSV
+              span.filter-descriptions
+                | {{ count }} {{ $state.current.name }} found
 
-              ul.dropdown-menu uib-dropdown-menu=true role="menu"
-                li role="menuitem"
-                  a ng-click="filters.per_page = 10"
-                    | 10
-                li role="menuitem"
-                  a ng-click="filters.per_page = 20"
-                    | 20
-                li role="menuitem"
-                  a ng-click="filters.per_page = 50"
-                    | 50
-            span<
-              | per page
-            .bklv-btn.button.btn.btn-filters data-toggle="collapse" data-target=".filters-container"
-              .fa.fa-filter
-              | Filters
-            button.btn.btn-info ui-sref="new_dj"
-              | {{ I18n.t('dj.new') }}
+              .filter-dropdown
+                .dropdown dropdown=""
+                  a.dropdown-toggle aria-expanded="false" aria-haspopup="true" dropdown-toggle="" href=""
+                    | {{ filters.per_page }}
+                    .caret
+                  ul.dropdown-menu.dropdown-alerts
+                    li
+                      a ng-click="filters.per_page = 10"
+                        | 10
+                    li
+                      a ng-click="filters.per_page = 20"
+                        | 20
+                    li
+                      a ng-click="filters.per_page = 50"
+                        | 50
+              span.filter-descriptions<
+                | per page
+              .button.btn.btn-filters.btn-gray data-toggle="collapse" data-target=".filters-container"
+                .fa.fa-filter
+                | Filters
           .clearfix
 
           .filters-container.collapse
@@ -44,11 +42,8 @@
               .col-sm-12
                 .row
                   .col-sm-3
-                    | {{ I18n.t('dj.fields.first_name') }}
-                    input.form-control type="text" ng-model="filters.first_name"
-                  .col-sm-3
-                    | {{ I18n.t('dj.fields.last_name') }}
-                    input.form-control type="text" ng-model="filters.last_name"
+                    | {{ I18n.t('dj.fields.name') }}
+                    input.form-control type="text" ng-model="filters.name"
                   .col-sm-3
                     | {{ I18n.t('dj.fields.city') }}
                     input.form-control type="text" ng-model="filters.city"
@@ -89,47 +84,37 @@
           table.table.table-striped.table-responsive.bklv-table
             thead
               tr
-                th ng-model="filters" tablesort=true tablesort-name="first_name"  tablesort-title="{{ I18n.t('dj.fields.first_name') }}"
-                th ng-model="filters" tablesort=true tablesort-name="last_name"  tablesort-title="{{ I18n.t('dj.fields.last_name') }}"
+                th
+                  | {{ I18n.t('dj.fields.photo') }}
+                th ng-model="filters" tablesort=true tablesort-name="name"  tablesort-title="{{ I18n.t('dj.fields.name') }}"
                 th ng-model="filters" tablesort=true tablesort-name="city"  tablesort-title="{{ I18n.t('dj.fields.city') }}"
                 th ng-model="filters" tablesort=true tablesort-name="country_flag_code"  tablesort-title="{{ I18n.t('dj.fields.country') }}"
                 th
                   | {{ I18n.t('dj.fields.social_links') }}
-                th
-                  | {{ I18n.t('dj.fields.photo') }}
                 th ng-model="filters" tablesort=true tablesort-name="created_at"  tablesort-title="Created At"
-                th
+                th.text-right
                   | Actions
             tbody
               tr ng-repeat="dj in djs"
+                td.td-photo
+                  img ng-src="{{ dj.avatar }}"
                 td
-                  | {{ dj.first_name }}
-                td
-                  | {{ dj.last_name }}
+                  | {{ dj.name }}
                 td
                   | {{ dj.city }}
                 td.col-flag
                   span.flag class="{{ dj.country.code }}"
                   | {{ dj.country.title }}
                 td.col-social
-                  a.btn-xs href="{{ dj.instagram_link }}"
-                    img ng-src="/images/instagram.png"
-                  a.btn-xs href="{{ dj.facebook_link }}"
-                    img ng-src="/images/facebook.png"
-                  a.btn-xs href="{{ dj.soundcloud_link }}"
-                    img ng-src="/images/soundcloud.png"
-                td.text-center
-                  img ng-src="/images/profile.jpg" style="width:100px"
+                  a.social-icon.instagram href="{{ dj.instagram_link }}" ng-show="dj.instagram_link" target="blank"
+                  a.social-icon.facebook href="{{ dj.facebook_link }}" ng-show="dj.facebook_link" target="blank"
+                  a.social-icon.soundcloud href="{{ dj.soundcloud_link }}" ng-show="dj.soundcloud_link" target="blank"
                 td
                   | {{ dj.created_at }}
-                td.text-right
-
-                  a.btn-xs.btn.btn-info.btn-outline href="#djs/{{djs.id}}"
+                td.col-actions.text-right
+                  a.btn-xs.btn.btn-info.btn-outline href="#dj/{{ dj.id }}"
                     | {{ I18n.t('actions.view') }}
-
-                  a.btn-xs.btn.btn-warning.btn-outline href="#djs/{{dj.id}}/edit"
+                  a.btn-xs.btn.btn-warning.btn-outline href="#dj/{{ dj.id }}/edit"
                     | {{ I18n.t('actions.edit') }}
-
-
                   a.btn-xs.btn.btn-danger.btn-outline ng-click="destroy(dj.id)"
                     | {{ I18n.t('actions.delete') }}

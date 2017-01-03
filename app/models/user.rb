@@ -50,6 +50,10 @@ class User < ActiveRecord::Base
       organizer_completed: 5
   }
 
+  def country_flag
+    CountryFlag.find(country_flag_code)
+  end
+
   def step
     dj? ? dj_step : organizer_step
   end

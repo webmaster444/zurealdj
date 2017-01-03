@@ -6,6 +6,16 @@
             upsert: function(djs){
                 var fd = new FormData();
 
+                if(djs.name){
+                    fd.append('dj[name]', djs.name );
+                }
+                if(djs.email){
+                    fd.append('dj[email]', djs.email );
+                }
+                if(djs.personal_url){
+                    fd.append('dj[personal_url]', djs.personal_url );
+                }
+
                 if(djs.first_name){
                     fd.append('dj[first_name]', djs.first_name );
                 }
@@ -22,10 +32,11 @@
                     fd.append('dj[about]', djs.about );
                 }
 
-                fd.append('djs[sample][file]', djs.sample.file );
-                if(djs.sample.id != undefined){
-                    fd.append('dj[sample][id]', djs.sample.id );
-                    fd.append('dj[sample][removed]', !!djs.sample.removed );
+                if(djs.sample.url !== null){
+                    fd.append('dj[sample]', djs.sample);
+                }
+                else{
+                    fd.append('dj[sample][url]', djs.sample_url);
                 }
                 if(djs.instagram_link){
                     fd.append('dj[instagram_link]', djs.instagram_link );
@@ -49,10 +60,8 @@
                     fd.append('dj[weekend_price_to]', djs.weekend_price_to );
                 }
 
-                fd.append('djs[photo][file]', djs.photo.file );
-                if(djs.photo.id != undefined){
-                    fd.append('dj[photo][id]', djs.photo.id );
-                    fd.append('dj[photo][removed]', !!djs.photo.removed );
+                if(djs.avatar.file){
+                    fd.append('dj[avatar]', djs.avatar.file);
                 }
 
                 if(djs.id){
@@ -86,7 +95,7 @@
             },
 
             destroy: function(id){
-                return $http.delete('/djs/' + id)
+                return $http.delete('/admin/djs/' + id)
             },
 
             downloadCSV: function(options){

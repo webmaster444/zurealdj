@@ -123,7 +123,6 @@
                         if($scope.DjForm.$invalid ){
                             return false;
                         }
-
                         $scope.formPending = true;
                         djs.upsert($scope.dj)
                             .success(function(){
@@ -143,6 +142,26 @@
 
                     });
                 }
-            }])
 
+                $scope.trustSrc = function(src) {
+                    return $sce.trustAsResourceUrl(src);
+                };
+
+                $timeout(function(){
+                    $('#sample-input').change(function(e){
+                        var files = e.target.files || e.dataTransfer.files;
+                        if(files.length > 0) {
+                            var audio = files[0];
+                            if(audio.type.indexOf("audio") > -1) {
+                                $scope.$apply(function(){
+                                    $scope.dj.sample = audio;
+                                    $scope.dj.sample_url = URL.createObjectURL(audio);
+                                });
+                            }else{
+
+                            }
+                        }
+                    })
+                }, 0);
+            }])
 }());

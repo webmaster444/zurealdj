@@ -3,6 +3,133 @@ $lasur-light: #c890fc
 
 body
   font-family: 'CeraPro'
+  font-weight: normal
+  font-style: normal
+  font-stretch: normal
+  min-width: 1200px
+  overflow: scroll
+
+.ibox-content
+  white-space: pre-wrap
+  word-wrap: break-word
+  font-size: 16px !important
+
+thead
+  z-index: 1000
+  tr
+    th
+      border: 1px solid white
+      position: relative
+      padding: 6px 20px 6px 6px
+      background-color: $current-color
+      color: white
+      border-radius: 5px
+      .sort
+        position: absolute
+        top: 25%
+        right: 5px
+        display: inline
+        i.fa
+          cursor: pointer
+tbody
+  td
+    max-width: 100px
+    min-width: 100px
+    white-space: pre-wrap
+    word-wrap: break-word
+  .mw-100px
+    max-width: 100px
+  .mw-150px
+    max-width: 150px
+  .mw-200px
+    max-width: 200px
+  .td-photo
+    text-align: center
+    max-width: 100px
+    img
+      width: 100px
+      height: 100px
+      border-radius: 100px
+      display: inline-block
+  .col-actions
+    max-width: 50px
+  .col-social
+    text-align: center
+    max-width: 50px
+  .col-flag
+    padding-top: 25px !important
+    .flag
+      width: 50px !important
+      height: 50px !important
+      background-position: center
+      background-size: cover
+
+.zureal-btn-dropdown
+  display: inline-block
+  a.zureal-dropdown
+    width: 400px
+    border-radius: 100px
+    border: solid 1px #e6e6e6
+    display: inline-block
+    padding: 10px 30px
+    font-size: 16px
+    font-weight: 500
+    line-height: 1.5
+    color: #555555
+    background-position-x: calc(100% - 30px)
+    background-position-y: calc(50%)
+    background-size: 9px
+    background-repeat: no-repeat
+    background-image: url(/images/icons/ic-drop-grey@3x.png)
+  .open
+    a.zureal-dropdown
+      border: solid 1px #e1c3fd
+      box-shadow: 0 2px 30px 0 rgba(0, 0, 0, 0.08)
+      background-image: url(/images/icons/ic-drop-black@3x.png)
+  .dropdown-menu
+    border-radius: 4px
+    background-color: white
+    box-shadow: 0 2px 20px 0 rgba(0, 0, 0, 0.08)
+    margin-top: 13px
+    width: 400px
+    text-align: left
+    padding: 0 !important
+    li
+      padding: 15px 30px
+      margin: 0 !important
+      width: 400px
+      border-bottom: dotted 1px #ddd
+    a
+      padding: 0
+      margin: 0
+      font-size: 16px
+      color: #555555
+      &:hover, &:active
+        background-color: white
+
+.social-icon
+  display: inline-block
+  background-position: center
+  background-size: cover
+  background-repeat: no-repeat
+  margin: 10px 5px
+  height: 25px
+  margin-top: 30px
+.facebook
+  background-image: url(/images/icons/ic-facebook.png)
+  width: 10px
+  &:hover
+    background-image: url(/images/facebook.png)
+.instagram
+  background-image: url(/images/icons/ic-instagram.png)
+  width: 25px
+  &:hover
+    background-image: url(/images/instagram.png)
+.soundcloud
+  background-image: url(/images/icons/ic-mixcloud.png)
+  width: 42px
+  &:hover
+    background-image: url(/images/soundcloud.png)
 
 .page-title
   padding-bottom: 50px
@@ -13,10 +140,21 @@ input.form-control
   border: solid 1px #e6e6e6
   font-size: 16px
   font-weight: 500
-  color: lightgray
+  color: #aaa
   &:focus
     border-color: #e1c3fd !important
-    color: gray
+    color: #555 !important
+
+textarea.form-control
+  border-radius: 15px
+  padding: 15px 20px
+  border: solid 1px #e6e6e6
+  font-size: 16px
+  font-weight: 500
+  color: #aaa
+  &:focus
+    border-color: #e1c3fd !important
+    color: #555 !important
 
 .btn-gray
   background-color: white

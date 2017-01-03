@@ -63,11 +63,6 @@
                     templateUrl: 'admin/templates/organizers/index.html',
                     controller: 'OrganizersController'
                 })
-                .state('new_dj',{
-                    url: '/dj/new',
-                    templateUrl: 'admin/templates/djs/form.html',
-                    controller: 'DjsController'
-                })
                 .state('show_dj',{
                     url: '/dj/:id',
                     templateUrl: 'admin/templates/djs/show.html',

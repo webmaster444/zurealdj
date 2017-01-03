@@ -214,6 +214,7 @@ en:
     new: "New Dj"
     edit: "Edit Dj"
     fields:
+      name: "Name"
       first_name: "First name"
       last_name: "Last name"
       city: "City"
@@ -222,6 +223,7 @@ en:
       sample: "Sample"
       instagram_link: "Instagram link"
       facebook_link: "Facebook link"
+      price: "Price"
       soundcloud_link: "Soundcloud link"
       social_links: "Social links"
       weekday_price_from: "Weekday price from"
@@ -251,3 +253,11 @@ en:
       updated_at: "Updated at"
     messages:
       success_upsert: 'Organizer successfully saved.'
+
+  user:
+    fields:
+      email: 'Email'
+      personal_url: 'Personal url'
+      password: 'Password'
+      password_confirmation: 'Password confirmation'
+
