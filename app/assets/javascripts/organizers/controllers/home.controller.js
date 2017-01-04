@@ -3,8 +3,8 @@
     "use strict";
 
     angular.module('ZurealdjOrganizerApp')
-        .controller('HomeController', ['$scope', '$state', 'ngDialog', 'SessionsFactory', '$timeout', 'toaster',
-            function ($scope, $state, ngDialog, session, $timeout, toaster) {
+        .controller('HomeController', ['$scope', '$state', 'ngDialog', 'SessionsFactory', '$timeout', 'toaster', 'UsersFactory',
+            function ($scope, $state, ngDialog, session, $timeout, toaster, users) {
 
             $scope.I18n = I18n;
             $scope.$state = $state;
@@ -21,6 +21,10 @@
             if($state.current.name != 'login'){
                 $scope.checkSession();
             }
+
+            users.profile().success(function(data){
+                $scope.$current_user = data;
+            });
 
             $scope.$state = $state;
 

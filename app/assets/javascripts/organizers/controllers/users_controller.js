@@ -25,6 +25,7 @@
                 $scope.processing = true;
                 users.save($scope.user)
                     .success(function(){
+                        $scope.$parent.$current_user = $scope.user;
                         $state.go('profile');
                         $scope.processing = false;
                     })

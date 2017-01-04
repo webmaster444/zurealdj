@@ -11,8 +11,9 @@
           .dropdown dropdown=""
             a.dropdown-toggle.count-info aria-expanded="false" aria-haspopup="true" dropdown-toggle="" href=""
               .user-dropdown
-                img ng-src="{{ user.avatar.url }}"
-                | {{ user.name }}
+                img ng-src="{{ $current_user.avatar.url }}"
+                span
+                  | {{ $current_user.name }}
             ul.dropdown-menu.dropdown-alerts
               li
                 a href="#profile"

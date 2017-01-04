@@ -4,8 +4,8 @@
 
     angular.module('ZurealdjDjApp')
         .controller('UsersController', ['$scope', '$state', 'ngDialog', '$stateParams', 'UsersFactory',
-            'CountryFlagsFactory', '$timeout', '$sce',
-        function ($scope, $state, ngDialog, $stateParams, users, countries, $timeout, $sce) {
+            'CountryFlagsFactory', '$timeout', '$sce', 'SweetAlert',
+        function ($scope, $state, ngDialog, $stateParams, users, countries, $timeout, $sce, SweetAlert) {
             $scope.I18n = I18n;
             $scope._ = _;
             $scope.$state = $state;
@@ -25,6 +25,7 @@
                 $scope.processing = true;
                 users.save($scope.user)
                     .success(function(){
+                        $scope.$parent.$current_user = $scope.user;
                         $state.go('profile');
                         $scope.processing = false;
                     })
@@ -49,7 +50,10 @@
                                 $scope.user.sample_url = URL.createObjectURL(audio);
                             });
                         }else{
-
+                            SweetAlert.swal({
+                                title: "Invalid audio!",
+                                type: "warning"
+                            });
                         }
                     }
                 })

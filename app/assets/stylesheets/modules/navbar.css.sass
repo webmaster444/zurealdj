@@ -30,13 +30,23 @@
     padding: 25px 0
   .dropdown
     margin: 13px 0
-    width: 162px
+    min-width: 162px
+    width: auto
     height: 54px
     border-radius: 100px
     display: inline-block
+    ul.dropdown-menu, li
+      width: 100% !important
+    .dropdown-menu
+      margin-left: 0
   .open
     box-shadow: 0 2px 30px 0 rgba(0, 0, 0, 0.08)
   .user-dropdown
+    span
+      margin-left: 10px
+      margin-right: 20px
+      font-size: 16px
+      color: #555555
     img
       width: 44px
       height: 44px
