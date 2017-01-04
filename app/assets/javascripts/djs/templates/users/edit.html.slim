@@ -93,7 +93,7 @@
             | {{ error }}
           .text-center
             audio controls=true data-ng-src="{{ trustSrc(user.sample_url) }}" ng-show="user.sample_url"
-            .text-active style="cursor: pointer"
+            label.text-active style="cursor: pointer"
               | Upload
               input.hide#sample-input type="file"
         hr
