@@ -59,6 +59,7 @@ class UsersController < ApplicationController
 
     if @user = User.find_by_email(fb_user.email)
       @user.facebook_id = fb_user.id
+      @user.confirmed = true
       @user.save
       sign_in @user
       render json: { session_token: current_session.token, redirect_url: current_user.role.name } and return
