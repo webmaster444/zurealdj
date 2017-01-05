@@ -31,7 +31,7 @@ class Admin::OrganizersController < Admin::BaseController
     @user.update_attributes user_update_params
     @organizer.update_attributes organizer_params
     if @user.save && @organizer.save
-      render json: { message: I18n.t('dj.messages.success_upsert') }
+      render json: { message: I18n.t('organizer.messages.success_upsert') }
     else
       render json: { errors: @user.errors.full_messages +  @organizer.errors.full_messages}, status: :unprocessable_entity
     end

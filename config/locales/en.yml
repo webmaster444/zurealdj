@@ -42,8 +42,8 @@ en:
     cant_be_blank: "Can't be blank."
 
   headers:
-    organizers: 'Organizers'
-    djs: 'Djs'
+    organizers: 'Organisers'
+    djs: 'DJs'
     bookings: 'Bookings'
     events: 'Events'
     genres: 'Genres'
@@ -211,8 +211,8 @@ en:
       success_upsert: 'Booking successfully saved.'
 
   dj:
-    new: "New Dj"
-    edit: "Edit Dj"
+    new: "New DJ"
+    edit: "Edit DJ"
     fields:
       name: "Name"
       first_name: "First name"
@@ -234,11 +234,11 @@ en:
       created_at: "Created at"
       updated_at: "Updated at"
     messages:
-      success_upsert: 'Dj successfully saved.'
+      success_upsert: 'DJ successfully saved.'
 
   organizer:
-    new: "New Organizer"
-    edit: "Edit Organizer"
+    new: "New Organiser"
+    edit: "Edit Organiser"
     fields:
       first_name: "First name"
       last_name: "Last name"
@@ -254,7 +254,7 @@ en:
       photo: "Photo"
       name: "Name"
     messages:
-      success_upsert: 'Organizer successfully saved.'
+      success_upsert: 'Organiser successfully saved.'
 
   user:
     fields:

@@ -4,7 +4,7 @@
       .ibox.float-e-margins
         .ibox-content
           h2
-            | {{ I18n.t('headers.organizers' ) }}
+            | {{ I18n.t('headers.organizers') }}
           .filters-bar
             .pull-left
               div id="{{ $state.current.name }}-pagination" ng-hide="count <= 10"
@@ -13,7 +13,7 @@
                 i.fa.fa-download
                 | Export CSV
               span.filter-descriptions
-                | {{ count }} {{ $state.current.name }} found
+                | {{ count }} {{ I18n.t('headers.organizers') }} found
 
               .filter-dropdown
                 .dropdown dropdown=""

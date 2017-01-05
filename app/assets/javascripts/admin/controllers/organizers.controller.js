@@ -78,7 +78,7 @@
                     var scope = $scope;
                     SweetAlert.swal({
                             title: "Are you sure?",
-                            text: "Your will not be able to recover this organizer!",
+                            text: "Your will not be able to recover this Organiser!",
                             type: "warning",
                             showCancelButton: true,
                             confirmButtonColor: "#DD6B55",confirmButtonText: "Yes, delete it!",
