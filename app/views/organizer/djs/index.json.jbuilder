@@ -9,4 +9,4 @@ json.djs @djs.each do |dj|
   json.rating dj['votes_count'] == 0 ? 0 : dj['stars_count']/dj['votes_count']
   json.in_favorites current_user.organizer.favorite_djs.include?(dj.dj)
 end
-json.has_more @has_more
+json.count @count

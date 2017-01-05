@@ -17,8 +17,9 @@
   "license": "ISC",
   "dependencies": {
     "angular": "^1.5.8",
-    "angular-bootstrap": "^0.12.2",
     "angular-sweetalert": "^1.1.2",
+    "angular-ui-bootstrap": "^2.4.0",
+    "angularjs-slider": "^6.0.0",
     "ng-dialog": "^0.6.4",
     "sweetalert": "^1.1.3"
   }

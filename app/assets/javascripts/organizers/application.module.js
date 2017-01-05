@@ -15,7 +15,8 @@
         'toaster',
         'angular-ladda',
         'AuthHttp',
-        'oitozero.ngSweetAlert'
+        'oitozero.ngSweetAlert',
+        'rzModule'
     ]);
 
     ZurealdjOrganizerApp.config(['$urlRouterProvider', '$stateProvider', '$httpProvider',

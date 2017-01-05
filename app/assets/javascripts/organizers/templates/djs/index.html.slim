@@ -1,7 +1,51 @@
 .page-block
   .margin50
   .shadow-block
-    input.register-input type="text" ng-model="filters.name"
+    .explore-block
+      i.fa.fa-search
+      input.form-control.input-lg type="text" ng-model="filters.name"
+      .btn-group uib-dropdown=true is-open="isopen" auto-close="outsideClick"
+        a#toggle-button type="button" uib-dropdown-toggle=true ng-disabled="disabled"
+          | Filtering
+          i.fa.fa-chevron-down<
+        .dropdown-menu uib-dropdown-menu=true role="menu" aria-labelledby="toggle-button"
+          .dropdown-header
+            | Price range
+          table style="width: 100%"
+            tr
+              td style="width: 100px"
+                input type="number" ng-model="filters.price_from"
+              td
+                rzslider rz-slider-model="filters.price_from" rz-slider-high="filters.price_to" rz-slider-options="slider.options"
+              td style="width: 100px"
+                input type="number" ng-model="filters.price_to"
+          hr
+          .dropdown-header
+            | Event types
+          .row
+            .col-md-3 ng-repeat="event_type in filters.event_types"
+              input type="checkbox" ng-model="event_type.checked" id="et{{ $index }}"
+              label for="et{{ $index }}"
+                span
+                | {{ event_type.title }}
+          hr
+          .dropdown-header
+            | Genres
+          .row
+            .col-md-3 ng-repeat="genre in filters.genres"
+              input type="checkbox" ng-model="genre.checked" id="g{{ $index }}"
+              label for="g{{ $index }}"
+                span
+                | {{ genre.title }}
+          hr
+            .text-left
+              a.btn.btn-primary ng-click="resetFilters()"
+                | Reset
+            .text-right
+              a.btn.btn-primary ng-click="retrieveDjs()"
+                | Show {{ search_count }} DJs
+      button.search-button
+        | Find a DJ
   .margin50
   .profile-item ng-repeat="dj in djs"
     img ng-src="{{ dj.avatar }}"

@@ -19,8 +19,8 @@
 #= require angular-range-slider
 #= require_tree ../../../vendor/assets/javascripts/redactor
 #= require twbs-pagination.js
-#= require angular-bootstrap/ui-bootstrap-tpls
-#= require angular-bootstrap-lightbox
+#= require angular-ui-bootstrap/ui-bootstrap-tpls
+#= require angular-ui-bootstrap-lightbox
 #= require metisMenu/jquery.metisMenu.js
 #= require pace/pace.min.js
 #= require peity/jquery.peity.min.js

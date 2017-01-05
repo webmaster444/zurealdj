@@ -19,8 +19,8 @@
 #= require angular-range-slider
 #= require_tree ../../../vendor/assets/javascripts/redactor
 #= require twbs-pagination.js
-#= require angular-bootstrap/ui-bootstrap
-#= require angular-bootstrap/ui-bootstrap-tpls
+#= require angular-ui-bootstrap/dist/ui-bootstrap
+#= require angular-ui-bootstrap/dist/ui-bootstrap-tpls
 #= require angular-bootstrap-lightbox
 #= require metisMenu/jquery.metisMenu.js
 #= require pace/pace.min.js
@@ -34,6 +34,7 @@
 #= require angular-ladda
 #= require angular-auth-http.service
 #= require sweetalert/dist/sweetalert.min
+#= require angularjs-slider/dist/rzslider
 #= require angular-sweetalert/SweetAlert
 #= require angular-table-sort.directive
 #= require ./landing/application.module.js

@@ -4,22 +4,61 @@
 
     angular.module('ZurealdjOrganizerApp')
         .controller('DjsController', ['$scope', '$state', 'ngDialog', '$stateParams', 'SweetAlert', 'DjsFactory', '$timeout',
-            function ($scope, $state, ngDialog, $stateParams, SweetAlert, djs, $timeout) {
+            'EventCategoriesFactory', 'GenresFactory',
+            function ($scope, $state, ngDialog, $stateParams, SweetAlert, djs, $timeout, event_types, genres) {
                 $scope.I18n = I18n;
                 $scope._ = _;
                 $scope.$state = $state;
                 $scope.$parent.no_second_navbar = false;
 
                 if($state.current.name == 'djs'){
+
+                    $scope.slider = {
+                        options: {
+                            floor: 0,
+                            ceil: 1000,
+                            step: 1,
+                            translate: function(value, sliderId, label) {
+                                switch (label) {
+                                    case 'model':
+                                        return '';
+                                    case 'high':
+                                        return '';
+                                    default:
+                                        return ''
+                                }
+                            }
+                        }
+                    };
+
+                    $scope.filters = {
+                        page: 1,
+                        per_page: 10,
+                        price_from: 0,
+                        price_to: 1000
+                    };
+
+                    event_types.all().success(function(data){
+                        $scope.filters.event_types = data.event_types;
+                    });
+
+                    genres.all().success(function(data){
+                        $scope.filters.genres = data.genres;
+                    });
+
                     $scope.dj = [];
+                    $scope.search_count = 0;
 
                     $scope.resetFilters = function(){
                         $scope.filters = {
                             page: 1,
-                            per_page: 10
+                            per_page: 10,
+                            price_from: 0,
+                            price_to: 1000,
+                            genres: _.map($scope.filters.genres, function(i){ i.checked = false; return i;}),
+                            event_types: _.map($scope.filters.event_types, function(i){ i.checked = false; return i;})
                         };
                     };
-                    $scope.resetFilters();
 
                     var timer = false;
                     $scope.$watch('filters', function(){
@@ -27,11 +66,18 @@
                             $scope.filters.page = 1;
                             $timeout.cancel(timer)
                         }
-                        timer= $timeout(function(){
-                            if($scope.filters.page > Math.ceil($scope.count / $scope.filters.per_page)) $scope.filters.page = 1;
-                            $scope.retrieveDjs();
+                        timer = $timeout(function(){
+                            if($scope.filters.page > Math.ceil($scope.count / $scope.filters.per_page))
+                                $scope.filters.page = 1;
+                            $scope.retrieveDjsCount();
                         }, 500)
                     }, true);
+
+                    $scope.retrieveDjsCount = function(){
+                        djs.all($scope.filters).success(function (data) {
+                            $scope.search_count = data.count;
+                        });
+                    };
 
                     $scope.retrieveDjs = function(){
                         djs.all($scope.filters).success(function (data) {

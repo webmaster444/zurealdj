@@ -3,11 +3,30 @@
     angular.module('ZurealdjOrganizerApp').factory('DjsFactory', ['AuthHttp', function($http){
         return {
             all: function(options){
+
                 var url = '/organizer/djs.json?';
 
                 _.each(Object.keys(options), function(key){
                     if(options[key]) {
-                        url = url + key + '=' + options[key] + '&';
+                        switch(key) {
+                            case 'event_types':
+                                _.each(options.event_types, function(i){
+                                    if(i.checked)
+                                        url = url + 'event_types[]=' + i.id + '&';
+                                });
+                                break;
+                            case 'genres':
+                                _.each(options.genres, function(i){
+                                    if(i.checked)
+                                        url = url + 'genres[]=' + i.id + '&';
+                                });
+                                break;
+                            default:
+                                url = url + key + '=' + options[key] + '&';
+                                break
+                        }
+
+
                     }
                 });
 

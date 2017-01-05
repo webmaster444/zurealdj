@@ -3,17 +3,13 @@ class Organizer::DjsController < Organizer::BaseController
   load_and_authorize_resource :dj
 
   def index
-
     @page = params[:page].to_i
     @page = 1 if @page < 1
     @per_page = params[:per_page].to_i
     @per_page = 10 if @per_page < 1
 
-
-
-
     @djs = User.find_by_sql(query.take(@per_page).skip((@page - 1) * @per_page).to_sql)
-    @has_more = User.find_by_sql(query(count: true))
+    @count = User.find_by_sql(query(count: true)).first.try(:[], :count)
   end
 
   def rate
@@ -35,7 +31,24 @@ class Organizer::DjsController < Organizer::BaseController
     q = users
             .join(djs).on(djs[:user_id].eq(users[:id]))
 
-    q.where(users[:name].matches("%#{ params[:name] }%")) if params[:name].present?
+    q.where(users[:name].matches("%#{ params[:name] }%"))                 if params[:name].present?
+    q.where(djs[:weekday_price_from].gteq(params[:price_from])
+                .or(djs[:weekend_price_from].gteq(params[:price_from])))  if params[:price_from].present?
+    q.where(djs[:weekday_price_to].lteq(params[:price_to])
+                .or(djs[:weekend_price_to].lteq(params[:price_to])))      if params[:price_to].present?
+
+
+    event_categories_users = Arel::Table.new(:event_categories_users)
+
+    params[:event_types].to_a.each do |id|
+      q.where(Arel::Nodes::SqlLiteral.new("#{ id } IN (#{ event_categories_users.project(event_categories_users[:event_category_id]).where(event_categories_users[:user_id].eq(users[:id])).to_sql })"))
+    end
+
+    genres_users = Arel::Table.new(:genres_users)
+
+    params[:genres].to_a.each do |id|
+      q.where(Arel::Nodes::SqlLiteral.new("#{ id } IN (#{ genres_users.project(genres_users[:genre_id]).where(genres_users[:user_id].eq(users[:id])).to_sql })"))
+    end
 
     if options[:count]
       q.project("COUNT(*)")
