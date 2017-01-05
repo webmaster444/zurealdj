@@ -15,6 +15,7 @@
 
             users.profile().success(function(data){
                 $scope.user = data;
+                $scope.$parent.$current_user = $scope.user;
             });
 
             countries.all().success(function(data){
@@ -25,7 +26,6 @@
                 $scope.processing = true;
                 users.save($scope.user)
                     .success(function(){
-                        $scope.$parent.$current_user = $scope.user;
                         $state.go('profile');
                         $scope.processing = false;
                     })
