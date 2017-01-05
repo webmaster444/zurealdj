@@ -1,6 +1,7 @@
 class Dj < ActiveRecord::Base
 
   has_many :dj_stars
+  belongs_to :user
 
   has_attached_file :sample
 

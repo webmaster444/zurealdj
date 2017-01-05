@@ -50,7 +50,7 @@
   .profile-item ng-repeat="dj in djs"
     img ng-src="{{ dj.avatar }}"
     .inf
-      .name
+      a.name href="#djs/{{ dj.dj_id }}"
         | {{ dj.name }}
       .small-text
         | {{ dj.city }}, {{ dj.country }}

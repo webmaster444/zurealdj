@@ -8,8 +8,8 @@
             | 3
         li.bell.i-bell-passive
         li.zureal-btn-dropdown
-          .dropdown dropdown=""
-            a.dropdown-toggle.count-info aria-expanded="false" aria-haspopup="true" dropdown-toggle="" href=""
+          .dropdown uib-dropdown=""
+            a.dropdown-toggle.count-info aria-expanded="false" aria-haspopup="true" uib-dropdown-toggle="" href=""
               .user-dropdown
                 img ng-src="{{ $current_user.avatar.url }}"
                 span
@@ -26,7 +26,7 @@
 .second-nav
   .page-block
     ul.second-menu
-      li#first class="{{ $state.current.name == 'djs'? 'active' : '' }}"
+      li#first ng-class="{active: ['djs', 'dj'].includes($state.current.name)}"
         a href="#djs"
           | Browse DJs
       li class="{{ $state.current.name == 'profile' || $state.current.name == 'edit_profile'? 'active' : '' }}"

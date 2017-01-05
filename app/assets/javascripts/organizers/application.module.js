@@ -62,7 +62,11 @@
                     templateUrl: 'organizers/templates/djs/index.html',
                     controller: 'DjsController'
                 })
-
+                .state('dj',{
+                    url: '/djs/:id',
+                    templateUrl: 'organizers/templates/djs/show.html',
+                    controller: 'DjsController'
+                })
                 .state('new_booking',{
                     url: '/booking/new',
                     templateUrl: 'organizers/templates/bookings/form.html',

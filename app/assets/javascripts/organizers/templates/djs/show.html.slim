@@ -1,167 +1,70 @@
-.wrapper.wrapper-content
-  .row.animated.fadeInRight
-    .col-md-12
-      .ibox.float-e-margins
-        .ibox-title
-          h2
-            | {{ dj.first_name }}
-        .ibox-content
+.profile
+  .profile-header style="background-image: url({{ user.avatar.url }})"
+    .page-block
+      .tmp
+      .inf-container
+        .name
+          | {{ user.name }}
+        .small-text.company
+          | {{ user.city}}, {{user.country.title }}
+        div.stars rating=true ng-model="user.stars"
+        .small-text.genres
+          | {{ user.genres_string }} | DJ
+  .profile-content
+    .page-block
+      .profile-avatar
+        img ng-src="{{ user.avatar.url }}"
+        a.btn-edit.small-text ng-click="book()"
+          | Book Now
 
-          .form-group
-            .row
-              .col-lg-2
-                label.control-label
-                  | {{ I18n.t('dj.fields.first_name') }}:
-              .col-lg-10
-                p.form-control-static
-                  | {{ dj.first_name }}
-            .hr-line-dashed
+        a ng-click="addToFavorites(user)" ng-hide="user.in_favorites"
+          | Add to favorites
+        a ng-click="removeFromFavorites(user)" ng-show="user.in_favorites"
+          | Remove from favorites
+        .content
+          .title
+            | About
+          .text
+            | {{ user.about }}
+          .title
+            | Social
+          .row
+            a.col-social#first href="{{ user.soundcloud_link }}"
+              .ic-mixcloud.icon
+            a.col-social href="{{ user.facebook_link }}"
+              .ic-facebook.icon
+            a.col-social href="{{ user.instagram_link }}"
+              .ic-instagram.icon
 
-          .form-group
-            .row
-              .col-lg-2
-                label.control-label
-                  | {{ I18n.t('dj.fields.last_name') }}:
-              .col-lg-10
-                p.form-control-static
-                  | {{ dj.last_name }}
-            .hr-line-dashed
+      .general
+        .block-title
+          | Listen
+        audio controls=true ng-src="{{ user.sample_url }}" ng-show="user.sample_url"
+        hr
 
-          .form-group
-            .row
-              .col-lg-2
-                label.control-label
-                  | {{ I18n.t('dj.fields.city') }}:
-              .col-lg-10
-                p.form-control-static
-                  | {{ dj.city }}
-            .hr-line-dashed
-
-          .form-group
-            .row
-              .col-lg-2
-                label.control-label
-                  | {{ I18n.t('dj.fields.country') }}:
-              .col-lg-10
-                span.flag class="{{ djs.country.code }}"
-                | {{ djs.country.title }}
-            .hr-line-dashed
-
-          .form-group
-            .row
-              .col-lg-2
-                label.control-label
-                  | {{ I18n.t('dj.fields.about') }}:
-              .col-lg-10
-                p.form-control-static
-                  | {{ dj.about }}
-            .hr-line-dashed
-
-          .form-group
-            .row
-              .col-lg-2
-                label.control-label
-                  | {{ I18n.t('dj.fields.sample') }}:
-              .col-lg-10
-                img ng-src="{{ djs.sample.url }}" style="max-width: 100%"
-            .hr-line-dashed
-
-          .form-group
-            .row
-              .col-lg-2
-                label.control-label
-                  | {{ I18n.t('dj.fields.instagram_link') }}:
-              .col-lg-10
-                p.form-control-static
-                  | {{ dj.instagram_link }}
-            .hr-line-dashed
-
-          .form-group
-            .row
-              .col-lg-2
-                label.control-label
-                  | {{ I18n.t('dj.fields.facebook_link') }}:
-              .col-lg-10
-                p.form-control-static
-                  | {{ dj.facebook_link }}
-            .hr-line-dashed
-
-          .form-group
-            .row
-              .col-lg-2
-                label.control-label
-                  | {{ I18n.t('dj.fields.soundcloud_link') }}:
-              .col-lg-10
-                p.form-control-static
-                  | {{ dj.soundcloud_link }}
-            .hr-line-dashed
-
-          .form-group
-            .row
-              .col-lg-2
-                label.control-label
-                  | {{ I18n.t('dj.fields.weekday_price_from') }}:
-              .col-lg-10
-                p.form-control-static
-                  | {{ dj.weekday_price_from }}
-            .hr-line-dashed
-
-          .form-group
-            .row
-              .col-lg-2
-                label.control-label
-                  | {{ I18n.t('dj.fields.weekday_price_to') }}:
-              .col-lg-10
-                p.form-control-static
-                  | {{ dj.weekday_price_to }}
-            .hr-line-dashed
-
-          .form-group
-            .row
-              .col-lg-2
-                label.control-label
-                  | {{ I18n.t('dj.fields.weekend_price_from') }}:
-              .col-lg-10
-                p.form-control-static
-                  | {{ dj.weekend_price_from }}
-            .hr-line-dashed
-
-          .form-group
-            .row
-              .col-lg-2
-                label.control-label
-                  | {{ I18n.t('dj.fields.weekend_price_to') }}:
-              .col-lg-10
-                p.form-control-static
-                  | {{ dj.weekend_price_to }}
-            .hr-line-dashed
-
-          .form-group
-            .row
-              .col-lg-2
-                label.control-label
-                  | {{ I18n.t('dj.fields.photo') }}:
-              .col-lg-10
-                img ng-src="{{ djs.photo.url }}" style="max-width: 100%"
-            .hr-line-dashed
-
-          .form-group
-            .row
-              .col-lg-2
-                label.control-label
-                  | {{ I18n.t('dj.fields.created_at') }}:
-              .col-lg-10
-                p.form-control-static
-                  | {{ dj.created_at }}
-            .hr-line-dashed
-
-          .form-group
-            .row
-              .col-lg-2
-                label.control-label
-                  | {{ I18n.t('dj.fields.updated_at') }}:
-              .col-lg-10
-                p.form-control-static
-                  | {{ dj.updated_at }}
-            .hr-line-dashed
-
+        .block-title
+          | Equipment
+        label.select-button ng-repeat="equipment in user.equipments"
+          .text-center.btn-equipment.active ng-show="equipment.selected"
+            img ng-src="{{ equipment.icon }}"
+            .title
+              | {{ equipment.title }}
+        hr
+        .block-title
+          | Booking information
+        table
+          tr
+            td.title
+              | Weekday Rate:
+            td
+              | ${{ user.weekday_rate_from }}-${{user.weekday_rate_to}}
+          tr
+            td.title
+              | Weekday Rate:
+            td
+              | ${{ user.weekend_rate_from }}-${{user.weekend_rate_to}}
+          tr
+            td.title
+              | Cancelations:
+            td.text-active
+              | {{ user.cancelations_string }}

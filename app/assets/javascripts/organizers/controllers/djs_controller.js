@@ -4,8 +4,8 @@
 
     angular.module('ZurealdjOrganizerApp')
         .controller('DjsController', ['$scope', '$state', 'ngDialog', '$stateParams', 'SweetAlert', 'DjsFactory', '$timeout',
-            'EventCategoriesFactory', 'GenresFactory',
-            function ($scope, $state, ngDialog, $stateParams, SweetAlert, djs, $timeout, event_types, genres) {
+            'EventCategoriesFactory', 'GenresFactory', '$sce',
+            function ($scope, $state, ngDialog, $stateParams, SweetAlert, djs, $timeout, event_types, genres, $sce) {
                 $scope.I18n = I18n;
                 $scope._ = _;
                 $scope.$state = $state;
@@ -118,40 +118,41 @@
 
                             });
                     };
-
-                    var favorites_timer = false;
-
-                    $scope.removeFromFavorites = function(dj){
-                        if(favorites_timer){
-                            $timeout.cancel(favorites_timer)
-                        }
-                        favorites_timer = $timeout(function(){
-                            djs.removeFromFavorites(dj.dj_id)
-                                .success(function(){
-                                    dj.in_favorites = false;
-                                })
-                        }, 500)
-                    };
-
-                    $scope.addToFavorites = function(dj){
-                        if(favorites_timer){
-                            $timeout.cancel(favorites_timer)
-                        }
-                        favorites_timer = $timeout(function(){
-                            djs.addToFavorites(dj.dj_id)
-                                .success(function(){
-                                    dj.in_favorites = true;
-                                })
-                        }, 500)
-                    }
                 }
 
-                if($state.current.name == 'show_dj'){
+                if($state.current.name == 'dj'){
                     djs.show($stateParams.id).success(function(data){
-                        $scope.dj = data.dj;
-
+                        $scope.user = data;
+                        $scope.user.sample_url = $sce.trustAsResourceUrl($scope.user.sample_url)
                     });
                 }
+
+                var favorites_timer = false;
+
+                $scope.removeFromFavorites = function(dj){
+                    if(favorites_timer){
+                        $timeout.cancel(favorites_timer)
+                    }
+                    favorites_timer = $timeout(function(){
+                        djs.removeFromFavorites(dj.dj_id)
+                            .success(function(){
+                                dj.in_favorites = false;
+                            })
+                    }, 500)
+                };
+
+                $scope.addToFavorites = function(dj){
+                    if(favorites_timer){
+                        $timeout.cancel(favorites_timer)
+                    }
+                    favorites_timer = $timeout(function(){
+                        djs.addToFavorites(dj.dj_id)
+                            .success(function(){
+                                dj.in_favorites = true;
+                            })
+                    }, 500)
+                };
+
             }])
 
 }());

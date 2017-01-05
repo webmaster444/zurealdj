@@ -22,6 +22,10 @@ class Organizer::DjsController < Organizer::BaseController
 
   end
 
+  def show
+    @user = @dj.user
+  end
+
   private
 
   def query(options={})
