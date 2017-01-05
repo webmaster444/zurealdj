@@ -32,7 +32,7 @@
 #= require ladda
 #= require angular-ladda
 #= require angular-auth-http.service
-#= require sweetalert/lib/sweet-alert
+#= require sweetalert/dist/sweetalert
 #= require angular-sweetalert/SweetAlert
 #= require angular-table-sort.directive
 # load angular modules
