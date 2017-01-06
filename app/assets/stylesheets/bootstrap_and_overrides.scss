@@ -112,3 +112,8 @@ input[type="checkbox"]:checked + label span {
     font-size: 11px;
   }
 }
+
+.ngdialog-overlay {
+  pointer-events: none;
+}
+
