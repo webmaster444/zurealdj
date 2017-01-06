@@ -54,6 +54,11 @@ class Organizer::DjsController < Organizer::BaseController
       q.where(Arel::Nodes::SqlLiteral.new("#{ id } IN (#{ genres_users.project(genres_users[:genre_id]).where(genres_users[:user_id].eq(users[:id])).to_sql })"))
     end
 
+    if params[:favorite].present?
+      favorite_djs = Arel::Table.new(:favorite_djs)
+      q.where(Arel::Nodes::SqlLiteral.new("djs.id IN (#{ favorite_djs.project(favorite_djs[:dj_id]).where(favorite_djs[:organizer_id].eq(current_user.organizer.id)).to_sql })"))
+    end
+
     if options[:count]
       q.project("COUNT(*)")
     else

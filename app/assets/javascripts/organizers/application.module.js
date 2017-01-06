@@ -107,85 +107,10 @@
                     templateUrl: 'organizers/templates/events/index.html',
                     controller: 'EventsController'
                 })
-                .state('new_genre',{
-                    url: '/genre/new',
-                    templateUrl: 'organizers/templates/genres/form.html',
-                    controller: 'GenresController'
-                })
-                .state('show_genre',{
-                    url: '/genre/:id',
-                    templateUrl: 'organizers/templates/genres/show.html',
-                    controller: 'GenresController'
-                })
-                .state('edit_genre',{
-                    url: '/genre/:id/edit',
-                    templateUrl: 'organizers/templates/genres/form.html',
-                    controller: 'GenresController'
-                })
-                .state('genres',{
-                    url: '/genres',
-                    templateUrl: 'organizers/templates/genres/index.html',
-                    controller: 'GenresController'
-                })
-                .state('new_cancelation',{
-                    url: '/cancelation/new',
-                    templateUrl: 'organizers/templates/cancelations/form.html',
-                    controller: 'CancelationsController'
-                })
-                .state('show_cancelation',{
-                    url: '/cancelation/:id',
-                    templateUrl: 'organizers/templates/cancelations/show.html',
-                    controller: 'CancelationsController'
-                })
-                .state('edit_cancelation',{
-                    url: '/cancelation/:id/edit',
-                    templateUrl: 'organizers/templates/cancelations/form.html',
-                    controller: 'CancelationsController'
-                })
-                .state('cancelations',{
-                    url: '/cancelations',
-                    templateUrl: 'organizers/templates/cancelations/index.html',
-                    controller: 'CancelationsController'
-                })
-                .state('new_event_category',{
-                    url: '/event_category/new',
-                    templateUrl: 'organizers/templates/event_categories/form.html',
-                    controller: 'EventCategoriesController'
-                })
-                .state('show_event_category',{
-                    url: '/event_category/:id',
-                    templateUrl: 'organizers/templates/event_categories/show.html',
-                    controller: 'EventCategoriesController'
-                })
-                .state('edit_event_category',{
-                    url: '/event_category/:id/edit',
-                    templateUrl: 'organizers/templates/event_categories/form.html',
-                    controller: 'EventCategoriesController'
-                })
-                .state('event_categories',{
-                    url: '/event_categories',
-                    templateUrl: 'organizers/templates/event_categories/index.html',
-                    controller: 'EventCategoriesController'
-                })
-                .state('new_equipment',{
-                    url: '/equipment/new',
-                    templateUrl: 'organizers/templates/equipments/form.html',
-                    controller: 'EquipmentsController'
-                })
-                .state('show_equipment',{
-                    url: '/equipment/:id',
-                    templateUrl: 'organizers/templates/equipments/show.html',
-                    controller: 'EquipmentsController'
-                })
-                .state('edit_equipment',{
-                    url: '/equipment/:id/edit',
-                    templateUrl: 'organizers/templates/equipments/form.html',
-                    controller: 'EquipmentsController'
-                })
-                .state('equipments',{
-                    url: '/equipments',
-                    templateUrl: 'organizers/templates/equipments/index.html',
-                    controller: 'EquipmentsController'
+                .state('favorites',{
+                    url: '/favorites',
+                    templateUrl: 'organizers/templates/favorites/index.html',
+                    controller: 'FavoritesController'
                 })
     }]);
 
