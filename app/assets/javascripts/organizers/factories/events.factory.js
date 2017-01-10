@@ -3,41 +3,27 @@
     angular.module('ZurealdjOrganizerApp').factory('EventsFactory', ['AuthHttp', function($http){
         return {
 
-            upsert: function(events){
+            upsert: function(event){
+                console.log(event);
                 var fd = new FormData();
 
-                if(events.title){
-                    fd.append('event[title]', events.title );
-                }
-                if(events.city){
-                    fd.append('event[city]', events.city );
-                }
-                if(events.country){
-                    fd.append('event[country_flag_code]', events.country.code );
-                }
-                if(events.address){
-                    fd.append('event[address]', events.address );
-                }
-                if(events.start_date){
-                    fd.append('event[start_date]', events.start_date );
-                }
-                if(events.end_date){
-                    fd.append('event[end_date]', events.end_date );
+                fd.append('event[title]', event.title || '');
+                fd.append('event[city]', event.city || '');
+                if(event.country && event.country.code){
+                    fd.append('event[country_flag_code]', event.country.code);
                 }
 
-                fd.append('event[image][file]', events.image.file );
-                if(events.image.id != undefined){
-                    fd.append('event[image][id]', events.image.id );
-                    fd.append('event[image][removed]', !!events.image.removed );
+                if(event.image && event.image.file){
+                    fd.append('event[image]', event.image.file );
                 }
 
-                if(events.id){
-                    return $http.put('/events/' + events.id, fd, {
+                if(event.id){
+                    return $http.put('/organizer/events/' + event.id, fd, {
                         transformRequest: angular.identity,
                         headers: {'Content-Type': undefined}
                     });
                 }else{
-                    return $http.post('/events', fd, {
+                    return $http.post('/organizer/events', fd, {
                         transformRequest: angular.identity,
                         headers: {'Content-Type': undefined}
                     });
@@ -45,15 +31,15 @@
             },
 
             all: function(options){
-                return $http.get('/events.json?page=' + options.page);
+                return $http.get('/organizer/events.json?page=' + options.page);
             },
 
             show: function(id){
-                return $http.get('/events/' + id + '.json');
+                return $http.get('/organizer/events/' + id + '.json');
             },
 
             destroy: function(id){
-                return $http.delete('/events/' + id)
+                return $http.delete('/organizer/events/' + id)
             }
         }
     }])

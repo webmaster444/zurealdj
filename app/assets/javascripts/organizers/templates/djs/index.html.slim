@@ -9,7 +9,7 @@
           | Filtering
           i.fa.fa-chevron-down<
         .dropdown-menu uib-dropdown-menu=true role="menu" aria-labelledby="toggle-button"
-          .dropdown-header
+          .zurealdj-header-1
             | Price range
           table style="width: 100%"
             tr
@@ -20,7 +20,7 @@
               td style="width: 100px"
                 input type="number" ng-model="filters.price_to"
           hr
-          .dropdown-header
+          .zurealdj-header-1
             | Event types
           .row
             .col-md-3 ng-repeat="event_type in filters.event_types"
@@ -29,7 +29,7 @@
                 span
                 | {{ event_type.title }}
           hr
-          .dropdown-header
+          .zurealdj-header-1
             | Genres
           .row
             .col-md-3 ng-repeat="genre in filters.genres"

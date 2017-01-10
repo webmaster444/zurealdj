@@ -16,7 +16,8 @@
         'angular-ladda',
         'AuthHttp',
         'oitozero.ngSweetAlert',
-        'rzModule'
+        'rzModule',
+        'ui.bootstrap.datetimepicker'
     ]);
 
     ZurealdjOrganizerApp.config(['$urlRouterProvider', '$stateProvider', '$httpProvider',
@@ -66,41 +67,6 @@
                     url: '/djs/:id',
                     templateUrl: 'organizers/templates/djs/show.html',
                     controller: 'DjsController'
-                })
-                .state('new_booking',{
-                    url: '/booking/new',
-                    templateUrl: 'organizers/templates/bookings/form.html',
-                    controller: 'BookingsController'
-                })
-                .state('show_booking',{
-                    url: '/booking/:id',
-                    templateUrl: 'organizers/templates/bookings/show.html',
-                    controller: 'BookingsController'
-                })
-                .state('edit_booking',{
-                    url: '/booking/:id/edit',
-                    templateUrl: 'organizers/templates/bookings/form.html',
-                    controller: 'BookingsController'
-                })
-                .state('bookings',{
-                    url: '/bookings',
-                    templateUrl: 'organizers/templates/bookings/index.html',
-                    controller: 'BookingsController'
-                })
-                .state('new_event',{
-                    url: '/event/new',
-                    templateUrl: 'organizers/templates/events/form.html',
-                    controller: 'EventsController'
-                })
-                .state('show_event',{
-                    url: '/event/:id',
-                    templateUrl: 'organizers/templates/events/show.html',
-                    controller: 'EventsController'
-                })
-                .state('edit_event',{
-                    url: '/event/:id/edit',
-                    templateUrl: 'organizers/templates/events/form.html',
-                    controller: 'EventsController'
                 })
                 .state('events',{
                     url: '/events',

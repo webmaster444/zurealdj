@@ -19,6 +19,7 @@
     "angular": "^1.5.8",
     "angular-sweetalert": "^1.1.2",
     "angular-ui-bootstrap": "^2.4.0",
+    "angular-ui-bootstrap-datetimepicker": "^2.0.2",
     "angularjs-slider": "^6.0.0",
     "ng-dialog": "^0.6.4",
     "sweetalert": "^1.1.3"

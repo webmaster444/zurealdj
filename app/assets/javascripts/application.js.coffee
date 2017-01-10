@@ -37,6 +37,7 @@
 #= require angularjs-slider/dist/rzslider
 #= require angular-sweetalert/SweetAlert
 #= require angular-table-sort.directive
+#= require angular-ui-bootstrap-datetimepicker/datetimepicker
 #= require ./landing/application.module.js
 #= require_tree ./landing/factories
 #= require_tree ./landing/controllers
