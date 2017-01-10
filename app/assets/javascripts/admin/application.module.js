@@ -7,7 +7,6 @@
         'validation.match',
         'validation.email',
         'ui.bootstrap',
-        'bootstrapLightbox',
         'ui-rangeSlider',
         'redactor',
         'formInput.images',
