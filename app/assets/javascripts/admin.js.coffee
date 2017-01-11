@@ -12,6 +12,7 @@
 #= require angular-images.directive
 #= require angular-image.directive
 #= require angular-country.directive
+#= require ngAudio/ng-audio.directive
 #= require toastr
 #= require underscore
 #= require i18n

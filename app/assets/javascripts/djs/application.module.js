@@ -15,7 +15,9 @@
         'toaster',
         'angular-ladda',
         'AuthHttp',
-        'oitozero.ngSweetAlert'
+        'oitozero.ngSweetAlert',
+        'rzModule',
+        'ngAudio'
     ]);
 
     ZurealdjDjApp.config(['$urlRouterProvider', '$stateProvider', '$httpProvider',

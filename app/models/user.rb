@@ -10,7 +10,7 @@ class User < ActiveRecord::Base
   accepts_nested_attributes_for :organizer
   accepts_nested_attributes_for :dj
 
-  has_attached_file :avatar, styles: { medium: '300x300>', thumb: '100x100>' }, default_url: '/images/missing_picture.png'
+  has_attached_file :avatar, styles: { medium: '300x300>', thumb: '100x100>' }, default_url: '/images/img-profile-photo.png'
 
   attr_accessor :password, :password_confirmation
   validates :email, uniqueness: { case_sensitive: false, message: "This email address is already registered." },

@@ -4,8 +4,8 @@
 
     angular.module('ZurealdjDjApp')
         .controller('UsersController', ['$scope', '$state', 'ngDialog', '$stateParams', 'UsersFactory',
-            'CountryFlagsFactory', '$timeout', '$sce', 'SweetAlert',
-        function ($scope, $state, ngDialog, $stateParams, users, countries, $timeout, $sce, SweetAlert) {
+            'CountryFlagsFactory',
+        function ($scope, $state, ngDialog, $stateParams, users, countries) {
             $scope.I18n = I18n;
             $scope._ = _;
             $scope.$state = $state;
@@ -16,6 +16,10 @@
             users.profile().success(function(data){
                 $scope.user = data;
                 $scope.$parent.$current_user = $scope.user;
+                $scope.sample = {
+                    url: $scope.user.sample_url,
+                    name: $scope.user.sample_file
+                };
             });
 
             countries.all().success(function(data){
@@ -23,6 +27,7 @@
             });
 
             $scope.save = function(){
+                if($scope.sample.new) $scope.user.sample = $scope.sample.new;
                 $scope.processing = true;
                 users.save($scope.user)
                     .success(function(){
@@ -33,30 +38,5 @@
                         $scope.processing = false;
                     })
             };
-
-            $scope.trustSrc = function(src) {
-                return $sce.trustAsResourceUrl(src);
-            };
-
-            $timeout(function(){
-                $('#sample-input').change(function(e){
-                    var files = e.target.files || e.dataTransfer.files;
-                    console.log(e);
-                    if(files.length > 0) {
-                        var audio = files[0];
-                        if(audio.type.indexOf("audio") > -1) {
-                            $scope.$apply(function(){
-                                $scope.user.sample = audio;
-                                $scope.user.sample_url = URL.createObjectURL(audio);
-                            });
-                        }else{
-                            SweetAlert.swal({
-                                title: "Invalid audio!",
-                                type: "warning"
-                            });
-                        }
-                    }
-                })
-            }, 0);
         }])
 }());
