@@ -40,6 +40,11 @@
                     templateUrl: 'landing/templates/home/index.html',
                     controller: 'HomeController'
                 })
+                .state('terms_n_conditions',{
+                    url: '/terms_n_conditions',
+                    templateUrl: 'landing/templates/terms_n_conditions/index.html',
+                    controller: 'TermsNConditionsController'
+                })
     }]);
 
     ZurealdjLandingApp.run(['$http', '$rootScope', 'AuthHttp', function($http, $rootScope, AuthHttp){

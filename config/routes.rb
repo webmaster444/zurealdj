@@ -112,5 +112,11 @@ Rails.application.routes.draw do
         get :confirm_email
       end
     end
+
+    resources :static_pages, only: [] do
+      collection do
+        get :terms_n_conditions
+      end
+    end
   end
 end
