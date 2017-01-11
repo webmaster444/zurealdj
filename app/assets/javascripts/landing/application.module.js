@@ -45,6 +45,11 @@
                     templateUrl: 'landing/templates/terms_n_conditions/index.html',
                     controller: 'TermsNConditionsController'
                 })
+                .state('crew',{
+                    url: '/crew',
+                    templateUrl: 'landing/templates/crew/index.html',
+                    controller: 'CrewController'
+                })
                 .state('how_we_work',{
                     url: '/how_we_work',
                     templateUrl: 'landing/templates/how_we_work/index.html',

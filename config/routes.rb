@@ -117,6 +117,7 @@ Rails.application.routes.draw do
       collection do
         get :terms_n_conditions
         get :how_we_work
+        get :crew
       end
     end
   end

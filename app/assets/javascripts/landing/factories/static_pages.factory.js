@@ -5,9 +5,12 @@
             terms_n_conditions: function(){
                 return $http.get('/static_pages/terms_n_conditions')
             },
+            crew: function(){
+                return $http.get('/static_pages/crew')
+            },
             how_we_work: function(){
                 return $http.get('/static_pages/how_we_work')
-            },
+            }
         }
     }])
 }());

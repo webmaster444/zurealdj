@@ -11,4 +11,9 @@ class StaticPagesController < ApplicationController
     @page = HowWeWorkPage.first_or_create
     render json: {page: @page.content}
   end
+
+  def crew
+    @page = CrewPage.first_or_create
+    render json: {page: @page.content}
+  end
 end
