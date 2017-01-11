@@ -21,4 +21,9 @@ class StaticPagesController < ApplicationController
     @page = CrewPage.first_or_create
     render json: {page: @page.content}
   end
+
+  def cancelations
+    @page = CancelationsPage.first_or_create
+    render json: {page: @page.content}
+  end
 end

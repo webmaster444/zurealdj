@@ -60,6 +60,11 @@
                     templateUrl: 'landing/templates/who_we_are/index.html',
                     controller: 'WhoWeAreController'
                 })
+                .state('cancelations',{
+                    url: '/cancelations',
+                    templateUrl: 'landing/templates/cancelations/index.html',
+                    controller: 'CancelationsController'
+                })
     }]);
 
     ZurealdjLandingApp.run(['$http', '$rootScope', 'AuthHttp', function($http, $rootScope, AuthHttp){

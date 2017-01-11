@@ -13,6 +13,9 @@
             },
             who_we_are: function(){
                 return $http.get('/static_pages/who_we_are')
+            },
+            cancelations: function(){
+                return $http.get('/static_pages/cancelations')
             }
         }
     }])

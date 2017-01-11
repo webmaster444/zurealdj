@@ -119,6 +119,7 @@ Rails.application.routes.draw do
         get :how_we_work
         get :crew
         get :who_we_are
+        get :cancelations
       end
     end
   end
