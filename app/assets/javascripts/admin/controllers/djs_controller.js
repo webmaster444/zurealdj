@@ -116,9 +116,6 @@
 
                     $scope.submitDj = function(){
                         $scope.submitted = true;
-                        if($scope.DjForm.$invalid ){
-                            return false;
-                        }
                         $scope.formPending = true;
                         djs.upsert($scope.dj)
                             .success(function(){
