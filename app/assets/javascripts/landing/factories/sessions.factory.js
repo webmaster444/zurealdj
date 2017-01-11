@@ -15,6 +15,9 @@
                 return $http.post('/sessions/facebook', {
                     access_token: access_token
                 })
+            },
+            logout: function(){
+                return $http.delete('/sessions')
             }
         }
     }])

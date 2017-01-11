@@ -81,5 +81,23 @@
                 if($state.current.name == 'restore_password'){
                     $scope.openRestorePasswordDialog();
                 }
+
+                $scope.checkSession = function(){
+                    sessions.check()
+                        .success(function(data){
+                            $scope.current_user = data.current_user;
+                        })
+                        .error(function(){
+                            $scope.current_user = false;
+                        });
+                };
+
+                $scope.checkSession();
+
+                $scope.logout = function(){
+                    sessions.logout().success(function(){
+                        window.location = '/'
+                    })
+                };
             }])
 }());
