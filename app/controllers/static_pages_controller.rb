@@ -5,6 +5,11 @@ class StaticPagesController < ApplicationController
   def terms_n_conditions
     @page = TermsNConditionsPage.first_or_create
     render json: {page: @page.content}
+    end
+
+  def who_we_are
+    @page = WhoWeArePage.first_or_create
+    render json: {page: @page.content}
   end
 
   def how_we_work

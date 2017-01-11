@@ -55,6 +55,11 @@
                     templateUrl: 'landing/templates/how_we_work/index.html',
                     controller: 'HowWeWorkController'
                 })
+                .state('who_we_are',{
+                    url: '/who_we_are',
+                    templateUrl: 'landing/templates/who_we_are/index.html',
+                    controller: 'WhoWeAreController'
+                })
     }]);
 
     ZurealdjLandingApp.run(['$http', '$rootScope', 'AuthHttp', function($http, $rootScope, AuthHttp){

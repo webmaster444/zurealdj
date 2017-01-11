@@ -10,6 +10,9 @@
             },
             how_we_work: function(){
                 return $http.get('/static_pages/how_we_work')
+            },
+            who_we_are: function(){
+                return $http.get('/static_pages/who_we_are')
             }
         }
     }])
