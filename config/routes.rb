@@ -120,6 +120,7 @@ Rails.application.routes.draw do
         get :crew
         get :who_we_are
         get :cancelations
+        get :policies
       end
     end
   end
