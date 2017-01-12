@@ -3,7 +3,7 @@
   .player
     max-width: 760px
     min-width: 760px
-    margin: 30px auto
+    margin: 15px auto
     padding: 30px 30px 25px 30px
     text-align: left
     position: relative
@@ -22,6 +22,17 @@
       background-image: url('/images/icons/ic-pause@3x.png')
     .btn-pause
       background-image: url('/images/icons/ic-play@3x.png')
+    .btn-volume
+      background-image: url('/images/icons/ic-voll.png')
+      display: inline-block
+      background-position: center
+      background-size: contain
+      background-repeat: no-repeat
+      width: 13px
+      height: 15px
+      position: absolute
+      right: 140px
+      top: 60px
     .duration
       position: absolute
       top: 30px
@@ -39,13 +50,42 @@
       position: absolute
       left: 100px
       top: 30px
-      max-width: 470px
+      max-width: 460px
       height: 20px
       overflow: hidden
+    .file-name-input
+      border-radius: 100px
+      background-color: white
+      border: solid 1px #e1c3fd
+      padding: 8px 30px
+      font-family: CeraPro
+      font-size: 16px
+      font-weight: 500
+      font-style: normal
+      font-stretch: normal
+      line-height: 1.5
+      width: 470px
+      color: #555555
+      outline: none
+    form
+      margin: 0
+      padding: 0
+      display: block
+      position: absolute
+      left: 95px
+      top: 15px
+    .rz-bar-wrapper
+      display: inline-block
     .time-slider
       max-width: 630px
       position: absolute
+      left: 100px
+      width: 465px
+    .volume-slider
+      position: absolute
       right: 30px
+      width: 100px
+    .volume-slider, .time-slider
       .rz-bar-wrapper, .rz-bar
         min-width: 0 !important
       .rz-selection
@@ -53,7 +93,17 @@
         visibility: visible !important
       .rz-bubble
         display: none
+  .action-edit
+    display: block
+    margin: 15px auto
+  .edit-btn, .save-btn, .delete-btn
+    font-size: 16px
+    font-weight: 500
+    letter-spacing: 1.5px
+    color: #b05dfc
+    margin: 15px
   label.upload
+    display: block
     span
       font-size: 16px
       font-weight: 500

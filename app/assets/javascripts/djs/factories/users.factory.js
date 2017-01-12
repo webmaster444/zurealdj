@@ -68,6 +68,9 @@
                 if(user.sample){
                     fd.append('dj_attributes[sample]', user.sample);
                 }
+                if(user.sample_title){
+                    fd.append('dj_attributes[sample_title]', user.sample_title);
+                }
                 _.each(user.event_types, function(i){
                     if(i.selected)
                         fd.append('event_category_ids[]', i.id)

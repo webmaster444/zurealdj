@@ -18,7 +18,7 @@
                 $scope.$parent.$current_user = $scope.user;
                 $scope.sample = {
                     url: $scope.user.sample_url,
-                    name: $scope.user.sample_file
+                    name: $scope.user.sample_title
                 };
             });
 
@@ -28,6 +28,7 @@
 
             $scope.save = function(){
                 if($scope.sample.new) $scope.user.sample = $scope.sample.new;
+                $scope.user.sample_title = $scope.sample.name;
                 $scope.processing = true;
                 users.save($scope.user)
                     .success(function(){
