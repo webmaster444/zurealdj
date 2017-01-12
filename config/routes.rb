@@ -116,6 +116,7 @@ Rails.application.routes.draw do
     resources :static_pages, only: [] do
       collection do
         get :terms_n_conditions
+        get :how_we_work
       end
     end
   end
