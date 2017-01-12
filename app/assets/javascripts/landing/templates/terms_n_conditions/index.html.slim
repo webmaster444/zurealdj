@@ -1,6 +1,5 @@
-div.page
+div.page.static-pages
   div ng-include="'landing/templates/common/small_header.html'"
-  div ng-bind-html="page"
-
-  div.page-footer.transform
+  .page-block
+    div.pages-content ng-bind-html="page"
   div ng-include="'landing/templates/common/footer.html'"

@@ -1,5 +1,8 @@
 .top-navbar
   .page-block
+    .pull-left
+      a href="/"
+        img.small-logo src="/images/icons/img-logo-zu-purple.png"
     .pull-right
       ul.right-menu
         li.small-text
@@ -11,7 +14,7 @@
           .dropdown uib-dropdown=""
             a.dropdown-toggle.count-info aria-expanded="false" aria-haspopup="true" uib-dropdown-toggle="" href=""
               .user-dropdown
-                img ng-src="{{ $current_user.avatar.url }}"
+                img ng-src="{{ $current_user.avatar.url == '/images/img-profile-photo.png'? '/images/icons/img-profile-photo-mini.png' : $current_user.avatar.url}}"
                 span
                   | {{ $current_user.name }}
             ul.dropdown-menu.dropdown-alerts
@@ -20,8 +23,7 @@
                   | Profile
               li
                 a ng-click="logout()" href="#"
-                  | Sign out
-    img.small-logo src="/images/icons/img-logo-zu-purple.png"
+                  | Log out
 
 .second-nav
   .page-block

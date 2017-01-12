@@ -15,6 +15,8 @@
                     }
                 }, 1000);
 
+                $scope.$state = $state;
+
                 $scope.isMobile = function(){
                     return window.navigator.userAgent.match(/iPhone|iPad|iPod|Android|BlackBerry|Opera Mini|IEMobile/i)? true: false;
                 };
