@@ -6,7 +6,7 @@
       .content
         .col-avatar
           div.avatar image=true ng-model="user.avatar"
-          .change-photo
+          a.text-active onclick="$('.plus label:first-child').trigger('click')"
             | Change photo
         .col-content
           .form-group
@@ -14,12 +14,6 @@
               | Name
             input.register-input type="text" ng-model="user.name"
             .error ng-repeat="error in validation_errors.name"
-              | {{ error }}
-          .form-group
-            .form-title
-              | Company Name
-            input.register-input type="text" ng-model="user.company_name"
-            .error ng-repeat="error in validation_errors.company_name"
               | {{ error }}
           .form-group
             .form-title
@@ -70,8 +64,19 @@
     .text-center
       .content-block
         .content-title
+          | Company or agency name
+        .content.container
+          .error ng-repeat="error in validation_errors.company_name"
+            | {{ error }}
+          .form-group.text-center
+            input.register-input type="text" ng-model="user.company_name"
+          .leave-it-blanck
+            | (Optional)
+        hr
+      .content-block
+        .content-title
           | Types of Events
-        .content
+        .content.container
           .error ng-repeat="error in validation_errors.event_categories"
             | {{ error }}
           label.select-button ng-repeat="event_type in user.event_types"
@@ -82,7 +87,7 @@
       .content-block
         .content-title
           | Genres
-        .content
+        .content.container
           .error ng-repeat="error in validation_errors.genres"
             | {{ error }}
           label.select-button ng-repeat="genre in user.genres"

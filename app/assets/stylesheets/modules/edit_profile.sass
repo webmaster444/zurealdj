@@ -1,4 +1,7 @@
 .edit-profile
+  .listen
+    .box-audio
+      margin: auto !important
   .actions-block
     padding: 100px 0
     max-width: 1000px
@@ -6,16 +9,12 @@
   .content-block
     margin-top: 50px
     max-width: 1000px
-    width: 100%
+    width: auto
     display: inline-block
-    text-align: left
     .content
       margin-top: 40px
-    .equipment-container
-      max-width: 770px
-      margin: auto
+      text-align: left
   .general-inf
-    max-width: 1000px
     margin: auto
     margin-top: 50px
     .content
@@ -30,6 +29,8 @@
         margin-left: 100px
         display: inline-block
         text-align: left
+        @media screen and (max-width: 1030px)
+          margin-left: 0
         .form-title
           font-size: 16px
           color: #555555

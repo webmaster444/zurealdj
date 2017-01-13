@@ -2,19 +2,19 @@
   .profile-header
     .background-img style="{{ user.avatar.url != '/images/img-profile-photo.png' ? ('background-image: url(' + user.avatar.url + ')') : '' }}"
       .custom-blur
-        .page-block
-          .inf-container
-            .inf
-              .name
-                | {{ user.name }}
-              div.stars rating=true ng-model="user.stars"
-              .role.small-text
-                | Artist
+  .page-block.relative
+    .inf-container
+      .inf
+        .name
+          | {{ user.name }}
+        div.stars rating=true ng-model="user.stars"
+        .role.small-text
+          | Artist
   .profile-content
     .page-block
       .profile-avatar
-        .avatar-container
-          img ng-src="{{ user.avatar.url }}"
+        .img-avatar style="background-image: url({{ user.avatar.url }})"
+          .gradient
         a.btn-edit.small-text href="#edit_profile"
           | Edit
         .content
@@ -44,8 +44,8 @@
             td.td-content
               span ng-show="user.city"
                 | {{ user.city}}
-                span
-                  | ,
+              span ng-show="user.country"
+                | {{ ', ' }}
               span
                 | {{ user.country.title }}
           tr ng-show="user.genres_string"
