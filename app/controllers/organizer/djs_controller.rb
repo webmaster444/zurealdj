@@ -1,6 +1,6 @@
 class Organizer::DjsController < Organizer::BaseController
 
-  load_and_authorize_resource :dj
+  #load_and_authorize_resource :dj
 
   def index
     @page = params[:page].to_i
@@ -23,7 +23,9 @@ class Organizer::DjsController < Organizer::BaseController
   end
 
   def show
-    @user = @dj.user
+    #@user = @dj.user
+    @user = User.find params[:id]
+    @dj = Dj.find_by_user_id @user.id
   end
 
   private

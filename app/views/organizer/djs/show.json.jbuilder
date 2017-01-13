@@ -18,7 +18,11 @@ json.instagram_link @user.instagram_link
 json.soundcloud_link @user.soundcloud_link
 json.genres_string @user.genres.map(&:title).join(', ')
 json.cancelations_string @user.cancelations.map(&:title).join(', ')
-json.sample_url @dj.sample.url if @dj.sample.exists?
+
+json.sample do
+  json.url @dj.sample.url
+  json.name @dj.sample_title
+end if @dj.sample.exists?
 
 json.event_types EventCategory.all.each do |event_type|
   json.title event_type.title

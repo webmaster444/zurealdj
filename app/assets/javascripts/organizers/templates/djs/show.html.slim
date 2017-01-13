@@ -1,46 +1,73 @@
 .profile
-  .profile-header style="background-image: url({{ user.avatar.url }})"
-    .page-block
-      .tmp
-      .inf-container
+  .profile-header
+    .background-img style="{{ user.avatar.url != '/images/img-profile-photo.png' ? ('background-image: url(' + user.avatar.url + ')') : '' }}"
+      .custom-blur
+  .page-block.relative
+    .inf-container
+      .inf
         .name
           | {{ user.name }}
-        .small-text.company
-          | {{ user.city}}, {{user.country.title }}
         div.stars rating=true ng-model="user.stars"
-        .small-text.genres
-          | {{ user.genres_string }} | DJ
+        .role.small-text
+          | Artist
   .profile-content
     .page-block
       .profile-avatar
-        img ng-src="{{ user.avatar.url }}"
-        a.btn-edit.small-text ng-click="book()"
+        .img-avatar style="background-image: url({{ user.avatar.url }})"
+          .gradient
+        a.btn-action.btn-book-now.small-text ng-click="book()"
           | Book Now
 
-        a ng-click="addToFavorites(user)" ng-hide="user.in_favorites"
-          | Add to favorites
-        a ng-click="removeFromFavorites(user)" ng-show="user.in_favorites"
-          | Remove from favorites
+        a.icon.like ng-click="addToFavorites(user)" ng-hide="user.in_favorites"
+        a.icon.like-active ng-click="removeFromFavorites(user)" ng-show="user.in_favorites"
         .content
-          .title
-            | About
-          .text
-            | {{ user.about }}
-          .title
-            | Social
-          .row
-            a.col-social#first href="{{ user.soundcloud_link }}"
-              .ic-mixcloud.icon
-            a.col-social href="{{ user.facebook_link }}"
-              .ic-facebook.icon
-            a.col-social href="{{ user.instagram_link }}"
-              .ic-instagram.icon
+          div ng-show="user.about"
+            .title
+              | About
+            .text
+              | {{ user.about }}
+          div ng-show="user.soundcloud_link || user.facebook_link || user.instagram_link"
+            .title
+              | Social
+            .row
+              a.col-social#first href="{{ user.soundcloud_link }}" ng-show="user.soundcloud_link"
+                .ic-mixcloud.icon
+              a.col-social href="{{ user.facebook_link }}" ng-show="user.facebook_link"
+                .ic-facebook.icon
+              a.col-social href="{{ user.instagram_link }}" ng-show="user.instagram_link"
+                .ic-instagram.icon
 
       .general
         .block-title
-          | Listen
-        audio controls=true ng-src="{{ user.sample_url }}" ng-show="user.sample_url"
+          | General Information
+        table
+          tr ng-show="user.city || user.country"
+            td.td-title
+              | Address:
+            td.td-content
+              span ng-show="user.city"
+                | {{ user.city}}
+                span ng-show="user.country"
+                  | {{ ', ' }}
+              span
+                | {{ user.country.title }}
+          tr ng-show="user.genres_string"
+            td.td-title
+              | Genres:
+            td.td-content
+              | {{ user.genres_string }}
+          tr ng-show="user.event_types_string"
+            td.td-title
+              | Types of events:
+            td.td-content
+              | {{ user.event_types_string }}
         hr
+
+        div ng-show="user.sample.url"
+          .block-title
+            | Listen
+          div audio=true ng-model="user.sample"
+          hr
 
         .block-title
           | Equipment
@@ -54,17 +81,17 @@
           | Booking information
         table
           tr
-            td.title
+            td.td-title
               | Weekday Rate:
-            td
-              | ${{ user.weekday_rate_from }}-${{user.weekday_rate_to}}
+            td.td-content
+              | ${{ user.weekday_rate_from }} - ${{user.weekday_rate_to}}
           tr
-            td.title
+            td.td-title
               | Weekday Rate:
-            td
-              | ${{ user.weekend_rate_from }}-${{user.weekend_rate_to}}
-          tr
-            td.title
+            td.td-content
+              | ${{ user.weekend_rate_from }} - ${{user.weekend_rate_to}}
+          tr.cancelations
+            td.td-title
               | Cancelations:
-            td.text-active
+            td.td-content.active
               | {{ user.cancelations_string }}

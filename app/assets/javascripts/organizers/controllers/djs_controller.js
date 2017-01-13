@@ -123,7 +123,6 @@
                 if($state.current.name == 'dj'){
                     djs.show($stateParams.id).success(function(data){
                         $scope.user = data;
-                        $scope.user.sample_url = $sce.trustAsResourceUrl($scope.user.sample_url)
                     });
                 }
 
@@ -152,6 +151,8 @@
                             })
                     }, 500)
                 };
+
+
 
             }])
 
