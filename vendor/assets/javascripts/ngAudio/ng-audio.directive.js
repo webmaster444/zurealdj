@@ -35,7 +35,7 @@ angular.module('ngAudio').directive('audio', ['$filter', '$sce', '$timeout', '$i
             }
             timerTimeSlider = $timeout(function(){
                 return true;
-            }, 100)
+            }, 500)
         }, true);
 
         var timerVolumeSlider = false;
@@ -75,13 +75,10 @@ angular.module('ngAudio').directive('audio', ['$filter', '$sce', '$timeout', '$i
         };
 
         $scope.calcDuration = function(params) {
-            if(params == 'full'){
-                if($scope.audio[0].duration) return ($scope.audio[0].duration / 60.0).toFixed(2);
-            }
-            else if(params == 'current'){
-                if($scope.audio[0].currentTime) return ($scope.audio[0].currentTime / 60.0).toFixed(2);
-                else return 0.;
-            }
+            var time;
+            if(params == 'full') time = $scope.audio[0].duration;
+            else if(params == 'current') time = $scope.audio[0].currentTime;
+            if(time) return Math.floor(time / 60.0).toString() + ':' + Math.floor(time % 60).toString();
             return null;
         };
 
@@ -160,15 +157,20 @@ angular.module('ngAudio').directive('audio', ['$filter', '$sce', '$timeout', '$i
                 '<form ng-submit="save()" ng-show="edit_mode">' +
                     '<input type="text" class="file-name-input" ng-if="rename" ng-model="model.name" spellcheck="false">' +
                 '</form>' +
-                '<div class="duration" ng-show="calcDuration(\'full\')"> {{ calcDuration(\'current\') }} / {{ calcDuration(\'full\') }} </div>' +
+                '<div class="duration">' +
+                    '<span ng-show="start">{{ calcDuration(\'current\') }} / </span>' +
+                    '<span>{{ calcDuration(\'full\') }}</span>' +
+                '</div>' +
                 '<audio id="std-player" class="hide" controls=true data-ng-src="{{ trustSrc(model.url) }}" preload="metadata"></audio>' +
                 '<rzslider class="time-slider" rz-slider-model="slider.value" rz-slider-options="slider.options" style="{{ start? \'display: inline-block\' : \'display: none\' }}"></rzslider>' +
                 '<rzslider class="volume-slider" rz-slider-model="volume.value" rz-slider-options="volume.options" style="{{ start? \'display: inline-block\' : \'display: none\' }}"></rzslider>' +
-                '<i class="btn-volume" ng-show="start"></i>' +
+                '<a class="btn-volume" ng-show="start" ng-click="volume.tmp_value = volume.value; volume.value = 0"></a>' +
+                '<span class="silent-mode-btn white" ng-show="start && volume.value == 0.">\\</span>' +
+                '<a class="silent-mode-btn color" ng-show="start && volume.value == 0." ng-click="volume.value = volume.tmp_value || 100">\\</a>' +
             '</div>' +
             '<div class="action-edit" ng-show="model.url" ng-if="rename">' +
-                '<a class="edit-btn" ng-click="edit()" ng-hide="edit_mode">Edit</a>' +
-                '<a class="save-btn" ng-click="cancel()" ng-show="edit_mode">Cancel</a>' +
+                '<a class="edit-btn" ng-click="edit()" ng-hide="edit_mode">Rename</a>' +
+                '<a class="cancel-btn" ng-click="cancel()" ng-show="edit_mode">Cancel</a>' +
                 '<a class="save-btn" ng-click="save()" ng-show="edit_mode">Save</a>' +
             '</div>' +
             '<a class="delete-btn" ng-show="model.url" ng-if="upload" ng-click="delete()">Delete</a>' +

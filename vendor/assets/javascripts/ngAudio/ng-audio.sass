@@ -1,15 +1,17 @@
 .box-audio
+  max-width: 760px
+  min-width: 385px
+  padding: 0
   text-align: center
   .player
-    max-width: 760px
-    min-width: 760px
-    margin: 15px auto
+    width: 100%
+    margin: 15px 0
     padding: 30px 30px 25px 30px
     text-align: left
-    position: relative
     border-radius: 4px
     background-color: #ffffff
     box-shadow: 0 2px 30px 0 rgba(0, 0, 0, 0.08)
+    position: relative
     .player-btn
       display: inline-block
       background-position: center
@@ -33,6 +35,19 @@
       position: absolute
       right: 140px
       top: 60px
+    .silent-mode-btn
+      position: absolute
+    .color
+      color: #b05dfc
+      font-size: 20px
+      top: 55px
+      right: 142px
+    .white
+      color: white
+      font-size: 40px
+      font-weight: bolder
+      top: 43px
+      right: 134px
     .duration
       position: absolute
       top: 30px
@@ -58,13 +73,12 @@
       background-color: white
       border: solid 1px #e1c3fd
       padding: 8px 30px
-      font-family: CeraPro
       font-size: 16px
       font-weight: 500
       font-style: normal
       font-stretch: normal
       line-height: 1.5
-      width: 470px
+      width: 100%
       color: #555555
       outline: none
     form
@@ -74,16 +88,18 @@
       position: absolute
       left: 95px
       top: 15px
+      width: calc(100% - 280px)
     .rz-bar-wrapper
       display: inline-block
     .time-slider
-      max-width: 630px
       position: absolute
       left: 100px
-      width: 465px
+      width: calc(100% - 285px)
+      min-width: 100px
+      margin-right: 32px
     .volume-slider
       position: absolute
-      right: 30px
+      left: calc(100% - 130px)
       width: 100px
     .volume-slider, .time-slider
       .rz-bar-wrapper, .rz-bar
@@ -95,13 +111,24 @@
         display: none
   .action-edit
     display: block
-    margin: 15px auto
-  .edit-btn, .save-btn, .delete-btn
+    margin: 30px auto 9px auto
+    padding: 0
+  .edit-btn, .save-btn, .delete-btn, .cancel-btn
     font-size: 16px
     font-weight: 500
     letter-spacing: 1.5px
     color: #b05dfc
-    margin: 15px
+    margin: 0 15px
+    padding: 5px
+    min-width: 100px
+    display: inline-block
+    border-radius: 50px
+    &:hover
+      box-shadow: 0 2px 30px 0 rgba(0, 0, 0, 0.08)
+  .delete-btn
+    margin: 9px 15px
+  .cancel-btn
+    color: #c6bfc7
   label.upload
     display: block
     span
@@ -109,3 +136,9 @@
       font-weight: 500
       letter-spacing: 1.5px
       color: #b05dfc
+      padding: 5px 20px
+      min-width: 100px
+      display: inline-block
+      border-radius: 50px
+      &:hover
+        box-shadow: 0 2px 30px 0 rgba(0, 0, 0, 0.08)
