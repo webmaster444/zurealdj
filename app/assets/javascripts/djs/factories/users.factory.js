@@ -40,10 +40,12 @@
                 cancelations = _.select(cancelations, function(i){ return i.selected });
                 cancelations = _.map(cancelations, function(i){ return i.id });
                 return $http.post('/dj/users/step', {
-                    weekday_rate_from: user.weekday_rate_from,
-                    weekday_rate_to: user.weekday_rate_to,
-                    weekend_rate_from: user.weekend_rate_from,
-                    weekend_rate_to: user.weekend_rate_to,
+                    dj_attributes: {
+                        weekday_rate_from: user.weekday_rate_from,
+                        weekday_rate_to: user.weekday_rate_to,
+                        weekend_rate_from: user.weekend_rate_from,
+                        weekend_rate_to: user.weekend_rate_to
+                    },
                     cancelation_ids: cancelations
                 })
             },
@@ -61,10 +63,10 @@
                 fd.append('facebook_link', user.facebook_link || '');
                 fd.append('instagram_link', user.instagram_link || '');
                 fd.append('soundcloud_link', user.soundcloud_link || '');
-                fd.append('weekday_rate_from', user.weekday_rate_from || '');
-                fd.append('weekday_rate_to', user.weekday_rate_to || '');
-                fd.append('weekend_rate_from', user.weekend_rate_from || '');
-                fd.append('weekend_rate_to', user.weekend_rate_to || '');
+                fd.append('dj_attributes[weekday_rate_from]', user.weekday_rate_from || '');
+                fd.append('dj_attributes[weekday_rate_to]', user.weekday_rate_to || '');
+                fd.append('dj_attributes[weekend_rate_from]', user.weekend_rate_from || '');
+                fd.append('dj_attributes[weekend_rate_to]', user.weekend_rate_to || '');
                 if(user.sample){
                     fd.append('dj_attributes[sample]', user.sample);
                 }

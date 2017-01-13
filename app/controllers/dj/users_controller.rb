@@ -6,6 +6,9 @@ class Dj::UsersController < Dj::BaseController
     @user = current_user
     allowed_params = step_params.merge({dj_step: @user.next_step})
 
+    puts "========================"
+    puts allowed_params.inspect
+    puts "========================"
     if @user.update_attributes allowed_params
       if @user.next_step == 'dj_completed'
         @user.update_attribute :dj_step, 'dj_completed'
@@ -38,14 +41,13 @@ class Dj::UsersController < Dj::BaseController
   private
 
   def profile_params
-    params.permit(:name, :avatar, :about, :facebook_link, :instagram_link, :soundcloud_link, :weekday_rate_from,
-                  :weekday_rate_to, :weekend_rate_from, :weekend_rate_to,
-                  dj_attributes: [:city, :country_flag_code, :sample, :sample_title], cancelation_ids: [], event_category_ids: [],
-                  genre_ids: [], equipment_ids: [])
+    params.permit(:name, :avatar, :about, :facebook_link, :instagram_link, :soundcloud_link,
+                  dj_attributes: [:weekday_rate_from, :weekday_rate_to, :weekend_rate_from, :weekend_rate_to, :city, :country_flag_code, :sample, :sample_title],
+                  cancelation_ids: [], event_category_ids: [], genre_ids: [], equipment_ids: [])
   end
 
   def step_params
-    params.permit :personal_url, :weekday_rate_from, :weekday_rate_to, :weekend_rate_from, :weekend_rate_to,
+    params.permit :personal_url, dj_attributes: [:weekday_rate_from, :weekday_rate_to, :weekend_rate_from, :weekend_rate_to],
                   cancelation_ids: [], event_category_ids: [], genre_ids: [], equipment_ids: []
   end
 end

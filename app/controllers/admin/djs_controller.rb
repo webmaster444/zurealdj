@@ -107,10 +107,10 @@ class Admin::DjsController < Admin::BaseController
     q.where(users[:name].matches("%#{params[:name]}%"))                  if params[:name].present?
     q.where(djs[:city].matches("%#{ params[:city] }%"))                  if params[:city].present?
     q.where(djs[:country_flag_code].in(countries))                       if params[:country].present?
-    q.where(djs[:weekday_price_from].gteq(params[:weekday_price_from]))  if params[:weekday_price_from].present?
-    q.where(djs[:weekday_price_to].lteq(params[:weekday_price_to]))      if params[:weekday_price_to].present?
-    q.where(djs[:weekend_price_from].gteq(params[:weekend_price_from]))  if params[:weekend_price_from].present?
-    q.where(djs[:weekend_price_to].lteq(params[:weekend_price_to]))      if params[:weekend_price_to].present?
+    q.where(djs[:weekday_rate_from].gteq(params[:weekday_rate_from]))    if params[:weekday_rate_from].present?
+    q.where(djs[:weekday_rate_to].lteq(params[:weekday_rate_to]))        if params[:weekday_rate_to].present?
+    q.where(djs[:weekend_rate_from].gteq(params[:weekend_rate_from]))    if params[:weekend_rate_from].present?
+    q.where(djs[:weekend_rate_to].lteq(params[:weekend_rate_to]))        if params[:weekend_rate_to].present?
     q.where(djs[:created_at].gteq(params[:date_from].to_date))           if params[:date_from].present?
     q.where(djs[:created_at].lteq(params[:date_to].to_date))             if params[:date_to].present?
 

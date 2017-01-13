@@ -43,10 +43,10 @@ class DjsStreamer
             dj.instagram_link,
             dj.facebook_link,
             dj.soundcloud_link,
-            dj.weekday_price_from,
-            dj.weekday_price_to,
-            dj.weekend_price_from,
-            dj.weekend_price_to,
+            dj.weekday_rate_from,
+            dj.weekday_rate_to,
+            dj.weekend_rate_from,
+            dj.weekend_rate_to,
             dj.created_at.strftime("%d/%m/%Y"),
         ], true).to_csv(col_sep: ",", row_sep: "\r\n", quote_char: "\"")
       end

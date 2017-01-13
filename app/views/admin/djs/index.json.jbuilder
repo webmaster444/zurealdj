@@ -8,10 +8,10 @@ json.djs @djs.each do |dj|
   json.instagram_link dj.instagram_link
   json.facebook_link dj.facebook_link
   json.soundcloud_link dj.soundcloud_link
-  json.weekday_price_from dj.weekday_price_from
-  json.weekday_price_to dj.weekday_price_to
-  json.weekend_price_from dj.weekend_price_from
-  json.weekend_price_to dj.weekend_price_to
+  json.weekday_rate_from dj.weekday_rate_from
+  json.weekday_rate_to dj.weekday_rate_to
+  json.weekend_rate_from dj.weekend_rate_from
+  json.weekend_rate_to dj.weekend_rate_to
   json.avatar dj.avatar.url
 end
 json.count @count

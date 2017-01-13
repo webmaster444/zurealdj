@@ -48,16 +48,16 @@
                     fd.append('dj[soundcloud_link]', djs.soundcloud_link );
                 }
                 if(djs.weekday_price_from){
-                    fd.append('dj[weekday_price_from]', djs.weekday_price_from );
+                    fd.append('dj[weekday_rate_from]', djs.weekday_rate_from );
                 }
                 if(djs.weekday_price_to){
-                    fd.append('dj[weekday_price_to]', djs.weekday_price_to );
+                    fd.append('dj[weekday_rate_to]', djs.weekday_rate_to );
                 }
                 if(djs.weekend_price_from){
-                    fd.append('dj[weekend_price_from]', djs.weekend_price_from );
+                    fd.append('dj[weekend_rate_from]', djs.weekend_rate_from );
                 }
                 if(djs.weekend_price_to){
-                    fd.append('dj[weekend_price_to]', djs.weekend_price_to );
+                    fd.append('dj[weekend_rate_to]', djs.weekend_rate_to );
                 }
 
                 if(djs.avatar.file){
