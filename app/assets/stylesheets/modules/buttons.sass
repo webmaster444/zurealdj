@@ -25,6 +25,22 @@
     color:  $current-color
     border: 1px solid $current-color
 
+.icon
+  display: inline-block
+  background-position: center
+  background-size: contain
+  background-repeat: no-repeat
+.ic-mixcloud
+  background-image: url(/images/icons/ic-mixcloud.png)
+.ic-facebook
+  background-image: url(/images/icons/ic-facebook.png)
+.ic-instagram
+  background-image: url(/images/icons/ic-instagram.png)
+.like
+  background-image: url(/images/icons/ic-like.png)
+.like-active
+  background-image: url(/images/icons/ic-like-active.png)
+
 
 [device='desktop']
   .btn-submit
@@ -98,29 +114,19 @@
       margin: 20px auto
     .title
       color: #4a4a4a !important
-  .icon
-    display: inline-block
-    background-position: center
-    background-size: contain
-    background-repeat: no-repeat
   .ic-mixcloud
     width: 30px
     height: 18px
-    background-image: url(/images/icons/ic-mixcloud.png)
   .ic-facebook
     width: 9px
     height: 18px
-    background-image: url(/images/icons/ic-facebook.png)
   .ic-instagram
     width: 21px
     height: 21px
-    background-image: url(/images/icons/ic-instagram.png)
   .like
-    background-image: url(/images/icons/ic-like.png)
     width: 50px
     height: 50px
   .like-active
-    background-image: url(/images/icons/ic-like-active.png)
     width: 50px
     height: 50px
 
@@ -148,6 +154,50 @@
     &:hover, &:active
       border-width: calc-h-small(1)
 
+[device='mobile']
+  .btn-equipment
+    width: calc-h-small(138)
+    height: calc-h-small(124)
+    border-radius: 8px
+    background-color: white
+    border: solid 1px #f5f5f5
+    margin: calc-h-small(7)
+    vertical-align: top
+    .title
+      font-size: calc-h-small(16)
+      line-height: 1
+      letter-spacing: -0.3px
+      text-align: center
+      color: #cccccc
+      margin: 0 auto
+    img
+      width: calc-w-small(48)
+      height: calc-w-small(48)
+      -webkit-filter: grayscale(100%)
+      filter: grayscale(100%)
+      margin: calc-h-small(20) auto
+  .btn-equipment.active
+    img
+      -webkit-filter: none
+      filter: none
+    .title
+      color: #4a4a4a
+  .ic-mixcloud
+    width: calcw(9.375)
+    height: calcw(5.625)
+  .ic-facebook
+    width: calcw(2.8)
+    height: calcw(5.625)
+  .ic-instagram
+    width: calcw(6.56)
+    height: calcw(6.56)
+  .like, .like-active
+    width: calc-w-small(40)
+    height: calc-w-small(40)
+
+  .col-social
+    margin: auto calcw(6.25)
+
 
 [device='mobile'][size='full']
   .btn-submit
@@ -162,10 +212,3 @@
     padding: calc-h-full(13) calc-h-full(33)
     margin: calc-h-full(15) auto
     font-size: calc-h-full(16)
-
-.pink-link
-  font-family: CeraPro
-  font-size: 16px
-  font-weight: 500
-  letter-spacing: 1.5px
-  color: #b05dfc

@@ -1,72 +1,9 @@
 @import "variables_and_functions"
 
 .profile
-  height: auto
-  padding-bottom: 100px
-  position: relative
-  .relative
-    position: relative
-  .inf-container
-    width: 100%
-    height: 100%
-    position: absolute
-    .inf
-      display: inline-block
-      position: absolute
-      bottom: 35px
-      left: 400px
-      .name
-        font-size: 32px
-        letter-spacing: 3px
-        color: white
-        margin-bottom: 10px
-      .stars
-        display: inline-block
-        outline: none
-        margin: 30px 0
-      .rating-icons
-        color: #fff918
-        font-size: 20px
-        outline: none
-      .role
-        color: white
-  .profile-header
-    width: 100%
-    height: 360px
-    padding: 0
-    .background-img
-      width: 100%
-      height: 100%
-      background-repeat: no-repeat
-      background-size: cover
-      background-position: center
-      -webkit-filter: blur(10px)
-      -moz-filter: blur(10px)
-      -o-filter: blur(10px)
-      -ms-filter: blur(10px)
-      filter: blur(10px)
-    .custom-blur
-      width: 100%
-      height: 100%
-      background-color: rgba(84, 84, 84, 0.7)
   .profile-content
-    margin: 0
     .profile-avatar
-      position: absolute
-      top: 70px
-      display: inline-block
-      width: 360px
-      border-radius: 4px
-      box-shadow: 0 2px 20px 0 rgba(0, 0, 0, 0.08)
-      @media screen and (max-width: 850px)
-        display: block
-        position: relative
-        top: 0
-        margin-top: -300px
       .img-avatar
-        display: inline-block
-        width: 360px
-        height: 360px
         background-repeat: no-repeat
         background-size: cover
         background-position: center
@@ -80,73 +17,290 @@
           background: -moz-linear-gradient(to bottom, rgba(0, 0, 0, 0.2), rgba(255, 255, 255, 0) 50%, rgba(0, 0, 0, 0.2))
           width: 100%
           height: 100%
+          border-radius: 8px
       .btn-action
-        border-radius: 100px
         background-color: $current-color
         color: white
-        padding: 15px
-        width: 235px
         text-align: center
-      .btn-edit
-        margin-left: 70px
-        margin-top: -80px
-      .btn-book-now
-        margin-left: 30px
-        margin-top: -80px
-      .like, .like-active
-        position: absolute
-        left: 280px
-        top: 280px
-      .content
-        padding: 30px
-        background-color: white
+  .inf-container
+    .inf
+      .name
         color: #555555
-        font-size: 16px
-        letter-spacing: 1px
-        white-space: pre-wrap
-        word-wrap: break-word
-        .title
-          font-weight: 500
-          margin-bottom: 15px
-        .text
-          line-height: 1.5
-          margin-bottom: 15px
-      a
-        display: inline-block
-  .small-text
-    font-size: 16px
-    font-weight: 500
-    letter-spacing: 1.5px
   .general
-    display: inline-block
-    padding: 20px
-    margin: 20px
-    margin-left: 400px
-    width: calc(100% - 400px)
-    @media screen and (max-width: 850px)
-      display: block
-      margin-left: 0
-      width: 100%
     .block-title
-      font-size: 20px
-      font-weight: 500
-      letter-spacing: 1.3px
       color: #555555
-      margin-bottom: 25px
     table
       tr
         td
-          width: 240px
-          letter-spacing: 1.5px
-          font-size: 16px
+          font-weight: normal
+          font-style: normal
+          font-stretch: normal
         .td-content
-          line-height: 1.88
           color: #555555
         .td-title
-          line-height: 1.88
           color: #8a8a8a
-        .cancelations
-          td
-            padding-top: 20px
         .active
           color: #b05dfc
+
+
+[device='desktop']
+  .profile
+    height: auto
+    padding-bottom: 100px
+    position: relative
+    .relative
+      position: relative
+    .inf-container
+      width: 100%
+      height: 100%
+      position: absolute
+      .inf
+        display: inline-block
+        position: absolute
+        bottom: 35px
+        left: 400px
+        .name
+          font-size: 32px
+          letter-spacing: 3px
+          color: white
+          margin-bottom: 10px
+        .stars
+          display: inline-block
+          outline: none
+          margin: 30px 0
+        .rating-icons
+          color: #fff918
+          font-size: 20px
+          outline: none
+        .role
+          color: white
+    .profile-header
+      width: 100%
+      height: 360px
+      padding: 0
+      .background-img
+        width: 100%
+        height: 100%
+        background-repeat: no-repeat
+        background-size: cover
+        background-position: center
+        -webkit-filter: blur(10px)
+        -moz-filter: blur(10px)
+        -o-filter: blur(10px)
+        -ms-filter: blur(10px)
+        filter: blur(10px)
+      .custom-blur
+        width: 100%
+        height: 100%
+        background-color: rgba(84, 84, 84, 0.7)
+    .profile-content
+      margin: 0
+      .profile-avatar
+        position: absolute
+        top: 70px
+        display: inline-block
+        width: 360px
+        border-radius: 4px
+        box-shadow: 0 2px 20px 0 rgba(0, 0, 0, 0.08)
+        @media screen and (max-width: 850px)
+          display: block
+          position: relative
+          top: 0
+          margin-top: -300px
+        .img-avatar
+          display: inline-block
+          width: 360px
+          height: 360px
+          background-repeat: no-repeat
+          background-size: cover
+          background-position: center
+          border-radius: 4px
+          background-color: white
+          .gradient
+            background-color: white
+            background: linear-gradient(to bottom, rgba(0, 0, 0, 0.2), rgba(255, 255, 255, 0) 50%, rgba(0, 0, 0, 0.2))
+            background: -webkit-linear-gradient(to bottom, rgba(0, 0, 0, 0.2), rgba(255, 255, 255, 0) 50%, rgba(0, 0, 0, 0.2))
+            background: -o-linear-gradient(to bottom, rgba(0, 0, 0, 0.2), rgba(255, 255, 255, 0) 50%, rgba(0, 0, 0, 0.2))
+            background: -moz-linear-gradient(to bottom, rgba(0, 0, 0, 0.2), rgba(255, 255, 255, 0) 50%, rgba(0, 0, 0, 0.2))
+            width: 100%
+            height: 100%
+        .btn-action
+          border-radius: 100px
+          padding: 15px
+          width: 235px
+        .btn-edit
+          margin-left: 70px
+          margin-top: -80px
+        .btn-book-now
+          margin-left: 30px
+          margin-top: -80px
+        .like, .like-active
+          position: absolute
+          left: 280px
+          top: 280px
+        .content
+          padding: 30px
+          background-color: white
+          color: #555555
+          font-size: 16px
+          letter-spacing: 1px
+          white-space: pre-wrap
+          word-wrap: break-word
+          .title
+            font-weight: 500
+            margin-bottom: 15px
+          .text
+            color: #8a8a8a
+            line-height: 1.5
+            margin-bottom: 15px
+        a
+          display: inline-block
+    .small-text
+      font-size: 16px
+      font-weight: 500
+      letter-spacing: 1.5px
+    .general
+      display: inline-block
+      padding: 20px
+      margin: 20px
+      margin-left: 400px
+      width: calc(100% - 400px)
+      @media screen and (max-width: 850px)
+        display: block
+        margin-left: 0
+        width: 100%
+      .content-mobile
+        display: none
+      .block-title
+        font-size: 20px
+        font-weight: 500
+        letter-spacing: 1.3px
+        color: #555555
+        margin-bottom: 25px
+      table
+        tr
+          td
+            width: 240px
+            letter-spacing: 1.5px
+            font-size: 16px
+          .td-content
+            line-height: 1.88
+          .td-title
+            line-height: 1.88
+          .cancelations
+            td
+              padding-top: 20px
+
+
+[device='mobile']
+  .profile
+    padding: 0
+    margin: 0
+    hr
+      display: none
+    .page-block
+      width: 100%
+      max-width: 100% !important
+      padding: 0
+    .profile-header
+      display: none
+    .inf-container
+      margin: 0
+      padding: 0
+      .inf
+        padding: 0
+        .role, .stars
+          display: none
+        .name
+          font-size: calc-w-small(20)
+          line-height: calc-w-small(1.5)
+          letter-spacing: calc-w-small(1.4)
+          text-align: center
+          padding: calc-w-small(20) 0
+          box-shadow: 0 calc-w-small(2) calc-w-small(20) 0 rgba(0, 0, 0, 0.08)
+          width: 100%
+    .profile-content
+      .profile-avatar
+        position: relative
+        .img-avatar
+          width: calc-w-small(280)
+          height: calc-w-small(270)
+          margin: calc-w-small(20) auto
+          border-radius: 4px
+        .btn-action
+          border-radius: 100px
+          padding: calc-w-small(13) calc-w-small(20)
+          font-size: calc-w-small(12)
+          font-weight: 500
+          line-height: 1.17
+          letter-spacing: calc-w-small(0.8)
+          display: inline-block
+        .btn-edit
+          margin: calc-w-small(-70) 0 0 calc-w-small(110)
+          width: calc-w-small(100)
+        .btn-book-now
+          margin: calc-w-small(-70) 0 0 calc-w-small(110)
+        .content
+          display: none
+        .like, .like-active
+          position: absolute
+          top: calc-w-small(10)
+          right: calc-w-small(30)
+    .content-mobile
+      .title
+        font-size: calc-w-small(16)
+        font-weight: 500
+        letter-spacing: calc-w-small(1)
+        margin: calc-w-small(15) 0
+      .text
+        font-size: calc-w-small(14)
+        line-height: 1.43
+        letter-spacing: calc-w-small(0.9)
+        padding: calc-w-small(7.5) 0
+        color: #8a8a8a
+    .general
+      display: inline-block
+      width: 100%
+      padding-bottom: calc-w-small(30)
+      .block-title
+        font-size: calc-w-small(16)
+        font-weight: 500
+        letter-spacing: calc-w-small(1)
+        margin: calc-w-small(15) 0
+      .block
+        padding: 0 calc-w-small(20)
+        margin-bottom: calc-w-small(30)
+      .listen
+        margin-bottom: calc-w-small(30)
+        .block-title
+          padding: 0 calc-w-small(20)
+      .equipments
+        display: inline-block
+        .select-button
+          .btn-equipment
+            width: calc-h-small(90)
+            height: calc-h-small(88)
+            margin: 0
+            .title
+              font-size: calc-w-small(13)
+              line-height: 1.14
+            img
+              width: calc-w-small(48)
+              height: calc-w-small(48)
+              margin: calc-h-small(20) auto
+      table
+        tr
+          td
+            font-size: calc-w-small(14)
+            line-height: 1.43
+            letter-spacing: calc-w-small(0.9)
+            padding: calc-w-small(7) 0
+            vertical-align: top
+          .td-title
+            width: calc-w-small(140)
+            padding-right: calc-w-small(10)
+
+[device='mobile'][orientation='landscape']
+  .profile
+    max-width: 100vmin
+    margin: auto

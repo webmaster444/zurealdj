@@ -1,3 +1,6 @@
+@function calc-w-small($arg)
+  @return $arg / 3.2 * 1vmin
+
 .box-audio
   max-width: 760px
   min-width: 385px
@@ -93,15 +96,10 @@
       display: inline-block
     .time-slider
       position: absolute
-      left: 100px
-      width: calc(100% - 285px)
-      min-width: 100px
-      margin-right: 32px
     .volume-slider
       position: absolute
-      left: calc(100% - 130px)
-      width: 100px
     .volume-slider, .time-slider
+      min-width: 0 !important
       .rz-bar-wrapper, .rz-bar
         min-width: 0 !important
       .rz-selection
@@ -142,3 +140,69 @@
       border-radius: 50px
       &:hover
         box-shadow: 0 2px 30px 0 rgba(0, 0, 0, 0.08)
+
+[device='desktop']
+  .time-slider
+    left: 100px
+    width: calc(100% - 285px)
+    min-width: 100px
+    margin-right: 32px
+  .volume-slider
+    left: calc(100% - 130px)
+    width: 100px
+
+[device='mobile']
+  .box-audio
+    position: relative
+    display: inline-block
+    max-width: 100vmin
+    width: 100vmin
+    .player
+      height: calc-w-small(95)
+      padding: calc-w-small(15) calc-w-small(20)
+      .player-btn
+        width: calc-w-small(40)
+        height: calc-w-small(40)
+      .file-name, .duration
+        font-size: calc-w-small(14)
+        font-weight: normal
+        font-style: normal
+        font-stretch: normal
+        line-height: 1.43
+        letter-spacing: calc-w-small(0.9)
+      .file-name
+        height: calc-w-small(35)
+        left: calc-w-small(70)
+        top: calc-w-small(15)
+        max-width: calc-w-small(200)
+      .duration
+        top: calc-w-small(42)
+        right: calc-w-small(20)
+      .time-slider
+        left: calc-w-small(20)
+        top: calc-w-small(65)
+        width: 87%
+      .volume-slider
+        left: calc-w-small(100)
+        top: calc-w-small(40)
+        width: 30%
+      .btn-volume
+        width: calc-w-small(13)
+        height: calc-w-small(15)
+        position: absolute
+        left: calc-w-small(75)
+        top: calc-w-small(45)
+      .color
+        font-size: calc-w-small(18)
+        top: calc-w-small(41)
+        left: calc-w-small(77)
+      .white
+        font-size: calc-w-small(25)
+        top: calc-w-small(37)
+        left: calc-w-small(75)
+        color: white
+
+@media screen
+  .volume-slider
+    left: calc(100% - 130px)
+    width: 100px

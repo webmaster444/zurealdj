@@ -140,6 +140,9 @@ angular.module('ngAudio').directive('audio', ['$filter', '$sce', '$timeout', '$i
         $scope.rename = attributes.rename? true: false;
         $scope.edit_mode = false;
 
+        $scope.isMobile = function(){
+            return window.navigator.userAgent.match(/iPhone|iPad|iPod|Android|BlackBerry|Opera Mini|IEMobile/i)? true: false;
+        };
     }
 
     return {
@@ -150,7 +153,7 @@ angular.module('ngAudio').directive('audio', ['$filter', '$sce', '$timeout', '$i
             model: '=ngModel'
         },
         template: '' +
-        '<div class="box-audio">' +
+        '<div class="box-audio {{ isMobile()? \'mobile\' : \'desktop\' }}">' +
             '<div class="player" ng-show="model.url">' +
                 '<span class="player-btn {{ isPaused()? \'btn-pause\': \'btn-play\' }}" ng-click="play()"></span>' +
                 '<div class="file-name">{{ model.name }}</div>' +
