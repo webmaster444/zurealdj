@@ -17,6 +17,14 @@
                     fd.append('event[image]', event.image.file );
                 }
 
+                if(event.start_date){
+                    fd.append('event[start_date]', event.start_date );
+                }
+
+                if(event.end_date){
+                    fd.append('event[end_date]', event.end_date );
+                }
+
                 if(event.id){
                     return $http.put('/organizer/events/' + event.id, fd, {
                         transformRequest: angular.identity,

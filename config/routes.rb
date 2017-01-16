@@ -76,7 +76,7 @@ Rails.application.routes.draw do
         end
       end
       resources :favorite_djs, only: [:index, :update, :destroy]
-      resources :events, only: [:index, :create]
+      resources :events, only: [:index, :create, :show]
     end
 
     resources :attachments, only: [] do

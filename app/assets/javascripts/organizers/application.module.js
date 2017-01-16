@@ -69,6 +69,11 @@
                     templateUrl: 'organizers/templates/djs/show.html',
                     controller: 'DjsController'
                 })
+                .state('event',{
+                    url: '/events/:id',
+                    templateUrl: 'organizers/templates/events/show.html',
+                    controller: 'EventsController'
+                })
                 .state('events',{
                     url: '/events',
                     templateUrl: 'organizers/templates/events/index.html',

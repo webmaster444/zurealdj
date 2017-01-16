@@ -21,6 +21,10 @@ class Organizer::EventsController < ApplicationController
     @count = Event.find_by_sql(count_query.to_sql).count
   end
 
+  def show
+
+  end
+
   def create
     @event = Event.new event_params
 
@@ -34,7 +38,7 @@ class Organizer::EventsController < ApplicationController
   private 
 
   def event_params
-    params.require(:event).permit :image, :title, :country_flag_code, :city
+    params.require(:event).permit :image, :title, :country_flag_code, :city, :end_date, :start_date
   end
 
 end

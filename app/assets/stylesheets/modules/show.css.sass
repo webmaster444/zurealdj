@@ -1,9 +1,9 @@
 @import "variables_and_functions"
 
-.profile
-  .profile-content
-    .profile-avatar
-      .img-avatar
+.profile, .event
+  .profile-content, .event-content
+    .profile-avatar, .event-image
+      .img-avatar, .img-event
         background-repeat: no-repeat
         background-size: cover
         background-position: center
@@ -44,7 +44,17 @@
 
 
 [device='desktop']
-  .profile
+  .event
+    .artists
+      .title
+        font-size: 32px
+        letter-spacing: 3px
+        color: #555555
+        text-align: center
+        margin-top: 70px
+      .container
+        margin-top: 50px
+  .profile, .event
     height: auto
     padding-bottom: 100px
     position: relative
@@ -59,7 +69,7 @@
         position: absolute
         bottom: 35px
         left: 400px
-        .name
+        .name, .title
           font-size: 32px
           letter-spacing: 3px
           color: white
@@ -72,9 +82,9 @@
           color: #fff918
           font-size: 20px
           outline: none
-        .role
+        .role, .title, .small-text
           color: white
-    .profile-header
+    .profile-header, .event-header
       width: 100%
       height: 360px
       padding: 0
@@ -93,9 +103,15 @@
         width: 100%
         height: 100%
         background-color: rgba(84, 84, 84, 0.7)
-    .profile-content
+    .profile-content, .event-content
       margin: 0
       .profile-avatar
+        .img-avatar
+          height: 360px
+      .event-image
+        .img-event
+          height: 503px
+      .profile-avatar, .event-image
         position: absolute
         top: 70px
         display: inline-block
@@ -107,10 +123,9 @@
           position: relative
           top: 0
           margin-top: -300px
-        .img-avatar
+        .img-avatar, .img-event
           display: inline-block
           width: 360px
-          height: 360px
           background-repeat: no-repeat
           background-size: cover
           background-position: center
@@ -193,7 +208,18 @@
 
 
 [device='mobile']
-  .profile
+  .event
+    .artists
+      .title
+        font-size: calc-w-small(20)
+        letter-spacing: calc-w-small(3)
+        color: #555555
+        text-align: center
+      .container
+        margin-top: calc-w-small(50)
+    .general
+      padding-bottom: 0 !important
+  .profile, .event
     padding: 0
     margin: 0
     hr
@@ -209,9 +235,9 @@
       padding: 0
       .inf
         padding: 0
-        .role, .stars
+        .role, .stars, .genres-event-type, .address
           display: none
-        .name
+        .name, .title
           font-size: calc-w-small(20)
           line-height: calc-w-small(1.5)
           letter-spacing: calc-w-small(1.4)
@@ -219,10 +245,10 @@
           padding: calc-w-small(20) 0
           box-shadow: 0 calc-w-small(2) calc-w-small(20) 0 rgba(0, 0, 0, 0.08)
           width: 100%
-    .profile-content
-      .profile-avatar
+    .profile-content, .event-content
+      .profile-avatar, .event-image
         position: relative
-        .img-avatar
+        .img-avatar, .img-event
           width: calc-w-small(280)
           height: calc-w-small(270)
           margin: calc-w-small(20) auto
@@ -306,6 +332,6 @@
             padding-right: calc-w-small(10)
 
 [device='mobile'][orientation='landscape']
-  .profile
+  .profile, .event
     max-width: 100vmin
     margin: auto

@@ -128,10 +128,9 @@
                     };
                 }
 
-                if($state.current.name == 'show_event'){
+                if($state.current.name == 'event'){
                     events.show($stateParams.id).success(function(data){
-                        $scope.event = data.event;
-
+                        $scope.event = data;
                     });
                 }
             }])

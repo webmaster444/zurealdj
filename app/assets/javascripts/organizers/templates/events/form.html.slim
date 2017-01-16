@@ -61,16 +61,16 @@
           label
             | From
         td
-          datetimepicker ng-model="event.from_datetime" date-format= "dd-MMM-yyyy" date-options= "dateOptions" date-disabled= "isDisabledDate(date, mode)"
-          .error ng-repeat="error in validation_errors.from_datetime"
+          datetimepicker ng-model="event.start_date" date-format= "dd-MMM-yyyy" date-options= "dateOptions" date-disabled= "isDisabledDate(date, mode)"
+          .error ng-repeat="error in validation_errors.start_date"
             | {{ error }}
       tr
         td
           label
             | To
         td
-          datetimepicker ng-model="event.to_datetime" date-format= "dd-MMM-yyyy" date-options= "dateOptions" date-disabled= "isDisabledDate(date, mode)"
-          .error ng-repeat="error in validation_errors.to_datetime"
+          datetimepicker ng-model="event.end_date" date-format= "dd-MMM-yyyy" date-options= "dateOptions" date-disabled= "isDisabledDate(date, mode)"
+          .error ng-repeat="error in validation_errors.end_date"
             | {{ error }}
       tr
         td
