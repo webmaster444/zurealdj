@@ -5,8 +5,9 @@ json.weekend_rate_from @user.dj.weekend_rate_from
 json.weekend_rate_to   @user.dj.weekend_rate_to
 json.name @user.name
 json.avatar do
-  json.url @user.avatar.url
+  json.url paperclip_url(@user.avatar, :large)
 end
+json.avatar_present true if @user.avatar_file_name
 json.city @user.dj.city
 json.country @user.dj.country_flag
 json.stars @user.dj.stars

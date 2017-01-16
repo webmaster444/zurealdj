@@ -38,7 +38,8 @@ class Organizer::UsersController < Organizer::BaseController
   private
 
   def profile_params
-    params.permit(:name, :avatar, :company_name, :about, :facebook_link, :instagram_link, :soundcloud_link,
+    params.permit(:name, :width, :height, :crop_x, :crop_y, :crop_w, :crop_h, :crop_rotate,
+                  :crop_scale_x, :crop_scale_y, :avatar, :company_name, :about, :facebook_link, :instagram_link, :soundcloud_link,
                   organizer_attributes: [:city, :country_flag_code], event_category_ids: [], genre_ids: [])
   end
 

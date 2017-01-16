@@ -35,6 +35,7 @@
 #= require sweetalert/dist/sweetalert.min
 #= require angular-sweetalert/SweetAlert
 #= require angular-table-sort.directive
+#= require cropperjs/dist/cropper.min
 # load angular modules
 #= require ./admin/application.module.js
 #= require_tree ./admin/factories

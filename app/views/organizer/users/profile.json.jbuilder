@@ -2,8 +2,9 @@ json.personal_url @user.personal_url
 json.company_name @user.company_name
 json.name @user.name
 json.avatar do
-  json.url @user.avatar.url
+  json.url paperclip_url(@user.avatar, :large)
 end
+json.avatar_present true if @user.avatar_file_name
 json.city @user.organizer.city
 json.country @user.organizer.country_flag
 json.stars @user.organizer.stars

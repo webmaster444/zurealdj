@@ -12,6 +12,6 @@ json.djs @djs.each do |dj|
   json.weekday_rate_to dj.weekday_rate_to
   json.weekend_rate_from dj.weekend_rate_from
   json.weekend_rate_to dj.weekend_rate_to
-  json.avatar dj.avatar.url
+  json.avatar paperclip_url(dj.avatar, :large)
 end
 json.count @count

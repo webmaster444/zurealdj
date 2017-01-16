@@ -39,6 +39,7 @@
 #= require angular-table-sort.directive
 #= require ngAudio/ng-audio.directive
 #= require angular-ui-bootstrap-datetimepicker/datetimepicker
+#= require cropperjs/dist/cropper.min
 #= require ./landing/application.module.js
 #= require_tree ./landing/factories
 #= require_tree ./landing/controllers

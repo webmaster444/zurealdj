@@ -23,7 +23,7 @@ json.dj do
   json.facebook_link @user.facebook_link
   json.soundcloud_link @user.soundcloud_link
   json.avatar do
-    json.url @user.avatar.url
+    json.url paperclip_url(@user.avatar, :large)
   end
   json.personal_url @user.personal_url
 end

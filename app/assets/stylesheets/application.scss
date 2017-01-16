@@ -1,4 +1,5 @@
 //= require bootstrap_and_overrides
+//= require cropper
 //= require animate/animate.css
 //= require ng-dialog/css/ngDialog
 //= require ng-dialog/css/ngDialog-theme-default
@@ -17,6 +18,7 @@
 //= require angular-ui-bootstrap-datetimepicker/datetimepicker
 //= require bootstrap_and_overrides
 //= require ngAudio/ng-audio
+//= require cropperjs/dist/cropper.min
 //= require_tree ./modules
 
 @font-face {

@@ -41,7 +41,8 @@ class Dj::UsersController < Dj::BaseController
   private
 
   def profile_params
-    params.permit(:name, :avatar, :about, :facebook_link, :instagram_link, :soundcloud_link,
+    params.permit(:name, :width, :height, :crop_x, :crop_y, :crop_w, :crop_h, :crop_rotate,
+                  :crop_scale_x, :crop_scale_y, :avatar, :about, :facebook_link, :instagram_link, :soundcloud_link,
                   dj_attributes: [:weekday_rate_from, :weekday_rate_to, :weekend_rate_from, :weekend_rate_to, :city, :country_flag_code, :sample, :sample_title],
                   cancelation_ids: [], event_category_ids: [], genre_ids: [], equipment_ids: [])
   end

@@ -1,8 +1,8 @@
 'use strict';
 
-angular.module('formInput.image', []);
+angular.module('formInput.image', ['toaster', 'ngDialog']);
 
-angular.module('formInput.image').directive('image', ['$filter', function($filter) {
+angular.module('formInput.image').directive('image', ['toaster', 'ngDialog', '$filter', function(toaster, ngDialog, $filter) {
 
     function link(scope, element, attributes, ctrl) {
 
@@ -30,7 +30,12 @@ angular.module('formInput.image').directive('image', ['$filter', function($filte
                 var reader = new FileReader();
                 reader.onload = function(e){
                     scope.$apply(function(){
-                        scope.image = {file: image, base64: e.target.result, removed: false };
+                        if(attributes.cropper == 'true') {
+                            scope.openCropper(image, e.target.result);
+                        }
+                        else{
+                            scope.image = {file: image, base64: e.target.result, removed: false };
+                        }
                     });
                 };
                 reader.readAsDataURL(image);
@@ -77,6 +82,57 @@ angular.module('formInput.image').directive('image', ['$filter', function($filte
                 droppable_area[0].addEventListener("drop", FileSelectHandler, false);
             }
         }
+
+        scope.openCropper = function(image, base64){
+            ngDialog.open({
+                className: 'ngdialog-theme-default cropper-dialog',
+                template: "cropperTemplate",
+                closeByEscape: false,
+                closeByNavigation: false,
+                closeByDocument: false,
+                controller: ['$scope', '$timeout', function ($scope, $timeout) {
+                    $scope.image_data = base64;
+                    $scope.cropper = null;
+
+                    $timeout(function(){
+                        var el = $('#cropper_image')[0];
+                        $scope.cropper = new Cropper(el,{
+                            aspectRatio: attributes.aspectratio,
+                            minCropBoxHeight: 50,
+                            minCropBoxWidth: 50,
+                            viewMode: 0,
+                            dragMode: 'move',
+                            allowResize: true
+
+                        });
+                    }, 500);
+
+                    $scope.save = function(){
+                        var cropData = $scope.cropper.getData();
+                        cropData.x =  Math.floor(cropData.x > 0? cropData.x: 0);
+                        cropData.y =  Math.floor(cropData.y > 0? cropData.y: 0);
+                        cropData.width = Math.floor(cropData.width);
+                        cropData.height = Math.floor(cropData.height);
+                        cropData.y = cropData.y + cropData.height <= $scope.cropper.canvasData.naturalHeight? cropData.y: $scope.cropper.canvasData.naturalHeight - cropData.height;
+                        scope.image = {
+                            file: image,
+                            removed: false,
+                            url: $scope.cropper.getCroppedCanvas().toDataURL('image/jpeg'),
+                            crop_data: {
+                                x: cropData.x,
+                                y: cropData.y,
+                                width:  cropData.width,
+                                height: cropData.height,
+                                rotate: cropData.rotate,
+                                scaleX: cropData.scaleX,
+                                scaleY: cropData.scaleY
+                            }
+                        };
+                        $scope.closeThisDialog();
+                    };
+                }]
+            });
+        };
     }
 
     return {
@@ -98,4 +154,12 @@ angular.module('formInput.image').directive('image', ['$filter', function($filte
         "<ul>" +
         "</div>"
     };
+}]);
+
+angular.module('templates').run(['$templateCache', function($templateCache) {
+    $templateCache.put('cropperTemplate', "" +
+        "<div class='modal-header'><h3>Prepare image:</h3></div>" +
+        "<div class='modal-body' style='width: 100%; padding: 0;'><img style='width: 100%; margin: 0' id='cropper_image' ng-src='{{ image_data }}'></div>" +
+        "<div class='modal-footer' style='z-index: 1000'><a class='btn btn-success btn-cropper' ng-click='save()'>Ok</a></div>" +
+        "");
 }]);

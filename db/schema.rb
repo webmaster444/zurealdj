@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170112152150) do
+ActiveRecord::Schema.define(version: 20170116155513) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -83,11 +83,11 @@ ActiveRecord::Schema.define(version: 20170112152150) do
     t.string   "sample_content_type"
     t.integer  "sample_file_size"
     t.datetime "sample_updated_at"
+    t.string   "sample_title"
     t.integer  "weekday_rate_from"
     t.integer  "weekday_rate_to"
     t.integer  "weekend_rate_from"
     t.integer  "weekend_rate_to"
-    t.string   "sample_title"
     t.index ["photo_id"], name: "index_djs_on_photo_id", using: :btree
     t.index ["sample_id"], name: "index_djs_on_sample_id", using: :btree
     t.index ["user_id"], name: "index_djs_on_user_id", using: :btree
@@ -246,6 +246,13 @@ ActiveRecord::Schema.define(version: 20170112152150) do
     t.string   "instagram_link"
     t.string   "facebook_link"
     t.string   "soundcloud_link"
+    t.float    "crop_x"
+    t.float    "crop_y"
+    t.float    "crop_w"
+    t.float    "crop_h"
+    t.float    "crop_rotate"
+    t.float    "crop_scale_x"
+    t.float    "crop_scale_y"
   end
 
   create_table "who_we_are_pages", force: :cascade do |t|

@@ -30,7 +30,7 @@
         | Main info
       .content
         .col-avatar
-          div.avatar image=true ng-model="user.avatar"
+          div.avatar image=true cropper='true' aspectratio="1.0" ng-model="user.avatar"
           a.text-active onclick="$('.plus label:first-child').trigger('click')"
             | Change photo
         .col-content
