@@ -209,7 +209,7 @@
               .row
                 .col-sm-2
                   label.control-label
-                    | {{ I18n.t('dj.fields.weekday_price_from') }}:
+                    | {{ I18n.t('dj.fields.weekday_rate_from') }}:
                 .col-sm-10
                   input.form-control type="number" placeholder="{{ I18n.t('dj.fields.weekday_rate_from') }}" required=true class="{{ DjForm.weekday_rate_from.$invalid && submitted ? 'validation-error' : ''}}" name="weekday_rate_from" ng-model="dj.weekday_rate_from" style="width: 100%"
                   .error ng-show="DjsForm.weekday_rate_from.$invalid && submitted"
@@ -223,13 +223,13 @@
               .row
                 .col-sm-2
                   label.control-label
-                    | {{ I18n.t('dj.fields.weekday_price_to') }}:
+                    | {{ I18n.t('dj.fields.weekday_rate_to') }}:
                 .col-sm-10
-                  input.form-control type="number" placeholder="{{ I18n.t('dj.fields.weekday_price_to') }}" required=true class="{{ DjForm.weekday_price_to.$invalid && submitted ? 'validation-error' : ''}}" name="weekday_rate_to" ng-model="dj.weekday_price_to" style="width: 100%"
-                  .error ng-show="DjsForm.weekday_price_to.$invalid && submitted"
+                  input.form-control type="number" placeholder="{{ I18n.t('dj.fields.weekday_rate_to') }}" required=true class="{{ DjForm.weekday_rate_to.$invalid && submitted ? 'validation-error' : ''}}" name="weekday_rate_to" ng-model="dj.weekday_rate_to" style="width: 100%"
+                  .error ng-show="DjsForm.weekday_rate_to.$invalid && submitted"
                     | {{ I18n.t('validations.cant_be_blank')}}
 
-                  .error ng-repeat="error in validation_errors['weekday_price_to']"
+                  .error ng-repeat="error in validation_errors['weekday_rate_to']"
                     | {{ error }}
 
               .hr-line-dashed
@@ -237,13 +237,13 @@
               .row
                 .col-sm-2
                   label.control-label
-                    | {{ I18n.t('dj.fields.weekend_price_from') }}:
+                    | {{ I18n.t('dj.fields.weekend_rate_from') }}:
                 .col-sm-10
-                  input.form-control type="number" placeholder="{{ I18n.t('dj.fields.weekend_price_from') }}" required=true class="{{ DjForm.weekend_price_from.$invalid && submitted ? 'validation-error' : ''}}" name="weekend_price_from" ng-model="dj.weekend_price_from" style="width: 100%"
-                  .error ng-show="DjsForm.weekend_price_from.$invalid && submitted"
+                  input.form-control type="number" placeholder="{{ I18n.t('dj.fields.weekend_rate_from') }}" required=true class="{{ DjForm.weekend_rate_from.$invalid && submitted ? 'validation-error' : ''}}" name="weekend_rate_from" ng-model="dj.weekend_rate_from" style="width: 100%"
+                  .error ng-show="DjsForm.weekend_rate_from.$invalid && submitted"
                     | {{ I18n.t('validations.cant_be_blank')}}
 
-                  .error ng-repeat="error in validation_errors['weekend_price_from']"
+                  .error ng-repeat="error in validation_errors['weekend_rate_from']"
                     | {{ error }}
 
               .hr-line-dashed
@@ -251,13 +251,13 @@
               .row
                 .col-sm-2
                   label.control-label
-                    | {{ I18n.t('dj.fields.weekend_price_to') }}:
+                    | {{ I18n.t('dj.fields.weekend_rate_to') }}:
                 .col-sm-10
-                  input.form-control type="number" placeholder="{{ I18n.t('dj.fields.weekend_price_to') }}" required=true class="{{ DjForm.weekend_price_to.$invalid && submitted ? 'validation-error' : ''}}" name="weekend_price_to" ng-model="dj.weekend_price_to" style="width: 100%"
-                  .error ng-show="DjsForm.weekend_price_to.$invalid && submitted"
+                  input.form-control type="number" placeholder="{{ I18n.t('dj.fields.weekend_rate_to') }}" required=true class="{{ DjForm.weekend_rate_to.$invalid && submitted ? 'validation-error' : ''}}" name="weekend_rate_to" ng-model="dj.weekend_rate_to" style="width: 100%"
+                  .error ng-show="DjsForm.weekend_rate_to.$invalid && submitted"
                     | {{ I18n.t('validations.cant_be_blank')}}
 
-                  .error ng-repeat="error in validation_errors['weekend_price_to']"
+                  .error ng-repeat="error in validation_errors['weekend_rate_to']"
                     | {{ error }}
 
               .hr-line-dashed

@@ -83,10 +83,10 @@ class Admin::DjsController < Admin::BaseController
         djs[:id].as('dj_id'),
         djs[:city],
         djs[:country_flag_code],
-        djs[:weekday_price_from],
-        djs[:weekday_price_to],
-        djs[:weekend_price_from],
-        djs[:weekend_price_to]
+        djs[:weekday_rate_from],
+        djs[:weekday_rate_to],
+        djs[:weekend_rate_from],
+        djs[:weekend_rate_to]
     ]
 
     q = users
