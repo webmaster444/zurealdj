@@ -88,10 +88,10 @@
           div audio=true ng-model="sample"
 
           hr
-        .block
+        .block.equipments
           .block-title
             | Equipment
-          .equipments
+          div
             label.select-button ng-repeat="equipment in user.equipments"
               .text-center.btn-equipment.active ng-show="equipment.selected"
                 img ng-src="{{ equipment.icon }}"

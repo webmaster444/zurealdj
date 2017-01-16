@@ -1,10 +1,10 @@
 json.dj_id @dj.id
 json.id @user.id
 json.personal_url @user.personal_url
-json.weekday_rate_from @user.weekday_rate_from
-json.weekday_rate_to @user.weekday_rate_to
-json.weekend_rate_from @user.weekend_rate_from
-json.weekend_rate_to @user.weekend_rate_to
+json.weekday_rate_from @dj.weekday_rate_from
+json.weekday_rate_to @dj.weekday_rate_to
+json.weekend_rate_from @dj.weekend_rate_from
+json.weekend_rate_to @dj.weekend_rate_to
 json.name @user.name
 json.avatar do
   json.url @user.avatar.url

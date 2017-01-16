@@ -11,6 +11,12 @@
             $scope.$state = $state;
             $scope.$parent.no_second_navbar = false;
 
+            $scope.step = false;
+
+            $scope.isMobile = function(){
+                return window.navigator.userAgent.match(/iPhone|iPad|iPod|Android|BlackBerry|Opera Mini|IEMobile/i)? true: false;
+            };
+
             $scope.user = {};
 
             users.profile().success(function(data){
@@ -32,6 +38,6 @@
                     .error(function(data){
                         $scope.processing = false;
                     })
-            }
+            };
         }])
 }());

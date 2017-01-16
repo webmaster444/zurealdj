@@ -45,17 +45,16 @@ body
         color: white
 
 .static-pages
-  position: relative
-  height: auto
-  @media all and (min-width: 1000px)
-    min-height: calc(100% - 664px)
-  @media all and (max-width: 1000px)
-    min-height: calc(100% - 976px)
   .pages-content
+    position: relative
     padding: 30px
+    @media all and (min-width: 1000px)
+      min-height: calc(100vh - 744px)
+    @media all and (max-width: 1000px)
+      min-height: calc(100vh - 976px)
   .page-footer
     margin-top: 0 !important
-    position: absolute
+    position: relative
     top: 100%
 
 .home
@@ -218,11 +217,3 @@ body
     color: $current-color
     .circle-white
       background-image: url(/images/icons/ic-artist-active.png)
-
-  .btn-close
-    background-image: url(/images/icons/ic-close-grey@2x.png)
-    background-position: center
-    background-size: cover
-    background-repeat: no-repeat
-    padding: 0
-    position: absolute

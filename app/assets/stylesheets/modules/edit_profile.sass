@@ -1,3 +1,5 @@
+@import "variables_and_functions"
+
 .edit-profile
   .listen
     .box-audio
@@ -6,11 +8,6 @@
     padding: 100px 0
     max-width: 1000px
     margin: auto
-  .content-block
-    margin-top: 50px
-    max-width: 1000px
-    width: auto
-    display: inline-block
     .content
       margin-top: 40px
       text-align: left
@@ -65,3 +62,105 @@
         width: 300px !important
         height: 300px !important
         display: inline-block
+
+
+[device='desktop']
+  .content-block
+    margin: auto
+    margin-top: 50px
+    max-width: 1000px
+    width: auto
+
+
+
+[device='mobile']
+  .edit-profile, .page-block
+    padding: 0 !important
+    max-width: 100vmin
+    margin: auto
+    position: relative
+    hr
+      display: none
+    .btn-close
+      position: relative
+      width: calc-w-small(16)
+      height: calc-w-small(16)
+      left: calc-w-small(280) !important
+      top: calc-w-small(20) !important
+      display: block
+      z-index: 5
+    .edit-menu
+      .menu-head
+        font-size: calc-w-small(16)
+        line-height: 1.5
+        letter-spacing: calc-w-small(1.4)
+        text-align: center
+        color: #555555
+        padding: calc-w-small(15) 0
+        box-shadow: 0 calc-w-small(2) calc-w-small(20) 0 rgba(0, 0, 0, 0.08)
+      .menu-item
+        text-align: left
+        position: relative
+        margin: calc-w-small(30)
+        .menu-title
+          font-size: calc-w-small(16)
+          color: #555555
+          display: inline-block
+        .edit-btn
+          font-size: calc-w-small(14)
+          font-weight: 500
+          line-height: 1.43
+          color: #b05dfc
+          display: inline-block
+          position: absolute
+          right: 0
+    .content-block, .general-inf
+      z-index: 1
+      margin-top: calc-w-small(-16)
+      text-align: center
+      min-height: calc(100vh - 38vmin)
+      .content-title
+        font-size: calc-w-small(16)
+        font-weight: 500
+        line-height: 1.5
+        letter-spacing: calc-w-small(0.7)
+        text-align: center
+        color: #555555
+        padding: calc-w-small(20) 0
+        border-bottom: calc-w-small(1) dotted #eee
+        &::before
+          content: "Edit "
+    #org-id-2
+      .content-title::before
+        content: ""
+    .actions-block
+      padding: 0
+      .pull-left, .pull-right
+        margin: calc-w-small(20)
+    .general-inf
+      padding: calc-w-small(20)
+      padding-top: 0
+      width: auto
+      .content
+        .form-group
+          padding: calc-w-small(15) 0
+          .form-title
+            font-size: calc-w-small(14)
+            line-height: 1.43
+            margin-bottom: calc-w-small(10)
+        .col-content, .col-avatar
+          max-width: 100%
+        .avatar
+          margin: calc-w-small(15) auto
+          .plus
+            width: calc-w-small(280) !important
+            height: calc-w-small(280) !important
+            display: inline-block
+            label
+              width: calc-w-small(280) !important
+              height: calc-w-small(280) !important
+              display: inline-block
+        .text-active
+          font-size: calc-w-small(14)
+          font-weight: 500
+          line-height: 1.43

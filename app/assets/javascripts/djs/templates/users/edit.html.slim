@@ -1,6 +1,41 @@
 .edit-profile
   .page-block
-    .general-inf
+    a.btn-close ng-click="step = 0" ng-show="isMobile() && step"
+    .edit-menu ng-show="isMobile() && !step"
+      .menu-head
+        | Edit profile
+      .menu-item
+        .menu-title
+          | Main info
+        a.edit-btn ng-click="step = 1"
+          | Edit
+      .menu-item
+        .menu-title
+          | Types of events
+        a.edit-btn ng-click="step = 2"
+          | Edit
+      .menu-item
+        .menu-title
+          | Genres
+        a.edit-btn ng-click="step = 3"
+          | Edit
+      .menu-item
+        .menu-title
+          | Listen
+        a.edit-btn ng-click="step = 4"
+          | Edit
+      .menu-item
+        .menu-title
+          | Equipment
+        a.edit-btn ng-click="step = 5"
+          | Edit
+      .menu-item
+        .menu-title
+          | Booking Information
+        a.edit-btn ng-click="step = 6"
+          | Edit
+
+    .general-inf#dj-id-1 ng-show="!isMobile() || step == 1"
       .content-title
         | Main info
       .content
@@ -18,19 +53,21 @@
           .form-group
             .form-title
               | Country:
-            .zureal-btn-dropdown
+            .zureal-btn-dropdown.country-btn-dropdown
               .dropdown uib-dropdown=""
                 a.dropdown-toggle.count-info.zureal-dropdown aria-expanded="false" aria-haspopup="true" uib-dropdown-toggle="" href=""
                   span ng-hide="user.country"
                     | Please choose a country
                   span ng-show="user.country"
                     span.flag class="{{ user.country.code }}"
-                    | {{ user.country.title }}
+                    span.country-title
+                      | {{ user.country.title }}
                 ul.dropdown-menu.dropdown-alerts
                   li ng-repeat="country in countries"
-                    a ng-click="user.country = country" style="cursor: pointer"
+                    a.country ng-click="user.country = country" style="cursor: pointer"
                       span.flag class="{{ country.code }}"
-                      | {{ country.title }}
+                      span.country-title
+                        | {{ country.title }}
             .error ng-repeat="error in validation_errors.country"
               | {{ error }}
           .form-group
@@ -64,94 +101,94 @@
             .error ng-repeat="error in validation_errors.soundcloud_link"
               | {{ error }}
 
-    .text-center
-      .content-block
-        .content-title
-          | Types of Events
-        .content.container
-          .error ng-repeat="error in validation_errors.event_categories"
-            | {{ error }}
-          label.select-button ng-repeat="event_type in user.event_types"
-            .btn-checkbox.text-center class="{{ event_type.selected? 'active': '' }}"
-              | {{ event_type.title }}
-            input.hide type="checkbox" value="{{ event_type.id }}" ng-model="event_type.selected"
-        hr
+    .content-block#dj-id-2 ng-show="!isMobile() || step == 2"
+      .content-title
+        | Types of Events
+      .container
+        .error ng-repeat="error in validation_errors.event_categories"
+          | {{ error }}
+        label.select-button ng-repeat="event_type in user.event_types"
+          .btn-checkbox.text-center class="{{ event_type.selected? 'active': '' }}"
+            | {{ event_type.title }}
+          input.hide type="checkbox" value="{{ event_type.id }}" ng-model="event_type.selected"
+      hr
 
-      .content-block
-        .content-title
-          | Genres
-        .content.container
-          .error ng-repeat="error in validation_errors.genres"
-            | {{ error }}
-          label.select-button ng-repeat="genre in user.genres"
-            .btn-checkbox.text-center class="{{ genre.selected? 'active': '' }}"
-              | {{ genre.title }}
-            input.hide type="checkbox" value="{{ genre.id }}" ng-model="genre.selected"
+    .content-block#dj-id-3 ng-show="!isMobile() || step == 3"
+      .content-title
+        | Genres
+      .container
+        .error ng-repeat="error in validation_errors.genres"
+          | {{ error }}
+        label.select-button ng-repeat="genre in user.genres"
+          .btn-checkbox.text-center class="{{ genre.selected? 'active': '' }}"
+            | {{ genre.title }}
+          input.hide type="checkbox" value="{{ genre.id }}" ng-model="genre.selected"
 
-        hr
-      .content-block
-        .content-title
-          | Listen
-        .content.container
-          .error ng-repeat="error in validation_errors.sample"
-            | {{ error }}
-          .text-center
-            div.listen audio=true ng-model="sample" upload='true' rename='true'
+      hr
+    .content-block#dj-id-4 ng-show="!isMobile() || step == 4"
+      .content-title
+        | Listen
+      .error ng-repeat="error in validation_errors.sample"
+        | {{ error }}
+      .text-center
+        div.listen audio=true ng-model="sample" upload='true' rename='true'
 
-        hr
-      .content-block
-        .content-title
-          | Equipment
-        .content.equipments-container
-          .error ng-repeat="error in validation_errors.equipments"
-            | {{ error }}
-          label.select-button ng-repeat="equipment in user.equipments"
-            .btn-equipment.text-center class="{{ equipment.selected? 'active': '' }}"
-              img ng-src="{{ equipment.icon }}"
-              .title
-                | {{ equipment.title }}
-            input.hide type="checkbox" value="{{ equipment.id }}" ng-model="equipment.selected"
-        hr
-      .content-block
-        .content-title
-          | Booking Information
-        .form-row.small-text
-          .error ng-repeat="error in validation_errors.weekday_rate_from"
-            | {{ error }}
-          .error ng-repeat="error in validation_errors.weekday_rate_to"
-            | {{ error }}
-          | Weekday Rate:
-          .inline-block
-            input.register-input.step-5-input type="number" ng-model="user.weekday_rate_from" placeholder="from"
-            span.dash
-              | -
-            input.register-input.step-5-input type="number" ng-model="user.weekday_rate_to" placeholder="to"
-        .form-row.small-text
-          .error ng-repeat="error in validation_errors.weekend_rate_from"
-            | {{ error }}
-          .error ng-repeat="error in validation_errors.weekend_rate_to"
-            | {{ error }}
-          | Weekend Rate:
-          .inline-block
-            input.register-input.step-5-input type="number" ng-model="user.weekend_rate_from" placeholder="from"
-            span.dash
-              | -
-            input.register-input.step-5-input type="number" ng-model="user.weekend_rate_to" placeholder="to"
-        .form-row.text-center
-          .error ng-repeat="error in validation_errors.cancelations"
-            | {{ error }}
-          .small-text.inline-block#cancelations-title
-            | Cancelations:
-          .cancelations-container.inline-block.text-left
-            label.select-button ng-repeat="cancelation in user.cancelations"
-              .btn-checkbox.text-center class="{{ cancelation.selected? 'active': '' }}"
-                | {{ cancelation.title }}
-              input.hide type="checkbox" value="{{ cancelation.id }}" ng-model="cancelation.selected"
-        hr
-      .actions-block
-        .pull-left
-          a.slider-btn.back href="#profile"
-            | Cancel
-        .pull-right
-          a.slider-btn.next data-style="expand-left" ladda="processing" type="submit" ng-click="save()"
-            | Save
+      hr
+    .content-block#dj-id-5 ng-show="!isMobile() || step == 5"
+      .content-title
+        | Equipment
+      .equipments-container
+        .error ng-repeat="error in validation_errors.equipments"
+          | {{ error }}
+        label.select-button ng-repeat="equipment in user.equipments"
+          .btn-equipment.text-center class="{{ equipment.selected? 'active': '' }}"
+            img ng-src="{{ equipment.icon }}"
+            .title
+              | {{ equipment.title }}
+          input.hide type="checkbox" value="{{ equipment.id }}" ng-model="equipment.selected"
+
+      hr
+    .content-block#dj-id-6 ng-show="!isMobile() || step == 6"
+      .content-title
+        | Booking Information
+      .form-row.small-text
+        .error ng-repeat="error in validation_errors.weekday_rate_from"
+          | {{ error }}
+        .error ng-repeat="error in validation_errors.weekday_rate_to"
+          | {{ error }}
+        | Weekday Rate:
+        .inline-block
+          input.register-input.step-5-input type="number" ng-model="user.weekday_rate_from" placeholder="from"
+          span.dash
+            | -
+          input.register-input.step-5-input type="number" ng-model="user.weekday_rate_to" placeholder="to"
+      .form-row.small-text
+        .error ng-repeat="error in validation_errors.weekend_rate_from"
+          | {{ error }}
+        .error ng-repeat="error in validation_errors.weekend_rate_to"
+          | {{ error }}
+        | Weekend Rate:
+        .inline-block
+          input.register-input.step-5-input type="number" ng-model="user.weekend_rate_from" placeholder="from"
+          span.dash
+            | -
+          input.register-input.step-5-input type="number" ng-model="user.weekend_rate_to" placeholder="to"
+      .form-row.text-center
+        .error ng-repeat="error in validation_errors.cancelations"
+          | {{ error }}
+        .small-text.inline-block#cancelations-title
+          | Cancelations:
+        .cancelations-container.inline-block.text-left
+          label.select-button ng-repeat="cancelation in user.cancelations"
+            .btn-checkbox.text-center class="{{ cancelation.selected? 'active': '' }}"
+              | {{ cancelation.title }}
+            input.hide type="checkbox" value="{{ cancelation.id }}" ng-model="cancelation.selected"
+
+      hr
+    .actions-block ng-show="!isMobile() || step"
+      .pull-left
+        a.small-text.slider-btn.cancel href="#profile"
+          | Cancel
+      .pull-right
+        a.small-text.slider-btn.apply data-style="expand-left" ladda="processing" type="submit" ng-click="save()"
+          | Save

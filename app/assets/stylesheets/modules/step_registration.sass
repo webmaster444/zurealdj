@@ -8,29 +8,36 @@
   .page-footer
     margin: 0 !important
 
+.registration, .edit-profile
+  .question
+    text-align: center
+    color: #555555
+  .small-text
+    text-align: center
+    color: #555555
+  .error
+    text-align: center
+  .leave-it-blanck
+    text-align: center
+    color: #8a8a8a
+
 .inline-block
   display: inline-block
 
+
+
 [device='desktop']
   .registration, .edit-profile
-    font-family: CeraPro
-    font-style: normal
-    font-stretch: normal
-    font-weight: normal
     .step
       margin: 23px auto
     .question
       font-size: 32px
       letter-spacing: 3px
-      text-align: center
-      color: #555555
       margin-top: 50px
     .small-text
       font-size: 18px
       line-height: 1.33
       letter-spacing: 1.7px
-      text-align: center
-      color: #555555
     .select
       margin-top: 20px
     .form-row
@@ -43,13 +50,10 @@
       min-height: 200px
     .error
       margin: 10px 0
-      text-align: center
     .leave-it-blanck
       font-size: 16px
       line-height: 1.5
       letter-spacing: 1.5px
-      text-align: center
-      color: #8a8a8a
     .equipments-container
       max-width: 800px !important
       margin: auto
@@ -73,14 +77,12 @@
         width: 170px
         margin: 5px 23px
 
+
+
 [device='mobile']
   .page-footer
     display: none
   .registration, .edit-profile
-    font-family: CeraPro
-    font-style: normal
-    font-stretch: normal
-    font-weight: normal
     padding: 0 calc-h-small(10)
     text-align: center
     .small-logo
@@ -92,16 +94,12 @@
     .question
       font-size: calc-h-small(20)
       letter-spacing: 3px
-      text-align: center
-      color: #555555
       margin-top: calc-h-small(30)
       display: inline-block
     .small-text
       font-size: calc-h-small(14)
       line-height: 1.33
       letter-spacing: 1.3px
-      text-align: center
-      color: #555555
     .select
       margin-top: calc-h-small(20)
       display: inline-block
@@ -118,10 +116,10 @@
     .slider-btn
       padding: calc-h-small(5) calc-h-small(15)
       border-radius: 100px
-    .next
+    .next, .apply
       background-color: #b05dfc
       color: white
-    .back
+    .back, .cancel
       background-color: white
       color: $current-color
       border: solid 1px #e6e6e6
@@ -151,22 +149,15 @@
       width: 100%
       padding: calc-h-small(8) calc-w-small(30)
       border-radius: 100px
-      background-color: white
-      border: solid 1px #e0c2fc
-      outline: none
       margin: calc-h-small(30) 0
       font-size: calc-h-small(16)
-      font-weight: 500
-      color: #938e94
+      border-width: calc-w-small(1)
     .error
       margin: 10px 0
-      text-align: center
     .leave-it-blanck
       font-size: calc-h-small(14)
       line-height: 1.5
       letter-spacing: 1.5px
-      text-align: center
-      color: #8a8a8a
       display: inline-block
     .btn-equipment
       width: calc-h-small(138)
@@ -190,7 +181,9 @@
         filter: grayscale(100%)
         margin: calc-h-small(20) auto
     .equipments-container
+      margin: auto
       margin-top: calc-h-small(10)
+      max-width: calc-w-small(310)
       .select-button
         margin: auto
 
@@ -212,6 +205,8 @@
         text-align: center
     .text-center
       max-width: 90vmin
+
+
 
 [device='mobile'][orientation='landscape']
   .registration

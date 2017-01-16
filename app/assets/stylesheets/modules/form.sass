@@ -1,5 +1,25 @@
 @import 'variables_and_functions'
 
+.zureal-textarea
+  outline: none
+  border: solid 1px #e6e6e6
+  color: #c6bfc7
+  display: inline-block
+  width: 100%
+  font-weight: 500
+  &:focus
+    border-color: #e1c3fd
+    color: #938e94
+
+.register-input
+  background-color: white
+  border: solid 1px #e6e6e6
+  outline: none
+  color: #c6bfc7
+  &:focus
+    border-color: #e1c3fd
+    color: #938e94
+
 .landing-input
   border: 1px solid #e6e6e6
   outline: none
@@ -7,6 +27,9 @@
   font-weight: normal
   line-height: 1.5
   color: #c6bfc7
+  &:focus
+    border-color: #e1c3fd
+    color: #938e94
 
 [device='mobile'][size='small']
   .landing-input
@@ -26,6 +49,97 @@
     padding: calc-h-full(8) calc-w-full(30)
     font-size: calc-h-full(16)
 
+[device='mobile']
+  .zureal-textarea
+    padding: calc-h-small(8) calc-w-small(30)
+    border-radius: calc-w-small(15)
+    font-size: calc-h-small(16)
+    border-width: calc-w-small(1)
+  .zureal-btn-dropdown.country-btn-dropdown
+    display: block
+    width: 100%
+    margin: 0 !important
+    padding: 0!important
+    a.zureal-dropdown
+      display: block
+      width: 100%
+      border-radius: 100px
+      border: solid calc-w-small(1) #e6e6e6
+      padding: calc-h-small(8) calc-w-small(30)
+      font-size: calc-w-small(16)
+      font-weight: 500
+      line-height: 1.5
+      color: #c6bfc7
+      background-position-x: 90%
+      background-position-y: 50%
+      background-size: calc-w-small(10)
+      background-repeat: no-repeat
+      background-image: url(/images/icons/ic-drop-grey@3x.png)
+      text-overflow: ellipsis
+      .flag
+        width: calc-w-small(30)
+        height: calc-w-small(30)
+        background-size: contain
+        margin-left: calc-w-small(-20)
+      .country-title
+        max-width: 80%
+        vertical-align: middle
+        display: inline-block
+    .open
+      position: fixed
+      top: 0 !important
+      left: 0 !important
+      max-width: 100vw
+      z-index: 1000
+      white-space: pre-wrap
+      word-wrap: break-word
+      .dropdown-menu
+        max-width: 100vw
+        position: fixed
+        top: 0 !important
+        left: 0 !important
+        background-color: white
+        min-height: 100vh !important
+        max-height: 100vh !important
+        width: 100vw
+        overflow-y: scroll
+        &::before
+          content: ""
+          background-image: url(/images/icons/ic-close-grey@2x.png)
+          background-position: center
+          background-size: cover
+          background-repeat: no-repeat
+          display: inline-block
+          position: fixed
+          top: calc-w-small(16)
+          width: calc-w-small(16)
+          height: calc-w-small(16)
+          right: calc-w-small(16)
+        .country
+          .flag
+            width: calc-w-small(50)
+            height: calc-w-small(50)
+            background-size: contain
+          .country-title
+            vertical-align: middle
+            display: inline-block
+            max-width: calc-w-small(250)
+            white-space: pre-wrap
+            word-wrap: break-word
+        li
+          width: 100vmin
+          border-bottom: dotted calc-w-small(1) #ddd
+          display: block
+          margin: auto
+        a
+          font-size: calc-h-small(16)
+          width: 100%
+          font-weight: 500
+          line-height: 1.2
+          display: inline-block
+          max-width: 100%
+
+
 [device='desktop']
   .landing-input
     -webkit-border-radius: 20px
@@ -38,26 +152,12 @@
     width: 400px
     padding: 15px 30px
     border-radius: 100px
-    background-color: white
-    border: solid 1px #e6e6e6
-    outline: none
     font-size: 16px
-    font-weight: 500
-    color: #938e94
-    &:focus
-      border: solid 1px #e1c3fd
   .zureal-textarea
-    outline: none
     width: 400px
     border-radius: 20px
-    border: solid 1px #e6e6e6
     padding: 15px 30px
     font-size: 16px
-    font-weight: 500
-    color: #938e94
-    display: inline-block
-    &:focus
-      border: solid 1px #e1c3fd
   .zureal-btn-dropdown
     display: inline-block
     a.zureal-dropdown
@@ -69,7 +169,7 @@
       font-size: 16px
       font-weight: 500
       line-height: 1.5
-      color: #555555
+      color: #c6bfc7
       background-position-x: calc(100% - 30px)
       background-position-y: calc(50%)
       background-size: 9px
@@ -77,6 +177,7 @@
       background-image: url(/images/icons/ic-drop-grey@3x.png)
     .open
       a.zureal-dropdown
+        color: #555555
         border: solid 1px #e1c3fd
         box-shadow: 0 2px 30px 0 rgba(0, 0, 0, 0.08)
         background-image: url(/images/icons/ic-drop-black@3x.png)

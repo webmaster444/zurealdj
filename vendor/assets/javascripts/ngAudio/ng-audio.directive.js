@@ -2,7 +2,7 @@
 
 angular.module('ngAudio', []);
 
-angular.module('ngAudio').directive('audio', ['$filter', '$sce', '$timeout', '$interval', 'SweetAlert', function($filter, $sce, $timeout, $interval, SweetAlert) {
+angular.module('ngAudio').directive('audio', ['$filter', '$sce', '$timeout', '$interval', 'SweetAlert', '$window', function($filter, $sce, $timeout, $interval, SweetAlert, $window) {
 
     function link($scope, element, attributes, ctrl) {
 
@@ -24,6 +24,10 @@ angular.module('ngAudio').directive('audio', ['$filter', '$sce', '$timeout', '$i
         };
 
         $scope.start = false;
+
+        $scope.isMobile = function(){
+            return window.navigator.userAgent.match(/iPhone|iPad|iPod|Android|BlackBerry|Opera Mini|IEMobile/i)? true: false;
+        };
 
         var timerTimeSlider = false;
         $scope.$watch('slider', function(){
@@ -61,9 +65,16 @@ angular.module('ngAudio').directive('audio', ['$filter', '$sce', '$timeout', '$i
 
         $scope.play = function() {
             if($scope.audio[0].paused) {
-                $scope.slider.options.ceil = Math.ceil($scope.audio[0].duration);
+                $scope.slider.options.ceil = Math.floor($scope.audio[0].duration);
                 $scope.slider.options.floor = 0;
                 $scope.slider.value = $scope.audio[0].currentTime;
+                if(!$scope.start)
+                    $timeout(function() {
+                        $('.player').addClass('play');
+                        var evt = $window.document.createEvent('UIEvents');
+                        evt.initUIEvent('resize', true, false, $window, 0);
+                        $window.dispatchEvent(evt);
+                    });
                 $scope.start = true;
                 $scope.audio.trigger('play');
             }
@@ -78,12 +89,21 @@ angular.module('ngAudio').directive('audio', ['$filter', '$sce', '$timeout', '$i
             var time;
             if(params == 'full') time = $scope.audio[0].duration;
             else if(params == 'current') time = $scope.audio[0].currentTime;
-            if(time) return Math.floor(time / 60.0).toString() + ':' + Math.floor(time % 60).toString();
+            else if(params == 'negative') time = $scope.audio[0].duration - $scope.audio[0].currentTime;
+            if(time){
+                var second = Math.floor(time % 60).toString();
+                return Math.floor(time / 60.0).toString() + ':' + (second.length == 1? '0' + second : second);
+            }
+            if(params == 'current') return '0:00';
             return null;
         };
 
         $scope.isPaused = function() {
             return $scope.audio[0].paused;
+        };
+
+        $scope.isPlay = function() {
+            return $scope.audio[0].currentTime? true: false;
         };
 
         $scope.trustSrc = function(src) {
@@ -139,10 +159,7 @@ angular.module('ngAudio').directive('audio', ['$filter', '$sce', '$timeout', '$i
         $scope.upload = attributes.upload? true: false;
         $scope.rename = attributes.rename? true: false;
         $scope.edit_mode = false;
-
-        $scope.isMobile = function(){
-            return window.navigator.userAgent.match(/iPhone|iPad|iPod|Android|BlackBerry|Opera Mini|IEMobile/i)? true: false;
-        };
+        $scope.defaultDuration = true;
     }
 
     return {
@@ -153,16 +170,22 @@ angular.module('ngAudio').directive('audio', ['$filter', '$sce', '$timeout', '$i
             model: '=ngModel'
         },
         template: '' +
-        '<div class="box-audio {{ isMobile()? \'mobile\' : \'desktop\' }}">' +
+        '<div class="box-audio">' +
             '<div class="player" ng-show="model.url">' +
                 '<span class="player-btn {{ isPaused()? \'btn-pause\': \'btn-play\' }}" ng-click="play()"></span>' +
-                '<div class="file-name">{{ model.name }}</div>' +
+                '<div class="file-name" title="{{ model.name }}">{{ model.name }}</div>' +
                 '<form ng-submit="save()" ng-show="edit_mode">' +
                     '<input type="text" class="file-name-input" ng-if="rename" ng-model="model.name" spellcheck="false">' +
                 '</form>' +
-                '<div class="duration">' +
-                    '<span ng-show="start">{{ calcDuration(\'current\') }} / </span>' +
-                    '<span>{{ calcDuration(\'full\') }}</span>' +
+                '<div class="duration" style="cursor: pointer">' +
+                    '<span ng-click="defaultDuration = !defaultDuration">' +
+                        '<span ng-show="start && defaultDuration">{{ calcDuration(\'current\') }} / </span>' +
+                        '<span ng-show="start && !defaultDuration">' +
+                            '<span ng-show="isPlay()">-</span>' +
+                            '<span>{{ calcDuration(\'negative\') }} / </span>' +
+                        '</span>' +
+                        '<span>{{ calcDuration(\'full\') }}</span>' +
+                    '</span>' +
                 '</div>' +
                 '<audio id="std-player" class="hide" controls=true data-ng-src="{{ trustSrc(model.url) }}" preload="metadata"></audio>' +
                 '<rzslider class="time-slider" rz-slider-model="slider.value" rz-slider-options="slider.options" style="{{ start? \'display: inline-block\' : \'display: none\' }}"></rzslider>' +

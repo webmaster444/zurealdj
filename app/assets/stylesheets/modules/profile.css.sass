@@ -275,19 +275,24 @@
         .block-title
           padding: 0 calc-w-small(20)
       .equipments
-        display: inline-block
+        padding: 0
+        display: block
+        .block-title
+          margin-left: calc-w-small(20)
         .select-button
           .btn-equipment
             width: calc-h-small(90)
             height: calc-h-small(88)
-            margin: 0
+            margin: calc-w-small(10) calc-w-small(2.5)
+            border: none
             .title
               font-size: calc-w-small(13)
               line-height: 1.14
+              margin-top: calc-w-small(15)
             img
               width: calc-w-small(48)
               height: calc-w-small(48)
-              margin: calc-h-small(20) auto
+              margin: 0 auto
       table
         tr
           td

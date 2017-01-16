@@ -1,6 +1,31 @@
 .edit-profile
   .page-block
-    .general-inf
+    a.btn-close ng-click="step = 0" ng-show="isMobile() && step"
+    .edit-menu ng-show="isMobile() && !step"
+      .menu-head
+        | Edit profile
+      .menu-item
+        .menu-title
+          | Main info
+        a.edit-btn ng-click="step = 1"
+          | Edit
+      .menu-item
+        .menu-title
+          | Company or agency name
+        a.edit-btn ng-click="step = 2"
+          | Edit
+      .menu-item
+        .menu-title
+          | Types of events
+        a.edit-btn ng-click="step = 3"
+          | Edit
+      .menu-item
+        .menu-title
+          | Genres
+        a.edit-btn ng-click="step = 4"
+          | Edit
+
+    .general-inf#org-id-1 ng-show="!isMobile() || step == 1"
       .content-title
         | Main info
       .content
@@ -18,19 +43,21 @@
           .form-group
             .form-title
               | Country:
-            .zureal-btn-dropdown
+            .zureal-btn-dropdown.country-btn-dropdown
               .dropdown uib-dropdown=""
                 a.dropdown-toggle.count-info.zureal-dropdown aria-expanded="false" aria-haspopup="true" uib-dropdown-toggle="" href=""
                   span ng-hide="user.country"
                     | Please choose a country
                   span ng-show="user.country"
                     span.flag class="{{ user.country.code }}"
-                    | {{ user.country.title }}
+                    span.country-title
+                      | {{ user.country.title }}
                 ul.dropdown-menu.dropdown-alerts
                   li ng-repeat="country in countries"
-                    a ng-click="user.country = country" style="cursor: pointer"
+                    a.country ng-click="user.country = country" style="cursor: pointer"
                       span.flag class="{{ country.code }}"
-                      | {{ country.title }}
+                      span.country-title
+                        | {{ country.title }}
             .error ng-repeat="error in validation_errors.country"
               | {{ error }}
           .form-group
@@ -61,44 +88,47 @@
             .error ng-repeat="error in validation_errors.soundcloud_link"
               | {{ error }}
 
-    .text-center
-      .content-block
-        .content-title
-          | Company or agency name
-        .content.container
-          .error ng-repeat="error in validation_errors.company_name"
-            | {{ error }}
-          .form-group.text-center
-            input.register-input type="text" ng-model="user.company_name"
-          .leave-it-blanck
-            | (Optional)
-        hr
-      .content-block
-        .content-title
-          | Types of Events
-        .content.container
-          .error ng-repeat="error in validation_errors.event_categories"
-            | {{ error }}
-          label.select-button ng-repeat="event_type in user.event_types"
-            .btn-checkbox.text-center class="{{ event_type.selected? 'active': '' }}"
-              | {{ event_type.title }}
-            input.hide type="checkbox" value="{{ event_type.id }}" ng-model="event_type.selected"
-        hr
-      .content-block
-        .content-title
-          | Genres
-        .content.container
-          .error ng-repeat="error in validation_errors.genres"
-            | {{ error }}
-          label.select-button ng-repeat="genre in user.genres"
-            .btn-checkbox.text-center class="{{ genre.selected? 'active': '' }}"
-              | {{ genre.title }}
-            input.hide type="checkbox" value="{{ genre.id }}" ng-model="genre.selected"
-        hr
-      .actions-block
-        .pull-left
-          a.slider-btn.back href="#profile"
-            | Cancel
-        .pull-right
-          a.slider-btn.next data-style="expand-left" ladda="processing" type="submit" ng-click="save()"
-            | Save
+
+    .content-block#org-id-2 ng-show="!isMobile() || step == 2"
+      .content-title
+        | Company or agency name
+      .container
+        .error ng-repeat="error in validation_errors.company_name"
+          | {{ error }}
+        .form-group.text-center
+          input.register-input type="text" ng-model="user.company_name"
+        .leave-it-blanck
+          | (Optional)
+
+      hr
+    .content-block#org-id-3 ng-show="!isMobile() || step == 3"
+      .content-title
+        | Types of Events
+      .container
+        .error ng-repeat="error in validation_errors.event_categories"
+          | {{ error }}
+        label.select-button ng-repeat="event_type in user.event_types"
+          .btn-checkbox.text-center class="{{ event_type.selected? 'active': '' }}"
+            | {{ event_type.title }}
+          input.hide type="checkbox" value="{{ event_type.id }}" ng-model="event_type.selected"
+
+      hr
+    .content-block#org-id-4 ng-show="!isMobile() || step == 4"
+      .content-title
+        | Genres
+      .container
+        .error ng-repeat="error in validation_errors.genres"
+          | {{ error }}
+        label.select-button ng-repeat="genre in user.genres"
+          .btn-checkbox.text-center class="{{ genre.selected? 'active': '' }}"
+            | {{ genre.title }}
+          input.hide type="checkbox" value="{{ genre.id }}" ng-model="genre.selected"
+
+      hr
+    .actions-block ng-show="!isMobile() || step"
+      .pull-left
+        a.small-text.slider-btn.cancel href="#profile"
+          | Cancel
+      .pull-right
+        a.small-text.slider-btn.apply data-style="expand-left" ladda="processing" type="submit" ng-click="save()"
+          | Save
