@@ -48,6 +48,8 @@
         | Find a DJ
   .margin50
   .index
+    .mobile-caption
+      | My Favs
     .profile-item ng-repeat="dj in djs"
       img ng-src="{{ dj.avatar }}"
       a.icon.like ng-click="addToFavorites(dj)" ng-hide="dj.in_favorites"
