@@ -94,28 +94,23 @@
         background-repeat: no-repeat
         background-size: cover
         background-position: center
-        -webkit-filter: blur(10px)
-        -moz-filter: blur(10px)
-        -o-filter: blur(10px)
-        -ms-filter: blur(10px)
-        filter: blur(10px)
+        -webkit-filter: blur(5px)
+        -moz-filter: blur(5px)
+        -o-filter: blur(5px)
+        -ms-filter: blur(5px)
+        filter: blur(5px)
       .custom-blur
         width: 100%
         height: 100%
         background-color: rgba(84, 84, 84, 0.7)
     .profile-content, .event-content
       margin: 0
-      .profile-avatar
-        .img-avatar
-          height: 360px
-      .event-image
-        .img-event
-          height: 503px
       .profile-avatar, .event-image
         position: absolute
         top: 70px
         display: inline-block
         width: 360px
+        height: 360px
         border-radius: 4px
         box-shadow: 0 2px 20px 0 rgba(0, 0, 0, 0.08)
         @media screen and (max-width: 850px)
@@ -330,6 +325,7 @@
           .td-title
             width: calc-w-small(140)
             padding-right: calc-w-small(10)
+
 
 [device='mobile'][orientation='landscape']
   .profile, .event

@@ -1,0 +1,54 @@
+@import "variables_and_functions"
+
+.index
+  margin: auto
+  margin-bottom: 50px
+  @media (max-width: 1199px)
+    width: 800px
+  @media (max-width: 799px)
+    width: 400px
+
+.profile-item
+  display: inline-block
+  vertical-align: top
+  width: 360px
+  margin: 20px
+  border-radius: 4px
+  background-color: #ffffff
+  border: solid 1px #f5f5f5
+  .like, .like-active
+    margin-left: 285px
+    margin-top: -345px
+  img
+    width: 360px
+    height: 360px
+    border-radius: 4px
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.2), rgba(255, 255, 255, 0) 50%, rgba(0, 0, 0, 0.2))
+    background: -webkit-linear-gradient(to bottom, rgba(0, 0, 0, 0.2), rgba(255, 255, 255, 0) 50%, rgba(0, 0, 0, 0.2))
+    background: -o-linear-gradient(to bottom, rgba(0, 0, 0, 0.2), rgba(255, 255, 255, 0) 50%, rgba(0, 0, 0, 0.2))
+    background: -moz-linear-gradient(to bottom, rgba(0, 0, 0, 0.2), rgba(255, 255, 255, 0) 50%, rgba(0, 0, 0, 0.2))
+  .inf
+    padding: 25px 30px
+    color: #555555
+    .name
+      font-size: 28px
+      letter-spacing: 1.8px
+      color: #555555
+      &:hover
+        color: $current-color
+    .small-text
+      font-size: 16px
+    .genres
+      display: inline-block
+      margin-top: 20px
+      letter-spacing: 1.5px
+      color: #8a8a8a
+    .address
+      letter-spacing: 1px
+    .rating
+      display: block
+      margin-bottom: 10px
+  .rating-icons
+    color: #fff918
+    font-size: 20px
+    outline: none
