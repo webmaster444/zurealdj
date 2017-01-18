@@ -84,6 +84,11 @@
                     templateUrl: 'organizers/templates/favorites/index.html',
                     controller: 'FavoritesController'
                 })
+                .state('settings',{
+                    url: '/settings',
+                    templateUrl: 'organizers/templates/settings/edit.html',
+                    controller: 'SettingsController'
+                })
     }]);
 
     ZurealdjOrganizerApp.run(['$http', '$rootScope', '$state', 'AuthHttp', function($http, $rootScope, $state, AuthHttp){

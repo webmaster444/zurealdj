@@ -38,6 +38,11 @@ en:
       wrong_current_password: 'Wrong current password.'
       profile_updated: 'Profile successfully updated.'
 
+  settings:
+    messages:
+      wrong_current_password: 'Wrong Old password.'
+      settings_updated: 'Settings successfully updated.'
+
   validations:
     cant_be_blank: "Can't be blank."
 

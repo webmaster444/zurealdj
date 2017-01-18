@@ -11,7 +11,14 @@
     border-color: #e1c3fd
     color: #938e94
 
-.register-input
+.zureal-checkbox
+  label
+    font-size: 16px
+    color: #555555
+    &::selection
+      background: transparent
+
+.register-input, .zureal-input
   background-color: white
   border: solid 1px #e6e6e6
   outline: none
@@ -53,6 +60,12 @@
   .zureal-textarea
     padding: calc-h-small(8) calc-w-small(30)
     border-radius: calc-w-small(15)
+    font-size: calc-h-small(16)
+    border-width: calc-w-small(1)
+  .register-input, .zureal-input
+    width: 100%
+    padding: calc-h-small(8) calc-w-small(30)
+    border-radius: 100px
     font-size: calc-h-small(16)
     border-width: calc-w-small(1)
   .zureal-btn-dropdown.country-btn-dropdown
@@ -148,7 +161,7 @@
     margin: 15px auto
     padding: 13px 30px
     font-size: 16px
-  .register-input
+  .register-input, .zureal-input
     width: 400px
     padding: 15px 30px
     border-radius: 100px

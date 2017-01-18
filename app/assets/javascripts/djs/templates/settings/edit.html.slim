@@ -1,0 +1,70 @@
+.settings
+  .page-block
+    div
+      .content-block
+        .content-title
+          | Main Settings
+        #edit-password class="{{ activeEdit == 1? 'active-edit' : '' }}"
+          .form-group#current-password
+            .col-title
+              | {{ activeEdit == 1? 'Old password' : 'Password' }}
+            .col-field
+              input.zureal-input type="password" ng-model="user.current_password" ng-disabled="activeEdit != 1" placeholder="{{ activeEdit != 1? '******' : '' }}"
+            .col-action
+              a.edit ng-click="!activeEdit? activeEdit = 1 : true"
+                | Edit
+          .form-group#password
+            .col-title
+              | New password
+            .col-field
+              input.zureal-input type="password" ng-model="user.password"
+          .form-group#password-confirmation
+            .col-title
+              | Confirm password
+            .col-field
+              input.zureal-input type="password" ng-model="user.password_confirmation"
+          .actions-block
+            a.settings-btn.cancel ng-click="activeEdit = 0"
+              | Cancel
+            a.settings-btn.save data-style="expand-left" ladda="processing" type="submit" ng-click="save()"
+              | Save
+        #edit-email class="{{ activeEdit == 2? 'active-edit' : '' }}"
+          .form-group
+            .col-title
+              | Email
+            .col-field
+              input.zureal-input type="email" ng-model="user.email" ng-disabled="activeEdit != 2"
+            .col-action
+              a.edit ng-click="!activeEdit? activeEdit = 2 : true"
+                | Edit
+          .actions-block
+            a.settings-btn.cancel ng-click="activeEdit = 0"
+              | Cancel
+            a.settings-btn.save data-style="expand-left" ladda="processing" type="submit" ng-click="save()"
+              | Save
+        #edit-link class="{{ activeEdit == 3? 'active-edit' : '' }}"
+          .form-group
+            .col-title
+              | Account link
+            .col-field
+              input.zureal-input type="text" ng-model="user.personal_url" ng-disabled="activeEdit != 3"
+            .col-action
+              a.edit ng-click="!activeEdit? activeEdit = 3 : true"
+                | Edit
+            .page-id
+              | Page id - {{ user.id }}
+          .actions-block
+            a.settings-btn.cancel ng-click="activeEdit = 0"
+              | Cancel
+            a.settings-btn.save data-style="expand-left" ladda="processing" type="submit" ng-click="save()"
+              | Save
+
+    #notifications-block
+      .content-block
+        .content-title
+          | Notifications
+        .zureal-checkbox
+          input type="checkbox" ng-model="user.notifications" id="notifications"
+          label for="notifications"
+            span
+            | Mail notifications

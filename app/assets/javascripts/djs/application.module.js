@@ -125,6 +125,11 @@
                     templateUrl: 'djs/templates/events/index.html',
                     controller: 'EventsController'
                 })
+                .state('settings',{
+                    url: '/settings',
+                    templateUrl: 'djs/templates/settings/edit.html',
+                    controller: 'SettingsController'
+                })
     }]);
 
     ZurealdjDjApp.run(['$http', '$rootScope', 'AuthHttp', '$state', function($http, $rootScope, AuthHttp, $state){
