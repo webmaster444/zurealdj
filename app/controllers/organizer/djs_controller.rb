@@ -70,7 +70,10 @@ class Organizer::DjsController < Organizer::BaseController
                 users[:avatar_updated_at],
                 djs[:id].as('dj_id'),
                 djs[:city],
-                djs[:country_flag_code],
+                djs[:weekday_rate_from],
+                djs[:weekday_rate_to],
+                djs[:weekend_rate_from],
+                djs[:weekend_rate_to],
                 "(array(SELECT json_build_object(
                        'id', genres.id,
                        'title', genres.title

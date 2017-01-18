@@ -46,6 +46,26 @@
                 | Show {{ search_count }} DJs
       button.search-button
         | Find a DJ
+
+    .selected-filters ng-show="checkSelectedFilters()"
+      .filter-item ng-show="checkPriceFilter()" ng-click="resetPriceFilter(); retrieveDjs();"
+        .filter-title
+          | Price ${{ filters.price_from }} - ${{ filters.price_to }}
+        a.btn-close
+
+      .filter-item ng-repeat="genre in filters.genres" ng-show="genre.checked"
+        .filter-title
+          | {{ genre.title }}
+        a.btn-close ng-click="genre.checked = false; retrieveDjs();"
+
+      .filter-item ng-repeat="event_type in filters.event_types" ng-show="event_type.checked"
+        .filter-title
+          | {{ event_type.title }}
+        a.btn-close ng-click="event_type.checked = false; retrieveDjs();"
+
+      a.clear-filters ng-click="resetFilters(); retrieveDjs()"
+        | Clear
+
   .margin50
   .index
     .mobile-caption

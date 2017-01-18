@@ -11,6 +11,7 @@
                 $scope.$state = $state;
 
                 $scope.slider = {
+                    default: true,
                     options: {
                         floor: 0,
                         ceil: 1000,
@@ -47,16 +48,35 @@
                 $scope.dj = [];
                 $scope.search_count = 0;
 
+                $scope.resetPriceFilter = function() {
+                    $scope.filters.price_from = $scope.min_rate;
+                    $scope.filters.price_to = $scope.max_rate;
+                };
+
                 $scope.resetFilters = function(){
                     $scope.filters = {
                         page: 1,
                         per_page: 10,
-                        price_from: 0,
-                        price_to: 1000,
+                        price_from: $scope.min_rate,
+                        price_to: $scope.max_rate,
                         genres: _.map($scope.filters.genres, function(i){ i.checked = false; return i;}),
                         event_types: _.map($scope.filters.event_types, function(i){ i.checked = false; return i;}),
                         favorite: true
                     };
+                };
+
+                $scope.checkPriceFilter = function() {
+                    return $scope.filters.price_from != $scope.min_rate || $scope.filters.price_to != $scope.max_rate
+                };
+
+                $scope.checkSelectedFilters = function() {
+                    if($scope.checkPriceFilter()) return true;
+                    for(var i = 0; i < $scope.filters.genres.length; i++)
+                        if($scope.filters.genres[i].checked) return true;
+                    for(var i = 0; i < $scope.filters.event_types.length; i++)
+                        if($scope.filters.event_types[i].checked) return true;
+
+                    return false
                 };
 
                 var timer = false;
@@ -82,6 +102,15 @@
                     djs.all($scope.filters).success(function (data) {
                         $scope.djs = data.djs;
                         $scope.count = data.count;
+                        $scope.min_rate = data.min_rate;
+                        $scope.max_rate = data.max_rate;
+
+                        if($scope.slider.default){
+                            $scope.slider.options.ceil = $scope.max_rate;
+                            $scope.slider.default = false;
+                            $scope.filters.price_from = $scope.min_rate;
+                            $scope.filters.price_to = $scope.max_rate;
+                        }
 
                         var pagination = $('#djs-pagination');
                         pagination.empty();

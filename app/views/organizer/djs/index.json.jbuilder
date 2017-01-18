@@ -10,4 +10,6 @@ json.djs @djs.each do |dj|
   json.rating dj['votes_count'] == 0 ? 0 : dj['stars_count']/dj['votes_count']
   json.in_favorites current_user.organizer.favorite_djs.include?(dj.dj)
 end
+json.min_rate [Dj.minimum(:weekday_rate_from), Dj.minimum(:weekend_rate_from)].min
+json.max_rate [Dj.maximum(:weekday_rate_to), Dj.maximum(:weekend_rate_to)].max
 json.count @count

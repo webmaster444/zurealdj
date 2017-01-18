@@ -21,6 +21,7 @@
 .index
   margin: auto
 
+
 [device='desktop']
   .index
     margin-bottom: 50px
@@ -28,6 +29,8 @@
       width: 800px
     @media (max-width: 799px)
       width: 400px
+    .mobile-caption
+      display: none
 
   .profile-item
     display: inline-block
@@ -64,9 +67,7 @@
     letter-spacing: calc-w-small(1.4)
     text-align: center
     padding: calc-w-small(20) 0
-    padding-top: calc-w-small(30)
     box-shadow: 0 calc-w-small(2) calc-w-small(20) 0 rgba(0, 0, 0, 0.08)
-    margin-top: calc-w-small(-10)
     margin-bottom: calc-w-small(15)
     width: 100%
   .margin50
