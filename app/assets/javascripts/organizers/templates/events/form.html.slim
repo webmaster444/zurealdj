@@ -20,7 +20,7 @@
           label
             | Type
         td
-          span.zurealdj-dropdown[uib-dropdown on-toggle="toggled(open)"]
+          span.dj-dropdown[uib-dropdown on-toggle="toggled(open)"]
             a[id="simple-dropdown" uib-dropdown-toggle]
               | {{ event.event_type_id ? event.event_type_title : "Select" }}
             i.fa.fa-chevron-down
@@ -41,7 +41,7 @@
           label
             | Country:
         td
-          span.zurealdj-dropdown[uib-dropdown]
+          span.dj-dropdown[uib-dropdown]
             i.fa.fa-chevron-down
             a.zureal-dropdown[ng-disabled="disabled" uib-dropdown-toggle]
               span ng-hide="event.country"

@@ -22,9 +22,12 @@
                 $scope.checkSession();
             }
 
-            users.profile().success(function(data){
-                $scope.$current_user = data;
-            });
+            $scope.retrieveCurrentUser = function(){
+                users.profile().success(function(data){
+                    $scope.$current_user = data;
+                });
+            };
+            $scope.retrieveCurrentUser();
 
             $scope.$state = $state;
 

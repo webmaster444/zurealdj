@@ -1,3 +1,5 @@
+@import 'variables_and_functions'
+
 .shadow-block
   padding: 50px
   border-radius: 4px
@@ -68,3 +70,11 @@
   background-color: #ffffff
   box-shadow: 0 2px 20px 0 rgba(0, 0, 0, 0.08)
   padding: 30px !important
+
+@media (max-width: $mobile-max-width)
+  .desktop-only
+    display: none !important
+
+@media (min-width: $mobile-max-width)
+  .mobile-only
+    display: none !important

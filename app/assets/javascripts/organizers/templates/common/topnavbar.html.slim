@@ -1,29 +1,36 @@
 .top-navbar
-  .page-block
-    .pull-left
-      a href="/"
-        img.small-logo src="/images/icons/img-logo-zu-purple.png"
-    .pull-right
-      ul.right-menu
-        li.small-text
-          | Inbox
-          .count
-            | 3
-        li.bell.i-bell-passive
-        li.zureal-btn-dropdown
-          .dropdown uib-dropdown=""
-            a.dropdown-toggle.count-info aria-expanded="false" aria-haspopup="true" uib-dropdown-toggle="" href=""
-              .user-dropdown
-                img ng-src="{{ $current_user.avatar_present? $current_user.avatar.small : '/images/icons/img-profile-photo-mini.png' }}"
-                span
-                  | {{ $current_user.name }}
-            ul.dropdown-menu.dropdown-alerts
-              li
-                a href="#profile"
-                  | Profile
-              li
-                a ng-click="logout()" href="#"
-                  | Log out
+  .container
+    table
+      tr
+        td.left-menu
+          a href="/"
+            img.logo src="/images/icons/img-logo-zu-purple.png"
+        td.right-menu
+          ul
+            li.desktop-only
+              a.dj-black-link
+                | Inbox
+                .count<
+                  | 3
+            li.desktop-only
+              a
+                i.dj-bell
+            li.desktop-only
+              .dropdown[uib-dropdown]
+                a.dropdown-toggle.count-info[aria-expanded="false" aria-haspopup="true" uib-dropdown-toggle]
+                  img.profile-image> ng-src="{{ $current_user.avatar.url == '/images/img-profile-photo.png'? '/images/icons/img-profile-photo-mini.png' : $current_user.avatar.url}}"
+                  span
+                    | {{ $current_user.name }}
+                  .drop<
+                ul[uib-dropdown-menu]
+                  li
+                    a href="#profile"
+                      | Profile
+                  li
+                    a ng-click="logout()" href="#"
+                      | Sign out
+            li.mobile-only
+              .mobile-menu-button
 
 .second-nav
   .page-block
