@@ -43,7 +43,7 @@
                 | Reset
             .text-right
               a.btn.btn-primary ng-click="retrieveDjs()"
-                | Show {{ search_count }} DJs
+                | Show {{ count }} DJs
       button.search-button
         | Find a DJ
 
@@ -88,3 +88,7 @@
           | {{ dj.genres }}
         .rating
           span.rating-icons rating=true ng-model="dj.rating" max="5" ng-change="rate(dj)"
+
+  .show-more
+    a ng-click="showMore()" ng-hide="djs.length == count"
+      | Show More

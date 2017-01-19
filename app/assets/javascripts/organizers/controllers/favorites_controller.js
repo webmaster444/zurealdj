@@ -31,11 +31,13 @@
 
                 $scope.filters = {
                     page: 1,
-                    per_page: 10,
+                    per_page: 12,
                     price_from: 0,
                     price_to: 1000,
                     favorite: true
                 };
+
+                $scope.next_page = false;
 
                 event_types.all().success(function(data){
                     $scope.filters.event_types = data.event_types;
@@ -46,7 +48,6 @@
                 });
 
                 $scope.dj = [];
-                $scope.search_count = 0;
 
                 $scope.resetPriceFilter = function() {
                     $scope.filters.price_from = $scope.min_rate;
@@ -56,7 +57,7 @@
                 $scope.resetFilters = function(){
                     $scope.filters = {
                         page: 1,
-                        per_page: 10,
+                        per_page: 12,
                         price_from: $scope.min_rate,
                         price_to: $scope.max_rate,
                         genres: _.map($scope.filters.genres, function(i){ i.checked = false; return i;}),
@@ -71,9 +72,9 @@
 
                 $scope.checkSelectedFilters = function() {
                     if($scope.checkPriceFilter()) return true;
-                    for(var i = 0; i < $scope.filters.genres.length; i++)
+                    for(var i = 0; $scope.filters.genres && i < $scope.filters.genres.length; i++)
                         if($scope.filters.genres[i].checked) return true;
-                    for(var i = 0; i < $scope.filters.event_types.length; i++)
+                    for(var i = 0; $scope.filters.event_types && i < $scope.filters.event_types.length; i++)
                         if($scope.filters.event_types[i].checked) return true;
 
                     return false
@@ -82,60 +83,46 @@
                 var timer = false;
                 $scope.$watch('filters', function(){
                     if(timer){
-                        $scope.filters.page = 1;
+                        if(!$scope.next_page) $scope.filters.page = 1;
                         $timeout.cancel(timer)
                     }
                     timer = $timeout(function(){
-                        if($scope.filters.page > Math.ceil($scope.count / $scope.filters.per_page))
-                            $scope.filters.page = 1;
-                        $scope.retrieveDjsCount();
+                        $scope.retrieveDjs();
                     }, 500)
                 }, true);
 
-                $scope.retrieveDjsCount = function(){
-                    djs.all($scope.filters).success(function (data) {
-                        $scope.search_count = data.count;
-                    });
-                };
-
                 $scope.retrieveDjs = function(){
                     djs.all($scope.filters).success(function (data) {
-                        $scope.djs = data.djs;
+                        if($scope.next_page){
+                            $scope.djs = $scope.djs.concat(data.djs);
+                            $scope.next_page = false;
+                        }
+                        else $scope.djs = data.djs;
                         $scope.count = data.count;
-                        $scope.min_rate = data.min_rate;
-                        $scope.max_rate = data.max_rate;
 
                         if($scope.slider.default){
+                            $scope.min_rate = data.min_rate;
+                            $scope.max_rate = data.max_rate;
                             $scope.slider.options.ceil = $scope.max_rate;
                             $scope.slider.default = false;
                             $scope.filters.price_from = $scope.min_rate;
                             $scope.filters.price_to = $scope.max_rate;
                         }
 
-                        var pagination = $('#djs-pagination');
-                        pagination.empty();
-                        pagination.removeData('twbs-pagination');
-                        pagination.unbind('page');
 
-                        if($scope.count > 0){
-                            pagination.twbsPagination({
-
-                                totalPages: Math.ceil($scope.count / $scope.filters.per_page),
-                                startPage: $scope.filters.page,
-
-                                visiblePages: 9,
-                                onPageClick: function (event, page) {
-                                    $scope.filters.page = page;
-                                    $scope.retrieveDjs();
-                                }
-                            })
-                        }
                     }).error(function (data) {
 
                     });
                 };
 
                 $scope.retrieveDjs();
+
+                $scope.showMore = function(){
+                    if($scope.djs.length < $scope.count){
+                        $scope.next_page = true;
+                        ++$scope.filters.page;
+                    }
+                };
 
                 $scope.rate = function(dj){
                     djs.rate(dj.dj_id, dj.rating)

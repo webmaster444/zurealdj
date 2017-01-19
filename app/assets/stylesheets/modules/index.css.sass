@@ -21,16 +21,32 @@
 .index
   margin: auto
 
+.show-more
+  text-align: center
+  a
+    font-weight: 500
+    color: #b05dfc
+    background-color: white
+    &::selection
+      background: transparent
+
 
 [device='desktop']
   .index
-    margin-bottom: 50px
     @media (max-width: 1199px)
       width: 800px
     @media (max-width: 799px)
       width: 400px
     .mobile-caption
       display: none
+  .show-more
+    margin: 100px auto
+    a
+      font-size: 16px
+      letter-spacing: 1.5px
+      padding: 15px 40px
+      border-radius: 100px
+      box-shadow: 0 2px 30px 0 rgba(176, 93, 252, 0.8)
 
   .profile-item
     display: inline-block
@@ -74,7 +90,14 @@
     display: none
   .index
     text-align: center
-    margin-bottom: calc-w-small(20)
+  .show-more
+    margin: calc-w-small(50) auto
+    a
+      font-size: calc-w-small(16)
+      letter-spacing: calc-w-small(1.5)
+      padding: calc-w-small(10) calc-w-small(30)
+      border-radius: calc-w-small(100)
+      box-shadow: 0 calc-w-small(2) calc-w-small(30) 0 rgba(176, 93, 252, 0.8)
 
   .profile-item
     text-align: left

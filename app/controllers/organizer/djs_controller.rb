@@ -6,7 +6,7 @@ class Organizer::DjsController < Organizer::BaseController
     @page = params[:page].to_i
     @page = 1 if @page < 1
     @per_page = params[:per_page].to_i
-    @per_page = 10 if @per_page < 1
+    @per_page = 12 if @per_page < 1
 
     @djs = User.find_by_sql(query.take(@per_page).skip((@page - 1) * @per_page).to_sql)
     @count = User.find_by_sql(query(count: true)).first.try(:[], :count)

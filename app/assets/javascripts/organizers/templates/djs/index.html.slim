@@ -43,12 +43,12 @@
                 | Reset
             .text-right
               a.btn.btn-primary ng-click="retrieveDjs()"
-                | Show {{ search_count }} DJs
+                | Show {{ count }} DJs
       button.search-button
         | Find a DJ
 
     .selected-filters ng-show="checkSelectedFilters()"
-      .filter-item ng-show="checkPriceFilter()" ng-click="resetPriceFilter(); retrieveDjs();"
+      .filter-item ng-show="checkPriceFilter()" ng-click="resetPriceFilter()"
         .filter-title
           | Price ${{ filters.price_from }} - ${{ filters.price_to }}
         a.btn-close
@@ -56,21 +56,21 @@
       .filter-item ng-repeat="genre in filters.genres" ng-show="genre.checked"
         .filter-title
           | {{ genre.title }}
-        a.btn-close ng-click="genre.checked = false; retrieveDjs();"
+        a.btn-close ng-click="genre.checked = false"
 
       .filter-item ng-repeat="event_type in filters.event_types" ng-show="event_type.checked"
         .filter-title
           | {{ event_type.title }}
-        a.btn-close ng-click="event_type.checked = false; retrieveDjs();"
+        a.btn-close ng-click="event_type.checked = false"
 
-      a.clear-filters ng-click="resetFilters(); retrieveDjs()"
+      a.clear-filters ng-click="resetFilters()"
         | Clear
 
   .margin50
   .index
     .mobile-caption
       | Browse DJs
-    .profile-item ng-repeat="dj in djs"
+    .profile-item ng-repeat="dj in djs track by $index"
       img ng-src="{{ dj.avatar }}"
       a.icon.like ng-click="addToFavorites(dj)" ng-hide="dj.in_favorites"
       a.icon.like-active ng-click="removeFromFavorites(dj)" ng-show="dj.in_favorites"
@@ -88,3 +88,7 @@
           | {{ dj.genres }}
         .rating
           span.rating-icons rating=true ng-model="dj.rating" max="5" ng-change="rate(dj)"
+
+  .show-more
+    a.show-more ng-click="showMore()" ng-hide="djs.length == count"
+      | Show More
