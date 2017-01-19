@@ -101,5 +101,9 @@
                         window.location = '/'
                     })
                 };
+
+                $scope.scroll = function(){
+                    $("body").animate({ scrollTop: $('.page-head').height() + 10 }, '500', 'swing');
+                }
             }])
 }());
