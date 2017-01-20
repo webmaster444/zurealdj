@@ -1,6 +1,6 @@
 class Organizer::DjsController < Organizer::BaseController
 
-  load_and_authorize_resource :dj
+  #load_and_authorize_resource :dj
 
   def index
     @page = params[:page].to_i
@@ -23,6 +23,7 @@ class Organizer::DjsController < Organizer::BaseController
   end
 
   def show
+    @dj = Dj.find_user params[:id]
     @user = @dj.user
   end
 
@@ -68,12 +69,9 @@ class Organizer::DjsController < Organizer::BaseController
                 users[:avatar_content_type],
                 users[:avatar_file_size],
                 users[:avatar_updated_at],
+                users[:personal_url],
                 djs[:id].as('dj_id'),
                 djs[:city],
-                djs[:weekday_rate_from],
-                djs[:weekday_rate_to],
-                djs[:weekend_rate_from],
-                djs[:weekend_rate_to],
                 "(array(SELECT json_build_object(
                        'id', genres.id,
                        'title', genres.title

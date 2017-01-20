@@ -75,7 +75,7 @@
       a.icon.like ng-click="addToFavorites(dj)" ng-hide="dj.in_favorites"
       a.icon.like-active ng-click="removeFromFavorites(dj)" ng-show="dj.in_favorites"
       .inf
-        a.name href="#djs/{{ dj.dj_id }}"
+        a.name href="#djs/{{ dj.personal_url || dj.dj_id }}"
           | {{ dj.name }}
         .small-text.address
           span ng-show="dj.city"

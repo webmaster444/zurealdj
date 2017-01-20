@@ -27,4 +27,14 @@ class Dj < ActiveRecord::Base
     dj_stars.count
   end
 
+  def Dj.find_user id
+    user = User.find_by_personal_url id
+    if user.nil?
+      dj = Dj.find id
+    else
+      dj = Dj.find_by_user_id user.id
+    end
+    dj
+  end
+
 end
