@@ -39,7 +39,7 @@
             },
 
             all: function(options){
-                return $http.get('/organizer/events.json?page=' + options.page);
+                return $http.get('/organizer/events.json?page=' + options.page + '&per_page=' + options.per_page);
             },
 
             show: function(id){

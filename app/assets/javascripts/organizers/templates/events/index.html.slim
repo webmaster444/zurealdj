@@ -49,32 +49,38 @@
   .margin50
   a.pink-link ng-click="openEventDialog()"
     | + Add new event
-  table
-    thead
-      tr
-        th
-          | Image
-        th
-          | Title
-        th
-          | City
-        th
-          | Country
-        th
-          | Start Date
-        th
-          | End Date
-    tbody
-      tr ng-repeat="event in events"
-        td
-          img ng-src="{{ event.image }}" style="width: 150px"
-        td
-          | {{ event.title }}
-        td
-          | {{ event.city }}
-        td
-          | {{ event.country.title }}
-        td
-          | {{ event.start_date }}
-        td
-          | {{ event.end_date }}
+  .text-center.events-count
+    | {{ events.length }} of {{ count }} Events
+  .event-item ng-repeat="event in events track by $index"
+    span.status
+      | {{ event.status }}
+    .djs
+      img.dj ng-repeat="dj in event.djs | limitTo: djsCount()" ng-src="{{ dj.avatar }}"
+      .plus.small-text
+        | +{{ event.djs.length - 4 > 0? event.djs.length - 4 : 0 }}
+    img.event-image ng-src="{{ event.image }}"
+    .event-inf
+      a.event-title href="#events/{{ event.id }}"
+        | {{ event.title }}
+      .small-text.address
+        span ng-show="event.city"
+          | {{ event.city}}
+          span ng-show="event.country"
+            | {{ ', ' }}
+        span
+          | {{ event.country }}
+      table
+        tr
+          td.small-text.light-grey
+            | Start date:
+          td.small-text
+            | {{ event.start_date }}
+        tr
+          td.small-text.light-grey
+            | End date:
+          td.small-text
+            | {{ event.end_date }}
+
+  .show-more
+    a.show-more ng-click="showMore()" ng-hide="events.length == count"
+      | Show More

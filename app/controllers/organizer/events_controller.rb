@@ -3,6 +3,11 @@ class Organizer::EventsController < ApplicationController
   load_and_authorize_resource :event
 
   def index
+    @page = params[:page].to_i
+    @page = 1 if @page < 1
+    @per_page = params[:per_page].to_i
+    @per_page = 10 if @per_page < 1
+
     events = Event.arel_table
 
     query = events
@@ -17,7 +22,7 @@ class Organizer::EventsController < ApplicationController
 
     count_query = query.clone.project('COUNT(*)')
 
-    @events = Event.find_by_sql(query.take(10).skip((params[:page].to_i - 1) * 10).to_sql)
+    @events = Event.find_by_sql(query.take(@per_page).skip((@page - 1) * @per_page).to_sql)
     @count = Event.find_by_sql(count_query.to_sql).count
   end
 

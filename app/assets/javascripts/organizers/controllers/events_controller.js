@@ -14,54 +14,50 @@
                     return $sce.trustAsHtml(html);
                 };
 
-
                 if($state.current.name == 'events'){
-                    flags.all().success(function (data) {
-                        $scope.flags = data.flags;
-                    });
 
-                    $scope.filters = {};
+                    $scope.next_page = false;
+
+                    $scope.filters = {
+                        page: 1,
+                        per_page: 10
+                    };
 
                     $scope.event = [];
 
                     var timer = false;
-                    $scope.$watch('filters', function () {
-                        if (timer) {
+                    $scope.$watch('filters', function(){
+                        if(timer){
+                            if(!$scope.next_page) $scope.filters.page = 1;
                             $timeout.cancel(timer)
                         }
-                        timer = $timeout(function () {
+                        timer = $timeout(function(){
                             $scope.retrieveEvents();
                         }, 500)
                     }, true);
 
-                    $scope.page = 1;
-                    $scope.retrieveEvents = function () {
-                        events.all({page: $scope.page, query: $scope.filters}).success(function (data) {
-                            $scope.events = data.events;
+                    $scope.retrieveEvents = function(){
+                        events.all($scope.filters).success(function (data) {
+                            if($scope.next_page){
+                                $scope.events = $scope.events.concat(data.events);
+                                $scope.next_page = false;
+                            }
+                            else $scope.events = data.events;
                             $scope.count = data.count;
 
-                            var pagination = $('#events-pagination');
-                            pagination.empty();
-                            pagination.removeData('twbs-pagination');
-                            pagination.unbind('page');
-
-                            if ($scope.count > 0) {
-                                pagination.twbsPagination({
-                                    totalPages: Math.ceil($scope.count / 9),
-                                    startPage: $scope.page,
-                                    visiblePages: 9,
-                                    onPageClick: function (event, page) {
-                                        $scope.page = page;
-                                        $scope.retrieveEvents();
-                                    }
-                                })
-                            }
                         }).error(function (data) {
 
                         });
                     };
 
                     $scope.retrieveEvents();
+
+                    $scope.showMore = function(){
+                        if($scope.events.length < $scope.count){
+                            $scope.next_page = true;
+                            ++$scope.filters.page;
+                        }
+                    };
 
 
                     $scope.destroy = function (id) {
@@ -126,6 +122,11 @@
                             className: 'ngdialog-theme-default ngdialog-zurealdj'
                         });
                     };
+
+                    $scope.djsCount = function() {
+                        var count = ($('.event-item').width() - 550) / 90;
+                        return count > 4? 4: count;
+                    }
                 }
 
                 if($state.current.name == 'event'){
@@ -133,6 +134,6 @@
                         $scope.event = data;
                     });
                 }
-            }])
+        }])
 
 }());
