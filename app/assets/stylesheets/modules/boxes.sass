@@ -30,7 +30,6 @@
     top: 20px
     right: 213px
     #toggle-button
-      font-family: CeraPro
       font-size: 16px
       color: #555555
     .dropdown-menu
@@ -56,7 +55,6 @@
     position: absolute
     top: 0
     right: 0
-    font-family: CeraPro
     font-size: 18px
     font-weight: 500
     font-style: normal
@@ -64,12 +62,18 @@
     letter-spacing: 1.7px
     color: #ffffff
 
-.ngdialog.ngdialog-theme-default.ngdialog-zurealdj .ngdialog-content
-  width: 70%
-  border-radius: 4px
-  background-color: #ffffff
-  box-shadow: 0 2px 20px 0 rgba(0, 0, 0, 0.08)
-  padding: 30px !important
+.ngdialog.ngdialog-theme-default.ngdialog-zurealdj
+  .ngdialog-content
+    max-width: 1050px
+    width: 100%
+    border-radius: 4px
+    background-color: #ffffff
+    box-shadow: 0 2px 20px 0 rgba(0, 0, 0, 0.08)
+    padding: 30px !important
+  .ngdialog-close
+    display: none
+  .ngdialog-overlay
+    pointer-events: none
 
 @media (max-width: $mobile-max-width)
   .desktop-only

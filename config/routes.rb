@@ -81,7 +81,7 @@ Rails.application.routes.draw do
         end
       end
       resources :favorite_djs, only: [:index, :update, :destroy]
-      resources :events, only: [:index, :create, :show]
+      resources :events, only: [:index, :create, :show, :update, :destroy]
       resources :settings, only: [:index, :update] do
         collection do
           post :notifications

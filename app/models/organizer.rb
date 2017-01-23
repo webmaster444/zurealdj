@@ -2,6 +2,7 @@ class Organizer < ActiveRecord::Base
 
   has_and_belongs_to_many :favorite_djs, join_table: :favorite_djs, class_name: Dj
   has_many :organizer_stars
+  has_many :events, dependent: :destroy
 
   def country_flag
     CountryFlag.find(country_flag_code)

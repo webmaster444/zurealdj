@@ -1,15 +1,9 @@
 @import 'variables_and_functions'
 
 .zureal-textarea
-  outline: none
-  border: solid 1px #e6e6e6
-  color: #c6bfc7
   display: inline-block
   width: 100%
   font-weight: 500
-  &:focus
-    border-color: #e1c3fd
-    color: #938e94
 
 .zureal-checkbox
   label
@@ -18,30 +12,31 @@
     &::selection
       background: transparent
 
-.register-input, .zureal-input
+.register-input, .zureal-input, .landing-input, .zureal-textarea
   background-color: white
   border: solid 1px #e6e6e6
   outline: none
   color: #c6bfc7
+  font-size: 16px
   &:focus
     border-color: #e1c3fd
     color: #938e94
 
+.register-input, .zureal-input, .landing-input
+  padding: 15px 30px
+  border-radius: 100px
+
 .landing-input
-  border: 1px solid #e6e6e6
-  outline: none
   width: 100%
   font-weight: normal
   line-height: 1.5
-  color: #c6bfc7
-  &:focus
-    border-color: #e1c3fd
-    color: #938e94
+
+.images-list
+  .plus, label
+    display: inline-block
 
 [device='mobile'][size='small']
   .landing-input
-    -webkit-border-radius: calc-h-small(40)
-    -moz-border-radius: calc-h-small(40)
     border-radius: calc-h-small(40)
     margin: calc-h-small(15) auto
     padding: calc-h-small(8) calc-w-small(30)
@@ -49,25 +44,25 @@
 
 [device='mobile'][size='full']
   .landing-input
-    -webkit-border-radius: calc-h-full(40)
-    -moz-border-radius: calc-h-full(40)
     border-radius: calc-h-full(40)
     margin: calc-h-full(15) auto
     padding: calc-h-full(8) calc-w-full(30)
     font-size: calc-h-full(16)
 
 [device='mobile']
+  .images-list
+    .plus
+      width: 100% !important
+      height: 265px !important
+      label
+        width: 280px !important
+        height: 280px !important
   .zureal-textarea
-    padding: calc-h-small(8) calc-w-small(30)
-    border-radius: calc-w-small(15)
-    font-size: calc-h-small(16)
-    border-width: calc-w-small(1)
+    padding: 8px 30px
+    border-radius: 15px
   .register-input, .zureal-input
     width: 100%
-    padding: calc-h-small(8) calc-w-small(30)
-    border-radius: 100px
-    font-size: calc-h-small(16)
-    border-width: calc-w-small(1)
+    padding: 8px 30px
   .zureal-btn-dropdown.country-btn-dropdown
     display: block
     width: 100%
@@ -155,45 +150,31 @@
 
 [device='desktop']
   .landing-input
-    -webkit-border-radius: 20px
-    -moz-border-radius: 20px
     border-radius: 25px
     margin: 15px auto
     padding: 13px 30px
     font-size: 16px
   .register-input, .zureal-input
     width: 400px
-    padding: 15px 30px
-    border-radius: 100px
-    font-size: 16px
   .zureal-textarea
     width: 400px
     border-radius: 20px
     padding: 15px 30px
-    font-size: 16px
+  .images-list
+    .plus
+      width: 300px !important
+      height: 300px !important
+      label
+        width: 300px !important
+        height: 300px !important
 
 .zurealdj-header-1
-  font-family: CeraPro
   font-size: 18px
   font-weight: 500
   font-style: normal
   font-stretch: normal
   line-height: 1
   color: #555555
-
-.zurealdj-input
-  border-radius: 100px
-  background-color: #ffffff
-  border: solid 1px #e1c3fd
-  height: 50px
-  font-family: CeraPro
-  font-size: 16px
-  font-weight: 500
-  font-style: normal
-  font-stretch: normal
-  color: #555555
-  outline: none
-  padding: 0 15px
 
 table.form-table
   width: 100%
@@ -202,11 +183,13 @@ table.form-table
   & > tbody > tr
     margin-bottom: 10px
     input
-      width: 100%
-    .zurealdj-dropdown
+      width: 100% !important
+    .dj-dropdown
       width: 100%
     & > td:nth-child(1)
-      width: 200px
+      width: 150px
+    & > td:nth-child(2)
+      width: 380px !important
 
 .dj-dropdown[uib-dropdown]
   display: inline-block
@@ -219,15 +202,14 @@ table.form-table
   [uib-dropdown-toggle]
     border-radius: 100px
     background-color: #ffffff
-    border: solid 1px #e1c3fd
+    border: solid 1px #e6e6e6
     height: 50px
-    font-family: CeraPro
     font-size: 16px
     font-weight: 500
     color: #555555
     outline: none
     display: inline-block
-    padding: 14px 15px
+    padding: 15px 30px
     width: 100%
   [uib-dropdown-menu]
     border-radius: 4px
@@ -236,7 +218,7 @@ table.form-table
     width: 100%
     top: 115%
     li
-      border-bottom: 1px solid lightgray
+      border-bottom: 1px solid #f5f5f5
       height: 49px
       padding-top: 6px
       &:hover
@@ -244,7 +226,10 @@ table.form-table
       a:hover
         background-color: transparent
       a
-        font-family: CeraPro
         font-size: 16px
         font-weight: 500
         color: #555555
+.dj-dropdown.open
+  [uib-dropdown-toggle]
+    border: solid 1px #e1c3fd
+    box-shadow: 0 2px 20px 0 rgba(0, 0, 0, 0.08)

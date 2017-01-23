@@ -26,7 +26,7 @@
       .event-image
         .img-event style="background-image: url({{ event.image.url }})"
           .gradient
-        a.btn-action.btn-edit.small-text href="#edit_event"
+        a.btn-action.btn-edit.small-text ng-click="openEventDialog(event.id)"
           | Edit
 
       .general

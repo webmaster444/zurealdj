@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170118092434) do
+ActiveRecord::Schema.define(version: 20170123082719) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -83,11 +83,11 @@ ActiveRecord::Schema.define(version: 20170118092434) do
     t.string   "sample_content_type"
     t.integer  "sample_file_size"
     t.datetime "sample_updated_at"
+    t.string   "sample_title"
     t.integer  "weekday_rate_from"
     t.integer  "weekday_rate_to"
     t.integer  "weekend_rate_from"
     t.integer  "weekend_rate_to"
-    t.string   "sample_title"
     t.index ["photo_id"], name: "index_djs_on_photo_id", using: :btree
     t.index ["sample_id"], name: "index_djs_on_sample_id", using: :btree
     t.index ["user_id"], name: "index_djs_on_user_id", using: :btree
@@ -149,7 +149,9 @@ ActiveRecord::Schema.define(version: 20170118092434) do
     t.string   "image_content_type"
     t.integer  "image_file_size"
     t.datetime "image_updated_at"
+    t.integer  "organizer_id"
     t.index ["image_id"], name: "index_events_on_image_id", using: :btree
+    t.index ["organizer_id"], name: "index_events_on_organizer_id", using: :btree
   end
 
   create_table "favorite_djs", force: :cascade do |t|

@@ -7,61 +7,46 @@
     text-align: center
     color: #b05dfc
     display: block
+    font-size: 12px
+    letter-spacing: 0.8px
+    padding: 8px 33px
+    border-radius: 100px
+    border: 1px solid #b05dfc
+    width: 100px
     &::selection
       background: transparent
   .filter-item
     background-color: #fafafa
     display: inline-block
+    padding: 13px 15px
+    border-radius: 100px
     .filter-title
       line-height: 1
       color: #555555
       display: inline-block
+      font-size: 14px
     .btn-close
       display: inline-block
       position: static
+      width: 10px
+      height: 10px
+      margin-left: 12px
 
 [device='desktop']
   .selected-filters
     margin-top: 30px
     .clear-filters
-      font-size: 12px
-      letter-spacing: 0.8px
-      padding: 8px 33px
-      border-radius: 100px
-      border: 1px solid #b05dfc
-      width: 100px
       margin: 10px auto -20px
     .filter-item
-      padding: 13px 15px
-      border-radius: 100px
       margin: 8px 5px
-      .filter-title
-        font-size: 14px
       .btn-close
-        width: 10px
-        height: 10px
-        margin-left: 12px
         vertical-align: middle
 
 
 [device='mobile']
   .selected-filters
     .clear-filters
-      font-size: calc-w-small(12)
-      letter-spacing: calc-w-small(0.8)
-      padding: calc-w-small(8) calc-w-small(33)
-      border-radius: calc-w-small(100)
-      border: 2px solid #b05dfc
-      width: calc-w-small(100)
       margin: auto
-      margin-top: calc-w-small(10)
+      margin-top: 10px
     .filter-item
-      padding: calc-w-small(13) calc-w-small(15)
-      border-radius: calc-w-small(100)
-      margin: calc-w-small(5)
-      .filter-title
-        font-size: calc-w-small(14)
-      .btn-close
-        width: calc-w-small(10)
-        height: calc-w-small(10)
-        margin-left: calc-w-small(12)
+      margin: 5px

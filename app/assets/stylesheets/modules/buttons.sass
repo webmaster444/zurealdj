@@ -46,6 +46,29 @@
   padding: 0
   position: absolute
 
+
+
+.btn-equipment
+  width: 138px
+  height: 124px
+  border-radius: 4px
+  background-color: white
+  border: solid 1px #f5f5f5
+  margin: 25px 7px
+  vertical-align: top
+  .title
+    font-size: 16px !important
+    line-height: 1
+    letter-spacing: -0.3px !important
+    text-align: center
+    color: #cccccc
+    margin: 0 auto !important
+  img
+    width: 48px
+    height: 48px
+    -webkit-filter: grayscale(100%)
+    filter: grayscale(100%)
+    margin: 20px auto
 .btn-equipment.active
   img
     -webkit-filter: none !important
@@ -53,6 +76,22 @@
   .title
     color: #4a4a4a !important
 
+.select-button
+  display: inline-block
+  .btn-checkbox
+    display: inline-block
+    border-radius: 4px
+    background-color: white
+    width: 190px
+    margin: 5px 25px
+    padding: 10px 20px
+    font-size: 14px
+    line-height: 1.43
+    color: #c6bfc7
+    border: solid 1px #f5f5f5
+  .active
+    color: $current-color
+    box-shadow: 0 2px 30px 0 rgba(0, 0, 0, 0.08)
 
 
 [device='desktop']
@@ -81,43 +120,8 @@
     background-color: white
     color: $current-color !important
     border: solid 1px #e6e6e6
-  .select-button
-    display: inline-block
-    .btn-checkbox
-      display: inline-block
-      border-radius: 4px
-      background-color: white
-      width: 190px
-      margin: 5px 25px
-      padding: 10px 20px
-      font-size: 14px
-      line-height: 1.43
-      color: #c6bfc7
-      border: solid 1px #f5f5f5
-    .active
-      color: $current-color
-      box-shadow: 0 2px 30px 0 rgba(0, 0, 0, 0.08)
   .btn-equipment
-    width: 138px
-    height: 124px
-    border-radius: 4px
-    background-color: white
-    border: solid 1px #f5f5f5
     margin: 25px 7px
-    vertical-align: top
-    .title
-      font-size: 16px !important
-      line-height: 1
-      letter-spacing: -0.3px !important
-      text-align: center
-      color: #cccccc
-      margin: 0 auto !important
-    img
-      width: 48px
-      height: 48px
-      -webkit-filter: grayscale(100%)
-      filter: grayscale(100%)
-      margin: 20px auto
   .ic-mixcloud
     width: 30px
     height: 18px
@@ -145,26 +149,13 @@
 
 [device='mobile']
   .btn-equipment
-    width: calc-h-small(138)
-    height: calc-h-small(124)
-    border-radius: 8px
-    background-color: white
-    border: solid 1px #f5f5f5
-    margin: calc-h-small(7)
-    vertical-align: top
-    .title
-      font-size: calc-h-small(16)
-      line-height: 1
-      letter-spacing: -0.3px
-      text-align: center
-      color: #cccccc
-      margin: 0 auto
-    img
-      width: calc-w-small(48)
-      height: calc-w-small(48)
-      -webkit-filter: grayscale(100%)
-      filter: grayscale(100%)
-      margin: calc-h-small(20) auto
+    margin: 7px
+  .select-button
+    margin: auto 5px
+    text-align: center
+  .btn-checkbox
+    margin: 5px auto
+    text-align: left
   .ic-mixcloud
     width: calcw(9.375)
     height: calcw(5.625)
@@ -216,14 +207,14 @@
     font-size: calc-h-full(16)
 
 .pink-link
-  font-family: CeraPro
   font-size: 16px
   font-weight: 500
   letter-spacing: 1.5px
   color: #b05dfc
+  &:hover
+    color: #b05dfc
 
 .dj-black-link
-  font-family: CeraPro
   font-size: 16px
   color: #555555
   font-weight: normal

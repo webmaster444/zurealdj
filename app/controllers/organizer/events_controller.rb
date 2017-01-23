@@ -13,6 +13,7 @@ class Organizer::EventsController < ApplicationController
     query = events
             .project(Arel.star)
             .group(events[:id])
+            .where(events[:organizer_id].eq current_user.organizer[:id])
 
     if !params[:sort_column].blank? && ['asc', 'desc'].include?(params[:sort_type])
         query = query.order(events[params[:sort_column.to_sym]].send(params[:sort_type] == 'asc' ? :asc : :desc))
@@ -27,16 +28,35 @@ class Organizer::EventsController < ApplicationController
   end
 
   def show
-
+    render json: {  }, status: :not_found if current_user.organizer.events.exclude?(@event)
   end
 
   def create
-    @event = Event.new event_params
+    @event = Event.new organizer_id: current_user.organizer[:id]
+    @event.assign_attributes event_params
 
     if @event.save
       render json: { message: I18n.t('event.messages.success_upsert') }
     else
       render json: { validation_errors: @event.errors }, status: :unprocessable_entity
+    end
+  end
+
+  def update
+    @event.assign_attributes event_params
+    if @event.save
+      render json: { message: I18n.t('event.messages.success_upsert') }
+    else
+      render json: { validation_errors: @event.errors }, status: :unprocessable_entity
+    end
+  end
+
+  def destroy
+    if current_user.organizer.events.include?(@event)
+      @event.destroy
+      render json: {message: 'Event successfully removed.'}
+    else
+      render json: {  }, status: :not_found
     end
   end
 
