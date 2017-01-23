@@ -58,11 +58,6 @@
                     }
                 };
 
-                $scope.djsCount = function() {
-                    var count = ($('.event-item').width() - 550) / 90;
-                    return count > 4? 4: count;
-                };
-
                 $scope.openEventDialog = function (id) {
                     $state.go('events');
                     ngDialog.open({
