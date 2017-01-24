@@ -109,10 +109,19 @@
           color: #555555
 
 .top-mobile-navbar
-  height: 80px
+  //height: 80px
+  .col-xs-12
+    height: 64px
+    padding: 22px 30px
+    border-bottom: 1px solid #f5f5f5
+    a
+      vertical-align: middle
+      font-size: 16px
+      color: #555555
   &  >.container
     box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.08)
     & > ul
+      position: relative
       padding: 0
       vertical-align: middle
       display: table-cell
@@ -143,3 +152,34 @@
     width: 44px
     height: 44px
     border-radius: 50%
+.page-footer
+  position: absolute
+  .footer-text
+    font-size: calch(2.8)
+    letter-spacing: calcw(0.34)
+  .row
+    margin-top: calch(4.4)
+  .title
+    margin-bottom: calch(2)
+  .content
+    .col-md-4
+      padding-top: calch(7)
+
+  width: 100%
+  background-color: #5c595a
+
+
+  .color-white
+    color: white
+    &:hover, &:active, &:visited
+      color: white
+  .color-gray
+    color: #8a8a8a
+    &:hover, &:active, &:visited
+      color: #8a8a8a
+
+.ngdialog-overlay
+  background: #fff
+.dj-mobile-ng-dialog
+  .ngdialog-content
+    position: absolute

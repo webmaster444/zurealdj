@@ -17,20 +17,85 @@
       .col-xs-6.text-center
         a
           i.dj-bell
-/.second-nav.desktop-only
-/  ul.second-menu
-/    li#first ng-class="{active: ['djs', 'dj'].includes($state.current.name)}"
-/      a href="#djs"
-/        | Browse DJs
-/    li class="{{ $state.current.name == 'profile' || $state.current.name == 'edit_profile'? 'active' : '' }}"
-/      a href="#profile"
-/        | Profile
-/    li ng-class="{active: ['events'].includes($state.current.name)}"
-/      a href="#events"
-/        | Bookings
-/    li class="{{ $state.current.name == 'favorites'? 'active' : '' }}"
-/      a href="#favorites"
-/        | My Favs
-/    li class="{{ $state.current.name == 'settings'? 'active' : '' }}"
-/      a href="#settings"
-/        | Settings
+
+  .row
+    .col-xs-12  ng-class="{active: ['djs', 'dj'].includes($state.current.name)}"
+      a href="#djs"
+         | Browse DJs
+    .col-xs-12 ng-class= "{{ $state.current.name == 'profile' || $state.current.name == 'edit_profile'? 'active' : '' }}"
+      a href="#profile"
+        | Profile
+    .col-xs-12 ng-class="{active: ['events'].includes($state.current.name)}"
+      a href="#events"
+        | Bookings
+    .col-xs-12 ng-class="{{ $state.current.name == 'favorites'? 'active' : '' }}"
+      a href="#favorites"
+        | Favorites
+    .col-xs-12 ng-class="{{ $state.current.name == 'settings'? 'active' : '' }}"
+      a href="#settings"
+        | Settings
+    .col-xs-12
+      a ng-click="logout()" href="#"
+        | Sign out
+
+uib-accordion
+
+  div uib-accordion-group=""  is-open="status.open"
+    uib-accordion-heading
+      p.text-center
+        i#next.glyphicon ng-class="{'glyphicon-chevron-down': status.open, 'glyphicon-chevron-up': !status.open}"
+
+
+    div.page-block.text-center
+      div.content.text-center
+        .col-md-4.col-xs-12
+          .row.title
+            a.footer-text.color-white href=""
+              | Company
+          .row
+            a.footer-text.color-gray href=""
+              | Contact Us
+          .row
+            a.footer-text.color-gray href=""
+              | Courses
+
+        .col-md-4.col-xs-12
+          .row.title
+            a.footer-text.color-white href=""
+              | Support
+          .row
+            a.footer-text.color-gray href="#terms_n_conditions"
+              | Terms & Conditions
+          .row
+            a.footer-text.color-gray href="#crew"
+              | The Crew
+          .row
+            a.footer-text.color-gray href="#how_we_work"
+              | How We Work
+          .row
+            a.footer-text.color-gray href="#who_we_are"
+              | Who we are
+          .row
+            a.footer-text.color-gray href="#cancelations"
+              | Cancelations
+          .row
+            a.footer-text.color-gray href="#policies"
+              | Policies
+          .row
+            a.footer-text.color-gray href=""
+              | Help Center
+
+        .col-md-4.col-xs-12
+          .row.title
+            a.footer-text.color-white href=""
+              | Follow Us
+          .row
+            a.col-social href="" style="margin-left: 0"
+              .ic-mixcloud.icon
+            a.col-social href=""
+              .ic-facebook.icon
+            a.col-social href="" style="margin-right: 0"
+              .ic-instagram.icon
+
+      .col-md-12.col-xs-12.text-center.footer-text.color-gray style="margin-top: 133px"
+        | © 2016 ZuReal
