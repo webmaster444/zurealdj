@@ -1,9 +1,9 @@
 .edit-profile
-  .page-block
-    a.btn-close ng-click="step = 0" ng-show="isMobile() && step"
-    .edit-menu ng-show="isMobile() && !step"
-      .menu-head
-        | Edit profile
+  a.btn-close ng-click="step = 0" ng-show="isMobile() && step"
+  .edit-menu ng-show="isMobile() && !step"
+    .menu-head
+      | Edit profile
+    .menu-block
       .menu-item
         .menu-title
           | Main info
@@ -35,6 +35,7 @@
         a.edit-btn ng-click="step = 6"
           | Edit
 
+  .page-block
     .general-inf#dj-id-1 ng-show="!isMobile() || step == 1"
       .content-title
         | Main info
@@ -53,21 +54,19 @@
           .form-group
             .form-title
               | Country:
-            .zureal-btn-dropdown.country-btn-dropdown
-              .dropdown uib-dropdown=""
-                a.dropdown-toggle.count-info.zureal-dropdown aria-expanded="false" aria-haspopup="true" uib-dropdown-toggle="" href=""
-                  span ng-hide="user.country"
-                    | Please choose a country
-                  span ng-show="user.country"
-                    span.flag class="{{ user.country.code }}"
-                    span.country-title
-                      | {{ user.country.title }}
-                ul.dropdown-menu.dropdown-alerts
-                  li ng-repeat="country in countries"
-                    a.country ng-click="user.country = country" style="cursor: pointer"
-                      span.flag class="{{ country.code }}"
-                      span.country-title
-                        | {{ country.title }}
+            .dj-dropdown[uib-dropdown]
+              i.fa.fa-chevron-down
+              a.zureal-dropdown[ng-disabled="disabled" uib-dropdown-toggle]
+                span ng-hide="user.country"
+                  | Please choose a country
+                span ng-show="user.country"
+                  span.flag class="{{ user.country.code }}"
+                  | {{ user.country.title }}
+              ul.dropdown-menu aria-labelledby="country-dropdown" role="menu" uib-dropdown-menu=true
+                li ng-repeat="country in countries"
+                  a ng-click="user.country = country" style="cursor: pointer"
+                    span.flag class="{{ country.code }}"
+                    | {{ country.title }}
             .error ng-repeat="error in validation_errors.country"
               | {{ error }}
           .form-group
