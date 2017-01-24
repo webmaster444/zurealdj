@@ -33,19 +33,20 @@
               .mobile-menu-button ng-click="openMobileMenu()"
 
 .second-nav.desktop-only
-  ul.second-menu
-    li#first ng-class="{active: ['djs', 'dj'].includes($state.current.name)}"
-      a href="#djs"
-        | Browse DJs
-    li class="{{ $state.current.name == 'profile' || $state.current.name == 'edit_profile'? 'active' : '' }}"
-      a href="#profile"
-        | Profile
-    li ng-class="{active: ['events'].includes($state.current.name)}"
-      a href="#events"
-        | Bookings
-    li class="{{ $state.current.name == 'favorites'? 'active' : '' }}"
-      a href="#favorites"
-        | My Favs
-    li class="{{ $state.current.name == 'settings'? 'active' : '' }}"
-      a href="#settings"
-        | Settings
+  .page-block
+    ul.second-menu
+      li#first ng-class="{active: ['djs', 'dj'].includes($state.current.name)}"
+        a href="#djs"
+          | Browse DJs
+      li class="{{ $state.current.name == 'profile' || $state.current.name == 'edit_profile'? 'active' : '' }}"
+        a href="#profile"
+          | Profile
+      li ng-class="{active: ['events'].includes($state.current.name)}"
+        a href="#events"
+          | Bookings
+      li class="{{ $state.current.name == 'favorites'? 'active' : '' }}"
+        a href="#favorites"
+          | My Favs
+      li class="{{ $state.current.name == 'settings'? 'active' : '' }}"
+        a href="#settings"
+          | Settings
