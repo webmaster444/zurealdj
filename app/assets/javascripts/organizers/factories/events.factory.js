@@ -39,7 +39,15 @@
             },
 
             all: function(options){
-                return $http.get('/organizer/events.json?page=' + options.page + '&per_page=' + options.per_page);
+
+                var url = '/organizer/events.json?';
+
+                _.each(Object.keys(options), function(key){
+                    if(options[key])
+                        url += key + '=' + options[key] + '&';
+                });
+
+                return $http.get(url);
             },
 
             show: function(id){

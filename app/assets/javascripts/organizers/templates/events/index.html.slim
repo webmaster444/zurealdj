@@ -47,10 +47,32 @@
       button.search-button
         | Find a Booking
   .margin50
-  a.pink-link ng-click="openEventDialog()"
-    | + Add new event
-  .text-center.events-count
-    | {{ events.length }} of {{ count }} Events
+  div.events-actions
+    .pull-left
+      a.pink-link ng-click="openEventDialog()"
+        | + Add new event
+    .pull-right
+      span.dj-dropdown.sorting-dropdown[uib-dropdown]
+        i.fa.fa-chevron-down
+        a.zureal-dropdown[ng-disabled="disabled" uib-dropdown-toggle]
+          span
+            | Sorting
+        ul.dropdown-menu aria-labelledby="sorting-dropdown" role="menu" uib-dropdown-menu=true
+          li
+            a ng-click="setSortType('created_at', 'desc')" class="{{ getSortType() == 'Newest' ? 'active' : '' }}"
+              | Newest
+          li
+            a ng-click="setSortType('created_at', 'asc')" class="{{ getSortType() == 'Oldest' ? 'active' : '' }}"
+              | Oldest
+          li
+            a ng-click="setSortType('title', 'asc')" class="{{ getSortType() == 'A-Z' ? 'active' : '' }}"
+              | A - Z
+          li
+            a ng-click="setSortType('title', 'desc')" class="{{ getSortType() == 'Z-A' ? 'active' : '' }}"
+              | Z - A
+
+    .text-center.events-count
+      | {{ events.length }} of {{ count }} Events
   .event-item ng-repeat="event in events track by $index"
     span.status
       | {{ event.status }}
@@ -58,6 +80,8 @@
       img.dj ng-repeat="dj in event.djs | limitTo: djsCount()" ng-src="{{ dj.avatar }}"
       .plus.small-text
         | +{{ event.djs.length - 4 > 0? event.djs.length - 4 : 0 }}
+    .djs-count
+      | {{ event.djs.length }} DJ's
     img.event-image ng-src="{{ event.image }}"
     .event-inf
       a.event-title href="#events/{{ event.id }}"

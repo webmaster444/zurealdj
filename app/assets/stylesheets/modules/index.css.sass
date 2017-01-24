@@ -51,7 +51,6 @@
   font-size: 16px
   letter-spacing: 1.5px
   color: #cccccc
-  margin-top: -20px
 
 .event-item
   width: 100%
@@ -61,7 +60,6 @@
   border: solid 1px #f5f5f5
   margin: 40px 0
   position: relative
-  min-width: 600px
   .event-image
     width: 200px
     height: 200px
@@ -84,6 +82,8 @@
         padding: 4px 0
       td.light-grey
         min-width: 120px
+  .djs-count
+    display: none
   .djs
     position: absolute
     top: 100px
@@ -110,6 +110,23 @@
       color: #ff7dc0
       text-align: center
       margin-left: 10px
+
+
+.sorting-dropdown
+  width: 150px
+  *::selection
+    background: transparent
+  i.fa
+    right: 38px !important
+    color: $current-color
+  [uib-dropdown-toggle]
+    border: none !important
+    padding-left: 38px !important
+    *
+      color: $current-color
+  [uib-dropdown-menu]
+    .active
+      color: $current-color !important
 
 
 [device='desktop']
@@ -184,3 +201,91 @@
         margin-top: 12px
       .address
         margin-top: 8px
+
+
+
+@media (max-width: $mobile-max-width)
+  .sorting-dropdown
+    width: 70px
+    *::selection
+      background: transparent
+    i.fa
+      right: 0 !important
+      top: auto !important
+      color: $current-color
+    [uib-dropdown-toggle]
+      border: none !important
+      padding: 0 !important
+      height: auto !important
+    [uib-dropdown-menu]
+      position: absolute
+      top: 0 !important
+      right: 0 !important
+      left: auto !important
+      width: 150px !important
+  .sorting-dropdown.open
+    [uib-dropdown-toggle]
+      box-shadow: none !important
+
+  .events-actions
+    margin: 20px
+    margin-bottom: 0
+    *
+      font-size: 14px
+      font-weight: 500
+      font-style: normal
+      font-stretch: normal
+      line-height: 1.43
+      letter-spacing: normal
+    .events-count
+      padding-top: 30px
+      vertical-align: top
+  .event-item
+    margin: 10px 0
+    height: auto
+    padding: 20px 0 20px 20px
+    .event-image
+      width: 65px
+      height: 65px
+      border-radius: 4px
+    .event-title
+      font-size: 16px !important
+      font-weight: 500
+      letter-spacing: 1px
+    .small-text
+      font-size: 14px !important
+      line-height: 1.43
+      letter-spacing: 1.3px
+    .event-inf
+      display: inline-block
+      margin: 5px auto 10px 10px
+      table
+        margin-top: 20px
+        td
+          padding: 4px 0
+        td.light-grey
+          min-width: 100px
+    .djs
+      display: none
+    .djs-count
+      width: 65px
+      height: 40px
+      border-radius: 4px
+      background-color: white
+      border: solid 1px #ffcce7
+      display: inline-block
+      padding: 12px 0
+      color: #ff7dc0
+      text-align: center
+      position: absolute
+      top: 95px
+      font-size: 12px
+      line-height: 1.17
+      letter-spacing: 0.8px
+    .status
+      top: 140px
+      right: auto
+      left: 95px
+      font-size: 14px
+      letter-spacing: 0.9px
+      font-weight: normal
