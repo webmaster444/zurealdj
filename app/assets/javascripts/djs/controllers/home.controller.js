@@ -42,6 +42,16 @@
 
             $scope.changeLanguage = function(locale){
                 I18n.locale = locale;
+            };
+
+            $scope.openMobileMenu = function(){
+                ngDialog.open({
+                    template: 'organizers/templates/common/mobile-navbar-menu.html',
+                    className: 'dj-mobile-ng-dialog mobile-only',
+                    scope: $scope,
+                    showClose: false,
+                    closeByNavigation: true
+                });
             }
         }])
 }());
