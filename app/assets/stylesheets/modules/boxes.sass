@@ -62,19 +62,6 @@
     letter-spacing: 1.7px
     color: #ffffff
 
-.ngdialog.ngdialog-theme-default.ngdialog-zurealdj
-  .ngdialog-content
-    max-width: 1050px
-    width: 100%
-    border-radius: 4px
-    background-color: #ffffff
-    box-shadow: 0 2px 20px 0 rgba(0, 0, 0, 0.08)
-    padding: 30px !important
-  .ngdialog-close
-    display: none
-  .ngdialog-overlay
-    pointer-events: none
-
 @media (max-width: $mobile-max-width)
   .desktop-only
     display: none !important
@@ -83,14 +70,26 @@
   .mobile-only
     display: none !important
 
-
-.dj-mobile-ng-dialog .ngdialog-content
-  position: fixed
-  background-color: white
-  min-height: 100%
-  right: 0
-  left: 0
-  bottom: 0
+.dj-mobile-ng-dialog
+  .ngdialog-content
+    background-color: #ffffff !important
+    box-shadow: 0 2px 20px 0 rgba(0, 0, 0, 0.08)
+    @media (min-width: $mobile-max-width)
+      border-radius: 4px
+      width: 70% !important
+    @media (max-width: $mobile-max-width)
+      border-radius: 0 !important
+      position: absolute !important
+      width: 100% !important
+      min-height: 100%
+      right: 0
+      left: 0
+      top: 0
+      .row
+        margin: 0 !important
+  .ngdialog-close
+    @media (min-width: $mobile-max-width)
+      display: none
 
 .no-padding
   padding: 0 !important

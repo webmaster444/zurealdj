@@ -149,7 +149,7 @@
                                     );
                                 };
                             }],
-                        className: 'ngdialog-theme-default ngdialog-zurealdj'
+                        className: 'ngdialog-theme-default dj-mobile-ng-dialog'
                     });
                 };
 
