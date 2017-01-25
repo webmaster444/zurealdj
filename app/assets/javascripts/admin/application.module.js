@@ -192,6 +192,11 @@
                     templateUrl: 'admin/templates/cancelations_pages/form.html',
                     controller: 'CancelationsPagesController'
                 })
+                .state('edit_cancellation_policy',{
+                    url: '/cancellation_policy/edit',
+                    templateUrl: 'admin/templates/cancellation_policy/form.html',
+                    controller: 'CancellationPolicyController'
+                })
                 .state('email_sender',{
                     url: '/email_sender',
                     templateUrl: 'admin/templates/email_sender/form.html',

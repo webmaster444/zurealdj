@@ -70,6 +70,9 @@ nav.navbar-default.navbar-static-side.ng-scope role="navigation"
             li.active ui-sref-active="active"
               a href="#cancelations_page/edit"
                 | {{ I18n.t('headers.cancelations_pages') }}
+            li.active ui-sref-active="active"
+              a.ng-binding href="#cancellation_policy/edit"
+                | Cancellation policy
         li ng-class=("{active: $state.current.name.includes('email_sender')}")
           a href="#"
             .other-nav-icon.nav-icon

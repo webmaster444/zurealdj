@@ -62,6 +62,12 @@ ActiveRecord::Schema.define(version: 20170126142615) do
     t.index ["user_id"], name: "index_cancelations_users_on_user_id", using: :btree
   end
 
+  create_table "cancellation_policies", force: :cascade do |t|
+    t.text     "content"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "crew_pages", force: :cascade do |t|
     t.text     "content"
     t.datetime "created_at"
