@@ -1,98 +1,74 @@
-.wrapper.wrapper-content
-  .row.animated.fadeInRight
-    .col-md-12
-      .ibox.float-e-margins
-        .ibox-title
-          h2
-            | {{ event.title }}
-        .ibox-content
+.event
+  .event-header
+    .background-img style="{{ event.image.url != '/images/img-event-photo.png' ? ('background-image: url(' + event.image.url + ')') : '' }}"
+      .custom-blur
+  .page-block.relative
+    .inf-container
+      .inf
+        .title
+          | {{ event.title }}
+        .address.small-text
+          span ng-show="event.city"
+            | {{ event.city}}
+            span ng-show="event.country"
+              | {{ ', ' }}
+          span
+            | {{ event.country.title }}
+        .genres-event-type.small-text
+          | {{ event.genres_string }}
+          span ng-show="event.event_types_string"
+            | {{ ' | ' }}
+          span
+            | {{ event.event_types_string }}
 
-          .form-group
-            .row
-              .col-lg-2
-                label.control-label
-                  | {{ I18n.t('event.fields.title') }}:
-              .col-lg-10
-                p.form-control-static
-                  | {{ event.title }}
-            .hr-line-dashed
+  .event-content
+    .page-block
+      .event-image
+        .img-event style="background-image: url({{ event.image.url }})"
+          .gradient
+        a.btn-action.btn-edit.small-text
+          | Confirm Participation
 
-          .form-group
-            .row
-              .col-lg-2
-                label.control-label
-                  | {{ I18n.t('event.fields.city') }}:
-              .col-lg-10
-                p.form-control-static
-                  | {{ event.city }}
-            .hr-line-dashed
+      .general
+        .block
+          .block-title
+            | Main Information
+          table
+            tr
+              td.td-title
+                | Start date:
+              td.td-content
+                | {{ event.start_date }}
+            tr
+              td.td-title
+                | End date:
+              td.td-content
+                | {{ event.end_date }}
+            tr
+              td.td-title
+                | Status
+              td.td-content.active
+                | {{ event.status }}
 
-          .form-group
-            .row
-              .col-lg-2
-                label.control-label
-                  | {{ I18n.t('event.fields.country') }}:
-              .col-lg-10
-                span.flag class="{{ events.country.code }}"
-                | {{ events.country.title }}
-            .hr-line-dashed
+        .content-mobile
+          .block
+            .text
+              span ng-show="event.city"
+                | {{ event.city}}
+                span ng-show="event.country"
+                  | {{ ', ' }}
+              span
+                | {{ event.country.title }}
+            .text
+              | {{ event.genres_string }}
+              span ng-show="event.event_types_string"
+                | {{ ' | ' }}
+              span
+                | {{ event.event_types_string }}
 
-          .form-group
-            .row
-              .col-lg-2
-                label.control-label
-                  | {{ I18n.t('event.fields.address') }}:
-              .col-lg-10
-                p.form-control-static
-                  | {{ event.address }}
-            .hr-line-dashed
-
-          .form-group
-            .row
-              .col-lg-2
-                label.control-label
-                  | {{ I18n.t('event.fields.start_date') }}:
-              .col-lg-10
-                p.form-control-static
-                  | {{ event.start_date }}
-            .hr-line-dashed
-
-          .form-group
-            .row
-              .col-lg-2
-                label.control-label
-                  | {{ I18n.t('event.fields.end_date') }}:
-              .col-lg-10
-                p.form-control-static
-                  | {{ event.end_date }}
-            .hr-line-dashed
-
-          .form-group
-            .row
-              .col-lg-2
-                label.control-label
-                  | {{ I18n.t('event.fields.image') }}:
-              .col-lg-10
-                img ng-src="{{ events.image.url }}" style="max-width: 100%"
-            .hr-line-dashed
-
-          .form-group
-            .row
-              .col-lg-2
-                label.control-label
-                  | {{ I18n.t('event.fields.created_at') }}:
-              .col-lg-10
-                p.form-control-static
-                  | {{ event.created_at }}
-            .hr-line-dashed
-
-          .form-group
-            .row
-              .col-lg-2
-                label.control-label
-                  | {{ I18n.t('event.fields.updated_at') }}:
-              .col-lg-10
-                p.form-control-static
-                  | {{ event.updated_at }}
-            .hr-line-dashed
-
+    .page-block
+      .artists
+        .title
+          | Artists
+        .container
+          |

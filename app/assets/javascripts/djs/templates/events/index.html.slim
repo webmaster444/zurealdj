@@ -1,66 +1,107 @@
-.wrapper.wrapper-content
-  .row.animated.fadeInRight
-    .col-md-12
-      .ibox.float-e-margins
-        .ibox-title
-          h3
-            | {{ I18n.t('headers.events' ) }}
-        .ibox-content
-          .pull-left
-            #events-pagination ng-hide="count < 11"
-          .pull-right
+.page-block
+  .margin50
+  .shadow-block
+    .explore-block
+      i.fa.fa-search
+      input.form-control.input-lg type="text" ng-model="filters.name" placeholder="Find a Booking"
+      .btn-group uib-dropdown=true is-open="isopen" auto-close="outsideClick"
+        a#toggle-button type="button" uib-dropdown-toggle=true ng-disabled="disabled"
+          | Filtering
+          i.fa.fa-chevron-down<
+        .dropdown-menu uib-dropdown-menu=true role="menu" aria-labelledby="toggle-button"
+          .zurealdj-header-1
+            | Price range
+          table style="width: 100%"
+            tr
+              td style="width: 100px"
+                input type="number" ng-model="filters.price_from"
+              td
+                rzslider rz-slider-model="filters.price_from" rz-slider-high="filters.price_to" rz-slider-options="slider.options"
+              td style="width: 100px"
+                input type="number" ng-model="filters.price_to"
+          hr
+          .zurealdj-header-1
+            | Event types
+          .row
+            .col-md-3 ng-repeat="event_type in filters.event_types"
+              input type="checkbox" ng-model="event_type.checked" id="et{{ $index }}"
+              label for="et{{ $index }}"
+                span
+                | {{ event_type.title }}
+          hr
+          .zurealdj-header-1
+            | Genres
+          .row
+            .col-md-3 ng-repeat="genre in filters.genres"
+              input type="checkbox" ng-model="genre.checked" id="g{{ $index }}"
+              label for="g{{ $index }}"
+                span
+                | {{ genre.title }}
+          hr
+            .text-left
+              a.btn.btn-primary ng-click="resetFilters()"
+                | Reset
+            .text-right
+              a.btn.btn-primary ng-click="retrieveDjs()"
+                | Show {{ search_count }} DJs
+      button.search-button
+        | Find a Booking
+  .margin50
+  div.events-actions
+    .pull-right
+      span.dj-dropdown.sorting-dropdown[uib-dropdown]
+        i.fa.fa-chevron-down
+        a.zureal-dropdown[ng-disabled="disabled" uib-dropdown-toggle]
+          span
+            | Sorting
+        ul.dropdown-menu aria-labelledby="sorting-dropdown" role="menu" uib-dropdown-menu=true
+          li
+            a ng-click="setSortType('created_at', 'desc')" class="{{ getSortType() == 'Newest' ? 'active' : '' }}"
+              | Newest
+          li
+            a ng-click="setSortType('created_at', 'asc')" class="{{ getSortType() == 'Oldest' ? 'active' : '' }}"
+              | Oldest
+          li
+            a ng-click="setSortType('title', 'asc')" class="{{ getSortType() == 'A-Z' ? 'active' : '' }}"
+              | A - Z
+          li
+            a ng-click="setSortType('title', 'desc')" class="{{ getSortType() == 'Z-A' ? 'active' : '' }}"
+              | Z - A
 
-            button.btn-xs.btn.btn-info ui-sref="new_event"
-              | {{ I18n.t('event.new') }}
+    .text-center.events-count
+      | {{ events.length }} of {{ count }} Events
+  .event-item ng-repeat="event in events track by $index"
+    span.status
+      | {{ event.status }}
+    .djs
+      img.dj ng-repeat="dj in event.djs | limitTo: djsCount()" ng-src="{{ dj.avatar }}"
+      .plus.small-text
+        | +{{ event.djs.length - 4 > 0? event.djs.length - 4 : 0 }}
+    .djs-count
+      | {{ event.djs.length }} DJ's
+    img.event-image ng-src="{{ event.image }}"
+    .event-inf
+      a.event-title href="#events/{{ event.id }}"
+        | {{ event.title }}
+      .small-text.address
+        span ng-show="event.city"
+          | {{ event.city}}
+          span ng-show="event.country"
+            | {{ ', ' }}
+        span
+          | {{ event.country }}
+      table
+        tr
+          td.small-text.light-grey
+            | Start date:
+          td.small-text
+            | {{ event.start_date }}
+        tr
+          td.small-text.light-grey
+            | End date:
+          td.small-text
+            | {{ event.end_date }}
 
-          table.table.table-striped.table-responsive
-            thead
-              tr
-                th
-                  | {{ I18n.t('event.fields.title') }}
-                th
-                  | {{ I18n.t('event.fields.city') }}
-                th
-                  | {{ I18n.t('event.fields.country') }}
-                th
-                  | {{ I18n.t('event.fields.address') }}
-                th
-                  | {{ I18n.t('event.fields.start_date') }}
-                th
-                  | {{ I18n.t('event.fields.end_date') }}
-                th
-                  | {{ I18n.t('event.fields.image') }}
-                th
-                  | Created At
-                th
-                  | Actions
-            tbody
-              tr ng-repeat="event in events"
-                td
-                  | {{ events.title }}
-                td
-                  | {{ events.city }}
-                td
-                  span.flag class="{{ events.country.code }}"
-                  | {{ events.country.title }}
-                td
-                  | {{ events.address }}
-                td
-                  | {{ events.start_date }}
-                td
-                  | {{ events.end_date }}
-                td
-                  | {{ events.image }}
-                td
-                  | {{ events.created_at }}
-                td.text-right
-
-                  a.btn-xs.btn.btn-info.btn-outline href="#events/{{events.id}}"
-                    | {{ I18n.t('actions.view') }}
-
-                  a.btn-xs.btn.btn-warning.btn-outline href="#events/{{events.id}}/edit"
-                    | {{ I18n.t('actions.edit') }}
-
-
-                  a.btn-xs.btn.btn-danger.btn-outline ng-click="destroy(events.id)"
-                    | {{ I18n.t('actions.delete') }}
+  .show-more
+    a.show-more ng-click="showMore()" ng-hide="events.length == count"
+      | Show More

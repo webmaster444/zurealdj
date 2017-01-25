@@ -1,5 +1,8 @@
 class Booking < ActiveRecord::Base
 
+  belongs_to :dj
+  belongs_to :event
+
   validates :from_date, presence: true
   validates :to_date, presence: true
   validates :rate, presence: true

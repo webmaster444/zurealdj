@@ -55,6 +55,7 @@ Rails.application.routes.draw do
           post :notifications
         end
       end
+      resources :events, only: [:index, :show]
     end
 
     namespace :organizer do

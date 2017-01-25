@@ -1,5 +1,7 @@
 class Event < ActiveRecord::Base
 
+  has_many :bookings, dependent: :destroy
+
   def country_flag
     CountryFlag.find(country_flag_code)
   end

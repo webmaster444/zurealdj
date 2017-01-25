@@ -49,12 +49,12 @@
 .second-nav.desktop-only
   .page-block
     ul.second-menu
-      li#first class="{{ $state.current.name == 'profile' || $state.current.name == 'edit_profile'? 'active' : '' }}"
+      li#first class="{{ $state.current.name.indexOf('profile') >= 0 ? 'active' : '' }}"
         a href="#profile"
           | Profile
-      li class="{{ $state.current.name == 'bookings'? 'active' : '' }}"
-        a href="#bookings"
+      li class="{{ $state.current.name.indexOf('event') >= 0 ? 'active' : '' }}"
+        a href="#events"
           | Bookings
-      li class="{{ $state.current.name == 'settings'? 'active' : '' }}"
+      li class="{{ $state.current.name.indexOf('settings') >= 0 ? 'active' : '' }}"
         a href="#settings"
           | Settings

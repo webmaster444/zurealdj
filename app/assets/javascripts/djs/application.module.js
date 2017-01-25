@@ -105,19 +105,9 @@
                     templateUrl: 'djs/templates/bookings/index.html',
                     controller: 'BookingsController'
                 })
-                .state('new_event',{
-                    url: '/event/new',
-                    templateUrl: 'djs/templates/events/form.html',
-                    controller: 'EventsController'
-                })
                 .state('show_event',{
-                    url: '/event/:id',
+                    url: '/events/:id',
                     templateUrl: 'djs/templates/events/show.html',
-                    controller: 'EventsController'
-                })
-                .state('edit_event',{
-                    url: '/event/:id/edit',
-                    templateUrl: 'djs/templates/events/form.html',
                     controller: 'EventsController'
                 })
                 .state('events',{
