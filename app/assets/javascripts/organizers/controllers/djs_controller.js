@@ -4,8 +4,8 @@
 
     angular.module('ZurealdjOrganizerApp')
         .controller('DjsController', ['$scope', '$state', 'ngDialog', '$stateParams', 'SweetAlert', 'DjsFactory', '$timeout',
-            'EventCategoriesFactory', 'GenresFactory', '$sce',
-            function ($scope, $state, ngDialog, $stateParams, SweetAlert, djs, $timeout, event_types, genres, $sce) {
+            'EventCategoriesFactory', 'GenresFactory', '$sce', 'BookingsFactory',
+            function ($scope, $state, ngDialog, $stateParams, SweetAlert, djs, $timeout, event_types, genres, $sce, bookings) {
                 $scope.I18n = I18n;
                 $scope._ = _;
                 $scope.$state = $state;
@@ -140,6 +140,15 @@
                     djs.show($stateParams.id).success(function(data){
                         $scope.user = data;
                     });
+
+                    $scope.book = function(){
+                        ngDialog.open({
+                            template: 'organizers/templates/bookings/form.html',
+                            className: 'ngdialog-theme-default ngdialog-zurealdj',
+                            controller: 'BookingsController',
+                            scope: $scope
+                        });
+                    }
                 }
 
                 var favorites_timer = false;

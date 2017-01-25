@@ -15,6 +15,8 @@ class Organizer::EventsController < ApplicationController
             .group(events[:id])
             .where(events[:organizer_id].eq current_user.organizer[:id])
 
+    query.where(events[:title].matches("%#{ params[:title] }%")) if params[:title].present?
+    
     if params[:sort_column].present? && %w(asc desc).include?(params[:sort_type])
       query = query.order(events[params[:sort_column.to_sym]].send(params[:sort_type].to_sym))
     else

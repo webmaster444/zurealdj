@@ -153,3 +153,120 @@ table.form-table
   [uib-dropdown-toggle]
     border: solid 1px #e1c3fd
     box-shadow: 0 2px 20px 0 rgba(0, 0, 0, 0.08)
+
+.dj-ui-select
+  .ui-select-toggle
+    border-radius: 100px
+    border: solid 1px #e6e6e6
+    height: 50px
+    padding: 14px
+    .caret
+      border: 0
+      top: 18px
+      right: 26px
+      &:before
+        font-family: FontAwesome
+        content: "\f078" !important
+        font-style: normal
+        font-size: 12px
+  input[type="search"]
+    border-radius: 100px
+    border: solid 1px #e6e6e6
+    height: 50px
+    outline: none
+    box-shadow: 0 2px 20px 0 rgba(0, 0, 0, 0.08)
+  .btn-default:focus, .btn-default:hover
+    background-color: transparent
+  .ui-select-match
+    outline: none
+    box-shadow: none
+    background-color: transparent
+  .ui-select-choices
+    margin-top: 6px
+    border-radius: 4px
+    box-shadow: 0 2px 20px 0 rgba(0, 0, 0, 0.08)
+    .ui-select-choices-row
+      border-top: 1px solid #f5f5f5
+      .ui-select-choices-row-inner, span.ui-select-choices-row-inner
+        padding: 15px
+        background-color: white !important
+        font-family: CeraPro
+        font-size: 16px
+        font-weight: 500
+        color: #555555
+
+.dj-datepicker
+  border-radius: 100px
+  border: solid 1px #e6e6e6
+  height: 50px
+  padding: 14px
+  position: relative
+  input
+    border: 0
+    outline: none
+  &.active
+    box-shadow: 0 2px 20px 0 rgba(0, 0, 0, 0.08)
+  i.fa
+    position: absolute
+    top: 18px
+    right: 14px
+    font-size: 12px
+  .uib-datepicker-popup
+    *
+      outline: none
+      box-shadow: none
+      &:hover, &:focus
+        outline: none
+    top: 57px !important
+    left: 0 !important
+    width: 100%
+    border-radius: 4px
+    box-shadow: 0 2px 20px 0 rgba(0, 0, 0, 0.08)
+    [uib-daypicker], [uib-monthpicker], [uib-yearpicker]
+      table
+        width: 100%
+        th
+          width: 24px
+          height: 14px
+          font-family: CeraPro
+          font-size: 12px
+          line-height: 1.17
+          letter-spacing: 1.1px
+          text-align: center
+          color: #555555
+        td
+          width: 18px
+          height: 18px
+          font-family: CeraPro
+          font-size: 14px
+          letter-spacing: 1.3px
+          text-align: center
+          color: #555555
+
+      .btn-danger
+        background-color: $current-color
+        border-color: $current-color
+        color: white
+
+      .btn-success
+        background-color: #8d8d8d
+        border-color: #8d8d8d
+        color: white
+
+      .btn-info
+        background-color: $current-color
+        border-color: $current-color
+        color: white
+      .uib-title
+        color: $current-color
+        font-family: CeraPro
+        font-size: 14px
+        font-weight: 500
+        font-style: normal
+        font-stretch: normal
+        line-height: normal
+        letter-spacing: 1.3px
+        text-align: center
+      .glyphicon
+        font-size: 10px
+        color: $current-color

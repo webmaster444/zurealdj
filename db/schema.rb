@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170123082719) do
+ActiveRecord::Schema.define(version: 20170124205008) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -27,12 +27,13 @@ ActiveRecord::Schema.define(version: 20170123082719) do
   end
 
   create_table "bookings", force: :cascade do |t|
-    t.integer  "user_id"
+    t.integer  "dj_id"
     t.integer  "event_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "from_date"
+    t.datetime "to_date"
+    t.integer  "rate"
+    t.index ["dj_id"], name: "index_bookings_on_dj_id", using: :btree
     t.index ["event_id"], name: "index_bookings_on_event_id", using: :btree
-    t.index ["user_id"], name: "index_bookings_on_user_id", using: :btree
   end
 
   create_table "cancelations", force: :cascade do |t|
@@ -83,11 +84,11 @@ ActiveRecord::Schema.define(version: 20170123082719) do
     t.string   "sample_content_type"
     t.integer  "sample_file_size"
     t.datetime "sample_updated_at"
-    t.string   "sample_title"
     t.integer  "weekday_rate_from"
     t.integer  "weekday_rate_to"
     t.integer  "weekend_rate_from"
     t.integer  "weekend_rate_to"
+    t.string   "sample_title"
     t.index ["photo_id"], name: "index_djs_on_photo_id", using: :btree
     t.index ["sample_id"], name: "index_djs_on_sample_id", using: :btree
     t.index ["user_id"], name: "index_djs_on_user_id", using: :btree
@@ -179,6 +180,17 @@ ActiveRecord::Schema.define(version: 20170123082719) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "country_flag_code"
+  end
+
+  create_table "notifications", force: :cascade do |t|
+    t.integer  "to_user_id"
+    t.integer  "from_user_id"
+    t.integer  "notification_type"
+    t.boolean  "read"
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
+    t.index ["from_user_id"], name: "index_notifications_on_from_user_id", using: :btree
+    t.index ["to_user_id"], name: "index_notifications_on_to_user_id", using: :btree
   end
 
   create_table "organizer_stars", force: :cascade do |t|

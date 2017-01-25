@@ -18,7 +18,9 @@
         'oitozero.ngSweetAlert',
         'rzModule',
         'ui.bootstrap.datetimepicker',
-        'ngAudio'
+        'ngAudio',
+        'ui.select',
+        'formInput.timepicker'
     ]);
 
     ZurealdjOrganizerApp.config(['$urlRouterProvider', '$stateProvider', '$httpProvider',

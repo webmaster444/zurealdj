@@ -3,47 +3,33 @@
     angular.module('ZurealdjOrganizerApp').factory('BookingsFactory', ['AuthHttp', function($http){
         return {
 
-            users: function(){
-              return $http.get('/bookings/users.json');
-            },
+            book: function(booking){
 
-            events: function(){
-              return $http.get('/bookings/events.json');
-            },
+                console.log(booking);
 
-            upsert: function(bookings){
                 var fd = new FormData();
+                fd.append('dj_id', booking.dj_id);
+                fd.append('event_id', booking.event ? booking.event.id : '');
 
-                if(bookings.user){
-                    fd.append('booking[user]', bookings.user );
-                }
-                if(bookings.event){
-                    fd.append('booking[event]', bookings.event );
-                }
+                fd.append('from_date', booking.from_date || '');
+                fd.append('from_time', booking.from_time || '');
 
-                if(bookings.id){
-                    return $http.put('/bookings/' + bookings.id, fd, {
+                fd.append('to_date', booking.to_date || '');
+                fd.append('to_time', booking.to_time || '');
+
+                fd.append('rate', booking.rate || '');
+
+                if(booking.id){
+                    return $http.put('/organizer/bookings/' + booking.id, fd, {
                         transformRequest: angular.identity,
                         headers: {'Content-Type': undefined}
                     });
                 }else{
-                    return $http.post('/bookings', fd, {
+                    return $http.post('/organizer/bookings', fd, {
                         transformRequest: angular.identity,
                         headers: {'Content-Type': undefined}
                     });
                 }
-            },
-
-            all: function(options){
-                return $http.get('/bookings.json?page=' + options.page);
-            },
-
-            show: function(id){
-                return $http.get('/bookings/' + id + '.json');
-            },
-
-            destroy: function(id){
-                return $http.delete('/bookings/' + id)
             }
         }
     }])

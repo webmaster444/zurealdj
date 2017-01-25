@@ -1,4 +1,4 @@
-.top-navbar
+.navbar.top-navbar
   .container
     table
       tr
@@ -13,10 +13,24 @@
                 .count<
                   | 3
             li.desktop-only
-              a
-                i.dj-bell
+              .dropdown.dj-notifications-dropdown[uib-dropdown is-open="notificationsopen" auto-close="outsideClick"]
+                a#toggle-notifications type="button" uib-dropdown-toggle=true ng-disabled="disabled"
+                  i.dj-bell ng-class="notificationsopen ? 'active': ''"
+                .dropdown-menu uib-dropdown-menu=true role="menu" aria-labelledby="toggle-notifications"
+                  .dj-dropdown-header.text-center
+                    a.dj-black-link
+                      | Notifications
+                  table style="width: 100%"
+                    tr
+                      td style="width: 100px"
+                        input type="number" ng-model="filters.price_from"
+                      td
+                        rzslider rz-slider-model="filters.price_from" rz-slider-high="filters.price_to" rz-slider-options="slider.options"
+                      td style="width: 100px"
+                        input type="number" ng-model="filters.price_to"
+
             li.desktop-only
-              .dropdown[uib-dropdown]
+              .dropdown.dj-profile-dropdown[uib-dropdown]
                 a.dropdown-toggle.count-info[aria-expanded="false" aria-haspopup="true" uib-dropdown-toggle]
                   img.profile-image> ng-src="{{ $current_user.avatar.url == '/images/img-profile-photo.png'? '/images/icons/img-profile-photo-mini.png' : $current_user.avatar.url}}"
                   span
