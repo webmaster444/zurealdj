@@ -1,4 +1,4 @@
-class Dj::NotificationsController < Dj::BaseController
+class NotificationsController < ApplicationController
 
   def index
     @page = params[:page].to_i

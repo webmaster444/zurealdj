@@ -9,3 +9,17 @@ json.image do
 end
 json.created_at @event.created_at.strftime("%d/%m/%Y")
 json.updated_at @event.created_at.strftime("%d/%m/%Y")
+
+json.djs @event.djs.each do |dj|
+  user = dj.user
+  json.name user.name
+  json.avatar paperclip_url(user.avatar, :large)
+  json.id user.id
+  json.dj_id dj.id
+  json.personal_url user.personal_url
+  json.city dj.city
+  json.country dj.country
+  json.genres user.genres.map{|g| g['title']}.join(' | ')
+  json.rating user.rate
+  json.in_favorites current_user.organizer.favorite_djs.include?(dj)
+end

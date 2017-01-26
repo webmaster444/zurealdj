@@ -1,7 +1,5 @@
 class Organizer::DjsController < Organizer::BaseController
 
-  # load_and_authorize_resource :dj
-
   def index
     @page = params[:page].to_i
     @page = 1 if @page < 1
@@ -13,7 +11,7 @@ class Organizer::DjsController < Organizer::BaseController
   end
 
   def rate
-    @vote = Star.new stars: params[:rating], to_user: @dj.user, from_user: current_user
+    @vote = Star.new stars: params[:rating], to_user: dj.user, from_user: current_user
     if @vote.save
       render json: {message: "Vote saved."}
     else
@@ -23,11 +21,19 @@ class Organizer::DjsController < Organizer::BaseController
   end
 
   def show
-    @user = User.where("id = ? OR personal_url = ?", params[:id].to_i, params[:id]).first
-    @dj = @user.dj
+    @user = user
+    @dj = dj
   end
 
   private
+
+  def dj
+    @dj ||= user.dj
+  end
+
+  def user
+    @user ||= User.where("id = ? OR personal_url = ?", params[:id].to_i, params[:id]).first
+  end
 
   def query(options={})
     users = User.arel_table

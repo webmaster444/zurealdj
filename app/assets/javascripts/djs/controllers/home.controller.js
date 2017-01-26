@@ -55,6 +55,7 @@
             };
 
             $scope.openNotifications = function(){
+                $scope.notifications = null;
                 if($scope.notificationsDropdownOpen){
                     notifications.all({per_page: 4}).success(function(data){
                         $scope.notifications = data.notifications;

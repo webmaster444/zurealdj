@@ -14,6 +14,10 @@ class Dj < ActiveRecord::Base
     CountryFlag.find(country_flag_code)
   end
 
+  def country
+    country_flag.try :[], :title
+  end
+
   def Dj.find_user id
     user = User.find_by_personal_url id
     if user.nil?

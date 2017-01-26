@@ -41,6 +41,7 @@
 #= require angular-ui-bootstrap-datetimepicker/datetimepicker
 #= require ui-select/dist/select
 #= require cropperjs/dist/cropper.min
+#= require_tree ./common
 #= require_tree ./directives
 #= require ./landing/application.module.js
 #= require_tree ./landing/factories

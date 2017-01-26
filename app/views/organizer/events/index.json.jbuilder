@@ -8,5 +8,8 @@ json.events @events.each do |event|
   json.start_date event.start_date.strftime("%d/%m/%Y")
   json.end_date event.end_date.strftime("%d/%m/%Y")
   json.image event.image.url
+  json.djs event.djs.each do |dj|
+    json.avatar dj.user.avatar.try(:url, :small)
+  end
 end
 json.count @count

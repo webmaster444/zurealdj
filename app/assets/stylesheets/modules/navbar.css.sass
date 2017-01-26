@@ -65,11 +65,11 @@
   [uib-dropdown]
     display: inline-block
     position: relative
-    i.fa
-      position: absolute
-      top: 19px
-      right: 17px
-      font-size: 12px
+    //i.fa
+    //  position: absolute
+    //  top: 19px
+    //  right: 17px
+    //  font-size: 12px
     [uib-dropdown-toggle]
       border-radius: 100px
       background-color: #ffffff
@@ -221,12 +221,18 @@
     list-style-type: none
     padding: 0
     margin: 0
+    max-height: 100px
+    transition: max-height 0.15s ease-out
     li
       position: relative
       padding: 30px 20px 30px 120px
       cursor: pointer
       height: auto
       min-height: 138px
+      &.spinner
+        min-height: auto
+        padding: 10px
+        text-align: center
       img
         position: absolute
         top: 30px

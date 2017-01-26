@@ -56,7 +56,6 @@ Rails.application.routes.draw do
         end
       end
       resources :events, only: [:index, :show]
-      resources :notifications, only: [:index]
     end
 
     namespace :organizer do
@@ -136,5 +135,8 @@ Rails.application.routes.draw do
         get :policies
       end
     end
+
+    resources :notifications, only: [:index]
+
   end
 end

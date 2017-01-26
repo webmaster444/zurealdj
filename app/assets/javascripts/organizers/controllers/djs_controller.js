@@ -126,7 +126,7 @@
                     };
 
                     $scope.rate = function(dj){
-                        djs.rate(dj.dj_id, dj.rating)
+                        djs.rate(dj.id, dj.rating)
                             .success(function(data){
 
                             })

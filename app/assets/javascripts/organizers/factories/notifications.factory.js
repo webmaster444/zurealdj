@@ -1,6 +1,6 @@
 (function () {
     'use strict';
-    angular.module('ZurealdjDjApp').factory('NotificationsFactory', ['AuthHttp', function($http){
+    angular.module('ZurealdjOrganizerApp').factory('NotificationsFactory', ['AuthHttp', function($http){
         return {
             all: function(options = {}){
 

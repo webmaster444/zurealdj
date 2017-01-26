@@ -24,3 +24,8 @@ ul
 
     .dj-gray-text
       | {{ notification.created_at }}
+  li.spinner ng-hide="notifications"
+    i.fa.fa-spinner.fa-spin
+  li.spinner ng-show="notifications.length == 0"
+    .dj-gray-text
+      | No new notifications

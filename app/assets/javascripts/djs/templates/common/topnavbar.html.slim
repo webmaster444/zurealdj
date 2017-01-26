@@ -20,32 +20,7 @@
                   .dj-dropdown-header
                     a.dj-black-link
                       | Notifications
-                  ul
-                    li ng-repeat="notification in notifications"
-                      img ng-src="{{notification.from_user.avatar}}"                                ng-if="notification.notification_type == 'rated'"
-                      .dj-black-text                                                                ng-if="notification.notification_type == 'rated'"
-                        | {{ notification.from_user.name }} rated you
-                      div.stars uib-rating=true ng-model="notification.star.stars" read-only="true" ng-if="notification.notification_type == 'rated'"
-
-
-                      img ng-src="{{notification.event.image}}"                                     ng-if="notification.notification_type == 'event_canceled'"
-                      .dj-black-text                                                                ng-if="notification.notification_type == 'event_canceled'"
-                        | {{ notification.event.title }}
-                      .dj-gray-text                                                                 ng-if="notification.notification_type == 'event_canceled'"
-                        | {{ notification.event.country }}, {{ notification.event.city }}
-                      .extra-text                                                                   ng-if="notification.notification_type == 'event_canceled'"
-                        | Event Canceled
-
-                      img ng-src="{{notification.event.image}}"                                     ng-if="notification.notification_type == 'booking_requested'"
-                      .dj-black-text                                                                ng-if="notification.notification_type == 'booking_requested'"
-                        | {{ notification.event.title }}
-                      .dj-gray-text                                                                 ng-if="notification.notification_type == 'booking_requested'"
-                        | {{ notification.event.country }}, {{ notification.event.city }}
-                      .extra-text                                                                   ng-if="notification.notification_type == 'booking_requested'"
-                        | Booking Requested
-
-                      .dj-gray-text
-                        | {{ notification.created_at }}
+                  div ng-include="'common/templates/notifications-dropdown.html'"
                   .dj-dropdown-footer
                     a.pink-link
                       | Show All
