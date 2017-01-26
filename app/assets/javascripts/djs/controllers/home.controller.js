@@ -3,8 +3,8 @@
     "use strict";
 
     angular.module('ZurealdjDjApp')
-        .controller('HomeController', ['$scope', '$state', 'ngDialog', 'SessionsFactory', '$timeout', 'toaster', 'UsersFactory',
-            function ($scope, $state, ngDialog, session, $timeout, toaster, users) {
+        .controller('HomeController', ['$scope', '$state', 'ngDialog', 'SessionsFactory', '$timeout', 'toaster', 'UsersFactory', 'NotificationsFactory',
+            function ($scope, $state, ngDialog, session, $timeout, toaster, users, notifications) {
 
             $scope.I18n = I18n;
             $scope.$state = $state;
@@ -52,6 +52,14 @@
                     showClose: false,
                     closeByNavigation: true
                 });
+            };
+
+            $scope.openNotifications = function(){
+                if($scope.notificationsDropdownOpen){
+                    notifications.all({per_page: 4}).success(function(data){
+                        $scope.notifications = data.notifications;
+                    });
+                }
             }
         }])
 }());

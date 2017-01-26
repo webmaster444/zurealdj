@@ -33,8 +33,10 @@ class Organizer::BookingsController < Organizer::BaseController
       to_date += meridiem == 'AM' ? 0 : 12
     end
 
+    user = User.find(allowed_params[:dj_id])
+
     {
-        dj_id: allowed_params[:dj_id],
+        dj_id: user.dj.try(:id),
         event_id: allowed_params[:event_id],
         from_date: from_date,
         to_date: to_date,

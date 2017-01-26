@@ -9,7 +9,7 @@ end
 json.avatar_present true if @user.avatar_file_name
 json.city @user.organizer.city
 json.country @user.organizer.country_flag
-json.stars @user.organizer.stars
+json.stars @user.rate
 json.about @user.about
 json.facebook_link @user.facebook_link
 json.instagram_link @user.instagram_link

@@ -1,6 +1,6 @@
 class Organizer::DjsController < Organizer::BaseController
 
-  #load_and_authorize_resource :dj
+  # load_and_authorize_resource :dj
 
   def index
     @page = params[:page].to_i
@@ -13,7 +13,7 @@ class Organizer::DjsController < Organizer::BaseController
   end
 
   def rate
-    @vote = DjStar.new stars: params[:rating], dj: @dj, organizer: current_user.organizer
+    @vote = Star.new stars: params[:rating], to_user: @dj.user, from_user: current_user
     if @vote.save
       render json: {message: "Vote saved."}
     else
@@ -23,8 +23,8 @@ class Organizer::DjsController < Organizer::BaseController
   end
 
   def show
-    @dj = Dj.find_user params[:id]
-    @user = @dj.user
+    @user = User.where("id = ? OR personal_url = ?", params[:id].to_i, params[:id]).first
+    @dj = @user.dj
   end
 
   private
@@ -79,8 +79,8 @@ class Organizer::DjsController < Organizer::BaseController
                        JOIN genres_users ON genres.id = genres_users.genre_id
                        WHERE genres_users.user_id = users.id
                      )) as genres",
-                "COALESCE((SELECT SUM(stars) FROM dj_stars WHERE dj_stars.dj_id = djs.id), 0) as stars_count",
-                "COALESCE((SELECT COUNT(id) FROM dj_stars WHERE dj_stars.dj_id = djs.id), 0) as votes_count",
+                "COALESCE((SELECT SUM(stars) FROM stars WHERE stars.to_user_id = djs.id), 0) as stars_count",
+                "COALESCE((SELECT COUNT(id) FROM stars WHERE stars.to_user_id = djs.id), 0) as votes_count",
       )
     end
 

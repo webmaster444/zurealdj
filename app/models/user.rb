@@ -6,6 +6,7 @@ class User < ActiveRecord::Base
   has_and_belongs_to_many :cancelations
   has_one :dj, dependent: :destroy
   has_one :organizer, dependent: :destroy
+  has_many :stars, foreign_key: :to_user_id
 
   accepts_nested_attributes_for :organizer
   accepts_nested_attributes_for :dj
@@ -49,6 +50,14 @@ class User < ActiveRecord::Base
       organizer_personal_url: 4,
       organizer_completed: 5
   }
+
+  def rate
+    stars.count == 0 ? 0 : stars_count / stars.count
+  end
+
+  def stars_count
+    stars.select("COALESCE(SUM(stars), 0) as sum").to_a.first[:sum]
+  end
 
   def country_flag
     CountryFlag.find(country_flag_code)

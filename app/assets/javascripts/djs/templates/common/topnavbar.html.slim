@@ -13,21 +13,42 @@
                 .count<
                   | 3
             li.desktop-only
-              .dropdown.dj-notifications-dropdown[uib-dropdown is-open="notificationsopen" auto-close="outsideClick"]
+              .dropdown.dj-notifications-dropdown[uib-dropdown is-open="$parent.notificationsDropdownOpen" auto-close="outsideClick" on-toggle="openNotifications()"]
                 a#toggle-notifications type="button" uib-dropdown-toggle=true ng-disabled="disabled"
-                  i.dj-bell ng-class="notificationsopen ? 'active': ''"
-                .dropdown-menu uib-dropdown-menu=true role="menu" aria-labelledby="toggle-notifications"
-                  .dj-dropdown-header.text-center
+                  i.dj-bell ng-class="$parent.notificationsDropdownOpen ? 'active': ''"
+                #notifications-menu.dropdown-menu uib-dropdown-menu=true role="menu" aria-labelledby="toggle-notifications"
+                  .dj-dropdown-header
                     a.dj-black-link
                       | Notifications
-                  table style="width: 100%"
-                    tr
-                      td style="width: 100px"
-                        input type="number" ng-model="filters.price_from"
-                      td
-                        rzslider rz-slider-model="filters.price_from" rz-slider-high="filters.price_to" rz-slider-options="slider.options"
-                      td style="width: 100px"
-                        input type="number" ng-model="filters.price_to"
+                  ul
+                    li ng-repeat="notification in notifications"
+                      img ng-src="{{notification.from_user.avatar}}"                                ng-if="notification.notification_type == 'rated'"
+                      .dj-black-text                                                                ng-if="notification.notification_type == 'rated'"
+                        | {{ notification.from_user.name }} rated you
+                      div.stars uib-rating=true ng-model="notification.star.stars" read-only="true" ng-if="notification.notification_type == 'rated'"
+
+
+                      img ng-src="{{notification.event.image}}"                                     ng-if="notification.notification_type == 'event_canceled'"
+                      .dj-black-text                                                                ng-if="notification.notification_type == 'event_canceled'"
+                        | {{ notification.event.title }}
+                      .dj-gray-text                                                                 ng-if="notification.notification_type == 'event_canceled'"
+                        | {{ notification.event.country }}, {{ notification.event.city }}
+                      .extra-text                                                                   ng-if="notification.notification_type == 'event_canceled'"
+                        | Event Canceled
+
+                      img ng-src="{{notification.event.image}}"                                     ng-if="notification.notification_type == 'booking_requested'"
+                      .dj-black-text                                                                ng-if="notification.notification_type == 'booking_requested'"
+                        | {{ notification.event.title }}
+                      .dj-gray-text                                                                 ng-if="notification.notification_type == 'booking_requested'"
+                        | {{ notification.event.country }}, {{ notification.event.city }}
+                      .extra-text                                                                   ng-if="notification.notification_type == 'booking_requested'"
+                        | Booking Requested
+
+                      .dj-gray-text
+                        | {{ notification.created_at }}
+                  .dj-dropdown-footer
+                    a.pink-link
+                      | Show All
 
             li.desktop-only
               .dropdown.dj-profile-dropdown[uib-dropdown]

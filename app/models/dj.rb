@@ -1,6 +1,4 @@
 class Dj < ActiveRecord::Base
-
-  has_many :dj_stars
   has_many :bookings, dependent: :destroy
   belongs_to :user
 
@@ -14,18 +12,6 @@ class Dj < ActiveRecord::Base
 
   def country_flag
     CountryFlag.find(country_flag_code)
-  end
-
-  def stars
-    votes_count == 0 ? 0 : stars_count / votes_count
-  end
-
-  def stars_count
-    dj_stars.select("COALESCE(SUM(stars), 0) as sum").to_a.first[:sum]
-  end
-
-  def votes_count
-    dj_stars.count
   end
 
   def Dj.find_user id

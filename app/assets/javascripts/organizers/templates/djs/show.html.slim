@@ -13,7 +13,7 @@
   .profile-content
     .page-block
       .profile-avatar
-        .img-avatar style="background-image: url({{ user.avatar.url }})"
+        .img-avatar style="background-image: url({{ user.avatar.original }})"
           .gradient
         a.btn-action.btn-book-now.small-text ng-click="book()"
           | Book Now
@@ -67,7 +67,7 @@
           .block
             .title
               | Artist
-            div.stars rating=true ng-model="user.stars"
+            div.stars[uib-rating ng-model="user.stars"]
           .block ng-show="user.about"
             .title
               | About

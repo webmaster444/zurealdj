@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170124205008) do
+ActiveRecord::Schema.define(version: 20170126081258) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -60,14 +60,6 @@ ActiveRecord::Schema.define(version: 20170124205008) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "country_flag_code"
-  end
-
-  create_table "dj_stars", force: :cascade do |t|
-    t.integer "dj_id"
-    t.integer "organizer_id"
-    t.integer "stars",        default: 0
-    t.index ["dj_id"], name: "index_dj_stars_on_dj_id", using: :btree
-    t.index ["organizer_id"], name: "index_dj_stars_on_organizer_id", using: :btree
   end
 
   create_table "djs", force: :cascade do |t|
@@ -189,16 +181,12 @@ ActiveRecord::Schema.define(version: 20170124205008) do
     t.boolean  "read"
     t.datetime "created_at",        null: false
     t.datetime "updated_at",        null: false
+    t.integer  "event_id"
+    t.integer  "star_id"
+    t.index ["event_id"], name: "index_notifications_on_event_id", using: :btree
     t.index ["from_user_id"], name: "index_notifications_on_from_user_id", using: :btree
+    t.index ["star_id"], name: "index_notifications_on_star_id", using: :btree
     t.index ["to_user_id"], name: "index_notifications_on_to_user_id", using: :btree
-  end
-
-  create_table "organizer_stars", force: :cascade do |t|
-    t.integer "dj_id"
-    t.integer "organizer_id"
-    t.integer "stars",        default: 0
-    t.index ["dj_id"], name: "index_organizer_stars_on_dj_id", using: :btree
-    t.index ["organizer_id"], name: "index_organizer_stars_on_organizer_id", using: :btree
   end
 
   create_table "organizers", force: :cascade do |t|
@@ -229,6 +217,15 @@ ActiveRecord::Schema.define(version: 20170124205008) do
     t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+  end
+
+  create_table "stars", force: :cascade do |t|
+    t.integer  "from_user_id"
+    t.integer  "to_user_id"
+    t.integer  "stars",        default: 0
+    t.datetime "created_at"
+    t.index ["from_user_id"], name: "index_stars_on_from_user_id", using: :btree
+    t.index ["to_user_id"], name: "index_stars_on_to_user_id", using: :btree
   end
 
   create_table "terms_n_conditions_pages", force: :cascade do |t|
