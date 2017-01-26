@@ -160,6 +160,10 @@
                     events.show($stateParams.id).success(function(data){
                         $scope.event = data;
                     });
+
+                    $scope.rate = function(dj){
+                        djs.rate(dj.id, dj.rating)
+                    };
                 }
         }])
 

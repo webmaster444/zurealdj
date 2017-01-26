@@ -87,7 +87,7 @@
         .small-text.genres
           | {{ dj.genres }}
         .rating
-          span.rating-icons rating=true ng-model="dj.rating" max="5" ng-change="rate(dj)"
+          span.rating-icons[uib-rating ng-model="dj.rating" max="5" ng-change="rate(dj)"]
 
   .show-more
     a ng-click="showMore()" ng-hide="djs.length == count"

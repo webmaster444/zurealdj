@@ -7,7 +7,7 @@
       .inf
         .name
           | {{ user.name }}
-        div.stars rating=true ng-model="user.stars"
+        span.rating-icons[uib-rating ng-model="user.rating" max="5"]
         .role.small-text
           | Artist
   .profile-content

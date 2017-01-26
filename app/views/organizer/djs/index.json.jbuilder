@@ -7,7 +7,7 @@ json.djs @djs.each do |dj|
   json.city dj['city']
   json.country CountryFlag.find(dj['country_flag_code']).try(:[], :title)
   json.genres dj['genres'].map{|g| g['title']}.join(' | ')
-  json.rating dj['votes_count'] == 0 ? 0 : dj['stars_count']/dj['votes_count']
+  json.rating dj.rate
   json.in_favorites current_user.organizer.favorite_djs.include?(dj.dj)
 end
 json.min_rate [Dj.minimum(:weekday_rate_from), Dj.minimum(:weekend_rate_from)].min

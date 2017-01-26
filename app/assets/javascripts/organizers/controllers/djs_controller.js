@@ -124,17 +124,17 @@
                             ++$scope.filters.page;
                         }
                     };
-
-                    $scope.rate = function(dj){
-                        djs.rate(dj.id, dj.rating)
-                            .success(function(data){
-
-                            })
-                            .error(function(data){
-
-                            });
-                    };
                 }
+
+                $scope.rate = function(dj){
+                    djs.rate(dj.id, dj.rating)
+                        .success(function(data){
+
+                        })
+                        .error(function(data){
+
+                        });
+                };
 
                 if($state.current.name == 'dj'){
                     djs.show($stateParams.id).success(function(data){
