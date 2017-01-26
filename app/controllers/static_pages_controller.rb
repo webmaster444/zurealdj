@@ -31,4 +31,9 @@ class StaticPagesController < ApplicationController
     @page = PoliciesPage.first_or_create
     render json: {page: @page.content}
   end
+
+  def cancellation_policy
+    @page = CancellationPolicy.first_or_create
+    render json: {page: @page.content}
+  end
 end

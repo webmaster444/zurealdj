@@ -70,6 +70,11 @@
                     templateUrl: 'landing/templates/policies/index.html',
                     controller: 'PoliciesController'
                 })
+                .state('cancellation_policy',{
+                    url: '/cancellation_policy',
+                    templateUrl: 'landing/templates/cancellation_policy/index.html',
+                    controller: 'CancellationPolicyController'
+                })
     }]);
 
     ZurealdjLandingApp.run(['$http', '$rootScope', 'AuthHttp', function($http, $rootScope, AuthHttp){

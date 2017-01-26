@@ -1,5 +1,6 @@
 class Admin::CancellationPolicyController < ApplicationController
-  
+
+
   def update
     @article = CancellationPolicy.first_or_create
 
@@ -10,7 +11,7 @@ class Admin::CancellationPolicyController < ApplicationController
     end
   end
 
-  def show
+  def index
     @article = CancellationPolicy.first_or_create
   end
 

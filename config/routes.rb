@@ -22,7 +22,11 @@ Rails.application.routes.draw do
       resources :terms_n_conditions_pages, only: [:update, :show]
       resources :organizers, only: [:index, :update, :destroy, :show]
       resources :cancelations_pages, only: [:update, :show]
-      resources :cancellation_policy, only: [:update, :show]
+      resources :cancellation_policy, only: [:index] do
+        collection do
+          put :update
+        end
+      end
       resources :password_resets, only: [:create, :update, :show, :edit]
       resources :passwords, only: [:create]
       resources :about_slides, only: [:index, :create, :update, :destroy, :show]
@@ -136,6 +140,7 @@ Rails.application.routes.draw do
         get :who_we_are
         get :cancelations
         get :policies
+        get :cancellation_policy
       end
     end
 

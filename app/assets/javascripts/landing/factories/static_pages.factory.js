@@ -19,6 +19,9 @@
             },
             policies: function(){
                 return $http.get('/static_pages/policies')
+            },
+            cancellation_policy: function () {
+                return $http.get('/static_pages/cancellation_policy')
             }
         }
     }])

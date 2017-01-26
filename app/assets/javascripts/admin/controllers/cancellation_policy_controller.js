@@ -17,11 +17,9 @@
 
                     $scope.cancellation_policy = {};
 
-                    var p =cancellation_policy.show($stateParams.id)
-                        p.success(function(data){
-
+                        cancellation_policy.show($stateParams.id)
+                            .success(function(data){
                                     $scope.cancellation_policy = data.cancellation_policy;
-
                             }
                         );
 
@@ -32,7 +30,6 @@
                         cancellation_policy.upsert($scope.cancellation_policy)
                             .success(function(){
                                 $scope.formPending = false;
-                                $state.go('home')
                             })
                             .error(function(data){
                                 $scope.validation_errors = data.errors;

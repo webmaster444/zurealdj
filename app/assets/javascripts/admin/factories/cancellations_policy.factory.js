@@ -10,14 +10,14 @@
                     fd.append('cancellation_policy[content]', cancellation_policy.content );
                 }
 
-                return $http.put('/admin/cancellation_policy/1', fd, {
+                return $http.put('/admin/cancellation_policy', fd, {
                     transformRequest: angular.identity,
                     headers: {'Content-Type': undefined}
                 });
             },
 
             show: function(id){
-                return $http.get('/admin/cancellation_policy/1.json');
+                return $http.get('/admin/cancellation_policy');
             }
         }
     }])
