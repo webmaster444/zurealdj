@@ -1,8 +1,6 @@
 class Dj::EventsController < Dj::BaseController
 
   def index
-    #@events = current_user.events
-    #@count = @events.count
 
     @page = params[:page].to_i
     @page = 1 if @page < 1
@@ -10,10 +8,31 @@ class Dj::EventsController < Dj::BaseController
     @per_page = 10 if @per_page < 1
 
     events = Event.arel_table
+    bookings = Booking.arel_table
+
+    fields = [
+        events[:id],
+        events[:created_at],
+        events[:title],
+        events[:city],
+        events[:country_flag_code],
+        events[:address],
+        events[:start_date],
+        events[:end_date],
+        events[:image_file_name],
+        events[:image_content_type],
+        events[:image_file_size],
+        events[:image_updated_at],
+        events[:image_updated_at],
+        bookings[:event_id]
+    ]
 
     query = events
-                .project(Arel.star)
+                .project(fields)
+                .join(bookings).on(bookings[:event_id].eq(events[:id]))
                 .group(events[:id])
+                .group(bookings[:id])
+                .where(bookings[:dj_id].eq(current_user.dj.id))
 
     query.where(events[:title].matches("%#{ params[:title] }%")) if params[:title].present?
 
@@ -31,6 +50,15 @@ class Dj::EventsController < Dj::BaseController
 
   def show
     @event = Event.find params[:id]
+    bookings = find_booking @event.bookings
+    render json: {  }, status: :not_found and return if bookings.count == 0
+    @booking = bookings.first
   end
+
+  private
+
+    def find_booking bookings
+      current_user.dj.bookings && bookings
+    end
 
 end

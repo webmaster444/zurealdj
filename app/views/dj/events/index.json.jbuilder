@@ -7,6 +7,11 @@ json.events @events.each do |event|
   json.address event.address
   json.start_date event.start_date.try(:strftime, "%d/%m/%Y")
   json.end_date event.end_date.try(:strftime, "%d/%m/%Y")
-  json.image event.image.url
+  json.image paperclip_url(event.image, :original)
+
+  json.djs event.djs.each do |dj|
+    json.avatar dj.user.avatar.try(:url, :small)
+  end
+
 end
 json.count @count

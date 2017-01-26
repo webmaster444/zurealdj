@@ -4,14 +4,11 @@
 
     angular.module('ZurealdjDjApp')
         .controller('EventsController', ['$scope', '$state', 'ngDialog', '$stateParams', '$timeout', '$sce', 'SweetAlert', 'EventsFactory',
-            function ($scope, $state, ngDialog, $stateParams, $timeout, $sce, SweetAlert, events) {
+            'BookingsFactory',
+            function ($scope, $state, ngDialog, $stateParams, $timeout, $sce, SweetAlert, events, bookings) {
                 $scope.I18n = I18n;
                 $scope._ = _;
                 $scope.$state = $state;
-
-                $scope.getHtml = function(html){
-                    return $sce.trustAsHtml(html);
-                };
 
                 $scope.filters = {
                     page: 1,
@@ -78,7 +75,7 @@
                 };
 
                 $scope.djsCount = function() {
-                    var count = ($('.event-item').width() - 550) / 90;
+                    var count = Math.round(($('.event-item').width() - 600) / 90);
                     return count > 4? 4: count;
                 };
 
@@ -87,6 +84,17 @@
                     events.show($stateParams.id).success(function(data){
                         $scope.event = data;
                     });
+
+                    $scope.updateStatus = function() {
+                        $scope.event.booking_status = !$scope.event.booking_status
+                        bookings.upsert({ id: $scope.event.booking_id, status: $scope.event.booking_status })
+                            .success(function(){
+
+                            })
+                            .error(function(data){
+                                $scope.processing = false;
+                            })
+                    }
                 }
             }])
 

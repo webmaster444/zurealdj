@@ -30,7 +30,7 @@ class Organizer::EventsController < ApplicationController
   end
 
   def show
-    render json: {  }, status: :not_found if current_user.organizer.events.exclude?(@event)
+    render json: {  }, status: :not_found and return if current_user.organizer.events.exclude?(@event)
   end
 
   def create
@@ -67,5 +67,4 @@ class Organizer::EventsController < ApplicationController
   def event_params
     params.require(:event).permit :image, :title, :country_flag_code, :city, :end_date, :start_date
   end
-
 end

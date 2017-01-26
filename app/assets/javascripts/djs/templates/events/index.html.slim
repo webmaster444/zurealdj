@@ -76,7 +76,7 @@
     .djs
       img.dj ng-repeat="dj in event.djs | limitTo: djsCount()" ng-src="{{ dj.avatar }}"
       .plus.small-text
-        | +{{ event.djs.length - 4 > 0? event.djs.length - 4 : 0 }}
+        | +{{ event.djs.length - djsCount() > 0? event.djs.length - djsCount() : 0 }}
     .djs-count
       | {{ event.djs.length }} DJ's
     img.event-image ng-src="{{ event.image }}"

@@ -56,6 +56,7 @@ Rails.application.routes.draw do
         end
       end
       resources :events, only: [:index, :show]
+      resources :bookings, only: [:update]
     end
 
     namespace :organizer do

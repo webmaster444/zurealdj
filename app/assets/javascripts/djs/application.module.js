@@ -64,47 +64,6 @@
                     templateUrl: 'djs/templates/steps/cancelations.html',
                     controller: 'StepCancelationsController'
                 })
-
-                .state('new_organization',{
-                    url: '/organization/new',
-                    templateUrl: 'djs/templates/organizations/form.html',
-                    controller: 'OrganizationsController'
-                })
-                .state('show_organization',{
-                    url: '/organization/:id',
-                    templateUrl: 'djs/templates/organizations/show.html',
-                    controller: 'OrganizationsController'
-                })
-                .state('edit_organization',{
-                    url: '/organization/:id/edit',
-                    templateUrl: 'djs/templates/organizations/form.html',
-                    controller: 'OrganizationsController'
-                })
-                .state('organizations',{
-                    url: '/organizations',
-                    templateUrl: 'djs/templates/organizations/index.html',
-                    controller: 'OrganizationsController'
-                })
-                .state('new_booking',{
-                    url: '/booking/new',
-                    templateUrl: 'djs/templates/bookings/form.html',
-                    controller: 'BookingsController'
-                })
-                .state('show_booking',{
-                    url: '/booking/:id',
-                    templateUrl: 'djs/templates/bookings/show.html',
-                    controller: 'BookingsController'
-                })
-                .state('edit_booking',{
-                    url: '/booking/:id/edit',
-                    templateUrl: 'djs/templates/bookings/form.html',
-                    controller: 'BookingsController'
-                })
-                .state('bookings',{
-                    url: '/bookings',
-                    templateUrl: 'djs/templates/bookings/index.html',
-                    controller: 'BookingsController'
-                })
                 .state('show_event',{
                     url: '/events/:id',
                     templateUrl: 'djs/templates/events/show.html',

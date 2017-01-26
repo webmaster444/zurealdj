@@ -26,8 +26,10 @@
       .event-image
         .img-event style="background-image: url({{ event.image.url }})"
           .gradient
-        a.btn-action.btn-edit.small-text
+        a.btn-action.btn-edit.small-text ng-hide="event.booking_status" ng-click="updateStatus()" style="background-color: #ff7dc0"
           | Confirm Participation
+        a.btn-action.btn-edit.small-text ng-show="event.booking_status" ng-click="updateStatus()"
+          | Cancellation
 
       .general
         .block
@@ -70,5 +72,20 @@
       .artists
         .title
           | Artists
-        .container
-          |
+        .index
+          .profile-item ng-repeat="dj in event.djs track by $index"
+            img ng-src="{{ dj.avatar }}"
+            .inf
+              .name
+                | {{ dj.name }}
+              .small-text.address
+                span ng-show="dj.city"
+                  | {{ dj.city}}
+                  span ng-show="dj.country"
+                    | {{ ', ' }}
+                span
+                  | {{ dj.country }}
+              .small-text.genres
+                | {{ dj.genres }}
+              .rating
+                span.rating-icons[uib-rating ng-model="dj.rating" max="5"]

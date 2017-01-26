@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170126081258) do
+ActiveRecord::Schema.define(version: 20170126101813) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -32,6 +32,7 @@ ActiveRecord::Schema.define(version: 20170126081258) do
     t.datetime "from_date"
     t.datetime "to_date"
     t.integer  "rate"
+    t.boolean  "status",    default: false
     t.index ["dj_id"], name: "index_bookings_on_dj_id", using: :btree
     t.index ["event_id"], name: "index_bookings_on_event_id", using: :btree
   end
@@ -76,11 +77,11 @@ ActiveRecord::Schema.define(version: 20170126081258) do
     t.string   "sample_content_type"
     t.integer  "sample_file_size"
     t.datetime "sample_updated_at"
+    t.string   "sample_title"
     t.integer  "weekday_rate_from"
     t.integer  "weekday_rate_to"
     t.integer  "weekend_rate_from"
     t.integer  "weekend_rate_to"
-    t.string   "sample_title"
     t.index ["photo_id"], name: "index_djs_on_photo_id", using: :btree
     t.index ["sample_id"], name: "index_djs_on_sample_id", using: :btree
     t.index ["user_id"], name: "index_djs_on_user_id", using: :btree

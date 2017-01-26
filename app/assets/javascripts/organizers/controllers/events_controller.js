@@ -81,7 +81,7 @@
                     };
 
                     $scope.djsCount = function() {
-                        var count = ($('.event-item').width() - 550) / 90;
+                        var count = Math.round(($('.event-item').width() - 600) / 90);
                         return count > 4? 4: count;
                     };
                 }
@@ -160,36 +160,6 @@
                     events.show($stateParams.id).success(function(data){
                         $scope.event = data;
                     });
-
-                    $scope.rate = function(dj){
-                        djs.rate(dj.id, dj.rating)
-                    };
-
-                    var favorites_timer = false;
-
-                    $scope.removeFromFavorites = function(dj){
-                        if(favorites_timer){
-                            $timeout.cancel(favorites_timer)
-                        }
-                        favorites_timer = $timeout(function(){
-                            djs.removeFromFavorites(dj.dj_id)
-                                .success(function(){
-                                    dj.in_favorites = false;
-                                })
-                        }, 500)
-                    };
-
-                    $scope.addToFavorites = function(dj){
-                        if(favorites_timer){
-                            $timeout.cancel(favorites_timer)
-                        }
-                        favorites_timer = $timeout(function(){
-                            djs.addToFavorites(dj.dj_id)
-                                .success(function(){
-                                    dj.in_favorites = true;
-                                })
-                        }, 500)
-                    };
                 }
         }])
 
