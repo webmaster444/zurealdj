@@ -20,7 +20,6 @@ json.facebook_link @user.facebook_link
 json.instagram_link @user.instagram_link
 json.soundcloud_link @user.soundcloud_link
 json.genres_string @user.genres.map(&:title).join(', ')
-json.cancelations_string @user.cancelations.map(&:title).join(', ')
 
 json.sample do
   json.url @dj.sample.url
@@ -46,10 +45,5 @@ json.equipments Equipment.all.each do |equipment|
   json.icon equipment.icon.url
 end
 
-json.cancelations Cancelation.all.each do |cancelation|
-  json.title cancelation.title
-  json.id cancelation.id
-  json.selected @user.cancelations.exists?(cancelation.id)
-end
 
 json.in_favorites current_user.organizer.favorite_djs.include?(@dj)

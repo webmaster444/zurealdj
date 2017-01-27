@@ -34,7 +34,7 @@ class Dj::UsersController < Dj::BaseController
     if @user.update_attributes profile_params
       render json: {message: 'Profile updated.'}
     else
-      render json: {validation_errors: @users.errors}, status: :unprocessable_entity
+      render json: {validation_errors: @user.errors}, status: :unprocessable_entity
     end
   end
 
@@ -44,11 +44,11 @@ class Dj::UsersController < Dj::BaseController
     params.permit(:name, :width, :height, :crop_x, :crop_y, :crop_w, :crop_h, :crop_rotate,
                   :crop_scale_x, :crop_scale_y, :avatar, :about, :facebook_link, :instagram_link, :soundcloud_link,
                   dj_attributes: [:weekday_rate_from, :weekday_rate_to, :weekend_rate_from, :weekend_rate_to, :city, :country_flag_code, :sample, :sample_title],
-                  cancelation_ids: [], event_category_ids: [], genre_ids: [], equipment_ids: [])
+                   event_category_ids: [], genre_ids: [], equipment_ids: [])
   end
 
   def step_params
-    params.permit :personal_url, dj_attributes: [:weekday_rate_from, :weekday_rate_to, :weekend_rate_from, :weekend_rate_to],
-                  cancelation_ids: [], event_category_ids: [], genre_ids: [], equipment_ids: []
+    params.permit :personal_url, :agree, dj_attributes: [:weekday_rate_from, :weekday_rate_to, :weekend_rate_from, :weekend_rate_to],
+                   event_category_ids: [], genre_ids: [], equipment_ids: []
   end
 end

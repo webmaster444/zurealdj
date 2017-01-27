@@ -12,7 +12,6 @@ Rails.application.routes.draw do
       resources :bookings, only: [:index, :create, :update, :destroy, :show]
       resources :events, only: [:index, :create, :update, :destroy, :show]
       resources :genres, only: [:index, :create, :update, :destroy, :show]
-      resources :cancelations, only: [:index, :create, :update, :destroy, :show]
       resources :event_categories, only: [:index, :create, :update, :destroy, :show]
       resources :equipments, only: [:index, :create, :update, :destroy, :show]
       resources :who_we_are_pages, only: [:update, :show]
@@ -48,7 +47,6 @@ Rails.application.routes.draw do
       resources :event_categories, only: [:index]
       resources :genres, only: [:index]
       resources :equipments, only: [:index]
-      resources :cancelations, only: [:index]
       resources :users, only: [] do
         collection do
           post :step
@@ -75,7 +73,6 @@ Rails.application.routes.draw do
       resources :event_categories, only: [:index]
       resources :genres, only: [:index]
       resources :equipments, only: [:index]
-      resources :cancelations, only: [:index]
       resources :users, only: [] do
         collection do
           post :step

@@ -36,9 +36,7 @@
                 })
             },
 
-            submit_cancelations: function(user, cancelations){
-                cancelations = _.select(cancelations, function(i){ return i.selected });
-                cancelations = _.map(cancelations, function(i){ return i.id });
+            submit_cancelations: function(user){
                 return $http.post('/dj/users/step', {
                     dj_attributes: {
                         weekday_rate_from: user.weekday_rate_from,
@@ -46,7 +44,7 @@
                         weekend_rate_from: user.weekend_rate_from,
                         weekend_rate_to: user.weekend_rate_to
                     },
-                    cancelation_ids: cancelations
+                    agree: user.agree
                 })
             },
 
@@ -85,10 +83,7 @@
                     if(i.selected)
                         fd.append('equipment_ids[]', i.id)
                 });
-                _.each(user.cancelations, function(i){
-                    if(i.selected)
-                        fd.append('cancelation_ids[]', i.id)
-                });
+
 
                 if(user.avatar.file){
                     fd.append('avatar', user.avatar.file);

@@ -3,20 +3,18 @@
     "use strict";
 
     angular.module('ZurealdjDjApp')
-        .controller('StepCancelationsController', ['$scope', '$state', 'CancelationsFactory', 'UsersFactory',
-            function ($scope, $state, cancelations, users) {
+        .controller('StepCancelationsController', ['$scope', '$state', 'UsersFactory',
+            function ($scope, $state,  users) {
 
                 $scope.I18n = I18n;
                 $scope.$parent.no_second_navbar = true;
-                cancelations.all().success(function(data){
-                    $scope.cancelations = data.cancelations;
-                });
                 users.profile().success(function(data){
                     $scope.user = data;
                 });
 
                 $scope.next = function(){
-                    users.submit_cancelations($scope.user, $scope.cancelations)
+                    console.log($scope.user);
+                    users.submit_cancelations($scope.user)
                         .success(function(data){
                             $state.go('profile')
                         })

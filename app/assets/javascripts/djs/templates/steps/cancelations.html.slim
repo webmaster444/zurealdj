@@ -36,13 +36,11 @@ div.page-block.registration
           | -
         input.register-input.step-5-input type="number" ng-model="user.weekend_rate_to" placeholder="to"
     .form-row.text-center
-      .error ng-repeat="error in validation_errors.cancelations"
+      .error ng-repeat="error in validation_errors.agree"
         | {{ error }}
+      input#agreeCancelPolicy type="checkbox"   ng-required="" ng-model="user.agree"
       .small-text.inline-block#cancelations-title
-        | Cancelations:
-      .cancelations-container.inline-block.text-left
-        label.select-button ng-repeat="cancelation in cancelations"
-          .btn-checkbox.text-center class="{{ cancelation.selected? 'active': '' }}"
-            | {{ cancelation.title }}
-          input.hide type="checkbox" value="{{ cancelation.id }}" ng-model="cancelation.selected"
+        | I agree with
+        a href="/#cancellation_policy"
+          |  Cancellation Policy
   div.tmp

@@ -151,9 +151,9 @@
       .content-title
         | Booking Information
       .form-row.small-text
-        .error ng-repeat="error in validation_errors.weekday_rate_from"
+        .error ng-repeat="error in validation_errors['dj.weekday_rate_from']"
           | {{ error }}
-        .error ng-repeat="error in validation_errors.weekday_rate_to"
+        .error ng-repeat="error in validation_errors['dj.weekday_rate_to']"
           | {{ error }}
         | Weekday Rate:
         .inline-block
@@ -162,9 +162,9 @@
             | -
           input.register-input.step-5-input type="number" ng-model="user.weekday_rate_to" placeholder="to"
       .form-row.small-text
-        .error ng-repeat="error in validation_errors.weekend_rate_from"
+        .error ng-repeat="error in validation_errors['dj.weekend_rate_from']"
           | {{ error }}
-        .error ng-repeat="error in validation_errors.weekend_rate_to"
+        .error ng-repeat="error in validation_errors['dj.weekend_rate_to']"
           | {{ error }}
         | Weekend Rate:
         .inline-block
@@ -172,16 +172,6 @@
           span.dash
             | -
           input.register-input.step-5-input type="number" ng-model="user.weekend_rate_to" placeholder="to"
-      .form-row.text-center
-        .error ng-repeat="error in validation_errors.cancelations"
-          | {{ error }}
-        .small-text.inline-block#cancelations-title
-          | Cancelations:
-        .cancelations-container.inline-block.text-left
-          label.select-button ng-repeat="cancelation in user.cancelations"
-            .btn-checkbox.text-center class="{{ cancelation.selected? 'active': '' }}"
-              | {{ cancelation.title }}
-            input.hide type="checkbox" value="{{ cancelation.id }}" ng-model="cancelation.selected"
 
       hr
     .actions-block ng-show="!isMobile() || step"

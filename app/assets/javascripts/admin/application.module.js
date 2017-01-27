@@ -117,21 +117,6 @@
                     templateUrl: 'admin/templates/genres/index.html',
                     controller: 'GenresController'
                 })
-                .state('new_cancelation',{
-                    url: '/cancelation/new',
-                    templateUrl: 'admin/templates/cancelations/form.html',
-                    controller: 'CancelationsController'
-                })
-                .state('edit_cancelation',{
-                    url: '/cancelation/:id/edit',
-                    templateUrl: 'admin/templates/cancelations/form.html',
-                    controller: 'CancelationsController'
-                })
-                .state('cancelations',{
-                    url: '/cancelations',
-                    templateUrl: 'admin/templates/cancelations/index.html',
-                    controller: 'CancelationsController'
-                })
                 .state('new_event_category',{
                     url: '/event_category/new',
                     templateUrl: 'admin/templates/event_categories/form.html',

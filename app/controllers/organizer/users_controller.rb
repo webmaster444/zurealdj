@@ -31,7 +31,7 @@ class Organizer::UsersController < Organizer::BaseController
     if @user.update_attributes profile_params
       render json: {message: 'Profile updated.'}
     else
-      render json: {validation_errors: @users.errors}, status: :unprocessable_entity
+      render json: {validation_errors: @user.errors}, status: :unprocessable_entity
     end
   end
 
@@ -44,6 +44,6 @@ class Organizer::UsersController < Organizer::BaseController
   end
 
   def step_params
-    params.permit :personal_url, :company_name, cancelation_ids: [], event_category_ids: [], genre_ids: [], equipment_ids: []
+    params.permit :personal_url, :company_name,  event_category_ids: [], genre_ids: [], equipment_ids: []
   end
 end

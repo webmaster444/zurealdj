@@ -3,7 +3,6 @@ class User < ActiveRecord::Base
   has_and_belongs_to_many :event_categories
   has_and_belongs_to_many :genres
   has_and_belongs_to_many :equipments
-  has_and_belongs_to_many :cancelations
   has_one :dj, dependent: :destroy
   has_one :organizer, dependent: :destroy
   has_many :stars, foreign_key: :to_user_id
@@ -14,6 +13,7 @@ class User < ActiveRecord::Base
   has_attached_file :avatar, styles: { small: "50x50>", large: "400x400>" }, processors: [:cropper], default_url: '/images/img-profile-photo.png'
 
   attr_accessor :password, :password_confirmation
+  attr_accessor :agree
   validates :email, uniqueness: { case_sensitive: false, message: "This email address is already registered." },
                     format: { with: /.*\@.*\..*/, message: "is incorrect"},
                     presence: true
@@ -29,8 +29,10 @@ class User < ActiveRecord::Base
   validates :password_confirmation, presence: true, if: :validate_password?
   validates :role_id, presence: true
   validates :name, presence: true
-
+  validates :agree, inclusion: {in: [true], message: 'You should accept therms of Cancellation Policy to continue'}, if: -> { dj? && User.dj_steps[step] == User.dj_steps[:dj_cancelations]}
   validates_attachment_content_type :avatar, content_type: /\Aimage\/.*\Z/
+
+
 
   enum dj_step: {
       dj_just_created: 0,
@@ -98,7 +100,6 @@ class User < ActiveRecord::Base
   validate :at_least_one_event_category,        if: -> { (dj? && User.dj_steps[step] >= User.dj_steps[:dj_event_types]) || (organizer? && User.organizer_steps[step] >= User.organizer_steps[:organizer_event_types])}
   validate :at_least_one_genre,                 if: -> { (dj? && User.dj_steps[step] >= User.dj_steps[:dj_genres]) || (organizer? && User.organizer_steps[step] >= User.organizer_steps[:organizer_genres])}
   validate :at_least_one_equipment,             if: -> { dj? && User.dj_steps[step] >= User.dj_steps[:dj_equipments]}
-  validate :at_least_one_cancelation,           if: -> { dj? && User.dj_steps[step] >= User.dj_steps[:dj_cancelations]}
 
   Role::NAMES.each do |name_constant|
     define_method("#{name_constant}?") { self.role.try(:name) == name_constant.to_s }
@@ -179,9 +180,4 @@ class User < ActiveRecord::Base
     end
   end
 
-  def at_least_one_cancelation
-    if cancelations.count == 0
-      self.errors.add :cancelations, 'must be at least one'
-    end
-  end
 end
