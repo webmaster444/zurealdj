@@ -20,7 +20,8 @@
         'ui.bootstrap.datetimepicker',
         'ngAudio',
         'ui.select',
-        'formInput.timepicker'
+        'formInput.timepicker',
+        'angular.filter'
     ]);
 
     ZurealdjOrganizerApp.config(['$urlRouterProvider', '$stateProvider', '$httpProvider',
@@ -90,6 +91,11 @@
                     url: '/settings',
                     templateUrl: 'organizers/templates/settings/edit.html',
                     controller: 'SettingsController'
+                })
+                .state('notifications',{
+                    url: '/notifications',
+                    templateUrl: 'organizers/templates/notifications/index.html',
+                    controller: 'NotificationsController'
                 })
     }]);
 

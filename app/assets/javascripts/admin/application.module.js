@@ -37,11 +37,6 @@
                     templateUrl: 'admin/templates/users/edit.html',
                     controller: 'UsersController'
                 })
-                .state('login',{
-                    url: '/login',
-                    templateUrl: 'admin/templates/sessions/login.html',
-                    controller: 'SessionsController'
-                })
                 .state('edit_organizer',{
                     url: '/organizer/:id/edit',
                     templateUrl: 'admin/templates/organizers/form.html',
@@ -202,16 +197,6 @@
                     templateUrl: 'admin/templates/email_sender/form.html',
                     controller: 'EmailSenderController'
                 })
-                .state('forgot_password',{
-                    url: '/forgot_password',
-                    templateUrl: 'admin/templates/passwords/new.html',
-                    controller: 'PasswordsController'
-                })
-                .state('restore_password',{
-                    url: '/restore_password',
-                    templateUrl: 'admin/templates/passwords/restore.html',
-                    controller: 'PasswordsController'
-                })
                 .state('new_about_slide',{
                     url: '/about_slides/new',
                     templateUrl: 'admin/templates/about_slides/form.html',
@@ -235,11 +220,7 @@
         $http.defaults.headers.common['X-CSRF-Token'] = csrf_token;
 
         AuthHttp.setDefaults('unauthorizedAction', function(){
-            $state.go('login');
-            $timeout(function(){
-                $('body').addClass('mini-navbar');
-                $('body').removeClass('body-small');
-            });
+            window.location = '/';
         })
     }]);
 

@@ -12,6 +12,12 @@
                 });
 
                 return $http.get(url);
+            },
+
+            markAsRead: function(notification_id){
+                return $http.put('/notifications/' + notification_id, {
+                    read: true
+                })
             }
         }
     }])

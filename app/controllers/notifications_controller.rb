@@ -1,5 +1,7 @@
 class NotificationsController < ApplicationController
 
+  load_and_authorize_resource :notification
+
   def index
     @page = params[:page].to_i
     @page = 1 if @page < 1
@@ -26,4 +28,19 @@ class NotificationsController < ApplicationController
     @notifications = Notification.find_by_sql(query.take(@per_page).skip((@page - 1) * @per_page).to_sql)
     @count = Notification.find_by_sql(count_query.to_sql).count
   end
+
+  def update
+    if @notification.update_attributes notification_attributes
+      render json: {ok: true}
+    else
+      render json: {errors: @notification.errors.full_messages}, status: :unprocessable_entity
+    end
+  end
+
+  private
+
+  def notification_attributes
+    params.permit :read
+  end
+
 end

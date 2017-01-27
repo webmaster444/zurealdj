@@ -1,5 +1,5 @@
-ul
-  li ng-repeat="notification in notifications"
+ul.notifications-list
+  li ng-repeat="notification in notifications" ng-class="{unread: !notification.read}" ng-click="markAsRead(notification)"
     img ng-src="{{notification.from_user.avatar}}"                                ng-if="notification.notification_type == 'rated'"
     .dj-black-text                                                                ng-if="notification.notification_type == 'rated'"
       | {{ notification.from_user.name }} rated you

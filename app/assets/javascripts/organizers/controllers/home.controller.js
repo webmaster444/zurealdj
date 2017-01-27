@@ -66,6 +66,15 @@
                     notifications.all({per_page: 4}).success(function(data){
                         $scope.notifications = data.notifications;
                     });
+
+
+                    $scope.markAsRead = function(notification){
+                        if(!notification.read){
+                            notifications.markAsRead(notification.id).success(function(){
+                                notification.read = true;
+                            })
+                        }
+                    }
                 }
             }
         }])

@@ -17,7 +17,8 @@
         'AuthHttp',
         'oitozero.ngSweetAlert',
         'rzModule',
-        'ngAudio'
+        'ngAudio',
+        'angular.filter'
     ]);
 
     ZurealdjDjApp.config(['$urlRouterProvider', '$stateProvider', '$httpProvider',
@@ -78,6 +79,11 @@
                     url: '/settings',
                     templateUrl: 'djs/templates/settings/edit.html',
                     controller: 'SettingsController'
+                })
+                .state('notifications',{
+                    url: '/notifications',
+                    templateUrl: 'djs/templates/notifications/index.html',
+                    controller: 'NotificationsController'
                 })
     }]);
 

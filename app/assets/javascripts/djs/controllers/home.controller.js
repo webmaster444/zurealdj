@@ -46,7 +46,7 @@
 
             $scope.openMobileMenu = function(){
                 ngDialog.open({
-                    template: 'organizers/templates/common/mobile-navbar-menu.html',
+                    template: 'djs/templates/common/mobile-navbar-menu.html',
                     className: 'dj-mobile-ng-dialog mobile-only',
                     scope: $scope,
                     showClose: false,
@@ -59,6 +59,14 @@
                 if($scope.notificationsDropdownOpen){
                     notifications.all({per_page: 4}).success(function(data){
                         $scope.notifications = data.notifications;
+
+                        $scope.markAsRead = function(notification){
+                            if(!notification.read){
+                                notifications.markAsRead(notification.id).success(function(){
+                                    notification.read = true;
+                                })
+                            }
+                        }
                     });
                 }
             }

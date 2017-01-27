@@ -1,0 +1,15 @@
+.container
+  .row
+    .col-md-6.col-md-offset-3
+      .dj-header
+        | Notifications
+      div ng-repeat="(key, notifications) in notification_groups | groupBy: 'created_at'"
+        .dj-gray-text.text-center
+          | {{ key }}
+        div ng-include="'common/templates/notifications-dropdown.html'"
+      .text-center ng-show="notification_groups.length == 0"
+        .dj-gray-text
+          | No new notifications
+      .show-more
+        a ng-click="retrieveNotifications()"
+          | Show more

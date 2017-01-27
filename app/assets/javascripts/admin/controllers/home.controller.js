@@ -26,7 +26,7 @@
 
             $scope.logout = function(){
                 session.logout().success(function(){
-                    $state.go('login')
+                    window.location = '/';
                 })
             };
 
