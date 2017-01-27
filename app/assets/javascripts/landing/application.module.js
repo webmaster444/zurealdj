@@ -28,7 +28,7 @@
                 .state('home',{
                   url: '/',
                   templateUrl: 'landing/templates/home/index.html',
-                  controller: 'HomeController'
+                  controller: 'LandingController'
                 })
                 .state('forgot_password',{
                     url: '/forgot_password',

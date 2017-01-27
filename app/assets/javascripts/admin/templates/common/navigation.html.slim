@@ -22,50 +22,60 @@ nav.navbar-default.navbar-static-side.ng-scope role="navigation"
           a href="#events"
             .events-nav-icon.nav-icon
             span.nav-label
-              | EVENT
+              | Events
 
-        li ng-class=("{active: ['cancelation', 'equipment', 'genre', 'event_categor', 'edit_who_we_are_page', 'edit_crew_page', 'edit_how_we_work_page', 'edit_policies_page', 'edit_terms_n_conditions_page', 'edit_cancelations_page'].includes($state.current.name) }")
+        li ng-class=("{active: ['cancelation', 'equipment', 'genre', 'event_categor'].includes($state.current.name) }")
           a href="#"
             .other-nav-icon.nav-icon
-            span.nav-label.ng-binding Content
+            span.nav-label Content
             span.fa.arrow
-          ul.nav.nav-second-level.collapse ng-class=("{in: ['cancelation', 'equipment', 'genre', 'event_categor', 'edit_who_we_are_page', 'edit_crew_page', 'edit_how_we_work_page', 'edit_policies_page', 'edit_terms_n_conditions_page', 'edit_cancelations_page'].includes($state.current.name) }")
+          ul.nav.nav-second-level.collapse ng-class=("{in: ['cancelation', 'equipment', 'genre', 'event_categor'].includes($state.current.name) }")
             li.active ui-sref-active="active"
-              a.ng-binding href="#event_categories"
+              a href="#about_slides"
+                | About slides
+            li.active ui-sref-active="active"
+              a href="#event_categories"
                 | Event types
             li.active ui-sref-active="active"
-              a.ng-binding href="#genres"
+              a href="#genres"
                 | Genres
             li.active ui-sref-active="active"
-              a.ng-binding href="#equipments"
+              a href="#equipments"
                 | Equipments
+        li ng-class=("{active: ['about_slides', 'edit_who_we_are_page', 'edit_crew_page', 'edit_how_we_work_page', 'edit_policies_page', 'edit_terms_n_conditions_page', 'edit_cancelations_page'].includes($state.current.name) }")
+          a href="#"
+            .other-nav-icon.nav-icon
+            span.nav-label
+              | Static pages
+            span.fa.arrow
+          ul.nav.nav-second-level.collapse ng-class=("{in: ['about_slides', 'edit_who_we_are_page', 'edit_crew_page', 'edit_how_we_work_page', 'edit_policies_page', 'edit_terms_n_conditions_page', 'edit_cancelations_page'].includes($state.current.name) }")
             li.active ui-sref-active="active"
-              a.ng-binding href="#cancelations"
-                | Cancelations
+              a href="#about_slides"
+                | About slides
             li.active ui-sref-active="active"
-              a.ng-binding href="#who_we_are_page/edit"
+              a href="#who_we_are_page/edit"
                 | Who we are pages
             li.active ui-sref-active="active"
-              a.ng-binding href="#crew_page/edit"
+              a href="#crew_page/edit"
                 | Crew pages
             li.active ui-sref-active="active"
-              a.ng-binding href="#how_we_work_page/edit"
+              a href="#how_we_work_page/edit"
                 |  How we work pages
             li.active ui-sref-active="active"
-              a.ng-binding href="#policies_page/edit"
+              a href="#policies_page/edit"
                 | Policies pages
             li.active ui-sref-active="active"
-              a.ng-binding href="#terms_n_conditions_page/edit"
+              a href="#terms_n_conditions_page/edit"
                 | Terms n conditions pages
             li.active ui-sref-active="active"
-              a.ng-binding href="#cancelations_page/edit"
+              a href="#cancelations_page/edit"
                 | {{ I18n.t('headers.cancelations_pages') }}
         li ng-class=("{active: $state.current.name.includes('email_sender')}")
           a href="#"
             .other-nav-icon.nav-icon
-            span.nav-label.ng-binding System
+            span.nav-label System
             span.fa.arrow
           ul.nav.nav-second-level.collapse ng-class=("{in: $state.current.name.includes('email_sender')}")
             li.active ui-sref-active="active"
-              a.ng-binding href="#email_sender"
+              a href="#email_sender"
                 | {{ I18n.t('headers.email_sender') }}

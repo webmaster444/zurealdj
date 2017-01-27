@@ -24,6 +24,7 @@ Rails.application.routes.draw do
       resources :cancelations_pages, only: [:update, :show]
       resources :password_resets, only: [:create, :update, :show, :edit]
       resources :passwords, only: [:create]
+      resources :about_slides, only: [:index, :create, :update, :destroy, :show]
       resources :email_sender, only: [:index, :create] do
         collection do
           get :show
@@ -138,6 +139,6 @@ Rails.application.routes.draw do
     end
 
     resources :notifications, only: [:index]
-
+    resources :slides, only: [:index]
   end
 end

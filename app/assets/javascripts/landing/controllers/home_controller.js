@@ -5,7 +5,7 @@
     angular.module('ZurealdjLandingApp')
         .controller('HomeController', ['$scope', '$state', 'ngDialog', '$stateParams', '$timeout', '$sce', 'SessionsFactory',
             'toaster',
-            function ($scope, $state, ngDialog, $stateParams, $timeout, $sce, sessions, toaster) {
+            function ($scope, $state, ngDialog, $stateParams, $timeout, $sce, sessions, toaster, slides) {
                 $timeout(function(){
                     if($scope.flash.error.length > 0){
                         toaster.pop('error', "", $scope.flash.error);

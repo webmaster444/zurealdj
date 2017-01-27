@@ -1,0 +1,30 @@
+.wrapper.wrapper-content.animated.fadeInRight
+  .ibox.float-e-margins
+    .ibox-content
+      h3
+        | About slides
+
+      table.table.table-striped.table-responsive
+        thead
+          tr
+            th
+              | Id
+            th
+              | Content
+            th
+              | Created At
+            th
+        tbody
+          tr ng-repeat="slide in slides"
+            td
+              | {{ slide.id }}
+            td
+              | {{ slide.content }}
+            td
+              | {{ slide.created_at }}
+            td.text-right
+              a.btn-xs.btn.btn-warning.btn-outline href="#about_slides/{{slide.id}}/edit"
+                | {{ I18n.t('actions.edit') }}
+
+              a.btn-xs.btn.btn-danger.btn-outline ng-click="destroy(slide.id)"
+                | {{ I18n.t('actions.delete') }}

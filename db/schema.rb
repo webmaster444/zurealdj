@@ -15,6 +15,12 @@ ActiveRecord::Schema.define(version: 20170126101813) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+  create_table "about_slides", force: :cascade do |t|
+    t.text     "content"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "attachments", force: :cascade do |t|
     t.integer  "entity_id"
     t.string   "entity_type"

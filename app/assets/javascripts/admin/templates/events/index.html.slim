@@ -24,38 +24,34 @@
                 th
                   | {{ I18n.t('event.fields.end_date') }}
                 th
-                  | {{ I18n.t('event.fields.image') }}
-                th
                   | Created At
                 th.text-right
                   | Actions
             tbody
               tr ng-repeat="event in events"
                 td
-                  | {{ events.title }}
+                  | {{ event.title }}
                 td
-                  | {{ events.city }}
+                  | {{ event.city }}
                 td
-                  span.flag class="{{ events.country.code }}"
-                  | {{ events.country.title }}
+                  span.flag class="{{ event.country.code }}"
+                  | {{ event.country.title }}
                 td
-                  | {{ events.address }}
+                  | {{ event.address }}
                 td
-                  | {{ events.start_date }}
+                  | {{ event.start_date }}
                 td
-                  | {{ events.end_date }}
+                  | {{ event.end_date }}
                 td
-                  | {{ events.image }}
-                td
-                  | {{ events.created_at }}
+                  | {{ event.created_at }}
                 td.text-right
 
-                  a.btn-xs.btn.btn-info.btn-outline href="#events/{{events.id}}"
+                  a.btn-xs.btn.btn-info.btn-outline href="#events/{{event.id}}"
                     | {{ I18n.t('actions.view') }}
 
-                  a.btn-xs.btn.btn-warning.btn-outline href="#events/{{events.id}}/edit"
+                  a.btn-xs.btn.btn-warning.btn-outline href="#events/{{event.id}}/edit"
                     | {{ I18n.t('actions.edit') }}
 
 
-                  a.btn-xs.btn.btn-danger.btn-outline ng-click="destroy(events.id)"
+                  a.btn-xs.btn.btn-danger.btn-outline ng-click="destroy(event.id)"
                     | {{ I18n.t('actions.delete') }}

@@ -268,3 +268,9 @@ en:
       password: 'Password'
       password_confirmation: 'Password confirmation'
 
+  about_slide:
+    new: "Add new slide"
+    edit: "Edit slide"
+    content: "Slide text"
+    messages:
+      success_upsert: "Successfully saved"

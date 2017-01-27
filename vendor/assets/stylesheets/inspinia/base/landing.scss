@@ -205,17 +205,17 @@ body.landing-page {
   /* CUSTOMIZE THE CAROUSEL
   -------------------------------------------------- */
   /* Carousel base class */
-  .carousel {
-    height: 470px;
-  }
+  //.carousel {
+  //  height: 470px;
+  //}
   /* Since positioning the image, we need to help out the caption */
   .carousel-caption {
     z-index: 10;
   }
   /* Declare heights because of positioning of img element */
   .carousel .item {
-    height: 470px;
-    background-color: #777;
+    min-height: 200px;
+    //background-color: #777;
   }
   .carousel-inner > .item > img {
     position: absolute;
@@ -258,45 +258,45 @@ body.landing-page {
   .carousel-inner {
     overflow: visible;
   }
-  .carousel-caption {
-    position: absolute;
-    top: 100px;
-    left: 0;
-    bottom: auto;
-    right: auto;
-    text-align: left;
-  }
-  .carousel-caption {
-    position: absolute;
-    top: 100px;
-    left: 0;
-    bottom: auto;
-    right: auto;
-    text-align: left;
-  }
-  .carousel-caption.blank {
-    top: 140px;
-  }
-  .carousel-image {
-    position: absolute;
-    right: 10px;
-    top: 150px;
-  }
-  .carousel-indicators {
-    padding-right: 60px;
-  }
-  .carousel-caption h1 {
-    font-weight: 700;
-    font-size: 38px;
-    text-transform: uppercase;
-    text-shadow: none;
-    letter-spacing: -1.5px;
-  }
-  .carousel-caption p {
-    font-weight: 700;
-    text-transform: uppercase;
-    text-shadow: none;
-  }
+  //.carousel-caption {
+  //  position: absolute;
+  //  top: 100px;
+  //  left: 0;
+  //  bottom: auto;
+  //  right: auto;
+  //  text-align: left;
+  //}
+  //.carousel-caption {
+  //  position: absolute;
+  //  top: 100px;
+  //  left: 0;
+  //  bottom: auto;
+  //  right: auto;
+  //  text-align: left;
+  //}
+  //.carousel-caption.blank {
+  //  top: 140px;
+  //}
+  //.carousel-image {
+  //  position: absolute;
+  //  right: 10px;
+  //  top: 150px;
+  //}
+  //.carousel-indicators {
+  //  padding-right: 60px;
+  //}
+  //.carousel-caption h1 {
+  //  font-weight: 700;
+  //  font-size: 38px;
+  //  text-transform: uppercase;
+  //  text-shadow: none;
+  //  letter-spacing: -1.5px;
+  //}
+  //.carousel-caption p {
+  //  font-weight: 700;
+  //  text-transform: uppercase;
+  //  text-shadow: none;
+  //}
   .caption-link {
     color: #fff;
     margin-left: 10px;

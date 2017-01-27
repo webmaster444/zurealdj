@@ -211,7 +211,23 @@
                     url: '/restore_password',
                     templateUrl: 'admin/templates/passwords/restore.html',
                     controller: 'PasswordsController'
-                });
+                })
+                .state('new_about_slide',{
+                    url: '/about_slides/new',
+                    templateUrl: 'admin/templates/about_slides/form.html',
+                    controller: 'AboutSlidesController'
+                })
+                .state('edit_about_slide',{
+                    url: '/about_slides/:id/edit',
+                    templateUrl: 'admin/templates/about_slides/form.html',
+                    controller: 'AboutSlidesController'
+                })
+                .state('about_slides',{
+                    url: '/about_slides',
+                    templateUrl: 'admin/templates/about_slides/index.html',
+                    controller: 'AboutSlidesController'
+                })
+            ;
     }]);
 
     ZurealdjAdminApp.run(['$http', '$rootScope', 'AuthHttp', '$state', '$timeout', function($http, $rootScope, AuthHttp, $state, $timeout){
