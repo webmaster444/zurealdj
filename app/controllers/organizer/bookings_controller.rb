@@ -10,6 +10,14 @@ class Organizer::BookingsController < Organizer::BaseController
     end
   end
 
+  def destroy
+    @booking = Booking.find params[:id]
+    render json: { }, status: :not_found and return unless @booking.event.organizer_id == current_user.organizer.id
+
+    @booking.destroy
+    render json: { message: "DJ successfully removed from event." }
+  end
+
   private
 
   def booking_params

@@ -35,8 +35,12 @@
   background-image: url(/images/icons/ic-instagram.png)
 .like
   background-image: url(/images/icons/ic-like.png)
+  &:hover
+    background-image: url(/images/icons/ic-like-hover.png)
 .like-active
   background-image: url(/images/icons/ic-like-active.png)
+.delete
+  background-image: url(/images/icons/ic-delete-dj.png)
 
 .btn-close
   background-image: url(/images/icons/ic-close-grey@2x.png)
@@ -131,10 +135,7 @@
   .ic-instagram
     width: 21px
     height: 21px
-  .like
-    width: 50px
-    height: 50px
-  .like-active
+  .like, .like-active, .delete
     width: 50px
     height: 50px
 
@@ -165,7 +166,7 @@
   .ic-instagram
     width: calcw(6.56)
     height: calcw(6.56)
-  .like, .like-active
+  .like, .like-active, .delete
     width: 40px
     height: 40px
   .col-social

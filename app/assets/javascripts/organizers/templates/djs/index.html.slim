@@ -47,8 +47,8 @@
       button.search-button
         | Find a DJ
 
-    .selected-filters ng-show="checkSelectedFilters()"
-      .filter-item ng-show="checkPriceFilter()" ng-click="resetPriceFilter()"
+    .selected-filters ng-show="checkSelectedFilters() && !slider.default"
+      .filter-item ng-show="checkPriceFilter() && !slider.default" ng-click="resetPriceFilter()"
         .filter-title
           | Price ${{ filters.price_from }} - ${{ filters.price_to }}
         a.btn-close

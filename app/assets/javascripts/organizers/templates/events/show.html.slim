@@ -73,8 +73,7 @@
         .index
           .profile-item ng-repeat="dj in event.djs track by $index"
             img ng-src="{{ dj.avatar }}"
-            a.icon.like ng-click="addToFavorites(dj)" ng-hide="dj.in_favorites"
-            a.icon.like-active ng-click="removeFromFavorites(dj)" ng-show="dj.in_favorites"
+            a.icon.delete ng-click="djDestroy(dj.booking_id, dj.name)"
             .inf
               a.name href="#djs/{{ dj.personal_url || dj.dj_id }}"
                 | {{ dj.name }}

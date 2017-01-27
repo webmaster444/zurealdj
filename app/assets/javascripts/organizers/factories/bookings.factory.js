@@ -30,6 +30,10 @@
                         headers: {'Content-Type': undefined}
                     });
                 }
+            },
+
+            destroy: function(id){
+                return $http.delete('/organizer/bookings/' + id)
             }
         }
     }])

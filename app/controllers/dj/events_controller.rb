@@ -32,7 +32,7 @@ class Dj::EventsController < Dj::BaseController
                 .join(bookings).on(bookings[:event_id].eq(events[:id]))
                 .group(events[:id])
                 .group(bookings[:id])
-                .where(bookings[:dj_id].eq(current_user.dj.id))
+                .where(bookings[:dj_id].eq(current_user.dj[:id]))
 
     query.where(events[:title].matches("%#{ params[:title] }%")) if params[:title].present?
 
@@ -50,15 +50,9 @@ class Dj::EventsController < Dj::BaseController
 
   def show
     @event = Event.find params[:id]
-    bookings = find_booking @event.bookings
-    render json: {  }, status: :not_found and return if bookings.count == 0
+    bookings = Booking.where(dj_id: current_user.dj[:id], event_id: params[:id])
+    render json: { }, status: :not_found and return if bookings.count == 0
     @booking = bookings.first
   end
-
-  private
-
-    def find_booking bookings
-      current_user.dj.bookings && bookings
-    end
 
 end

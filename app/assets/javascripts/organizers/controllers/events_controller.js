@@ -4,8 +4,8 @@
 
     angular.module('ZurealdjOrganizerApp')
         .controller('EventsController', ['$scope', '$state', 'ngDialog', '$stateParams', '$timeout', '$sce',
-            'SweetAlert', 'EventsFactory', 'DjsFactory',
-            function ($scope, $state, ngDialog, $stateParams, $timeout, $sce, SweetAlert, events, djs) {
+            'SweetAlert', 'EventsFactory', 'DjsFactory', 'BookingsFactory',
+            function ($scope, $state, ngDialog, $stateParams, $timeout, $sce, SweetAlert, events, djs, bookings) {
                 $scope.I18n = I18n;
                 $scope._ = _;
                 $scope.$state = $state;
@@ -131,13 +131,11 @@
                                     SweetAlert.swal({
                                             title: "Are you sure?",
                                             text: "Your will not be able to recover this events!",
-                                            type: "warning",
                                             showCancelButton: true,
-                                            confirmButtonColor: "#DD6B55", confirmButtonText: "Yes, delete it!",
-                                            cancelButtonText: "No, cancel plx!",
+                                            confirmButtonColor: "#b05dfd", confirmButtonText: "Remove",
+                                            cancelButtonText: "Cancel",
                                             closeOnConfirm: true,
                                             closeOnCancel: true,
-                                            allowOutsideClick: true
                                         },
                                         function (isConfirm) {
                                             if (isConfirm) {
@@ -157,12 +155,39 @@
                 };
 
                 if($state.current.name == 'event'){
-                    events.show($stateParams.id).success(function(data){
-                        $scope.event = data;
-                    });
+
+                    $scope.retrieveEvent = function() {
+                        events.show($stateParams.id).success(function(data){
+                            $scope.event = data;
+                        });
+                    };
+
+                    $scope.retrieveEvent();
 
                     $scope.rate = function(dj){
                         djs.rate(dj.id, dj.rating)
+                    };
+
+                    $scope.djDestroy = function(id, name) {
+                        SweetAlert.swal({
+                                title: "Artist removing",
+                                text: "Remove " + name + " from event?",
+                                showCancelButton: true,
+                                confirmButtonColor: "#b05dfd", confirmButtonText: "Remove",
+                                cancelButtonText: "Cancel",
+                                closeOnConfirm: true,
+                                closeOnCancel: true
+                            },
+                            function (isConfirm) {
+                                if (isConfirm) {
+                                    bookings.destroy(id).success(function () {
+                                        $scope.retrieveEvent();
+                                    });
+                                } else {
+
+                                }
+                            }
+                        );
                     };
                 }
         }])

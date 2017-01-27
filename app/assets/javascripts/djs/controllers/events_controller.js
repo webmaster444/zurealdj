@@ -86,14 +86,37 @@
                     });
 
                     $scope.updateStatus = function() {
-                        $scope.event.booking_status = !$scope.event.booking_status
-                        bookings.upsert({ id: $scope.event.booking_id, status: $scope.event.booking_status })
-                            .success(function(){
 
-                            })
-                            .error(function(data){
-                                $scope.processing = false;
-                            })
+                        var update = function(status) {
+                            bookings.upsert({ id: $scope.event.booking_id, status: status })
+                                .success(function(){
+                                    $scope.event.booking_status = status;
+                                })
+                                .error(function(data){
+
+                                })
+                        };
+
+                        if($scope.event.booking_status){
+                            SweetAlert.swal({
+                                    title: "Event Cancellation",
+                                    text: "Do you agree to cancel the participation in the event?",
+                                    showCancelButton: true,
+                                    confirmButtonColor: "#b05dfd", confirmButtonText: "Agree",
+                                    cancelButtonText: "Cancel",
+                                    closeOnConfirm: true,
+                                    closeOnCancel: true
+                                },
+                                function (isConfirm) {
+                                    if (isConfirm) {
+                                        update(false);
+                                    } else {
+
+                                    }
+                                }
+                            );
+                        }
+                        else update(true);
                     }
                 }
             }])

@@ -89,7 +89,7 @@ Rails.application.routes.draw do
           post :notifications
         end
       end
-      resources :bookings, only: [:create]
+      resources :bookings, only: [:create, :destroy]
     end
 
     resources :attachments, only: [] do
