@@ -11,19 +11,19 @@ div
       a.btn-white.btn-tab.btn-tab-right.btn-tab-light ng-click="openRegistrationDialog()"
         | Sign up
 
-    form.m-t role="form" novalidate=true
+    form.m-t novalidate=true ng-submit="submitLoginCredentials()" name="loginForm"
 
       .form-group
-        input.landing-input placeholder="Email address" required="" type="email" ng-model="session.email"
+        input.landing-input placeholder="Email address" required="" type="email" ng-model="session.email" name="email"
 
       .form-group
-        input.landing-input placeholder="Password" required="" type="password" ng-model="session.password"
+        input.landing-input placeholder="Password" required="" type="password" ng-model="session.password" name="password"
       div ng-show="validation_errors"
         .error ng-repeat="error in validation_errors"
           | {{ error }}
       .hr-line-dashed
 
-      a.btn-submit.ladda-button data-style="expand-left" ladda="processing" type="submit" ng-click="submitLoginCredentials()"
+      button.btn-submit.ladda-button data-style="expand-left" ladda="processing" type="submit"
         | Log in
 
       .text-center style="margin: 15px auto"

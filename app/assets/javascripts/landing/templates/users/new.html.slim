@@ -14,7 +14,7 @@ div
         | Sign up
 
     div.text-center.text-description style="color: #555555; margin-top: 40px; margin-bottom: 20px"
-      | How can we best represent you?
+      | Please choose which profile best suits your needs
 
     div.text-center
       .error ng-repeat="error in validation_errors.role_id"
@@ -33,7 +33,7 @@ div
             | Artist
         input.hide type="radio" name="user_type" value="dj" ng-model="user.user_type"
 
-    form.m-t role="form" novalidate=true
+    form.m-t novalidate=true name="signUpForm" ng-submit="submit()"
 
       .form-group
         .error ng-repeat="error in validation_errors.name"
@@ -52,7 +52,7 @@ div
 
       .hr-line-dashed
 
-      a.ladda-button.btn-submit data-style="expand-left" ladda="processing" ng-click="submit()"
+      button.ladda-button.btn-submit data-style="expand-left" ladda="processing"
         | Create Account
 
       .text-center style="margin: 15px auto"

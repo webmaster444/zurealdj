@@ -13,8 +13,7 @@
                 });
 
                 $scope.next = function(){
-                    console.log($scope.user);
-                    users.submit_cancelations($scope.user)
+                   users.submit_cancelations($scope.user)
                         .success(function(data){
                             $state.go('profile')
                         })
