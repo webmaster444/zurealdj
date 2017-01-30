@@ -26,9 +26,6 @@
                 fd.append('organizer[city]', organizations.city || '' );
                 fd.append('organizer[address]', organizations.address || '');
                 fd.append('organizer[about]', organizations.about || '');
-                fd.append('organizer[instagram_link]', organizations.instagram_link || '');
-                fd.append('organizer[facebook_link]', organizations.facebook_link || '');
-                fd.append('organizer[soundcloud_link]', organizations.soundcloud_link || '');
 
                 if(organizations.id){
                     return $http.put('/admin/organizers/' + organizations.id, fd, {

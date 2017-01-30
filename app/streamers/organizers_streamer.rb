@@ -13,9 +13,6 @@ class OrganizersStreamer
                             'City',
                             'Country',
                             'About',
-                            'Instagram Link',
-                            'Facebook Link',
-                            'Soundcloud Link',
                             'Created Date',
                           ], true).to_csv(col_sep: ",", row_sep: "\r\n", quote_char: "\"")
 
@@ -36,9 +33,6 @@ class OrganizersStreamer
             organizer.city,
             CountryFlag.find(organizer.country_flag_code)[:title],
             organizer.about,
-            organizer.instagram_link,
-            organizer.facebook_link,
-            organizer.soundcloud_link,
             organizer.created_at.strftime("%d/%m/%Y"),
         ], true).to_csv(col_sep: ",", row_sep: "\r\n", quote_char: "\"")
       end

@@ -23,16 +23,7 @@
               | About
             .text
               | {{ user.about }}
-          div ng-show="user.soundcloud_link || user.facebook_link || user.instagram_link"
-            .title
-              | Social
-            .row
-              a.col-social#first href="{{ user.soundcloud_link }}" ng-show="user.soundcloud_link"
-                .ic-mixcloud.icon
-              a.col-social href="{{ user.facebook_link }}" ng-show="user.facebook_link"
-                .ic-facebook.icon
-              a.col-social href="{{ user.instagram_link }}" ng-show="user.instagram_link"
-                .ic-instagram.icon
+
 
       .general
         .block
@@ -70,16 +61,6 @@
               | About
             .text
               | {{ user.about }}
-          .block ng-show="user.soundcloud_link || user.facebook_link || user.instagram_link"
-            .title
-              | Social
-            .row
-              a.col-social#first href="{{ user.soundcloud_link }}" ng-show="user.soundcloud_link"
-                .ic-mixcloud.icon
-              a.col-social href="{{ user.facebook_link }}" ng-show="user.facebook_link"
-                .ic-facebook.icon
-              a.col-social href="{{ user.instagram_link }}" ng-show="user.instagram_link"
-                .ic-instagram.icon
 
           hr
         .listen ng-show="sample.url"

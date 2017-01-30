@@ -71,22 +71,6 @@
             textarea.zureal-textarea type="text" ng-model="user.about"
             .error ng-repeat="error in validation_errors.about"
               | {{ error }}
-          .form-group
-            .ic-facebook.icon.form-title
-            input.register-input type="text" ng-model="user.facebook_link"
-            .error ng-repeat="error in validation_errors.facebook_link"
-              | {{ error }}
-          .form-group
-            .ic-instagram.icon.form-title
-            input.register-input type="text" ng-model="user.instagram_link"
-            .error ng-repeat="error in validation_errors.instagram_link"
-              | {{ error }}
-          .form-group
-            .ic-mixcloud.icon.form-title
-            input.register-input type="text" ng-model="user.soundcloud_link"
-            .error ng-repeat="error in validation_errors.soundcloud_link"
-              | {{ error }}
-
 
     .content-block#org-id-2 ng-show="!isMobile() || step == 2"
       .content-title

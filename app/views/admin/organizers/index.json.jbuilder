@@ -8,9 +8,6 @@ json.organizers @organizers.each do |organization|
   json.country_flag_code organization.country_flag_code
   json.address organization.address
   json.about organization.about
-  json.instagram_link organization.instagram_link
-  json.facebook_link organization.facebook_link
-  json.soundcloud_link organization.soundcloud_link
   json.avatar paperclip_url(organization.avatar, :large)
   json.name organization.name
 end

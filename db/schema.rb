@@ -269,9 +269,6 @@ ActiveRecord::Schema.define(version: 20170130125828) do
     t.integer  "organizer_step",       default: 0
     t.string   "company_name"
     t.text     "about"
-    t.string   "instagram_link"
-    t.string   "facebook_link"
-    t.string   "soundcloud_link"
     t.float    "crop_x"
     t.float    "crop_y"
     t.float    "crop_w"

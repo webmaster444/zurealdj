@@ -108,18 +108,6 @@
             .row
               .col-lg-2
                 label.control-label
-                  | {{ I18n.t('dj.fields.social_links') }}:
-              .col-lg-10
-                .col-social
-                  a.social-icon.instagram href="{{ dj.instagram_link }}" ng-show="dj.instagram_link" target="blank"
-                  a.social-icon.facebook href="{{ dj.facebook_link }}" ng-show="dj.facebook_link" target="blank"
-                  a.social-icon.soundcloud href="{{ dj.soundcloud_link }}" ng-show="dj.soundcloud_link" target="blank"
-            .hr-line-dashed
-
-          .form-group
-            .row
-              .col-lg-2
-                label.control-label
                   | {{ I18n.t('dj.fields.weekday_rate_from') }}:
               .col-lg-10
                 p.form-control-static

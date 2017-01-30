@@ -12,9 +12,6 @@ json.organizer do
   json.email @user.email
   json.name @user.name
   json.about @user.about
-  json.instagram_link @user.instagram_link
-  json.facebook_link @user.facebook_link
-  json.soundcloud_link @user.soundcloud_link
   json.avatar do
     json.url paperclip_url(@user.avatar, :large)
   end

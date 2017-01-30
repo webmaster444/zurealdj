@@ -58,9 +58,6 @@
                 fd.append('dj_attributes[city]', user.city || '');
                 fd.append('dj_attributes[country_flag_code]', user.country ? user.country.code : '');
                 fd.append('about', user.about || '');
-                fd.append('facebook_link', user.facebook_link || '');
-                fd.append('instagram_link', user.instagram_link || '');
-                fd.append('soundcloud_link', user.soundcloud_link || '');
                 fd.append('dj_attributes[weekday_rate_from]', user.weekday_rate_from || '');
                 fd.append('dj_attributes[weekday_rate_to]', user.weekday_rate_to || '');
                 fd.append('dj_attributes[weekend_rate_from]', user.weekend_rate_from || '');

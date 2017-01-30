@@ -59,7 +59,7 @@ class Admin::OrganizersController < Admin::BaseController
   end
 
   def user_update_params
-    params.require(:organizer).permit :name, :email, :personal_url, :avatar, :about, :instagram_link, :facebook_link, :soundcloud_link
+    params.require(:organizer).permit :name, :email, :personal_url, :avatar, :about
   end
 
   def query(options={})
@@ -70,9 +70,6 @@ class Admin::OrganizersController < Admin::BaseController
         users[:id],
         users[:name],
         users[:about],
-        users[:instagram_link],
-        users[:facebook_link],
-        users[:soundcloud_link],
         users[:avatar_file_name],
         users[:avatar_content_type],
         users[:avatar_file_size],

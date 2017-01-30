@@ -38,15 +38,6 @@
                 else{
                     fd.append('dj[sample][url]', djs.sample_url);
                 }
-                if(djs.instagram_link){
-                    fd.append('dj[instagram_link]', djs.instagram_link );
-                }
-                if(djs.facebook_link){
-                    fd.append('dj[facebook_link]', djs.facebook_link );
-                }
-                if(djs.soundcloud_link){
-                    fd.append('dj[soundcloud_link]', djs.soundcloud_link );
-                }
                 if(djs.weekday_price_from){
                     fd.append('dj[weekday_rate_from]', djs.weekday_rate_from );
                 }

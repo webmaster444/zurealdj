@@ -16,9 +16,6 @@ json.city @dj.city
 json.country @dj.country_flag
 json.rating @user.rate
 json.about @user.about
-json.facebook_link @user.facebook_link
-json.instagram_link @user.instagram_link
-json.soundcloud_link @user.soundcloud_link
 json.genres_string @user.genres.map(&:title).join(', ')
 
 json.sample do
