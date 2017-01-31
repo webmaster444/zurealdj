@@ -10,7 +10,7 @@
                 $scope.$state = $state;
 
                 $scope.user = {};
-
+                $scope.user.user_type = $scope.userrole;
                 $scope.submit = function(){
                     $scope.processing = true;
                     users.create($scope.user)

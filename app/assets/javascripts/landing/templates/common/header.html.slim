@@ -7,9 +7,9 @@ div.page-head
   .text-center.txt ng-show="isMobile()"
     | ZuRealDJ Your No.1 Booking Platform for DJs and Event Organisers
   div.button-block.text-center
-    a.btn-link href="" style="margin-right: 24px"
+    a.btn-link  ng-click="$state.go('home'); openRegistrationDialog('dj')" style="margin-right: 24px"
       | Are you a DJ?
-    a.btn-link href=""
+    a.btn-link ng-click="$state.go('home'); openRegistrationDialog('organizer')"
       | Need a DJ?
   div#space
   div.cursor-pointer ng-click="scroll()" ng-hide="isMobile()"

@@ -40,7 +40,9 @@
                     });
                 };
 
-                $scope.openRegistrationDialog = function(){
+                $scope.openRegistrationDialog = function(role = null){
+
+                    $scope.userrole = role;
                     ngDialog.closeAll();
                     ngDialog.open({
                         templateUrl: 'landing/templates/users/new.html',
