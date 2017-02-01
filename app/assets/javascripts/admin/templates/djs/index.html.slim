@@ -87,10 +87,9 @@
                 th
                   | {{ I18n.t('dj.fields.photo') }}
                 th ng-model="filters" tablesort=true tablesort-name="name"  tablesort-title="{{ I18n.t('dj.fields.name') }}"
+                th ng-model="filters" tablesort=true tablesort-name="email"  tablesort-title="{{ I18n.t('user.fields.email') }}"
                 th ng-model="filters" tablesort=true tablesort-name="city"  tablesort-title="{{ I18n.t('dj.fields.city') }}"
                 th ng-model="filters" tablesort=true tablesort-name="country_flag_code"  tablesort-title="{{ I18n.t('dj.fields.country') }}"
-                th
-                  | {{ I18n.t('dj.fields.social_links') }}
                 th ng-model="filters" tablesort=true tablesort-name="created_at"  tablesort-title="Created At"
                 th.text-right
                   | Actions
@@ -100,6 +99,8 @@
                   img ng-src="{{ dj.avatar }}"
                 td
                   | {{ dj.name }}
+                td
+                  | {{ dj.email }}
                 td
                   | {{ dj.city }}
                 td.col-flag

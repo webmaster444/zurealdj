@@ -24,14 +24,9 @@
 
             $httpProvider.defaults.headers.common['X-Requested-With'] = 'AngularXMLHttpRequest';
 
-            $urlRouterProvider.otherwise('/');
+            $urlRouterProvider.otherwise('organizers');
 
             $stateProvider
-                .state('home',{
-                  url: '/',
-                  templateUrl: 'admin/templates/home/index.html',
-                  controller: 'HomeController'
-                })
                 .state('profile',{
                     url: '/profile',
                     templateUrl: 'admin/templates/users/edit.html',

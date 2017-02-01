@@ -5,7 +5,6 @@ json.organizer do
   json.last_name @organizer.last_name
   json.city @organizer.city
   json.country @organizer.country_flag
-  json.address @organizer.address
   json.created_at time_ago_in_words(@organizer.created_at) + ' ' + t('datetime.ago') + ' ' + t('datetime.at') + ' ' +  @organizer.created_at.strftime("%H:%M")
   json.updated_at time_ago_in_words(@organizer.updated_at) + ' ' + t('datetime.ago') + ' ' + t('datetime.at') + ' ' + @organizer.updated_at.strftime("%H:%M")
 

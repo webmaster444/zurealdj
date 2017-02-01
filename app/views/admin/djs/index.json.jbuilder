@@ -1,14 +1,11 @@
 json.djs @djs.each do |dj|
   json.id dj.id
-  json.created_at dj.created_at.strftime("%d/%m/%Y")
+  json.created_at time_ago_in_words(dj.created_at) + ' ' + t('datetime.ago') + ' ' + t('datetime.at') + ' ' + dj.created_at.strftime("%H:%M")
   json.name dj.name
+  json.email dj.email
   json.city dj.city
   json.country dj.country_flag
   json.about dj.about
-  json.weekday_rate_from dj.weekday_rate_from
-  json.weekday_rate_to dj.weekday_rate_to
-  json.weekend_rate_from dj.weekend_rate_from
-  json.weekend_rate_to dj.weekend_rate_to
   json.avatar paperclip_url(dj.avatar, :large)
 end
 json.count @count

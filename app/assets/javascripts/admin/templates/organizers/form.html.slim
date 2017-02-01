@@ -129,20 +129,7 @@
                             span.flag class="{{ country.code }}"
                             | {{ country.title }}
                     .error ng-repeat="error in validation_errors.country"
-                      | {{ error }}
-
-            .form-group
-              .row
-                .col-sm-2
-                  label.control-label
-                    | {{ I18n.t('organizer.fields.address') }}:
-                .col-sm-10
-                  input.form-control type="text" placeholder="{{ I18n.t('organizer.fields.address') }}" required=true class="{{ OrganizationForm.address.$invalid && submitted ? 'validation-error' : ''}}" name="address" ng-model="organizer.address"
-                  .error ng-show="OrganizationsForm.address.$invalid && submitted"
-                    | {{ I18n.t('validations.cant_be_blank')}}
-
-                  .error ng-repeat="error in validation_errors['address']"
-                    | {{ error }}
+                      | {{ error }}z
 
             .form-group
               .row

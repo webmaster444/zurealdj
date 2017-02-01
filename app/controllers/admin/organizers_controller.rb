@@ -69,6 +69,7 @@ class Admin::OrganizersController < Admin::BaseController
     fields = [
         users[:id],
         users[:name],
+        users[:email],
         users[:about],
         users[:avatar_file_name],
         users[:avatar_content_type],
