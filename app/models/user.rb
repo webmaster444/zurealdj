@@ -26,7 +26,7 @@ class User < ActiveRecord::Base
 
   belongs_to :role
 
-  validates :password, presence: true, confirmation: true, if: :validate_password?
+  validates :password, presence: true, length: { minimum: 8 }, confirmation: true, if: :validate_password?
   validates :password_confirmation, presence: true, if: :validate_password?
   validates :role_id, presence: true
   validates :name, presence: true

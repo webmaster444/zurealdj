@@ -39,10 +39,8 @@
             submit_cancelations: function(user){
                 return $http.post('/dj/users/step', {
                     dj_attributes: {
-                        weekday_rate_from: user.weekday_rate_from,
-                        weekday_rate_to: user.weekday_rate_to,
-                        weekend_rate_from: user.weekend_rate_from,
-                        weekend_rate_to: user.weekend_rate_to
+                        rate_per_hour: user.rate_per_hour
+
                     },
                     agree: user.agree
                 })
@@ -58,10 +56,7 @@
                 fd.append('dj_attributes[city]', user.city || '');
                 fd.append('dj_attributes[country_flag_code]', user.country ? user.country.code : '');
                 fd.append('about', user.about || '');
-                fd.append('dj_attributes[weekday_rate_from]', user.weekday_rate_from || '');
-                fd.append('dj_attributes[weekday_rate_to]', user.weekday_rate_to || '');
-                fd.append('dj_attributes[weekend_rate_from]', user.weekend_rate_from || '');
-                fd.append('dj_attributes[weekend_rate_to]', user.weekend_rate_to || '');
+                fd.append('dj_attributes[rate_per_hour]', user.rate_per_hour || '');
                 if(user.sample){
                     fd.append('dj_attributes[sample]', user.sample);
                 }

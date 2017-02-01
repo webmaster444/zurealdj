@@ -5,10 +5,8 @@ class Dj < ActiveRecord::Base
 
   has_attached_file :sample
 
-  validates :weekday_rate_from, presence: true, if: -> { user && User.dj_steps[user.step] >= User.dj_steps[:dj_cancelations]}
-  validates :weekday_rate_to, presence: true,   if: -> { user && User.dj_steps[user.step] >= User.dj_steps[:dj_cancelations]}
-  validates :weekend_rate_from, presence: true, if: -> { user && User.dj_steps[user.step] >= User.dj_steps[:dj_cancelations]}
-  validates :weekend_rate_to, presence: true,   if: -> { user && User.dj_steps[user.step] >= User.dj_steps[:dj_cancelations]}
+  validates :rate_per_hour, presence: true, if: -> { user && User.dj_steps[user.step] >= User.dj_steps[:dj_cancelations]}
+
   validates_attachment_content_type :sample, :content_type => %w(audio/mpeg audio/x-mpeg audio/mp3 audio/x-mp3 audio/mpeg3 audio/x-mpeg3 audio/mpg audio/x-mpg audio/x-mpegaudio)
 
   def country_flag

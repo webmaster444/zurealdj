@@ -14,27 +14,12 @@ div.page-block.registration
     .question.text-center
       | Enter your rate of pay per hour
     .form-row.small-text
-      .error ng-repeat="error in validation_errors['dj.weekday_rate_from']"
-        | {{ error }}
-      .error ng-repeat="error in validation_errors['dj.weekday_rate_to']"
+      .error ng-repeat="error in validation_errors['dj.rate_per_hour']"
         | {{ error }}
       | Weekday Rate:
       .inline-block
-        input.register-input.step-5-input type="number" ng-model="user.weekday_rate_from" placeholder="from"
-        span.dash
-          | -
-        input.register-input.step-5-input type="number" ng-model="user.weekday_rate_to" placeholder="to"
-    .form-row.small-text
-      .error ng-repeat="error in validation_errors['dj.weekend_rate_from']"
-        | {{ error }}
-      .error ng-repeat="error in validation_errors['dj.weekend_rate_to']"
-        | {{ error }}
-      | Weekend Rate:
-      .inline-block
-        input.register-input.step-5-input type="number" ng-model="user.weekend_rate_from" placeholder="from"
-        span.dash
-          | -
-        input.register-input.step-5-input type="number" ng-model="user.weekend_rate_to" placeholder="to"
+        input.register-input.step-5-input type="number" ng-model="user.rate_per_hour" placeholder="amount $"
+
     .form-row.text-center
       .error ng-repeat="error in validation_errors.agree"
         | {{ error }}

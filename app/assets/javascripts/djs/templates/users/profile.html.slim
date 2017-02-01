@@ -85,11 +85,7 @@
           table
             tr
               td.td-title
-                | Weekday Rate:
+                | Rate per hour:
               td.td-content
-                | ${{ user.weekday_rate_from }} - ${{user.weekday_rate_to}}
-            tr
-              td.td-title
-                | Weekday Rate:
-              td.td-content
-                | ${{ user.weekend_rate_from }} - ${{user.weekend_rate_to}}
+                | {{ user.rate_per_hour }} $
+

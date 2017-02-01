@@ -37,10 +37,7 @@ class DjsStreamer
             dj.city,
             CountryFlag.find(dj.country_flag_code)[:title],
             dj.about,
-            dj.weekday_rate_from,
-            dj.weekday_rate_to,
-            dj.weekend_rate_from,
-            dj.weekend_rate_to,
+            dj.rate_per_hour,
             dj.created_at.strftime("%d/%m/%Y"),
         ], true).to_csv(col_sep: ",", row_sep: "\r\n", quote_char: "\"")
       end

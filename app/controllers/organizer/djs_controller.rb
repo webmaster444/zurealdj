@@ -43,10 +43,8 @@ class Organizer::DjsController < Organizer::BaseController
             .join(djs).on(djs[:user_id].eq(users[:id]))
 
     q.where(users[:name].matches("%#{ params[:name] }%"))                 if params[:name].present?
-    q.where(djs[:weekday_rate_from].gteq(params[:price_from])
-                .or(djs[:weekend_rate_from].gteq(params[:price_from])))  if params[:price_from].present?
-    q.where(djs[:weekday_rate_to].lteq(params[:price_to])
-                .or(djs[:weekend_rate_to].lteq(params[:price_to])))      if params[:price_to].present?
+    q.where(djs[:rate_per_hour].gteq(params[:price_from]))  if params[:price_from].present?
+    q.where(djs[:rate_per_hour].lteq(params[:price_to]))      if params[:price_to].present?
 
 
     event_categories_users = Arel::Table.new(:event_categories_users)

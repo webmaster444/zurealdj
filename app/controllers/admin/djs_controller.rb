@@ -29,12 +29,12 @@ class Admin::DjsController < Admin::BaseController
   def update
     @dj = Dj.find params[:id]
     @user = User.find @dj[:user_id]
-    @user.update_attributes user_update_params
-    @dj.update_attributes dj_params
-    if @user.save && @dj.save
+    if @user.update_attributes dj_params
+
+
       render json: { message: I18n.t('dj.messages.success_upsert') }
     else
-      render json: { errors: @user.errors.full_messages +  @dj.errors.full_messages }, status: :unprocessable_entity
+      render json: { errors: @user.errors.full_messages }, status: :unprocessable_entity
     end
   end
   
@@ -57,12 +57,13 @@ class Admin::DjsController < Admin::BaseController
   private 
 
   def dj_params
-    params.require(:dj).permit :first_name, :last_name, :city, :sample, :country_flag_code, :weekday_price_from, :weekday_price_to, :weekend_price_from, :weekend_price_to
+    params.require(:user).permit(:name, :email, :personal_url, :width, :height, :crop_x, :crop_y, :crop_w, :crop_h, :crop_rotate,
+                                :crop_scale_x, :crop_scale_y, :avatar, :about,
+                                dj_attributes: [:rate_per_hour, :city, :country_flag_code, :sample_title, sample: [] ],
+                                event_category_ids: [], genre_ids: [], equipment_ids: [])
+
   end
 
-  def user_update_params
-    params.require(:dj).permit :name, :email, :personal_url, :avatar, :about
-  end
 
   def query(options={})
     users = User.arel_table
@@ -81,6 +82,7 @@ class Admin::DjsController < Admin::BaseController
         djs[:id].as('dj_id'),
         djs[:city],
         djs[:country_flag_code],
+        djs[:rate_per_hour]
     ]
 
     q = users
@@ -101,10 +103,8 @@ class Admin::DjsController < Admin::BaseController
     q.where(users[:name].matches("%#{params[:name]}%"))                  if params[:name].present?
     q.where(djs[:city].matches("%#{ params[:city] }%"))                  if params[:city].present?
     q.where(djs[:country_flag_code].in(countries))                       if params[:country].present?
-    q.where(djs[:weekday_rate_from].gteq(params[:weekday_rate_from]))    if params[:weekday_rate_from].present?
-    q.where(djs[:weekday_rate_to].lteq(params[:weekday_rate_to]))        if params[:weekday_rate_to].present?
-    q.where(djs[:weekend_rate_from].gteq(params[:weekend_rate_from]))    if params[:weekend_rate_from].present?
-    q.where(djs[:weekend_rate_to].lteq(params[:weekend_rate_to]))        if params[:weekend_rate_to].present?
+    q.where(djs[:rate_per_hour].gteq(params[:rate_per_hour_from]))       if params[:rate_per_hour_from].present?
+    q.where(djs[:rate_per_hour].lteq(params[:rate_per_hour_to]))         if params[:rate_per_hour_to].present?
     q.where(djs[:created_at].gteq(params[:date_from].to_date))           if params[:date_from].present?
     q.where(djs[:created_at].lteq(params[:date_to].to_date))             if params[:date_to].present?
 

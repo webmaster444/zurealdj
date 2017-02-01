@@ -108,40 +108,10 @@
             .row
               .col-lg-2
                 label.control-label
-                  | {{ I18n.t('dj.fields.weekday_rate_from') }}:
+                  | Rate per hour:
               .col-lg-10
                 p.form-control-static
-                  | {{ dj.weekday_rate_from }}
-            .hr-line-dashed
-
-          .form-group
-            .row
-              .col-lg-2
-                label.control-label
-                  | {{ I18n.t('dj.fields.weekday_rate_to') }}:
-              .col-lg-10
-                p.form-control-static
-                  | {{ dj.weekday_rate_to }}
-            .hr-line-dashed
-
-          .form-group
-            .row
-              .col-lg-2
-                label.control-label
-                  | {{ I18n.t('dj.fields.weekend_rate_from') }}:
-              .col-lg-10
-                p.form-control-static
-                  | {{ dj.weekend_rate_from }}
-            .hr-line-dashed
-
-          .form-group
-            .row
-              .col-lg-2
-                label.control-label
-                  | {{ I18n.t('dj.fields.weekend_rate_to') }}:
-              .col-lg-10
-                p.form-control-static
-                  | {{ dj.weekend_rate_to }}
+                  | {{ dj.rate_per_hour }}
             .hr-line-dashed
 
           .form-group

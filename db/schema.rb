@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170130125828) do
+ActiveRecord::Schema.define(version: 20170201140822) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -63,8 +63,6 @@ ActiveRecord::Schema.define(version: 20170130125828) do
   end
 
   create_table "djs", force: :cascade do |t|
-    t.string   "first_name"
-    t.string   "last_name"
     t.string   "city"
     t.string   "country_flag_code"
     t.integer  "sample_id"
@@ -76,11 +74,8 @@ ActiveRecord::Schema.define(version: 20170130125828) do
     t.string   "sample_content_type"
     t.integer  "sample_file_size"
     t.datetime "sample_updated_at"
-    t.integer  "weekday_rate_from"
-    t.integer  "weekday_rate_to"
-    t.integer  "weekend_rate_from"
-    t.integer  "weekend_rate_to"
     t.string   "sample_title"
+    t.integer  "rate_per_hour"
     t.index ["photo_id"], name: "index_djs_on_photo_id", using: :btree
     t.index ["sample_id"], name: "index_djs_on_sample_id", using: :btree
     t.index ["user_id"], name: "index_djs_on_user_id", using: :btree
@@ -253,7 +248,6 @@ ActiveRecord::Schema.define(version: 20170130125828) do
     t.string   "encrypted_password"
     t.string   "salt"
     t.string   "email"
-    t.string   "login"
     t.boolean  "confirmed"
     t.string   "confirmation_token"
     t.integer  "role_id"
