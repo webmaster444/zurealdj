@@ -8,9 +8,26 @@
 .zureal-checkbox
   label
     font-size: 16px
-    color: #555555
+    color: #c6bfc7
     &::selection
       background: transparent
+  input:checked + label
+    color: #555555
+
+input[type="checkbox"]:checked + label
+  font-family: CeraPro
+  font-size: 14px
+  font-weight: normal !important
+  font-style: normal
+  font-stretch: normal
+  line-height: normal
+  letter-spacing: normal
+  span
+    @media (max-width: $mobile-max-width)
+      vertical-align: middle
+      &::before
+        font-size: 14px
+
 
 .register-input, .zureal-input, .landing-input, .zureal-textarea
   background-color: white

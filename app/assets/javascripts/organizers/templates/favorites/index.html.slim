@@ -1,75 +1,86 @@
 .page-block
   .margin50
-  .shadow-block
-    .explore-block
-      i.fa.fa-search
-      input.form-control.input-lg type="text" ng-model="filters.name"
-      .btn-group uib-dropdown=true is-open="isopen" auto-close="outsideClick"
-        a#toggle-button type="button" uib-dropdown-toggle=true ng-disabled="disabled"
-          | Filtering
-          i.fa.fa-chevron-down<
-        .dropdown-menu uib-dropdown-menu=true role="menu" aria-labelledby="toggle-button"
-          .zurealdj-header-1
-            | Price range
-          table style="width: 100%"
-            tr
-              td style="width: 100px"
-                input type="number" ng-model="filters.price_from"
-              td
-                rzslider rz-slider-model="filters.price_from" rz-slider-high="filters.price_to" rz-slider-options="slider.options"
-              td style="width: 100px"
-                input type="number" ng-model="filters.price_to"
-          hr
-          .zurealdj-header-1
-            | Event types
-          .row
-            .col-md-3 ng-repeat="event_type in filters.event_types"
-              input type="checkbox" ng-model="event_type.checked" id="et{{ $index }}"
-              label for="et{{ $index }}"
-                span
-                | {{ event_type.title }}
-          hr
-          .zurealdj-header-1
-            | Genres
-          .row
-            .col-md-3 ng-repeat="genre in filters.genres"
-              input type="checkbox" ng-model="genre.checked" id="g{{ $index }}"
-              label for="g{{ $index }}"
-                span
-                | {{ genre.title }}
-          hr
-            .text-left
-              a.btn.btn-primary ng-click="resetFilters()"
-                | Reset
-            .text-right
-              a.btn.btn-primary ng-click="retrieveDjs()"
-                | Show {{ count }} DJs
-      button.search-button
-        | Find a DJ
+  .shadow-block.djs-search
+    a.mobile-caption ng-click="filtersCollapsed = !filtersCollapsed"
+      | My Favs
+      i.fa.fa-chevron-down ng-show="filtersCollapsed"
+      i.fa.fa-chevron-up ng-hide="filtersCollapsed"
+    div uib-collapse="filtersCollapsed" ng-init="filtersCollapsed = false"
+      .explore-block
+        i.fa.fa-search
+        input.form-control.input-lg type="text" ng-model="filters.name"
+        .btn-group uib-dropdown=true is-open="isopen" auto-close="outsideClick"
+          a#toggle-button type="button" uib-dropdown-toggle=true ng-disabled="disabled"
+            | Filtering
+            i.fa.fa-chevron-down<
+          .dropdown-menu#filters-menu type="text/ng-template" uib-dropdown-menu=true role="menu" aria-labelledby="toggle-button"
+            .zurealdj-header-1
+              | Price range
+            table style="width: 100%"
+              tr
+                td style="width: 100px"
+                  i.fa.fa-dollar
+                  input.price-input type="number" ng-model="filters.price_from"
+                td.rzslider-td
+                  rzslider rz-slider-model="filters.price_from" rz-slider-high="filters.price_to" rz-slider-options="slider.options"
+                td style="width: 100px"
+                  i.fa.fa-dollar
+                  input.price-input type="number" ng-model="filters.price_to"
+            hr
+            .zurealdj-header-1
+              | Event types
+            div
+              .zureal-checkbox ng-repeat="event_type in filters.event_types"
+                input type="checkbox" ng-model="event_type.checked" id="et{{ $index }}"
+                label for="et{{ $index }}"
+                  span
+                  | {{ event_type.title }}
+            hr
+            .zurealdj-header-1
+              | Genres
+            div
+              .zureal-checkbox ng-repeat="genre in filters.genres"
+                input type="checkbox" ng-model="genre.checked" id="g{{ $index }}"
+                label for="g{{ $index }}"
+                  span
+                  | {{ genre.title }}
+            hr
+              .actions
+                .pull-left
+                  a.slider-btn.cancel ng-click="resetFilters()"
+                    | Reset
+                .pull-right
+                  a.slider-btn.apply ng-click="retrieveDjs()"
+                    | Show {{ count }} DJs
+        .mobile-only
+          a.mobile-dropdown ng-click="filtersDialog()"
+            | Filtering
+            i.fa.fa-chevron-down
+        button.search-button
+          | Find a DJ
 
-    .selected-filters ng-show="checkSelectedFilters() && !slider.default"
-      .filter-item ng-show="checkPriceFilter() && !slider.default" ng-click="resetPriceFilter(); retrieveDjs();"
-        .filter-title
-          | Price ${{ filters.price_from }} - ${{ filters.price_to }}
-        a.btn-close
+      .selected-filters ng-show="checkSelectedFilters() && !slider.default"
+        hr style="display: none"
+        .filter-item ng-show="checkPriceFilter() && !slider.default" ng-click="resetPriceFilter()"
+          .filter-title
+            | Price ${{ filters.price_from }} - ${{ filters.price_to }}
+          a.btn-close
 
-      .filter-item ng-repeat="genre in filters.genres" ng-show="genre.checked"
-        .filter-title
-          | {{ genre.title }}
-        a.btn-close ng-click="genre.checked = false; retrieveDjs();"
+        .filter-item ng-repeat="genre in filters.genres" ng-show="genre.checked"
+          .filter-title
+            | {{ genre.title }}
+          a.btn-close ng-click="genre.checked = false"
 
-      .filter-item ng-repeat="event_type in filters.event_types" ng-show="event_type.checked"
-        .filter-title
-          | {{ event_type.title }}
-        a.btn-close ng-click="event_type.checked = false; retrieveDjs();"
+        .filter-item ng-repeat="event_type in filters.event_types" ng-show="event_type.checked"
+          .filter-title
+            | {{ event_type.title }}
+          a.btn-close ng-click="event_type.checked = false"
 
-      a.clear-filters ng-click="resetFilters(); retrieveDjs()"
-        | Clear
+        a.clear-filters ng-click="resetFilters()"
+          | Clear
 
   .margin50
   .index
-    .mobile-caption
-      | My Favs
     .profile-item ng-repeat="dj in djs"
       img ng-src="{{ dj.avatar }}"
       a.icon.like ng-click="addToFavorites(dj)" ng-hide="dj.in_favorites"

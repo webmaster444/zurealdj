@@ -37,6 +37,16 @@
                     favorite: true
                 };
 
+                $scope.filtersDialog = function(){
+                    ngDialog.open({
+                        template: 'organizers/templates/common/filters.html',
+                        className: 'ngdialog-theme-default dj-mobile-ng-dialog',
+                        scope: $scope
+                    });
+                };
+
+                $scope.closeFilterDialog = ngDialog.closeAll;
+
                 $scope.next_page = false;
 
                 event_types.all().success(function(data){

@@ -9,58 +9,188 @@
 .margin50
   height: 50px
 
+.mobile-caption
+  display: none
+
 .explore-block
-  position: relative
-  padding: 0 320px 0 50px
+  padding: 0 0 0 50px
   width: 100%
   border-radius: 100px
-  background-color: #ffffff
+  background-color: white
   border: solid 1px #f5f5f5
+  position: relative
+  .mobile-only
+    display: none
   & > input
     height: 60px
     border: 0
+    width: calc(100% - 301px)
+    @media (max-width: $mobile-max-width)
+      width: 100%
+    display: inline-block
   .fa-search
     color: #555555
     font-size: 24px
     position: absolute
-    top: 16px
-    left: 20px
+    top: 15px
+    left: 25px
   [uib-dropdown]
-    position: absolute
-    top: 20px
-    right: 213px
+    margin: 0 10px
+    position: static
     #toggle-button
       font-size: 16px
       color: #555555
+      @media (max-width: $mobile-max-width)
+        display: none
     .dropdown-menu
+      box-shadow: 0 2px 20px 0 rgba(0, 0, 0, 0.08)
       max-height: none
-      padding: 15px
-      width: 1000px
-      right: -63px
-      left: auto
-      input[type="number"]
-        width: 100px
-        height: 50px
-        border-radius: 100px
-        background-color: #ffffff
-        border: solid 1px #f5f5f5
-        outline: none
-        padding: 10px 20px
+      max-width: 835px
+      width: calc(100vw - 150px)
+      padding: 30px
+      position: absolute
+      top: 25px
+      left: 25px
+    .zurealdj-header-1
+      margin-bottom: 20px
   .search-button
     width: 200px
     height: 60px
     border-radius: 100px
     border: 0
     background-color: #b05dfd
-    position: absolute
-    top: 0
-    right: 0
     font-size: 18px
     font-weight: 500
     font-style: normal
     font-stretch: normal
     letter-spacing: 1.7px
     color: #ffffff
+    outline: none
+
+.dropdown-menu, .djs-search-mobile
+  input[type="number"]
+    width: 100px
+    height: 50px
+    border-radius: 100px
+    background-color: #ffffff
+    border: solid 1px #f5f5f5
+    outline: none
+    padding: 10px 25px 10px 30px
+  td
+    position: relative
+    i.fa.fa-dollar
+      position: absolute
+      left: 20px
+      top: 30px
+  .rzslider-td
+    padding: 0 5px 20px 5px
+    .rz-bubble
+      display: none
+  hr
+    margin: 30px 0
+  .zureal-checkbox
+    display: inline-block
+    width: 190px
+    margin: 7px 0
+    label
+      font-size: 14px !important
+  .actions
+    .pull-left, .pull-right
+      margin-bottom: 15px
+
+.djs-search-mobile
+  padding: 20px
+  padding-bottom: 50px
+  .filter-header
+    font-size: 16px
+    font-weight: 500
+    line-height: 1.5
+    letter-spacing: 0.7px
+  hr
+    margin: 20px 0
+  .zurealdj-header-1
+    font-size: 14px
+    font-weight: normal
+    font-style: normal
+    font-stretch: normal
+    line-height: 1.43
+    letter-spacing: normal
+    margin-bottom: 15px
+  .price-filter
+    position: relative
+    .rzslider
+      margin-top: 10px
+    .price-from, .price-to
+      margin-top: 20px
+      position: relative
+      display: inline-block
+      i.fa.fa-dollar
+        position: absolute
+        left: 20px
+        top: 18px
+    .price-to
+      right: 0
+      position: absolute
+
+@media (max-width: $mobile-max-width)
+  .djs-search
+    padding: 10px
+    margin-top: -20px
+    .mobile-caption
+      font-size: 20px
+      line-height: 1.5
+      letter-spacing: 1.4px
+      text-align: center
+      width: 100%
+      display: block
+      color: #555555
+      i.fa
+        font-size: 10px
+        margin-left: 10px
+        vertical-align: middle
+    .explore-block
+      padding-left: 25px
+      padding-right: 20px
+      margin-bottom: 60px
+      margin-top: 10px
+      & > input
+        height: auto
+        font-size: 16px
+        line-height: 1.5
+        color: #c6bfc7
+        padding: 8px auto
+    .mobile-only
+      display: inline-block
+      position: absolute
+      left: 0
+      top: 50px
+      padding: 10px
+      *
+        font-size: 14px
+        line-height: 1.43
+        color: #555555
+      i.fa
+        font-size: 10px
+        margin-left: 5px
+    .search-button
+      position: absolute
+      width: 100px
+      height: 40px
+      font-size: 12px
+      letter-spacing: 0.8px
+      right: 0
+      top: 50px
+    .fa-search
+      top: 10px
+      left: 10px
+      font-size: 18px
+    .selected-filters
+      margin-top: 70px
+      hr
+        display: block !important
+        margin: 0
+        margin-bottom: 10px
+
 
 @media (max-width: $mobile-max-width)
   .desktop-only
