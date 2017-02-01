@@ -141,7 +141,7 @@ class User < ActiveRecord::Base
   def send_confirmation_email
     return if self.confirmed
     self.update_attribute :confirmation_token, encrypt(self.email)
-    UserMailer.email_confirmation(self.id).deliver_now
+    UserMailer.email_confirmation(self.id).deliver_later
   end
 
   def downcase_email
