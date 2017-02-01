@@ -13,5 +13,7 @@ module Zurealdj
       config.i18n.default_locale = :ua
 
       config.assets.paths << Rails.root.join("node_modules")
+
+      config.action_cable.allowed_request_origins = [/.*/]
   end
 end
