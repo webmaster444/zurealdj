@@ -17,7 +17,6 @@
         'AuthHttp',
         'oitozero.ngSweetAlert',
         'rzModule',
-        'ui.bootstrap.datetimepicker',
         'ngAudio',
         'ui.select',
         'formInput.timepicker',

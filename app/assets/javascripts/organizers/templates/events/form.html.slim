@@ -65,7 +65,9 @@
             label.form-title
               | From
           td
-            datetimepicker ng-model="event.start_date" date-format= "dd-MMM-yyyy" date-options= "dateOptions" date-disabled= "isDisabledDate(date, mode)"
+            p.dj-datepicker ng-class="{'active': start_date_opened}" ng-click="start_date_opened = true"
+              input type="text" uib-datepicker-popup="{{ 'dd/MM/yyyy' }}" ng-model="event.start_date" is-open="start_date_opened" datepicker-options="toDateOptions" close-text="Close" alt-input-formats="altInputFormats" show-button-bar="false"
+              i.fa.fa-chevron-down
             .error ng-repeat="error in validation_errors.start_date"
               | {{ error }}
         tr
@@ -73,7 +75,9 @@
             label.form-title
               | To
           td
-            datetimepicker ng-model="event.end_date" date-format= "dd-MMM-yyyy" date-options= "dateOptions" date-disabled= "isDisabledDate(date, mode)"
+            p.dj-datepicker ng-class="{'active': end_date_opened}" ng-click="end_date_opened = true"
+              input type="text" uib-datepicker-popup="{{ 'dd/MM/yyyy' }}" ng-model="event.end_date" is-open="end_date_opened" datepicker-options="toDateOptions" close-text="Close" alt-input-formats="altInputFormats" show-button-bar="false"
+              i.fa.fa-chevron-down
             .error ng-repeat="error in validation_errors.end_date"
               | {{ error }}
         tr
