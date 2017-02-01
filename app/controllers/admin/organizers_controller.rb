@@ -80,8 +80,7 @@ class Admin::OrganizersController < Admin::BaseController
         organizers[:city],
         organizers[:first_name],
         organizers[:last_name],
-        organizers[:country_flag_code],
-        organizers[:address]
+        organizers[:country_flag_code]
     ]
 
     q = users
