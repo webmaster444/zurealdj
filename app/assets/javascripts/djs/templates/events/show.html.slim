@@ -7,6 +7,8 @@
       .inf
         .title
           | {{ event.title }}
+          a< ng-click="startChat()"
+            i.fa.fa-comments
         .address.small-text
           span ng-show="event.city"
             | {{ event.city}}

@@ -6,6 +6,7 @@ class User < ActiveRecord::Base
   has_one :dj, dependent: :destroy
   has_one :organizer, dependent: :destroy
   has_many :stars, foreign_key: :to_user_id
+  has_many :messages, dependent: :destroy
 
   accepts_nested_attributes_for :organizer
   accepts_nested_attributes_for :dj

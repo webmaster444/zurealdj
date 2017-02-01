@@ -1,0 +1,59 @@
+.container
+  .dj-header
+    | Messages
+
+.container.chat-view
+  .row
+    .col-xs-4.chat-sidebar
+      .chat-search
+        i.fa.fa-search
+        input type="text" ng-model="q"
+      ul
+        li ng-repeat="event in events"
+          .chat-user
+            img ng-src="{{event.image}}"
+              .chat-user-name
+                a.dj-black-link
+                  | {{ event.title }}
+            .unread-messages ng-if="event.unread_messages_count > 0"
+              .unread-messages-count
+                | {{ event.unread_messages_count }}
+            i.fa ng-class="{'fa-chevron-right': !event.dropdownOpen, 'fa-chevron-down': event.dropdownOpen}" ng-click="event.dropdownOpen = !event.dropdownOpen"
+          ul ng-repeat="dj in event.djs" ng-show="event.dropdownOpen"
+            li ng-click="setCurrentEvent(event, dj)"
+              .chat-user
+                img ng-src="{{dj.avatar}}"
+                .chat-user-name
+                  a.dj-black-link
+                    | {{ dj.name }}
+                .unread-message ng-if="dj.last_message"
+                  img ng-src="{{ dj.last_message.user_avatar }}"
+                  .dj-gray-text
+                    | {{ dj.last_message.body }}
+                .unread-messages ng-if="dj.last_message"
+                  .dj-gray-text
+                    | {{ dj.last_message.date }}
+                  .unread-messages-count ng-if="dj.unread_messages_count > 0"
+                    | {{ dj.unread_messages_count }}
+    .col-xs-7 ng-hide="current_event"
+      | Choose event to discuss
+    .col-xs-7 ng-show="current_event"
+      .chat-discussion
+        .chat-message.right ng-repeat="message in messages"
+          img.message-avatar ng-src="{{message.message.avatar}}"
+          .message
+            a.message-author
+              | {{ message.message.name }}
+            span.message-date  Fri Jan 25 2015 - 11:12:36
+            span.message-content
+              | {{ message.message.body }}
+
+      form.chat-message-form ng-submit="send()"
+        .row ng-show="current_event"
+          .col-lg-12
+            .form-group
+              textarea.form-control.message-input name="message" placeholder="Enter message text" ng-model="message"
+          .col-md-12
+            button.btn.btn-default type="submit"
+              i.fa.fa-paper-plane
+.margin50

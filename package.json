@@ -17,11 +17,13 @@
   "license": "ISC",
   "dependencies": {
     "angular": "^1.5.8",
+    "angular-animate": "1.5.9",
     "angular-filter": "^0.5.15",
     "angular-jquery-timepicker": "^0.12.0",
     "angular-sweetalert": "^1.1.2",
     "angular-ui-bootstrap": "^2.4.0",
     "angularjs-slider": "^6.0.0",
+    "animate.css": "^3.5.2",
     "cropperjs": "^1.0.0-beta",
     "ng-dialog": "^0.6.4",
     "sweetalert": "^1.1.3",

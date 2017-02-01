@@ -2,8 +2,13 @@ class Dj::BaseController < ApplicationController
 
   before_action :not_dj
   before_action :not_finished_profile
+  before_action :init_dj
 
   private
+
+  def init_dj
+    @current_dj = current_user.dj
+  end
 
   def not_dj
     render json: {errors: ['You are not dj.']}, status: 401 and return unless current_user.dj?

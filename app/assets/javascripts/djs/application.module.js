@@ -85,6 +85,11 @@
                     templateUrl: 'djs/templates/notifications/index.html',
                     controller: 'NotificationsController'
                 })
+                .state('messages', {
+                    url: '/messages',
+                    templateUrl: 'djs/templates/messages/index.html',
+                    controller: 'MessagesController'
+                })
     }]);
 
     ZurealdjDjApp.run(['$http', '$rootScope', 'AuthHttp', '$state', function($http, $rootScope, AuthHttp, $state){

@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
   resources :country_flags, only: [:index]
+
+  mount ActionCable.server => '/cable'
+
   root to: 'pages#index'
 
   get '/admin', to: "pages#admin"
@@ -61,6 +64,7 @@ Rails.application.routes.draw do
       end
       resources :events, only: [:index, :show]
       resources :bookings, only: [:update]
+      resources :chat_rooms, only: [:index]
     end
 
     namespace :organizer do
@@ -93,6 +97,7 @@ Rails.application.routes.draw do
         end
       end
       resources :bookings, only: [:create, :destroy]
+      resources :chat_rooms, only: [:index]
     end
 
     resources :attachments, only: [] do

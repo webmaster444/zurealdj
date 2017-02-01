@@ -1,5 +1,6 @@
 class Dj < ActiveRecord::Base
   has_many :bookings, dependent: :destroy
+  has_many :events, through: :bookings
   belongs_to :user
 
   has_attached_file :sample

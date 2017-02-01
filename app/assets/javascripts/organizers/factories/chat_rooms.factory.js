@@ -1,13 +1,11 @@
 (function () {
     'use strict';
-    angular.module('ZurealdjDjApp').factory('EventsFactory', ['AuthHttp', function($http){
+    angular.module('ZurealdjOrganizerApp').factory('ChatRoomsFactory', ['AuthHttp', function($http){
         return {
 
             all: function(options){
-                if(!options)
-                    options = {}
 
-                var url = '/dj/events.json?';
+                var url = '/organizer/chat_rooms.json?';
 
                 _.each(Object.keys(options), function(key){
                     if(options[key])
@@ -15,10 +13,6 @@
                 });
 
                 return $http.get(url);
-            },
-
-            show: function(id){
-                return $http.get('/dj/events/' + id + '.json');
             }
         }
     }])

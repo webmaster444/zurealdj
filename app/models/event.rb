@@ -21,4 +21,20 @@ class Event < ActiveRecord::Base
   validates :city, presence: true
   validates :start_date, presence: true
   validates :end_date, presence: true
+
+  def unread_messages_count_for(user, from_user = nil)
+    if from_user
+      Message.where(event_id: self.id, to_user_id: user.id, from_user_id: from_user.id, read: false).count
+    else
+      Message.where(event_id: self.id, to_user_id: user.id, read: false).count
+    end
+  end
+
+  def last_message
+    Message.where(event_id: self.id).last
+  end
+
+  def booking_for(dj)
+    Booking.find_by(event_id: self.id, dj_id: dj.id)
+  end
 end
