@@ -19,6 +19,10 @@ class User < ActiveRecord::Base
                     format: { with: /.*\@.*\..*/, message: "is incorrect"},
                     presence: true
 
+  validates :personal_url, uniqueness: { case_sensitive: false, message: "This personal url is already registered."}, if: :validate_personal_url?
+  validates :company_name, uniqueness: { case_sensitive: false, message: "This company name is already registered."}, if: :validate_company_name?
+
+
   before_save :encrypt_password
   before_validation :downcase_email
   after_create :send_confirmation_email
@@ -136,6 +140,14 @@ class User < ActiveRecord::Base
 
   def validate_password?
     !password.nil? || !password_confirmation.nil?
+  end
+
+  def validate_personal_url?
+    !personal_url.nil?
+  end
+
+  def validate_company_name?
+    !company_name.nil?
   end
 
   def send_confirmation_email

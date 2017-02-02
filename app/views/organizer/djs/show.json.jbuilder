@@ -14,6 +14,7 @@ json.country @dj.country_flag
 json.rating @user.rate
 json.about @user.about
 json.genres_string @user.genres.map(&:title).join(', ')
+json.event_types_string @user.event_categories.map(&:title).join(', ')
 
 json.sample do
   json.url @dj.sample.url

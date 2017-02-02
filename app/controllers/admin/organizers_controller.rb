@@ -55,7 +55,7 @@ class Admin::OrganizersController < Admin::BaseController
   private 
 
   def organizer_params
-    params.require(:organizer).permit :first_name, :last_name, :city, :country_flag_code, :address
+    params.require(:organizer).permit :city, :country_flag_code, :address
   end
 
   def user_update_params
@@ -78,8 +78,6 @@ class Admin::OrganizersController < Admin::BaseController
         organizers[:created_at],
         organizers[:id].as('dj_id'),
         organizers[:city],
-        organizers[:first_name],
-        organizers[:last_name],
         organizers[:country_flag_code]
     ]
 

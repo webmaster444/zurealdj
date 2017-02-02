@@ -24,7 +24,6 @@
                 fd.append('organizer[first_name]', organizations.first_name || '');
                 fd.append('organizer[last_name]', organizations.last_name || '');
                 fd.append('organizer[city]', organizations.city || '' );
-                fd.append('organizer[address]', organizations.address || '');
                 fd.append('organizer[about]', organizations.about || '');
 
                 if(organizations.id){

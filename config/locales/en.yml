@@ -274,3 +274,6 @@ en:
     content: "Slide text"
     messages:
       success_upsert: "Successfully saved"
+
+  errors:
+    format: "%{message}"

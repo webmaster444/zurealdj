@@ -25,7 +25,7 @@ class SessionsController < ApplicationController
 
   def check
     if current_user
-      render json: { current_user: {login: current_user.login, email: current_user.email, role: current_user.role.name }}
+      render json: { current_user: { email: current_user.email, role: current_user.role.name }}
     else
       render nothing: true, status: :unauthorized
     end

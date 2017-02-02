@@ -1,8 +1,6 @@
 json.organizer do
   json.id @organizer.id
   json.created_at @organizer.created_at.strftime("%d/%m/%Y")
-  json.first_name @organizer.first_name
-  json.last_name @organizer.last_name
   json.city @organizer.city
   json.country @organizer.country_flag
   json.created_at time_ago_in_words(@organizer.created_at) + ' ' + t('datetime.ago') + ' ' + t('datetime.at') + ' ' +  @organizer.created_at.strftime("%H:%M")

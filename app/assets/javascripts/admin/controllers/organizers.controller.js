@@ -23,15 +23,18 @@
 
                     $scope.resetFilters = function(){
                         $scope.filters = {
-                            page: 1,
                             per_page: 10
                         };
                     };
+
                     $scope.resetFilters();
+
+                    $scope.page = 1;
 
                     var timer = false;
                     $scope.$watch('filters', function(){
                         if(timer){
+                            $scope.page = 1;
                             $timeout.cancel(timer)
                         }
                         timer = $timeout(function(){
@@ -40,7 +43,6 @@
                         }, 500)
                     }, true);
 
-                    $scope.page = 1;
                     $scope.retrieveOrganizers = function(){
                         organizers.all({page: $scope.page, query: $scope.filters}).success(function (data) {
                             $scope.organizers = data.organizers;

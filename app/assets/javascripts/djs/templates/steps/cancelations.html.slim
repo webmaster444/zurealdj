@@ -23,9 +23,12 @@ div.page-block.registration
     .form-row.text-center
       .error ng-repeat="error in validation_errors.agree"
         | {{ error }}
-      input#agreeCancelPolicy type="checkbox"   ng-required="" ng-model="user.agree"
-      .small-text.inline-block#cancelations-title
-        | I agree with
-        a href="/#cancellation_policy"
-          |  Cancellation Policy
+
+      .zureal-checkbox.inline-block
+        input type="checkbox" ng-model="user.agree" id="cancellation"
+        label for="cancellation" style="font-size: 18px"
+          span
+          | I agree with
+      a.small-text.hover href="/#cancellation_policy"
+        |  Cancellation Policy
   div.tmp

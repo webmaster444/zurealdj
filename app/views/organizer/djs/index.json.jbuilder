@@ -10,6 +10,6 @@ json.djs @djs.each do |dj|
   json.rating dj.rate
   json.in_favorites current_user.organizer.favorite_djs.include?(dj.dj)
 end
-json.min_rate [Dj.minimum(:rate_per_hour)].min
-json.max_rate [Dj.maximum(:rate_per_hour)].max
+json.min_rate Dj.minimum(:rate_per_hour)
+json.max_rate Dj.maximum(:rate_per_hour)
 json.count @count

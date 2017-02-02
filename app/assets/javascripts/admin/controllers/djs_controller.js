@@ -22,11 +22,13 @@
 
                     $scope.resetFilters = function(){
                         $scope.filters = {
-                            page: 1,
                             per_page: 10
                         };
                     };
+
                     $scope.resetFilters();
+
+                    $scope.page = 1;
 
                     var timer = false;
                     $scope.$watch('filters', function(){
@@ -54,11 +56,10 @@
                                 pagination.twbsPagination({
 
                                     totalPages: Math.ceil($scope.count / $scope.filters.per_page),
-                                    startPage: $scope.filters.page,
-
+                                    startPage: $scope.page,
                                     visiblePages: 9,
                                     onPageClick: function (event, page) {
-                                        $scope.filters.page = page;
+                                        $scope.page = page;
                                         $scope.retrieveDjs();
                                     }
                                 })

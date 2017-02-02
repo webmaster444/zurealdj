@@ -1,8 +1,6 @@
 json.organizers @organizers.each do |organization|
   json.id organization.id
   json.created_at time_ago_in_words(organization.created_at) + ' ' + t('datetime.ago') + ' ' + t('datetime.at') + ' ' + organization.created_at.strftime("%H:%M")
-  json.first_name organization.first_name
-  json.last_name organization.last_name
   json.city organization.city
   json.country organization.country_flag
   json.country_flag_code organization.country_flag_code

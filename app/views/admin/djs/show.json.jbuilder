@@ -1,7 +1,5 @@
 json.dj do
   json.id @dj.id
-  json.first_name @dj.first_name
-  json.last_name @dj.last_name
   json.city @dj.city
   json.country @dj.country_flag
   json.rate_per_hour @dj.rate_per_hour
