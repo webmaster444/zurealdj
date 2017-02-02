@@ -276,6 +276,21 @@
   .page-block
     padding: 0 20px
 
+
+.org-form
+  .ngdialog-content
+    max-width: 959px !important
+    width: auto !important
+    @media (min-width: $mobile-max-width)
+      .ngdialog-close
+        display: none
+  .ngdialog-overlay
+    pointer-events: none
+
+[device='mobile']
+  .org-form
+    overflow-x: hidden
+
 .dj-header
   text-align: center
   font-family: CeraPro

@@ -12,7 +12,7 @@ class Event < ActiveRecord::Base
   end
 
   belongs_to :organizer
-  has_attached_file :image, styles: { medium: '300x300>', thumb: '100x100>' }, default_url: '/images/img-event-photo.png'
+  has_attached_file :image,  styles: { large: "400x400>" }, processors: [:cropper], default_url: '/images/img-event-photo.png'
   validates_attachment_content_type :image, content_type: /\Aimage\/.*\Z/
   validates :image, presence: true
 
@@ -21,6 +21,16 @@ class Event < ActiveRecord::Base
   validates :city, presence: true
   validates :start_date, presence: true
   validates :end_date, presence: true
+  validates :event_category_id, presence: true
+  validates :dj_slots, presence: true
+
+  validates :crop_x, presence: true
+  validates :crop_y, presence: true
+  validates :crop_w, presence: true
+  validates :crop_h, presence: true
+  validates :crop_rotate, presence: true
+  validates :crop_scale_x, presence: true
+  validates :crop_scale_y, presence: true
 
   def unread_messages_count_for(user, from_user = nil)
     if from_user

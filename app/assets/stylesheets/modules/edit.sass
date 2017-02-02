@@ -141,15 +141,96 @@
 
 
 .edit-event
+  padding: 30px
+  @media (max-width: $mobile-max-width)
+    padding: 20px
   max-width: 959px
-  .form-title
-    font-size: 16px
-    font-weight: normal
-    font-style: normal
-    font-stretch: normal
-    line-height: normal
-    letter-spacing: normal
-    color: #555555
+  .error
+    font-size: 14px
+    text-align: center
+    margin: 5px auto 5px 150px
+    @media (max-width: 590px)
+      margin: 5px auto
+  .zurealdj-header-1
+    margin-bottom: 25px
+    hr
+      display: none
+    @media (max-width: $mobile-max-width)
+      text-align: center
+      hr
+        display: block
+      .pull-right
+        float: none !important
+  .row.buttons
+    padding: 25px 0
+    clear: both
+  .selected-box
+    width: 100%
+    margin-top: 10px !important
+    box-shadow: 0 2px 20px 0 rgba(0, 0, 0, 0.08)
+    border-radius: 4px
+    padding: 10px
+  .col-event-image
+    max-width: 350px
+    display: inline-block
+    vertical-align: top
+    width: 100%
+    @media (min-width: $mobile-max-width)
+      margin-left: 10px
+    @media (max-width: 930px)
+      max-width: 100%
+      text-align: center
+  .col-event-form
+    max-width: 550px
+    display: inline-block
+    vertical-align: top
+    width: 100%
+    @media (max-width: 930px)
+      margin: auto
+      display: block
+    .form-row
+      width: 100%
+      max-width: 550px
+      margin: 30px 0
+      @media (max-width: $mobile-max-width)
+        max-width: 400px
+        margin: 30px auto
+      .form-title
+        width: 150px
+        display: inline-block
+        margin: 0
+        padding: 0
+        font-size: 16px
+        font-weight: normal
+        font-style: normal
+        font-stretch: normal
+        line-height: normal
+        letter-spacing: normal
+        color: #555555
+        @media (max-width: $mobile-max-width)
+          margin-bottom: 10px
+      .form-container
+        width: 100%
+        max-width: 380px
+        display: inline-block
+        @media (max-width: $mobile-max-width)
+          display: block
+          margin: auto
+        .dj-dropdown, .zureal-input
+          width: 100% !important
+        span[timepicker]
+          width:  40%
+          display: inline-block
+          @media (max-width: $mobile-max-width)
+            width:  100%
+        p.dj-datepicker
+          margin-right: 5%
+          width:  55%
+          display: inline-block
+          @media (max-width: $mobile-max-width)
+            width:  100%
+          input
+            padding-left: 10px
 
 
 

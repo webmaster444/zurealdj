@@ -81,7 +81,7 @@ input[type="checkbox"]:checked + label
 [device='mobile']
   .images-list
     .plus
-      width: 100% !important
+      width: 265px !important
       height: 265px !important
       label
         width: 280px !important
@@ -91,7 +91,7 @@ input[type="checkbox"]:checked + label
     border-radius: 15px
   .register-input, .zureal-input
     width: 100%
-    padding: 8px 30px
+    padding: 12px 30px
 
 
 [device='desktop']
@@ -153,10 +153,10 @@ table.form-table
     height: 50px
     font-size: 16px
     font-weight: 500
-    color: #555555
+    color: #c6bfc7
     outline: none
     display: inline-block
-    padding: 15px 30px
+    padding: 15px 20px
     width: 100%
   [uib-dropdown-menu]
     min-width: 100%
@@ -180,6 +180,7 @@ table.form-table
         color: #555555
 .dj-dropdown.open
   [uib-dropdown-toggle]
+    color: #555555
     border: solid 1px #e1c3fd
     box-shadow: 0 2px 20px 0 rgba(0, 0, 0, 0.08)
 
@@ -233,8 +234,14 @@ table.form-table
   input
     border: 0
     outline: none
+    color: #c6bfc7
+    &:focus
+      color: #555555
   &.active
     box-shadow: 0 2px 20px 0 rgba(0, 0, 0, 0.08)
+    border-color: #e1c3fd
+    input
+      color: #555555
   i.fa
     position: absolute
     top: 18px
@@ -249,6 +256,7 @@ table.form-table
     top: 57px !important
     left: 0 !important
     width: 100%
+    min-width: 300px
     border-radius: 4px
     box-shadow: 0 2px 20px 0 rgba(0, 0, 0, 0.08)
     [uib-daypicker], [uib-monthpicker], [uib-yearpicker]
@@ -308,7 +316,6 @@ table.form-table
 
 .form-group.dj-form-group
   label.form-title
-    font-family: CeraPro
     font-size: 16px
     font-weight: normal
     font-style: normal

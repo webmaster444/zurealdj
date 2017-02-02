@@ -87,23 +87,27 @@
                 }
 
                 $scope.openEventDialog = function (id) {
-                    $state.go('events');
                     ngDialog.open({
                         template: 'organizers/templates/events/form.html',
-                        controller: ['$scope', 'EventCategoriesFactory', 'CountryFlagsFactory', 'EventsFactory',
-                            function(scope, event_types, flags, events) {
+                        controller: ['$scope', 'EventCategoriesFactory', 'CountryFlagsFactory', 'EventsFactory', 'GenresFactory',
+                            function(scope, event_types, flags, events, genres) {
 
                                 scope.save = function () {
                                     $scope.formPending = true;
+                                    scope.processing = true;
                                     events.upsert(scope.event)
                                         .success(function () {
                                             scope.formPending = false;
+                                            scope.processing = false;
                                             scope.closeThisDialog();
-                                            $scope.retrieveEvents()
+                                            if(id) $state.go('events');
+                                            else $scope.retrieveEvents();
+
                                         })
                                         .error(function (data) {
                                             scope.validation_errors = data.validation_errors;
                                             scope.formPending = false;
+                                            scope.processing = false;
                                         })
                                 };
 
@@ -115,16 +119,42 @@
                                     scope.event_types = data.event_types;
                                 });
 
+
+                                genres.all().success(function(data){
+                                    scope.genres = data.genres;
+                                });
+
                                 scope.event = {};
 
                                 if(id){
                                     events.show(id).success(function(data){
                                         scope.event = data;
+
+                                        var dateParse = function(str) {
+                                            var day = parseInt(str.slice(0, 2));
+                                            var month = parseInt(str.slice(3, 5)) - 1;
+                                            var year = parseInt(str.slice(6));
+                                            return new Date(year, month, day);
+                                        };
+
+                                        scope.event.start_date = dateParse(scope.event.start_date);
+                                        scope.event.end_date = dateParse(scope.event.end_date);
                                     });
                                 }
 
                                 scope.cancel = function(){
                                     scope.closeThisDialog()
+                                };
+
+                                scope.checkSelectedGenres = function() {
+                                    var result = false;
+
+                                    if(scope.genres)
+                                        scope.genres.forEach(function(genre) {
+                                            if(genre.checked) result = true;
+                                        });
+
+                                    return result;
                                 };
 
                                 scope.destroy = function(id) {
@@ -149,8 +179,27 @@
                                         }
                                     );
                                 };
+
+                                $scope.startDateOptions = {
+                                    dateDisabled: false,
+                                    formatYear: 'yy',
+                                    maxDate: new Date(2020, 5, 22),
+                                    minDate: new Date(),
+                                    startingDay: 1,
+                                    showWeeks: false
+                                };
+
+                                $scope.endDateOptions = {
+                                    dateDisabled: false,
+                                    formatYear: 'yy',
+                                    maxDate: new Date(2020, 5, 22),
+                                    minDate: new Date(),
+                                    startingDay: 1,
+                                    showWeeks: false
+                                };
+
                             }],
-                        className: 'ngdialog-theme-default dj-mobile-ng-dialog'
+                        className: 'ngdialog-theme-default dj-mobile-ng-dialog org-form'
                     });
                 };
 

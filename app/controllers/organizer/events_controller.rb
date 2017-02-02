@@ -65,6 +65,32 @@ class Organizer::EventsController < ApplicationController
   private 
 
   def event_params
-    params.require(:event).permit :image, :title, :country_flag_code, :city, :end_date, :start_date
+    allowed_params = params.permit :width, :height, :crop_x, :crop_y, :crop_w, :crop_h, :crop_rotate, :crop_scale_x,
+                                  :crop_scale_y, :image, :title, :country_flag_code, :city, :event_category_id, :dj_slots
+
+    start_date = nil
+
+    if params[:start_date].present? && params[:start_time].present?
+      start_date = Date.parse(params[:start_date])
+
+      /^(?<hour>.*):(?<minute>.*)\s(?<meridiem>.*)/i =~ params[:start_time]
+      start_date.change(hour: hour, minute: minute )
+      start_date += meridiem == 'AM' ? 0 : 12
+    end
+
+    allowed_params[:start_date] = start_date
+
+    end_date = nil
+    if params[:end_date].present? && params[:end_time].present?
+      end_date = Date.parse(params[:end_date])
+
+      /^(?<hour>.*):(?<minute>.*)\s(?<meridiem>.*)/i =~ params[:end_time]
+      end_date.change(hour: hour, minute: minute )
+      end_date += meridiem == 'AM' ? 0 : 12
+    end
+
+    allowed_params[:end_date] = end_date
+
+    allowed_params
   end
 end
