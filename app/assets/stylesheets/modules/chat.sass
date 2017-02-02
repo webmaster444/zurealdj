@@ -5,11 +5,13 @@
   .chat-sidebar
     padding: 0
     border-right: 1px solid #f5f5f5
-    min-height: 400px
-    & > ul
+    & > ul , & > .slimScrollDiv > ul
       padding: 0
       margin: 0
       list-style-type: none
+      height: 450px
+      overflow-y: auto
+      overflow-x: hidden
       & > li
         & > ul
           padding: 0
@@ -66,15 +68,61 @@
       position: relative
       i.fa.fa-search
         position: absolute
-        top: 12px
-        left: 10px
+        top: 20px
+        left: 20px
         font-size: 20px
       input
         width: 100%
         border: none
         outline: none
-      padding: 10px 10px 10px 50px
+      padding: 20px 20px 20px 50px
+      height: 60px
+  .chat-header
+    height: 61px
+    padding: 20px 70px 20px 20px
+    border-bottom: 1px solid #f5f5f5
+    position: relative
+    text-align: right
+    img
+      position: absolute
+      top: 5px
+      right: 5px
+      width: 50px
+      height: 50px
+      border-radius: 4px
 
+  .chat-discussion, .slimScrollDiv .chat-discussion
+    height: 350px
+    overflow-y: auto
+    .chat-message
+      position: relative
+      padding: 5px 5px 5px 66px
+      min-height: 60px
+      .message-avatar
+        position: absolute
+        top: 4px
+        left: 4px
+        border-radius: 50px
+    .show-more
+      margin: 20px auto
+      a
+        font-size: 13px
+      padding: 7px 18px
+
+  .chat-message-form
+    height: 100px
+    position: relative
+    padding: 0 50px 0 0
+    textarea
+      height: 100px
+    a
+      position: absolute
+      top: 10px
+      right: 10px
+      font-size: 25px
+      color: $current-color
+      &:hover
+        color: $current-color
 
   .ng-hide-add
     -webkit-animation: 0.2s lightSpeedOut ease

@@ -4,9 +4,6 @@
         return {
 
             book: function(booking){
-
-                console.log(booking);
-
                 var fd = new FormData();
                 fd.append('dj_id', booking.dj_id);
                 fd.append('event_id', booking.event ? booking.event.id : '');

@@ -65,6 +65,7 @@ Rails.application.routes.draw do
       resources :events, only: [:index, :show]
       resources :bookings, only: [:update]
       resources :chat_rooms, only: [:index]
+      resources :messages, only: [:index]
     end
 
     namespace :organizer do
@@ -98,6 +99,7 @@ Rails.application.routes.draw do
       end
       resources :bookings, only: [:create, :destroy]
       resources :chat_rooms, only: [:index]
+      resources :messages, only: [:index]
     end
 
     resources :attachments, only: [] do

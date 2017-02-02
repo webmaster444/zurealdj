@@ -50,8 +50,8 @@ class ApplicationController < ActionController::Base
   end
 
   def set_locale
-    locale = params[:locale] || cookies[:locale ] || 'ua'
-    locale = 'ua' unless ['ua', 'en'].include?(locale)
+    locale = params[:locale] || cookies[:locale ] || 'en'
+    locale = 'en' unless ['en'].include?(locale)
     I18n.locale = locale
     cookies.permanent[:locale] = I18n.locale
   end

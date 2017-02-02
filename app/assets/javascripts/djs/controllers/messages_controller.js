@@ -4,12 +4,17 @@
 
     angular.module('ZurealdjDjApp')
         .controller('MessagesController', ['$scope', '$state', 'ngDialog', '$stateParams', '$timeout', '$sce',
-            'SweetAlert', 'ChatRoomsFactory',
-            function ($scope, $state, ngDialog, $stateParams, $timeout, $sce, SweetAlert, chat_rooms) {
+        'SweetAlert', 'ChatRoomsFactory', 'MessagesFactory',
+        function ($scope, $state, ngDialog, $stateParams, $timeout, $sce, SweetAlert, chat_rooms, messages) {
+
+            $scope.messagesPage = 1;
+            var syncId = null;
 
             $scope.filters = {
                 per_page: 10
             };
+
+            $scope.SocketApp || ($scope.SocketApp = {});
 
             $scope.current_event = null;
 
@@ -25,14 +30,20 @@
 
             $scope.retrieveEvents();
 
-            $scope.SocketApp || ($scope.SocketApp = {});
-
             $scope.setCurrentEvent = function(event){
+                if($scope.current_event && $scope.current_event.id == event.id){
+                    return
+                }
+
                 if($scope.SocketApp.chat){
                     $scope.SocketApp.chat.unsubscribe();
                 }
 
                 $scope.current_event = event;
+                $scope.messagesPage = 1;
+                $scope.messages = [];
+
+                $scope.retrieveOldMessages();
 
                 $scope.SocketApp.cable = ActionCable.createConsumer();
 
@@ -41,15 +52,16 @@
                     booking_id: event.booking_id
                 },{
                     connected: function(){
-                        console.log('Connected.')
+
                     },
                     disconnected: function(){
-                        console.log('Disconnected.')
+
                     },
                     received: function(data){
                         $scope.$apply(function(){
-                            $scope.messages.push(data);
+                            $scope.messages.push(data.message);
                         });
+                        scrollDown()
                     },
                     send_message: function(message){
                         this.perform('send_message', {
@@ -76,6 +88,35 @@
                     $scope.SocketApp.chat.unsubscribe();
                 }
             });
+
+
+            $scope.retrieveOldMessages = function(){
+                if(!$scope.messagesPenging && $scope.current_event){
+                    $scope.messagesPenging = true;
+                    messages.all({
+                        page: $scope.messagesPage,
+                        event_id: $scope.current_event.id,
+                        sync_id: syncId
+                    }).success(function(data){
+                        if(!syncId && data.messages.length > 0){
+                            syncId = data.messages[data.messages.length - 1].id;
+                            scrollDown()
+                        }
+                        $scope.messages = data.messages.concat($scope.messages);
+                        $scope.messagesPage += 1;
+                        $scope.messagesPenging = false;
+                    }).error(function(){
+                        $scope.messagesPenging = false;
+                    })
+                }
+            };
+
+            var scrollDown = function(){
+                $timeout(function(){
+                    var bottomCoord = $('.chat-discussion')[0].scrollHeight;
+                    $('.chat-discussion').slimScroll({scrollTo: bottomCoord});
+                }, 300)
+            };
 
         }])
 }());

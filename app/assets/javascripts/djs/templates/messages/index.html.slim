@@ -2,42 +2,53 @@
   .dj-header
     | Messages
 
-
 .container.chat-view
   .row
     .col-xs-4.chat-sidebar
-      ul
-        li
-          ul ng-repeat="event in events"
+      .chat-search
+        i.fa.fa-search
+        input type="text" ng-model="q"
+      ul[dj-scroll]
+        li ng-repeat="event in events"
+          ul
             li ng-click="setCurrentEvent(event)"
               .chat-user
                 img ng-src="{{event.image}}"
                 .chat-user-name
                   a.dj-black-link
                     | {{ event.title }}
-
-  .ibox.chat-view
-
-    .col-md-8 ng-hide="current_event"
-      | Choose event to discuss
-    .col-md-8 ng-show="current_event"
-      .chat-discussion
+                .unread-message ng-if="event.last_message"
+                  img ng-src="{{ event.last_message.user_avatar }}"
+                  .dj-gray-text
+                    | {{ event.last_message.body }}
+                .unread-messages ng-if="event.last_message"
+                  .dj-gray-text
+                    | {{ event.last_message.date }}
+                  .unread-messages-count ng-if="event.unread_messages_count > 0"
+                    | {{ event.unread_messages_count }}
+    .col-xs-8.no-padding
+      .chat-header
+        .dj-gray-text ng-hide="current_event"
+          | Choose event to discuss
+        img ng-src="{{current_event.image}}" ng-show="current_event"
+        a.dj-black-link ng-show="current_event"
+          | {{ current_event.title }}
+      .chat-discussion[dj-scroll]
+        .show-more
+          a.show-more ng-click="retrieveOldMessages()"
+            | Show More
         .chat-message.right ng-repeat="message in messages"
-          img.message-avatar ng-src="{{message.message.avatar}}"
+          img.message-avatar ng-src="{{message.avatar}}"
           .message
-            a.message-author
-              | {{ message.message.name }}
-            span.message-date  Fri Jan 25 2015 - 11:12:36
-            span.message-content
-              | {{ message.message.body }}
+            a.pink-link>
+              | {{ message.name }}
+            span.dj-gray-text
+              | {{ message.date }}
+            .message-content
+              | {{ message.body }}
 
-  form.chat-message-form ng-submit="send()"
-    .row ng-show="current_event"
-      .col-lg-12
-        .form-group
-          textarea.form-control.message-input name="message" placeholder="Enter message text" ng-model="message"
-      .col-md-12
-        button.btn.btn-default type="submit"
+      form.chat-message-form
+        textarea.form-control.message-input name="message" placeholder="Enter message text" ng-model="message"
+        a ng-click="send()"
           i.fa.fa-paper-plane
-
 .margin50

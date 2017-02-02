@@ -18,7 +18,8 @@
         'oitozero.ngSweetAlert',
         'rzModule',
         'ngAudio',
-        'angular.filter'
+        'angular.filter',
+        'dj.scroll'
     ]);
 
     ZurealdjDjApp.config(['$urlRouterProvider', '$stateProvider', '$httpProvider',

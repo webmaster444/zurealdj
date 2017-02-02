@@ -4,7 +4,6 @@
         return {
 
             upsert: function(event){
-                console.log(event);
                 var fd = new FormData();
 
                 fd.append('event[title]', event.title || '');

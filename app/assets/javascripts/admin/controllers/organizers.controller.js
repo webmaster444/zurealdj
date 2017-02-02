@@ -70,7 +70,7 @@
                     $scope.retrieveOrganizers();
 
                     $scope.downloadCSV = function () {
-                        console.log(organizers.downloadCSV({query: $scope.filters}))
+                        organizers.downloadCSV({query: $scope.filters})
                     }
                 }
 

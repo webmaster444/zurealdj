@@ -70,8 +70,8 @@
 
                     $scope.retrieveDjs();
 
-                    $scope.downloadCSV = function () {
-                        console.log(djs.downloadCSV({query: $scope.filters}))
+                    $scope.downloadCSV = function(){
+                        djs.downloadCSV({query: $scope.filters})
                     }
                 }
 
