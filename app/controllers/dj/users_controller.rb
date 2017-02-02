@@ -5,10 +5,6 @@ class Dj::UsersController < Dj::BaseController
   def step
     @user = current_user
     allowed_params = step_params.merge({dj_step: @user.next_step})
-
-    puts "========================"
-    puts allowed_params.inspect
-    puts "========================"
     if @user.update_attributes allowed_params
       if @user.next_step == 'dj_completed'
         @user.update_attribute :dj_step, 'dj_completed'

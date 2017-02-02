@@ -42,6 +42,7 @@
 #= require angular-filter/dist/angular-filter
 #= require ui-select/dist/select
 #= require cropperjs/dist/cropper.min
+#= require ion-sound/js/ion.sound
 #= require_tree ./common
 #= require_tree ./directives
 #= require ./landing/application.module.js
@@ -85,3 +86,14 @@ $(document).ready ->
   window.addEventListener 'hashchange', resize
 
   resize()
+
+  ion.sound({
+    sounds: [
+      {
+        name: "button_tiny"
+      }
+    ],
+    volume: 1,
+    path: "sounds/",
+    preload: true
+  })

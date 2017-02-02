@@ -10,13 +10,15 @@
             | {{ $current_user.name }}
     .row
       .col-xs-6.text-center
-        a.dj-black-link
+        a.dj-black-link href="#messages"
           | Inbox
           .count<
             | 3
       .col-xs-6.text-center
         a href="#notifications"
           i.dj-bell
+          .badge ng-show="unread_notifications_count > 0"
+            | {{ unread_notifications_count }}
 
   ul.mobile-menu uib-collapse="menuCollapsed" ng-init="menuCollapsed = false"
     li

@@ -3,8 +3,9 @@
     "use strict";
 
     angular.module('ZurealdjOrganizerApp')
-        .controller('HomeController', ['$scope', '$state', 'ngDialog', 'SessionsFactory', '$timeout', 'toaster', 'UsersFactory', 'NotificationsFactory',
-            function ($scope, $state, ngDialog, session, $timeout, toaster, users, notifications) {
+        .controller('HomeController', ['$scope', '$state', 'ngDialog', 'SessionsFactory', '$timeout', 'toaster',
+        'UsersFactory', 'NotificationsFactory',
+        function ($scope, $state, ngDialog, session, $timeout, toaster, users, notifications) {
 
             $scope.I18n = I18n;
             $scope.$state = $state;
@@ -25,6 +26,7 @@
             $scope.retrieveCurrentUser = function(){
                 users.profile().success(function(data){
                     $scope.$current_user = data;
+                    $scope.unread_notifications_count = data.unread_notifications_count;
                 });
             };
             $scope.retrieveCurrentUser();
@@ -76,6 +78,26 @@
                         }
                     }
                 }
-            }
+            };
+
+            $scope.SocketApp || ($scope.SocketApp = {});
+            $scope.unread_notifications_count = 0;
+            $scope.SocketApp.cable = ActionCable.createConsumer();
+            $scope.SocketApp.watcher = $scope.SocketApp.cable.subscriptions.create({
+                channel: "BadgesChannel"
+            },{
+                received: function(data){
+                    ion.sound.play("button_tiny");
+                    $scope.$apply(function(){
+                        $scope.unread_notifications_count = data.message.unread_notifications_count;
+                    });
+                }
+            });
+
+            $scope.$on("$destroy", function(){
+               if($scope.SocketApp.watcher){
+                   $scope.SocketApp.watcher.unsubscribe();
+               }
+            });
         }])
 }());

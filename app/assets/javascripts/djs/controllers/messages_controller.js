@@ -61,6 +61,7 @@
                         $scope.$apply(function(){
                             $scope.messages.push(data.message);
                         });
+                        ion.sound.play("button_tiny");
                         scrollDown()
                     },
                     send_message: function(message){

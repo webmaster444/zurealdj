@@ -35,3 +35,5 @@ json.equipments Equipment.all.each do |equipment|
   json.selected @user.equipments.exists?(equipment.id)
   json.icon equipment.icon.url
 end
+
+json.unread_notifications_count Notification.where(to_user_id: current_user.id, read: [false, nil]).count

@@ -98,6 +98,7 @@
                     }).success(function(data){
                         if(!syncId && data.messages.length > 0){
                             syncId = data.messages[data.messages.length - 1].id;
+                            ion.sound.play("button_tiny");
                             scrollDown()
                         }
                         $scope.messages = data.messages.concat($scope.messages);

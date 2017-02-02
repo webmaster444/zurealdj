@@ -4,6 +4,8 @@ class Notification < ApplicationRecord
   belongs_to :event
   belongs_to :star
 
+  after_save { BadgeBroadcastJob.perform_later(self.to_user_id) }
+
   enum notification_type: {
       booking_requested: 0,
       event_canceled: 1,
