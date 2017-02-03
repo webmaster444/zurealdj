@@ -24,7 +24,7 @@
             .col-field
               input.zureal-input type="password" ng-model="user.password_confirmation"
           .actions-block
-            a.settings-btn.cancel ng-click="activeEdit = 0"
+            a.settings-btn.cancel ng-click="cancel()"
               | Cancel
             a.settings-btn.save data-style="expand-left" ladda="processing" type="submit" ng-click="save()"
               | Save
@@ -38,7 +38,7 @@
               a.edit ng-click="!activeEdit? activeEdit = 2 : true" class="{{ activeEdit? 'cursor-default' : '' }}"
                 | Edit
           .actions-block
-            a.settings-btn.cancel ng-click="activeEdit = 0"
+            a.settings-btn.cancel ng-click="cancel()"
               | Cancel
             a.settings-btn.save data-style="expand-left" ladda="processing" type="submit" ng-click="save()"
               | Save
@@ -54,7 +54,7 @@
             .page-id
               | Page id - {{ user.id }}
           .actions-block
-            a.settings-btn.cancel ng-click="activeEdit = 0"
+            a.settings-btn.cancel ng-click="cancel()"
               | Cancel
             a.settings-btn.save data-style="expand-left" ladda="processing" type="submit" ng-click="save()"
               | Save

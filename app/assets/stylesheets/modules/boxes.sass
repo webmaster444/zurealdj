@@ -237,7 +237,7 @@
   max-width: 1240px
   margin: auto
 
-[ng-app='ZurealdjOrganizerApp'], [ng-app='ZurealdjDjApp']
+[ng-app='ZurealdjOrganizerApp'], [ng-app='ZurealdjDjApp'], [ng-app='ZurealdjLandingApp']
   .sweet-alert
     font-family: CeraPro
     font-style: normal
@@ -249,6 +249,11 @@
     width: 400px
     margin-left: 0
     left: calc(50vw - 200px)
+    @media (max-width: 400px)
+      width: 100vw
+      left: 0
+      right: 0
+      margin: 0
     h2
       font-size: 28px
       font-weight: 500
@@ -271,6 +276,23 @@
       .cancel, .confirm
         border-radius: 100px
         margin-top: 0
+
+[ng-app='ZurealdjLandingApp']
+  .sweet-alert
+    .sa-button-container
+      margin-top: 20px
+      .sa-confirm-button-container
+        float: none !important
+    h2
+      background-image:  url(/images/icons/img-logo-zu-purple.png)
+      background-position: center
+      background-size: contain
+      background-repeat: no-repeat
+      width: 158px
+      height: 55px
+      display: block !important
+      margin: auto
+      margin-bottom: 20px
 
 [device='desktop']
   .page-block

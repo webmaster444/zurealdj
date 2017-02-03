@@ -37,13 +37,13 @@ class User < ActiveRecord::Base
   validates :agree, inclusion: {in: [true], message: 'You should accept therms of Cancellation Policy to continue'}, if: -> { dj? && User.dj_steps[step] == User.dj_steps[:dj_cancelations]}
   validates_attachment_content_type :avatar, content_type: /\Aimage\/.*\Z/
 
-  validates :crop_x, presence: true
-  validates :crop_y, presence: true
-  validates :crop_w, presence: true
-  validates :crop_h, presence: true
-  validates :crop_rotate, presence: true
-  validates :crop_scale_x, presence: true
-  validates :crop_scale_y, presence: true
+  validates :crop_x, presence: true, if: :validate_crop_data?
+  validates :crop_y, presence: true, if: :validate_crop_data?
+  validates :crop_w, presence: true, if: :validate_crop_data?
+  validates :crop_h, presence: true, if: :validate_crop_data?
+  validates :crop_rotate, presence: true, if: :validate_crop_data?
+  validates :crop_scale_x, presence: true, if: :validate_crop_data?
+  validates :crop_scale_y, presence: true, if: :validate_crop_data?
 
   enum dj_step: {
       dj_just_created: 0,
@@ -150,6 +150,10 @@ class User < ActiveRecord::Base
 
   def validate_personal_url?
     !personal_url.nil?
+  end
+
+  def validate_crop_data?
+    dj_step == 6 || organizer_step == 5
   end
 
   def validate_company_name?

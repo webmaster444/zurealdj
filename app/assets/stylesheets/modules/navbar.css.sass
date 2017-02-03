@@ -62,10 +62,15 @@
     width: 44px
     height: 44px
     border-radius: 50%
+  .dj-profile-dropdown
+    [uib-dropdown-toggle]
+      min-width: 160px
+      width: auto
+      text-align: left
   [uib-dropdown]
     display: inline-block
     position: relative
-    //i.fa
+    // i.fa
     //  position: absolute
     //  top: 19px
     //  right: 17px
@@ -79,7 +84,7 @@
       color: #555555
       outline: none
       display: inline-block
-      padding: 3px 6px 3px 3px
+      padding: 3px 25px 3px 3px
       &[aria-expanded=true]
         box-shadow: 0 2px 30px 0 rgba(0, 0, 0, 0.08)
       .drop
@@ -89,6 +94,9 @@
         display: inline-block
         background-size: cover
         vertical-align: middle
+        position: absolute
+        right: 10px
+        top: calc(50% - 2.5px)
     [uib-dropdown-menu]
       width: 100%
       height: 100px
@@ -98,7 +106,7 @@
       top: 115%
       li
         &:not(:last-child)
-          border-bottom: 1px solid lightgray
+          border-bottom: 1px solid #f5f5f5
         height: 49px
         padding-top: 6px
         &:hover

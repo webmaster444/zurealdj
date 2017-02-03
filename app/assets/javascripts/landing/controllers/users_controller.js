@@ -18,7 +18,13 @@
                             $scope.processing = false;
                             ngDialog.closeAll();
 
-                            SweetAlert.swal("Good job!", data.message, "success");
+                            SweetAlert.swal({
+                                title: "",
+                                text: data.message,
+                                confirmButtonColor: "#b05dfd",
+                                confirmButtonText: "Ok",
+                                closeOnConfirm: true
+                            });
 
                         })
                         .error(function(data){

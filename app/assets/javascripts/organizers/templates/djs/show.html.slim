@@ -7,7 +7,7 @@
       .inf
         .name
           | {{ user.name }}
-        span.rating-icons[uib-rating ng-model="user.rating" max="5" ng-change="rate(user)"]
+        span.rating-icons[uib-rating ng-model="user.rating" max="5" ng-change="rate(user)" state-on="'fire fire-active icon'" state-off="'fire fire-inactive icon'" enable-reset='false' read-only="dj.rating? true : false"]
         .role.small-text
           | Artist
   .profile-content
@@ -59,7 +59,7 @@
           .block
             .title
               | Artist
-            div.stars[uib-rating ng-model="user.stars"]
+            div.rating-icons[uib-rating ng-model="user.rating" max="5" ng-change="rate(user)" state-on="'fire fire-active icon'" state-off="'fire fire-inactive icon'" enable-reset='false' read-only="dj.rating? true : false"]
           .block ng-show="user.about"
             .title
               | About

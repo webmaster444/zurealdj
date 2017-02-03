@@ -98,7 +98,7 @@
         .small-text.genres
           | {{ dj.genres }}
         .rating
-          span.rating-icons[uib-rating ng-model="dj.rating" max="5" ng-change="rate(dj)"]
+          span.rating-icons[uib-rating ng-model="dj.rating" max="5" ng-change="rate(dj)" state-on="'fire fire-active icon'" state-off="'fire fire-inactive icon'" enable-reset='false' read-only="dj.rating? true : false"]
 
   .show-more
     a ng-click="showMore()" ng-hide="djs.length == count"

@@ -30,7 +30,7 @@
             li.desktop-only
               .dropdown.dj-profile-dropdown[uib-dropdown]
                 a.dropdown-toggle.count-info[aria-expanded="false" aria-haspopup="true" uib-dropdown-toggle]
-                  img.profile-image> ng-src="{{ $current_user.avatar.url == '/images/img-profile-photo.png'? '/images/icons/img-profile-photo-mini.png' : $current_user.avatar.url}}"
+                  img.profile-image> ng-src="{{ $current_user.avatar_present? $current_user.avatar.url : '/images/icons/img-profile-photo-mini.png' }}"
                   span
                     | {{ $current_user.name }}
                   .drop<

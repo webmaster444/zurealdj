@@ -11,9 +11,18 @@
                 $scope.activeEdit = 0;
                 $scope.default_data = true;
 
-                settings.show().success(function(data){
-                    $scope.user = data;
-                });
+                $scope.retrieveSettings = function() {
+                    settings.show().success(function(data){
+                        $scope.user = data;
+                    });
+                };
+
+                $scope.retrieveSettings();
+
+                $scope.cancel = function() {
+                    $scope.activeEdit = 0;
+                    $scope.retrieveSettings();
+                };
 
                 $scope.save = function(){
                     $scope.processing = true;
@@ -21,9 +30,7 @@
                         .success(function(){
                             $scope.activeEdit = 0;
                             $scope.processing = false;
-                            $scope.user.password = null;
-                            $scope.user.current_password = null;
-                            $scope.user.password_confirmation = null;
+                            $scope.retrieveSettings();
                         })
                         .error(function(data){
                             $scope.processing = false;

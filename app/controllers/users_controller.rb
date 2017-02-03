@@ -6,7 +6,7 @@ class UsersController < ApplicationController
     @user = User.new create_params
 
     if @user.save
-      render json: { message: "Thank you for registering. Please check your email for a confirmation request with a link that will confirm your account. Once you click the link, your registration will be complete."}
+      render json: { message: "Thank you for joining, we are excited to be part of your musical journey! Click here to confirm your email." }
     else
       render json: { validation_errors: @user.errors }, status: :unprocessable_entity
     end
