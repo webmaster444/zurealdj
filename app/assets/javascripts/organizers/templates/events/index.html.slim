@@ -74,7 +74,7 @@
     .text-center.events-count
       | {{ events.length }} of {{ count }} Events
   .event-item ng-repeat="event in events track by $index"
-    span.status
+    span.status class="{{ event.status }}"
       | {{ event.status }}
     .djs
       img.dj ng-repeat="dj in event.djs | limitTo: djsCount()" ng-src="{{ dj.avatar }}"

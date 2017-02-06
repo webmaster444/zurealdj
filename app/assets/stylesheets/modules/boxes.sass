@@ -254,6 +254,7 @@
       left: 0
       right: 0
       margin: 0
+      padding: 30px 15px
     h2
       font-size: 28px
       font-weight: 500
@@ -294,12 +295,12 @@
       margin: auto
       margin-bottom: 20px
 
-[device='desktop']
+@media (min-width: $mobile-max-width)
   .page-block
     padding: 0 20px
 
 
-.org-form
+.org-form, .rate-dialog
   .ngdialog-content
     max-width: 959px !important
     width: auto !important
@@ -308,6 +309,10 @@
         display: none
   .ngdialog-overlay
     pointer-events: none
+
+.rate-dialog
+  .ngdialog-content
+    max-width: 880px !important
 
 [device='mobile']
   .org-form

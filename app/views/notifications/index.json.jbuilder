@@ -20,7 +20,7 @@ json.notifications @notifications.each do |n|
   if n.event
     json.event do
       json.title n.event.title
-      json.image n.event.image.try(:url, :thumb)
+      json.image paperclip_url(n.event.image, :small)
       json.city n.event.city
       json.country n.event.country
     end

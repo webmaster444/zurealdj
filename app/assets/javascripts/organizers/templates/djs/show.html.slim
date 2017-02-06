@@ -7,7 +7,7 @@
       .inf
         .name
           | {{ user.name }}
-        span.rating-icons[uib-rating ng-model="user.rating" max="5" ng-change="rate(user)" state-on="'fire fire-active icon'" state-off="'fire fire-inactive icon'" enable-reset='false' read-only="dj.rating? true : false"]
+        span.rating-icons[uib-rating ng-model="user.rating" max="5" state-on="'fire fire-active icon'" state-off="'fire fire-inactive icon'" enable-reset='false' read-only="true"]
         .role.small-text
           | Artist
   .profile-content
@@ -15,7 +15,7 @@
       .profile-avatar
         .img-avatar style="background-image: url({{ user.avatar.original }})"
           .gradient
-        a.btn-action.btn-book-now.small-text ng-click="book()"
+        a.btn-action.purple.btn-book-now ng-click="book()"
           | Book Now
 
         a.icon.like ng-click="addToFavorites(user)" ng-hide="user.in_favorites"
@@ -59,7 +59,7 @@
           .block
             .title
               | Artist
-            div.rating-icons[uib-rating ng-model="user.rating" max="5" ng-change="rate(user)" state-on="'fire fire-active icon'" state-off="'fire fire-inactive icon'" enable-reset='false' read-only="dj.rating? true : false"]
+            div.rating-icons[uib-rating ng-model="user.rating" max="5" state-on="'fire fire-active icon'" state-off="'fire fire-inactive icon'" enable-reset='false' read-only="true"]
           .block ng-show="user.about"
             .title
               | About

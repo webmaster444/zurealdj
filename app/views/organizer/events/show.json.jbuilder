@@ -7,6 +7,7 @@ json.start_date @event.start_date.strftime("%d/%m/%Y") if @event.start_date.pres
 json.start_time @event.start_date.strftime("%H:%M %p") if @event.start_date.present?
 json.end_date @event.end_date.strftime("%d/%m/%Y") if @event.end_date.present?
 json.end_time @event.end_date.strftime("%H:%M %p") if @event.end_date.present?
+json.status @event.status
 json.image do
   json.url paperclip_url(@event.image, :large)
   json.original paperclip_url(@event.image, :original)
@@ -34,4 +35,7 @@ json.djs @event.djs.each do |dj|
   json.genres user.genres.map{|g| g['title']}.join(' | ')
   json.rating user.rate
   json.booking_id booking.id
+  json.booking_status booking.status.capitalize
+  json.rated booking.comment.present?
+  json.rating_item booking.star.stars if booking.star.present?
 end

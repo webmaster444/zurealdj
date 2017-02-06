@@ -134,16 +134,6 @@
                     }
                 };
 
-                $scope.rate = function(dj){
-                    djs.rate(dj.id, dj.rating)
-                        .success(function(data){
-
-                        })
-                        .error(function(data){
-
-                        });
-                };
-
                 var favorites_timer = false;
 
                 $scope.removeFromFavorites = function(dj){

@@ -1,32 +1,19 @@
 .event
   .event-header
-    .background-img style="{{ event.image.url != '/images/img-event-photo.png' ? ('background-image: url(' + event.image.url + ')') : '' }}"
+    .background-img style="{{ event.image.url != '/images/img-event-photo.png' ? ('background-image: url(' + event.image.original + ')') : '' }}"
       .custom-blur
   .page-block.relative
     .inf-container
       .inf
         .title
           | {{ event.title }}
-        .address.small-text
-          span ng-show="event.city"
-            | {{ event.city}}
-            span ng-show="event.country"
-              | {{ ', ' }}
-          span
-            | {{ event.country.title }}
-        .genres-event-type.small-text
-          | {{ event.genres_string }}
-          span ng-show="event.event_types_string"
-            | {{ ' | ' }}
-          span
-            | {{ event.event_types_string }}
 
   .event-content
     .page-block
       .event-image
         .img-event style="background-image: url({{ event.image.url }})"
           .gradient
-        a.btn-action.btn-edit.small-text ng-click="openEventDialog(event.id)"
+        a.btn-action.purple.top-pictures ng-click="openEventDialog(event.id)"
           | Edit
 
       .general
@@ -46,25 +33,34 @@
                 | {{ event.end_date }}
             tr
               td.td-title
-                | Status
-              td.td-content.active
+                | Status:
+              td.td-content.status class="{{ event.status }}"
                 | {{ event.status }}
-
-        .content-mobile
-          .block
-            .text
-              span ng-show="event.city"
-                | {{ event.city}}
-                span ng-show="event.country"
-                  | {{ ', ' }}
-              span
-                | {{ event.country.title }}
-            .text
-              | {{ event.genres_string }}
-              span ng-show="event.event_types_string"
-                | {{ ' | ' }}
-              span
+            tr
+              td.td-title
+                | Address:
+              td.td-content
+                span ng-show="event.city"
+                  | {{ event.city}}
+                  span ng-show="event.country"
+                    | {{ ', ' }}
+                span
+                  | {{ event.country.title }}
+            tr
+              td.td-title
+                | Genres:
+              td.td-content
+                | {{ event.genres_string }}
+            tr
+              td.td-title
+                | Types of events:
+              td.td-content
                 | {{ event.event_types_string }}
+            tr
+              td.td-title
+                | Dj slots:
+              td.td-content
+                | {{ event.djs.length }} of {{ event.dj_slots }}
 
     .page-block
       .artists
@@ -74,6 +70,10 @@
           .profile-item ng-repeat="dj in event.djs track by $index"
             img ng-src="{{ dj.avatar }}"
             a.icon.delete ng-click="djDestroy(dj.booking_id, dj.name)"
+            a.btn-action.purple.top-pictures ng-click="openRateDialog(dj)" ng-show="!dj.rated && dj.booking_status == 'Confirmed'"
+              | Rate Now!
+            span.btn-action.white.top-pictures ng-show="dj.booking_status == 'Confirmed' && dj.rated"
+              | Rated
             .inf
               a.name href="#djs/{{ dj.personal_url || dj.dj_id }}"
                 | {{ dj.name }}
@@ -87,4 +87,8 @@
               .small-text.genres
                 | {{ dj.genres }}
               .rating
-                span.rating-icons[uib-rating ng-model="dj.rating" max="5" ng-change="rate(dj)"]
+                span.rating-icons[uib-rating ng-model="dj.rating" max="5" state-on="'fire fire-active icon'" state-off="'fire fire-inactive icon'" enable-reset='false' read-only="true"]
+              .small-text.genres
+                | Booking Status:
+                span.status class="{{ dj.booking_status }}"
+                  | {{ ' ' + dj.booking_status }}

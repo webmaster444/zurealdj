@@ -18,6 +18,19 @@ class Organizer::BookingsController < Organizer::BaseController
     render json: { message: "DJ successfully removed from event." }
   end
 
+  def update
+    @booking = Booking.find params[:id]
+    render json: { }, status: :not_found and return unless @booking.event.organizer_id == current_user.organizer.id
+    render json: { errors: ["Status error."] }, status: :unprocessable_entity and return unless @booking.confirmed?
+    render json: { errors: ["Already rated."] }, status: :unprocessable_entity and return if @booking.comment.present?
+    @booking.assign_attributes params.permit :comment
+    if @booking.save
+      render json: { message: "DJ successfully rated."}
+    else
+      render json: {errors: @booking.errors}, status: :unprocessable_entity
+    end
+  end
+
   private
 
   def booking_params

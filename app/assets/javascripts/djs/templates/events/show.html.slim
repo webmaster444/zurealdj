@@ -1,6 +1,6 @@
 .event
   .event-header
-    .background-img style="{{ event.image.url != '/images/img-event-photo.png' ? ('background-image: url(' + event.image.url + ')') : '' }}"
+    .background-img style="{{ event.image.url != '/images/img-event-photo.png' ? ('background-image: url(' + event.image.original + ')') : '' }}"
       .custom-blur
   .page-block.relative
     .inf-container
@@ -28,9 +28,9 @@
       .event-image
         .img-event style="background-image: url({{ event.image.url }})"
           .gradient
-        a.btn-action.btn-edit.small-text ng-hide="event.booking_status" ng-click="updateStatus()" style="background-color: #ff7dc0"
+        a.btn-action.purple.top-pictures ng-hide="event.booking_status == 'Confirmed'" ng-click="updateStatus()" style="background-color: #ff7dc0"
           | Confirm Participation
-        a.btn-action.btn-edit.small-text ng-show="event.booking_status" ng-click="updateStatus()"
+        a.btn-action.purple.top-pictures ng-show="event.booking_status == 'Confirmed'" ng-click="updateStatus()"
           | Cancellation
 
       .general
@@ -51,7 +51,7 @@
             tr
               td.td-title
                 | Status
-              td.td-content.active
+              td.td-content.status class="{{ event.status }}"
                 | {{ event.status }}
 
         .content-mobile
@@ -90,4 +90,8 @@
               .small-text.genres
                 | {{ dj.genres }}
               .rating
-                span.rating-icons[uib-rating ng-model="dj.rating" max="5"]
+                span.rating-icons[uib-rating ng-model="dj.rating" max="5" state-on="'fire fire-active icon'" state-off="'fire fire-inactive icon'" enable-reset='false' read-only="true"]
+              .small-text.genres
+                | Booking Status:
+                span.status class="{{ dj.booking_status }}"
+                  | {{ ' ' + dj.booking_status }}

@@ -12,7 +12,7 @@ class Event < ActiveRecord::Base
   end
 
   belongs_to :organizer
-  has_attached_file :image,  styles: { large: "400x400>" }, processors: [:cropper], default_url: '/images/img-event-photo.png'
+  has_attached_file :image,  styles: { large: "400x400>", small: "50x50>" }, processors: [:cropper], default_url: '/images/img-event-photo.png'
   validates_attachment_content_type :image, content_type: /\Aimage\/.*\Z/
   validates :image, presence: true
 
@@ -32,6 +32,8 @@ class Event < ActiveRecord::Base
   validates :crop_scale_x, presence: true
   validates :crop_scale_y, presence: true
 
+  validate :date_validation
+
   def unread_messages_count_for(user, from_user = nil)
     if from_user
       Message.where(event_id: self.id, to_user_id: user.id, from_user_id: from_user.id, read: false).count
@@ -46,5 +48,21 @@ class Event < ActiveRecord::Base
 
   def booking_for(dj)
     Booking.find_by(event_id: self.id, dj_id: dj.id)
+  end
+
+  def status
+    current_date = DateTime.now
+    status = "Upcoming"
+    if end_date < current_date
+      status = "Finished"
+    elsif end_date >= current_date && start_date <= current_date
+      status = "Active"
+    end
+    status
+  end
+
+  def date_validation
+      errors[:end_date] << "End Date must be greater than start date." if end_date < start_date
+      end_date < start_date
   end
 end

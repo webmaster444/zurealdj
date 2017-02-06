@@ -6,8 +6,7 @@
             upsert: function(booking){
                 var fd = new FormData();
 
-                if(booking.status) fd.append('status', true);
-                else fd.append('status', false);
+                fd.append('status', booking.status.toLowerCase());
 
                 return $http.put('/dj/bookings/' + booking.id, fd, {
                     transformRequest: angular.identity,

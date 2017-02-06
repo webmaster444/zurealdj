@@ -97,7 +97,7 @@ Rails.application.routes.draw do
           post :notifications
         end
       end
-      resources :bookings, only: [:create, :destroy]
+      resources :bookings, only: [:create, :update, :destroy]
       resources :chat_rooms, only: [:index]
       resources :messages, only: [:index]
     end

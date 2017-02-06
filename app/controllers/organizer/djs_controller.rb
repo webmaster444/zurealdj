@@ -11,7 +11,7 @@ class Organizer::DjsController < Organizer::BaseController
   end
 
   def rate
-    @vote = Star.new stars: params[:rating], to_user: dj.user, from_user: current_user
+    @vote = Star.new stars: params[:rating], to_user: dj.user, from_user: current_user, booking_id: params[:booking_id]
     if @vote.save
       render json: {message: "Vote saved."}
     else

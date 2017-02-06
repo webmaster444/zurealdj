@@ -2,6 +2,7 @@ class Booking < ActiveRecord::Base
 
   belongs_to :dj
   belongs_to :event
+  has_one :star
 
   validates :from_date, presence: true
   validates :to_date, presence: true
@@ -9,11 +10,17 @@ class Booking < ActiveRecord::Base
   validates :dj_id, presence: true
   validates :event_id, presence: true
   validates :dj_id, uniqueness: {scope: :event_id}
+  validates :status, presence: true
 
   after_create :notify
 
-  private
+  enum status: {
+    pending: 0,
+    confirmed: 1,
+    cancelled: 2
+  }
 
+  private
 
   def notify
     Notification.create to_user: dj.user,

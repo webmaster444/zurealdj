@@ -8,7 +8,7 @@ class Dj::BookingsController < Dj::BaseController
     @booking.assign_attributes params.permit :status
 
     if @booking.save
-      render json: { message: "Successfully #{ params[:status] == 'true' ? 'confirmed' : 'cancelled' }." }
+      render json: { message: "Successfully #{ params[:status] }." }
     else
       render json: { validation_errors: @booking.errors }, status: :unprocessable_entity
     end

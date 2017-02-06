@@ -214,7 +214,45 @@
                     $scope.retrieveEvent();
 
                     $scope.rate = function(dj){
-                        djs.rate(dj.id, dj.rating)
+                        djs.rate(dj.id, dj.rating_item, dj.booking_id)
+                            .success(function() {
+                                $scope.retrieveEvent();
+                            })
+                    };
+
+                    $scope.openRateDialog = function(dj) {
+                        ngDialog.open({
+                            template: 'organizers/templates/events/rate_dialog.html',
+                            controller: ['$scope', 'BookingsFactory',
+                                function (scope, bookings) {
+
+                                    scope.dj = dj;
+                                    scope.rate = $scope.rate;
+
+                                    scope.cancel = function(){
+                                        scope.closeThisDialog()
+                                    };
+
+                                    scope.save = function() {
+                                        scope.processing = true;
+                                        bookings.comment(dj.booking_id, scope.comment)
+                                            .success(function () {
+                                                scope.formPending = false;
+                                                scope.processing = false;
+                                                scope.closeThisDialog();
+                                                $scope.retrieveEvent();
+                                            })
+                                            .error(function (data) {
+                                                scope.validation_errors = data.validation_errors;
+                                                scope.formPending = false;
+                                                scope.processing = false;
+                                            })
+                                    }
+
+                                }],
+                            //scope: $scope,
+                            className: 'ngdialog-theme-default dj-mobile-ng-dialog rate-dialog'
+                        })
                     };
 
                     $scope.djDestroy = function(id, name) {

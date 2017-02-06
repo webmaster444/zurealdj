@@ -37,9 +37,10 @@
                 return $http.get('/organizer/djs/' + id + '.json');
             },
 
-            rate: function(dj_id, rating){
+            rate: function(dj_id, rating, booking_id){
                 return $http.post('/organizer/djs/' + dj_id + '/rate', {
-                    rating: rating
+                    rating: rating,
+                    booking_id: booking_id
                 })
             },
 

@@ -98,7 +98,7 @@
                                 })
                         };
 
-                        if($scope.event.booking_status){
+                        if($scope.event.booking_status == 'Confirmed'){
                             SweetAlert.swal({
                                     title: "Event Cancellation",
                                     text: "Do you agree to cancel the participation in the event?",
@@ -110,14 +110,14 @@
                                 },
                                 function (isConfirm) {
                                     if (isConfirm) {
-                                        update(false);
+                                        update('Cancelled');
                                     } else {
 
                                     }
                                 }
                             );
                         }
-                        else update(true);
+                        else update('Confirmed');
                     };
 
                     $scope.startChat = function(){
