@@ -25,8 +25,8 @@ class User < ActiveRecord::Base
 
   before_save :encrypt_password
   before_validation :downcase_email
-  after_create :send_confirmation_email
   after_create :create_dependent_record
+  after_create :send_confirmation_email
 
   belongs_to :role
 

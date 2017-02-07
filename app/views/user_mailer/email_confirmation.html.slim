@@ -1,7 +1,7 @@
 h1 Welcome to ZuRealDj.
 p
   | Click
-  a<> href="#{ ENV['HOST_NAME'] }/users/confirm_email?t=#{ @user.confirmation_token }"
+  a<> href="#{ confirm_email_users_url }?t=#{ @user.confirmation_token }"
     | here
   | to confirm your email:.
 p Thanks for collaborating and have a great day!

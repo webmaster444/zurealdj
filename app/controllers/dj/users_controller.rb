@@ -1,7 +1,5 @@
 class Dj::UsersController < Dj::BaseController
 
-  skip_before_filter :not_finished_profile
-
   def step
     @user = current_user
     allowed_params = step_params.merge({dj_step: @user.next_step})
