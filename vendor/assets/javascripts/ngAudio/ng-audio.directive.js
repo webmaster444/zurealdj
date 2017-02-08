@@ -124,8 +124,11 @@ angular.module('ngAudio').directive('audio', ['$filter', '$sce', '$timeout', '$i
                         });
                     }else{
                         SweetAlert.swal({
-                            title: "Invalid audio!",
-                            type: "warning"
+                            title: "",
+                            text: "You can upload audio with mp3 format only.",
+                            confirmButtonColor: "#b05dfd",
+                            confirmButtonText: "Ok",
+                            closeOnConfirm: true
                         });
                     }
                 }

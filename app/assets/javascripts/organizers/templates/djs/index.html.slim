@@ -47,10 +47,10 @@
             hr
               .actions
                 .pull-left
-                  a.slider-btn.cancel ng-click="resetFilters()"
+                  a.slider-btn.cancel ng-click="resetFilters()" onclick="$('body').trigger('click')"
                     | Reset
                 .pull-right
-                  a.slider-btn.apply ng-click="retrieveDjs()"
+                  a.slider-btn.apply ng-click="retrieveDjs()" onclick="$('body').trigger('click')"
                     | Show {{ count }} DJs
         .mobile-only
           a.mobile-dropdown ng-click="filtersDialog()"
@@ -88,7 +88,9 @@
       .inf
         a.name href="#djs/{{ dj.personal_url || dj.id }}"
           | {{ dj.name }}
-        .small-text.address
+        .small-text.address ng-hide="dj.city || dj.country"
+          | Adress : Empty
+        .small-text.address ng-show="dj.city || dj.country"
           span ng-show="dj.city"
             | {{ dj.city}}
             span ng-show="dj.country"

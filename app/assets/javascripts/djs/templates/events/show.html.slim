@@ -80,7 +80,9 @@
             .inf
               .name
                 | {{ dj.name }}
-              .small-text.address
+              .small-text.address ng-hide="dj.city || dj.country"
+                | Adress : Empty
+              .small-text.address ng-show="dj.city || dj.country"
                 span ng-show="dj.city"
                   | {{ dj.city}}
                   span ng-show="dj.country"
