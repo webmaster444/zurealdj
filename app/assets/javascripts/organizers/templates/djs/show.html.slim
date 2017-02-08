@@ -92,3 +92,25 @@
                 | {{ user.rate_per_hour }} $
               td.td-content ng-switch-when="true"
                 | free to hire
+
+          hr
+        .block
+          .block-title
+            | {{ comments_count }} Comments
+          .block.comments
+            .comment-item ng-repeat="comment in comments track by $index"
+              img.avatar ng-src="{{ comment.avatar }}"
+              .content
+                .user-name
+                  | {{ comment.org_name }}
+                .comment-text
+                  | {{ comment.comment }}
+                .event-title
+                  | {{ comment.event_title }}
+                .created-at
+                  | {{ comment.created_at }}
+              .rating
+                span.rating-icons[uib-rating ng-model="comment.rating" max="5" state-on="'fire fire-active icon'" state-off="'fire fire-inactive icon'" enable-reset='false' read-only='true' ]
+          .show-more.comments-show-more
+            a ng-click="showMore()" ng-show="comments.length < comments_count"
+              | Show More

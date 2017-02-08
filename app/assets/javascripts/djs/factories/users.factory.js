@@ -118,6 +118,20 @@
                     transformRequest: angular.identity,
                     headers: {'Content-Type': undefined}
                 })
+            },
+
+            comments: function(options){
+                if(!options)
+                    options = {};
+
+                var url = '/dj/users/comments.json?';
+
+                _.each(Object.keys(options), function(key){
+                    if(options[key])
+                        url += key + '=' + options[key] + '&';
+                });
+
+                return $http.get(url);
             }
         }
     }])

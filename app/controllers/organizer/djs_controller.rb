@@ -11,13 +11,52 @@ class Organizer::DjsController < Organizer::BaseController
   end
 
   def rate
-    @vote = Star.new stars: params[:rating], to_user: dj.user, from_user: current_user, booking_id: params[:booking_id]
+    booking = Booking.find params[:booking_id]
+    render json: {}, status: :not_found and return unless booking && current_user.organizer.events.include?(booking.event)
+    @vote = Star.new rate_params
     if @vote.save
       render json: {message: "Vote saved."}
     else
       render json: {errors: @vote.errors.full_messages}, status: :unprocessable_entity
     end
+  end
 
+  def comments
+    @page = params[:page].to_i
+    @page = 1 if @page < 1
+    @per_page = params[:per_page].to_i
+    @per_page = 10 if @per_page < 1
+
+    stars = Star.arel_table
+    bookings = Booking.arel_table
+    events = Event.arel_table
+    organizers = Organizer.arel_table
+
+    fields = [
+        stars[:comment],
+        stars[:stars],
+        stars[:created_at],
+        events[:title],
+        organizers[:user_id]
+    ]
+
+    query = stars
+                .project(fields)
+                .group(bookings[:id])
+                .group(events[:id])
+                .group(organizers[:id])
+                .group(stars[:id])
+                .join(bookings).on(bookings[:id].eq(stars[:booking_id]))
+                .join(events).on(events[:id].eq(bookings[:event_id]))
+                .join(organizers).on(organizers[:id].eq(events[:organizer_id]))
+                .where(stars[:to_user_id].eq params[:id])
+
+    query = query.order(stars[:created_at].desc)
+
+    count_query = query.clone.project('COUNT(*)')
+
+    @comments = Star.find_by_sql(query.take(@per_page).skip((@page - 1) * @per_page).to_sql)
+    @count = Star.find_by_sql(count_query.to_sql).count
   end
 
   def show
@@ -33,6 +72,14 @@ class Organizer::DjsController < Organizer::BaseController
 
   def user
     @user ||= User.where("id = ? OR personal_url = ?", params[:id].to_i, params[:id]).first
+  end
+
+  def rate_params
+    allowed_params = params.permit :booking_id, :comment
+    allowed_params[:to_user] = dj.user
+    allowed_params[:from_user] = current_user
+    allowed_params[:stars] = params[:rating]
+    allowed_params
   end
 
   def query(options={})
@@ -90,4 +137,6 @@ class Organizer::DjsController < Organizer::BaseController
     end
 
   end
+
+
 end

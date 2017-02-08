@@ -148,7 +148,30 @@
                             controller: 'BookingsController',
                             scope: $scope
                         });
-                    }
+                    };
+
+                    $scope.comment_options = {
+                        page: 1,
+                        per_page: 10
+                    };
+
+                    $scope.comments = [];
+
+                    $scope.retrieveComments = function() {
+                        djs.comments($scope.comment_options, $stateParams.id).success(function(data){
+                            $scope.comments = $scope.comments.concat(data.comments);
+                            $scope.comments_count = data.count;
+                        });
+                    };
+
+                    $scope.retrieveComments();
+
+                    $scope.showMore = function() {
+                        if($scope.comments_count > $scope.comments.length){
+                            $scope.comment_options.page += 1;
+                            $scope.retrieveComments();
+                        }
+                    };
                 }
 
                 var favorites_timer = false;

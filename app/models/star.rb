@@ -5,6 +5,7 @@ class Star < ApplicationRecord
 
   validates :stars, :numericality => { greater_than_or_equal_to: 0, less_than_or_equal_to: 5 }
   validates :to_user_id, uniqueness: {scope: :booking_id, message: 'Already rated.'}
+  validates :comment, presence: true
 
   after_create :notify
 

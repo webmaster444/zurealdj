@@ -37,11 +37,17 @@
                 return $http.get('/organizer/djs/' + id + '.json');
             },
 
-            rate: function(dj_id, rating, booking_id){
-                return $http.post('/organizer/djs/' + dj_id + '/rate', {
-                    rating: rating,
-                    booking_id: booking_id
-                })
+            rate: function(rate){
+                if(!rate) rate = {};
+
+                var fd = new FormData();
+
+                _.each(Object.keys(rate), function(key){
+                    if(rate[key])
+                        fd.append(key, rate[key]);
+                });
+
+                return $http.post('/organizer/djs/' + rate.dj_id + '/rate', fd)
             },
 
             addToFavorites: function(dj_id ){
@@ -50,6 +56,21 @@
 
             removeFromFavorites: function(dj_id){
                 return $http.delete('/organizer/favorite_djs/' + dj_id)
+            },
+
+            comments: function(options, id){
+                if(!options) options = {};
+
+                var url = '/organizer/djs/comments.json?';
+
+                _.each(Object.keys(options), function(key){
+                    if(options[key])
+                        url += key + '=' + options[key] + '&';
+                });
+
+                url += 'id=' + id + '&';
+
+                return $http.get(url);
             }
         }
     }])

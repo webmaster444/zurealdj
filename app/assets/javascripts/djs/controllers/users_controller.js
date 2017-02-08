@@ -28,6 +28,29 @@
                 };
             });
 
+            $scope.comment_options = {
+                page: 1,
+                per_page: 10
+            };
+
+            $scope.comments = [];
+
+            $scope.retrieveComments = function() {
+                users.comments($scope.comment_options).success(function(data){
+                    $scope.comments = $scope.comments.concat(data.comments);
+                    $scope.comments_count = data.count;
+                });
+            };
+
+            $scope.retrieveComments();
+
+            $scope.showMore = function() {
+                if($scope.comments_count > $scope.comments.length){
+                    $scope.comment_options.page += 1;
+                    $scope.retrieveComments();
+                }
+            };
+
             countries.all().success(function(data){
                 $scope.countries = data.flags;
             });

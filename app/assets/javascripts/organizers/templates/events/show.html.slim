@@ -75,7 +75,7 @@
             span.btn-action.white.top-pictures ng-show="dj.booking_status == 'Confirmed' && dj.rated"
               | Rated
             .inf
-              a.name href="#djs/{{ dj.personal_url || dj.dj_id }}"
+              a.name href="#djs/{{ dj.personal_url || dj.id }}"
                 | {{ dj.name }}
               .small-text.address
                 span ng-show="dj.city"

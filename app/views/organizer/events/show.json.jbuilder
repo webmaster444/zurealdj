@@ -36,6 +36,6 @@ json.djs @event.djs.each do |dj|
   json.rating user.rate
   json.booking_id booking.id
   json.booking_status booking.status.capitalize
-  json.rated booking.comment.present?
+  json.rated booking.star.present?
   json.rating_item booking.star.stars if booking.star.present?
 end

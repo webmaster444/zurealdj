@@ -93,11 +93,9 @@
                             function(scope, event_types, flags, events, genres) {
 
                                 scope.save = function () {
-                                    $scope.formPending = true;
                                     scope.processing = true;
                                     events.upsert(scope.event)
                                         .success(function () {
-                                            scope.formPending = false;
                                             scope.processing = false;
                                             scope.closeThisDialog();
                                             if(id) $state.go('events');
@@ -106,7 +104,6 @@
                                         })
                                         .error(function (data) {
                                             scope.validation_errors = data.validation_errors;
-                                            scope.formPending = false;
                                             scope.processing = false;
                                         })
                                 };
@@ -213,21 +210,18 @@
 
                     $scope.retrieveEvent();
 
-                    $scope.rate = function(dj){
-                        djs.rate(dj.id, dj.rating_item, dj.booking_id)
-                            .success(function() {
-                                $scope.retrieveEvent();
-                            })
-                    };
-
                     $scope.openRateDialog = function(dj) {
                         ngDialog.open({
                             template: 'organizers/templates/events/rate_dialog.html',
-                            controller: ['$scope', 'BookingsFactory',
-                                function (scope, bookings) {
+                            controller: ['$scope', 'DjsFactory',
+                                function (scope, djs) {
 
                                     scope.dj = dj;
-                                    scope.rate = $scope.rate;
+
+                                    scope.rate = {
+                                        booking_id: scope.dj.booking_id,
+                                        dj_id: scope.dj.id
+                                    };
 
                                     scope.cancel = function(){
                                         scope.closeThisDialog()
@@ -235,22 +229,19 @@
 
                                     scope.save = function() {
                                         scope.processing = true;
-                                        bookings.comment(dj.booking_id, scope.comment)
-                                            .success(function () {
-                                                scope.formPending = false;
+                                        djs.rate(scope.rate)
+                                            .success(function() {
                                                 scope.processing = false;
                                                 scope.closeThisDialog();
                                                 $scope.retrieveEvent();
                                             })
                                             .error(function (data) {
                                                 scope.validation_errors = data.validation_errors;
-                                                scope.formPending = false;
                                                 scope.processing = false;
-                                            })
+                                            });
                                     }
 
                                 }],
-                            //scope: $scope,
                             className: 'ngdialog-theme-default dj-mobile-ng-dialog rate-dialog'
                         })
                     };

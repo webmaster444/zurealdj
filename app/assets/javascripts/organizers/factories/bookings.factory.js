@@ -16,7 +16,7 @@
 
                 fd.append('rate', booking.rate || '');
 
-                return $http.put('/organizer/bookings/' + booking.id, fd, {
+                return $http.post('/organizer/bookings', fd, {
                     transformRequest: angular.identity,
                     headers: {'Content-Type': undefined}
                 });
@@ -24,19 +24,6 @@
 
             destroy: function(id){
                 return $http.delete('/organizer/bookings/' + id)
-            },
-
-            comment: function(id, comment) {
-                var fd = new FormData();
-
-                if(comment){
-                    fd.append('comment', comment);
-                }
-
-                return $http.put('/organizer/bookings/' + id, fd, {
-                    transformRequest: angular.identity,
-                    headers: {'Content-Type': undefined}
-                });
             }
         }
     }])

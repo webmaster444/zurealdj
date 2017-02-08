@@ -55,6 +55,7 @@ Rails.application.routes.draw do
           post :step
           post :step_back
           post :update_profile
+          get :comments
         end
       end
       resources :settings, only: [:index, :update] do
@@ -89,6 +90,9 @@ Rails.application.routes.draw do
         member do
           post :rate
         end
+        collection do
+          get :comments
+        end
       end
       resources :favorite_djs, only: [:index, :update, :destroy]
       resources :events, only: [:index, :create, :show, :update, :destroy]
@@ -97,7 +101,7 @@ Rails.application.routes.draw do
           post :notifications
         end
       end
-      resources :bookings, only: [:create, :update, :destroy]
+      resources :bookings, only: [:create, :destroy]
       resources :chat_rooms, only: [:index]
       resources :messages, only: [:index]
     end

@@ -3,7 +3,7 @@
     | Rate the Artist
   .row
     .col-dj-avatar
-      img.avatar src="{{ dj.avatar }}"
+      img.avatar ng-src="{{ dj.avatar }}"
       .zurealdj-header-1
         | {{ dj.name }}
     .col-event-form
@@ -11,15 +11,15 @@
         .form-title
           | Comment
         .form-container
-          textarea.zureal-textarea ng-model="comment" rows="7"
-        .error ng-repeat="error in validation_errors.title"
+          textarea.zureal-textarea ng-model="rate.comment" rows="7"
+        .error ng-repeat="error in validation_errors.comment"
           | {{ error }}
 
       .form-row
         .form-title
           | Rating
         .form-container
-          span.rating-icons[uib-rating ng-model="dj.rating_item" ng-change="rate(dj)"  max="5" state-on="'fire fire-active icon'" state-off="'fire fire-inactive icon'" enable-reset='false' read-only="dj.rating_item? true : false"]
+          span.rating-icons[uib-rating ng-model="rate.rating"  max="5" state-on="'fire fire-active icon'" state-off="'fire fire-inactive icon'" enable-reset='false' read-only="dj.rating_item? true : false"]
 
   hr
     .row.buttons

@@ -25,6 +25,44 @@ class Dj::UsersController < Dj::BaseController
     @user = current_user
   end
 
+  def comments
+    @page = params[:page].to_i
+    @page = 1 if @page < 1
+    @per_page = params[:per_page].to_i
+    @per_page = 10 if @per_page < 1
+
+    stars = Star.arel_table
+    bookings = Booking.arel_table
+    events = Event.arel_table
+    organizers = Organizer.arel_table
+
+    fields = [
+        stars[:comment],
+        stars[:stars],
+        stars[:created_at],
+        events[:title],
+        organizers[:user_id]
+    ]
+
+    query = stars
+                .project(fields)
+                .group(bookings[:id])
+                .group(events[:id])
+                .group(organizers[:id])
+                .group(stars[:id])
+                .join(bookings).on(bookings[:id].eq(stars[:booking_id]))
+                .join(events).on(events[:id].eq(bookings[:event_id]))
+                .join(organizers).on(organizers[:id].eq(events[:organizer_id]))
+                .where(stars[:to_user_id].eq current_user[:id])
+
+    query = query.order(stars[:created_at].desc)
+
+    count_query = query.clone.project('COUNT(*)')
+
+    @comments = Star.find_by_sql(query.take(@per_page).skip((@page - 1) * @per_page).to_sql)
+    @count = Star.find_by_sql(count_query.to_sql).count
+  end
+
   def update_profile
     @user = current_user
     if @user.update_attributes profile_params

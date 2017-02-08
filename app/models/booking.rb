@@ -7,9 +7,8 @@ class Booking < ActiveRecord::Base
   validates :from_date, presence: true
   validates :to_date, presence: true
   validates :rate, presence: true
-  validates :dj_id, presence: true
+  validates :dj_id, presence: true, uniqueness: {scope: :event_id}
   validates :event_id, presence: true
-  validates :dj_id, uniqueness: {scope: :event_id}
   validates :status, presence: true
 
   after_create :notify
