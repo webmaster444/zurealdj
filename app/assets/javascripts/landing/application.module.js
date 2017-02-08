@@ -40,40 +40,10 @@
                     templateUrl: 'landing/templates/home/index.html',
                     controller: 'HomeController'
                 })
-                .state('terms_n_conditions',{
-                    url: '/terms_n_conditions',
-                    templateUrl: 'landing/templates/terms_n_conditions/index.html',
-                    controller: 'TermsNConditionsController'
-                })
-                .state('crew',{
-                    url: '/crew',
-                    templateUrl: 'landing/templates/crew/index.html',
-                    controller: 'CrewController'
-                })
-                .state('how_we_work',{
-                    url: '/how_we_work',
-                    templateUrl: 'landing/templates/how_we_work/index.html',
-                    controller: 'HowWeWorkController'
-                })
-                .state('who_we_are',{
-                    url: '/who_we_are',
-                    templateUrl: 'landing/templates/who_we_are/index.html',
-                    controller: 'WhoWeAreController'
-                })
-                .state('cancelations',{
-                    url: '/cancelations',
-                    templateUrl: 'landing/templates/cancelations/index.html',
-                    controller: 'CancelationsController'
-                })
-                .state('policies',{
-                    url: '/policies',
-                    templateUrl: 'landing/templates/policies/index.html',
-                    controller: 'PoliciesController'
-                })
-                .state('cancellation_policy',{
-                    url: '/cancellation_policy',
-                    templateUrl: 'landing/templates/cancellation_policy/index.html',
-                    controller: 'CancellationPolicyController'
+                .state('static_pages',{
+                    url: '/:page_name',
+                    templateUrl: 'landing/templates/static_pages/index.html',
+                    controller: 'StaticPagesController'
                 })
     }]);
 

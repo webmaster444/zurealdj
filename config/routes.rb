@@ -136,17 +136,7 @@ Rails.application.routes.draw do
       end
     end
 
-    resources :static_pages, only: [] do
-      collection do
-        get :terms_n_conditions
-        get :how_we_work
-        get :crew
-        get :who_we_are
-        get :cancelations
-        get :policies
-        get :cancellation_policy
-      end
-    end
+    resources :static_pages, only: [:show]
 
     resources :notifications, only: [:index, :update]
     resources :slides, only: [:index]

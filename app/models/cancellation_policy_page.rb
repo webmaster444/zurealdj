@@ -1,4 +1,4 @@
-class CancellationPolicy < ActiveRecord::Base
+class CancellationPolicyPage < ActiveRecord::Base
 
   def content_attachments
     Attachment.where entity_id: self.id, entity_type: 'cancellation_policy_content'

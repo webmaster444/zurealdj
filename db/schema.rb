@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170202112703) do
+ActiveRecord::Schema.define(version: 20170208081552) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -38,7 +38,8 @@ ActiveRecord::Schema.define(version: 20170202112703) do
     t.datetime "from_date"
     t.datetime "to_date"
     t.integer  "rate"
-    t.boolean  "status",    default: false
+    t.integer  "status",    default: 0
+    t.text     "comment"
     t.index ["dj_id"], name: "index_bookings_on_dj_id", using: :btree
     t.index ["event_id"], name: "index_bookings_on_event_id", using: :btree
   end
@@ -49,7 +50,7 @@ ActiveRecord::Schema.define(version: 20170202112703) do
     t.datetime "updated_at"
   end
 
-  create_table "cancellation_policies", force: :cascade do |t|
+  create_table "cancellation_policy_pages", force: :cascade do |t|
     t.text     "content"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -128,8 +129,6 @@ ActiveRecord::Schema.define(version: 20170202112703) do
     t.string   "city"
     t.string   "country_flag_code"
     t.string   "address"
-    t.date     "start_date"
-    t.date     "end_date"
     t.integer  "image_id"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -138,6 +137,18 @@ ActiveRecord::Schema.define(version: 20170202112703) do
     t.integer  "image_file_size"
     t.datetime "image_updated_at"
     t.integer  "organizer_id"
+    t.float    "crop_x"
+    t.float    "crop_y"
+    t.float    "crop_w"
+    t.float    "crop_h"
+    t.float    "crop_rotate"
+    t.float    "crop_scale_x"
+    t.float    "crop_scale_y"
+    t.integer  "dj_slots"
+    t.integer  "event_category_id"
+    t.datetime "start_date"
+    t.datetime "end_date"
+    t.index ["event_category_id"], name: "index_events_on_event_category_id", using: :btree
     t.index ["image_id"], name: "index_events_on_image_id", using: :btree
     t.index ["organizer_id"], name: "index_events_on_organizer_id", using: :btree
   end
@@ -231,6 +242,8 @@ ActiveRecord::Schema.define(version: 20170202112703) do
     t.integer  "to_user_id"
     t.integer  "stars",        default: 0
     t.datetime "created_at"
+    t.integer  "booking_id"
+    t.index ["booking_id"], name: "index_stars_on_booking_id", using: :btree
     t.index ["from_user_id"], name: "index_stars_on_from_user_id", using: :btree
     t.index ["to_user_id"], name: "index_stars_on_to_user_id", using: :btree
   end
