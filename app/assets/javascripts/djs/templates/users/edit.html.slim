@@ -134,6 +134,10 @@
       .content-title
         | Booking Information
       .form-row.small-text
+        label
+          | Mark as free to hire
+          input type="checkbox"  ng-model="user.free_to_hire"
+      .form-row.small-text ng-hide="user.free_to_hire"
         .error ng-repeat="error in validation_errors['dj.rate_per_hour']"
           | {{ error }}
         | Rate per hour:

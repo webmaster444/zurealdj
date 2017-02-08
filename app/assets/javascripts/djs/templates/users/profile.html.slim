@@ -84,8 +84,10 @@
           .block-title
             | Booking information
           table
-            tr
+            tr ng-switch="user.free_to_hire"
               td.td-title
                 | Rate per hour:
-              td.td-content
+              td.td-content ng-switch-when="false"
                 | {{ user.rate_per_hour }} $
+              td.td-content ng-switch-when="true"
+                | free

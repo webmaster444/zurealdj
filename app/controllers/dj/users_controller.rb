@@ -4,7 +4,7 @@ class Dj::UsersController < Dj::BaseController
 
   def step
     @user = current_user
-    allowed_params = step_params.merge({dj_step: @user.next_step})
+    allowed_params = step_params
     if @user.update_attributes allowed_params
       if @user.next_step == 'dj_completed'
         @user.update_attribute :dj_step, 'dj_completed'
@@ -39,12 +39,16 @@ class Dj::UsersController < Dj::BaseController
   def profile_params
     params.permit(:name, :width, :height, :crop_x, :crop_y, :crop_w, :crop_h, :crop_rotate,
                   :crop_scale_x, :crop_scale_y, :avatar, :about,
-                  dj_attributes: [:rate_per_hour, :city, :country_flag_code, :sample, :sample_title],
+                  dj_attributes: [:rate_per_hour, :free_to_hire, :city, :country_flag_code, :sample, :sample_title],
                    event_category_ids: [], genre_ids: [], equipment_ids: [])
   end
 
   def step_params
-    params.permit :personal_url, :agree, dj_attributes: [:rate_per_hour],
+    allowed_params = params.permit :personal_url, :agree, dj_attributes: [:rate_per_hour, :free_to_hire],
                    event_category_ids: [], genre_ids: [], equipment_ids: []
+    allowed_params[:dj_step] =  @user.next_step
+    allowed_params[:dj_attributes][:step] = @user.next_step
+    # allowed_params[:id] = @user.id
+    allowed_params
   end
 end

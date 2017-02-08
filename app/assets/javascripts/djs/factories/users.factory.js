@@ -37,12 +37,25 @@
             },
 
             submit_cancelations: function(user){
+
+                var ratePerHour = 0;
+                var free_to_hire = false;
+
+                if(user.free_to_hire){
+                    free_to_hire = true;
+                } else {
+                    ratePerHour = user.rate_per_hour;
+                }
+
                 return $http.post('/dj/users/step', {
                     dj_attributes: {
-                        rate_per_hour: user.rate_per_hour
+
+                        rate_per_hour: ratePerHour,
+                        free_to_hire: free_to_hire
 
                     },
-                    agree: user.agree
+                    agree: user.agree,
+
                 })
             },
 
@@ -52,11 +65,21 @@
 
             save: function(user){
                 var fd = new FormData();
+                var ratePerHour = 0;
+                var free_to_hire = false;
                 fd.append('name', user.name || '');
                 fd.append('dj_attributes[city]', user.city || '');
                 fd.append('dj_attributes[country_flag_code]', user.country ? user.country.code : '');
                 fd.append('about', user.about || '');
-                fd.append('dj_attributes[rate_per_hour]', user.rate_per_hour || '');
+
+                if(user.free_to_hire){
+                    free_to_hire = true;
+                } else {
+                    ratePerHour = user.rate_per_hour;
+                }
+                fd.append('dj_attributes[rate_per_hour]', ratePerHour);
+                fd.append('dj_attributes[free_to_hire]', free_to_hire);
+
                 if(user.sample){
                     fd.append('dj_attributes[sample]', user.sample);
                 }

@@ -38,7 +38,8 @@ ActiveRecord::Schema.define(version: 20170208081552) do
     t.datetime "from_date"
     t.datetime "to_date"
     t.integer  "rate"
-    t.integer  "status",    default: 0
+    t.datetime "created_at"
+    t.integer  "status",     default: 0
     t.text     "comment"
     t.index ["dj_id"], name: "index_bookings_on_dj_id", using: :btree
     t.index ["event_id"], name: "index_bookings_on_event_id", using: :btree
@@ -77,6 +78,7 @@ ActiveRecord::Schema.define(version: 20170208081552) do
     t.datetime "sample_updated_at"
     t.string   "sample_title"
     t.integer  "rate_per_hour"
+    t.boolean  "free_to_hire"
     t.index ["photo_id"], name: "index_djs_on_photo_id", using: :btree
     t.index ["sample_id"], name: "index_djs_on_sample_id", using: :btree
     t.index ["user_id"], name: "index_djs_on_user_id", using: :btree

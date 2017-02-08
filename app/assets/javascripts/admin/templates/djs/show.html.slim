@@ -109,9 +109,11 @@
               .col-lg-2
                 label.control-label
                   | Rate per hour:
-              .col-lg-10
-                p.form-control-static
+              .col-lg-10 ng-switch="dj.free_to_hire"
+                p.form-control-static ng-switch-when="false"
                   | {{ dj.rate_per_hour }}
+                p.form-control-static ng-switch-when="true"
+                  | free
             .hr-line-dashed
 
           .form-group

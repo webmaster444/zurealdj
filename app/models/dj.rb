@@ -5,7 +5,8 @@ class Dj < ActiveRecord::Base
 
   has_attached_file :sample
 
-  validates :rate_per_hour, presence: true, if: -> { user && User.dj_steps[user.step] >= User.dj_steps[:dj_cancelations]}
+  attr_accessor :step
+  validates :rate_per_hour, presence: true, numericality: { greater_than_or_equal_to: 0  }, if: -> {  User.dj_steps[step || user.step] >= User.dj_steps[:dj_cancelations] }
 
   validates_attachment_content_type :sample, :content_type => %w(audio/mpeg audio/x-mpeg audio/mp3 audio/x-mp3 audio/mpeg3 audio/x-mpeg3 audio/mpg audio/x-mpg audio/x-mpegaudio)
 

@@ -1,5 +1,6 @@
 json.personal_url @user.personal_url
 json.rate_per_hour @user.dj.rate_per_hour
+json.free_to_hire @user.dj.free_to_hire
 
 json.name @user.name
 json.avatar do

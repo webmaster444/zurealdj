@@ -8,6 +8,7 @@ json.djs @djs.each do |dj|
   json.country CountryFlag.find(dj.dj['country_flag_code']).try(:[], :title)
   json.genres dj['genres'].map{|g| g['title']}.join(' | ')
   json.rating dj.rate
+  json.free_to_hire dj.free_to_hire
   json.in_favorites current_user.organizer.favorite_djs.include?(dj.dj)
 end
 json.min_rate Dj.minimum(:rate_per_hour)

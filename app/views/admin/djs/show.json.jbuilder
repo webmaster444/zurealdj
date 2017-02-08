@@ -3,6 +3,7 @@ json.dj do
   json.city @dj.city
   json.country @dj.country_flag
   json.rate_per_hour @dj.rate_per_hour
+  json.free_to_hire @dj.free_to_hire
   json.created_at time_ago_in_words(@dj.created_at) + ' ' + t('datetime.ago') + ' ' + t('datetime.at') + ' ' + @dj.created_at.strftime("%H:%M")
   json.updated_at time_ago_in_words(@dj.updated_at) + ' ' + t('datetime.ago') + ' ' + t('datetime.at') + ' ' + @dj.updated_at.strftime("%H:%M")
   json.sample do

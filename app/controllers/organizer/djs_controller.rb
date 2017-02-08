@@ -76,6 +76,7 @@ class Organizer::DjsController < Organizer::BaseController
                 users[:personal_url],
                 djs[:id].as('dj_id'),
                 djs[:city],
+                djs[:free_to_hire],
                 "(array(SELECT json_build_object(
                        'id', genres.id,
                        'title', genres.title

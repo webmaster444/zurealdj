@@ -82,7 +82,8 @@ class Admin::DjsController < Admin::BaseController
         djs[:id].as('dj_id'),
         djs[:city],
         djs[:country_flag_code],
-        djs[:rate_per_hour]
+        djs[:rate_per_hour],
+        djs[:free_to_hire]
     ]
 
     q = users

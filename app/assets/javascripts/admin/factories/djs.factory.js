@@ -22,7 +22,8 @@
                 //     fd.append('user[dj_attributes][sample][url]', djs.sample_url);
                 // }
 
-                fd.append('user[dj_attributes][rate_per_hour]', djs.rate_per_hour || '');
+                fd.append('user[dj_attributes][rate_per_hour]', djs.rate_per_hour || 0);
+                fd.append('user[dj_attributes][free_to_hire]', djs.free_to_hire || false);
 
                 if(djs.avatar.file){
                     fd.append('user[avatar]', djs.avatar.file);
