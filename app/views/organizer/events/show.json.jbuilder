@@ -4,9 +4,9 @@ json.city @event.city
 json.country @event.country_flag
 json.dj_slots @event.dj_slots
 json.start_date @event.start_date.strftime("%d/%m/%Y") if @event.start_date.present?
-json.start_time @event.start_date.strftime("%H:%M %p") if @event.start_date.present?
+json.start_time  timeformat(@event.start_date) if @event.start_date.present?
 json.end_date @event.end_date.strftime("%d/%m/%Y") if @event.end_date.present?
-json.end_time @event.end_date.strftime("%H:%M %p") if @event.end_date.present?
+json.end_time timeformat(@event.end_date) if @event.end_date.present?
 json.status @event.status
 json.image do
   json.url paperclip_url(@event.image, :large)

@@ -92,6 +92,20 @@
                         controller: ['$scope', 'EventCategoriesFactory', 'CountryFlagsFactory', 'EventsFactory', 'GenresFactory',
                             function(scope, event_types, flags, events, genres) {
 
+                                if(id){
+                                    events.show(id).success(function(data){
+                                        scope.event = data;
+
+                                        var dateParse = function(str) {
+                                            var el = str.split("/");
+                                            return new Date(el[2], --el[1], el[0]);
+                                        };
+
+                                        scope.event.start_date = dateParse(scope.event.start_date);
+                                        scope.event.end_date = dateParse(scope.event.end_date);
+                                    });
+                                }
+
                                 scope.save = function () {
                                     scope.processing = true;
                                     events.upsert(scope.event)
@@ -122,22 +136,6 @@
                                 });
 
                                 scope.event = {};
-
-                                if(id){
-                                    events.show(id).success(function(data){
-                                        scope.event = data;
-
-                                        var dateParse = function(str) {
-                                            var day = parseInt(str.slice(0, 2));
-                                            var month = parseInt(str.slice(3, 5)) - 1;
-                                            var year = parseInt(str.slice(6));
-                                            return new Date(year, month, day);
-                                        };
-
-                                        scope.event.start_date = dateParse(scope.event.start_date);
-                                        scope.event.end_date = dateParse(scope.event.end_date);
-                                    });
-                                }
 
                                 scope.cancel = function(){
                                     scope.closeThisDialog()
@@ -177,7 +175,7 @@
                                     );
                                 };
 
-                                $scope.startDateOptions = {
+                                scope.startDateOptions = {
                                     dateDisabled: false,
                                     formatYear: 'yy',
                                     maxDate: new Date(2020, 5, 22),
@@ -186,7 +184,7 @@
                                     showWeeks: false
                                 };
 
-                                $scope.endDateOptions = {
+                                scope.endDateOptions = {
                                     dateDisabled: false,
                                     formatYear: 'yy',
                                     maxDate: new Date(2020, 5, 22),
@@ -194,7 +192,6 @@
                                     startingDay: 1,
                                     showWeeks: false
                                 };
-
                             }],
                         className: 'ngdialog-theme-default dj-mobile-ng-dialog org-form'
                     });

@@ -27,6 +27,8 @@ angular.module('formInput.timepicker').directive('timepicker', ['$filter', funct
             }
         }
 
+        scope.times.pop();
+
         scope.setModel = function(value){
             scope.model = value.lable
         }

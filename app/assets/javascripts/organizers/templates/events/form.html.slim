@@ -90,7 +90,8 @@
         .form-title
           | From
         .form-container
-          p.dj-datepicker ng-class="{'active': start_date_opened}" ng-click="start_date_opened = true"
+          p.dj-datepicker ng-class="{'active': start_date_opened}"
+            a.datepicker-dropdown-togle ng-click="start_date_opened = true"
             input type="text" uib-datepicker-popup="{{ 'dd/MM/yyyy' }}" ng-model="event.start_date" is-open="start_date_opened" datepicker-options="startDateOptions" close-text="Close" alt-input-formats="altInputFormats" show-button-bar="false" placeholder="Start Date"
             i.fa.fa-chevron-down
           span[timepicker ng-model="event.start_time" placeholder="'Start Time'"]
@@ -101,8 +102,9 @@
         .form-title
           | To
         .form-container
-          p.dj-datepicker ng-class="{'active': end_date_opened}" ng-click="end_date_opened = true"
-            input type="text" uib-datepicker-popup="{{ 'dd/MM/yyyy' }}" ng-model="event.end_date" is-open="end_date_opened" datepicker-options="endDateOptions" close-text="Close" alt-input-formats="altInputFormats" show-button-bar="false" placeholder="End Date"
+          p.dj-datepicker ng-class="{'active': end_date_opened}"
+            a.datepicker-dropdown-togle ng-click="end_date_opened = true"
+            input ng-change="closePopup()" type="text" uib-datepicker-popup="{{ 'dd/MM/yyyy' }}" ng-model="event.end_date" is-open="end_date_opened" datepicker-options="endDateOptions" close-text="Close" alt-input-formats="altInputFormats" show-button-bar="false" placeholder="End Date"
             i.fa.fa-chevron-down
           span[timepicker ng-model="event.end_time" placeholder="'End Time'"]
         .error ng-repeat="error in validation_errors.end_date"
