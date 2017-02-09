@@ -14,22 +14,26 @@ div.page-block.registration
     .question.text-center
       | Enter your rate of pay per hour
     .form-row.small-text
-      label
-        | Mark as free to hire
-        input type="checkbox"  ng-model="user.free_to_hire"
+      .zureal-checkbox.inline-block
+        input type="checkbox" ng-model="user.free_to_hire" id="free_to_hire"
+        label for="free_to_hire" style="font-size: 18px"
+          span
+          | Mark as free to hire
     .form-row.small-text ng-hide="user.free_to_hire"
-      .error ng-repeat="error in validation_errors['dj.rate_per_hour']"
-        | {{ error }}
       | Rate per hour:
       .inline-block
         input.register-input.step-5-input type="number"  ng-model="user.rate_per_hour" placeholder="amount $"
+      .error ng-repeat="error in validation_errors['dj.rate_per_hour']"
+        | {{ error }}
 
     .form-row.text-center
-      .error ng-repeat="error in validation_errors.agree"
-        | {{ error }}
-      input type="checkbox"   ng-required="" ng-model="user.agree"
-      .small-text.inline-block
-        | I agree with
-        a href="/#cancellation_policy" target="_blank"
+      .zureal-checkbox.inline-block
+        input type="checkbox" ng-model="user.agree" id="cancellation"
+        label for="cancellation" style="font-size: 18px"
+          span
+          | I agree with
+        a.small-text.hover href="/#cancellation_policy" target="_blank"
           |  Cancellation Policy
+      .error ng-repeat="error in validation_errors['agree']"
+        | {{ error }}
   div.tmp

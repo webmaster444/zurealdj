@@ -4,8 +4,7 @@ class Dj::UsersController < Dj::BaseController
 
   def step
     @user = current_user
-    allowed_params = step_params
-    if @user.update_attributes allowed_params
+    if @user.update_attributes step_params
       if @user.next_step == 'dj_completed'
         @user.update_attribute :dj_step, 'dj_completed'
       end
@@ -85,8 +84,6 @@ class Dj::UsersController < Dj::BaseController
     allowed_params = params.permit :personal_url, :agree, dj_attributes: [:rate_per_hour, :free_to_hire],
                    event_category_ids: [], genre_ids: [], equipment_ids: []
     allowed_params[:dj_step] =  @user.next_step
-    allowed_params[:dj_attributes][:step] = @user.next_step
-    # allowed_params[:id] = @user.id
     allowed_params
   end
 end
