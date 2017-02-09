@@ -97,3 +97,33 @@ a{
 a:hover {
   color: #555555;
 }
+
+.count-picker > .btn-inc, .count-picker > .btn-dec{
+  font-size: 35px;
+  color: #b05dfc;
+  font-weight: 100;
+}
+
+.count-picker > .count-value{
+  font-size: 16px;
+  font-weight: 500;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  color: #555555;
+  width: 60px;
+  margin: 0 20px;
+  text-align: center;
+}
+
+.count-picker{
+  border-radius: 100px;
+  border: solid 1px #e6e6e6;
+  padding: 10px 20px;
+  display: inline-block;
+}
+
+.count-picker > *::selection{
+  background: transparent;
+}

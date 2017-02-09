@@ -10,7 +10,7 @@ json.image do
   json.original paperclip_url(@event.image, :original)
 end
 json.booking_id @booking.id
-json.booking_status @booking.status
+json.booking_status @booking.status.capitalize
 json.created_at @event.created_at.strftime("%d/%m/%Y")
 json.updated_at @event.created_at.strftime("%d/%m/%Y")
 

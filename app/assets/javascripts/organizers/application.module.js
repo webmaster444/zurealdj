@@ -22,7 +22,8 @@
         'formInput.timepicker',
         'angular.filter',
         'ngAnimate',
-        'dj.scroll'
+        'dj.scroll',
+        'countPicker'
     ]);
 
     ZurealdjOrganizerApp.config(['$urlRouterProvider', '$stateProvider', '$httpProvider',

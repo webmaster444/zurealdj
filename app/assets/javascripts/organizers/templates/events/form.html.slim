@@ -112,7 +112,7 @@
         .form-title
           | DJ slots
         .form-container
-          input.zureal-input type="number" ng-model="event.dj_slots"
+          span countpicker=true ng-model="event.dj_slots"
         .error ng-repeat="error in validation_errors.dj_slots"
           | {{ error }}
   hr
