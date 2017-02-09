@@ -57,36 +57,19 @@ div.page
     div.page-block.djs.transform-none
       .text-center.h1-text
         | HOT RIGHT NOW
-      div.content.text-center
-        .col-md-4.col-center style="margin-left: 0"
-          .row
-            img.content-icon src="/images/djs/img-dj-1.png"
-          .row
-            span.text-name
-              | Brian Stone
-          .row
-            span.text-description
-              | My whole world is in front of tourntables!
+      .content.text-center
+        .row
+          .col-md-4.col-sm-4.col-xs-4.col-center ng-repeat="top_dj in top_rated_djs"
 
-        .col-md-4.col-center
-          .row
-            img.content-icon src="/images/djs/img-dj-2.png"
-          .row
-            span.text-name
-              | Alex Hunter
-          .row
-            span.text-description
-              | Two decades of experience known for playing Hardcore
+            img.content-icon src="{{ top_dj.avatar }}"
 
-        .col-md-4.col-center style="margin-right: 0"
-          .row
-            img.content-icon src="/images/djs/img-dj-3.png"
-          .row
             span.text-name
-              | Luna Jenkins
-          .row
+              | {{ top_dj.name }}
+
             span.text-description
-              | There are individuals who are innovators
+              | {{ top_dj.about }}
+
+
       div style="height: 60px; width: 100%; clear: both"
 
   div.page-content-dark.transform

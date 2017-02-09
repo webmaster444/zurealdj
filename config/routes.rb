@@ -144,5 +144,6 @@ Rails.application.routes.draw do
 
     resources :notifications, only: [:index, :update]
     resources :slides, only: [:index]
+    resources :top_rated_djs, only: [:index]
   end
 end
