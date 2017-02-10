@@ -2,15 +2,24 @@ div.page-head
   div ng-include="'landing/templates/common/small_header.html'"
 
   .text-center.txt ng-hide="isMobile()"
-    | ZuRealDJ Your No.1 Booking Platform for DJs and Event Organisers
+    | ZuReal DJ Australia's newest platform to book a DJ with no agency fees
   img.big-logo src="/images/icons/img-logo-zu-big.png"
   .text-center.txt ng-show="isMobile()"
-    | ZuRealDJ Your No.1 Booking Platform for DJs and Event Organisers
+    | ZuReal DJ Australia's newest platform to book a DJ with no agency fees
   div.button-block.text-center
-    a.btn-link  ng-click="$state.go('home'); openRegistrationDialog('dj')" style="margin-right: 24px"
-      | Are you a DJ?
-    a.btn-link ng-click="$state.go('home'); openRegistrationDialog('organizer')"
-      | Need a DJ?
+    .col-user-role
+      img.role-icon src="/images/icons/img-big-org.png"
+      .role-name
+        | Organizer
+      a.btn-link ng-click="$state.go('home'); openRegistrationDialog('organizer')"
+        | Need a DJ?
+    .vr
+    .col-user-role
+      img.role-icon src="/images/icons/img-big-dj.png"
+      .role-name
+        | DJ
+      a.btn-link ng-click="$state.go('home'); openRegistrationDialog('dj')"
+        | Are you a DJ?
   div#space
   div.cursor-pointer ng-click="scroll()" ng-hide="isMobile()"
     img.img-mouse.text-center src="/images/icons/ic-mouse@2x.png"

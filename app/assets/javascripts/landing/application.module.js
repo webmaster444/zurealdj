@@ -57,7 +57,7 @@
         $http.defaults.headers.common['X-CSRF-Token'] = csrf_token;
 
         $rootScope.$on('ngDialog.opened', function (e) {
-            if (window.navigator.userAgent.match(/iPhone|iPad|iPod|Android|BlackBerry|Opera Mini|IEMobile/i)) {
+            if (window.navigator.userAgent.match(/iPhone|iPad|iPod|Android|BlackBerry|Opera Mini|IEMobile/i) && window.screen.width < 750) {
                 $(".zdj-ngdialog").css({"background-color": "#fff", "margin": 0, "padding": 0});
                 $(".ngdialog-overlay").css({"display": "none"});
             }

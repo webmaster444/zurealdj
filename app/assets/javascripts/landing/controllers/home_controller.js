@@ -23,9 +23,13 @@
 
                 $scope.ngDialogClose = ngDialog.closeAll;
 
+                var ngDialogMobile = function(){
+                    return $scope.isMobile() && window.screen.width < 750;
+                };
+
                 $scope.ngDialogParams = {
-                    width: $scope.isMobile()? 'auto' : 400,
-                    className: $scope.isMobile()? 'zdj-ngdialog': 'ngdialog-theme-default'
+                    width: ngDialogMobile()? 'auto' : 400,
+                    className: ngDialogMobile()? 'zdj-ngdialog': 'ngdialog-theme-default'
                 };
 
                 $scope.openLoginDialog = function(){
@@ -44,14 +48,16 @@
 
                     $scope.userrole = role;
                     ngDialog.closeAll();
-                    ngDialog.open({
-                        templateUrl: 'landing/templates/users/new.html',
-                        controller: 'UsersController',
-                        scope: $scope,
-                        width: $scope.ngDialogParams.width,
-                        className: $scope.ngDialogParams.className,
-                        disableAnimation: true
-                    });
+                    if(!$scope.current_user){
+                        ngDialog.open({
+                            templateUrl: 'landing/templates/users/new.html',
+                            controller: 'UsersController',
+                            scope: $scope,
+                            width: $scope.ngDialogParams.width,
+                            className: $scope.ngDialogParams.className,
+                            disableAnimation: true
+                        });
+                    }
                 };
 
                 $scope.openForgotPasswordDialog = function(){

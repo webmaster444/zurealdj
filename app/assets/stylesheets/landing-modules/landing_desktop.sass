@@ -1,6 +1,6 @@
 @import "variables_and_functions"
 
-[size='full'][orientation='landscape'], [device='desktop']
+[device='desctop'], [size='full']
   .page-block
     max-width: 1240px
     padding: 0 20px
@@ -14,24 +14,47 @@
       margin-right: 50px
   .page-head
     min-height: 800px
+    @media (max-width: 720px)
+      padding-bottom: 100px
+      height: auto
     .txt
       font-size: 24px
-      margin-top: 122px
+      margin-top: 100px
     .big-logo
-      width: 317px
-      height: 110px
-      margin-top: 40px
+      display: none
     .button-block
       margin-top: 80px
+      .col-user-role
+        width: 360px
+        vertical-align: middle
       .btn-link
         width: 178px
         height: 50px
         padding: 15px 25px
         font-size: 16px
-        margin-top: 20px
+        font-weight: 500
+        letter-spacing: 1.5px
+        margin-top: 35px
+      .role-icon
+        width: 92px
+        height: 92px
+        margin-bottom: 19px
+      .role-name
+        font-size: 18px
+        font-weight: 500
+        line-height: 1.33
+        letter-spacing: 1px
+      .vr
+        height: 270px
+        width: 2px
+        background-color: white
+        display: inline-block
+        vertical-align: middle
+        @media (max-width: 725px)
+          display: none
     #space
       width: 100%
-      height: calc(90% - 630px)
+      height: calc(90% - 650px)
     .img-mouse
       width: 17px
       height: 24px
@@ -102,8 +125,6 @@
   .transform-none
     transform: skewY(2deg)
 
-
-[device='desktop']
   .login-alert
     border-radius: 5px
     padding: 40px 30px
@@ -126,10 +147,10 @@
     .btn-white
       margin-top: 30px
     .btn-tab-left
-      border-radius: 40px 0 0 40px
+      border-radius: 40px 0 0 40px !important
       border-right: 1px solid #c890fc
     .btn-tab-right
-      border-radius: 0 40px 40px 0
+      border-radius: 0 40px 40px 0 !important
     .hr-line-dashed
       margin: 30px 0
     .text-description
@@ -137,7 +158,7 @@
       letter-spacing: 1.5px
     .btn-check
       margin: 10px
-    .btn-orginizer-active, .btn-artist-active
+    .btn-organizer-active, .btn-artist-active
       .circle-white
         box-shadow: 0 2px 30px 0 rgba(0, 0, 0, 0.08)
     .circle-white

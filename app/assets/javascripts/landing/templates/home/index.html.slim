@@ -61,7 +61,7 @@ div.page
         .row
           .col-md-4.col-sm-4.col-xs-4.col-center ng-repeat="top_dj in top_rated_djs"
 
-            img.content-icon src="{{ top_dj.avatar }}"
+            img.content-icon ng-src="{{ top_dj.avatar }}"
 
             span.text-name
               | {{ top_dj.name }}
@@ -112,4 +112,4 @@ div.page
               img src="/images/instagram/img-inst-1.png"
 
   div.page-footer.transform
-  div ng-include="'landing/templates/common/footer.html'"
+  div ng-include="'common/templates/footer.html'"

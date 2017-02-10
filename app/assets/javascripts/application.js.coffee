@@ -67,13 +67,7 @@ $(document).ready ->
     size = undefined
 
     orientation = 'portrait'
-    if type == 'mobile'
-      if window.screen.width < 768 or window.screen.height < 768
-        size = 'small'
-      else
-        size = 'full'
-    else
-      size = 'full'
+    size = if window.screen.width < 750 then 'small' else 'full'
     if window.screen.width >= window.screen.height
       orientation = 'landscape'
     $('body').attr 'device', type
@@ -81,9 +75,14 @@ $(document).ready ->
     $('body').attr 'orientation', orientation
     return
 
+  hashchange = ->
+    window.scrollTo 0, 0
+    resize()
+    return
+
   window.onresize = resize
   window.addEventListener 'resize', resize
-  window.addEventListener 'hashchange', resize
+  window.addEventListener 'hashchange', hashchange
 
   resize()
 
