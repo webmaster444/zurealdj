@@ -43,7 +43,7 @@
 }
 .checkbox input[type="checkbox"]:focus + label::before,
 .checkbox input[type="radio"]:focus + label::before {
-  outline: none
+  outline: none;
   outline-offset: -2px;
 }
 .checkbox input[type="checkbox"]:checked + label::after,
