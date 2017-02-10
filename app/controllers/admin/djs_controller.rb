@@ -59,7 +59,7 @@ class Admin::DjsController < Admin::BaseController
   def dj_params
     params.require(:user).permit(:name, :email, :personal_url, :width, :height, :crop_x, :crop_y, :crop_w, :crop_h, :crop_rotate,
                                 :crop_scale_x, :crop_scale_y, :avatar, :about,
-                                dj_attributes: [:rate_per_hour, :city, :country_flag_code, :sample_title, sample: [] ],
+                                dj_attributes: [:rate_per_hour, :free_to_hire, :city, :country_flag_code, :sample_title, sample: [] ],
                                 event_category_ids: [], genre_ids: [], equipment_ids: [])
 
   end

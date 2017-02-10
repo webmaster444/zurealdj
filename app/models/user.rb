@@ -20,7 +20,7 @@ class User < ActiveRecord::Base
                     format: { with: /.*\@.*\..*/, message: "is incorrect"},
                     presence: true
 
-  validates :personal_url, uniqueness: { case_sensitive: false, message: "This personal url is already registered."}, if: :validate_personal_url?
+  validates :personal_url, uniqueness: { case_sensitive: false, message: "This personal url is already registered."}, allow_blank: true
   validates :company_name, uniqueness: { case_sensitive: false, message: "This company name is already registered."}, if: :validate_company_name?
 
 

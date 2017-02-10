@@ -13,7 +13,7 @@
                 if(djs.country){
                     fd.append('user[dj_attributes][country_flag_code]', djs.country.code );
                 }
-                fd.append('user[dj_attributes][about]', djs.about || '');
+                fd.append('user[about]', djs.about || '');
 
                 // if(djs.sample && djs.sample.url ){
                 //     fd.append('user[dj_attributes][sample]', djs.sample);
@@ -24,6 +24,19 @@
 
                 fd.append('user[dj_attributes][rate_per_hour]', djs.rate_per_hour || 0);
                 fd.append('user[dj_attributes][free_to_hire]', djs.free_to_hire || false);
+
+                _.each(djs.event_types, function(i){
+                    if(i.selected)
+                        fd.append('user[event_category_ids][]', i.id)
+                });
+                _.each(djs.genres, function(i){
+                    if(i.selected)
+                        fd.append('user[genre_ids][]', i.id)
+                });
+                _.each(djs.equipments, function(i){
+                    if(i.selected)
+                        fd.append('user[equipment_ids][]', i.id)
+                });
 
                 if(djs.avatar.file){
                     fd.append('user[avatar]', djs.avatar.file);

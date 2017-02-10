@@ -5,7 +5,7 @@
         h3
           | {{ I18n.t('dj.edit' ) }}
         .ibox-content
-          form ng-submit="submitDj()" name="DjForm" novalidate=true
+          form.edit-profile ng-submit="submitDj()" name="DjForm" novalidate=true
             .form-group
               .row
                 .col-sm-2
@@ -135,17 +135,64 @@
                     | {{ error }}
 
               .hr-line-dashed
+
+            .form-group
+              .row
+                .col-sm-2
+                  label.control-label
+                    | Genres:
+                .col-sm-10
+                  .col-sm-4.col-lg-3.col-xs-12 ng-repeat="genre in dj.genres"
+                    input.inline type="checkbox" value="{{ genre.id }}" ng-model="genre.selected"
+
+                      | {{ genre.title }}
+
+                  .error ng-repeat="error in validation_errors.genres"
+                    | {{ error }}
+
+              .hr-line-dashed
+
+            .form-group
+              .row
+                .col-sm-2
+                  label.control-label
+                    | Event types:
+                .col-sm-10
+                  .col-sm-4.col-lg-3.col-xs-12 ng-repeat="event_type in dj.event_types"
+                    input.inline type="checkbox" value="{{ event_type.id }}" ng-model="event_type.selected"
+
+                      | {{ event_type.title }}
+
+                  .error ng-repeat="error in validation_errors.event_types"
+                    | {{ error }}
+
+              .hr-line-dashed
+
+            .form-group
+              .row
+                .col-sm-2
+                  label.control-label
+                    | Equipments:
+                .col-sm-10
+                  .col-sm-4.col-lg-3.col-xs-12 ng-repeat="equipment in dj.equipments"
+                    input.inline type="checkbox" value="{{ equipment.id }}" ng-model="equipment.selected"
+
+                      | {{ equipment.title }}
+
+                  .error ng-repeat="error in validation_errors.equipments"
+                    | {{ error }}
+
             .form-group
               .row
                 .col-sm-2
                   label.control-label
                     | Rate per hour:
-                .form-row.small-text
+                .col-sm-10.form-row.small-text
 
-                  label.edit-profile
+                  label
                     | Mark as free to hire
                     input type="checkbox" ng-model="dj.free_to_hire"
-                  .col-sm-10 ng-hide="dj.free_to_hire"
+                  div ng-hide="dj.free_to_hire"
                     input.form-control type="number" placeholder="amount $" required=true class="{{ DjForm.rate_per_hour.$invalid && submitted ? 'validation-error' : ''}}" name="rate_per_hour" ng-model="dj.rate_per_hour" style="width: 100%"
                     .error ng-show="DjsForm.rate_per_hour.$invalid && submitted"
                       | {{ I18n.t('validations.cant_be_blank')}}

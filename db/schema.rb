@@ -38,8 +38,8 @@ ActiveRecord::Schema.define(version: 20170210122710) do
     t.datetime "from_date"
     t.datetime "to_date"
     t.integer  "rate"
-    t.integer  "status",     default: 0
     t.datetime "created_at"
+    t.integer  "status",     default: 0
     t.index ["dj_id"], name: "index_bookings_on_dj_id", using: :btree
     t.index ["event_id"], name: "index_bookings_on_event_id", using: :btree
   end

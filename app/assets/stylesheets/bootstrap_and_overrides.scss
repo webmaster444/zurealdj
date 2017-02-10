@@ -127,3 +127,9 @@ a:hover {
 .count-picker > *::selection{
   background: transparent;
 }
+.row::before{
+  font-size: 0px;
+}
+.row::after{
+  font-size: 0px;
+}

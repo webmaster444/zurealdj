@@ -86,9 +86,9 @@
                     if($state.current.name == 'edit_dj'){
                         djs.show($stateParams.id)
                             .success(function(data){
-                                $timeout(function(){
+
                                     $scope.dj = data.dj;
-                                }, 0);
+
                             }
                         )
                     }
