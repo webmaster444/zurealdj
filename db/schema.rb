@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170208125950) do
+ActiveRecord::Schema.define(version: 20170210122710) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -262,6 +262,8 @@ ActiveRecord::Schema.define(version: 20170208125950) do
     t.boolean "org_can_add_dj_to_favorites",    default: false
     t.boolean "dj_can_be_visible_for_browsing", default: false
     t.boolean "dj_can_confirm_booking",         default: false
+    t.boolean "free",                           default: false
+    t.integer "position"
   end
 
   create_table "terms_n_conditions_pages", force: :cascade do |t|

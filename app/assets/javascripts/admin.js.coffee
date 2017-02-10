@@ -36,6 +36,7 @@
 #= require angular-table-sort.directive
 #= require cropperjs/dist/cropper.min
 #= require jquery-price-format/jquery.priceformat
+#= require angular-drag-and-drop-lists
 # load angular modules
 #= require_tree ./directives
 #= require ./admin/application.module.js

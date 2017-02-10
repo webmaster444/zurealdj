@@ -9,40 +9,32 @@
 
                 if($state.current.name == 'subscriptions'){
 
-                    $scope.resetFilters = function(){
-                        $scope.filters = {
-                            per_page: 10,
-                            page: 1
-                        };
-                    };
-                    $scope.resetFilters();
-
-                    var timer = false;
-                    $scope.$watch('filters', function(){
-                        if(timer){
-                            $timeout.cancel(timer)
-                        }
-                        timer = $timeout(function(){
-                            $scope.page = 1;
-                            $scope.retrieve();
-                        }, 500)
-                    }, true);
+                    $scope.list = ["one", "two", "thre", "four", "five", "six"];
 
                     $scope.retrieve = function(){
-                        subscriptions.all($scope.filters)
+                        subscriptions.all()
                             .success(function (data) {
                                 $scope.subscriptions = data.subscriptions;
                                 $scope.total = data.total;
-                            }).error(function (data) {
 
+                                var dragtimer = false;
+                                var initializing = true;
+                                $scope.$watch('subscriptions', function(){
+                                    if(initializing){
+                                        initializing = false
+                                    }else{
+                                        if(dragtimer){
+                                            $timeout.cancel(dragtimer)
+                                        }
+                                        dragtimer = $timeout(function(){
+                                            subscriptions.updateOrder($scope.subscriptions);
+                                        }, 500)
+                                    }
+                                }, true)
                             });
                     };
 
                     $scope.retrieve();
-
-                    $scope.downloadCSV = function () {
-                        equipments.downloadCSV({query: $scope.filters})
-                    }
                 }
 
                 $scope.destroy = function(id){

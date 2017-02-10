@@ -33,6 +33,22 @@
               .row
                 .col-sm-2.text-right
                   label.control-label
+                    | Free:
+                .col-sm-2
+                  .checkbox
+                    input type="radio" name="free" ng-model="subscription.free" id="free" ng-value="true"
+                    label for="free"
+                      | Free
+                .col-sm-2
+                  .checkbox
+                    input type="radio" name="free" ng-model="subscription.free" id="non_free" ng-value="false"
+                    label for="non_free"
+                      | Non free
+
+            .form-group ng-hide="subscription.free"
+              .row
+                .col-sm-2.text-right
+                  label.control-label
                     | Price:
                 .col-sm-8
                   input.form-control price=true placeholder="Price" name="price" ng-model="subscription.price" prefix="$ " cents=',' thousands='.'
@@ -62,7 +78,7 @@
                         a ng-click="subscription.period = 'months'" months
                       li
                         a ng-click="subscription.period = 'years'" years
-                  .error ng-repeat="error in validation_errors.price"
+                  .error ng-repeat="error in validation_errors.period"
                     | {{ error }}
             .form-group
               .row

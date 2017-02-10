@@ -19,6 +19,7 @@
         'oitozero.ngSweetAlert',
         'price-format',
         'pagination',
+        'dndLists'
     ]);
 
     ZurealdjAdminApp.config(['$urlRouterProvider', '$stateProvider', '$httpProvider',

@@ -38,7 +38,11 @@ Rails.application.routes.draw do
           put :update
         end
       end
-      resources :subscriptions, only: [:index, :show, :create, :update]
+      resources :subscriptions, only: [:index, :show, :create, :update, :destroy] do
+        collection do
+          post :update_order
+        end
+      end
     end
 
     namespace :dj do
