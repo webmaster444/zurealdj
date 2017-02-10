@@ -23,50 +23,29 @@
 
                     $scope.resetFilters = function(){
                         $scope.filters = {
-                            per_page: 10
+                            per_page: 10,
+                            page: 1
                         };
                     };
 
                     $scope.resetFilters();
 
-                    $scope.page = 1;
-
                     var timer = false;
                     $scope.$watch('filters', function(){
                         if(timer){
-                            $scope.page = 1;
                             $timeout.cancel(timer)
                         }
                         timer = $timeout(function(){
-                            if($scope.page > Math.ceil($scope.count / $scope.filters.per_page)) $scope.page = 1;
+                            if($scope.filters.page > Math.ceil($scope.total / $scope.filters.per_page)) $scope.page = 1;
                             $scope.retrieveOrganizers();
                         }, 500)
                     }, true);
 
                     $scope.retrieveOrganizers = function(){
-                        organizers.all({page: $scope.page, query: $scope.filters}).success(function (data) {
+                        organizers.all($scope.filters).success(function (data) {
                             $scope.organizers = data.organizers;
-                            $scope.count = data.count;
-
-                            var pagination = $('#organizers-pagination');
-                            pagination.empty();
-                            pagination.removeData('twbs-pagination');
-                            pagination.unbind('page');
-
-                            if ($scope.count > 0) {
-                                pagination.twbsPagination({
-                                    totalPages: Math.ceil($scope.count / $scope.filters.per_page),
-                                    startPage: $scope.page,
-                                    visiblePages: 9,
-                                    onPageClick: function (event, page) {
-                                        $scope.page = page;
-                                        $scope.retrieveOrganizers();
-                                    }
-                                })
-                            }
-                        }).error(function (data) {
-
-                        });
+                            $scope.total = data.count;
+                        })
                     };
 
                     $scope.retrieveOrganizers();
@@ -115,9 +94,6 @@
 
                     $scope.submitOrganization = function(){
                         $scope.submitted = true;
-                        // if($scope.OrganizationForm.$invalid ){
-                        //     return false;
-                        // }
 
                         $scope.formPending = true;
                         organizers.upsert($scope.organizer)

@@ -1,9 +1,10 @@
 nav.navbar-default.navbar-static-side.ng-scope role="navigation"
-  .slimScrollDiv style="position: relative; overflow-y: scroll; width: auto; height: 100%;"
-    .sidebar-collapse style="overflow-y: scroll; width: auto; height: 100%;"
-      a href="/"
-        img.zureal-logo ng-src="/images/icons/img-logo-zu-big.png"
+  .slimScrollDiv style="position: relative; width: auto; height: 100%;"
+    .sidebar-collapse style="width: auto;"
       ul#side-menu.nav.metismenu side-navigation=""
+        li
+          a href="/"
+            img.zureal-logo ng-src="/images/icons/img-logo-zu-big.png"
         li ng-class=("{active: $state.current.name.includes('organizer')}")
           a href="#organizers"
             .organizers-nav-icon.nav-icon
@@ -29,7 +30,7 @@ nav.navbar-default.navbar-static-side.ng-scope role="navigation"
             .other-nav-icon.nav-icon
             span.nav-label Content
             span.fa.arrow
-          ul.nav.nav-second-level.collapse ng-class=("{in: ['cancelation', 'equipment', 'genre', 'event_categor'].includes($state.current.name) }")
+          ul.nav.nav-second-level.collapse ng-class=("{in: ['subscriptions', 'subscription', 'cancelation', 'equipment', 'genre', 'event_categor'].includes($state.current.name) }")
             li.active ui-sref-active="active"
               a href="#about_slides"
                 | About slides
@@ -42,6 +43,9 @@ nav.navbar-default.navbar-static-side.ng-scope role="navigation"
             li.active ui-sref-active="active"
               a href="#equipments"
                 | Equipments
+            li.active ui-sref-active="active"
+              a href="#subscriptions"
+                | Subscriptions
         li ng-class=("{active: ['about_slides', 'edit_who_we_are_page', 'edit_crew_page', 'edit_how_we_work_page', 'edit_policies_page', 'edit_terms_n_conditions_page', 'edit_cancelations_page'].includes($state.current.name) }")
           a href="#"
             .other-nav-icon.nav-icon

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170208081552) do
+ActiveRecord::Schema.define(version: 20170208125950) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -38,9 +38,8 @@ ActiveRecord::Schema.define(version: 20170208081552) do
     t.datetime "from_date"
     t.datetime "to_date"
     t.integer  "rate"
-    t.datetime "created_at"
     t.integer  "status",     default: 0
-    t.text     "comment"
+    t.datetime "created_at"
     t.index ["dj_id"], name: "index_bookings_on_dj_id", using: :btree
     t.index ["event_id"], name: "index_bookings_on_event_id", using: :btree
   end
@@ -245,9 +244,24 @@ ActiveRecord::Schema.define(version: 20170208081552) do
     t.integer  "stars",        default: 0
     t.datetime "created_at"
     t.integer  "booking_id"
+    t.text     "comment"
     t.index ["booking_id"], name: "index_stars_on_booking_id", using: :btree
     t.index ["from_user_id"], name: "index_stars_on_from_user_id", using: :btree
     t.index ["to_user_id"], name: "index_stars_on_to_user_id", using: :btree
+  end
+
+  create_table "subscriptions", force: :cascade do |t|
+    t.string  "title"
+    t.text    "description"
+    t.integer "price"
+    t.string  "period"
+    t.integer "period_count"
+    t.integer "subscription_for"
+    t.boolean "org_can_book_dj",                default: false
+    t.boolean "org_can_create_event",           default: false
+    t.boolean "org_can_add_dj_to_favorites",    default: false
+    t.boolean "dj_can_be_visible_for_browsing", default: false
+    t.boolean "dj_can_confirm_booking",         default: false
   end
 
   create_table "terms_n_conditions_pages", force: :cascade do |t|
@@ -283,6 +297,7 @@ ActiveRecord::Schema.define(version: 20170208081552) do
     t.float    "crop_scale_x"
     t.float    "crop_scale_y"
     t.boolean  "notifications",        default: true
+    t.datetime "subscribed_at"
   end
 
   create_table "who_we_are_pages", force: :cascade do |t|

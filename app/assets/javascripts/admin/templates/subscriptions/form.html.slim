@@ -1,0 +1,122 @@
+.wrapper.wrapper-content
+  .row.animated.fadeIn
+    .col-md-12
+      .ibox.float-e-margins
+        .ibox-content
+          h3 ng-show="$state.current.name == 'new_subscription'"
+            | New subscription
+          h3 ng-show="$state.current.name == 'edit_subscription'"
+            | Edit subscription
+          form ng-submit="submit()" name="SubscriptionForm" novalidate=true
+
+            .form-group
+              .row
+                .col-sm-2.text-right
+                  label.control-label
+                    | Title:
+                .col-sm-8
+                  input.form-control type="text" placeholder="Title" required=true name="title" ng-model="subscription.title"
+                  .error ng-repeat="error in validation_errors.title"
+                    | {{ error }}
+
+            .form-group
+              .row
+                .col-sm-2.text-right
+                  label.control-label
+                    | Description:
+                .col-sm-8
+                  textarea.form-control rows="3" placeholder="Description" name="description" ng-model="subscription.description"
+                  .error ng-repeat="error in validation_errors.description"
+                    | {{ error }}
+
+            .form-group
+              .row
+                .col-sm-2.text-right
+                  label.control-label
+                    | Price:
+                .col-sm-8
+                  input.form-control price=true placeholder="Price" name="price" ng-model="subscription.price" prefix="$ " cents=',' thousands='.'
+                  .error ng-repeat="error in validation_errors.price"
+                    | {{ error }}
+
+            .form-group
+              .row
+                .col-sm-2.text-right
+                  label.control-label
+                    | Period:
+                .col-sm-5
+                  input.form-control type="number" name="period_count" ng-model="subscription.period_count"
+                  .error ng-repeat="error in validation_errors.period_count"
+                    | {{ error }}
+                .col-sm-3
+                  .dropdown.dj-dropdown[uib-dropdown]
+                    a.dropdown-toggle.count-info [aria-expanded="false" aria-haspopup="true" uib-dropdown-toggle]
+                      | {{ subscription.period || 'Choose period' }}
+                      .caret
+                    ul.dropdown-menu[uib-dropdown-menu]
+                      li
+                        a ng-click="subscription.period = 'days'" days
+                      li
+                        a ng-click="subscription.period = 'weeks'" weeks
+                      li
+                        a ng-click="subscription.period = 'months'" months
+                      li
+                        a ng-click="subscription.period = 'years'" years
+                  .error ng-repeat="error in validation_errors.price"
+                    | {{ error }}
+            .form-group
+              .row
+                .col-sm-2.text-right
+                  label.control-label
+                    | For:
+                .col-sm-2
+                  .checkbox
+                    input type="radio" name="subscription_for" ng-model="subscription.subscription_for" id="subscription_for_dj" value="dj"
+                    label for="subscription_for_dj"
+                      | Dj
+                  .error ng-repeat="error in validation_errors.subscription_for"
+                    | {{ error }}
+                .col-sm-2
+                  .checkbox
+                    input type="radio" name="subscription_for" ng-model="subscription.subscription_for" id="subscription_for_organizer" value="organizer"
+                    label for="subscription_for_organizer"
+                      | Organizer
+            hr
+            .form-group ng-if="subscription.subscription_for == 'organizer'"
+              .row
+                .col-sm-2
+                .col-sm-2
+                  .checkbox
+                    input type="checkbox" name="subscription_for" ng-model="subscription.org_can_book_dj" id="org_can_book_dj"
+                    label for="org_can_book_dj"
+                      | Can book dj
+                .col-sm-2
+                  .checkbox
+                    input type="checkbox" name="org_can_create_event" ng-model="subscription.org_can_create_event" id="org_can_create_event"
+                    label for="org_can_create_event"
+                      | Can create event
+                .col-sm-2
+                  .checkbox
+                    input type="checkbox" name="org_can_add_dj_to_favorites" ng-model="subscription.org_can_add_dj_to_favorites" id="org_can_add_dj_to_favorites"
+                    label for="org_can_add_dj_to_favorites"
+                      | Can add dj to favorites
+
+            .form-group ng-if="subscription.subscription_for == 'dj'"
+              .row
+                .col-sm-2
+                .col-sm-2
+                  .checkbox
+                    input type="checkbox" name="dj_can_be_visible_for_browsing" ng-model="subscription.dj_can_be_visible_for_browsing" id="dj_can_be_visible_for_browsing"
+                    label for="dj_can_be_visible_for_browsing"
+                      | Visible for browsing
+                .col-sm-2
+                  .checkbox
+                    input type="checkbox" name="dj_can_confirm_booking" ng-model="subscription.dj_can_confirm_booking" id="dj_can_confirm_booking"
+                    label for="dj_can_confirm_booking"
+                      | Can confirm booking
+
+            .form-group
+              .row
+                .col-sm-4.col-sm-offset-2
+                  button.ladda-button.btn.btn-info data-style="expand-left" ladda="pending"
+                    | Save

@@ -2,18 +2,13 @@
 
 body
   font-family: 'CeraPro'
-  font-weight: normal
-  font-style: normal
-  font-stretch: normal
-  min-width: 1200px
-  overflow: scroll
   .navbar
     margin-left: 220px
   .navbar-default, .navbar-static-side
     margin-top: 0 !important
   .zureal-logo
-    width: 200px
-    margin: 30px 10px
+    width: 100px
+    margin: auto auto
   #side-menu
     li
       text-align: center
@@ -57,55 +52,56 @@ body
   word-wrap: break-word
   font-size: 16px !important
 
-thead
-  z-index: 1000
-  tr
-    th
-      border: 1px solid white
-      position: relative
-      padding: 6px 20px 6px 6px
-      background-color: $current-color
-      color: white
-      border-radius: 5px
-      .sort
-        position: absolute
-        top: 25%
-        right: 5px
-        display: inline
-        i.fa
-          cursor: pointer
-tbody
-  td
-    max-width: 100px
-    min-width: 100px
-    white-space: pre-wrap
-    word-wrap: break-word
-  .mw-100px
-    max-width: 100px
-  .mw-150px
-    max-width: 150px
-  .mw-200px
-    max-width: 200px
-  .td-photo
-    text-align: center
-    max-width: 100px
-    img
-      width: 100px
-      height: 100px
-      border-radius: 100px
-      display: inline-block
-  .col-actions
-    max-width: 50px
-  .col-social
-    text-align: center
-    max-width: 50px
-  .col-flag
-    padding-top: 25px !important
-    .flag
-      width: 50px !important
-      height: 50px !important
-      background-position: center
-      background-size: cover
+table
+  margin-top: 20px
+  border-collapse: collapse
+  border: 1px solid #dadada
+  thead
+    z-index: 1000
+    tr
+      th
+        border: 1px solid #dadada
+        position: relative
+        padding: 6px 20px 6px 6px
+        .sort
+          position: absolute
+          top: 25%
+          right: 5px
+          display: inline
+          i.fa
+            cursor: pointer
+  tbody
+    td
+      max-width: 100px
+      min-width: 100px
+      white-space: pre-wrap
+      word-wrap: break-word
+      vertical-align: middle !important
+    .mw-100px
+      max-width: 100px
+    .mw-150px
+      max-width: 150px
+    .mw-200px
+      max-width: 200px
+    .td-photo
+      text-align: center
+      max-width: 50px
+      img
+        width: 50px
+        height: 50px
+        border-radius: 100px
+        display: inline-block
+    .col-actions
+      max-width: 50px
+    .col-social
+      text-align: center
+      max-width: 50px
+    .col-flag
+      .flag
+        width: 20px !important
+        height: 20px !important
+        background-position: center
+        background-size: cover
 
 .social-icon
   display: inline-block
@@ -167,3 +163,49 @@ textarea.form-control
   input[type="checkbox"]
     display: initial
     margin: 0px 15px 0px 15px
+
+
+.dj-dropdown[uib-dropdown]
+  display: inline-block
+  position: relative
+  i.fa
+    position: absolute
+    top: 19px
+    right: 17px
+    font-size: 12px
+  [uib-dropdown-toggle]
+    border-radius: 100px
+    background-color: #ffffff
+    border: solid 1px #e6e6e6
+    font-size: 16px
+    font-weight: 500
+    color: #c6bfc7
+    outline: none
+    display: inline-block
+    padding: 5px 20px
+    width: 100%
+  [uib-dropdown-menu]
+    min-width: 100%
+    border-radius: 4px
+    background-color: #ffffff
+    box-shadow: 0 2px 20px 0 rgba(0, 0, 0, 0.08)
+    width: 100%
+    top: 115%
+    li
+      border-bottom: 1px solid #f5f5f5
+      height: 49px
+      padding-top: 6px
+      overflow-x: hidden
+      &:hover
+        background-color: #f0f0f0
+      a:hover
+        background-color: transparent
+      a
+        font-size: 16px
+        font-weight: 500
+        color: #555555
+.dj-dropdown.open
+  [uib-dropdown-toggle]
+    color: #555555
+    border: solid 1px #e1c3fd
+    box-shadow: 0 2px 20px 0 rgba(0, 0, 0, 0.08)

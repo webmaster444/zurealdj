@@ -1,41 +1,40 @@
 .wrapper.wrapper-content
-  .row.animated.fadeInRight
+  .row.animated.fadeIn
     .col-md-12
       .ibox.float-e-margins
         .ibox-content
-          h2
+          h3
             | {{ I18n.t('headers.organizers') }}
-          .filters-bar
-            .pull-left
-              div id="organizers-pagination" ng-hide="count <= filters.per_page"
-            .pull-right
-              .button.btn.btn-info> ng-click="downloadCSV()"
+          .row.filters-bar
+            .col-md-6
+              .button.btn.btn-info> ng-click="downloadCSV()" style="margin-bottom: 21px"
                 i.fa.fa-download
                 | Export CSV
+              .pagination pagination="true" page="filters.page" per_page="filters.per_page" total="total"
+            .col-md-6.text-right
               span.filter-descriptions
-                | {{ count }} {{ I18n.t('headers.organizers') }} found
+                | {{ total }} organizers found
 
-                .dropdown.filter-dropdown[uib-dropdown]
-                  a.dropdown-toggle.count-info [aria-expanded="false" aria-haspopup="true" uib-dropdown-toggle]
-                    | {{ filters.per_page }}
-                    .caret
-                  ul.dropdown-menu[uib-dropdown-menu]
-                    li
-                      a ng-click="filters.per_page = 10"
-                        | 10
-                    li
-                      a ng-click="filters.per_page = 20"
-                        | 20
-                    li
-                      a ng-click="filters.per_page = 50"
-                        | 50
+              .dropdown.filter-dropdown[uib-dropdown]
+                a.dropdown-toggle.count-info [aria-expanded="false" aria-haspopup="true" uib-dropdown-toggle]
+                  | {{ filters.per_page }}
+                  .caret
+                ul.dropdown-menu[uib-dropdown-menu]
+                  li
+                    a ng-click="filters.per_page = 10"
+                      | 10
+                  li
+                    a ng-click="filters.per_page = 20"
+                      | 20
+                  li
+                    a ng-click="filters.per_page = 50"
+                      | 50
 
               span.filter-descriptions<
                 | per page
               .button.btn.btn-filters.btn-gray data-toggle="collapse" data-target=".filters-container"
                 .fa.fa-filter
                 | Filters
-            .clearfix
 
             .filters-container.collapse
               .row
@@ -74,11 +73,12 @@
               tr
                 th
                   | {{ I18n.t('organizer.fields.photo') }}
-                th ng-model="filters" tablesort=true tablesort-name="name" tablesort-title="{{ I18n.t('organizer.fields.name') }}"
-                th ng-model="filters" tablesort=true tablesort-name="email" tablesort-title="{{ I18n.t('user.fields.email') }}"
-                th ng-model="filters" tablesort=true tablesort-name="city" tablesort-title="{{ I18n.t('organizer.fields.city') }}"
+                th ng-model="filters" tablesort=true tablesort-name="name"              tablesort-title="{{ I18n.t('organizer.fields.name') }}"
+                th ng-model="filters" tablesort=true tablesort-name="email"             tablesort-title="{{ I18n.t('user.fields.email') }}"
+                th ng-model="filters" tablesort=true tablesort-name="city"              tablesort-title="{{ I18n.t('organizer.fields.city') }}"
                 th ng-model="filters" tablesort=true tablesort-name="country_flag_code" tablesort-title="{{ I18n.t('organizer.fields.country') }}"
-                th ng-model="filters" tablesort=true tablesort-name="created_at"  tablesort-title="{{ I18n.t('organizer.fields.created_at') }}"
+                th ng-model="filters" tablesort=true tablesort-name="personal_url"      tablesort-title="Personal Url"
+                th ng-model="filters" tablesort=true tablesort-name="created_at"        tablesort-title="Registration Date"
                 th.text-right
                   | Actions
             tbody
@@ -95,9 +95,11 @@
                   span.flag class="{{ organizer.country.code }}"
                   | {{ organizer.country.title }}
                 td
+                  | {{ organizer.personal_url }}
+                td
                   | {{ organizer.created_at }}
                 td.text-right
-                  a.btn-xs.btn.btn-warning.btn-outline href="#organizer/{{organizer.id}}/edit"
+                  a.btn-xs.btn.btn-warning.btn-outline> href="#organizer/{{organizer.id}}/edit"
                     | {{ I18n.t('actions.edit') }}
                   a.btn-xs.btn.btn-danger.btn-outline ng-click="destroy(organizer.id)"
                     | {{ I18n.t('actions.delete') }}

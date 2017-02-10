@@ -40,6 +40,11 @@
                     templateUrl: 'landing/templates/home/index.html',
                     controller: 'HomeController'
                 })
+                .state('pricing',{
+                    url: '/pricing',
+                    templateUrl: 'landing/templates/pricing/index.html',
+                    controller: 'PricingController'
+                })
                 .state('static_pages',{
                     url: '/:page_name',
                     templateUrl: 'landing/templates/static_pages/index.html',

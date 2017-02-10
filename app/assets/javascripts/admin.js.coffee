@@ -35,7 +35,9 @@
 #= require angular-sweetalert/SweetAlert
 #= require angular-table-sort.directive
 #= require cropperjs/dist/cropper.min
+#= require jquery-price-format/jquery.priceformat
 # load angular modules
+#= require_tree ./directives
 #= require ./admin/application.module.js
 #= require_tree ./admin/factories
 #= require_tree ./admin/controllers

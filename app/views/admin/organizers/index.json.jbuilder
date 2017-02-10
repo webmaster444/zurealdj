@@ -1,12 +1,13 @@
-json.organizers @organizers.each do |organization|
-  json.id organization.id
-  json.created_at time_ago_in_words(organization.created_at) + ' ' + t('datetime.ago') + ' ' + t('datetime.at') + ' ' + organization.created_at.strftime("%H:%M")
-  json.city organization.city
-  json.country organization.country_flag
-  json.country_flag_code organization.country_flag_code
-  json.about organization.about
-  json.avatar paperclip_url(organization.avatar, :large)
-  json.name organization.name
-  json.email organization.email
+json.organizers @organizers.each do |organizer|
+  json.id                organizer.id
+  json.created_at        organizer.created_at.try(:strftime, "%d/%m/%Y")
+  json.city              organizer.city
+  json.country           organizer.country_flag
+  json.country_flag_code organizer.country_flag_code
+  json.about             organizer.about
+  json.avatar            paperclip_url(organizer.avatar, :large)
+  json.name              organizer.name
+  json.email             organizer.email
+  json.personal_url      organizer.personal_url
 end
 json.count @count

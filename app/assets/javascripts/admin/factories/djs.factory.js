@@ -43,12 +43,10 @@
 
             all: function(options){
                 var url = '/admin/djs.json?';
-                if(options.page)
-                    url = url + 'page=' + options.page + '&';
 
-                _.each(Object.keys(options.query), function(key){
-                    if(options.query[key])
-                        url = url + key + '=' + options.query[key] + '&';
+                _.each(Object.keys(options), function(key){
+                    if(options[key])
+                        url = url + key + '=' + options[key] + '&';
                 });
 
                 return $http.get(url);

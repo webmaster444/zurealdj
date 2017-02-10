@@ -1,0 +1,73 @@
+.wrapper.wrapper-content
+  .row.animated.fadeIn
+    .col-md-12
+      .ibox.float-e-margins
+        .ibox-content
+          h3
+            | Subscriptions
+          .row
+            .col-md-6
+              .button.btn.btn-info> ng-click="exportCSV()"
+                i.fa.fa-download
+                | Export CSV
+              div pagination="true" page="filters.page" per_page="filters.per_page"
+            .col-md-6.text-right
+              span.filter-descriptions
+                | {{ total }} {{ $state.current.name }} found
+
+              .dropdown.filter-dropdown[uib-dropdown]
+                a.dropdown-toggle.count-info [aria-expanded="false" aria-haspopup="true" uib-dropdown-toggle]
+                  | {{ filters.per_page }}
+                  .caret
+                ul.dropdown-menu[uib-dropdown-menu]
+                  li
+                    a ng-click="filters.per_page = 3"
+                      | 3
+                  li
+                    a ng-click="filters.per_page = 10"
+                      | 10
+                  li
+                    a ng-click="filters.per_page = 20"
+                      | 20
+                  li
+                    a ng-click="filters.per_page = 50"
+                      | 50
+
+              span.filter-descriptions<
+                | per page
+              .button.btn.btn-filters.btn-gray data-toggle="collapse" data-target=".filters-container"
+                .fa.fa-filter
+                | Filters
+              button.btn.btn-info ui-sref="new_subscription"
+                | Add subscription
+          .filters-container.collapse
+            .col-sm-3
+              input.form-control type="text" ng-model="filters.title" placeholder="{{ I18n.t('genre.fields.title') }}"
+            .row
+              .col-sm-offset-9.col-sm-3
+                .button.btn.btn-danger.btn-outline ng-models="filters" ng-click="resetFilters()" style="margin-top: 20px; float: right;" Reset
+
+          table.table.table-striped.table-responsive
+            thead
+              tr
+                th ng-model="filters" tablesort=true tablesort-name="title" tablesort-title="Title"
+                th ng-model="filters" tablesort=true tablesort-name="title" tablesort-title="{{ I18n.t('equipment.fields.title') }}"
+                th ng-model="filters" tablesort=true tablesort-name="created_at" tablesort-title="Created At"
+                th
+            tbody ng-show="total == 0"
+              td colspan="5"
+                .text-center
+                  | No results found
+            tbody
+              tr ng-repeat="subscription in subscriptions"
+                td
+                  | {{ subscription.title }}
+                td
+                  | {{ equipment.title }}
+                td
+                  | {{ equipment.created_at }}
+                td.text-right
+                  a.btn-xs.btn.btn-warning.btn-outline href="#equipment/{{equipment.id}}/edit"
+                    | {{ I18n.t('actions.edit') }}
+                  a.btn-xs.btn.btn-danger.btn-outline ng-click="destroy(equipment.id)"
+                    | {{ I18n.t('actions.delete') }}

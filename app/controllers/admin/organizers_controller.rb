@@ -8,8 +8,8 @@ class Admin::OrganizersController < Admin::BaseController
 
     respond_to do |f|
       f.json do
-        @organizers = User.find_by_sql(query.take(@per_page).skip((@page - 1) * @per_page).to_sql)
-        @count = User.find_by_sql(query.to_sql).count
+        @organizers = User.find_by_sql(Organizer.query(params).take(@per_page).skip((@page - 1) * @per_page).to_sql)
+        @count = User.find_by_sql(Organizer.query(params.merge({count: true})).to_sql).count
       end
 
       f.csv do
@@ -50,8 +50,6 @@ class Admin::OrganizersController < Admin::BaseController
     @organizer = Organizer.find_by_user_id params[:id]
   end
 
-  # related models actions
-
   private 
 
   def organizer_params
@@ -60,53 +58,6 @@ class Admin::OrganizersController < Admin::BaseController
 
   def user_update_params
     params.require(:organizer).permit :name, :email, :personal_url, :avatar, :about
-  end
-
-  def query(options={})
-    users = User.arel_table
-    organizers = Organizer.arel_table
-
-    fields = [
-        users[:id],
-        users[:name],
-        users[:email],
-        users[:about],
-        users[:avatar_file_name],
-        users[:avatar_content_type],
-        users[:avatar_file_size],
-        users[:avatar_updated_at],
-        organizers[:created_at],
-        organizers[:id].as('dj_id'),
-        organizers[:city],
-        organizers[:country_flag_code]
-    ]
-
-    q = users
-            .group(organizers[:id])
-            .group(users[:id])
-            .join(organizers).on(organizers[:user_id].eq(users[:id]))
-
-    q.where(users[:name].matches("%#{ params[:name] }%")) if params[:name].present?
-
-    model = Organizer.column_names.include?(params[:sort_column.to_s])? organizers: users
-
-    if params[:sort_column].present? && %w(asc desc).include?(params[:sort_type])
-      q = q.order(model[params[:sort_column.to_sym]].send(params[:sort_type].to_sym))
-    else
-      q = q.order(model[:id].desc)
-    end
-    countries = CountryFlag.find_by_country_name(params[:country])       if params[:country].present?
-    q.where(users[:name].matches("%#{params[:name]}%"))                  if params[:name].present?
-    q.where(organizers[:city].matches("%#{ params[:city] }%"))                  if params[:city].present?
-    q.where(organizers[:country_flag_code].in(countries))                       if params[:country].present?
-    q.where(organizers[:created_at].gteq(params[:date_from].to_date))           if params[:date_from].present?
-    q.where(organizers[:created_at].lteq(params[:date_to].to_date))             if params[:date_to].present?
-
-    if options[:count]
-      q.project("COUNT(*)")
-    else
-      q.project(fields)
-    end
   end
 
 end

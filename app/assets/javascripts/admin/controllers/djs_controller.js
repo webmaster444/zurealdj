@@ -18,17 +18,15 @@
                 });
 
                 if($state.current.name == 'djs'){
-                    $scope.dj = [];
 
                     $scope.resetFilters = function(){
                         $scope.filters = {
-                            per_page: 10
+                            per_page: 10,
+                            page: 1
                         };
                     };
 
                     $scope.resetFilters();
-
-                    $scope.page = 1;
 
                     var timer = false;
                     $scope.$watch('filters', function(){
@@ -37,35 +35,15 @@
                             $timeout.cancel(timer)
                         }
                         timer= $timeout(function(){
-                            if($scope.page > Math.ceil($scope.count / $scope.filters.per_page)) $scope.page = 1;
+                            if($scope.page > Math.ceil($scope.total / $scope.filters.per_page)) $scope.page = 1;
                             $scope.retrieveDjs();
                         }, 500)
                     }, true);
 
                     $scope.retrieveDjs = function(){
-                        djs.all({page: $scope.page, query: $scope.filters}).success(function (data) {
+                        djs.all($scope.filters).success(function (data) {
                             $scope.djs = data.djs;
-                            $scope.count = data.count;
-
-                            var pagination = $('#djs-pagination');
-                            pagination.empty();
-                            pagination.removeData('twbs-pagination');
-                            pagination.unbind('page');
-
-                            if($scope.count > 0){
-                                pagination.twbsPagination({
-
-                                    totalPages: Math.ceil($scope.count / $scope.filters.per_page),
-                                    startPage: $scope.page,
-                                    visiblePages: 9,
-                                    onPageClick: function (event, page) {
-                                        $scope.page = page;
-                                        $scope.retrieveDjs();
-                                    }
-                                })
-                            }
-                        }).error(function (data) {
-
+                            $scope.total = data.count;
                         });
                     };
 

@@ -38,6 +38,7 @@ Rails.application.routes.draw do
           put :update
         end
       end
+      resources :subscriptions, only: [:index, :show, :create, :update]
     end
 
     namespace :dj do

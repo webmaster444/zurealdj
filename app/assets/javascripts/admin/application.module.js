@@ -16,7 +16,9 @@
         'toaster',
         'angular-ladda',
         'AuthHttp',
-        'oitozero.ngSweetAlert'
+        'oitozero.ngSweetAlert',
+        'price-format',
+        'pagination',
     ]);
 
     ZurealdjAdminApp.config(['$urlRouterProvider', '$stateProvider', '$httpProvider',
@@ -196,6 +198,21 @@
                     url: '/about_slides',
                     templateUrl: 'admin/templates/about_slides/index.html',
                     controller: 'AboutSlidesController'
+                })
+                .state('new_subscription',{
+                    url: '/subscriptions/new',
+                    templateUrl: 'admin/templates/subscriptions/form.html',
+                    controller: 'SubscriptionsController'
+                })
+                .state('edit_subscription',{
+                    url: '/subscriptions/:id/edit',
+                    templateUrl: 'admin/templates/subscriptions/form.html',
+                    controller: 'SubscriptionsController'
+                })
+                .state('subscriptions',{
+                    url: '/subscriptions',
+                    templateUrl: 'admin/templates/subscriptions/index.html',
+                    controller: 'SubscriptionsController'
                 })
             ;
     }]);

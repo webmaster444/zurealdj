@@ -10,7 +10,6 @@ angular.module('dj.scroll').directive('djScroll', ['$compile', function($compile
             $(element).slimScroll({ height: element.css('height')});
             element.removeAttr('dj-scroll');
             $compile(element)(scope);
-
         }
     };
 }]);

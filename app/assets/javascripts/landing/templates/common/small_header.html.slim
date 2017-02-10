@@ -5,6 +5,9 @@ div class="{{ $state.current.name == 'home'? 'home' : 'pages' }}"
         img.small-logo.white-logo  src="/images/icons/img-logo-zu-small.png"
         img.small-logo.purple-logo  src="/images/icons/img-logo-zu-purple.png"
       div class="{{ isMobile()? 'text-center' : 'pull-right' }}"
+        a.head-link href="#pricing"
+          span
+            | Pricing
         a.head-link ng-click="$state.go('home'); openLoginDialog()" ng-hide="current_user"
           span
             | Log in
