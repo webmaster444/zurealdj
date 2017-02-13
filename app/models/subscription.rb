@@ -8,9 +8,11 @@ class Subscription < ApplicationRecord
   validates :title,            presence: true
   validates :description,      presence: true
   validates :price,            presence: true, unless: -> { free }
-  validates :period,           presence: true, inclusion: {in: %w(days weeks monts years)}
+  validates :period,           presence: true, inclusion: {in: %w(days weeks months years)}
   validates :period_count,     presence: true
   validates :subscription_for, presence: true, inclusion: {in: Subscription.subscription_fors.keys}
+
+  has_one :subscription
 
   def full_access
     if subscription_for == 'dj'

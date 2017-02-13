@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170210122710) do
+ActiveRecord::Schema.define(version: 20170212200025) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -300,6 +300,7 @@ ActiveRecord::Schema.define(version: 20170210122710) do
     t.float    "crop_scale_y"
     t.boolean  "notifications",        default: true
     t.datetime "subscribed_at"
+    t.integer  "subscription_id"
   end
 
   create_table "who_we_are_pages", force: :cascade do |t|

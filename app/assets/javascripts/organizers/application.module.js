@@ -104,6 +104,11 @@
                     templateUrl: 'organizers/templates/messages/index.html',
                     controller: 'MessagesController'
                 })
+                .state('pricing',{
+                    url: '/pricing',
+                    templateUrl: 'organizers/templates/pricing/index.html',
+                    controller: 'PricingController'
+                })
     }]);
 
     ZurealdjOrganizerApp.run(['$http', '$rootScope', '$state', 'AuthHttp', function($http, $rootScope, $state, AuthHttp){

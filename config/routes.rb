@@ -72,6 +72,7 @@ Rails.application.routes.draw do
       resources :bookings, only: [:update]
       resources :chat_rooms, only: [:index]
       resources :messages, only: [:index]
+      resources :subscriptions, only: [:index, :create]
     end
 
     namespace :organizer do
@@ -109,6 +110,7 @@ Rails.application.routes.draw do
       resources :bookings, only: [:create, :destroy]
       resources :chat_rooms, only: [:index]
       resources :messages, only: [:index]
+      resources :subscriptions, only: [:index, :create]
     end
 
     resources :attachments, only: [] do
@@ -150,5 +152,6 @@ Rails.application.routes.draw do
     resources :notifications, only: [:index, :update]
     resources :slides, only: [:index]
     resources :top_rated_djs, only: [:index]
+    resources :subscriptions, only: [:index]
   end
 end

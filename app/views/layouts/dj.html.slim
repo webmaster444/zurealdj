@@ -4,6 +4,7 @@ html(lang="en")
         = stylesheet_link_tag "user", :media => "all"
         = javascript_include_tag "application"
         = csrf_meta_tags
+        script type="text/javascript" src="https://js.stripe.com/v2/"
     body ng-app="ZurealdjDjApp" ng-controller="HomeController" ng-init="flash = { message: '#{ flash[:message] }', error: '#{ flash[:error] }' }"
       div.dj-page
         div ng-include="'djs/templates/common/topnavbar.html'" ng-hide="no_second_navbar"

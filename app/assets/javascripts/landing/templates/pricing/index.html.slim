@@ -1,5 +1,35 @@
 div.page.static-pages
   div ng-include="'landing/templates/common/small_header.html'"
-  .page-block
-    div.pages-content ng-bind-html="page"
-  div ng-include="'landing/templates/common/footer.html'"
+  .page-block.login-alert
+    .dj-header
+      | Pricing
+
+    .text-center
+      .error ng-repeat="error in validation_errors.role_id"
+        | {{ error }}
+      label
+        .btn.btn-check class="btn-organizer{{ user_type == 'organizer'? '-active': '-passive' }}" style="margin-right: 40px"
+          .circle-white
+          span
+            | Organiser
+        input.hide type="radio" value="organizer" ng-model="user_type"
+
+      label
+        .btn.btn-check class="btn-artist{{ user_type == 'dj'? '-active': '-passive' }}" style="margin-left: 40px"
+          .circle-white
+          span
+            | Artist
+        input.hide type="radio" value="dj" ng-model="user_type"
+
+    .row
+      .col-md-10.col-md-offset-1
+        .text-center
+          .dj-subscription ng-repeat="subscription in subscriptions | filter: { subscription_for: user_type }"
+            .dj-subscription-title
+              | {{ subscription.title }}
+            .dj-subscription-description
+              | {{ subscription.description }}
+            .dj-subscription-price
+              | {{ subscription.price }}
+            a.dj-btn-outline ng-click="$state.go('home'); openRegistrationDialog(user_type)"
+              | Get Started
