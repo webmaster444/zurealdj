@@ -53,7 +53,9 @@ class Admin::OrganizersController < Admin::BaseController
   private 
 
   def organizer_params
-    params.require(:organizer).permit :city, :country_flag_code, :address
+    allowed_params = params.require(:organizer).permit :city, :country_flag_code, :address
+    allowed_params[:id] = @organizer.id
+    allowed_params
   end
 
   def user_update_params
