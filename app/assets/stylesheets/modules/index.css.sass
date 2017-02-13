@@ -21,7 +21,7 @@
       font-size: 16px
     .name, .event-title
       color: #555555
-    a.name, .event-title
+    a.name
       &:hover
         color: $current-color
     .genres
@@ -63,6 +63,7 @@
   border: solid 1px #f5f5f5
   margin: 40px 0
   position: relative
+  display: block
   .event-image
     width: 200px
     height: 200px
@@ -83,8 +84,9 @@
       margin-top: 25px
       td
         padding: 4px 0
+        padding-right: 20px
       td.light-grey
-        min-width: 120px
+        min-width: 90px
   .djs-count
     display: none
   .djs

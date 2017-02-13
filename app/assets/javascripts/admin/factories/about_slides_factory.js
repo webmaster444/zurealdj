@@ -9,12 +9,13 @@
                 return $http.get('/admin/about_slides/' + id + '.json');
             },
             upsert: function(slide){
+                var url = "/admin/about_slides";
                 var fd = new FormData();
 
                 fd.append('slide[content]', slide.content || '');
 
                 if(slide.id){
-                    return $http.put(url + slide.id, fd, {
+                    return $http.put(url + '/' + slide.id, fd, {
                         transformRequest: angular.identity,
                         headers: {'Content-Type': undefined}
                     });

@@ -64,7 +64,7 @@
         .content-title
           | Notifications
         .zureal-checkbox
-          input type="checkbox" ng-model="user.notifications" id="notifications"
+          input type="checkbox" ng-model="user.notifications" id="notifications" ng-change="updateSettings()"
           label for="notifications"
             span
             | Mail notifications

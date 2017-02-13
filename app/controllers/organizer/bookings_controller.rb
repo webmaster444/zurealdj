@@ -24,22 +24,27 @@ class Organizer::BookingsController < Organizer::BaseController
     allowed_params = params.permit :dj_id, :event_id, :from_date, :from_time, :to_date, :to_time, :rate
 
     from_date = nil
+
     if params[:from_date].present? && params[:from_time].present?
       from_date = Date.parse(params[:from_date])
 
       /^(?<hour>.*):(?<minute>.*)\s(?<meridiem>.*)/i =~ params[:from_time]
-      from_date.change(hour: hour, minute: minute )
-      from_date += meridiem == 'AM' ? 0 : 12
+
+      from_date = DateTime.new  from_date.year, from_date.month, from_date.day, hour.to_i + (meridiem == 'AM' ? 0 : 12), minute.to_i
     end
+
+    allowed_params[:from_date] = from_date
 
     to_date = nil
     if params[:to_date].present? && params[:to_time].present?
       to_date = Date.parse(params[:to_date])
 
       /^(?<hour>.*):(?<minute>.*)\s(?<meridiem>.*)/i =~ params[:to_time]
-      to_date.change(hour: hour, minute: minute )
-      to_date += meridiem == 'AM' ? 0 : 12
+
+      to_date = DateTime.new  to_date.year, to_date.month, to_date.day, hour.to_i + (meridiem == 'AM'? 0 : 12), minute.to_i
     end
+
+    allowed_params[:to_date] = to_date
 
     user = User.find(allowed_params[:dj_id])
 

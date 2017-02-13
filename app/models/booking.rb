@@ -13,6 +13,8 @@ class Booking < ActiveRecord::Base
 
   after_create :notify
 
+  validate :date_validation
+
   enum status: {
     pending: 0,
     confirmed: 1,
@@ -25,6 +27,12 @@ class Booking < ActiveRecord::Base
     Notification.create to_user: dj.user,
                         notification_type: :booking_requested,
                         event_id: self.event_id
+  end
+
+
+  def date_validation
+    errors[:to_date] << "To Date must be greater than from date." if to_date < from_date
+    to_date < from_date
   end
 
 end

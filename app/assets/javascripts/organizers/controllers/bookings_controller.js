@@ -44,7 +44,11 @@
 
                 $scope.save = function(date){
                     $scope.booking.dj_id = $scope.user.id;
-                    bookings.book($scope.booking).error(function(data){
+                    bookings.book($scope.booking)
+                        .success(function(){
+                            $scope.closeThisDialog();
+                        })
+                        .error(function(data){
                         $scope.validation_errors = data.errors;
                     })
                 }

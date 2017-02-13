@@ -70,7 +70,7 @@
 
     .text-center.events-count
       | {{ events.length }} of {{ count }} Events
-  .event-item ng-repeat="event in events track by $index"
+  a.event-item ng-repeat="event in events track by $index" href="#events/{{ event.id }}"
     span.status class="{{ event.status }}"
       | {{ event.status }}
     .djs
@@ -81,7 +81,7 @@
       | {{ event.djs.length }} DJ's
     img.event-image ng-src="{{ event.image }}"
     .event-inf
-      a.event-title href="#events/{{ event.id }}"
+      .event-title
         | {{ event.title }}
       .small-text.address
         span ng-show="event.city"
@@ -96,11 +96,19 @@
             | Start date:
           td.small-text
             | {{ event.start_date }}
+          td.small-text.light-grey
+            | Start time:
+          td.small-text
+            | {{ event.start_time }}
         tr
           td.small-text.light-grey
             | End date:
           td.small-text
             | {{ event.end_date }}
+          td.small-text.light-grey
+            | End time:
+          td.small-text
+            | {{ event.end_time }}
 
   .show-more
     a.show-more ng-click="showMore()" ng-hide="events.length == count"

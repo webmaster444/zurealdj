@@ -21,8 +21,6 @@ class AboutSlide < ApplicationRecord
             query = query.order(slides[:id].desc)
         end
 
-        query.where(slides[:title].matches("%#{ params[:title] }%")) if params[:title].present?
-
         query
     end
 end

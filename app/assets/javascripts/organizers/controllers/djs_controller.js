@@ -144,7 +144,7 @@
                     $scope.book = function(){
                         ngDialog.open({
                             template: 'organizers/templates/bookings/form.html',
-                            className: 'ngdialog-theme-default dj-mobile-ng-dialog',
+                            className: 'ngdialog-theme-default dj-mobile-ng-dialog org-form',
                             controller: 'BookingsController',
                             scope: $scope
                         });

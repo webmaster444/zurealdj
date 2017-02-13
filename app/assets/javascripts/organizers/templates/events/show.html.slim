@@ -28,9 +28,19 @@
                 | {{ event.start_date }}
             tr
               td.td-title
+                | Start time:
+              td.td-content
+                | {{ event.start_time }}
+            tr
+              td.td-title
                 | End date:
               td.td-content
                 | {{ event.end_date }}
+            tr
+              td.td-title
+                | End time:
+              td.td-content
+                | {{ event.end_time }}
             tr
               td.td-title
                 | Status:

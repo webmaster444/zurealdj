@@ -9,7 +9,16 @@
                 $scope.I18n = I18n;
 
                 $scope.activeEdit = 0;
-                $scope.default_data = true;
+
+                $scope.updateSettings = function(){
+                    settings.updateNotifications($scope.user)
+                        .success(function(){
+
+                        })
+                        .error(function(data){
+
+                        })
+                };
 
                 $scope.retrieveSettings = function() {
                     settings.show().success(function(data){
@@ -36,26 +45,5 @@
                             $scope.processing = false;
                         })
                 };
-
-                var timer = false;
-                $scope.$watch('user.notifications', function(){
-                    if(timer){
-                        $timeout.cancel(timer)
-                    }
-                    timer = $timeout(function(){
-                        if(!$scope.default_data) {
-                            settings.updateNotifications($scope.user)
-                                .success(function(){
-
-                                })
-                                .error(function(data){
-
-                                })
-                        }
-                        else{
-                            $scope.default_data = false;
-                        }
-                    }, 500)
-                }, true);
         }])
 }());

@@ -1,70 +1,71 @@
-.zurealdj-header-1
-  | Booking Request
+.book-now
+  .zurealdj-header-1
+    | Booking Request
 
-.form-group.dj-form-group
-  .row
-    .col-xs-2
-      label.form-title
-        | Event
-    .col-xs-10
-      ui-select.dj-ui-select ng-model="booking.event" ng-click="validation_errors.event = null"
-        ui-select-match placeholder="Select Event"
-          span ng-bind="$select.selected.title"
-        ui-select-choices refresh="retrieveEvents($select.search)" refresh-delay='500' repeat="event in events track by event.id"
-          span ng-bind="event.title"
-      .error ng-repeat="error in validation_errors.event_id"
-        | {{ error }}
+  .form-group.dj-form-group
+    .row
+      .col-xs-2
+        label.form-title
+          | Event
+      .col-xs-10
+        ui-select.dj-ui-select ng-model="booking.event" ng-click="validation_errors.event = null"
+          ui-select-match placeholder="Select Event"
+            span ng-bind="$select.selected.title"
+          ui-select-choices refresh="retrieveEvents($select.search)" refresh-delay='500' repeat="event in events track by event.id"
+            span ng-bind="event.title"
+        .error ng-repeat="error in validation_errors.event_id"
+          | {{ error }}
 
-.form-group.dj-form-group
-  .row
-    .col-xs-2
-      label.form-title
-        | From
-    .col-xs-5
-      p.dj-datepicker ng-class="{'active': from_date_opened}" ng-click="from_date_opened = true"
-        input type="text" uib-datepicker-popup="{{ 'dd/MM/yyyy' }}" ng-model="booking.from_date" is-open="from_date_opened" datepicker-options="fromDateOptions" close-text="Close" alt-input-formats="altInputFormats" show-button-bar="false"
-        i.fa.fa-chevron-down
-    .col-xs-5
-      span[timepicker ng-model="booking.from_time" placeholder="'Start Time'"]
-  .row
-    .col-xs-2
-    .col-xs-10
-      .error ng-repeat="error in validation_errors.from_date"
-        | {{ error }}
+  .form-group.dj-form-group
+    .row
+      .col-xs-2
+        label.form-title
+          | From
+      .col-xs-5
+        p.dj-datepicker ng-class="{'active': from_date_opened}" ng-click="from_date_opened = true"
+          input type="text" uib-datepicker-popup="{{ 'dd/MM/yyyy' }}" ng-model="booking.from_date" is-open="from_date_opened" datepicker-options="fromDateOptions" close-text="Close" alt-input-formats="altInputFormats" show-button-bar="false"
+          i.fa.fa-chevron-down
+      .col-xs-5
+        span[timepicker ng-model="booking.from_time" placeholder="'Start Time'"]
+    .row
+      .col-xs-2
+      .col-xs-10
+        .error ng-repeat="error in validation_errors.from_date"
+          | {{ error }}
 
-.form-group.dj-form-group
-  .row
-    .col-xs-2
-      label.form-title
-        | To
-    .col-xs-5
-      p.dj-datepicker ng-class="{'active': to_date_opened}" ng-click="to_date_opened = true"
-        input type="text" uib-datepicker-popup="{{ 'dd/MM/yyyy' }}" ng-model="booking.to_date" is-open="to_date_opened" datepicker-options="toDateOptions" close-text="Close" alt-input-formats="altInputFormats" show-button-bar="false"
-        i.fa.fa-chevron-down
-    .col-xs-5
-      span[timepicker ng-model="booking.to_time" placeholder="'End Time'"]
-  .row
-    .col-xs-2
-    .col-xs-10
-      .error ng-repeat="error in validation_errors.to_date"
-        | {{ error }}
+  .form-group.dj-form-group
+    .row
+      .col-xs-2
+        label.form-title
+          | To
+      .col-xs-5
+        p.dj-datepicker ng-class="{'active': to_date_opened}" ng-click="to_date_opened = true"
+          input type="text" uib-datepicker-popup="{{ 'dd/MM/yyyy' }}" ng-model="booking.to_date" is-open="to_date_opened" datepicker-options="toDateOptions" close-text="Close" alt-input-formats="altInputFormats" show-button-bar="false"
+          i.fa.fa-chevron-down
+      .col-xs-5
+        span[timepicker ng-model="booking.to_time" placeholder="'End Time'"]
+    .row
+      .col-xs-2
+      .col-xs-10
+        .error ng-repeat="error in validation_errors.to_date"
+          | {{ error }}
 
-.form-group.dj-form-group
-  .row
-    .col-xs-2
-      label.form-title
-        | Booking Rate
-    .col-xs-10
-      input.dj-form-control type="number" min="0" ng-model="booking.rate"
-      .error ng-repeat="error in validation_errors.to_date"
-        | {{ error }}
+  .form-group.dj-form-group
+    .row
+      .col-xs-2
+        label.form-title
+          | Booking Rate
+      .col-xs-10
+        input.dj-form-control type="number" min="0" ng-model="booking.rate"
+        .error ng-repeat="error in validation_errors.to_date"
+          | {{ error }}
 
-hr
-  .row
-    .col-xs-6
-      a.btn.btn-outline-primary ng-click="closeThisDialog()"
-        | Cancel
+  hr
+    .row
+      .col-xs-6
+        a.btn.btn-outline-primary ng-click="closeThisDialog()"
+          | Cancel
 
-    .col-xs-6.text-right
-      a.btn.btn-primary ng-click="save()"
-        | Request to Book
+      .col-xs-6.text-right
+        a.btn.btn-primary ng-click="save()"
+          | Request to Book
