@@ -18,7 +18,7 @@
             $scope.SocketApp || ($scope.SocketApp = {});
 
             $scope.retrieveChatRooms = function () {
-                chat_rooms.all($scope.filters).success(function (data) {
+                chat_rooms.all($scope.q).success(function (data) {
                     $scope.events = data.events;
                     $scope.count = data.count;
                 }).error(function (data) {
@@ -116,5 +116,16 @@
                     $('.chat-discussion').slimScroll({scrollTo: bottomCoord});
                 }, 300)
             };
+
+            var timer = false;
+            $scope.$watch('q', function(){
+                if(timer){
+                    $timeout.cancel(timer)
+                }
+                timer = $timeout(function(){
+                    $scope.retrieveChatRooms();
+                }, 500)
+            }, true);
+
         }])
 }());

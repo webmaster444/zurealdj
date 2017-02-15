@@ -4,14 +4,7 @@
         return {
 
             all: function(options){
-
-                var url = '/organizer/chat_rooms.json?';
-
-                _.each(Object.keys(options), function(key){
-                    if(options[key])
-                        url += key + '=' + options[key] + '&';
-                });
-
+                var url = '/organizer/chat_rooms.json?q=' + options;
                 return $http.get(url);
             }
         }
