@@ -1,7 +1,11 @@
+require 'sidekiq/web'
+
 Rails.application.routes.draw do
+
   resources :country_flags, only: [:index]
 
   mount ActionCable.server => '/cable'
+  mount Sidekiq::Web, at: '/sidekiq'
 
   root to: 'pages#index'
 

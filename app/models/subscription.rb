@@ -12,8 +12,6 @@ class Subscription < ApplicationRecord
   validates :period_count,     presence: true
   validates :subscription_for, presence: true, inclusion: {in: Subscription.subscription_fors.keys}
 
-  has_one :subscription
-
   def full_access
     if subscription_for == 'dj'
       dj_can_be_visible_for_browsing && dj_can_confirm_booking

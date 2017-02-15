@@ -21,7 +21,10 @@ class Dj::SubscriptionsController < Dj::BaseController
       )
     end
 
-    current_user.update_attribute :subscription_id, @subscription.id
+    current_user.subscription_id = @subscription.id
+    current_user.subscribed_at = Time.now
+    current_user.subscription_expires_at = Time.now + @subscription.period_count.send(@subscription.period)
+    current_user.save
 
     render json: {message: "Subscription purchased."}
 

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170212200025) do
+ActiveRecord::Schema.define(version: 20170214145339) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -287,8 +287,8 @@ ActiveRecord::Schema.define(version: 20170212200025) do
     t.integer  "avatar_file_size"
     t.datetime "avatar_updated_at"
     t.string   "personal_url"
-    t.integer  "dj_step",              default: 0
-    t.integer  "organizer_step",       default: 0
+    t.integer  "dj_step",                 default: 0
+    t.integer  "organizer_step",          default: 0
     t.string   "company_name"
     t.text     "about"
     t.float    "crop_x"
@@ -298,9 +298,10 @@ ActiveRecord::Schema.define(version: 20170212200025) do
     t.float    "crop_rotate"
     t.float    "crop_scale_x"
     t.float    "crop_scale_y"
-    t.boolean  "notifications",        default: true
+    t.boolean  "notifications",           default: true
     t.datetime "subscribed_at"
     t.integer  "subscription_id"
+    t.datetime "subscription_expires_at"
   end
 
   create_table "who_we_are_pages", force: :cascade do |t|

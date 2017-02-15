@@ -1,0 +1,4 @@
+:verbose: false
+:concurrency:  25
+:queues:
+  - [subscription, 6]
