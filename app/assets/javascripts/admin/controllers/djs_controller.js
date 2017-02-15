@@ -35,7 +35,7 @@
                             $timeout.cancel(timer)
                         }
                         timer= $timeout(function(){
-                            if($scope.page > Math.ceil($scope.total / $scope.filters.per_page)) $scope.page = 1;
+                            if($scope.filters.page > Math.ceil($scope.total / $scope.filters.per_page)) $scope.filters.page = 1;
                             $scope.retrieveDjs();
                         }, 500)
                     }, true);

@@ -13,7 +13,7 @@
               .pagination pagination="true" page="filters.page" per_page="filters.per_page" total="total"
             .col-md-6.text-right
               span.filter-descriptions
-                | {{ count }} {{ I18n.t('headers.djs') }} found
+                | {{ total }} {{ I18n.t('headers.djs') }} found
 
               .dropdown.filter-dropdown[uib-dropdown]
                 a.dropdown-toggle.count-info [aria-expanded="false" aria-haspopup="true" uib-dropdown-toggle]
@@ -77,7 +77,7 @@
                   .col-sm-offset-9.col-sm-3
                     .button.btn.btn-danger.btn-outline ng-models="filters" ng-click="resetFilters()" style="margin-top: 20px; float: right;" Reset
 
-          table.table.table-striped.table-responsive.bklv-table
+          table.table.table-striped.table-responsive
             thead
               tr
                 th

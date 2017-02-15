@@ -1,12 +1,12 @@
 .filters-bar
   .pull-left
-    div id="{{ $state.current.name }}-pagination" ng-hide="count <= filters.per_page"
-  .pull-right
     .button.btn.btn-info> ng-click="downloadCSV()"
       i.fa.fa-download
       | Export CSV
+    .pagination pagination="true" page="page" per_page="filters.per_page" total="total" ng-hide="total <= filters.per_page"
+  .pull-right
     span.filter-descriptions
-      | {{ count }} {{ $state.current.name }} found
+      | {{ total }} {{ $state.current.name }} found
 
     .dropdown.filter-dropdown[uib-dropdown]
       a.dropdown-toggle.count-info [aria-expanded="false" aria-haspopup="true" uib-dropdown-toggle]

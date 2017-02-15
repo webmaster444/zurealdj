@@ -5,8 +5,9 @@ json.events @events.each do |event|
   json.city event.city
   json.country event.country_flag
   json.address event.address
-  json.start_date event.start_date
-  json.end_date event.end_date
-  json.image event.image
+  json.start_date event.start_date.strftime("%d/%m/%Y ") + timeformat(event.start_date) if event.start_date.present?
+  json.end_date event.end_date.strftime("%d/%m/%Y ") + timeformat(event.end_date) if event.end_date.present?
+  json.image paperclip_url(event.image, :small)
+  json.dj_slots event.dj_slots
 end
 json.count @count

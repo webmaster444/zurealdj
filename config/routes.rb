@@ -13,7 +13,7 @@ Rails.application.routes.draw do
     namespace :admin do
       resources :djs, only: [:index, :update, :destroy, :show]
       resources :bookings, only: [:index, :create, :update, :destroy, :show]
-      resources :events, only: [:index, :create, :update, :destroy, :show]
+      resources :events, only: [:index, :destroy, :show]
       resources :genres, only: [:index, :create, :update, :destroy, :show]
       resources :event_categories, only: [:index, :create, :update, :destroy, :show]
       resources :equipments, only: [:index, :create, :update, :destroy, :show]

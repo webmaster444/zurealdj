@@ -17,11 +17,17 @@
                     $scope.flags = data.flags;
                 });
 
-                $scope.filters = {
-                    per_page: 10
-                };
-
                 if($state.current.name == 'events'){
+
+                    $scope.resetFilters = function(){
+                        $scope.filters = {
+                            per_page: 10,
+                            page: 1
+                        };
+                    };
+
+                    $scope.resetFilters();
+
                     $scope.event = [];
 
                     var timer = false;
@@ -30,39 +36,25 @@
                             $timeout.cancel(timer)
                         }
                         timer= $timeout(function(){
-                            if($scope.page > Math.ceil($scope.count / $scope.filters.per_page)) $scope.page = 1;
+                            if($scope.filters.page > Math.ceil($scope.total / $scope.filters.per_page)) $scope.filters.page = 1;
                             $scope.retrieveEvents();
                         }, 500)
                     }, true);
 
-                    $scope.page = 1;
                     $scope.retrieveEvents = function(){
-                        events.all({page: $scope.page, query: $scope.filters}).success(function (data) {
+                        events.all($scope.filters).success(function (data) {
                             $scope.events = data.events;
-                            $scope.count = data.count;
-
-                            var pagination = $('#events-pagination');
-                            pagination.empty();
-                            pagination.removeData('twbs-pagination');
-                            pagination.unbind('page');
-
-                            if($scope.count > 0){
-                                pagination.twbsPagination({
-                                    totalPages: Math.ceil($scope.count / $scope.filters.per_page),
-                                    startPage: $scope.page,
-                                    visiblePages: 9,
-                                    onPageClick: function (event, page) {
-                                        $scope.page = page;
-                                        $scope.retrieveEvents();
-                                    }
-                                })
-                            }
+                            $scope.total = data.count;
                         }).error(function (data) {
 
                         });
                     };
 
                     $scope.retrieveEvents();
+
+                    $scope.downloadCSV = function(){
+                        events.downloadCSV({query: $scope.filters})
+                    }
                 }
 
                 $scope.destroy = function(id){
@@ -89,40 +81,6 @@
                     );
                 };
 
-                if($state.current.name == 'new_event' || $state.current.name == 'edit_event'){
-
-                    $scope.event = {};
-
-
-                    if($state.current.name == 'edit_event'){
-                        events.show($stateParams.id)
-                            .success(function(data){
-                                $timeout(function(){
-                                    $scope.event = data.event;
-                                }, 0);
-                            }
-                        )
-                    }
-
-                    $scope.submitEvent = function(){
-                        $scope.submitted = true;
-                        if($scope.EventForm.$invalid ){
-                            return false;
-                        }
-
-                        $scope.formPending = true;
-                        events.upsert($scope.event)
-                            .success(function(){
-                                $scope.formPending = false;
-                                $state.go('events')
-                            })
-                            .error(function(data){
-                                $scope.validation_errors = data.errors;
-                                $scope.formPending = false;
-                            })
-                    };
-                }
-
                 if($state.current.name == 'show_event'){
                     events.show($stateParams.id).success(function(data){
                         $scope.event = data.event;
@@ -130,5 +88,4 @@
                     });
                 }
             }])
-
 }());
