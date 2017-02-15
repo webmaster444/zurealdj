@@ -10,23 +10,20 @@
             $scope.messagesPage = 1;
             var syncId = null;
 
-            $scope.filters = {
-                per_page: 10
-            };
+            $scope.q = '';
 
             $scope.SocketApp || ($scope.SocketApp = {});
 
             $scope.current_event = null;
 
             $scope.retrieveEvents = function () {
-                chat_rooms.all($scope.filters).success(function (data) {
+                chat_rooms.all($scope.q).success(function (data) {
                     $scope.events = data.events;
                     $scope.count = data.count;
                 }).error(function (data) {
 
                 });
             };
-
 
             $scope.retrieveEvents();
 
@@ -118,6 +115,16 @@
                     $('.chat-discussion').slimScroll({scrollTo: bottomCoord});
                 }, 300)
             };
+
+            var timer = false;
+            $scope.$watch('q', function(){
+                if(timer){
+                    $timeout.cancel(timer)
+                }
+                timer = $timeout(function(){
+                    $scope.retrieveEvents();
+                }, 500)
+            }, true);
 
         }])
 }());

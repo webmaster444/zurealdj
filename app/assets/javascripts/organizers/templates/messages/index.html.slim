@@ -9,6 +9,8 @@
         i.fa.fa-search
         input type="text" ng-model="q"
       ul[dj-scroll]
+        li.blank-chat ng-show="events.length == 0"
+          | Your chats will be here
         li ng-repeat="event in events"
           .chat-user
             img ng-src="{{event.image}}"
@@ -43,9 +45,11 @@
         a.dj-black-link ng-show="current_event"
           | {{ current_event.title }}
       .chat-discussion[dj-scroll]
-        .show-more
+        .show-more ng-show="current_event"
           a.show-more ng-click="retrieveOldMessages()"
             | Show More
+        .blank-chat ng-hide="current_event"
+          | Your chat history will be here
         .chat-message.right ng-repeat="message in messages"
           img.message-avatar ng-src="{{message.avatar}}"
           .message

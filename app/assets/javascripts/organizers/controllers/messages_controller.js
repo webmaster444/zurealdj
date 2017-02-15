@@ -10,9 +10,7 @@
             $scope.messagesPage = 1;
             var syncId = null;
 
-            $scope.filters = {
-                per_page: 10
-            };
+            $scope.q = '';
 
             $scope.current_event = null;
             $scope.SocketApp || ($scope.SocketApp = {});
