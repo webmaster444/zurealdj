@@ -26,3 +26,4 @@ json.notifications @notifications.each do |n|
     end
   end
 end
+json.count @count

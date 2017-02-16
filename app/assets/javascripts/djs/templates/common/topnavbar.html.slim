@@ -27,7 +27,7 @@
                       | Notifications
                   div ng-include="'common/templates/notifications-dropdown.html'"
                   .dj-dropdown-footer
-                    a.pink-link href="#notifications"
+                    a.pink-link href="#notifications" onclick="$('body').trigger('click')"
                       | Show All
 
             li.desktop-only
@@ -38,6 +38,14 @@
                     | {{ $current_user.name }}
                   .drop<
                 ul[uib-dropdown-menu]
+                  li
+                    table
+                      tr
+                        td.plan-title
+                          | {{ $current_user.subscription.title || "Limited" }}
+                        td.upgrade_plan
+                          a.upgrade_plan href="#pricing"
+                            | Upgrade plan
                   li
                     a href="#profile"
                       | Profile

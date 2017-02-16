@@ -14,6 +14,12 @@ json.about @user.about
 json.genres_string @user.genres.map(&:title).join(', ')
 json.event_types_string @user.event_categories.map(&:title).join(', ')
 
+subscription = Subscription.find @user.subscription_id if @user.subscription_id
+
+json.subscription do
+  json.title subscription.title
+end if subscription
+
 json.event_types EventCategory.all.each do |event_type|
   json.title event_type.title
   json.id event_type.id

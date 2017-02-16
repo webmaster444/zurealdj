@@ -18,6 +18,12 @@ json.event_types_string @user.event_categories.map(&:title).join(', ')
 json.sample_url @user.dj.sample.url if @user.dj.sample.exists?
 json.sample_title @user.dj.sample_title #if @user.dj.sample.exists?
 
+subscription = Subscription.find @user.subscription_id if @user.subscription_id
+
+json.subscription do
+  json.title subscription.title
+end if subscription
+
 json.event_types EventCategory.all.each do |event_type|
   json.title event_type.title
   json.id event_type.id

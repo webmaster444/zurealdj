@@ -12,6 +12,7 @@
                 $scope.page += 1;
                 notifications.all({page: $scope.page, per_page: 10}).success(function(data){
                     $scope.notification_groups = $scope.notification_groups.concat(data.notifications);
+                    $scope.count = data.count;
                 })
             };
 

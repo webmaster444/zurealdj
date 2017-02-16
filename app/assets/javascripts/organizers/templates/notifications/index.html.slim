@@ -11,5 +11,5 @@
         .dj-gray-text
           | No new notifications
       .show-more
-        a ng-click="retrieveNotifications()"
+        a ng-click="retrieveNotifications()" ng-show="notification_groups.length < count"
           | Show more

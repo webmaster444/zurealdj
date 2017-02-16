@@ -50,6 +50,7 @@ class Organizer::DjsController < Organizer::BaseController
                 .join(events).on(events[:id].eq(bookings[:event_id]))
                 .join(organizers).on(organizers[:id].eq(events[:organizer_id]))
                 .where(stars[:to_user_id].eq params[:id])
+                .where(stars[:comment].not_eq(nil) && stars[:comment].not_eq(""))
 
     query = query.order(stars[:created_at].desc)
 

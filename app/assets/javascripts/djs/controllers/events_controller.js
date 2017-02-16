@@ -82,9 +82,14 @@
                 }
 
                 if($state.current.name == 'show_event'){
-                    events.show($stateParams.id).success(function(data){
-                        $scope.event = data;
-                    });
+
+                    $scope.retrieveEvent = function() {
+                        events.show($stateParams.id).success(function(data){
+                            $scope.event = data;
+                        });
+                    };
+
+                    $scope.retrieveEvent();
 
                     $scope.updateStatus = function() {
 
@@ -92,6 +97,7 @@
                             bookings.upsert({ id: $scope.event.booking_id, status: status })
                                 .success(function(){
                                     $scope.event.booking_status = status;
+                                    $scope.retrieveEvent();
                                 })
                                 .error(function(data){
 
