@@ -5,6 +5,10 @@ class Message < ApplicationRecord
   after_create_commit { MessageBroadcastJob.perform_later(self) }
 
   def user_avatar
-    sender.avatar.url :small
+    if sender.avatar_file_name
+      sender.avatar.url :small
+    else
+      "/images/icons/img-profile-photo-mini.png"
+    end
   end
 end

@@ -6,14 +6,30 @@ class Dj::ChatRoomsController < Dj::BaseController
     @per_page = 10 if @per_page < 1
 
     events = Event.arel_table
+    bookings = Booking.arel_table
 
-    query = events
-                .project(Arel.star)
+    fields = [
+        events[:id],
+        events[:created_at],
+        events[:title],
+        events[:image_file_name],
+        events[:image_content_type],
+        events[:image_file_size],
+        events[:image_updated_at]
+    ]
+
+    query = bookings
+                .group(bookings[:id])
+                .where(bookings[:dj_id].eq(@current_dj.id))
                 .group(events[:id])
+                .join(events).on(bookings[:event_id].eq(events[:id]))
                 .where(events[:title].matches("%#{ params[:q]}%"))
+                .project(fields)
                 .order(events[:created_at].desc)
-                .take(10)
 
-    @events = @current_dj.events.find_by_sql(query.to_sql)
+    count_query = query.clone.project('COUNT(*)')
+
+    @events = Event.find_by_sql(query.take(@per_page).skip((@page - 1) * @per_page).to_sql)
+    @count = Event.find_by_sql(count_query.to_sql).count
   end
 end

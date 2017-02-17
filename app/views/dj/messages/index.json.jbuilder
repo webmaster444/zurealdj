@@ -5,3 +5,4 @@ json.messages @messages.each do |m|
   json.date time_ago_in_words(m.created_at) + ' ago'
   json.id m.id
 end
+json.count @count

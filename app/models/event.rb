@@ -42,8 +42,19 @@ class Event < ActiveRecord::Base
     end
   end
 
-  def last_message
-    Message.where(event_id: self.id).last
+  def last_message dj_id, org_id
+    messages = Message.arel_table
+
+    query = messages
+                .project(Arel.star)
+                .group(messages[:id])
+                .where(messages[:event_id].eq(self.id))
+                .where(
+                    messages[:from_user_id].in([org_id, dj_id])
+                        .and(messages[:to_user_id].in([org_id, dj_id]))
+                )
+
+    Message.find_by_sql(query.to_sql).last
   end
 
   def booking_for(dj)

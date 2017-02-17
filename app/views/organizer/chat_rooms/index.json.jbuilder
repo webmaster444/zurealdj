@@ -11,11 +11,12 @@ json.events @events.each do |event|
   json.djs event.djs.each do |dj|
     json.id dj.user.id
     json.booking_id event.booking_for(dj).id
-    json.avatar dj.user.avatar.try(:url, :small)
+    json.avatar dj.user.avatar.try(:url, :small) if dj.user.avatar_file_name.present?
+    json.avatar "/images/icons/img-profile-photo-mini.png" unless dj.user.avatar_file_name.present?
     json.name dj.user.name
 
     json.unread_messages_count event.unread_messages_count_for(current_user, dj.user)
-    last_message = event.last_message
+    last_message = event.last_message(dj.user.id, current_user.id)
     json.last_message do
       json.user_avatar last_message.user_avatar
       json.body last_message.body

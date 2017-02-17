@@ -1,5 +1,4 @@
 json.events @events.each do |event|
-  next unless event.booking_for(@current_dj)
   json.id event.id
   json.title event.title
   json.image paperclip_url(event.image, :original)

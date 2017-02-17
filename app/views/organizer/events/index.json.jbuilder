@@ -4,7 +4,6 @@ json.events @events.each do |event|
   json.title event.title
   json.city event.city
   json.country CountryFlag.find(event['country_flag_code']).try(:[], :title)
-  json.address event.address
   json.start_date event.start_date.try(:strftime, "%d/%m/%Y") if event.start_date.present?
   json.start_time  timeformat(event.start_date) if event.start_date.present?
   json.end_date event.end_date.try(:strftime, "%d/%m/%Y") if event.end_date.present?

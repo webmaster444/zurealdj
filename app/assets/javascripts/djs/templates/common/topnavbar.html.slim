@@ -27,7 +27,7 @@
                       | Notifications
                   div ng-include="'common/templates/notifications-dropdown.html'"
                   .dj-dropdown-footer
-                    a.pink-link href="#notifications" onclick="$('body').trigger('click')"
+                    a.pink-link href="#notifications" ng-click="$parent.notificationsDropdownOpen = false"
                       | Show All
 
             li.desktop-only

@@ -15,11 +15,13 @@
             $scope.SocketApp || ($scope.SocketApp = {});
 
             $scope.current_event = null;
+            $scope.events = [];
+            $scope.eventsPage = 1;
 
             $scope.retrieveEvents = function () {
-                chat_rooms.all($scope.q).success(function (data) {
-                    $scope.events = data.events;
-                    $scope.count = data.count;
+                chat_rooms.all({ q: $scope.q, page: $scope.eventsPage, per_page: 1 }).success(function (data) {
+                    $scope.events = $scope.events.concat(data.events);
+                    $scope.eventsCount = data.count;
                 }).error(function (data) {
 
                 });
@@ -27,10 +29,20 @@
 
             $scope.retrieveEvents();
 
+            $scope.showMoreEvents = function(){
+                if($scope.events.length < $scope.eventsCount){
+                    $scope.eventsPage += 1;
+                    $scope.retrieveEvents();
+                }
+            };
+
+
             $scope.setCurrentEvent = function(event){
                 if($scope.current_event && $scope.current_event.id == event.id){
                     return
                 }
+
+                $scope.messagesCount = 0;
 
                 if($scope.SocketApp.chat){
                     $scope.SocketApp.chat.unsubscribe();
@@ -74,6 +86,8 @@
                 $scope.messages = [];
             };
 
+            $scope.message = "";
+
             $scope.send = function(){
                 if($scope.message.trim() != ''){
                     $scope.SocketApp.chat.send_message($scope.message)
@@ -93,6 +107,7 @@
                     $scope.messagesPenging = true;
                     messages.all({
                         page: $scope.messagesPage,
+                        per_page: 10,
                         event_id: $scope.current_event.id,
                         sync_id: syncId
                     }).success(function(data){
@@ -101,6 +116,7 @@
                             scrollDown()
                         }
                         $scope.messages = data.messages.concat($scope.messages);
+                        $scope.messagesCount = data.count;
                         $scope.messagesPage += 1;
                         $scope.messagesPenging = false;
                     }).error(function(){
@@ -122,6 +138,8 @@
                     $timeout.cancel(timer)
                 }
                 timer = $timeout(function(){
+                    $scope.events = [];
+                    $scope.eventsPage = 1;
                     $scope.retrieveEvents();
                 }, 500)
             }, true);

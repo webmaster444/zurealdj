@@ -16,13 +16,11 @@ class Dj::EventsController < Dj::BaseController
         events[:title],
         events[:city],
         events[:country_flag_code],
-        events[:address],
         events[:start_date],
         events[:end_date],
         events[:image_file_name],
         events[:image_content_type],
         events[:image_file_size],
-        events[:image_updated_at],
         events[:image_updated_at],
         bookings[:event_id]
     ]

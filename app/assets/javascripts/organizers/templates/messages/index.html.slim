@@ -12,7 +12,7 @@
         li.blank-chat ng-show="events.length == 0"
           | Your chats will be here
         li ng-repeat="event in events"
-          .chat-user
+          .chat-user.cursor-pointer ng-click="event.dropdownOpen = !event.dropdownOpen"
             img ng-src="{{event.image}}"
             .chat-user-name
               a.dj-black-link
@@ -20,11 +20,11 @@
             .unread-messages ng-if="event.unread_messages_count > 0"
               .unread-messages-count
                 | {{ event.unread_messages_count }}
-            i.fa ng-class="{'fa-chevron-right': !event.dropdownOpen, 'fa-chevron-down': event.dropdownOpen}" ng-click="event.dropdownOpen = !event.dropdownOpen"
+            i.fa ng-class="{'fa-chevron-right': !event.dropdownOpen, 'fa-chevron-down': event.dropdownOpen}"
           ul ng-repeat="dj in event.djs" ng-show="event.dropdownOpen"
             li ng-click="setCurrentEvent(event, dj)"
               .chat-user
-                img ng-src="{{dj.avatar}}"
+                img ng-src="{{dj.avatar}}" style="background-color: white; border-radius: 100%"
                 .chat-user-name
                   a.dj-black-link
                     | {{ dj.name }}
@@ -37,6 +37,9 @@
                     | {{ dj.last_message.date }}
                   .unread-messages-count ng-if="dj.unread_messages_count > 0"
                     | {{ dj.unread_messages_count }}
+          .show-more.small ng-show="eventsCount && events.length < eventsCount"
+            a.show-more.small ng-click="showMoreEvents()"
+              | Show More
     .col-xs-8.no-padding
       .chat-header
         .dj-gray-text ng-hide="current_event"
@@ -45,8 +48,8 @@
         a.dj-black-link ng-show="current_event"
           | {{ current_event.title }}
       .chat-discussion[dj-scroll]
-        .show-more ng-show="current_event"
-          a.show-more ng-click="retrieveOldMessages()"
+        .show-more.small ng-show="messages.length < messagesCount"
+          a.show-more.small ng-click="retrieveOldMessages()"
             | Show More
         .blank-chat ng-hide="current_event"
           | Your chat history will be here
@@ -61,7 +64,7 @@
               | {{ message.body }}
 
       form.chat-message-form
-        textarea.form-control.message-input name="message" placeholder="Enter message text" ng-model="message"
-        a ng-click="send()"
+        textarea.form-control.message-input name="message" placeholder="Enter message text" ng-model="message" ng-disabled="current_dj? false: true"
+        a ng-click="current_event? send() : false"
           i.fa.fa-paper-plane
 .margin50
