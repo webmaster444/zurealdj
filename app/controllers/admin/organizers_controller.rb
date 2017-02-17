@@ -28,9 +28,8 @@ class Admin::OrganizersController < Admin::BaseController
   def update
     @organizer = Organizer.find params[:id]
     @user = User.find @organizer[:user_id]
-    @user.update_attributes user_update_params
-    @organizer.update_attributes organizer_params
-    if @user.save && @organizer.save
+    if @user.update_attributes organizer_params
+
       render json: { message: I18n.t('organizer.messages.success_upsert') }
     else
       render json: { errors: @user.errors.full_messages +  @organizer.errors.full_messages}, status: :unprocessable_entity
@@ -50,16 +49,16 @@ class Admin::OrganizersController < Admin::BaseController
     @organizer = Organizer.find_by_user_id params[:id]
   end
 
-  private 
+  private
 
   def organizer_params
-    allowed_params = params.require(:organizer).permit :city, :country_flag_code, :address
-    allowed_params[:id] = @organizer.id
+    allowed_params = params.require(:user).permit(:name, :email, :personal_url, :company_name, :width, :height, :crop_x, :crop_y, :crop_w, :crop_h, :crop_rotate,
+                                                  :crop_scale_x, :crop_scale_y, :avatar, :about,
+                                                  organizer_attributes: [:city, :country_flag_code],
+                                                  event_category_ids: [], genre_ids: [])
+    allowed_params[:organizer_attributes][:id] = @organizer.id
     allowed_params
-  end
 
-  def user_update_params
-    params.require(:organizer).permit :name, :email, :personal_url, :avatar, :about
   end
 
 end

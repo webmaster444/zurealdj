@@ -38,6 +38,13 @@
                         fd.append('user[equipment_ids][]', i.id)
                 });
 
+                if(fd.get('user[equipment_ids][]')==null)
+                    fd.append('user[equipment_ids][]', '');
+                if(fd.get('user[event_category_ids][]')==null)
+                    fd.append('user[event_category_ids][]', '');
+                if(fd.get('user[genre_ids][]')==null)
+                    fd.append('user[genre_ids][]', '');
+
                 if(djs.avatar.file){
                     fd.append('user[avatar]', djs.avatar.file);
                 }

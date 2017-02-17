@@ -6,25 +6,34 @@
             upsert: function(organizations){
                 var fd = new FormData();
 
-                if(organizations.name){
-                    fd.append('organizer[name]', organizations.name );
-                }
-                if(organizations.email){
-                    fd.append('organizer[email]', organizations.email );
-                }
-                if(organizations.personal_url){
-                    fd.append('organizer[personal_url]', organizations.personal_url );
-                }
+                fd.append('user[name]', organizations.name || '');
+                fd.append('user[company_name]', organizations.company_name || '');
+                fd.append('user[email]', organizations.email || '');
+                fd.append('user[personal_url]', organizations.personal_url || '');
+                fd.append('user[company_name]', organizations.company_name || '');
+                fd.append('user[about]', organizations.about || '');
+                fd.append('user[organizer_attributes][city]', organizations.city || '' );
+
                 if(organizations.country){
-                    fd.append('organizer[country_flag_code]', organizations.country.code );
+                    fd.append('user[organizer_attributes][country_flag_code]', organizations.country.code );
                 }
                 if(organizations.avatar.file){
-                    fd.append('organizer[avatar]', organizations.avatar.file);
+                    fd.append('user[avatar]', organizations.avatar.file);
                 }
-                fd.append('organizer[first_name]', organizations.first_name || '');
-                fd.append('organizer[last_name]', organizations.last_name || '');
-                fd.append('organizer[city]', organizations.city || '' );
-                fd.append('organizer[about]', organizations.about || '');
+
+                _.each(organizations.event_types, function(i){
+                    if(i.selected)
+                        fd.append('user[event_category_ids][]', i.id)
+                });
+                _.each(organizations.genres, function(i){
+                    if(i.selected)
+                        fd.append('user[genre_ids][]', i.id)
+                });
+
+                if(fd.get('user[event_category_ids][]')==null)
+                    fd.append('user[event_category_ids][]', '');
+                if(fd.get('user[genre_ids][]')==null)
+                    fd.append('user[genre_ids][]', '');
 
                 if(organizations.id){
                     return $http.put('/admin/organizers/' + organizations.id, fd, {

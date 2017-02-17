@@ -99,6 +99,12 @@
                         fd.append('equipment_ids[]', i.id)
                 });
 
+                if(fd.get('equipment_ids[]')==null)
+                    fd.append('equipment_ids[]', '');
+                if(fd.get('event_category_ids[]')==null)
+                    fd.append('event_category_ids[]', '');
+                if(fd.get('genre_ids[]')==null)
+                    fd.append('genre_ids[]', '');
 
                 if(user.avatar.file){
                     fd.append('avatar', user.avatar.file);
