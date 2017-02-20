@@ -1,0 +1,105 @@
+@import "variables"
+
+.circle
+  border-radius: 100%
+
+.image
+  width: 50px
+  height: 50px
+
+.image-title
+  margin-left: 10px
+
+.green, .status.active, .status.confirmed
+  color: #45b64a !important
+
+.red, .status.cancelled, .status.finished
+  color: #fc5d77 !important
+
+.purple, .status.pending, .status.upcoming
+  color: #b05dfc !important
+
+.uib-datepicker-popup
+  *
+    outline: none
+    box-shadow: none
+    &:hover, &:focus
+      outline: none
+  top: 57px !important
+  left: 0 !important
+  width: auto
+  min-width: 100px
+  border-radius: 4px
+  box-shadow: 0 2px 20px 0 rgba(0, 0, 0, 0.08)
+  [uib-daypicker], [uib-monthpicker], [uib-yearpicker]
+    table
+      width: 100%
+      th
+        width: 24px !important
+        height: 14px !important
+        font-family: CeraPro
+        font-size: 12px
+        line-height: 1.17
+        letter-spacing: 1.1px
+        text-align: center
+        color: #555555
+      tr
+        height: 18px !important
+        min-height: 15px !important
+        max-height: 20px !important
+        td, .uib-day
+          width: 18px !important
+          height: 18px !important
+          min-height: 15px !important
+          max-height: 20px !important
+          max-width: 20px
+          min-width: 15px !important
+          margin: 0
+          padding: 0
+          font-family: CeraPro
+          font-size: 14px
+          letter-spacing: 1.3px
+          text-align: center
+          color: #555555
+
+    .btn-danger
+      background-color: $current-color
+      border-color: $current-color
+      color: white
+
+    .btn-success
+      background-color: #8d8d8d
+      border-color: #8d8d8d
+      color: white
+
+    .btn-info
+      background-color: $current-color
+      border-color: $current-color
+      span
+        color: white !important
+    .uib-title
+      color: $current-color
+      font-family: CeraPro
+      font-size: 14px
+      font-weight: 500
+      font-style: normal
+      font-stretch: normal
+      line-height: normal
+      letter-spacing: 1.3px
+      text-align: center
+    .glyphicon
+      font-size: 10px
+      color: $current-color
+    color: $current-color
+
+    .btn
+      padding: 0 !important
+      min-width: 15px
+      margin: 0 !important
+      display:  inline-block
+
+p.input-group
+  span.input-group-btn
+    button.btn.btn-default
+      height: 34px
+      margin-bottom: -7px !important

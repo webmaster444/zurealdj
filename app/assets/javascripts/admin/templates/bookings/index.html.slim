@@ -2,39 +2,140 @@
   .row.animated.fadeInRight
     .col-md-12
       .ibox.float-e-margins
-        .ibox-title
+        .ibox-content
           h3
             | {{ I18n.t('headers.bookings' ) }}
-        .ibox-content
-          .filters-bar ng-include="'admin/templates/common/filters-bar.html'"
+
+          .row.filters-bar
+            .col-md-6
+              .button.btn.btn-info> ng-click="downloadCSV()" style="margin-bottom: 21px"
+                i.fa.fa-download
+                | Export CSV
+              .pagination pagination="true" page="page" per_page="filters.per_page" total="total"
+            .col-md-6.text-right
+              span.filter-descriptions
+                | {{ total }} {{ $state.current.name }} found
+
+              .dropdown.filter-dropdown[uib-dropdown]
+                a.dropdown-toggle.count-info [aria-expanded="false" aria-haspopup="true" uib-dropdown-toggle]
+                  | {{ filters.per_page }}
+                  .caret
+                ul.dropdown-menu[uib-dropdown-menu]
+                  li
+                    a ng-click="filters.per_page = 10"
+                      | 10
+                  li
+                    a ng-click="filters.per_page = 20"
+                      | 20
+                  li
+                    a ng-click="filters.per_page = 50"
+                      | 50
+
+              span.filter-descriptions<
+                | per page
+              .button.btn.btn-filters.btn-gray data-toggle="collapse" data-target=".filters-container"
+                .fa.fa-filter
+                | Filters
+
+          .filters-container.collapse
+            .row
+              .col-sm-12
+                .row
+                  .col-sm-3
+                    | {{ I18n.t('event.fields.title') }}
+                    input.form-control type="text" ng-model="filters.title"
+                  .col-sm-3
+                    | Rate
+                    input.form-control type="number" ng-model="filters.rate"
+            .row
+              .col-sm-2
+                p.input-group style="margin: 0;"
+                  | From date:
+                  input.form-control.pull-right type="text" placeholder="from" uib-datepicker-popup="{{ 'dd-MMMM-yyyy' }}" ng-model="filters.start_date_from" is-open="start_date_from_opened" close-text="Close" readonly="readonly" show-button-bar="false"
+                  span.input-group-btn
+                    button type="button" class="btn btn-default" ng-click="start_date_from_opened = true" style="margin-top: 15px;"
+                      i.glyphicon.glyphicon-calendar
+              .col-sm-2
+                p.input-group
+                  | From date:
+                  input.form-control.pull-right type="text" placeholder="to" uib-datepicker-popup="{{ 'dd-MMMM-yyyy' }}" ng-model="filters.start_date_to" is-open="start_date_to_opened" close-text="Close" readonly="readonly" show-button-bar="false"
+                  span.input-group-btn
+                    button type="button" class="btn btn-default" ng-click="start_date_to_opened = true" style="margin-top: 15px;"
+                      i.glyphicon.glyphicon-calendar
+
+              .col-sm-2
+                p.input-group style="margin: 0;"
+                  | To date:
+                  input.form-control.pull-right type="text" placeholder="from" uib-datepicker-popup="{{ 'dd-MMMM-yyyy' }}" ng-model="filters.end_date_from" is-open="end_date_from_opened" close-text="Close" readonly="readonly" show-button-bar="false"
+                  span.input-group-btn
+                    button type="button" class="btn btn-default" ng-click="end_date_from_opened = true" style="margin-top: 15px;"
+                      i.glyphicon.glyphicon-calendar
+              .col-sm-2
+                p.input-group
+                  | To date:
+                  input.form-control.pull-right type="text" placeholder="to" uib-datepicker-popup="{{ 'dd-MMMM-yyyy' }}" ng-model="filters.end_date_to" is-open="end_date_to_opened" close-text="Close" readonly="readonly" show-button-bar="false"
+                  span.input-group-btn
+                    button type="button" class="btn btn-default" ng-click="end_date_to_opened = true" style="margin-top: 15px;"
+                      i.glyphicon.glyphicon-calendar
+
+              .col-sm-2
+                p.input-group style="margin: 0;"
+                  | Created date:
+                  input.form-control.pull-right type="text" placeholder="from" uib-datepicker-popup="{{ 'dd-MMMM-yyyy' }}" ng-model="filters.date_from" is-open="date_from_opened" close-text="Close" readonly="readonly" show-button-bar="false"
+                  span.input-group-btn
+                    button type="button" class="btn btn-default" ng-click="date_from_opened = true" style="margin-top: 15px;"
+                      i.glyphicon.glyphicon-calendar
+              .col-sm-2
+                p.input-group
+                  | Created date:
+                  input.form-control.pull-right type="text" placeholder="to" uib-datepicker-popup="{{ 'dd-MMMM-yyyy' }}" ng-model="filters.date_to" is-open="date_to_opened" close-text="Close" readonly="readonly" show-button-bar="false"
+                  span.input-group-btn
+                    button type="button" class="btn btn-default" ng-click="date_to_opened = true" style="margin-top: 15px;"
+                      i.glyphicon.glyphicon-calendar
+
+            .row
+              .col-sm-offset-9.col-sm-3
+                .button.btn.btn-danger.btn-outline ng-models="filters" ng-click="resetFilters()" style="margin-top: 20px; float: right;" Reset
 
           table.table.table-striped.table-responsive
             thead
               tr
+                th ng-model="filters" tablesort=true tablesort-name="event_id"             tablesort-title="{{ I18n.t('booking.fields.event') }}"
                 th
-                  | {{ I18n.t('booking.fields.user') }}
-                th
-                  | {{ I18n.t('booking.fields.event') }}
-                th
-                  | Created At
+                  | {{ I18n.t('booking.fields.organizer') }}
+                th ng-model="filters" tablesort=true tablesort-name="dj_id"                tablesort-title="{{ I18n.t('booking.fields.dj') }}"
+                th ng-model="filters" tablesort=true tablesort-name="rate"                 tablesort-title="{{ I18n.t('booking.fields.rate') }}"
+                th ng-model="filters" tablesort=true tablesort-name="from_date"            tablesort-title="{{ I18n.t('booking.fields.from_date') }}"
+                th ng-model="filters" tablesort=true tablesort-name="to_date"              tablesort-title="{{ I18n.t('booking.fields.to_date') }}"
+                th ng-model="filters" tablesort=true tablesort-name="status"               tablesort-title="{{ I18n.t('booking.fields.status') }}"
+                th ng-model="filters" tablesort=true tablesort-name="created_at"           tablesort-title="{{ I18n.t('general.created_at') }}"
                 th.text-right
-                  | Actions
+                  | {{ I18n.t('actions.title') }}
             tbody
               tr ng-repeat="booking in bookings"
                 td
-                  | {{ bookings.user }}
+                  img.image.circle ng-src="{{ booking.event.image }}"
+                  span.image-title
+                    | {{ booking.event.title }}
                 td
-                  | {{ bookings.event }}
+                  img.image.circle ng-src="{{ booking.organizer.avatar }}"
+                  span.image-title
+                    | {{ booking.organizer.name }}
                 td
-                  | {{ bookings.created_at }}
+                  img.image.circle ng-src="{{ booking.dj.avatar }}"
+                  span.image-title
+                    | {{ booking.dj.name }}
+                td
+                  | {{ booking.rate }}
+                td
+                  | {{ booking.from_date }}
+                td
+                  | {{ booking.to_date }}
+                td.status class="{{ booking.status }}"
+                  | {{ booking.status }}
+                td
+                  | {{ booking.created_at }}
                 td.text-right
-
-                  a.btn-xs.btn.btn-info.btn-outline href="#bookings/{{bookings.id}}"
-                    | {{ I18n.t('actions.view') }}
-
-                  a.btn-xs.btn.btn-warning.btn-outline href="#bookings/{{bookings.id}}/edit"
-                    | {{ I18n.t('actions.edit') }}
-
 
                   a.btn-xs.btn.btn-danger.btn-outline ng-click="destroy(bookings.id)"
                     | {{ I18n.t('actions.delete') }}

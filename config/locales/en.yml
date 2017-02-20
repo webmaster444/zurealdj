@@ -70,6 +70,7 @@ en:
     cant_be_blank: "Can't be blank."
 
   actions:
+    title: "Actions"
     submit: "Submit"
     confirm: "Confirm"
     cancel: "Cancel"
@@ -195,12 +196,9 @@ en:
       title: "Title"
       city: "City"
       country: "Country"
-      address: "Address"
       start_date: "Start date"
       end_date: "End date"
       image: "Image"
-      created_at: "Created at"
-      updated_at: "Updated at"
     messages:
       success_upsert: 'Event successfully saved.'
 
@@ -208,33 +206,30 @@ en:
     new: "New Booking"
     edit: "Edit Booking"
     fields:
-      user: "User"
+      from_date: "From date"
+      to_date: "To date"
+      rate: "Rate"
+      status: "Status"
+      dj: "DJ"
+      organizer: "Organizer"
       event: "Event"
-      created_at: "Created at"
-      updated_at: "Updated at"
     messages:
       success_upsert: 'Booking successfully saved.'
+
+  general:
+    created_at: "Created at"
+    updated_at: "Updated at"
 
   dj:
     new: "New DJ"
     edit: "Edit DJ"
     fields:
       name: "Name"
-      first_name: "First name"
-      last_name: "Last name"
       city: "City"
       country: "Country"
       about: "About"
       sample: "Sample"
-      instagram_link: "Instagram link"
-      facebook_link: "Facebook link"
       price: "Price"
-      soundcloud_link: "Soundcloud link"
-      social_links: "Social links"
-      weekday_rate_from: "Weekday price from"
-      weekday_rate_to: "Weekday price to"
-      weekend_rate_from: "Weekend price from"
-      weekend_rate_to: "Weekend price to"
       photo: "Photo"
       created_at: "Created at"
       updated_at: "Updated at"
@@ -245,15 +240,9 @@ en:
     new: "New Organiser"
     edit: "Edit Organiser"
     fields:
-      first_name: "First name"
-      last_name: "Last name"
       city: "City"
       country: "Country"
-      address: "Address"
       about: "About"
-      instagram_link: "Instagram link"
-      facebook_link: "Facebook link"
-      soundcloud_link: "Soundcloud link"
       created_at: "Created at"
       updated_at: "Updated at"
       photo: "Photo"

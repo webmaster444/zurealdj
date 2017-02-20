@@ -20,29 +20,38 @@
                 if($state.current.name == 'events'){
 
                     $scope.resetFilters = function(){
+                        $scope.page = 1;
                         $scope.filters = {
-                            per_page: 10,
-                            page: 1
+                            per_page: 10
                         };
                     };
 
                     $scope.resetFilters();
 
-                    $scope.event = [];
+                    $scope.events = [];
 
                     var timer = false;
                     $scope.$watch('filters', function(){
                         if(timer){
+                            $scope.page = 1;
                             $timeout.cancel(timer)
                         }
                         timer= $timeout(function(){
-                            if($scope.filters.page > Math.ceil($scope.total / $scope.filters.per_page)) $scope.filters.page = 1;
                             $scope.retrieveEvents();
                         }, 500)
                     }, true);
 
+                    $scope.$watch('page', function(){
+                        if(timer){
+                            $timeout.cancel(timer)
+                        }
+                        timer= $timeout(function(){
+                            $scope.retrieveEvents();
+                        }, 500)
+                    });
+
                     $scope.retrieveEvents = function(){
-                        events.all($scope.filters).success(function (data) {
+                        events.all($scope.filters, $scope.page).success(function (data) {
                             $scope.events = data.events;
                             $scope.total = data.count;
                         }).error(function (data) {

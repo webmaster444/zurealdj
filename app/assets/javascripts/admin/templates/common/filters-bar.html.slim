@@ -1,10 +1,10 @@
-.filters-bar
-  .pull-left
-    .button.btn.btn-info> ng-click="downloadCSV()"
+.row.filters-bar
+  .col-md-6
+    .button.btn.btn-info> ng-click="downloadCSV()" style="margin-bottom: 21px"
       i.fa.fa-download
       | Export CSV
-    .pagination pagination="true" page="page" per_page="filters.per_page" total="total" ng-hide="total <= filters.per_page"
-  .pull-right
+    .pagination pagination="true" page="page" per_page="filters.per_page" total="total"
+  .col-md-6.text-right
     span.filter-descriptions
       | {{ total }} {{ $state.current.name }} found
 
@@ -28,7 +28,5 @@
     .button.btn.btn-filters.btn-gray data-toggle="collapse" data-target=".filters-container"
       .fa.fa-filter
       | Filters
-    button.btn.btn-info ui-sref="new_{{ $state.current.name.slice(0, -1) }}"
+    button.btn.btn-info ui-sref="new_{{ $state.current.name.slice(0, -1) }}" ng-if="new"
       | {{ I18n.t($state.current.name.slice(0, -1) + '.new') }}
-
-  .clearfix

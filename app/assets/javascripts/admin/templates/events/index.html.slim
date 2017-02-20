@@ -11,10 +11,10 @@
               .button.btn.btn-info> ng-click="downloadCSV()" style="margin-bottom: 21px"
                 i.fa.fa-download
                 | Export CSV
-              .pagination pagination="true" page="filters.page" per_page="filters.per_page" total="total"
+              .pagination pagination="true" page="page" per_page="filters.per_page" total="total"
             .col-md-6.text-right
               span.filter-descriptions
-                | {{ total }} events found
+                | {{ total }} {{ $state.current.name }} found
 
               .dropdown.filter-dropdown[uib-dropdown]
                 a.dropdown-toggle.count-info [aria-expanded="false" aria-haspopup="true" uib-dropdown-toggle]
@@ -37,70 +37,68 @@
                 .fa.fa-filter
                 | Filters
 
+          .filters-container.collapse
+            .row
+              .col-sm-12
+                .row
+                  .col-sm-3
+                    | {{ I18n.t('event.fields.title') }}
+                    input.form-control type="text" ng-model="filters.title"
+                  .col-sm-3
+                    | {{ I18n.t('event.fields.country') }}
+                    input.form-control type="text" ng-model="filters.country"
+                  .col-sm-3
+                    | {{ I18n.t('event.fields.city') }}
+                    input.form-control type="text" ng-model="filters.city"
+            .row
+              .col-sm-2
+                p.input-group style="margin: 0;"
+                  | Start date:
+                  input.form-control.pull-right type="text" placeholder="from" uib-datepicker-popup="{{ 'dd-MMMM-yyyy' }}" ng-model="filters.start_date_from" is-open="start_date_from_opened" close-text="Close" readonly="readonly" show-button-bar="false"
+                  span.input-group-btn
+                    button type="button" class="btn btn-default" ng-click="start_date_from_opened = true" style="margin-top: 15px;"
+                      i.glyphicon.glyphicon-calendar
+              .col-sm-2
+                p.input-group
+                  | Start date:
+                  input.form-control.pull-right type="text" placeholder="to" uib-datepicker-popup="{{ 'dd-MMMM-yyyy' }}" ng-model="filters.start_date_to" is-open="start_date_to_opened" close-text="Close" readonly="readonly" show-button-bar="false"
+                  span.input-group-btn
+                    button type="button" class="btn btn-default" ng-click="start_date_to_opened = true" style="margin-top: 15px;"
+                      i.glyphicon.glyphicon-calendar
 
-            .clearfix
-            .filters-container.collapse
-              .row
-                .col-sm-12
-                  .row
-                    .col-sm-3
-                      | {{ I18n.t('event.fields.title') }}
-                      input.form-control type="text" ng-model="filters.title"
-                    .col-sm-3
-                      | {{ I18n.t('event.fields.country') }}
-                      input.form-control type="text" ng-model="filters.country"
-                    .col-sm-3
-                      | {{ I18n.t('event.fields.city') }}
-                      input.form-control type="text" ng-model="filters.city"
-              .row
-                .col-sm-2
-                  p.input-group style="margin: 0;"
-                    | Start date:
-                    input.form-control.pull-right type="text" placeholder="from" uib-datepicker-popup="{{ 'dd-MMMM-yyyy' }}" ng-model="filters.start_date_from" is-open="start_date_from_opened" close-text="Close" readonly="readonly"
-                    span.input-group-btn
-                      button type="button" class="btn btn-default" ng-click="start_date_from_opened = true" style="margin-top: 15px;"
-                        i.glyphicon.glyphicon-calendar
-                .col-sm-2
-                  p.input-group
-                    | Start date:
-                    input.form-control.pull-right type="text" placeholder="to" uib-datepicker-popup="{{ 'dd-MMMM-yyyy' }}" ng-model="filters.start_date_to" is-open="start_date_to_opened" close-text="Close" readonly="readonly"
-                    span.input-group-btn
-                      button type="button" class="btn btn-default" ng-click="start_date_to_opened = true" style="margin-top: 15px;"
-                        i.glyphicon.glyphicon-calendar
+              .col-sm-2
+                p.input-group style="margin: 0;"
+                  | End date:
+                  input.form-control.pull-right type="text" placeholder="from" uib-datepicker-popup="{{ 'dd-MMMM-yyyy' }}" ng-model="filters.end_date_from" is-open="end_date_from_opened" close-text="Close" readonly="readonly" show-button-bar="false"
+                  span.input-group-btn
+                    button type="button" class="btn btn-default" ng-click="end_date_from_opened = true" style="margin-top: 15px;"
+                      i.glyphicon.glyphicon-calendar
+              .col-sm-2
+                p.input-group
+                  | End date:
+                  input.form-control.pull-right type="text" placeholder="to" uib-datepicker-popup="{{ 'dd-MMMM-yyyy' }}" ng-model="filters.end_date_to" is-open="end_date_to_opened" close-text="Close" readonly="readonly" show-button-bar="false"
+                  span.input-group-btn
+                    button type="button" class="btn btn-default" ng-click="end_date_to_opened = true" style="margin-top: 15px;"
+                      i.glyphicon.glyphicon-calendar
 
-                .col-sm-2
-                  p.input-group style="margin: 0;"
-                    | End date:
-                    input.form-control.pull-right type="text" placeholder="from" uib-datepicker-popup="{{ 'dd-MMMM-yyyy' }}" ng-model="filters.end_date_from" is-open="end_date_from_opened" close-text="Close" readonly="readonly"
-                    span.input-group-btn
-                      button type="button" class="btn btn-default" ng-click="end_date_from_opened = true" style="margin-top: 15px;"
-                        i.glyphicon.glyphicon-calendar
-                .col-sm-2
-                  p.input-group
-                    | End date:
-                    input.form-control.pull-right type="text" placeholder="to" uib-datepicker-popup="{{ 'dd-MMMM-yyyy' }}" ng-model="filters.end_date_to" is-open="end_date_to_opened" close-text="Close" readonly="readonly"
-                    span.input-group-btn
-                      button type="button" class="btn btn-default" ng-click="end_date_to_opened = true" style="margin-top: 15px;"
-                        i.glyphicon.glyphicon-calendar
+              .col-sm-2
+                p.input-group style="margin: 0;"
+                  | Created date:
+                  input.form-control.pull-right type="text" placeholder="from" uib-datepicker-popup="{{ 'dd-MMMM-yyyy' }}" ng-model="filters.date_from" is-open="date_from_opened" close-text="Close" readonly="readonly" show-button-bar="false"
+                  span.input-group-btn
+                    button type="button" class="btn btn-default" ng-click="date_from_opened = true" style="margin-top: 15px;"
+                      i.glyphicon.glyphicon-calendar
+              .col-sm-2
+                p.input-group
+                  | Created date:
+                  input.form-control.pull-right type="text" placeholder="to" uib-datepicker-popup="{{ 'dd-MMMM-yyyy' }}" ng-model="filters.date_to" is-open="date_to_opened" close-text="Close" readonly="readonly" show-button-bar="false"
+                  span.input-group-btn
+                    button type="button" class="btn btn-default" ng-click="date_to_opened = true" style="margin-top: 15px;"
+                      i.glyphicon.glyphicon-calendar
 
-                .col-sm-2
-                  p.input-group style="margin: 0;"
-                    | Created date:
-                    input.form-control.pull-right type="text" placeholder="from" uib-datepicker-popup="{{ 'dd-MMMM-yyyy' }}" ng-model="filters.date_from" is-open="date_from_opened" close-text="Close" readonly="readonly"
-                    span.input-group-btn
-                      button type="button" class="btn btn-default" ng-click="date_from_opened = true" style="margin-top: 15px;"
-                        i.glyphicon.glyphicon-calendar
-                .col-sm-2
-                  p.input-group
-                    | Created date:
-                    input.form-control.pull-right type="text" placeholder="to" uib-datepicker-popup="{{ 'dd-MMMM-yyyy' }}" ng-model="filters.date_to" is-open="date_to_opened" close-text="Close" readonly="readonly"
-                    span.input-group-btn
-                      button type="button" class="btn btn-default" ng-click="date_to_opened = true" style="margin-top: 15px;"
-                        i.glyphicon.glyphicon-calendar
-
-              .row
-                .col-sm-offset-9.col-sm-3
-                  .button.btn.btn-danger.btn-outline ng-models="filters" ng-click="resetFilters()" style="margin-top: 20px; float: right;" Reset
+            .row
+              .col-sm-offset-9.col-sm-3
+                .button.btn.btn-danger.btn-outline ng-models="filters" ng-click="resetFilters()" style="margin-top: 20px; float: right;" Reset
 
 
           table.table.table-striped.table-responsive
@@ -111,9 +109,9 @@
                 th ng-model="filters" tablesort=true tablesort-name="city"              tablesort-title="{{ I18n.t('event.fields.city') }}"
                 th ng-model="filters" tablesort=true tablesort-name="start_date"        tablesort-title="{{ I18n.t('event.fields.start_date') }}"
                 th ng-model="filters" tablesort=true tablesort-name="end_date"          tablesort-title="{{ I18n.t('event.fields.end_date') }}"
-                th ng-model="filters" tablesort=true tablesort-name="created_at"        tablesort-title="Created At"
+                th ng-model="filters" tablesort=true tablesort-name="created_at"        tablesort-title="{{ I18n.t('general.created_at') }}"
                 th.text-right
-                  | Actions
+                  | {{ I18n.t('actions.title') }}
             tbody
               tr ng-repeat="event in events"
                 td

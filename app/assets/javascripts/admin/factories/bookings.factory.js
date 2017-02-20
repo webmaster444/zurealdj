@@ -3,43 +3,31 @@
     angular.module('ZurealdjAdminApp').factory('BookingsFactory', ['AuthHttp', function($http){
         return {
 
-            users: function(){
-              return $http.get('/admin/bookings/users.json');
-            },
+            all: function(options, page){
+                var url = '/admin/bookings.json?';
 
-            events: function(){
-              return $http.get('/admin/bookings/events.json');
-            },
-
-            upsert: function(bookings){
-                var fd = new FormData();
-
-                if(bookings.user){
-                    fd.append('booking[user]', bookings.user );
-                }
-                if(bookings.event){
-                    fd.append('booking[event]', bookings.event );
+                if(page){
+                    url += 'page' + '=' + page + '&';
                 }
 
-                if(bookings.id){
-                    return $http.put('/admin/bookings/' + bookings.id, fd, {
-                        transformRequest: angular.identity,
-                        headers: {'Content-Type': undefined}
-                    });
-                }else{
-                    return $http.post('/admin/bookings', fd, {
-                        transformRequest: angular.identity,
-                        headers: {'Content-Type': undefined}
-                    });
-                }
+                _.each(Object.keys(options, page), function(key){
+                    if(options[key])
+                        url += key + '=' + options[key] + '&';
+                });
+
+                return $http.get(url);
             },
 
-            all: function(options){
-                return $http.get('/admin/bookings.json?page=' + options.page);
-            },
+            downloadCSV: function(options){
+                var url = '/admin/bookings.csv?';
 
-            show: function(id){
-                return $http.get('/admin/bookings/' + id + '.json');
+                _.each(Object.keys(options.query), function(key){
+                    if(options.query[key]){
+                        url += key + '=' + options.query[key] + '&';
+                    }
+                });
+
+                $http.download(url, options);
             },
 
             destroy: function(id){

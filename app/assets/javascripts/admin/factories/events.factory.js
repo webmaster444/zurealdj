@@ -3,8 +3,12 @@
     angular.module('ZurealdjAdminApp').factory('EventsFactory', ['AuthHttp', function($http){
         return {
 
-            all: function(options){
+            all: function(options, page){
                 var url = '/admin/events.json?';
+
+                if(page){
+                    url += 'page' + '=' + page + '&';
+                }
 
                 _.each(Object.keys(options), function(key){
                     if(options[key])

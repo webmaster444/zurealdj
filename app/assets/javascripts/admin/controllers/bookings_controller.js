@@ -3,8 +3,8 @@
     "use strict";
 
     angular.module('ZurealdjAdminApp')
-        .controller('BookingsController', ['$scope', '$state', 'ngDialog', '$stateParams', '$timeout', '$sce', 'SweetAlert', 'BookingsFactory', 'CountryFlagsFactory',
-            function ($scope, $state, ngDialog, $stateParams, $timeout, $sce, SweetAlert, bookings, flags) {
+        .controller('BookingsController', ['$scope', '$state', '$stateParams', '$timeout', '$sce', 'SweetAlert', 'BookingsFactory',
+            function ($scope, $state, $stateParams, $timeout, $sce, SweetAlert, bookings) {
                 $scope.I18n = I18n;
                 $scope._ = _;
                 $scope.$state = $state;
@@ -13,10 +13,16 @@
                     return $sce.trustAsHtml(html);
                 };
 
+                $scope.page = 1;
 
-                $scope.filters = {
-                    per_page: 10
+                $scope.resetFilters = function(){
+                    $scope.page = 1;
+                    $scope.filters = {
+                        per_page: 10
+                    };
                 };
+
+                $scope.resetFilters();
 
                 if($state.current.name == 'bookings'){
                     $scope.booking = [];
@@ -24,42 +30,37 @@
                     var timer = false;
                     $scope.$watch('filters', function(){
                         if(timer){
+                            $scope.page = 1;
                             $timeout.cancel(timer)
                         }
                         timer= $timeout(function(){
-                            if($scope.page > Math.ceil($scope.count / $scope.filters.per_page)) $scope.page = 1;
                             $scope.retrieveBookings();
                         }, 500)
                     }, true);
 
-                    $scope.page = 1;
+                    $scope.$watch('page', function(){
+                        if(timer){
+                            $timeout.cancel(timer)
+                        }
+                        timer= $timeout(function(){
+                            $scope.retrieveBookings();
+                        }, 500)
+                    });
+
                     $scope.retrieveBookings = function(){
-                        bookings.all({page: $scope.page, query: $scope.filters}).success(function (data) {
+                        bookings.all($scope.filters, $scope.page).success(function (data) {
                             $scope.bookings = data.bookings;
-                            $scope.count = data.count;
-
-                            var pagination = $('#bookings-pagination');
-                            pagination.empty();
-                            pagination.removeData('twbs-pagination');
-                            pagination.unbind('page');
-
-                            if($scope.count > 0){
-                                pagination.twbsPagination({
-                                    totalPages: Math.ceil($scope.count / $scope.filters.per_page),
-                                    startPage: $scope.page,
-                                    visiblePages: 9,
-                                    onPageClick: function (event, page) {
-                                        $scope.page = page;
-                                        $scope.retrieveBookings();
-                                    }
-                                })
-                            }
+                            $scope.total = data.count;
                         }).error(function (data) {
 
                         });
                     };
 
                     $scope.retrieveBookings();
+
+                    $scope.downloadCSV = function(){
+                        bookings.downloadCSV({query: $scope.filters})
+                    }
                 }
 
                 $scope.destroy = function(id){
@@ -85,57 +86,6 @@
                         }
                     );
                 };
-
-                if($state.current.name == 'new_booking' || $state.current.name == 'edit_booking'){
-
-                    $scope.booking = {};
-
-                    bookings.users()
-                        .success(function(data){
-                            $scope.users = data.users;
-                        }
-                    );
-                    bookings.events()
-                        .success(function(data){
-                            $scope.events = data.events;
-                        }
-                    );
-
-                    if($state.current.name == 'edit_booking'){
-                        bookings.show($stateParams.id)
-                            .success(function(data){
-                                $timeout(function(){
-                                    $scope.booking = data.booking;
-                                }, 0);
-                            }
-                        )
-                    }
-
-                    $scope.submitBooking = function(){
-                        $scope.submitted = true;
-                        if($scope.BookingForm.$invalid ){
-                            return false;
-                        }
-
-                        $scope.formPending = true;
-                        bookings.upsert($scope.booking)
-                            .success(function(){
-                                $scope.formPending = false;
-                                $state.go('bookings')
-                            })
-                            .error(function(data){
-                                $scope.validation_errors = data.errors;
-                                $scope.formPending = false;
-                            })
-                    };
-                }
-
-                if($state.current.name == 'show_booking'){
-                    bookings.show($stateParams.id).success(function(data){
-                        $scope.booking = data.booking;
-
-                    });
-                }
             }])
 
 }());

@@ -19,7 +19,7 @@
             $scope.eventsPage = 1;
 
             $scope.retrieveEvents = function () {
-                chat_rooms.all({ q: $scope.q, page: $scope.eventsPage, per_page: 1 }).success(function (data) {
+                chat_rooms.all({ q: $scope.q, page: $scope.eventsPage, per_page: 10 }).success(function (data) {
                     $scope.events = $scope.events.concat(data.events);
                     $scope.eventsCount = data.count;
                 }).error(function (data) {

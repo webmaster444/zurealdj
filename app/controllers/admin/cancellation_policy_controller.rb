@@ -12,7 +12,7 @@ class Admin::CancellationPolicyController < ApplicationController
   end
 
   def index
-    @article = CancellationPolicy.first_or_create
+    @article = CancellationPolicyPage.first_or_create
   end
 
   # related models actions
