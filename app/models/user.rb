@@ -190,17 +190,17 @@ class User < ActiveRecord::Base
 
   def at_least_one_genre
     if genres.count == 0
-      self.errors.add :genres, 'must be at least one genre checked'
+      self.errors.add :genres, 'Please select at least 1 genre'
     end
   end
 
   def at_least_one_event_category
-    self.errors.add :event_categories, 'must be at least one event checked' if event_categories.blank?
+    self.errors.add :event_categories, 'Please select at least 1 event type' if event_categories.blank?
   end
 
   def at_least_one_equipment
     if equipments.count == 0
-      self.errors.add :equipments, 'must be at least one equipment checked'
+      self.errors.add :equipments, 'Please select at least 1 equipment'
     end
   end
 

@@ -14,6 +14,7 @@
         'toaster',
         'angular-ladda',
         'AuthHttp',
+        'ngAnimate',
         'oitozero.ngSweetAlert'
     ]);
 

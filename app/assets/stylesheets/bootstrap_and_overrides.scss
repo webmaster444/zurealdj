@@ -133,3 +133,31 @@ a:hover {
 .row::after{
   font-size: 0px;
 }
+
+.carousel-indicators{
+  li {
+    background-color: #e6e6e6;
+    width: 12px;
+    height: 12px;
+
+   &.active{
+     width: 16px;
+     height: 16px;
+      box-shadow: 0 0 8px 0 rgba(44, 0, 17, 0.1);
+      background-color: #FFFFFF;}
+  }
+}
+.glyphicon.glyphicon-chevron-left {
+    background-image: url('/images/icons/ic-left-arrow.png');
+    background-repeat: no-repeat;
+    &::before {
+      content: '';
+    }
+  }
+.glyphicon.glyphicon-chevron-right {
+  background-image: url('/images/icons/ic-right-arrow.png');
+  background-repeat: no-repeat;
+  &::before {
+    content: '';
+  }
+}
