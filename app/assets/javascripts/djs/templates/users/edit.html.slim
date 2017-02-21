@@ -113,7 +113,7 @@
       .error ng-repeat="error in validation_errors.sample"
         | {{ error }}
       .text-center
-        div.listen audio=true ng-model="sample" upload='true' rename='true'
+        div.listen audio=true ng-model="user.sample" upload='true' rename='true'
 
       hr
     .content-block#dj-id-5 ng-show="!isMobile() || step == 5"

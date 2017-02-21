@@ -117,28 +117,40 @@ angular.module('ngAudio').directive('audio', ['$filter', '$sce', '$timeout', '$i
                     var audio = files[0];
                     if(audio.type.indexOf("audio") > -1) {
                         $scope.$apply(function(){
+                            if(!$scope.model) $scope.model = {};
                             $scope.model.new = audio;
                             $scope.model.url = URL.createObjectURL(audio);
                             $scope.model.name = $scope.model.new.name;
                             $scope.edit();
                         });
                     }else{
-                        SweetAlert.swal({
-                            title: "",
-                            text: "You can upload audio with mp3 format only.",
-                            confirmButtonColor: "#b05dfd",
-                            confirmButtonText: "Ok",
-                            closeOnConfirm: true
-                        });
+
                     }
                 }
             })
         }, 0);
 
         $scope.delete = function() {
-            $scope.model.url = null;
-            if(!$scope.isPaused()) $scope.play();
-            if($scope.model.new) $scope.model.new = null;
+            SweetAlert.swal({
+                    title: "Delete sample",
+                    text: "Remove " + $scope.model.name + "?",
+                    showCancelButton: true,
+                    confirmButtonColor: "#b05dfd", confirmButtonText: "Agree",
+                    cancelButtonText: "Cancel",
+                    closeOnConfirm: true,
+                    closeOnCancel: true
+                },
+                function (isConfirm) {
+                    if (isConfirm) {
+                        $scope.model.url = null;
+                        if(!$scope.isPaused()) $scope.play();
+                        if($scope.model.new) $scope.model.new = null;
+                        $scope.model.removed = true;
+                    } else {
+
+                    }
+                }
+            );
         };
 
         $scope.edit = function() {

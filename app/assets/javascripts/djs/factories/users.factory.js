@@ -81,11 +81,11 @@
                 fd.append('dj_attributes[free_to_hire]', free_to_hire);
 
                 if(user.sample){
-                    fd.append('dj_attributes[sample]', user.sample);
+                    if(user.sample.new) fd.append('dj_attributes[sample]', user.sample.new);
+                    if(user.sample.name) fd.append('dj_attributes[sample_title]', user.sample.name);
+                    if(user.sample.removed) fd.append('sample_removed', user.sample.removed);
                 }
-                if(user.sample_title){
-                    fd.append('dj_attributes[sample_title]', user.sample_title);
-                }
+
                 _.each(user.event_types, function(i){
                     if(i.selected)
                         fd.append('event_category_ids[]', i.id)

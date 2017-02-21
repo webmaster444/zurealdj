@@ -65,6 +65,7 @@ class Dj::UsersController < Dj::BaseController
 
   def update_profile
     @user = current_user
+    @user.dj.sample = nil if(params[:sample_removed])
     if @user.update_attributes profile_params
       render json: {message: 'Profile updated.'}
     else

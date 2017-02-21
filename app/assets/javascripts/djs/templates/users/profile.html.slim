@@ -64,10 +64,10 @@
               | {{ user.about }}
 
           hr
-        .listen ng-show="sample.url"
+        .listen ng-show="user.sample.url"
           .block-title
             | Listen
-          div audio=true ng-model="sample"
+          div audio=true ng-model="user.sample"
 
           hr
         .block.equipments

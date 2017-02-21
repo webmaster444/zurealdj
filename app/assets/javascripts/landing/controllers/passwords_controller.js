@@ -28,7 +28,8 @@
                                 text: data.message,
                                 confirmButtonColor: "#b05dfd",
                                 confirmButtonText: "Ok",
-                                closeOnConfirm: true
+                                closeOnConfirm: true,
+                                customClass: "confirm-only"
                             });
 
                         })

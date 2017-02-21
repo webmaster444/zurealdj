@@ -15,8 +15,11 @@ json.rating @user.rate
 json.about @user.about
 json.genres_string @user.genres.map(&:title).join(', ')
 json.event_types_string @user.event_categories.map(&:title).join(', ')
-json.sample_url @user.dj.sample.url if @user.dj.sample.exists?
-json.sample_title @user.dj.sample_title #if @user.dj.sample.exists?
+
+json.sample do
+  json.url  @user.dj.sample.url if @user.dj.sample.exists?
+  json.name @user.dj.sample_title if @user.dj.sample.exists?
+end
 
 subscription = Subscription.find @user.subscription_id if @user.subscription_id
 

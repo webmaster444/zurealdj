@@ -4,8 +4,8 @@
 
     angular.module('ZurealdjDjApp')
         .controller('UsersController', ['$scope', '$state', 'ngDialog', '$stateParams', 'UsersFactory',
-            'CountryFlagsFactory',
-        function ($scope, $state, ngDialog, $stateParams, users, countries) {
+            'CountryFlagsFactory', 'SweetAlert',
+        function ($scope, $state, ngDialog, $stateParams, users, countries, SweetAlert) {
             $scope.I18n = I18n;
             $scope._ = _;
             $scope.$state = $state;
@@ -22,10 +22,6 @@
             users.profile().success(function(data){
                 $scope.user = data;
                 $scope.$parent.$current_user = $scope.user;
-                $scope.sample = {
-                    url: $scope.user.sample_url,
-                    name: $scope.user.sample_title
-                };
             });
 
             $scope.comment_options = {
@@ -56,8 +52,6 @@
             });
 
             $scope.save = function(){
-                if($scope.sample.new) $scope.user.sample = $scope.sample.new;
-                $scope.user.sample_title = $scope.sample.name;
                 $scope.processing = true;
                 users.save($scope.user)
                     .success(function(){
@@ -67,6 +61,16 @@
                     .error(function(data){
                         $scope.processing = false;
                         $scope.validation_errors = data.validation_errors;
+                        if($scope.validation_errors && ($scope.validation_errors["dj.sample"] || $scope.validation_errors$scope.validation_errors["dj.sample_content_type"])){
+                            SweetAlert.swal({
+                                title: "",
+                                text: "You can upload audio with mp3 format only.",
+                                confirmButtonColor: "#b05dfd",
+                                confirmButtonText: "Ok",
+                                closeOnConfirm: true,
+                                customClass: "confirm-only"
+                            });
+                        }
                     })
             };
         }])

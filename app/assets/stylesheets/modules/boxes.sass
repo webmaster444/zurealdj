@@ -249,6 +249,7 @@
     width: 400px
     margin-left: 0
     left: calc(50vw - 200px)
+    word-wrap: break-word
     @media (max-width: 400px)
       width: 100vw
       left: 0
@@ -265,6 +266,7 @@
       font-size: 16px
       line-height: 1.5
       letter-spacing: 1.5px
+
     .sa-button-container
       margin-top: 50px
       .cancel
@@ -278,22 +280,21 @@
         border-radius: 100px
         margin-top: 0
 
-[ng-app='ZurealdjLandingApp']
-  .sweet-alert
-    .sa-button-container
-      margin-top: 20px
-      .sa-confirm-button-container
-        float: none !important
-    h2
-      background-image:  url(/images/icons/img-logo-zu-purple.png)
-      background-position: center
-      background-size: contain
-      background-repeat: no-repeat
-      width: 158px
-      height: 55px
-      display: block !important
-      margin: auto
-      margin-bottom: 20px
+.sweet-alert.confirm-only
+  .sa-button-container
+    margin-top: 20px
+    .sa-confirm-button-container
+      float: none !important
+  h2
+    background-image:  url(/images/icons/img-logo-zu-purple.png)
+    background-position: center
+    background-size: contain
+    background-repeat: no-repeat
+    width: 158px
+    height: 55px
+    display: block !important
+    margin: auto
+    margin-bottom: 20px
 
 @media (min-width: $mobile-max-width)
   .page-block
