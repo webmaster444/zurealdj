@@ -15,6 +15,8 @@
             span ng-bind="event.title"
         .error ng-repeat="error in validation_errors.event_id"
           | {{ error }}
+        .error ng-repeat="error in validation_errors.dj_id"
+          | {{ user.name }} has already been booked for {{ booking.event.title }} event
 
   .form-group.dj-form-group
     .row

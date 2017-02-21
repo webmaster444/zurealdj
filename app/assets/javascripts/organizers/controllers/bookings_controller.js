@@ -49,7 +49,7 @@
                             $scope.closeThisDialog();
                         })
                         .error(function(data){
-                        $scope.validation_errors = data.errors;
+                            $scope.$parent.validation_errors = data.errors;
                     })
                 }
 

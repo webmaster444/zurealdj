@@ -29,10 +29,13 @@ class Booking < ActiveRecord::Base
                         event_id: self.event_id
   end
 
-
   def date_validation
-    errors[:to_date] << "To Date must be greater than from date." if to_date < from_date
-    to_date < from_date
+    if to_date && from_date
+      event = Event.find event_id
+      self.errors.add :from_date, "From date must be greater or equal than Event start date." if event && from_date < event.start_date
+      self.errors.add :to_date, "To date must be less or equal than Event end date." if event && to_date > event.end_date
+      self.errors.add :to_date, "To Date must be greater than from date." if to_date < from_date
+    end
   end
 
 end
