@@ -52,6 +52,7 @@ angular.module('formInput.image').directive('image', ['toaster', 'ngDialog', '$f
                 if(files.length > 0) {
                     addImage(files[0]);
                 }
+                e.target.value = '';
             }, false);
 
             var xhr = new XMLHttpRequest();

@@ -73,7 +73,6 @@ class Event < ActiveRecord::Base
   end
 
   def date_validation
-      errors[:end_date] << "End Date must be greater than start date." if end_date < start_date
-      end_date < start_date
+    self.errors.add :end_date, "End Date must be greater than start date." if end_date && start_date && end_date < start_date
   end
 end
