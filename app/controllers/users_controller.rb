@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
 
-  skip_before_filter :authenticate_user
+  skip_before_action :authenticate_user
 
   def create
     @user = User.new create_params
@@ -43,7 +43,7 @@ class UsersController < ApplicationController
       @user.update_attributes confirmation_token: nil, confirmed: true
       sign_in @user
       flash[:message] = 'Email confirmed successfully !'
-      redirect_to self.send("#{ @user.role.name }_path")
+      redirect_to self.send("#{ @user.role.name }_path", anchor: "/event_types_step")
     else
       flash[:error] = 'Wrong confirmation token !'
       redirect_to root_path

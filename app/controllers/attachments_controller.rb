@@ -1,7 +1,7 @@
 class AttachmentsController < ApplicationController
 
   load_and_authorize_resource :attachment
-  skip_before_filter :verify_authenticity_token
+  skip_before_action :verify_authenticity_token
 
   def create
     params.permit!

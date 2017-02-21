@@ -1,6 +1,6 @@
 class Organizer::UsersController < Organizer::BaseController
 
-  skip_before_filter :not_finished_profile
+  skip_before_action :not_finished_profile
 
   def step
     @user = current_user
@@ -43,7 +43,7 @@ class Organizer::UsersController < Organizer::BaseController
                   organizer_attributes: [:city, :country_flag_code], event_category_ids: [], genre_ids: [])
     allowed_params[:organizer_attributes][:id] = current_user.organizer.id
     allowed_params
-end
+  end
 
   def step_params
     params.permit :personal_url, :company_name,  event_category_ids: [], genre_ids: [], equipment_ids: []

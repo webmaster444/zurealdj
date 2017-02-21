@@ -1,6 +1,6 @@
 class Admin::EmailSenderController  < ApplicationController
 
-  skip_before_filter :authenticate_user
+  skip_before_action :authenticate_user
   load_and_authorize_resource :email_sender
 
   def update
