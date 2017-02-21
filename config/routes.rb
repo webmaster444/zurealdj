@@ -15,6 +15,12 @@ Rails.application.routes.draw do
 
   scope '(:locale)' do
     namespace :admin do
+      resources :users, only: [] do
+          collection do
+            get :profile
+            put :update
+          end
+        end
       resources :djs, only: [:index, :update, :destroy, :show]
       resources :bookings, only: [:index, :create, :update, :destroy, :show]
       resources :events, only: [:index, :destroy, :show]

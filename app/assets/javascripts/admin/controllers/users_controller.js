@@ -9,27 +9,28 @@
             $scope._ = _;
             $scope.$state = $state;
 
-            $scope.session = {
-                per_page: 10
-            };
+            $scope.admin = {};
 
-            $scope.$watch('current_user', function() {
-                $scope.user = $scope.current_user;
-            });
+            if($state.current.name == 'profile'){
+                users.myProfile()
+                    .success(function(data){
+                            $scope.admin = data.admin;
+                        })
+            }
 
             $scope.submit = function(){
-                if($scope.currentUserForm.$invalid ){
-                    return false;
-                }
-
                 $scope.processing = true;
-                users.upsert($scope.user)
-                        .success(function(){
 
+                    users.updateMyProfile($scope.admin)
+                        .success(function(){
+                            $scope.processing = false;
                         })
                         .error(function(data){
-
+                            $scope.validation_errors = data.validation_errors;
+                            $scope.processing = false;
                         })
+
+
             };
         }])
 }());
