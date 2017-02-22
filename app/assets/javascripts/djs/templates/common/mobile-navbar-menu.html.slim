@@ -22,17 +22,11 @@
 
   ul.mobile-menu uib-collapse="menuCollapsed" ng-init="menuCollapsed = false"
     li
-      a href="#djs" ng-class="{active: ['djs', 'dj'].includes($state.current.name)}"
-        | Browse DJs
-    li
       a href="#profile" ng-class="{active: ['profile', 'edit_profile'].includes($state.current.name)}"
         | Profile
     li
       a href="#events" ng-class="{active: ['events'].includes($state.current.name)}"
         | Bookings
-    li
-      a href="#favorites" ng-class="{active: ['favorites'].includes($state.current.name)}"
-        | Favorites
     li
       a href="#settings" ng-class="{active: ['settings'].includes($state.current.name)}"
         | Settings

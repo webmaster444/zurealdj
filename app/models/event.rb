@@ -16,9 +16,9 @@ class Event < ActiveRecord::Base
   validates_attachment_content_type :image, content_type: /\Aimage\/.*\Z/
   validates :image, presence: true
 
-  validates :title, presence: true
+  validates :title, presence: true, length: { in: 6..60 }
   validates :country_flag_code, presence: true
-  validates :city, presence: true
+  validates :city, presence: true, length: { in: 3..30 }, format: { with: /[A-Za-z]/, message: "is incorrect, use symbols a-z, A-Z and space"}
   validates :start_date, presence: true
   validates :end_date, presence: true
   validates :event_category_id, presence: true

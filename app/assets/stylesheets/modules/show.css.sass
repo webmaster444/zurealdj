@@ -22,6 +22,9 @@
     .inf
       .name
         color: #555555
+        text-overflow: ellipsis
+        max-width: 800px
+        overflow: hidden
   .general
     .block-title
       color: #555555
@@ -51,6 +54,7 @@
       border-radius: 100%
       display: inline-block
     .content
+      max-width: calc(100% - 120px)
       display: inline-block
       vertical-align: top
       color: #555555
@@ -63,10 +67,15 @@
       margin: 0 20px
       *
         margin: 10px 0
+        word-wrap: break-word
     .user-name
       font-size: 20px
       font-weight: 500
       letter-spacing: 1.3px
+      overflow: hidden
+      text-overflow: ellipsis
+      height: 25px
+      width: 100%
     .comment
       line-height: 1.63
     .event-title, .created-at
@@ -222,6 +231,7 @@
 
 
 [device='mobile']
+  word-wrap: break-word
   .event
     .artists
       .title
@@ -259,6 +269,7 @@
           padding: 20px 0
           box-shadow: 0 2px 20px 0 rgba(0, 0, 0, 0.08)
           width: 100%
+          max-height: 25px
     .profile-content, .event-content
       .profile-avatar, .event-image
         position: relative

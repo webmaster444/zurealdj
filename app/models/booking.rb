@@ -6,7 +6,7 @@ class Booking < ActiveRecord::Base
 
   validates :from_date, presence: true
   validates :to_date, presence: true
-  validates :rate, presence: true
+  validates :rate, presence: true, numericality: { only_integer: true, less_than_or_equal_to: 1e6 - 1 }
   validates :dj_id, presence: true, uniqueness: {scope: :event_id}
   validates :event_id, presence: true
   validates :status, presence: true

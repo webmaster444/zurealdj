@@ -21,7 +21,7 @@ class User < ActiveRecord::Base
                     presence: true
 
   validates :personal_url, uniqueness: { case_sensitive: false, message: "This personal url is already registered."}, allow_blank: true
-  validates :company_name, uniqueness: { case_sensitive: false, message: "This company name is already registered."}, if: :validate_company_name?
+  validates :company_name, length: { in: 2..30 }, uniqueness: { case_sensitive: false, message: "This company name is already registered."}, if: :validate_company_name?
 
 
   before_save :encrypt_password
@@ -32,10 +32,11 @@ class User < ActiveRecord::Base
   scope :admins, -> { where(role_id: Role.admin.id ) }
   belongs_to :role
 
-  validates :password, presence: true, length: { minimum: 8 }, confirmation: true, if: :validate_password?
+  validates :password, presence: true, length: { in: 8..60 }, confirmation: true, if: :validate_password?
   validates :password_confirmation, presence: true, if: :validate_password?
   validates :role_id, presence: true
   validates :name, presence: true
+  validates :about, length: { maximum: 400 }
   validates :agree, inclusion: {in: [true], message: 'You should accept therms of Cancellation Policy to continue'}, if: -> { dj? && User.dj_steps[step] == User.dj_steps[:dj_cancelations]}
   validates_attachment_content_type :avatar, content_type: /\Aimage\/.*\Z/
 
@@ -168,7 +169,7 @@ class User < ActiveRecord::Base
   end
 
   def validate_company_name?
-    !company_name.nil?
+    !company_name.nil? && company_name != ""
   end
 
   def send_confirmation_email
