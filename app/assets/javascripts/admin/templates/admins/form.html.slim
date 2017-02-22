@@ -1,0 +1,64 @@
+.row.wrapper.border-bottom.white-bg.page-heading
+  .col-lg-10
+    h2
+      | Create new admin
+    ol.breadcrumb
+      li
+        | System
+      li
+        a href="#admins"
+          | Admins
+      li.active
+        strong
+          | New
+.wrapper.wrapper-content
+  .row.animated.fadeInRight
+    .col-md-12
+      .ibox.float-e-margins
+        .ibox-content
+          form ng-submit="submitAdmin()" name="AdminForm" novalidate=true
+            .form-group
+              .row
+                .col-sm-2.text-right
+                  label.control-label
+                    | Name:
+                .col-sm-10 ng-class="validation_errors.name ? 'has-error' : ''"
+                  .text-danger ng-repeat="error in validation_errors.name"
+                    | {{ error }}
+                  input.form-control type="text" name="name" ng-model="admin.name"
+            .form-group
+              .row
+                .col-sm-2.text-right
+                  label.control-label
+                    | Email:
+                .col-sm-10 ng-class="validation_errors.email ? 'has-error' : ''"
+                  .text-danger ng-repeat="error in validation_errors.email"
+                    | {{ error }}
+                  input.form-control type="email" name="email" ng-model="admin.email"
+            .form-group
+              .row
+                .col-sm-2.text-right
+                  label.control-label
+                    | Password:
+                .col-sm-10 ng-class="validation_errors.password ? 'has-error' : ''"
+                  .text-danger ng-repeat="error in validation_errors.password"
+                    | {{ error }}
+                  input.form-control type="password" name="password" ng-model="admin.password"
+                  p.text-info.text-center ng-show="admin.id"
+                    | leave blank if you don't want to change it
+            .form-group
+              .row
+                .col-sm-2.text-right
+                  label.control-label
+                    | Password confirmation:
+                .col-sm-10 ng-class="validation_errors.password_confirmation ? 'has-error' : ''"
+                  .text-danger ng-repeat="error in validation_errors.password_confirmation"
+                    | {{ error }}
+                  input.form-control type="password" name="password_confirmation" ng-model="admin.password_confirmation"
+                  p.text-info.text-center ng-show="admin.id"
+                    | leave blank if you don't want to change it
+            .pull-right
+              a.btn.btn-default type="submit" href="#admins"
+                | Cancel
+              button.btn.btn-info type="submit" data-style="expand-left" ladda="formPending"
+                | Save

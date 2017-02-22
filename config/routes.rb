@@ -20,7 +20,8 @@ Rails.application.routes.draw do
             get :profile
             put :update
           end
-        end
+      end
+      resources :admins, except: [:edit, :new, :update, :show]
       resources :djs, only: [:index, :update, :destroy, :show]
       resources :bookings, only: [:index, :create, :update, :destroy, :show]
       resources :events, only: [:index, :destroy, :show]

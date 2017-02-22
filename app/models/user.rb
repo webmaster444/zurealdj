@@ -28,7 +28,8 @@ class User < ActiveRecord::Base
   before_validation :downcase_email
   after_create :create_dependent_record
   after_create :send_confirmation_email
-
+  before_destroy :validate_destroy
+  scope :admins, -> { where(role_id: Role.admin.id ) }
   belongs_to :role
 
   validates :password, presence: true, length: { minimum: 8 }, confirmation: true, if: :validate_password?
@@ -121,10 +122,7 @@ class User < ActiveRecord::Base
     self.encrypted_password == encrypt(password)
   end
 
-  def destroy
-    raise "Cannot destroy admin" if admin?
-    super
-  end
+
 
   def send_password_reset
     self.update_attribute :reset_password_token, encrypt(Time.now.to_s)
@@ -136,6 +134,18 @@ class User < ActiveRecord::Base
   end
 
   private
+
+  def validate_destroy
+    if User.count == 1
+      self.errors.add :base, 'Can not remove last user.'
+      false
+    elsif self.admin? && User.admins.count == 1
+      self.errors.add :base, 'Can not remove last admin.'
+      false
+    else
+      true
+    end
+  end
 
   def create_dependent_record
     if dj?

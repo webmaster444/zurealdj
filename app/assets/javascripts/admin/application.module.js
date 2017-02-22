@@ -205,6 +205,16 @@
                     templateUrl: 'admin/templates/subscriptions/index.html',
                     controller: 'SubscriptionsController'
                 })
+                .state('admins',{
+                    url: '/admins',
+                    templateUrl: 'admin/templates/admins/index.html',
+                    controller: 'AdminsController'
+                })
+                .state('new_admin',{
+                    url: '/admin/new',
+                    templateUrl: 'admin/templates/admins/form.html',
+                    controller: 'AdminsController'
+                })
             ;
     }]);
 
