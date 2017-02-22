@@ -59,7 +59,7 @@
           | Booking Rate
       .col-xs-10
         input.dj-form-control type="number" min="0" ng-model="booking.rate"
-        .error ng-repeat="error in validation_errors.to_date"
+        .error ng-repeat="error in validation_errors.rate"
           | {{ error }}
 
   hr

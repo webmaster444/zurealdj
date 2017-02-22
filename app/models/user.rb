@@ -35,8 +35,8 @@ class User < ActiveRecord::Base
   validates :password, presence: true, length: { in: 8..60 }, confirmation: true, if: :validate_password?
   validates :password_confirmation, presence: true, if: :validate_password?
   validates :role_id, presence: true
-  validates :name, presence: true
   validates :about, length: { maximum: 400 }
+  validates :name, presence: true, length: { in: 6..30 }
   validates :agree, inclusion: {in: [true], message: 'You should accept therms of Cancellation Policy to continue'}, if: -> { dj? && User.dj_steps[step] == User.dj_steps[:dj_cancelations]}
   validates_attachment_content_type :avatar, content_type: /\Aimage\/.*\Z/
 
