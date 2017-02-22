@@ -10,10 +10,13 @@
             $scope.I18n = I18n;
             $scope.$state = $state;
 
-            users.profile().success(function(data){
-                $scope.$current_user = data;
-                $scope.unread_notifications_count = data.unread_notifications_count;
-            });
+            $scope.retrieveCurrentUser = function(){
+                users.profile().success(function(data){
+                    $scope.$current_user = data;
+                    $scope.unread_notifications_count = data.unread_notifications_count;
+                });
+            };
+            $scope.retrieveCurrentUser();
 
             $scope.logout = function(){
                 session.logout().success(function(){
