@@ -1,6 +1,6 @@
 class SessionsController < ApplicationController
 
-  skip_before_action :authenticate_user, only: [:create, :check, :facebook]
+  skip_before_action :authenticate_user, only: [:create, :check, :facebook, :destroy]
 
   def destroy
     sign_out

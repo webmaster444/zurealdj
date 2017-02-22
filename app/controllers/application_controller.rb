@@ -12,7 +12,7 @@ class ApplicationController < ActionController::Base
 
   def authenticate_user
     if current_user
-      if Time.now - current_session.updated_at > 3.hours
+      if Time.now - current_session.updated_at > 1.day
         current_session.destroy
         respond_with_errors
       else
