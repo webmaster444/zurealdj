@@ -39,6 +39,7 @@ class Organizer < ActiveRecord::Base
         users[:avatar_content_type],
         users[:avatar_file_size],
         users[:avatar_updated_at],
+        users[:subscription_id],
         organizers[:created_at],
         organizers[:id].as('dj_id'),
         organizers[:city],

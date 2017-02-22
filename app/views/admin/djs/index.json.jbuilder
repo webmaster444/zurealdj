@@ -9,5 +9,6 @@ json.djs @djs.each do |dj|
   json.about dj.about
   json.rate_per_hour dj.rate_per_hour
   json.avatar paperclip_url(dj.avatar, :large)
+  json.subscription_id dj.subscription_id
 end
 json.count @count

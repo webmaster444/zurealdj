@@ -87,6 +87,8 @@
                 th ng-model="filters" tablesort=true tablesort-name="city"  tablesort-title="{{ I18n.t('dj.fields.city') }}"
                 th ng-model="filters" tablesort=true tablesort-name="country_flag_code"  tablesort-title="{{ I18n.t('dj.fields.country') }}"
                 th ng-model="filters" tablesort=true tablesort-name="created_at"  tablesort-title="Created At"
+                th
+                  | Subscribed
                 th.text-right
                   | Actions
             tbody
@@ -104,6 +106,9 @@
                   | {{ dj.country.title }}
                 td
                   | {{ dj.created_at }}
+                td.text-center
+                  img src="/images/icons/ic-check-green.png" ng-show="dj.subscription_id"
+
                 td.col-actions.text-right
                   a.btn-xs.btn.btn-info.btn-outline href="#dj/{{ dj.id }}"
                     | {{ I18n.t('actions.view') }}

@@ -80,6 +80,7 @@ class Admin::DjsController < Admin::BaseController
         users[:avatar_content_type],
         users[:avatar_file_size],
         users[:avatar_updated_at],
+        users[:subscription_id],
         djs[:created_at],
         djs[:id].as('dj_id'),
         djs[:city],

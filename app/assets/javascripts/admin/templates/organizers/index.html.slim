@@ -79,6 +79,8 @@
                 th ng-model="filters" tablesort=true tablesort-name="country_flag_code" tablesort-title="{{ I18n.t('organizer.fields.country') }}"
                 th ng-model="filters" tablesort=true tablesort-name="personal_url"      tablesort-title="Personal Url"
                 th ng-model="filters" tablesort=true tablesort-name="created_at"        tablesort-title="Registration Date"
+                th
+                  | Subscribed
                 th.text-right
                   | Actions
             tbody
@@ -98,6 +100,8 @@
                   | {{ organizer.personal_url }}
                 td
                   | {{ organizer.created_at }}
+                td.text-center
+                  img src="/images/icons/ic-check-green.png" ng-show="organizer.subscription_id"
                 td.text-right
                   a.btn-xs.btn.btn-warning.btn-outline> href="#organizer/{{organizer.id}}/edit"
                     | {{ I18n.t('actions.edit') }}
