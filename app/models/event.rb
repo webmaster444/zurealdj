@@ -34,6 +34,9 @@ class Event < ActiveRecord::Base
 
   validate :date_validation
 
+  after_update :notify_event_update
+  before_destroy :notify_event_destroy
+
   def unread_messages_count_for(user, from_user = nil)
     if from_user
       Message.where(event_id: self.id, to_user_id: user.id, from_user_id: from_user.id, read: false).count
@@ -74,5 +77,26 @@ class Event < ActiveRecord::Base
 
   def date_validation
     self.errors.add :end_date, "End Date must be greater than start date." if end_date && start_date && end_date < start_date
+  end
+
+  def notify_event_update
+
+    if self.title_changed? || self.start_date_changed? || self.end_date_changed? || self.image_id_changed? || self.country_flag_code_changed? || self.city_changed? || self.event_category_id_changed? || self.dj_slots_changed?
+
+        self.djs.each do |dj|
+        Notification.create to_user: dj.user,
+                            notification_type: :event_modified,
+                            event_id: self.id
+      end
+      end
+  end
+
+  def notify_event_destroy
+    self.djs.each do |dj|
+
+      Notification.create to_user: dj.user,
+                          notification_type: :event_deleted,
+                          event_id: self.id
+    end
   end
 end

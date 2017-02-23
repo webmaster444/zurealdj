@@ -9,6 +9,10 @@ class Notification < ApplicationRecord
   enum notification_type: {
       booking_requested: 0,
       event_canceled: 1,
-      rated: 3
+      rated: 3,
+      booking_confirmed: 4,
+      booking_cancelled: 5,
+      event_modified: 6,
+      event_deleted: 7
   }
 end

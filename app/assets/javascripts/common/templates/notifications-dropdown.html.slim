@@ -1,26 +1,65 @@
 ul.notifications-list
   li ng-repeat="notification in notifications" ng-class="{unread: !notification.read}" ng-click="markAsRead(notification)"
-    img ng-src="{{notification.from_user.avatar}}"                                ng-if="notification.notification_type == 'rated'"
-    .dj-black-text                                                                ng-if="notification.notification_type == 'rated'"
-      | {{ notification.from_user.name }} rated you
-    div.stars uib-rating=true ng-model="notification.star.stars" read-only="true" ng-if="notification.notification_type == 'rated'"
+    div                                                                             ng-if="notification.notification_type == 'rated'"
+      img ng-src="{{notification.from_user.avatar}}"
+      .dj-black-text
+        | {{ notification.from_user.name }} rated you
+      div.stars uib-rating=true ng-model="notification.star.stars" read-only="true"
 
 
-    img ng-src="{{notification.event.image}}"                                     ng-if="notification.notification_type == 'event_canceled'"
-    .dj-black-text                                                                ng-if="notification.notification_type == 'event_canceled'"
-      | {{ notification.event.title }}
-    .dj-gray-text                                                                 ng-if="notification.notification_type == 'event_canceled'"
-      | {{ notification.event.country }}, {{ notification.event.city }}
-    .extra-text                                                                   ng-if="notification.notification_type == 'event_canceled'"
-      | Event Canceled
+    div                                                                           ng-if="notification.notification_type == 'event_canceled'"
+      img ng-src="{{notification.event.image}}"
+      .dj-black-text
+        | {{ notification.event.title }}
+      .dj-gray-text
+        | {{ notification.event.country }}, {{ notification.event.city }}
+      .extra-text
+        | Event Canceled
 
-    img ng-src="{{notification.event.image}}"                                     ng-if="notification.notification_type == 'booking_requested'"
-    .dj-black-text                                                                ng-if="notification.notification_type == 'booking_requested'"
-      | {{ notification.event.title }}
-    .dj-gray-text                                                                 ng-if="notification.notification_type == 'booking_requested'"
-      | {{ notification.event.country }}, {{ notification.event.city }}
-    .extra-text                                                                   ng-if="notification.notification_type == 'booking_requested'"
-      | Booking Requested
+    div                                                                           ng-if="notification.notification_type == 'booking_requested'"
+      img ng-src="{{notification.event.image}}"
+      .dj-black-text
+        | {{ notification.event.title }}
+      .dj-gray-text
+        | {{ notification.event.country }}, {{ notification.event.city }}
+      .extra-text
+        | Booking Requested
+
+    div                                                                         ng-if="notification.notification_type == 'booking_confirmed'"
+      img ng-src="{{notification.event.image}}"
+      .dj-black-text
+        | {{ notification.event.title }}
+      .dj-gray-text
+        | {{ notification.event.country }}, {{ notification.event.city }}
+      .extra-text
+        | Dj accept booking
+
+    div                                                                       ng-if="notification.notification_type == 'booking_cancelled'"
+      img ng-src="{{notification.event.image}}"
+      .dj-black-text
+        | {{ notification.event.title }}
+      .dj-gray-text
+        | {{ notification.event.country }}, {{ notification.event.city }}
+      .extra-text
+        | Dj rejected booking
+
+    div                                                                       ng-if="notification.notification_type == 'event_modified'"
+      img ng-src="{{notification.event.image}}"
+      .dj-black-text
+        | {{ notification.event.title }}
+      .dj-gray-text
+        | {{ notification.event.country }}, {{ notification.event.city }}
+      .extra-text
+        | Event was modified
+
+    div                                                                       ng-if="notification.notification_type == 'event_deleted'"
+      img ng-src="{{notification.event.image}}"
+      .dj-black-text
+        | {{ notification.event.title }}
+      .dj-gray-text
+        | {{ notification.event.country }}, {{ notification.event.city }}
+      .extra-text
+        | Sorry, event was cancelled
 
     .dj-gray-text
       | {{ notification.created_at }}

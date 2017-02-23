@@ -14,6 +14,7 @@ class Booking < ActiveRecord::Base
   validate :org_can_book_dj
 
   after_create :notify
+  after_update :notify_update
 
   validate :date_validation
 
@@ -29,6 +30,21 @@ class Booking < ActiveRecord::Base
     Notification.create to_user: dj.user,
                         notification_type: :booking_requested,
                         event_id: self.event_id
+  end
+
+  def notify_update
+
+    if self.confirmed?
+     Notification.create to_user: self.event.organizer.user,
+                          notification_type: :booking_confirmed,
+                          event_id: self.event_id
+
+    elsif self.cancelled?
+     Notification.create to_user: self.event.organizer.user,
+                          notification_type: :booking_cancelled,
+                          event_id: self.event_id
+    end
+
   end
 
   def date_validation

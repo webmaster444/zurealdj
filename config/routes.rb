@@ -14,6 +14,7 @@ Rails.application.routes.draw do
   get '/organizer', to: "pages#organizer"
 
   scope '(:locale)' do
+    resources :country_flags, only: [:index]
     namespace :admin do
       resources :users, only: [] do
           collection do
