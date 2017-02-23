@@ -29,7 +29,8 @@
 
                         })
                         .error(function(data){
-                            $scope.validation_errors = data.validation_errors;
+                            if(data && data.validation_errors)
+                                $scope.validation_errors = data.validation_errors;
                             $scope.processing = false;
                         })
                 };

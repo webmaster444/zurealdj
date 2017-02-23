@@ -1,6 +1,6 @@
 (function () {
     'use strict';
-    angular.module('ZurealdjLandingApp').factory('SubscriptionsFactory', ['$http', function($http){
+    angular.module('ZurealdjLandingApp').factory('SubscriptionsFactory', ['AuthHttp', function($http){
         return {
             all: function(){
                 return $http.get('/subscriptions');

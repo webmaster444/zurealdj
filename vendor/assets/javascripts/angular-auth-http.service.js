@@ -35,10 +35,13 @@ angular.module('AuthHttp').service('AuthHttp', ['$http', 'toaster', function($ht
                 };
 
                 var error = function(data, status, headers, config){
-                    if(data.errors){
+                    if(data && data.errors){
                         for(var i = 0; i < data.errors.length; ++i) {
                             toaster.pop('error', "", data.errors[i]);
                         }
+                    }
+                    if(data == null){
+                        toaster.pop('error', "", "No internet connection");
                     }
                     if (status == 401) {
                         defaults.unauthorizedAction();
