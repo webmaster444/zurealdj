@@ -48,7 +48,7 @@ class Booking < ActiveRecord::Base
 
   def org_can_book_dj
     if new_record?
-      unless event.organizer.try(:user).try(:subscription).try(:org_can_book_dj)
+      unless !event.nil? && event.organizer.try(:user).try(:subscription).try(:org_can_book_dj)
         self.errors.add :status, 'Only subscribed users can book djs. Please subscribe.'
       end
     end

@@ -18,7 +18,7 @@ class Event < ActiveRecord::Base
 
   validates :title, presence: true, length: { in: 6..60 }
   validates :country_flag_code, presence: true
-  validates :city, presence: true, length: { in: 3..30 }, format: { with: /[A-Za-z]/, message: "is incorrect, use symbols a-z, A-Z and space"}
+  validates :city, presence: true, length: { in: 3..30 }, format: { with: /\A[a-zA-Z-\s]+\z/, message: "is incorrect, use symbols a-z, A-Z, - and space"}
   validates :start_date, presence: true
   validates :end_date, presence: true
   validates :event_category_id, presence: true

@@ -5,6 +5,8 @@ class Organizer < ActiveRecord::Base
   has_many :events, dependent: :destroy
   belongs_to :user
 
+  validates :city, length: { in: 3..30 }, format: { with: /\A[a-zA-Z-\s]+\z/, message: "is incorrect, use symbols a-z, A-Z, - and space"}, if:  :validate_city?
+
   def country_flag
     CountryFlag.find(country_flag_code)
   end
@@ -75,5 +77,9 @@ class Organizer < ActiveRecord::Base
   end
 
   private
+
+    def validate_city?
+      !city.nil? && city != ""
+    end
 
 end
