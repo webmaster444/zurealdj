@@ -10,7 +10,7 @@ class Dj::BookingsController < Dj::BaseController
     if @booking.save
       render json: { message: "Successfully #{ params[:status] }." }
     else
-      render json: { validation_errors: @booking.errors }, status: :unprocessable_entity
+      render json: { errors: @booking.errors.full_messages }, status: :unprocessable_entity
     end
 
   end

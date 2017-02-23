@@ -34,6 +34,10 @@ class Organizer::EventsController < ApplicationController
   end
 
   def create
+    unless current_user.subscription.try(:org_can_create_event)
+      render json: {errors: ['Only subscribed users can create events. Please subscribe.']}, status: :unprocessable_entity and return
+    end
+
     @event = Event.new organizer_id: current_user.organizer[:id]
     @event.assign_attributes event_params
 

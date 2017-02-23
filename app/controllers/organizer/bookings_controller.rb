@@ -1,6 +1,10 @@
 class Organizer::BookingsController < Organizer::BaseController
 
   def create
+    unless current_user.subscription.try(:org_can_book_dj)
+      render json: {errors: ['Only subscribed users can book djs. Please subscribe.']}, status: :unprocessable_entity and return
+    end
+
     @booking = Booking.new booking_params
 
     if @booking.save

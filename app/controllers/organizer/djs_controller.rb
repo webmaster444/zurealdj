@@ -31,6 +31,7 @@ class Organizer::DjsController < Organizer::BaseController
     bookings = Booking.arel_table
     events = Event.arel_table
     organizers = Organizer.arel_table
+    subscriptions = Subscription.arel_table
 
     fields = [
         stars[:comment],
@@ -86,9 +87,12 @@ class Organizer::DjsController < Organizer::BaseController
   def query(options={})
     users = User.arel_table
     djs = Dj.arel_table
+    subscriptions = Subscription.arel_table
 
     q = users
             .join(djs).on(djs[:user_id].eq(users[:id]))
+            .join(subscriptions, Arel::Nodes::OuterJoin).on(users[:subscription_id].eq(subscriptions[:id]))
+            .where(subscriptions[:dj_can_be_visible_for_browsing].eq(true))
 
     q.where(users[:name].matches("%#{ params[:name] }%"))                 if params[:name].present?
     q.where(djs[:rate_per_hour].gteq(params[:price_from]))  if params[:price_from].present?
