@@ -27,6 +27,7 @@
                 users.profile().success(function(data){
                     $scope.$current_user = data;
                     $scope.unread_notifications_count = data.unread_notifications_count;
+                    $scope.unread_messages_count = data.unread_messages_count;
                 });
             };
             $scope.retrieveCurrentUser();
@@ -90,6 +91,7 @@
                     ion.sound.play("button_tiny");
                     $scope.$apply(function(){
                         $scope.unread_notifications_count = data.message.unread_notifications_count;
+                        $scope.unread_messages_count = data.message.unread_messages_count;
                     });
                 }
             });

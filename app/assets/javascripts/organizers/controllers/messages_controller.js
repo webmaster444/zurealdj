@@ -42,6 +42,25 @@
                 }
             };
 
+            $scope.ChatRoomsSocketApp || ($scope.ChatRoomsSocketApp = {});
+            $scope.ChatRoomsSocketApp.cable = ActionCable.createConsumer();
+            $scope.ChatRoomsSocketApp.watcher = $scope.ChatRoomsSocketApp.cable.subscriptions.create({
+                channel: "ChatRoomsChannel"
+            },{
+                received: function(data){
+                    ion.sound.play("button_tiny");
+                    $scope.$apply(function(){
+                        $scope.retrieveChatRooms();
+                    });
+                }
+            });
+
+            $scope.$on("$destroy", function(){
+                if($scope.ChatRoomsSocketApp.watcher){
+                    $scope.ChatRoomsSocketApp.watcher.unsubscribe();
+                }
+            });
+
             $scope.setCurrentEvent = function(event, dj){
                 if($scope.current_dj && $scope.current_dj.id == dj.id && $scope.current_event.id == event.id){
                     return
@@ -62,7 +81,7 @@
                 $scope.SocketApp.cable = ActionCable.createConsumer();
 
                 $scope.SocketApp.chat = $scope.SocketApp.cable.subscriptions.create({
-                    channel: "ChatRoomsChannel",
+                    channel: "MessagesChannel",
                     booking_id: dj.booking_id
                 },{
                     connected: function(){
@@ -73,7 +92,11 @@
                     },
                     received: function(data){
                         $scope.$apply(function(){
-                            $scope.messages.push(data.message);
+                            var m = data.message;
+                            m.read = false;
+                            m.incoming = true;
+                            $scope.messages.push(m);
+
                         });
                         scrollDown()
                     },
@@ -130,10 +153,22 @@
                 }
             };
 
+            $scope.markAsRead = function(message){
+                if(!message.read && message.incoming){
+                    messages.markAsRead(message.id).success(function(){
+                        message.read = true;
+                        $scope.$parent.unread_messages_count -= 1;
+                        $scope.current_event.unread_messages_count -= 1;
+                        $scope.current_dj.unread_messages_count -= 1;
+                    })
+                }
+            };
+
             var scrollDown = function(){
                 $timeout(function(){
-                    var bottomCoord = $('.chat-discussion')[0].scrollHeight;
-                    $('.chat-discussion').slimScroll({scrollTo: bottomCoord});
+                    var el = $('.chat-discussion');
+                    var bottomCoord = el[0].scrollHeight;
+                    el.slimScroll({scrollTo: bottomCoord});
                 }, 300)
             };
 

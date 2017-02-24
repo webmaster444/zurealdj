@@ -83,7 +83,7 @@ Rails.application.routes.draw do
       resources :events, only: [:index, :show]
       resources :bookings, only: [:update]
       resources :chat_rooms, only: [:index]
-      resources :messages, only: [:index]
+      resources :messages, only: [:index, :update]
       resources :subscriptions, only: [:index, :create]
     end
 
@@ -121,7 +121,7 @@ Rails.application.routes.draw do
       end
       resources :bookings, only: [:create, :destroy]
       resources :chat_rooms, only: [:index]
-      resources :messages, only: [:index]
+      resources :messages, only: [:index, :update]
       resources :subscriptions, only: [:index, :create]
     end
 

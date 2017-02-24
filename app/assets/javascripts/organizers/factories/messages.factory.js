@@ -12,6 +12,12 @@
                 });
 
                 return $http.get(url);
+            },
+
+            markAsRead: function(message_id){
+                return $http.put('/organizer/messages/' + message_id, {
+                    read: true
+                })
             }
         }
     }])

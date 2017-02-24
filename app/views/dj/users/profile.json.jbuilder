@@ -47,3 +47,4 @@ json.equipments Equipment.all.each do |equipment|
 end
 
 json.unread_notifications_count Notification.where(to_user_id: current_user.id, read: [false, nil]).count
+json.unread_messages_count Message.where(to_user_id: current_user.id, read: [false, nil]).count

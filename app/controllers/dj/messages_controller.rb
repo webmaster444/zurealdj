@@ -1,4 +1,7 @@
 class Dj::MessagesController < Dj::BaseController
+
+  load_and_authorize_resource :message
+
   def index
     @page = params[:page].to_i
     @page = 1 if @page < 1
@@ -23,5 +26,13 @@ class Dj::MessagesController < Dj::BaseController
 
     @messages = Message.find_by_sql(query.take(@per_page).skip((@page - 1) * @per_page).to_sql).reverse
     @count = Message.find_by_sql(count_query.to_sql).count
+  end
+
+  def update
+    if @message.update_attributes params.permit(:read)
+      render json: {ok: true}
+    else
+      render json: {errors: @notification.errors.full_messages}, status: :unprocessable_entity
+    end if @message.to_user_id == current_user.id
   end
 end

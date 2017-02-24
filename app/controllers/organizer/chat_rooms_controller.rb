@@ -12,7 +12,7 @@ class Organizer::ChatRoomsController < Organizer::BaseController
                 .group(events[:id])
                 .where(events[:title].matches("%#{ params[:q]}%"))
                 .where(events[:organizer_id].eq(@current_organizer[:id]))
-                .order(events[:created_at].desc)
+                .order(events[:last_message_date].desc && events[:created_at].desc)
 
     count_query = query.clone.project('COUNT(*)')
 

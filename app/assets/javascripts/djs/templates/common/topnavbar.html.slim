@@ -13,8 +13,8 @@
             li.desktop-only
               a.dj-black-link href="#messages"
                 | Inbox
-                .count<
-                  | 3
+                .count< ng-show="unread_messages_count"
+                  | {{ unread_messages_count }}
             li.desktop-only
               .dropdown.dj-notifications-dropdown[uib-dropdown is-open="$parent.notificationsDropdownOpen" auto-close="outsideClick" on-toggle="openNotifications()"]
                 a#toggle-notifications type="button" uib-dropdown-toggle=true ng-disabled="disabled"

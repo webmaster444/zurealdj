@@ -36,6 +36,26 @@
                 }
             };
 
+            $scope.ChatRoomsSocketApp || ($scope.ChatRoomsSocketApp = {});
+            $scope.ChatRoomsSocketApp.cable = ActionCable.createConsumer();
+            $scope.ChatRoomsSocketApp.watcher = $scope.ChatRoomsSocketApp.cable.subscriptions.create({
+                channel: "ChatRoomsChannel"
+            },{
+                received: function(data){
+                    ion.sound.play("button_tiny");
+                    $scope.$apply(function(){
+                        $scope.events = [];
+                        $scope.eventsPage = 1;
+                        $scope.retrieveEvents();
+                    });
+                }
+            });
+
+            $scope.$on("$destroy", function(){
+                if($scope.ChatRoomsSocketApp.watcher){
+                    $scope.ChatRoomsSocketApp.watcher.unsubscribe();
+                }
+            });
 
             $scope.setCurrentEvent = function(event){
                 if($scope.current_event && $scope.current_event.id == event.id){
@@ -57,7 +77,7 @@
                 $scope.SocketApp.cable = ActionCable.createConsumer();
 
                 $scope.SocketApp.chat = $scope.SocketApp.cable.subscriptions.create({
-                    channel: "ChatRoomsChannel",
+                    channel: "MessagesChannel",
                     booking_id: event.booking_id
                 },{
                     connected: function(){
@@ -68,7 +88,10 @@
                     },
                     received: function(data){
                         $scope.$apply(function(){
-                            $scope.messages.push(data.message);
+                            var m = data.message;
+                            m.read = false;
+                            m.incoming = true;
+                            $scope.messages.push(m);
                         });
                         ion.sound.play("button_tiny");
                         scrollDown()
@@ -78,7 +101,7 @@
                             message: message,
                             event_id: event.id,
                             booking_id: event.booking_id,
-                            to_user_id: event.dj_id
+                            to_user_id: event.organizer_id
                         })
                     }
                 });
@@ -121,6 +144,16 @@
                         $scope.messagesPenging = false;
                     }).error(function(){
                         $scope.messagesPenging = false;
+                    })
+                }
+            };
+
+            $scope.markAsRead = function(message){
+                if(!message.read && message.incoming){
+                    messages.markAsRead(message.id).success(function(){
+                        message.read = true;
+                        $scope.$parent.unread_messages_count -= 1;
+                        $scope.current_event.unread_messages_count -= 1;
                     })
                 }
             };

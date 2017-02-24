@@ -11,7 +11,7 @@
       ul[dj-scroll]
         li.blank-chat ng-show="events.length == 0"
           | Your chats will be here
-        li ng-repeat="event in events"
+        li ng-repeat="event in events track by $index"
           ul
             li ng-click="setCurrentEvent(event)"
               .chat-user
@@ -44,7 +44,7 @@
             | Show More
         .blank-chat ng-hide="messages.length > 0"
           | Your chat history will be here
-        .chat-message.right ng-repeat="message in messages"
+        .chat-message.right ng-repeat="message in messages track by $index" ng-click="markAsRead(message)" ng-class="{ unread: !message.read && message.incoming }"
           img.message-avatar ng-src="{{message.avatar}}"
           .message
             a.pink-link>

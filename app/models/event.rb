@@ -56,6 +56,7 @@ class Event < ActiveRecord::Base
                     messages[:from_user_id].in([org_id, dj_id])
                         .and(messages[:to_user_id].in([org_id, dj_id]))
                 )
+                .order(messages[:created_at].asc)
 
     Message.find_by_sql(query.to_sql).last
   end

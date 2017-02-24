@@ -15,7 +15,8 @@ class Dj::ChatRoomsController < Dj::BaseController
         events[:image_file_name],
         events[:image_content_type],
         events[:image_file_size],
-        events[:image_updated_at]
+        events[:image_updated_at],
+        events[:organizer_id]
     ]
 
     query = bookings
@@ -25,7 +26,7 @@ class Dj::ChatRoomsController < Dj::BaseController
                 .join(events).on(bookings[:event_id].eq(events[:id]))
                 .where(events[:title].matches("%#{ params[:q]}%"))
                 .project(fields)
-                .order(events[:created_at].desc)
+                .order(events[:last_message_date].desc && events[:created_at].desc)
 
     count_query = query.clone.project('COUNT(*)')
 

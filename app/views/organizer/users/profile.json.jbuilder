@@ -33,3 +33,4 @@ json.genres Genre.all.each do |genre|
 end
 
 json.unread_notifications_count Notification.where(to_user_id: current_user.id, read: [false, nil]).count
+json.unread_messages_count Message.where(to_user_id: current_user.id, read: [false, nil]).count
