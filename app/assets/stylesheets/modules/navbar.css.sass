@@ -1,5 +1,26 @@
 @import "variables_and_functions"
 
+.right-menu-desktop
+  min-width: 600px
+
+.right-menu-mobile
+  max-width: 250px
+
+.profile-user-name-desktop
+  overflow: hidden
+  white-space: nowrap
+  text-overflow: ellipsis
+  width: 80px
+  display: inline-block
+  text-align: left
+  margin-right: 5px
+  -webkit-touch-callout: none
+  -webkit-user-select: none
+  -khtml-user-select: none
+  -moz-user-select: none
+  -ms-user-select: none
+  user-select: none
+
 .display-inline-block
   display: inline-block
 
@@ -118,13 +139,6 @@
       min-width: 160px
       width: auto
       text-align: left
-      max-width: 350px
-      span
-        display: inline-block
-        text-overflow: ellipsis
-        overflow: hidden
-        max-width: 250px
-        vertical-align: middle
     [uib-dropdown-menu]
       height: auto
       min-width: 250px

@@ -6,13 +6,13 @@
           a href="/"
             img.logo src="/images/icons/img-logo-zu-purple.png"
         td.right-menu
-          ul
-            li.desktop-only
+          ul.desktop-only.right-menu-desktop
+            li
               a.dj-black-link href="#messages"
                 | Inbox
-                .count< ng-show="unread_messages_count"
+                .count<
                   | {{ unread_messages_count }}
-            li.desktop-only
+            li
               .dropdown.dj-notifications-dropdown[uib-dropdown is-open="$parent.notificationsDropdownOpen" auto-close="outsideClick" on-toggle="openNotifications()"]
                 a#toggle-notifications type="button" uib-dropdown-toggle=true ng-disabled="disabled"
                   i.dj-bell ng-class="$parent.notificationsDropdownOpen ? 'active': ''"
@@ -27,11 +27,11 @@
                     a.pink-link href="#notifications" ng-click="$parent.notificationsDropdownOpen = false"
                       | Show All
 
-            li.desktop-only
+            li
               .dropdown.dj-profile-dropdown[uib-dropdown]
                 a.dropdown-toggle.count-info[aria-expanded="false" aria-haspopup="true" uib-dropdown-toggle]
                   img.profile-image> ng-src="{{ $current_user.avatar_present? $current_user.avatar.small : '/images/icons/img-profile-photo-mini.png' }}"
-                  span
+                  div.profile-user-name-desktop
                     | {{ $current_user.name }}
                   .drop<
                 ul[uib-dropdown-menu]
@@ -49,8 +49,10 @@
                   li
                     a ng-click="logout()" href="#"
                       | Sign out
-            li.mobile-only
-              .mobile-menu-button ng-click="openMobileMenu()"
+          ul.mobile-only.right-menu-mobile
+             li
+               .mobile-menu-button ng-click="openMobileMenu()"
+
 
 .second-nav.desktop-only
   .page-block
