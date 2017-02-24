@@ -11,7 +11,7 @@
       ul[dj-scroll]
         li.blank-chat ng-show="events.length == 0"
           | Your chats will be here
-        li ng-repeat="event in events track by $index"
+        li ng-repeat="event in events track by $index" ng-show="event.djs.length"
           .chat-user.cursor-pointer ng-click="event.dropdownOpen = !event.dropdownOpen"
             img ng-src="{{event.image}}"
             .chat-user-name

@@ -26,6 +26,7 @@ class Dj::ChatRoomsController < Dj::BaseController
                 .join(events).on(bookings[:event_id].eq(events[:id]))
                 .where(events[:title].matches("%#{ params[:q]}%"))
                 .project(fields)
+                .where(bookings[:status].eq("confirmed"))
                 .order(events[:last_message_date].desc && events[:created_at].desc)
 
     count_query = query.clone.project('COUNT(*)')

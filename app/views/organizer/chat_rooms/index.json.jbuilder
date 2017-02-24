@@ -1,4 +1,5 @@
 json.events @events.each do |event|
+  next if event.confirmed_bookings_count == 0
   json.id event.id
   json.created_at event.created_at.strftime("%d/%m/%Y")
   json.title event.title
@@ -9,6 +10,7 @@ json.events @events.each do |event|
   json.end_date event.end_date.try(:strftime, "%d/%m/%Y")
   json.image event.image.url
   json.djs event.djs.each do |dj|
+    next unless event.booking_for(dj).confirmed?
     json.id dj.user.id
     json.booking_id event.booking_for(dj).id
     json.avatar dj.user.avatar.try(:url, :small) if dj.user.avatar_file_name.present?

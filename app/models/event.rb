@@ -65,6 +65,14 @@ class Event < ActiveRecord::Base
     Booking.find_by(event_id: self.id, dj_id: dj.id)
   end
 
+  def confirmed_bookings_count
+    count = 0
+    self.bookings.each do |booking|
+      count += 1 if booking.confirmed?
+    end
+    count
+  end
+
   def status
     current_date = DateTime.now
     status = "Upcoming"

@@ -17,7 +17,7 @@ class Message < ApplicationRecord
     event = Event.find(self.event_id)
     event.assign_attributes({ last_message_date: self.created_at })
     event.save
-    BadgeBroadcastJob.perform_later(self)
     ChatRoomsBroadcastJob.perform_later(self.to_user_id)
+    BadgeBroadcastJob.perform_later(self)
   end
 end

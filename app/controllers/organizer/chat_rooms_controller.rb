@@ -17,6 +17,9 @@ class Organizer::ChatRoomsController < Organizer::BaseController
     count_query = query.clone.project('COUNT(*)')
 
     @events = Event.find_by_sql(query.take(@per_page).skip((@page - 1) * @per_page).to_sql)
-    @count = Event.find_by_sql(count_query.to_sql).count
+    @count = 0
+    @events.each do |event|
+      @count += 1 if event.confirmed_bookings_count > 0
+    end
   end
 end

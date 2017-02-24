@@ -75,6 +75,7 @@
                         if(!notification.read){
                             notifications.markAsRead(notification.id).success(function(){
                                 notification.read = true;
+                                if($scope.unread_notifications_count) $scope.unread_notifications_count -= 1;
                             })
                         }
                     }
@@ -83,6 +84,7 @@
 
             $scope.SocketApp || ($scope.SocketApp = {});
             $scope.unread_notifications_count = 0;
+            $scope.unread_messages_count = 0;
             $scope.SocketApp.cable = ActionCable.createConsumer();
             $scope.SocketApp.watcher = $scope.SocketApp.cable.subscriptions.create({
                 channel: "BadgesChannel"
