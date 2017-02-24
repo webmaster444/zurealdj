@@ -1,6 +1,7 @@
 json.personal_url @user.personal_url
 json.company_name @user.company_name
 json.name @user.name
+json.id @user.id
 json.avatar do
   json.url paperclip_url(@user.avatar, :large)
   json.small paperclip_url(@user.avatar, :small)
@@ -31,6 +32,5 @@ json.genres Genre.all.each do |genre|
   json.id genre.id
   json.selected @user.genres.exists?(genre.id)
 end
-
 json.unread_notifications_count Notification.where(to_user_id: current_user.id, read: [false, nil]).count
 json.unread_messages_count Message.where(to_user_id: current_user.id, read: [false, nil]).count

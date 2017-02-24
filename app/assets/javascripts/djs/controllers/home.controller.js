@@ -78,7 +78,6 @@
                     $scope.$apply(function(){
                         $scope.unread_notifications_count = data.message.unread_notifications_count;
                         $scope.unread_messages_count = data.message.unread_messages_count;
-                        console.log(data)
                     });
                 }
             });

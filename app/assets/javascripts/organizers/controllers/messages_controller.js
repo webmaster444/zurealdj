@@ -94,9 +94,8 @@
                         $scope.$apply(function(){
                             var m = data.message;
                             m.read = false;
-                            m.incoming = true;
+                            m.incoming = (m.to_user_id == $scope.$parent.$current_user.id);
                             $scope.messages.push(m);
-
                         });
                         scrollDown()
                     },
