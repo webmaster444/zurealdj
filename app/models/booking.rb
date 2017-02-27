@@ -15,7 +15,6 @@ class Booking < ActiveRecord::Base
 
   after_create :notify
   after_update :notify_update
-
   validate :date_validation
 
   enum status: {
@@ -28,21 +27,27 @@ class Booking < ActiveRecord::Base
 
   def notify
     Notification.create to_user: dj.user,
+                        from_user: self.event.organizer.user,
                         notification_type: :booking_requested,
-                        event_id: self.event_id
+                        event_id: self.event_id,
+                        message: "Booking request for '#{ self.event.title }' event"
   end
 
   def notify_update
 
     if self.confirmed?
      Notification.create to_user: self.event.organizer.user,
+                         from_user: dj.user,
                           notification_type: :booking_confirmed,
-                          event_id: self.event_id
+                          event_id: self.event_id,
+                          message: "Dj confirmed participation in: '#{ self.event.title }' "
 
     elsif self.cancelled?
      Notification.create to_user: self.event.organizer.user,
+                         from_user: dj.user,
                           notification_type: :booking_cancelled,
-                          event_id: self.event_id
+                          event_id: self.event_id,
+                          message: "Dj cancelled his participation in: '#{ self.event.title }' "
     end
 
   end

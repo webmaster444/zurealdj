@@ -3,6 +3,7 @@ json.notifications @notifications.each do |n|
   json.notification_type n.notification_type
   json.created_at n.created_at.try(:strftime, "%d/%m/%Y")
   json.read n.read
+  json.message n.message
 
   if n.from_user
     json.from_user do

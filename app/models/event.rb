@@ -1,5 +1,5 @@
 class Event < ActiveRecord::Base
-
+  before_destroy :notify_event_destroy
   has_many :bookings, dependent: :destroy
   has_and_belongs_to_many :djs, join_table: :bookings
 
@@ -35,7 +35,7 @@ class Event < ActiveRecord::Base
   validate :date_validation
 
   after_update :notify_event_update
-  before_destroy :notify_event_destroy
+
 
   def unread_messages_count_for(user, from_user = nil)
     if from_user
@@ -94,8 +94,10 @@ class Event < ActiveRecord::Base
 
         self.djs.each do |dj|
         Notification.create to_user: dj.user,
+                            from_user: self.organizer.user,
                             notification_type: :event_modified,
-                            event_id: self.id
+                            event_id: self.id,
+                            message: "Changes in '#{ self.title }' event"
       end
       end
   end
@@ -104,8 +106,10 @@ class Event < ActiveRecord::Base
     self.djs.each do |dj|
 
       Notification.create to_user: dj.user,
+                          from_user: self.organizer.user,
                           notification_type: :event_deleted,
-                          event_id: self.id
+                          event_id: self.id,
+                          message: "Sorry, event '#{ self.title }' was cancelled"
     end
   end
 end

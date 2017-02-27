@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170214145339) do
+ActiveRecord::Schema.define(version: 20170224142613) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -149,6 +149,7 @@ ActiveRecord::Schema.define(version: 20170214145339) do
     t.integer  "event_category_id"
     t.datetime "start_date"
     t.datetime "end_date"
+    t.datetime "last_message_date"
     t.index ["event_category_id"], name: "index_events_on_event_category_id", using: :btree
     t.index ["image_id"], name: "index_events_on_image_id", using: :btree
     t.index ["organizer_id"], name: "index_events_on_organizer_id", using: :btree
@@ -205,6 +206,7 @@ ActiveRecord::Schema.define(version: 20170214145339) do
     t.datetime "updated_at",        null: false
     t.integer  "event_id"
     t.integer  "star_id"
+    t.string   "message"
     t.index ["event_id"], name: "index_notifications_on_event_id", using: :btree
     t.index ["from_user_id"], name: "index_notifications_on_from_user_id", using: :btree
     t.index ["star_id"], name: "index_notifications_on_star_id", using: :btree

@@ -3,8 +3,8 @@ class ApplicationController < ActionController::Base
   include ApplicationHelper
   include SessionsHelper
 
-  before_filter :set_locale
-  before_filter :authenticate_user
+  before_action :set_locale
+  before_action :authenticate_user
 
   protect_from_forgery with: :exception
 

@@ -8,58 +8,70 @@ ul.notifications-list
 
 
     div                                                                           ng-if="notification.notification_type == 'event_canceled'"
-      img ng-src="{{notification.event.image}}"
-      .dj-black-text
+      img ng-src="{{notification.event.image}}" ng-if="notification.event"
+      .dj-black-text ng-if="notification.event"
         | {{ notification.event.title }}
-      .dj-gray-text
+      .dj-black-text ng-if="!notification.event"
+        | {{ notification.message }}
+      .dj-gray-text ng-if="notification.event"
         | {{ notification.event.country }}, {{ notification.event.city }}
       .extra-text
         | Event Canceled
 
     div                                                                           ng-if="notification.notification_type == 'booking_requested'"
-      img ng-src="{{notification.event.image}}"
-      .dj-black-text
+      img ng-src="{{notification.event.image}}" ng-if="notification.event"
+      .dj-black-text                            ng-if="notification.event"
         | {{ notification.event.title }}
-      .dj-gray-text
+      .dj-black-text ng-if="!notification.event"
+        | {{ notification.message }}
+      .dj-gray-text                             ng-if="notification.event"
         | {{ notification.event.country }}, {{ notification.event.city }}
       .extra-text
         | Booking Requested
 
     div                                                                         ng-if="notification.notification_type == 'booking_confirmed'"
-      img ng-src="{{notification.event.image}}"
-      .dj-black-text
+      img ng-src="{{notification.event.image}}" ng-if="notification.event"
+      .dj-black-text ng-if="notification.event"
         | {{ notification.event.title }}
-      .dj-gray-text
+      .dj-black-text ng-if="!notification.event"
+        | {{ notification.message }}
+      .dj-gray-text ng-if="notification.event"
         | {{ notification.event.country }}, {{ notification.event.city }}
       .extra-text
         | Dj accept booking
 
     div                                                                       ng-if="notification.notification_type == 'booking_cancelled'"
-      img ng-src="{{notification.event.image}}"
-      .dj-black-text
+      img ng-src="{{notification.event.image}}" ng-if="notification.event"
+      .dj-black-text ng-if="notification.event"
         | {{ notification.event.title }}
-      .dj-gray-text
+      .dj-black-text ng-if="!notification.event"
+        | {{ notification.message }}
+      .dj-gray-text ng-if="notification.event"
         | {{ notification.event.country }}, {{ notification.event.city }}
       .extra-text
         | Dj rejected booking
 
     div                                                                       ng-if="notification.notification_type == 'event_modified'"
-      img ng-src="{{notification.event.image}}"
-      .dj-black-text
+      img ng-src="{{notification.event.image}}" ng-if="notification.event"
+      .dj-black-text ng-if="notification.event"
         | {{ notification.event.title }}
-      .dj-gray-text
+      .dj-black-text ng-if="!notification.event"
+        | {{ notification.message }}
+      .dj-gray-text ng-if="notification.event"
         | {{ notification.event.country }}, {{ notification.event.city }}
       .extra-text
         | Event was modified
 
     div                                                                       ng-if="notification.notification_type == 'event_deleted'"
-      img ng-src="{{notification.event.image}}"
-      .dj-black-text
+      img ng-src="{{notification.event.image}}" ng-if="notification.event"
+      .dj-black-text ng-if="notification.event"
         | {{ notification.event.title }}
-      .dj-gray-text
+      .dj-black-text ng-if="!notification.event"
+        | {{ notification.message }}
+      .dj-gray-text ng-if="notification.event"
         | {{ notification.event.country }}, {{ notification.event.city }}
       .extra-text
-        | Sorry, event was cancelled
+        | Event cancelled
 
     .dj-gray-text
       | {{ notification.created_at }}

@@ -10,6 +10,33 @@ class UserMailer  < ActionMailer::Base
     mail(to: @user.email, from: sender.user_name, subject: 'Email confirmation instructions.')
   end
 
+  def user_notify(data)
+
+    @user = User.find(data.to_user)
+    @message = case data.notification_type
+                 when  "whenbooking_requested"
+                   "New booking request"
+                 when  "event_canceled"
+                   "Event was cancelled"
+                 when  "rated"
+                   "You was rated"
+                 when  "booking_confirmed"
+                   "Dj confirmed participaton"
+                 when  "booking_cancelled"
+                   "Dj rejected participation"
+                 when  "event_modified"
+                   "Changes in event"
+                 when  "event_deleted"
+                   "Event '#{data.message}' was cancelled"
+              else
+                   "You have new notification on ZuRealDj"
+               end
+
+    @path = "#{root_url}#{@user.role.name}#/notifications"
+    mail(to: @user.email, from: sender.user_name, subject: 'New notification from ZuRealDj')
+
+  end
+
   private
 
   def sender

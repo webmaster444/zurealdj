@@ -4,7 +4,7 @@ class Notification < ApplicationRecord
   belongs_to :event
   belongs_to :star
 
-  after_save { BadgeBroadcastJob.perform_later(self.to_user_id) }
+  after_save :make_notification
 
   enum notification_type: {
       booking_requested: 0,
@@ -15,4 +15,12 @@ class Notification < ApplicationRecord
       event_modified: 6,
       event_deleted: 7
   }
+  private
+
+  def make_notification
+
+        BadgeBroadcastJob.perform_later(self.to_user_id)
+        UserMailer.user_notify(self).deliver_now
+
+  end
 end
