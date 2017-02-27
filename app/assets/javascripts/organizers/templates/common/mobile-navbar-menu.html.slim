@@ -22,6 +22,14 @@
 
   ul.mobile-menu uib-collapse="menuCollapsed" ng-init="menuCollapsed = false"
     li
+      table
+        tr
+          td.plan-title
+            | {{ $current_user.subscription.title || "Limited" }}
+          td.upgrade_plan
+            a.upgrade_plan href="#pricing"
+              | Upgrade plan
+    li
       a href="#djs" ng-class="{active: ['djs', 'dj'].includes($state.current.name)}"
         | Browse DJs
     li
