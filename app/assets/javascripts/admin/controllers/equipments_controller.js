@@ -21,6 +21,7 @@
                         };
                     };
                     $scope.resetFilters();
+                    $scope.new = true;
 
                     var timer = false;
                     $scope.$watch('filters', function(){

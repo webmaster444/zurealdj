@@ -25,12 +25,12 @@ nav.navbar-default.navbar-static-side.ng-scope role="navigation"
             .events-nav-icon.nav-icon
             span.nav-label
               | Events
-        li ng-class=("{active: ['subscriptions', 'edit_subscription', 'new_subscription', 'equipment', 'genre', 'event_categor'].includes($state.current.name) }")
+        li ng-class=("{active: ['about_slides', 'subscriptions', 'edit_subscription', 'new_subscription', 'equipments', 'genres', 'event_categories'].includes($state.current.name) }")
           a href="#"
             .other-nav-icon.nav-icon
             span.nav-label Content
             span.fa.arrow
-          ul.nav.nav-second-level.collapse ng-class=("{in: ['subscriptions', 'subscription', 'cancelation', 'equipment', 'genre', 'event_categor'].includes($state.current.name) }")
+          ul.nav.nav-second-level.collapse ng-class=("{in: ['about_slides', 'subscriptions', 'subscription', 'cancelation', 'equipments', 'genres', 'event_categories'].includes($state.current.name) }")
             li.active ui-sref-active="active"
               a href="#about_slides"
                 | About slides
@@ -46,13 +46,13 @@ nav.navbar-default.navbar-static-side.ng-scope role="navigation"
             li.active ui-sref-active="active"
               a href="#subscriptions"
                 | Subscriptions
-        li ng-class=("{active: ['about_slides', 'edit_who_we_are_page', 'edit_crew_page', 'edit_how_we_work_page', 'edit_policies_page', 'edit_terms_n_conditions_page', 'edit_cancelations_page', 'edit_cancellation_policy'].includes($state.current.name) }")
+        li ng-class=("{active: ['edit_who_we_are_page', 'edit_crew_page', 'edit_how_we_work_page', 'edit_policies_page', 'edit_terms_n_conditions_page', 'edit_cancelations_page', 'edit_cancellation_policy'].includes($state.current.name) }")
           a href="#"
             .other-nav-icon.nav-icon
             span.nav-label
               | Static pages
             span.fa.arrow
-          ul.nav.nav-second-level.collapse ng-class=("{in: ['about_slides', 'edit_who_we_are_page', 'edit_crew_page', 'edit_how_we_work_page', 'edit_policies_page', 'edit_terms_n_conditions_page', 'edit_cancelations_page', 'edit_cancellation_policy'].includes($state.current.name) }")
+          ul.nav.nav-second-level.collapse ng-class=("{in: ['edit_who_we_are_page', 'edit_crew_page', 'edit_how_we_work_page', 'edit_policies_page', 'edit_terms_n_conditions_page', 'edit_cancelations_page', 'edit_cancellation_policy'].includes($state.current.name) }")
             li.active ui-sref-active="active"
               a href="#who_we_are_page/edit"
                 | Who we are pages
