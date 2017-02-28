@@ -74,8 +74,8 @@
           .block-title
             | Equipment
           div
-            label.select-button ng-repeat="equipment in user.equipments"
-              .text-center.btn-equipment.active ng-show="equipment.selected"
+            label.select-button ng-show="equipment.selected" ng-repeat="equipment in user.equipments"
+              .text-center.btn-equipment.isactive
                 img ng-src="{{ equipment.icon }}"
                 .title
                   | {{ equipment.title }}

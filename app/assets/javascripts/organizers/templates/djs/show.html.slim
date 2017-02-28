@@ -78,7 +78,7 @@
             | Equipment
           .equipments
             label.select-button ng-repeat="equipment in user.equipments"
-              .text-center.btn-equipment.active ng-show="equipment.selected"
+              .text-center.btn-equipment.isactive ng-show="equipment.selected"
                 img ng-src="{{ equipment.icon }}"
                 .title
                   | {{ equipment.title }}
