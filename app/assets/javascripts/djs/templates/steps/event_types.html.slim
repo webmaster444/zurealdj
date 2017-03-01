@@ -1,12 +1,15 @@
 div.page-block.registration
   .text-center
     img.small-logo.display-inline-block src="/images/icons/img-logo-zu-purple.png"
+  hr
   .navigation-bar.text-center
-    .step.small-text style="margin-left: 120px"
+    .step.small-text
+      div.pull-left.slider-btn style="padding-right: 70px"
       | Step 1 of 5
       .pull-right
         a.small-text.slider-btn.next ng-click="next()"
           | Next
+  hr
   div
     .question.text-center
       | What type of events do you want to play?
