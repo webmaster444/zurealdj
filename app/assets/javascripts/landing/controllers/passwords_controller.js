@@ -46,6 +46,7 @@
                         .success(function(data){
                             $scope.formPending = false;
                             $state.go('home');
+                            ngDialog.closeAll();
                         })
                         .error(function(data){
                             $scope.formPending = false;

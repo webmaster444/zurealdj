@@ -17,7 +17,7 @@ class PasswordResetsController < ApplicationController
     @user = User.find_by_reset_password_token params[:id]
 
     if @user
-      if @user.update_attributes password: params[:password], password_confirmation: params[:password_confirmation]
+      if @user.update_attributes password: params[:password], password_confirmation: params[:password_confirmation], reset_password_token: nil
         render json: {message: 'Password successfully restored!'}
       else
         render json: {errors: @user.errors.full_messages}, status: :unprocessable_entity
