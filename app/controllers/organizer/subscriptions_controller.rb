@@ -1,6 +1,7 @@
 class Organizer::SubscriptionsController < Organizer::BaseController
 
   def index
+    Subscription.free_for_organizer
     @subscriptions = Subscription.where(subscription_for: 'organizer').order(:position)
   end
 

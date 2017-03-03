@@ -1,27 +1,30 @@
 .container
   .dj-header
-    | Pricing
+    | Upgrade plan
 
   .row
     .col-md-10.col-md-offset-1
       .text-center
         .dj-subscription ng-repeat="subscription in subscriptions" ng-class="{current: subscription.current}"
-          .dj-subscription-title
-            | {{ subscription.title }}
-          .dj-subscription-description
-            | {{ subscription.description }}
-          .dj-subscription-access ng-show="subscription.full_access"
-            ul.dj-access-list
-              li.active
-                | Premium membership and full access
-          .dj-subscription-access ng-hide="subscription.full_access"
-            ul
-              li ng-class="{active: subscription.dj_can_be_visible_for_browsing }"
-                | Can be visible for browsing
-              li ng-class="{active: subscription.dj_can_confirm_booking }"
-                | Can confirm booking
+          .pricing
+            .dj-subscription-title
+              | {{ subscription.title }}
+            .dj-subscription-description ng-hide="subscription.price == 'Free' "
+              | {{ subscription.period_count }} {{ subscription.period }}
+            .dj-subscription-description ng-show="subscription.price == 'Free' "
+              | {{ subscription.description }}
+            .dj-subscription-access ng-show="subscription.full_access"
+              ul.dj-access-list
+                li.active
+                  | Premium membership and full access
+            .dj-subscription-access ng-hide="subscription.full_access"
+              ul
+                li ng-class="{active: subscription.dj_can_be_visible_for_browsing }"
+                  | Can be visible for browsing
+                li ng-class="{active: subscription.dj_can_confirm_booking }"
+                  | Can confirm booking
           .dj-subscription-price
             | {{ subscription.price }}
           button ng-click="select(subscription.id)" ng-class="{'dj-btn-muted': subscription.current, 'dj-btn-outline': !subscription.current}" ng-disabled="subscription.current"
-            | Select
+            | {{subscription.current ? 'Current' : 'Select'}}
 .margin50

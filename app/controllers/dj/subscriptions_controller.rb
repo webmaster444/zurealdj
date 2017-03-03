@@ -1,7 +1,8 @@
 class Dj::SubscriptionsController < Dj::BaseController
 
   def index
-    @subscriptions = Subscription.where(subscription_for: 'dj').order(:position)
+    Subscription.free_for_dj
+    @subscriptions = Subscription.where(subscription_for: 'dj').order( :position, free: :desc)
   end
 
   def create

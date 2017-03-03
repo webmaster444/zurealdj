@@ -25,7 +25,7 @@ class Subscription < ApplicationRecord
   def self.free_for_dj
     Subscription.where(free: true, subscription_for: 'dj').first_or_create do |s|
       s.title                          = 'Limited'
-      s.description                    = 'Limited'
+      s.description                    = 'Limited functionality'
       s.period_count                   = 100
       s.period                         = 'years'
       s.dj_can_be_visible_for_browsing = false
@@ -36,7 +36,7 @@ class Subscription < ApplicationRecord
   def self.free_for_organizer
     Subscription.where(free: true, subscription_for: 'organizer').first_or_create do |s|
       s.title                          = 'Limited'
-      s.description                    = 'Limited'
+      s.description                    = 'Limited functionality'
       s.period_count                   = 100
       s.period                         = 'years'
       s.org_can_book_dj                = false
