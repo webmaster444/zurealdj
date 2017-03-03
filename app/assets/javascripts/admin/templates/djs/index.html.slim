@@ -107,8 +107,7 @@
                 td
                   | {{ dj.created_at }}
                 td.text-center
-                  img src="/images/icons/ic-check-green.png" ng-show="dj.subscription_id"
-
+                  img ng-src='{{ dj.subscription_id && !dj.subscription_free ? "/images/icons/ic-check-green.png" : "/images/icons/ic-delete-red.png" }}'
                 td.col-actions.text-right
                   a.btn-xs.btn.btn-info.btn-outline href="#dj/{{ dj.id }}"
                     | {{ I18n.t('actions.view') }}

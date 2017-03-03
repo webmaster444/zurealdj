@@ -17,7 +17,7 @@ class TopRatedDjsController < ApplicationController
     q.project(bookings[:dj_id], djs[:user_id], Arel.sql('users.*'))
 
     @users = User.find_by_sql(q.to_sql)
-    puts(@users.inspect)
+
   end
 
   protected

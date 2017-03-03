@@ -30,6 +30,7 @@ class Organizer < ActiveRecord::Base
   def self.query(options={})
     users = User.arel_table
     organizers = Organizer.arel_table
+    subscription = Subscription.arel_table
 
     fields = [
         users[:id],
@@ -45,13 +46,15 @@ class Organizer < ActiveRecord::Base
         organizers[:created_at],
         organizers[:id].as('dj_id'),
         organizers[:city],
-        organizers[:country_flag_code]
+        organizers[:country_flag_code],
+        subscription[:free],
+        subscription[:id].as('subs_id')
     ]
 
     q = users
-            .group(organizers[:id])
-            .group(users[:id])
+            .group(organizers[:id],users[:id],subscription[:id])
             .join(organizers).on(organizers[:user_id].eq(users[:id]))
+            .join(subscription, Arel::Nodes::OuterJoin).on(subscription[:id].eq(users[:subscription_id]))
 
     q.where(users[:name].matches("%#{ options[:name] }%")) if options[:name].present?
 

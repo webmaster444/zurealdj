@@ -101,7 +101,7 @@
                 td
                   | {{ organizer.created_at }}
                 td.text-center
-                  img src="/images/icons/ic-check-green.png" ng-show="organizer.subscription_id"
+                  img ng-src='{{ organizer.subscription_id && !organizer.subscription_free ? "/images/icons/ic-check-green.png" : "/images/icons/ic-delete-red.png" }}'
                 td.text-right
                   a.btn-xs.btn.btn-warning.btn-outline> href="#organizer/{{organizer.id}}/edit"
                     | {{ I18n.t('actions.edit') }}

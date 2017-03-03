@@ -10,5 +10,6 @@ json.djs @djs.each do |dj|
   json.rate_per_hour dj.rate_per_hour
   json.avatar paperclip_url(dj.avatar, :large)
   json.subscription_id dj.subscription_id
+  json.subscription_free dj.free
 end
 json.count @count

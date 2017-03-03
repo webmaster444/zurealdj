@@ -70,6 +70,7 @@ class Admin::DjsController < Admin::BaseController
   def query(options={})
     users = User.arel_table
     djs = Dj.arel_table
+    subscription = Subscription.arel_table
 
     fields = [
         users[:id],
@@ -86,13 +87,15 @@ class Admin::DjsController < Admin::BaseController
         djs[:city],
         djs[:country_flag_code],
         djs[:rate_per_hour],
-        djs[:free_to_hire]
+        djs[:free_to_hire],
+        subscription[:free],
+        subscription[:id].as('subs_id')
     ]
 
     q = users
-            .group(djs[:id])
-            .group(users[:id])
+            .group(djs[:id], users[:id], subscription[:id])
             .join(djs).on(djs[:user_id].eq(users[:id]))
+            .join(subscription, Arel::Nodes::OuterJoin).on(subscription[:id].eq(users[:subscription_id]))
 
     q.where(users[:name].matches("%#{ params[:name] }%")) if params[:name].present?
 

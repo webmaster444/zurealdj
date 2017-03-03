@@ -10,5 +10,6 @@ json.organizers @organizers.each do |organizer|
   json.email             organizer.email
   json.personal_url      organizer.personal_url
   json.subscription_id   organizer.subscription_id
+  json.subscription_free organizer.free
 end
 json.count @count
