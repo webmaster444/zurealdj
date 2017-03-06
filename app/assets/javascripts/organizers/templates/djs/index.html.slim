@@ -9,8 +9,8 @@
       .explore-block
         i.fa.fa-search
         input.form-control.input-lg type="text" ng-model="filters.name" placeholder="Find an artist for your event"
-        .btn-group uib-dropdown=true is-open="isopen" auto-close="outsideClick"
-          a#toggle-button type="button" uib-dropdown-toggle=true ng-disabled="disabled"
+        .btn-group.btn-group-fix uib-dropdown=true is-open="false" auto-close="outsideClick"
+          a#toggle-button type="button" uib-dropdown-toggle=true ng-disabled="disabled" ng-click="isOpen()"
             | Filtering
             i.fa.fa-chevron-down<
           .dropdown-menu#filters-menu type="text/ng-template" uib-dropdown-menu=true role="menu" aria-labelledby="toggle-button"
@@ -23,6 +23,7 @@
                   input.price-input type="number" ng-model="filters.price_from"
                 td.rzslider-td
                   rzslider rz-slider-model="filters.price_from" rz-slider-high="filters.price_to" rz-slider-options="slider.options"
+                /rzslider rz-slider-model="slider.value" rz-slider-options="slider.options"
                 td style="width: 100px"
                   i.fa.fa-dollar
                   input.price-input type="number" ng-model="filters.price_to"

@@ -15,10 +15,12 @@
 
                     $scope.slider = {
                         default: true,
+                        value: 0,
                         options: {
                             floor: 0,
                             ceil: 1000,
                             step: 1,
+                            showSelectionBar: true,
                             translate: function(value, sliderId, label) {
                                 switch (label) {
                                     case 'model':
@@ -30,6 +32,12 @@
                                 }
                             }
                         }
+                    };
+
+                    $scope.isOpen = function(){
+                        setTimeout(function() {
+                            $scope.$broadcast('rzSliderForceRender');
+                        }, 100);
                     };
 
                     $scope.filters = {
@@ -95,11 +103,11 @@
                     $scope.$watch('filters', function(){
                         if(timer){
                             if(!$scope.next_page) $scope.filters.page = 1;
-                            $timeout.cancel(timer)
+                            $timeout.cancel(timer);
                         }
                         timer = $timeout(function(){
                             $scope.retrieveDjs();
-                        }, 500)
+                        }, 500);
                     }, true);
 
                     $scope.retrieveDjs = function(){
@@ -115,6 +123,7 @@
                                 $scope.min_rate = data.min_rate;
                                 $scope.max_rate = data.max_rate;
                                 $scope.slider.options.ceil = $scope.max_rate;
+                                $scope.slider.value = $scope.max_rate;
                                 $scope.slider.default = false;
                                 $scope.filters.price_from = $scope.min_rate;
                                 $scope.filters.price_to = $scope.max_rate;
