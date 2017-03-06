@@ -101,7 +101,7 @@ angular.module('formInput.image').directive('image', ['toaster', 'ngDialog', '$f
                             aspectRatio: attributes.aspectratio,
                             minCropBoxHeight: 50,
                             minCropBoxWidth: 50,
-                            viewMode: 0,
+                            viewMode: 1,
                             dragMode: 'move',
                             allowResize: true
 
