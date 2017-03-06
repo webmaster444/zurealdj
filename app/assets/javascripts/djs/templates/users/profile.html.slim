@@ -2,10 +2,13 @@
   .profile-header
     .background-img style="{{ user.avatar_present? ('background-image: url(' + user.avatar.original + ')') : '' }}"
       .custom-blur
+  .user-name-mobile-auto
+    .user-name-mobile
+      | {{ user.name }}
   .page-block.relative
     .inf-container
       .inf
-        .name
+        .name.user-name-desktop
           | {{ user.name }}
         span.rating-icons[uib-rating ng-model="user.rating" max="5" state-on="'fire fire-active icon'" state-off="'fire fire-inactive icon'" enable-reset='false' read-only='true' ]
         .role.small-text

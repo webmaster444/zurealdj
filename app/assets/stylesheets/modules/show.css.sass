@@ -93,6 +93,10 @@
   margin: 40px 0 !important
 
 [device='desktop']
+
+  .user-name-mobile-auto
+    display: none
+
   .event
     .artists
       .title
@@ -231,6 +235,29 @@
 
 
 [device='mobile']
+
+  .user-name-desktop
+    display: none
+
+  .user-name-mobile-auto
+    position: absolute
+    left: 0px
+    right: 0px
+    width: 100%
+
+  .user-name-mobile
+    font-size: 20px
+    text-align: center
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.08)
+    padding: 20px 0
+    height: 63px
+    max-height: 63px
+    position: relative
+    left: 0px
+    right: 0px
+    @media (max-width: $mobile-max-width)
+      top: -20px
+
   word-wrap: break-word
   .event
     .artists
@@ -258,8 +285,9 @@
       margin: 0
       padding: 0
       .inf
-        //padding: 0
-        padding-top: 15px
+        padding-top: 63px
+        @media (max-width: $mobile-max-width)
+          padding-top: 43px
         .role, .rating-icons, .genres-event-type, .address
           display: none
         .name, .title
@@ -278,7 +306,7 @@
         .img-avatar, .img-event
           width: 280px
           height: 270px
-          margin: 20px auto
+          margin: 25px auto
           border-radius: 4px
         .btn-book-now
           display: block
