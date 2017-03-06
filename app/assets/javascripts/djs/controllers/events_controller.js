@@ -14,6 +14,8 @@
                     $scope.filters = {
                         page: 1,
                         per_page: 10,
+                        price_from: 0,
+                        price_to: 1000,
                         sort_column: 'created_at',
                         sort_type: 'desc'
                     };
@@ -22,6 +24,14 @@
 
                     $scope.event = [];
 
+                    $scope.filtersDialog = function(){
+                        ngDialog.open({
+                            template: 'djs/templates/common/events.html',
+                            className: 'ngdialog-theme-default dj-mobile-ng-dialog',
+                            scope: $scope
+                        });
+                    };
+                    $scope.closeFilterDialog = ngDialog.closeAll;
                     $scope.getSortType = function () {
                         if ($scope.filters.sort_column == 'title') {
                             return $scope.filters.sort_type == 'asc' ? 'A-Z' : 'Z-A';
