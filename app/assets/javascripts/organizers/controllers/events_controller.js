@@ -166,7 +166,7 @@
                                             if (isConfirm) {
                                                 events.destroy(id).success(function () {
                                                     scope.closeThisDialog();
-                                                    $scope.retrieveEvents();
+                                                    window.location = '/organizer#/events';
                                                 });
                                             } else {
 
