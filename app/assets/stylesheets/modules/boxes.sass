@@ -1,11 +1,5 @@
 @import 'variables_and_functions'
 
-.shadow-block
-  padding: 50px
-  border-radius: 4px
-  background-color: #ffffff
-  box-shadow: 0 2px 20px 0 rgba(0, 0, 0, 0.08)
-
 .margin50
   height: 50px
 
@@ -140,6 +134,12 @@
       position: absolute
 
 @media (max-width: $mobile-max-width)
+  .shadow-block
+    padding: 50px
+    border-radius: 4px
+    background-color: #ffffff
+    box-shadow: 0 -20px 2px 0 white, 0 2px 20px 0 rgba(0, 0, 0, 0.08)
+
   .djs-search
     padding: 10px
     margin-top: -20px
@@ -208,6 +208,13 @@
 @media (min-width: $mobile-max-width)
   .mobile-only
     display: none !important
+
+  .shadow-block
+    padding: 50px
+    border-radius: 4px
+    background-color: #ffffff
+    box-shadow: 0 2px 20px 0 rgba(0, 0, 0, 0.08)
+    margin-bottom: 50px
 
 .ngdialog.ngdialog-theme-default .ngdialog-content
   padding: 0

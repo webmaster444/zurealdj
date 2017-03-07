@@ -55,7 +55,6 @@
             i.fa.fa-chevron-down
         button.search-button.book
           | Find a Booking
-  .margin50
   div.events-actions
     .pull-right
       span.dj-dropdown.sorting-dropdown[uib-dropdown]
@@ -101,12 +100,12 @@
           | {{ event.country }}
       table
         tr
-          td.small-text.light-grey
+          td.date-titles
             | Start date:
           td.small-text
             | {{ event.start_date }}
         tr
-          td.small-text.light-grey
+          td.date-titles
             | End date:
           td.small-text
             | {{ event.end_date }}
