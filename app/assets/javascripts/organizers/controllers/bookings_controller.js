@@ -43,13 +43,16 @@
                 };
 
                 $scope.save = function(date){
+                    $scope.processing = true;
                     $scope.booking.dj_id = $scope.user.id;
                     bookings.book($scope.booking)
                         .success(function(){
                             $scope.closeThisDialog();
+                            $scope.processing = false;
                         })
                         .error(function(data){
                             $scope.$parent.validation_errors = data.validation_errors;
+                            $scope.processing = false;
                     })
                 }
 
