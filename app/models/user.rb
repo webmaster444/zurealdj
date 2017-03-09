@@ -23,7 +23,7 @@ class User < ActiveRecord::Base
   validates :personal_url, uniqueness: { case_sensitive: false, message: "This personal url is already registered."}, allow_blank: true
   validates :company_name, length: { in: 2..30 }, uniqueness: { case_sensitive: false, message: "This company name is already registered."}, if: :validate_company_name?
 
-
+  before_create :subscribe_user
   before_save :encrypt_password
   before_validation :downcase_email
   after_create :create_dependent_record
@@ -212,6 +212,24 @@ class User < ActiveRecord::Base
   def at_least_one_equipment
     if equipments.count == 0
       self.errors.add :equipments, 'Please select at least 1 equipment'
+    end
+  end
+
+  def subscribe_user
+    if self.dj?
+
+      @subscription = Subscription.free_for_dj
+      self.subscribed_at = Time.now
+      self.subscription_expires_at = Time.now + @subscription.period_count.send(@subscription.period)
+      self.subscription_id = @subscription.id
+
+    elsif self.organizer?
+
+      @subscription = Subscription.free_for_organizer
+      self.subscription_id = @subscription.id
+      self.subscribed_at = Time.now
+      self.subscription_expires_at = Time.now + @subscription.period_count.send(@subscription.period)
+
     end
   end
 
