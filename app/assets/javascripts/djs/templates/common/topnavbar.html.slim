@@ -16,8 +16,8 @@
               .dropdown.dj-notifications-dropdown[uib-dropdown is-open="$parent.notificationsDropdownOpen" auto-close="outsideClick" on-toggle="openNotifications()"]
                 a#toggle-notifications type="button" uib-dropdown-toggle=true ng-disabled="disabled"
                   i.dj-bell ng-class="$parent.notificationsDropdownOpen ? 'active': ''"
-                  .badge ng-show="unread_notifications_count > 0"
-                    | {{ unread_notifications_count }}
+                  i.fa.fa-circle.notification-icon ng-show="unread_notifications_count > 0"
+
                 #notifications-menu.dropdown-menu uib-dropdown-menu=true role="menu" aria-labelledby="toggle-notifications"
                   .dj-dropdown-header
                     a.dj-black-link

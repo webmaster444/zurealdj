@@ -17,8 +17,7 @@
       .col-xs-6.text-center
         a href="#notifications"
           i.dj-bell
-          .badge ng-show="unread_notifications_count > 0"
-            | {{ unread_notifications_count }}
+          i.fa.fa-circle.notification-icon ng-show="unread_notifications_count > 0"
 
   ul.mobile-menu uib-collapse="menuCollapsed" ng-init="menuCollapsed = false"
     li
