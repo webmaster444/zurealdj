@@ -6,28 +6,28 @@
       .col-md-2
         | Card Number
       .col-md-10
-        input.zureal-input type="text" size="20" data-stripe="number"
+        input.zureal-input type="text" size="20" maxlength="16" data-stripe="number"
         .error ng-show="validation_errors.card_number"
           | {{ validation_errors.card_number }}
     .row.form-group
       .col-md-2
         | Expiration (MM/YY)
       .col-md-4
-        input.zureal-input type="text" size="2" data-stripe="exp_month"
+        input.zureal-input type="text" size="2"  maxlength="2" data-stripe="exp_month"
         .error ng-show="validation_errors.exp_month"
           | {{ validation_errors.exp_month }}
       .col-md-1
         h2
           | /
       .col-md-5
-        input.zureal-input type="text"  size="2" data-stripe="exp_year"
+        input.zureal-input type="text"  maxlength="2" size="2" data-stripe="exp_year"
         .error ng-show="validation_errors.exp_year"
           | {{ validation_errors.exp_year }}
     .row.form-group
       .col-md-2
         | CVC
       .col-md-10
-        input.zureal-input type="text" size="4" data-stripe="cvc"
+        input.zureal-input type="text" size="4" maxlength="4" data-stripe="cvc"
         .error ng-show="validation_errors.cvc"
           | {{ validation_errors.cvc }}
     hr
