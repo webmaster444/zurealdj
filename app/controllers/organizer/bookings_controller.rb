@@ -10,7 +10,7 @@ class Organizer::BookingsController < Organizer::BaseController
     if @booking.save
       render json: { message: "Book request sent !"}
     else
-      render json: {errors: @booking.errors}, status: :unprocessable_entity
+      render json: {validation_errors: @booking.errors, errors: @booking.errors['status']}, status: :unprocessable_entity
     end
   end
 

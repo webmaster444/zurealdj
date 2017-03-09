@@ -12,6 +12,7 @@ class Booking < ActiveRecord::Base
   validates :status, presence: true
   validate :dj_can_confirm_booking
   validate :org_can_book_dj
+  validate :booking_changes
 
   after_create :notify
   after_update :notify_update
@@ -71,6 +72,16 @@ class Booking < ActiveRecord::Base
     if new_record?
       unless !event.nil? && event.organizer.try(:user).try(:subscription).try(:org_can_book_dj)
         self.errors.add :status, 'Only subscribed users can book djs. Please subscribe.'
+      end
+    end
+  end
+
+  def booking_changes
+    if self.event.end_date < Time.now
+      if status_changed?
+        self.errors.add :status, "Event finished. You can't change Your participation status"
+      else
+        self.errors.add :status, "Event finished. You can't change bookings"
       end
     end
   end
