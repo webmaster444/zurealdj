@@ -11,20 +11,18 @@
               | {{ subscription.title }}
             .dj-subscription-description ng-hide="subscription.price == 'Free' "
               | {{ subscription.period_count }} {{ subscription.period }}
-            .dj-subscription-description ng-show="subscription.price == 'Free' "
-              | {{ subscription.description }}
             .dj-subscription-access ng-show="subscription.full_access"
               ul.dj-access-list
                 li.active
                   | Premium membership and full access
             .dj-subscription-access ng-hide="subscription.full_access"
               ul.dj-access-list
-                li ng-class="{active: subscription.org_can_add_dj_to_favorites }"
-                  | Can add dj to favorites
                 li ng-class="{active: subscription.org_can_book_dj }"
-                  | Can book dj
+                  | Book a DJ
                 li ng-class="{active: subscription.org_can_create_event }"
-                  | Can create event
+                  | Create an event
+                li ng-class="{active: subscription.org_can_add_dj_to_favorites }"
+                  | Add DJ to favorites
           .dj-subscription-price
             | {{ subscription.price }}
           button ng-click="select(subscription.id)" ng-class="{'dj-btn-muted': subscription.current, 'dj-btn-outline': !subscription.current}" ng-disabled="subscription.current"
