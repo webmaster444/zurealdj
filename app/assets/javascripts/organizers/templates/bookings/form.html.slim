@@ -8,7 +8,7 @@
         label.form-title
           | Event
       .col-xs-10
-        ui-select.dj-ui-select ng-model="booking.event" ng-click="validation_errors.event = null"
+        ui-select.dj-ui-select ng-model="booking.event" ng-click="validation_errors.event = null" on-select="eventSelected()"
           ui-select-match placeholder="Select Event"
             span ng-bind="$select.selected.title"
           ui-select-choices refresh="retrieveEvents($select.search)" refresh-delay='500' repeat="event in events track by event.id"

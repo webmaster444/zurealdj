@@ -42,6 +42,22 @@
                     showWeeks: false
                 };
 
+                $scope.eventSelected = function(){
+                    if ($scope.booking.event && $scope.booking.event.start_date && $scope.booking.event.end_date){
+
+                        var startParts = $scope.booking.event.start_date.split("/");
+                        var endParts = $scope.booking.event.end_date.split("/");
+
+                        var startDate = new Date(startParts[2], (startParts[1] - 1), startParts[0]);
+                        var endDate = new Date(endParts[2], (endParts[1] - 1), endParts[0]);
+
+                        $scope.fromDateOptions.minDate = startDate;
+                        $scope.fromDateOptions.maxDate = endDate;
+                        $scope.toDateOptions.minDate = startDate;
+                        $scope.toDateOptions.maxDate = endDate;
+
+                    }
+                }
                 $scope.save = function(date){
                     $scope.processing = true;
                     $scope.booking.dj_id = $scope.user.id;
