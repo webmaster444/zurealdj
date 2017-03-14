@@ -30,7 +30,7 @@
       letter-spacing: 1px
       line-height: 1.5
     .address
-      letter-spacing: 1px
+      letter-spacing: 1.3px
 
 .index
   margin: auto
@@ -243,16 +243,16 @@
       line-height: 1.43
       letter-spacing: normal
     .events-count
-      padding-top: 30px
+      padding-top: 50px
       vertical-align: top
       font-size: 16px
       letter-spacing: 1.5px
       color: #cccccc
 
   .event-item
-    margin: 10px 0
+    margin: 0px 0
     height: auto
-    padding: 20px 0 20px 20px
+    padding: 20px 20px 0px 20px
     .event-image
       width: 65px
       height: 65px
@@ -261,19 +261,24 @@
       font-size: 16px !important
       font-weight: 500
       letter-spacing: 1px
+      line-height: normal
+      font-family: CeraPro-Medium
+      margin-bottom: 5px
     .small-text
       font-size: 14px !important
       line-height: 1.43
       letter-spacing: 1.3px
     .event-inf
       display: inline-block
-      margin: 5px auto 10px 10px
+      margin: 0px auto 45px 10px
       table
-        margin-top: 20px
+        margin-top: 30px
         td
-          padding: 4px 10px 4px 0px
+          padding: 0px 10px 0px 0px
         td.light-grey
           min-width: 100px
+        td.dateval
+          color: #555555
     .djs
       display: none
     .djs-count
@@ -340,9 +345,19 @@ ul.notifications-list
     letter-spacing: 1.3px
     color: #938e94
     padding-right: 10px
+  .add-event
+    background: url('/images/icons/ic-plus-small.png')
+    background-repeat: no-repeat
+    padding-left: 17.5px
+    background-position-y: 3px
 
 
 @media (min-width: $mobile-max-width)
+  .add-event
+    background: url('/images/icons/ic-plus-small-fat.png')
+    background-repeat: no-repeat
+    padding-left: 22px
+    background-position-y: 5px
   .date-titles
     font-size: 16px
     line-height: 1.5
