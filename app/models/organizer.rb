@@ -5,7 +5,8 @@ class Organizer < ActiveRecord::Base
   has_many :events, dependent: :destroy
   belongs_to :user
 
-  validates :city, length: { in: 3..30 }, format: { with: /\A[a-zA-Z-\s]+\z/, message: "is incorrect, use symbols a-z, A-Z, - and space"}, if:  :validate_city?
+  attr_accessor :step
+  validates :city, length: { in: 3..30 }, presence: true, format: { with: /\A[[:alpha:]]+[\s-]?[[:alpha:]]+[\s-]?[[:alpha:]]+\z/, message: "City name is incorrect, use symbols a-z, A-Z, - and space"} , if: -> {  User.organizer_steps[step || user.step] >= User.organizer_steps[:organizer_personal_url] }
 
   def country_flag
     CountryFlag.find(country_flag_code)
@@ -78,11 +79,5 @@ class Organizer < ActiveRecord::Base
       q.project(fields)
     end
   end
-
-  private
-
-    def validate_city?
-      !city.nil? && city != ""
-    end
 
 end
