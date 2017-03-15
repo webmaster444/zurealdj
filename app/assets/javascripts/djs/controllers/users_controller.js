@@ -64,7 +64,7 @@
                     .error(function(data){
                         $scope.processing = false;
                         $scope.validation_errors = data.validation_errors;
-                        if($scope.validation_errors && ($scope.validation_errors["dj.sample"] || $scope.validation_errors$scope.validation_errors["dj.sample_content_type"])){
+                        if($scope.validation_errors && ($scope.validation_errors["dj.sample"] || $scope.validation_errors && $scope.validation_errors["dj.sample_content_type"])){
                             SweetAlert.swal({
                                 title: "",
                                 text: "You can upload audio with mp3 format only.",
