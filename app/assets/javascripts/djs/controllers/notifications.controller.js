@@ -24,6 +24,8 @@
                         notification.read = true;
                     })
                 }
+                if(notification.link)
+                    window.location = notification.link;
             }
         }])
 }());

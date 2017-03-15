@@ -15,6 +15,20 @@ class Notification < ApplicationRecord
       event_modified: 6,
       event_deleted: 7
   }
+  def link
+    case self.notification_type
+        when "booking_requested","event_canceled","booking_confirmed","booking_cancelled","event_modified","event_deleted"
+           if self.event != nil
+
+             "#{self.to_user.role.name}#/events/#{self.event.id}"
+           end
+
+        when "rated"
+          "#{self.to_user.role.name}#/profile"
+
+      end
+  end
+
   private
 
   def make_notification

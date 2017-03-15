@@ -4,6 +4,7 @@ json.notifications @notifications.each do |n|
   json.created_at n.created_at.try(:strftime, "%d/%m/%Y")
   json.read n.read
   json.message n.message
+  json.link n.link
 
   if n.from_user
     json.from_user do

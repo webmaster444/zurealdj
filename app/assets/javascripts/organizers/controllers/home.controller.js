@@ -78,6 +78,10 @@
                                 if($scope.unread_notifications_count) $scope.unread_notifications_count -= 1;
                             })
                         }
+                        if(notification.link){
+                            window.location = notification.link;
+                            $scope.notificationsDropdownOpen = false;
+                        }
                     }
                 }
             };
