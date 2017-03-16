@@ -3,6 +3,12 @@
 .chat-view
   margin-top: 30px
   box-shadow: 0 2px 30px 0 rgba(0, 0, 0, 0.08)
+  i.fa-circle
+    color: #38e357
+    font-size: 7px
+    position: absolute
+    bottom: 0px
+    right: 0px
   .chat-sidebar
     padding: 0
     border-right: 1px solid #f5f5f5
@@ -33,10 +39,18 @@
       & > img
         position: absolute
         top: 15px
-        left: 15px
-        width: 60px
-        height: 60px
+        left: 25px
+        width: 50px
+        height: 50px
         border-radius: 4px
+      .eventImg
+        left: 20px
+      i.fa-circle
+        color: #38e357
+        font-size: 7px
+        position: absolute
+        top: 60px
+        left: 70px
       i.fa-chevron-right, i.fa-chevron-down
         position: absolute
         top: 39px
@@ -53,6 +67,11 @@
           width: 25px
           height: 25px
           border-radius: 100px
+        &-count
+          font-family: CeraPro
+          font-size: 14px
+          line-height: 1.43
+          color: #555555
       .unread-messages
         text-align: right
         position: absolute
@@ -65,6 +84,11 @@
           padding: 2px 7px
           display: inline-block
           color: white
+      &-name
+        font-family: CeraPro-Medium
+        font-size: 16px
+        font-weight: 500
+        color: #555555
     .chat-search
       position: relative
       i.fa.fa-search
@@ -81,17 +105,42 @@
       border-bottom: solid 1px #f5f5f5
   .chat-header
     height: 61px
-    padding: 20px 70px 20px 20px
+    padding: 20px 70px 5px 20px
     border-bottom: 1px solid #f5f5f5
     position: relative
     text-align: right
-    img
+    .eventChat
+      display: inline-block
       position: absolute
-      top: 5px
-      right: 5px
-      width: 50px
-      height: 50px
-      border-radius: 4px
+      right: 20px
+      top: 10px
+      font-family: CeraPro
+      font-size: 16px
+      color: #8a8a8a
+      img
+        width: 40px
+        height: 40px
+        border-radius: 4px
+        margin-left: 15px
+    .receiver
+      display: inline-block
+      text-align: left
+      left: 20px
+      top: 10px
+      position: absolute
+      font-family: CeraPro-Medium
+      font-size: 20px
+      font-weight: 500
+      color: #555555
+      .imgContain
+        display: inline-block
+        position: relative
+        margin-right: 15px
+      img
+        border-radius: 100px
+        width: 40px
+        height: 40px
+
 
   .chat-discussion, .slimScrollDiv .chat-discussion
     height: 400px

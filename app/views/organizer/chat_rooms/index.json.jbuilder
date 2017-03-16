@@ -16,6 +16,7 @@ json.events @events.each do |event|
     json.avatar dj.user.avatar.try(:url, :small) if dj.user.avatar_file_name.present?
     json.avatar "/images/icons/img-profile-photo-mini.png" unless dj.user.avatar_file_name.present?
     json.name dj.user.name
+    json.online dj.user.online
 
     json.unread_messages_count event.unread_messages_count_for(current_user, dj.user)
     last_message = event.last_message(dj.user.id, current_user.id)

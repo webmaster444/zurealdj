@@ -134,6 +134,11 @@ class User < ActiveRecord::Base
     self.avatar = open(url) if url
   end
 
+  def online
+    isOnline = self.sessions.order(updated_at: :desc).first
+    true if isOnline && isOnline.updated_at > Time.now - 15.minutes
+  end
+
   private
 
   def validate_destroy
