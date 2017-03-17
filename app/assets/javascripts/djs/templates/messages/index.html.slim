@@ -8,32 +8,49 @@
         li.blank-chat ng-show="events.length == 0"
           | Your chats will be here
         li ng-repeat="event in events track by $index"
-          ul
+          .chat-user.cursor-pointer ng-click="event.dropdownOpen = !event.dropdownOpen"
+            img.eventImg ng-src="{{event.image}}"
+            .chat-user-name
+              a.chat-user-name.event-title
+                | {{ event.title }}
+              .unread-message-count
+                | {{ event.djs_count }} DJ's
+            .unread-messages ng-if="event.unread_messages_count > 0"
+              .unread-messages-count
+                | {{ event.unread_messages_count }}
+            i.fa ng-class="{'fa-chevron-down': !event.dropdownOpen, 'fa-chevron-up': event.dropdownOpen}"
+          ul ng-show="event.dropdownOpen"
             li ng-click="setCurrentEvent(event)"
-              .chat-user
-                img ng-src="{{event.image}}"
-                .chat-user-name
-                  a.dj-black-link
-                    | {{ event.title }}
+              .chat-user ng-class="{'current-chat': event == current_event }"
+                img ng-src="{{event.org_avatar}}" style="background-color: white; border-radius: 100%"
+                i.fa.fa-circle ng-show="event.org_online"
+                a.chat-user-name
+                  | {{ event.org_name }}
+                .dj-gray-text.last-date ng-if="event.last_message"
+                  | {{ event.last_message.date }}
                 .unread-message ng-if="event.last_message"
                   img ng-src="{{ event.last_message.user_avatar }}"
                   .dj-gray-text
                     | {{ event.last_message.body }}
                 .unread-messages ng-if="event.last_message"
-                  .dj-gray-text
-                    | {{ event.last_message.date }}
                   .unread-messages-count ng-if="event.unread_messages_count > 0"
                     | {{ event.unread_messages_count }}
-        .show-more.small ng-show="events.length < eventsCount"
-          a.show-more.small ng-click="showMoreEvents()"
-            | Show More
+          .show-more.small ng-show="eventsCount && events.length < eventsCount"
+            a.show-more.small ng-click="showMoreEvents()"
+              | Show More
     .col-xs-8.no-padding
       .chat-header
         .dj-gray-text ng-hide="current_event"
           | Choose event to discuss
-        img ng-src="{{current_event.image}}" ng-show="current_event"
-        a.dj-black-link ng-show="current_event"
-          | {{ current_event.title }}
+        .receiver ng-show="current_event"
+          .imgContain
+            img ng-src="{{ current_event.org_avatar }}"
+              i.fa.fa-circle ng-show="current_event.org_online"
+          | {{ current_event.org_name }}
+        .eventChat ng-show="current_event"
+          a.dj-black-link
+            | {{ current_event.title }}
+          img ng-src="{{current_event.image}}"
       .chat-discussion[dj-scroll]
         .show-more.small ng-show="messagesCount > messages.length"
           a.show-more.small ng-click="retrieveOldMessages()"
@@ -43,9 +60,9 @@
         .chat-message.right ng-repeat="message in messages track by $index" ng-click="markAsRead(message)" ng-class="{ unread: !message.read && message.incoming }"
           img.message-avatar ng-src="{{message.avatar}}"
           .message
-            a.pink-link>
+            a.message-author
               | {{ message.name }}
-            span.dj-gray-text
+            span.dj-gray-text.message-date
               | {{ message.date }}
             .message-content
               | {{ message.body }}
@@ -53,5 +70,6 @@
       form.chat-message-form ng-submit="send()" name="chatForm"
         input.form-control.message-input name="message" placeholder="Enter message text" ng-model="message" ng-disabled="current_event? false: true"
         a ng-click="current_event? send() : false"
-          img src="/images/icons/ic-send-black-24-px.png"
+          img src="/images/icons/ic-send-black-24-px.png" ng-if="!message.length"
+          img src="/images/icons/ic-send-black-active-24-px.png" ng-if="message.length"
 .margin50
