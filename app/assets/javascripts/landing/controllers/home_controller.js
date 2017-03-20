@@ -82,7 +82,6 @@
                         className: $scope.ngDialogParams.className,
                         disableAnimation: true,
                         preCloseCallback: function() {
-                            $state.go('home');
                             return true;
                         }
                     });
