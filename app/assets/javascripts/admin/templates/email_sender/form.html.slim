@@ -1,5 +1,5 @@
 .wrapper.wrapper-content
-  .row.animated.fadeInRight
+  .row.animated.fadeIn
     .col-md-12
       h3
         | {{ I18n.t('headers.email_sender') }}
@@ -89,11 +89,10 @@
               label.control-label
                 | {{ I18n.t('email_sender.fields.enable_starttls_auto') }}:
             .col-sm-10
-              .onoffswitch
-                input#tls-on-off-switch.onoffswitch-checkbox ng-model="email_sender.enable_starttls_auto" type="checkbox"
-                label.onoffswitch-label for="tls-on-off-switch"
-                  span.onoffswitch-inner
-                  span.onoffswitch-switch
+              .checkbox
+                input type="checkbox" name="free" ng-model="email_sender.enable_starttls_auto" id="free"
+                label for="free"
+
         .form-group
           .row
             .col-sm-4.col-sm-offset-2
