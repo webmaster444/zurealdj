@@ -1,6 +1,6 @@
 class Organizer::UsersController < Organizer::BaseController
 
-  skip_before_action :not_finished_profile
+  skip_before_action :not_finished_profile, except: :profile
 
   def step
     @user = current_user
@@ -24,6 +24,11 @@ class Organizer::UsersController < Organizer::BaseController
 
   def profile
     @user = current_user
+  end
+
+  def step_data
+    @user = current_user
+    render 'profile'
   end
 
   def update_profile

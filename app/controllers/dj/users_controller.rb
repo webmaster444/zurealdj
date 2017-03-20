@@ -24,6 +24,11 @@ class Dj::UsersController < Dj::BaseController
     @user = current_user
   end
 
+  def step_data
+    @user = current_user
+    render 'profile'
+  end
+
   def comments
     @page = params[:page].to_i
     @page = 1 if @page < 1

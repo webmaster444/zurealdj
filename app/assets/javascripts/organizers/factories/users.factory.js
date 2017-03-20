@@ -2,6 +2,10 @@
     'use strict';
     angular.module('ZurealdjOrganizerApp').factory('UsersFactory', ['AuthHttp', function($http){
         return {
+            step_data: function(){
+                return $http.get('/organizer/step_data');
+            },
+
             profile: function(){
                 return $http.get('/organizer/profile');
             },

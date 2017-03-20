@@ -59,6 +59,7 @@ Rails.application.routes.draw do
 
     namespace :dj do
       get :profile, to: "users#profile"
+      get :step_data, to: "users#step_data"
       resources :sessions, only: [] do
         collection do
           get :check
@@ -89,6 +90,7 @@ Rails.application.routes.draw do
 
     namespace :organizer do
       get :profile, to: "users#profile"
+      get :step_data, to: "users#step_data"
       resources :sessions, only: [] do
         collection do
           get :check

@@ -8,7 +8,7 @@
 
                 $scope.I18n = I18n;
                 $scope.$parent.no_second_navbar = true;
-                users.profile().success(function(data){
+                users.step_data().success(function(data){
                     $scope.user = data;
                 });
 
