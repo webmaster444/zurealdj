@@ -17,7 +17,7 @@ class User < ActiveRecord::Base
   attr_accessor :password, :password_confirmation
   attr_accessor :agree
   validates :email, uniqueness: { case_sensitive: false, message: "This email address is already registered." },
-                    format: { with: /.*\@.*\..*/, message: "is incorrect"},
+                    format: { with: /\A[a-zA-Z0-9]+[a-zA-Z0-9\._-]*[a-zA-Z0-9]+@[a-zA-Z0-9]+[-_]*[a-zA-Z0-9\.]+[a-zA-Z0-9]+\.[a-zA-Z]{2,}\z/, message: "Email address is incorrect"},
                     presence: true
 
   validates :personal_url, uniqueness: { case_sensitive: false, message: "This personal url is already registered."}, allow_blank: true

@@ -9,7 +9,7 @@ class SessionsController < ApplicationController
 
   def create
     sleep 1
-    @user = User.find_by_email params[:email]
+    @user = User.find_by_email params[:email].downcase
 
     if @user && !@user.confirmed?
       render json: { errors: ['You are not confirm your email.'] }, status: :unprocessable_entity and return
