@@ -236,6 +236,9 @@
 
 
 .edit-event, .rate
+  font-family: CeraPro
+  font-style: normal
+  font-stretch: normal
   padding: 30px
   @media (max-width: $mobile-max-width)
     padding: 20px
@@ -248,6 +251,7 @@
       margin: 5px auto
   .zurealdj-header-1
     margin-bottom: 25px
+    margin-left: 10px
     hr
       display: none
     @media (max-width: $mobile-max-width)
@@ -258,6 +262,8 @@
         float: none !important
   .row.buttons
     padding: 25px 0
+    padding-left: 15px
+    padding-right: 15px
     clear: both
   .selected-box
     width: 100%
@@ -266,7 +272,7 @@
     border-radius: 4px
     padding: 10px
   .col-event-image, .col-dj-avatar
-    max-width: 350px
+    max-width: 380px
     display: inline-block
     vertical-align: top
     width: 100%
@@ -275,8 +281,11 @@
     @media (max-width: 930px)
       max-width: 100%
       text-align: center
+    .text-center
+      max-width: 300px
+      margin-left: 13px
   .col-event-form
-    max-width: 550px
+    max-width: 520px
     display: inline-block
     vertical-align: top
     width: 100%
@@ -287,11 +296,13 @@
       width: 100%
       max-width: 550px
       margin: 30px 0
+      display: flex
+      align-self: flex-start
       @media (max-width: $mobile-max-width)
         max-width: 400px
         margin: 30px auto
       .form-title
-        width: 150px
+        width: 140px
         display: inline-block
         margin: 0
         padding: 0
@@ -302,6 +313,7 @@
         line-height: normal
         letter-spacing: normal
         color: #555555
+        margin-top: 15px
         @media (max-width: $mobile-max-width)
           margin-bottom: 10px
       .form-container
@@ -316,6 +328,12 @@
             text-align: left
         .dj-dropdown, .zureal-input
           width: 100% !important
+          color: #555555
+          .dropdown-toggle
+            color: #555555
+          i.fa
+            font-size: 10px
+            font-weight: normal
         span[timepicker]
           width:  40%
           display: inline-block
@@ -325,10 +343,37 @@
           margin-right: 5%
           width:  55%
           display: inline-block
+          input
+            color: #555555
+            &::-webkit-input-placeholder
+              color: #555555
+            &::-moz-placeholder
+              color: #555555
+            &:-moz-placeholder
+              color: #555555
+            &:-ms-input-placeholder
+              color: #555555
+          i.fa
+            font-size: 10px
+            font-weight: normal
           @media (max-width: $mobile-max-width)
             width:  100%
           input
             padding-left: 10px
+        .count-picker
+          width: 140px
+          height: 50px
+        .btn-dec, .btn-inc
+          position: absolute
+          max-width: 20px
+          max-height: 20px
+          font-size: 33px
+          padding-top: 5px
+        .count-value
+          position: absolute
+          padding-top: 3px
+        .btn-inc
+          margin-left: 80px
 
 .rate
   max-width: 870px
