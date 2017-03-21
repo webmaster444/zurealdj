@@ -9,6 +9,11 @@
                 $scope.I18n = I18n;
 
                 $scope.activeEdit = 0;
+                $scope.step = false;
+
+                $scope.isMobile = function(){
+                    return window.navigator.userAgent.match(/iPhone|iPad|iPod|Android|BlackBerry|Opera Mini|IEMobile/i)? true: false;
+                };
 
                 $scope.updateSettings = function(){
                     settings.updateNotifications($scope.user)
@@ -19,16 +24,18 @@
 
                         })
                 };
-
+                
                 $scope.retrieveSettings = function() {
                     settings.show().success(function(data){
                         $scope.user = data;
+                        $scope.oldEmail = data.email;
                     });
                 };
 
                 $scope.retrieveSettings();
 
                 $scope.cancel = function() {
+                    $scope.step = false;
                     $scope.activeEdit = 0;
                     $scope.retrieveSettings();
                 };
@@ -37,6 +44,7 @@
                     $scope.processing = true;
                     settings.upsert($scope.user)
                         .success(function(){
+                            $scope.step = false;
                             $scope.activeEdit = 0;
                             $scope.processing = false;
                             $scope.retrieveSettings();

@@ -1,10 +1,46 @@
 .settings
+  .edit-profile.settingsTitle ng-show="isMobile()"
+    a.btn-close ng-click="step = 0" ng-show="step"
+    .edit-menu
+      .menu-head ng-switch="step"
+        .mobileTitle ng-switch-when="1"
+          | Edit Password
+        .mobileTitle ng-switch-when="2"
+          | Edit Email
+        .mobileTitle ng-switch-when="3"
+          | Edit Account link
+        .mobileTitle ng-switch-when="4"
+          | Edit Notifications
+        .mobileTitle ng-switch-default=""
+          | Settings
+      .menu-block ng-show="!step"
+        .menu-item
+          .menu-title
+            | Password
+          a.edit-btn ng-click="step = 1 ; activeEdit = 1"
+            | Edit
+        .menu-item
+          .menu-title
+            | Email
+          a.edit-btn ng-click="step = 2 ; activeEdit = 2"
+            | Edit
+        .menu-item
+          .menu-title
+            | Account link
+          a.edit-btn ng-click="step = 3 ; activeEdit = 3"
+            | Edit
+        .menu-item
+          .menu-title
+            | Notifications
+          a.edit-btn ng-click="step = 4 ; activeEdit = 4"
+            | Edit
+
   .page-block
     div
       .content-block
-        .content-title
+        .content-title ng-show="!isMobile()"
           | Main Settings
-        #edit-password class="{{ activeEdit == 1? 'active-edit' : '' }}"
+        #edit-password class="{{ activeEdit == 1? 'active-edit' : '' }}" ng-show="!isMobile() || step == 1" ng-class="isMobile()? 'text-left' : '' "
           .form-group#current-password
             .col-title
               | {{ activeEdit == 1? 'Old password' : 'Password' }}
@@ -23,26 +59,34 @@
               | Confirm password
             .col-field
               input.zureal-input type="password" ng-model="user.password_confirmation"
-          .actions-block
-            a.settings-btn.cancel ng-click="cancel()"
-              | Cancel
-            a.settings-btn.save data-style="expand-left" ladda="processing" type="submit" ng-click="save()"
-              | Save
-        #edit-email class="{{ activeEdit == 2? 'active-edit' : '' }}"
+          .glue
+            .actions-block
+              p
+              a.settings-btn.cancel ng-click="cancel()"
+                | Cancel
+              a.settings-btn.save data-style="expand-left" ladda="processing" type="submit" ng-click="save()"
+                | Save
+        #edit-email class="{{ activeEdit == 2? 'active-edit' : '' }}" ng-show="!isMobile() || step == 2" ng-class="isMobile()? 'text-left' : '' "
           .form-group
             .col-title
               | Email
-            .col-field
+            .col-field#email
+              input.zureal-input type="email" value="{{ oldEmail }}" ng-disabled="true"
+            .col-title ng-hide="activeEdit != 2"
+              | New Email
+            .col-field ng-hide="activeEdit != 2"
               input.zureal-input type="email" ng-model="user.email" ng-disabled="activeEdit != 2"
             .col-action
               a.edit ng-click="!activeEdit? activeEdit = 2 : true" class="{{ activeEdit? 'cursor-default' : '' }}"
                 | Edit
-          .actions-block
-            a.settings-btn.cancel ng-click="cancel()"
-              | Cancel
-            a.settings-btn.save data-style="expand-left" ladda="processing" type="submit" ng-click="save()"
-              | Save
-        #edit-link class="{{ activeEdit == 3? 'active-edit' : '' }}"
+          .glue
+            .actions-block
+              p
+              a.settings-btn.cancel ng-click="cancel()"
+                | Cancel
+              a.settings-btn.save data-style="expand-left" ladda="processing" type="submit" ng-click="save()"
+                | Save
+        #edit-link class="{{ activeEdit == 3? 'active-edit' : '' }}" ng-show="!isMobile() || step == 3" ng-class="isMobile()? 'text-left' : '' "
           .form-group
             .col-title
               | Account link
@@ -51,20 +95,33 @@
             .col-action
               a.edit ng-click="!activeEdit? activeEdit = 3 : true" class="{{ activeEdit? 'cursor-default' : '' }}"
                 | Edit
-            .page-id
-              | Page id - {{ user.id }}
-          .actions-block
-            a.settings-btn.cancel ng-click="cancel()"
-              | Cancel
-            a.settings-btn.save data-style="expand-left" ladda="processing" type="submit" ng-click="save()"
-              | Save
+            .pageid ng-show="activeEdit == 3"
+              .pageid-title.inline
+                | Page id
+              .pageid-text.inline
+                | - {{ user.id }}
+              .pageid-info
+                | You can change this link just once , so choose wisely!
+          .glue
+            .actions-block
+              p
+              a.settings-btn.cancel ng-click="cancel()"
+                | Cancel
+              a.settings-btn.save data-style="expand-left" ladda="processing" type="submit" ng-click="save()"
+                | Save
 
-    #notifications-block
-      .content-block
-        .content-title
-          | Notifications
-        .zureal-checkbox
-          input type="checkbox" ng-model="user.notifications" id="notifications" ng-change="updateSettings()"
-          label for="notifications"
-            span
-            | Mail notifications
+        .text-center#notifications-block ng-show="!isMobile() || step == 4"
+          .NotifyTitle
+            | Notifications
+          .zureal-checkbox.text-left
+            input type="checkbox" ng-model="user.notifications" id="notifications" ng-change="updateSettings()"
+            label for="notifications"
+              span
+              | Mail notifications
+          .glue
+            .actions-block
+              p
+              a.settings-btn.cancel ng-click="cancel()"
+                | Cancel
+              a.settings-btn.save data-style="expand-left" ladda="processing" type="submit" ng-click="save()"
+                | Save
