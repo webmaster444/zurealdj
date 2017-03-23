@@ -48,7 +48,7 @@
           .form-group
             .form-title
               | Name
-            input.register-input type="text" ng-model="user.name"
+            input.register-input.edit-input type="text" ng-model="user.name"
             .error ng-repeat="error in validation_errors.name"
               | {{ error }}
           .form-group
@@ -56,7 +56,7 @@
               | Country:
             .dj-dropdown[uib-dropdown]
               i.fa.fa-chevron-down
-              a.zureal-dropdown[ng-disabled="disabled" uib-dropdown-toggle]
+              a.edit-input.zureal-dropdown[ng-disabled="disabled" uib-dropdown-toggle]
                 span ng-hide="user.country"
                   | Please choose a country
                 span ng-show="user.country"
@@ -72,18 +72,19 @@
           .form-group
             .form-title
               | City
-            input.register-input type="text" ng-model="user.city"
+            input.register-input.edit-input type="text" ng-model="user.city"
             .error ng-repeat="error in validation_errors['dj.city']"
               | {{ error }}
           .form-group
             .form-title
               | About
-            textarea.zureal-textarea type="text" ng-model="user.about" rows="5"
+            textarea.zureal-textarea.dj-edit-textarea type="text" ng-model="user.about" rows="5"
             .error ng-repeat="error in validation_errors.about"
               | {{ error }}
 
 
     .content-block#dj-id-2 ng-show="!isMobile() || step == 2"
+      hr.margin50
       .content-title
         | Types of Events
       .container
@@ -144,7 +145,7 @@
           | {{ error }}
         | Rate per hour:
         .inline-block
-          input.register-input.step-5-input type="number" ng-model="user.rate_per_hour" placeholder="amount $"
+          input.register-input.edit-input.step-5-input type="number" ng-model="user.rate_per_hour" placeholder="amount $"
 
       hr
     .actions-block ng-show="!isMobile() || step"

@@ -38,7 +38,7 @@
           .form-group
             .form-title
               | Name
-            input.register-input type="text" ng-model="user.name"
+            input.register-input.edit-input type="text" ng-model="user.name"
             .error ng-repeat="error in validation_errors.name"
               | {{ error }}
           .form-group
@@ -46,7 +46,7 @@
               | Country:
             .dj-dropdown[uib-dropdown]
               i.fa.fa-chevron-down
-              a.zureal-dropdown[ng-disabled="disabled" uib-dropdown-toggle]
+              a.edit-input.zureal-dropdown[ng-disabled="disabled" uib-dropdown-toggle]
                 span ng-hide="user.country"
                   | Please choose a country
                 span ng-show="user.country"
@@ -62,24 +62,25 @@
           .form-group
             .form-title
               | City
-            input.register-input type="text" ng-model="user.city"
+            input.register-input.edit-input type="text" ng-model="user.city"
             .error ng-repeat="error in validation_errors['organizer.city']"
               | {{ error }}
           .form-group
             .form-title
               | About
-            textarea.zureal-textarea type="text" ng-model="user.about"
+            textarea.zureal-textarea.dj-edit-textarea type="text" ng-model="user.about"
             .error ng-repeat="error in validation_errors.about"
               | {{ error }}
 
     .content-block#org-id-2 ng-show="!isMobile() || step == 2"
+      hr.margin50
       .content-title
         | Company or agency name
       .container
         .error ng-repeat="error in validation_errors.company_name"
           | {{ error }}
         .form-group.text-center
-          input.register-input type="text" ng-model="user.company_name"
+          input.register-input.edit-input type="text" ng-model="user.company_name"
         .leave-it-blanck
           | (Optional)
 
