@@ -1,4 +1,4 @@
-(function () {
+    (function () {
 
     "use strict";
 
@@ -9,6 +9,23 @@
                 $scope.I18n = I18n;
                 $scope._ = _;
                 $scope.$state = $state;
+
+                $scope.slider = {
+                    default: true,
+                    value: 0,
+                    options: {
+                        floor: 0,
+                        ceil: 1000,
+                        step: 1,
+                        showSelectionBar: true
+                    }
+                };
+
+                $scope.isOpen = function(){
+                    setTimeout(function() {
+                        $scope.$broadcast('rzSliderForceRender');
+                    }, 100);
+                };
 
                 if($state.current.name == 'events') {
                     $scope.filters = {
@@ -62,14 +79,43 @@
                         }, 500)
                     }, true);
 
+                    $scope.resetFilters = function(){
+                        $scope.filters = {
+                            page: 1,
+                            per_page: 10,
+                            price_from: $scope.min_rate,
+                            price_to: $scope.max_rate,
+                            genres: angular.copy($scope.genres),
+                            event_types: angular.copy($scope.event_types),
+                            sort_column: 'created_at',
+                            sort_type: 'desc'
+                        };
+                    };
+
                     $scope.retrieveEvents = function () {
-                        events.all($scope.filters).success(function (data) {
+
+                        events.filter($scope.filters).success(function (data) {
                             if ($scope.next_page) {
                                 $scope.events = $scope.events.concat(data.events);
                                 $scope.next_page = false;
                             }
                             else $scope.events = data.events;
                             $scope.count = data.count;
+
+                            if($scope.slider.default){
+
+                                $scope.filters.genres = data.genres;
+                                $scope.filters.event_types = data.event_types;
+
+                                $scope.genres = angular.copy(data.genres);
+                                $scope.event_types = angular.copy(data.event_types);
+
+                                $scope.slider.options.ceil = data.max_rate;
+                                $scope.slider.default = false;
+                                $scope.filters.price_from = $scope.min_rate = data.min_rate;
+                                $scope.filters.price_to = $scope.max_rate = data.max_rate;
+
+                            }
 
                         }).error(function (data) {
 

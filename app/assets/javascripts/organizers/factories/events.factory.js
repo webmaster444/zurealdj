@@ -50,6 +50,15 @@
                     fd.append('crop_scale_y', event.image.crop_data.scaleY ? event.image.crop_data.scaleY : 0);
                 }
 
+                if(event.genres){
+
+                    event.genres.forEach(function(genre) {
+                        if(genre.checked){
+                            fd.append('genres[]', genre.id);
+                        }
+                    });
+                }
+
                 if(event.id){
                     return $http.put('/organizer/events/' + event.id, fd, {
                         transformRequest: angular.identity,
@@ -61,6 +70,7 @@
                         headers: {'Content-Type': undefined}
                     });
                 }
+
             },
 
             all: function(options){
@@ -70,6 +80,39 @@
                 _.each(Object.keys(options), function(key){
                     if(options[key])
                         url += key + '=' + options[key] + '&';
+                });
+
+                return $http.get(url);
+            },
+
+            filter: function(options){
+
+                var url = '/organizer/events.json?';
+
+                _.each(Object.keys(options), function(key){
+                    if(options[key]){
+
+                        if (key == "genres"){
+
+                            options[key].forEach(function(genre) {
+                                if(genre.checked){
+                                    url += 'gid[]=' + genre.id + '&';
+                                }
+                            });
+
+                        } else if (key == "event_types"){
+
+                            options[key].forEach(function(types) {
+                                if(types.checked){
+                                    url += 'tid[]=' + types.id + '&';
+                                }
+                            });
+
+                        } else {
+                            url += key + '=' + options[key] + '&';
+                        }
+                    }
+
                 });
 
                 return $http.get(url);

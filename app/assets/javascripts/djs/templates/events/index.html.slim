@@ -10,7 +10,7 @@
         i.fa.fa-search
         input.form-control.input-lg type="text" ng-model="filters.name" placeholder="Find a Booking"
         .btn-group uib-dropdown=true is-open="isopen" auto-close="outsideClick"
-          a#toggle-button type="button" uib-dropdown-toggle=true ng-disabled="disabled"
+          a#toggle-button type="button" uib-dropdown-toggle=true ng-disabled="disabled" ng-click="isOpen()"
             | Filtering
             i.fa.fa-chevron-down<
           .dropdown-menu uib-dropdown-menu=true role="menu" aria-labelledby="toggle-button"
@@ -29,8 +29,8 @@
               | Event types
             .row
               .col-md-3 ng-repeat="event_type in filters.event_types"
-                input type="checkbox" ng-model="event_type.checked" id="et{{ $index }}"
-                label for="et{{ $index }}"
+                input type="checkbox" ng-model="event_type.checked" id="et{{ event_type.id }}"
+                label for="et{{ event_type.id }}"
                   span
                   | {{ event_type.title }}
             hr
@@ -38,17 +38,18 @@
               | Genres
             .row
               .col-md-3 ng-repeat="genre in filters.genres"
-                input type="checkbox" ng-model="genre.checked" id="g{{ $index }}"
-                label for="g{{ $index }}"
+                input type="checkbox" ng-model="genre.checked" id="g{{ genre.id }}"
+                label for="g{{ genre.id }}"
                   span
                   | {{ genre.title }}
             hr
-              .text-left
-                a.btn.btn-primary ng-click="resetFilters()"
-                  | Reset
-              .text-right
-                a.btn.btn-primary ng-click="retrieveDjs()"
-                  | Show {{ search_count }} DJs
+              .actions
+                .pull-left
+                  a.slider-btn.cancel ng-click="resetFilters();isopen = false;"
+                    | Reset
+                .pull-right
+                  a.slider-btn.apply ng-click="retrieveEvents();isopen = false;"
+                    | Show {{ count }} Bookings
         .mobile-only
           a.mobile-dropdown ng-click="filtersDialog()"
             | Filtering

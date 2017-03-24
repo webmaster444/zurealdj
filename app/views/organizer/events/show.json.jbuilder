@@ -13,6 +13,12 @@ json.image do
   json.original paperclip_url(@event.image, :original)
 end
 
+json.genres @event.genres.each do |genre|
+  json.id genre.id
+  json.title genre.title
+  json.checked true
+end
+
 json.event_category do
   event_category = EventCategory.find @event.event_category_id
   json.id event_category.id

@@ -2,6 +2,7 @@ class Event < ActiveRecord::Base
   before_destroy :notify_event_destroy
   has_many :bookings, dependent: :destroy
   has_and_belongs_to_many :djs, join_table: :bookings
+  has_and_belongs_to_many :genres
 
   def country_flag
     CountryFlag.find(country_flag_code)

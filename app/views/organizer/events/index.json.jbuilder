@@ -15,3 +15,15 @@ json.events @events.each do |event|
   end
 end
 json.count @count
+
+json.genres @genres do |genre|
+  json.id genre.id
+  json.title genre.title
+end
+json.event_types @event_types do |event_type|
+  json.id event_type.id
+  json.title event_type.title
+end
+
+json.min_rate @rate_minmax.min
+json.max_rate @rate_minmax.max
