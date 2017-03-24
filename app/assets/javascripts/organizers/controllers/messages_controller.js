@@ -62,7 +62,7 @@
             });
 
             $scope.setCurrentEvent = function(event, dj){
-                if($scope.current_dj && $scope.current_dj.id == dj.id && $scope.current_event.id == event.id){
+                if(dj && event && $scope.current_dj && $scope.current_dj.id == dj.id && $scope.current_event.id == event.id){
                     return
                 }
 
@@ -75,6 +75,14 @@
                 $scope.current_dj = dj;
                 $scope.messagesPage = 1;
                 $scope.messages = [];
+
+                if($scope.SocketApp.chat){
+                    $scope.SocketApp.chat.unsubscribe();
+                }
+
+                if(!event || !dj){
+                    return;
+                }
 
                 $scope.retrieveOldMessages();
 

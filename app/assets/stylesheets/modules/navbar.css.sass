@@ -1,7 +1,7 @@
 @import "variables_and_functions"
 
 .right-menu-desktop
-  min-width: 600px
+  min-width: 510px
 
 .right-menu-mobile
   max-width: 250px
@@ -334,3 +334,7 @@
         position: absolute
         bottom: 20px
         right: 20px
+
+@media (max-width: $mobile-max-width)
+  .navbar
+    margin-bottom: 0px !important

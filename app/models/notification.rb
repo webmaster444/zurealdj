@@ -32,9 +32,7 @@ class Notification < ApplicationRecord
   private
 
   def make_notification
-
         BadgeBroadcastJob.perform_later(self.to_user_id)
-        UserMailer.user_notify(self).deliver_now
-
+        UserMailer.user_notify(self).deliver_later
   end
 end

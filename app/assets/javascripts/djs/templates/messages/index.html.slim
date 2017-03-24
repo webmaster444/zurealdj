@@ -1,6 +1,6 @@
 .container.chat-view
   .row
-    .col-xs-4.chat-sidebar
+    .chat-sidebar ng-class="{active: !current_event}"
       .chat-search
         i.fa.fa-search
         input type="text" ng-model="q"
@@ -38,11 +38,13 @@
           .show-more.small ng-show="eventsCount && events.length < eventsCount"
             a.show-more.small ng-click="showMoreEvents()"
               | Show More
-    .col-xs-8.no-padding
+    .chat-body ng-class="{active: current_event}"
       .chat-header
         .dj-gray-text ng-hide="current_event"
           | Choose event to discuss
         .receiver ng-show="current_event"
+          a.back-to-list-icon ng-click="setCurrentEvent(null)"
+            img src="/images/icons/ic-left-purple.svg"
           .imgContain
             img ng-src="{{ current_event.org_avatar }}"
               i.fa.fa-circle ng-show="current_event.org_online"

@@ -58,7 +58,7 @@
             });
 
             $scope.setCurrentEvent = function(event){
-                if($scope.current_event && $scope.current_event.id == event.id){
+                if(event && $scope.current_event && $scope.current_event.id == event.id){
                     return
                 }
 
@@ -71,6 +71,14 @@
                 $scope.current_event = event;
                 $scope.messagesPage = 1;
                 $scope.messages = [];
+
+                if($scope.SocketApp.chat){
+                        $scope.SocketApp.chat.unsubscribe();
+                }
+
+                if(!event){
+                    return;
+                }
 
                 $scope.retrieveOldMessages();
 
