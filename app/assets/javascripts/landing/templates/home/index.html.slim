@@ -94,27 +94,11 @@ div.page
         | INSTAGRAM FEED
       div.news
         .row
-          .col-center
-            .col-md-3.col-center
-              img src="/images/instagram/img-inst-7.png"
-            .col-md-3.col-center
-              img src="/images/instagram/img-inst-8.png"
-          .col-center
-            .col-md-3.col-center
-              img src="/images/instagram/img-inst-6.png"
-            .col-md-3.col-center
-              img src="/images/instagram/img-inst-5.png"
-        .row ng-hide="isMobile()"
-          .col-center
-            .col-md-3.col-center
-              img src="/images/instagram/img-inst-4.png"
-            .col-md-3.col-center
-              img src="/images/instagram/img-inst-3.png"
-          .col-center
-            .col-md-3.col-center
-              img src="/images/instagram/img-inst-2.png"
-            .col-md-3.col-center
-              img src="/images/instagram/img-inst-1.png"
+          .col-center ng-repeat="feed_img in instagram_feed" ng-if="$even"
+            .col-md-3.col-center ng-hide="$index > 3 && isMobile()"
+              img src="{{ feed_img.img_low_url }}"
+            .col-md-3.col-center ng-hide="$index > 3 && isMobile()" ng-if="instagram_feed[ $index+1 ]"
+              img src="{{ instagram_feed[ $index+1 ].img_low_url }}"
 
   div.page-footer.transform
   div ng-include="'common/templates/footer.html'"

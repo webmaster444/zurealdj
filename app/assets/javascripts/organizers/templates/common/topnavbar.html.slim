@@ -10,7 +10,7 @@
             li
               a.dj-black-link href="#messages"
                 | Inbox
-                .count<
+                .count ng-show="unread_messages_count > 0"
                   | {{ unread_messages_count }}
             li
               .dropdown.dj-notifications-dropdown[uib-dropdown is-open="$parent.notificationsDropdownOpen" auto-close="outsideClick" on-toggle="openNotifications()"]
