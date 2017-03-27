@@ -55,6 +55,9 @@
                         $scope.fromDateOptions.maxDate = endDate;
                         $scope.toDateOptions.minDate = startDate;
                         $scope.toDateOptions.maxDate = endDate;
+                        $scope.fromDateOptions.initDate = startDate;
+                        $scope.toDateOptions.initDate = startDate;
+
 
                     }
                 }
