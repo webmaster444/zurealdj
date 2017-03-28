@@ -8,19 +8,16 @@ class DjsStreamer
   def each
     yield CSV::Row.new([], [
                             'Id', 
-                            'First Name',
-                            'Last Name',
+                            'Name',
+                            'Email',
                             'City',
                             'Country',
                             'About',
-                            'Weekday Price From',
-                            'Weekday Price To',
-                            'Weekend Price From',
-                            'Weekend Price To',
+                            'Rate per hour',
                             'Created Date',
                           ], true).to_csv(col_sep: ",", row_sep: "\r\n", quote_char: "\"")
 
-    query = Dj.search_query(@params)
+    query = @params
 
     offset = 0
     limit = 1000
@@ -32,10 +29,10 @@ class DjsStreamer
       results.each do |dj|
         yield CSV::Row.new([], [
             dj.id,
-            dj.first_name,
-            dj.last_name,
+            dj.name,
+            dj.email,
             dj.city,
-            CountryFlag.find(dj.country_flag_code)[:title],
+            CountryFlag.name_by_id(dj.country_flag_code),
             dj.about,
             dj.rate_per_hour,
             dj.created_at.strftime("%d/%m/%Y"),

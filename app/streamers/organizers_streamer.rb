@@ -1,22 +1,22 @@
 class OrganizersStreamer
   include Enumerable
   require 'csv'
-  def initialize(params)
-    @params = params
+  def initialize()
+
   end
 
   def each
     yield CSV::Row.new([], [
                             'Id', 
-                            'First Name',
-                            'Last Name',
+                            'Name',
+                            'Email',
                             'City',
                             'Country',
                             'About',
                             'Created Date',
                           ], true).to_csv(col_sep: ",", row_sep: "\r\n", quote_char: "\"")
 
-    query = Organizer.search_query(@params)
+    query = Organizer.query
 
     offset = 0
     limit = 1000
@@ -28,10 +28,10 @@ class OrganizersStreamer
       results.each do |organizer|
         yield CSV::Row.new([], [
             organizer.id,
-            organizer.first_name,
-            organizer.last_name,
+            organizer.name,
+            organizer.email,
             organizer.city,
-            CountryFlag.find(organizer.country_flag_code)[:title],
+            CountryFlag.name_by_id(organizer.country_flag_code),
             organizer.about,
             organizer.created_at.strftime("%d/%m/%Y"),
         ], true).to_csv(col_sep: ",", row_sep: "\r\n", quote_char: "\"")

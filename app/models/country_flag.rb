@@ -246,6 +246,11 @@ class CountryFlag
     all.select{|hash| hash[:code] == code }.try(:first)
   end
 
+  def self.name_by_id(code)
+    @name = all.select{|hash| hash[:code] == code }.try(:first)
+    @name[:title] if @name
+  end
+
   def self.find_by_country_name(name)
     results = []
     all.each do |hash|

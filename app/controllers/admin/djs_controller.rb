@@ -21,7 +21,7 @@ class Admin::DjsController < Admin::BaseController
         # headers["Cache-Control"] ||= "no-cache"
         # headers["Content-Transfer-Encoding"] = "binary"
 
-        self.response_body = DjsStreamer.new(params)
+        self.response_body = DjsStreamer.new(query)
       end
     end
   end

@@ -20,7 +20,7 @@ class Admin::OrganizersController < Admin::BaseController
         # headers["Cache-Control"] ||= "no-cache"
         # headers["Content-Transfer-Encoding"] = "binary"
 
-        self.response_body = OrganizersStreamer.new(params)
+        self.response_body = OrganizersStreamer.new()
       end
     end
   end
