@@ -31,7 +31,7 @@
 
       .general
         .block
-          .block-title
+          .block-title.title-bold
             | General Information
           table
             tr ng-show="user.city || user.country"
@@ -57,18 +57,18 @@
           hr
         .content-mobile
           .block
-            .title
+            .title.title-bold
               | Artist
             span.rating-icons[uib-rating ng-model="user.rating" max="5" state-on="'fire fire-active icon'" state-off="'fire fire-inactive icon'" enable-reset='false' read-only='true' ]
           .block ng-show="user.about"
-            .title
+            .title.title-bold
               | About
             .text
               | {{ user.about }}
 
           hr
         .listen ng-show="user.sample.url"
-          .block-title
+          .block-title.title-bold
             | Listen
           div audio=true ng-model="user.sample"
 
@@ -84,7 +84,7 @@
                   | {{ equipment.title }}
           hr
         .block
-          .block-title
+          .block-title.title-bold
             | Booking information
           table
             tr ng-switch="user.free_to_hire"
@@ -97,7 +97,7 @@
 
 
           hr
-        .block
+        .block.device-desktop
           .block-title
             | {{ comments_count }} Comments
           .block.comments
@@ -114,6 +114,27 @@
                   | {{ comment.created_at }}
               .rating
                 span.rating-icons[uib-rating ng-model="comment.rating" max="5" state-on="'fire fire-active icon'" state-off="'fire fire-inactive icon'" enable-reset='false' read-only='true' ]
+          .show-more.comments-show-more
+            a ng-click="showMore()" ng-show="comments.length < comments_count"
+              | Show More
+        .block.device-mobile
+          .block-title.title-bold
+            | {{ comments_count }} Comments
+          .block.comments
+            .comment-item ng-repeat="comment in comments track by $index"
+              .top-block
+                img.avatar ng-src="{{ comment.avatar }}"
+                .user-name
+                  | {{ comment.org_name }}
+                .created-at
+                  | {{ comment.created_at }}
+                .rating
+                  span.rating-icons[uib-rating ng-model="comment.rating" max="5" state-on="'fire fire-active icon'" state-off="'fire fire-inactive icon'" enable-reset='false' read-only='true' ]
+              .content
+                .comment-text
+                  | {{ comment.comment }}
+                .event-title
+                  | {{ comment.event_title }}
           .show-more.comments-show-more
             a ng-click="showMore()" ng-show="comments.length < comments_count"
               | Show More

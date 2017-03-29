@@ -94,7 +94,7 @@
 
 [device='desktop']
 
-  .user-name-mobile-auto
+  .user-name-mobile-auto, .device-mobile
     display: none
 
   .event
@@ -239,7 +239,7 @@
 
 [device='mobile']
 
-  .user-name-desktop
+  .user-name-desktop, .device-desktop
     display: none
 
   .user-name-mobile-auto
@@ -258,8 +258,10 @@
     position: relative
     left: 0px
     right: 0px
-    @media (max-width: $mobile-max-width)
-      top: -20px
+
+  @media (max-width: $mobile-max-width)
+    .profile-content
+      margin-top: 45px
 
   word-wrap: break-word
   .event
@@ -342,6 +344,15 @@
         font-weight: 500
         letter-spacing: 1px
         margin: 15px 0
+      .title-bold
+        font-weight: 600
+        font-family: CeraPro
+        font-size: 16px
+        font-style: normal
+        font-stretch: normal
+        line-height: normal
+        letter-spacing: 1px
+        color: #555555
       .block
         padding: 0 20px
         margin-bottom: 30px
@@ -353,22 +364,50 @@
         padding: 0
         display: block
         max-width: 340px
+        min-width: 340px
         .block-title
           margin-left: 20px
+          font-family: CeraPro
+          font-size: 16px
+          font-weight: 600
+          font-style: normal
+          font-stretch: normal
+          line-height: normal
+          letter-spacing: 1px
+          color: #555555
         .select-button
-          .btn-equipment
+          margin: 2.5px
+          border: none
+          .text-center
             width: 90px
-            height: 88px
-            margin: 10px 2.5px
+            height: 80px
+          .btn-equipment
             border: none
             .title
-              font-size: 13px
+              width: 82px
+              font-family: CeraPro
+              font-size: 14px
+              font-weight: normal
+              font-style: normal
+              font-stretch: normal
               line-height: 1.14
-              margin-top: 15px
+              letter-spacing: -0.3px
+              text-align: center
+              color: #4a4a4a
+              overflow: hidden
+              text-overflow: ellipsis
+              display: -webkit-box
+              -webkit-box-orient: vertical
+              -webkit-line-clamp: 1
+              text-align: center
+              padding-top: 10px
             img
+              width: 48px
               height: 48px
-              max-width: 90px
+              border: solid 1.5px #b05dfd
               margin: 0 auto
+              margin-right: 21px
+              margin-left: 21px
       table
         tr
           td
@@ -381,12 +420,124 @@
             width: 140px
             padding-right: 10px
       .listen
-        .file-name
-          text-overflow: ellipsis
-          overflow: hidden
-          white-space: nowrap
+        .box-audio
+          .player
+            .file-name
+              overflow: hidden
+              text-overflow: ellipsis
+              display: -webkit-box
+              -webkit-box-orient: vertical
+              -webkit-line-clamp: 2
+              line-height: 1.43
+              letter-spacing: 0.9px
+              max-height: 85px
+              max-width: 290px
+              @media (max-width: 470px)
+                max-width: 255px
+            .duration
+              position: relative
+              top: -10px
+              left: 325px
+              font-family: CeraPro
+              font-weight: normal
+              font-style: normal
+              font-stretch: normal
+              @media (max-width: 470px)
+                left: 275px
+          .play
+            .file-name
+              overflow: hidden
+              text-overflow: ellipsis
+              display: -webkit-box
+              -webkit-box-orient: vertical
+              -webkit-line-clamp: 1
+              max-height: 28px
+              line-height: 1.43
+              letter-spacing: 0.9px
+              @media (max-width: 380px)
+                max-height: 17px
+              @media (max-width: 230px)
+                max-height: 10px
+            .duration
+              left: 245px
+              top: 0px
+            @media (max-width: 500px)
+              .volume-slider
+                position: relative
+                top: -10px
+                left: -80px
+                margin-left: 25px
+                max-width: 140px
+                @media (max-width: 375px)
+                  left: -60px
+              .duration
+                left: 245px
+                @media (max-width: 470px)
+                  left: 210px
+              .time-slider
+                top: calc(100% - 60px)
+                @media (max-width: 250px)
+                  top: calc(100% - 50px)
       .comments
-        min-width: 400px
+        min-width: 340px
+        .comment-item
+          .top-block
+            .avatar
+              width: 40px
+              height: 40px
+            .user-name
+              font-family: CeraPro
+              font-size: 14px
+              font-weight: 600
+              font-style: normal
+              font-stretch: normal
+              line-height: 1.43
+              letter-spacing: normal
+              color: #555555
+              position: absolute
+              top: 15px
+              left: 80px
+            .created-at
+              font-family: CeraPro
+              font-size: 14px
+              font-weight: normal
+              font-style: normal
+              font-stretch: normal
+              line-height: 1.43
+              letter-spacing: normal
+              text-align: right
+              color: #c6bfc7
+              position: absolute
+              top: 15px
+              left: 0px
+            .rating
+              position: absolute
+              top: 30px
+              left: 80px
+              .fire
+                width: 12px
+                height: 16px
+          .content
+            min-width: 280px
+            max-width: 100%
+            font-family: CeraPro
+            font-size: 14px
+            font-weight: normal
+            font-style: normal
+            font-stretch: normal
+            line-height: 1.29
+            letter-spacing: normal
+            position: relative
+            top: 0px
+            left: -20px
+            .comment-text
+              min-width: 280px
+              width: 100%
+              color: #4a4a4a
+            .event-title
+              color: #c6bfc7
+
+
 
 
 [device='mobile'][orientation='landscape']
