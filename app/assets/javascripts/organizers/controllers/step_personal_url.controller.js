@@ -16,6 +16,7 @@
                 $scope.next = function(){
                     users.submit_personal_url($scope.user)
                         .success(function(data){
+                            $scope.$parent.retrieveCurrentUser();
                             $state.go('profile');
                         })
                         .error(function(data){

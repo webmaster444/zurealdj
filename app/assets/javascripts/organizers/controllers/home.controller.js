@@ -11,13 +11,14 @@
             $scope.$state = $state;
 
             $scope.checkSession = function(){
-                session.check()
-                        .success(function(data){
-                            $scope.current_user = data.current_user;
-                        })
-                        .error(function(){
-                            $scope.current_user = false;
-                        });
+                if(window.location.hash != "#/event_types_step")
+                    session.check()
+                            .success(function(data){
+                                $scope.current_user = data.current_user;
+                            })
+                            .error(function(){
+                                $scope.current_user = false;
+                            });
             };
             if($state.current.name != 'login'){
                 $scope.checkSession();
@@ -30,7 +31,9 @@
                     $scope.unread_messages_count = data.unread_messages_count;
                 });
             };
-            $scope.retrieveCurrentUser();
+
+            if(window.location.hash != "#/event_types_step")
+                $scope.retrieveCurrentUser();
 
             $scope.$state = $state;
 
