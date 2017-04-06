@@ -11,7 +11,7 @@
 
                 fd.append('title',                          subscription.title        || '');
                 fd.append('description',                    subscription.description  || '');
-                fd.append('price',                          subscription.price ? subscription.price * 100 : '');
+                fd.append('price',                          subscription.price ? Math.round(subscription.price * 100) : '');
                 fd.append('period',                         subscription.period       || '');
                 fd.append('period_count',                   subscription.period_count || '');
 

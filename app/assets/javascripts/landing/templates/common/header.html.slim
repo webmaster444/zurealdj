@@ -2,10 +2,10 @@ div.page-head
   div ng-include="'landing/templates/common/small_header.html'"
 
   .text-center.txt ng-hide="isMobile()"
-    | ZuReal DJ Australia's newest platform to book a DJ with no agency fees
+    | ZuReal DJ is the newest platform for DJs and Event Organisers to log in and search or be found for DJ bookings Australia wide.
   img.big-logo src="/images/icons/img-logo-zu-big.png"
   .text-center.txt ng-show="isMobile()"
-    | ZuReal DJ Australia's newest platform to book a DJ with no agency fees
+    | ZuReal DJ is the newest platform for DJs and Event Organisers to log in and search or be found for DJ bookings Australia wide.
   div.button-block.text-center
     .col-user-role
       img.role-icon src="/images/icons/img-big-org.png"
@@ -13,7 +13,7 @@ div.page-head
         | Organizer
       a.btn-link ng-click="$state.go('home'); openRegistrationDialog('organizer')"
         | Need a DJ?
-    .vr
+
     .col-user-role
       img.role-icon src="/images/icons/img-big-dj.png"
       .role-name
