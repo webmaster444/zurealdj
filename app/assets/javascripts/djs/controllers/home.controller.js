@@ -17,7 +17,8 @@
                     $scope.unread_messages_count = data.unread_messages_count;
                 });
             };
-            $scope.retrieveCurrentUser();
+            if(window.location.hash != "#/event_types_step")
+                $scope.retrieveCurrentUser();
 
             $scope.logout = function(){
                 session.logout().success(function(){

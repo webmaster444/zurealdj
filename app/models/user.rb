@@ -38,6 +38,7 @@ class User < ActiveRecord::Base
   validates :about, length: { maximum: 400 }
   validates :name, presence: true, length: { in: 6..30 }
   validates :agree, inclusion: {in: [true], message: 'You should accept therms of Cancellation Policy to continue'}, if: -> { dj? && User.dj_steps[step] == User.dj_steps[:dj_cancelations]}
+  validate :rate_per_hour_set, if: -> { dj? && User.dj_steps[step] == User.dj_steps[:dj_cancelations]}
   validates_attachment_content_type :avatar, content_type: /\Aimage\/.*\Z/
 
   validates :crop_x, presence: true, if: :validate_crop_data?
@@ -217,6 +218,15 @@ class User < ActiveRecord::Base
   def at_least_one_equipment
     if equipments.count == 0
       self.errors.add :equipments, 'Please select at least 1 equipment'
+    end
+  end
+
+  def rate_per_hour_set
+    if self.dj.free_to_hire
+    else
+      if !self.dj.rate_per_hour? || self.dj.rate_per_hour<0
+        self.errors.add :rate_per_hour, 'Please enter Your rate per hour or mark as free to hire'
+      end
     end
   end
 

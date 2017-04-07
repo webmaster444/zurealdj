@@ -25,8 +25,8 @@ div.page-block.registration
       | Rate per hour:
       .inline-block
         input.register-input.step-5-input type="number"  ng-model="user.rate_per_hour" placeholder="amount $"
-      .error ng-repeat="error in validation_errors['dj.rate_per_hour']"
-        | {{ error }}
+    .error ng-repeat="error in validation_errors['rate_per_hour']"
+      | {{ error }}
 
     .form-row.text-center
       .zureal-checkbox.inline-block

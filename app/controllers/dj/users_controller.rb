@@ -1,6 +1,6 @@
 class Dj::UsersController < Dj::BaseController
 
-  skip_before_action :not_finished_profile
+  skip_before_action :not_finished_profile, except: :profile
 
   def step
     @user = current_user

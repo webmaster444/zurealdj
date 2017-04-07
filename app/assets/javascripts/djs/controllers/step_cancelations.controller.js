@@ -15,6 +15,7 @@
                 $scope.next = function(){
                    users.submit_cancelations($scope.user)
                         .success(function(data){
+                            $scope.$parent.retrieveCurrentUser();
                             $state.go('profile')
                         })
                         .error(function(data){

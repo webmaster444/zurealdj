@@ -42,10 +42,11 @@
 
             submit_cancelations: function(user){
 
-                var ratePerHour = 0;
+                var ratePerHour ;
                 var free_to_hire = false;
 
-                if(user.free_to_hire){
+                if(user.free_to_hire == true){
+                    ratePerHour = 0;
                     free_to_hire = true;
                 } else {
                     ratePerHour = user.rate_per_hour;
