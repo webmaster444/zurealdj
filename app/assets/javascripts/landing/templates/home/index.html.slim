@@ -98,7 +98,7 @@ div.page
             .col-md-3.col-center ng-hide="$index > 3 && isMobile()"
               img src="{{ feed_img.img_low_url }}"
             .col-md-3.col-center ng-hide="$index > 3 && isMobile()" ng-if="instagram_feed[ $index+1 ]"
-              img src="{{ instagram_feed[ $index+1 ].img_low_url }}"
+              img src="{{ instagram_feed[ $index+1 ].img_low_url }}" ng-if="instagram_feed[ $index+1 ]"
 
   div.page-footer.transform
   div ng-include="'common/templates/footer.html'"
