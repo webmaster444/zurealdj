@@ -78,7 +78,7 @@
           .form-group
             .form-title
               | About
-            textarea.zureal-textarea.dj-edit-textarea type="text" ng-model="user.about" rows="5"
+            textarea.zureal-textarea.dj-edit-textarea#aboutId type="text" ng-model="user.about"
             .error ng-repeat="error in validation_errors.about"
               | {{ error }}
 

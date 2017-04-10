@@ -20,9 +20,32 @@
             $scope.user = {};
             var userOriginalData = {};
 
+            $scope.aboutText = function () {
+                var o = document.getElementById('aboutId');
+                o.style.height = "1px";
+                o.style.height = (25+o.scrollHeight)+"px";
+                o.style.borderRadius = "30px";
+            };
+
+            $scope.$watch(function () {
+                var el = document.getElementById('aboutId');
+                if(el){
+                    return el.value.length
+                } else {
+                    return 0
+                }
+
+            }, function(newValue, oldValue) {
+                if (newValue > 0) {
+                    $scope.aboutText();
+                }
+            });
+
             users.profile().success(function(data){
                 $scope.user = data;
                 userOriginalData = _.clone($scope.user);
+
+
             });
 
             countries.all().success(function(data){
@@ -44,9 +67,13 @@
                     })
             };
 
+
+
             $scope.openConfirm = true;
 
             if($state.current.name == 'edit_profile'){
+
+
 
                 $scope.$on('$stateChangeStart', function (event, toState, toParams, fromState, fromParams) {
                     if(!_.isEqual(userOriginalData, $scope.user)) {
