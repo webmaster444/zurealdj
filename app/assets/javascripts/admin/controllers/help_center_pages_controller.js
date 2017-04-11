@@ -3,8 +3,8 @@
     "use strict";
 
     angular.module('ZurealdjAdminApp')
-        .controller('CancellationPolicyController', ['$scope', '$state', 'ngDialog', '$stateParams', '$timeout', '$sce', 'SweetAlert', 'CancellationPolicyFactory',
-            function ($scope, $state, ngDialog, $stateParams, $timeout, $sce, SweetAlert, cancellation_policy) {
+        .controller('HelpCenterPagesController', ['$scope', '$state', 'ngDialog', '$stateParams', '$timeout', '$sce', 'SweetAlert', 'HelpCenterPagesFactory',
+            function ($scope, $state, ngDialog, $stateParams, $timeout, $sce, SweetAlert, pages_factory) {
                 $scope.I18n = I18n;
                 $scope._ = _;
                 $scope.$state = $state;
@@ -13,13 +13,15 @@
                     return $sce.trustAsHtml(html);
                 };
 
-                if($state.current.name == 'edit_cancellation_policy'){
+                if($state.current.name == 'edit_help_center_page'){
 
-                    $scope.cancellation_policy = {};
+                    $scope.page = {};
 
-                        cancellation_policy.show($stateParams.id)
-                            .success(function(data){
-                                    $scope.cancellation_policy = data.cancellation_policy;
+                    pages_factory.show($stateParams.id)
+                        .success(function(data){
+                                $timeout(function(){
+                                    $scope.page = data.page;
+                                }, 0);
                             }
                         );
 
@@ -27,9 +29,10 @@
                         $scope.submitted = true;
 
                         $scope.formPending = true;
-                        cancellation_policy.upsert($scope.cancellation_policy)
+                        pages_factory.upsert($scope.page)
                             .success(function(){
                                 $scope.formPending = false;
+                                $state.go($state.current.name)
                             })
                             .error(function(data){
                                 $scope.validation_errors = data.errors;

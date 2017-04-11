@@ -5,7 +5,7 @@
         .ibox-content
           .page-title
             h3
-              | Edit Cancellation Policy
+              | Edit Courses page
             .pull-right
               a.btn.btn-default href="#home"
                 | Cancel
@@ -14,6 +14,6 @@
           .row
             .col-sm-2
               label.control-label
-                | Content
+                | Content:
             .col-sm-10
-              div redactor=true required=true ng-model="cancellation_policy.content" file-upload-path="/attachments/cancellation_policy_content"
+              div redactor=true required=true ng-model="page.content" file-upload-path="/attachments/courses_page_content"

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170309094327) do
+ActiveRecord::Schema.define(version: 20170411095400) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -50,7 +50,13 @@ ActiveRecord::Schema.define(version: 20170309094327) do
     t.datetime "updated_at"
   end
 
-  create_table "cancellation_policy_pages", force: :cascade do |t|
+  create_table "contact_us_pages", force: :cascade do |t|
+    t.text     "content"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "course_pages", force: :cascade do |t|
     t.text     "content"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -180,6 +186,12 @@ ActiveRecord::Schema.define(version: 20170309094327) do
     t.integer "genre_id"
     t.index ["genre_id"], name: "index_genres_users_on_genre_id", using: :btree
     t.index ["user_id"], name: "index_genres_users_on_user_id", using: :btree
+  end
+
+  create_table "help_center_pages", force: :cascade do |t|
+    t.text     "content"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "how_we_work_pages", force: :cascade do |t|

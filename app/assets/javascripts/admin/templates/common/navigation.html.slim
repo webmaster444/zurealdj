@@ -46,13 +46,13 @@ nav.navbar-default.navbar-static-side.ng-scope role="navigation"
             li.active ui-sref-active="active"
               a href="#subscriptions"
                 | Subscriptions
-        li ng-class=("{active: ['edit_who_we_are_page', 'edit_crew_page', 'edit_how_we_work_page', 'edit_policies_page', 'edit_terms_n_conditions_page', 'edit_cancelations_page', 'edit_cancellation_policy'].includes($state.current.name) }")
+        li ng-class=("{active: ['edit_who_we_are_page', 'edit_crew_page', 'edit_how_we_work_page', 'edit_policies_page', 'edit_terms_n_conditions_page', 'edit_cancelations_page', 'edit_contact_us_page','edit_help_center_page','edit_courses_page'].includes($state.current.name) }")
           a href="#"
             .other-nav-icon.nav-icon
             span.nav-label
               | Static pages
             span.fa.arrow
-          ul.nav.nav-second-level.collapse ng-class=("{in: ['edit_who_we_are_page', 'edit_crew_page', 'edit_how_we_work_page', 'edit_policies_page', 'edit_terms_n_conditions_page', 'edit_cancelations_page', 'edit_cancellation_policy'].includes($state.current.name) }")
+          ul.nav.nav-second-level.collapse ng-class=("{in: ['edit_who_we_are_page', 'edit_crew_page', 'edit_how_we_work_page', 'edit_policies_page', 'edit_terms_n_conditions_page', 'edit_cancelations_page', 'edit_contact_us_page','edit_help_center_page','edit_courses_page'].includes($state.current.name) }")
             li.active ui-sref-active="active"
               a href="#who_we_are_page/edit"
                 | Who we are pages
@@ -72,8 +72,14 @@ nav.navbar-default.navbar-static-side.ng-scope role="navigation"
               a href="#cancelations_page/edit"
                 | {{ I18n.t('headers.cancelations_pages') }}
             li.active ui-sref-active="active"
-              a.ng-binding href="#cancellation_policy/edit"
-                | Cancellation policy
+              a href="#contact_us_page/edit"
+                | Contact Us
+            li.active ui-sref-active="active"
+              a href="#courses_page/edit"
+                | Courses
+            li.active ui-sref-active="active"
+              a href="#help_center_page/edit"
+                | Help Center
         li ng-class=("{active: $state.current.name.includes('email_sender')}")
           a href="#"
             .other-nav-icon.nav-icon

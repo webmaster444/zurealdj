@@ -36,7 +36,17 @@ Rails.application.routes.draw do
       resources :terms_n_conditions_pages, only: [:update, :show]
       resources :organizers, only: [:index, :update, :destroy, :show]
       resources :cancelations_pages, only: [:update, :show]
-      resources :cancellation_policy, only: [:index] do
+      resources :help_center_pages, only: [:index] do
+        collection do
+          put :update
+        end
+      end
+      resources :contact_us_pages, only: [:index] do
+        collection do
+          put :update
+        end
+      end
+      resources :course_pages, only: [:index] do
         collection do
           put :update
         end

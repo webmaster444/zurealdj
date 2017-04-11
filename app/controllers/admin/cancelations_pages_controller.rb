@@ -1,6 +1,6 @@
 class Admin::CancelationsPagesController < ApplicationController
-  
-  def update
+
+def update
     @article = CancelationsPage.first_or_create
 
     if @article.update_attributes cancelations_page_params

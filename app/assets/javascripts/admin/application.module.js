@@ -165,11 +165,6 @@
                     templateUrl: 'admin/templates/cancelations_pages/form.html',
                     controller: 'CancelationsPagesController'
                 })
-                .state('edit_cancellation_policy',{
-                    url: '/cancellation_policy/edit',
-                    templateUrl: 'admin/templates/cancellation_policy/form.html',
-                    controller: 'CancellationPolicyController'
-                })
                 .state('email_sender',{
                     url: '/email_sender',
                     templateUrl: 'admin/templates/email_sender/form.html',
@@ -214,6 +209,21 @@
                     url: '/admin/new',
                     templateUrl: 'admin/templates/admins/form.html',
                     controller: 'AdminsController'
+                })
+                .state('edit_contact_us_page',{
+                    url: '/contact_us_page/edit',
+                    templateUrl: 'admin/templates/contact_us_page/form.html',
+                    controller: 'ContactUsPagesController'
+                })
+                .state('edit_help_center_page',{
+                    url: '/help_center_page/edit',
+                    templateUrl: 'admin/templates/help_center_page/form.html',
+                    controller: 'HelpCenterPagesController'
+                })
+                .state('edit_courses_page',{
+                    url: '/courses_page/edit',
+                    templateUrl: 'admin/templates/courses_page/form.html',
+                    controller: 'CoursePagesController'
                 })
             ;
     }]);

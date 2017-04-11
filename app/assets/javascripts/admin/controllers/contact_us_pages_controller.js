@@ -3,8 +3,8 @@
     "use strict";
 
     angular.module('ZurealdjAdminApp')
-        .controller('CancelationsPagesController', ['$scope', '$state', 'ngDialog', '$stateParams', '$timeout', '$sce', 'SweetAlert', 'CancelationsPagesFactory',
-            function ($scope, $state, ngDialog, $stateParams, $timeout, $sce, SweetAlert, cancelations_pages) {
+        .controller('ContactUsPagesController', ['$scope', '$state', 'ngDialog', '$stateParams', '$timeout', '$sce', 'SweetAlert', 'ContactUsPagesFactory',
+            function ($scope, $state, ngDialog, $stateParams, $timeout, $sce, SweetAlert, pages_factory) {
                 $scope.I18n = I18n;
                 $scope._ = _;
                 $scope.$state = $state;
@@ -13,14 +13,14 @@
                     return $sce.trustAsHtml(html);
                 };
 
-                if($state.current.name == 'edit_cancelations_page'){
+                if($state.current.name == 'edit_contact_us_page'){
 
-                    $scope.cancelations_page = {};
+                    $scope.page = {};
 
-                    cancelations_pages.show($stateParams.id)
+                    pages_factory.show($stateParams.id)
                         .success(function(data){
                                 $timeout(function(){
-                                    $scope.cancelations_page = data.cancelations_page;
+                                    $scope.page = data.page;
                                 }, 0);
                             }
                         );
@@ -29,7 +29,7 @@
                         $scope.submitted = true;
 
                         $scope.formPending = true;
-                        cancelations_pages.upsert($scope.cancelations_page)
+                        pages_factory.upsert($scope.page)
                             .success(function(){
                                 $scope.formPending = false;
                                 $state.go($state.current.name)

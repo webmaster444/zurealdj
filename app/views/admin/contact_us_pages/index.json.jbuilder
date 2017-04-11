@@ -1,3 +1,3 @@
-json.cancellation_policy do
+json.page do
   json.content @article.content
 end
