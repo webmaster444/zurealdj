@@ -54,7 +54,7 @@ class User < ActiveRecord::Base
       dj_event_types: 1,
       dj_genres: 2,
       dj_equipments: 3,
-      dj_personal_url: 4,
+      # dj_personal_url: 4,
       dj_cancelations: 5,
       dj_completed: 6
   }
@@ -64,7 +64,7 @@ class User < ActiveRecord::Base
       organizer_event_types: 1,
       organizer_genres: 2,
       organizer_company_name: 3,
-      organizer_personal_url: 4,
+      # organizer_personal_url: 4,
       organizer_completed: 5
   }
 
@@ -88,12 +88,13 @@ class User < ActiveRecord::Base
     if dj?
       step_number = User.dj_steps[step] + 1
       step_number = 0 if step_number < 0
+      step_number = 5 if step_number == 4
       step_number = 6 if step_number > 6
       User.dj_steps.key(step_number)
     elsif organizer?
       step_number = User.organizer_steps[step] + 1
       step_number = 0 if step_number < 0
-      step_number = 6 if step_number > 5
+      step_number = 5 if step_number > 3
       User.organizer_steps.key(step_number)
     end
   end
@@ -102,12 +103,13 @@ class User < ActiveRecord::Base
     if dj?
       step_number = User.dj_steps[step] - 1
       step_number = 0 if step_number < 0
+      step_number = 3 if step_number == 4
       step_number = 6 if step_number > 6
       User.dj_steps.key(step_number)
     elsif organizer?
       step_number = User.organizer_steps[step] - 1
       step_number = 0 if step_number < 0
-      step_number = 6 if step_number > 5
+      step_number = 3 if step_number > 3
       User.organizer_steps.key(step_number)
     end
   end

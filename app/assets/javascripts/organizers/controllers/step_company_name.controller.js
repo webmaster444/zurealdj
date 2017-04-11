@@ -16,7 +16,11 @@
                 $scope.next = function(){
                     users.submit_company_name($scope.user)
                         .success(function(data){
-                            $state.go('step_' + data.next_step);
+                            //Delete if personal url step is needed
+                            $scope.$parent.retrieveCurrentUser();
+                            $state.go('profile');
+                            // uncomment if personal url step is needed
+                            // $state.go('step_' + data.next_step);
                         })
                         .error(function(data){
                             $scope.validation_errors = data.validation_errors;
