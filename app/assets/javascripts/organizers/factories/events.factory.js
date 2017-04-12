@@ -85,6 +85,18 @@
                 return $http.get(url);
             },
 
+            event_list: function(options){
+
+                var url = '/organizer/event_list.json';
+
+                _.each(Object.keys(options), function(key){
+                    if(options[key])
+                        url += key + '=' + options[key] + '&';
+                });
+
+                return $http.get(url);
+            },
+
             filter: function(options){
 
                 var url = '/organizer/events.json?';

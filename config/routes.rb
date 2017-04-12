@@ -126,6 +126,7 @@ Rails.application.routes.draw do
       end
       resources :favorite_djs, only: [:index, :update, :destroy]
       resources :events, only: [:index, :create, :show, :update, :destroy]
+      get 'event_list', to: 'events#event_booking_list'
       resources :settings, only: [:index, :update] do
         collection do
           post :notifications

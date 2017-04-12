@@ -86,6 +86,24 @@ class Organizer::EventsController < ApplicationController
 
   end
 
+  def event_booking_list
+
+    events = Event.arel_table
+
+    query = events
+                .project(events[Arel.star])
+                .group(events[:id])
+                .where(events[:organizer_id].eq Arel::Nodes::Quoted.new(current_user.organizer[:id]))
+                .where(events[:end_date].gt(Time.now))
+
+    query.where(events[:title].matches("%#{ params[:title] }%")) if params[:title].present?
+
+    count_query = query.clone.project('COUNT(*)')
+
+    @events = Event.find_by_sql(query.to_sql)
+    @count = Event.find_by_sql(count_query.to_sql).count
+
+  end
   def show
     render json: {  }, status: :not_found and return if current_user.organizer.events.exclude?(@event)
   end

@@ -18,7 +18,7 @@
                         $timeout.cancel(timer)
                     }
                     timer = $timeout(function(){
-                        events.all({title: term}).success(function(data){
+                        events.event_list({title: term}).success(function(data){
                             $scope.events = data.events;
                         })
                     }, 500)
