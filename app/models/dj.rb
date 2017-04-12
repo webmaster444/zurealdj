@@ -6,7 +6,7 @@ class Dj < ActiveRecord::Base
   has_attached_file :sample
 
   attr_accessor :step
-  validates :rate_per_hour, presence: true, numericality: { greater_than_or_equal_to: 0  }, if: -> {  User.dj_steps[step || user.step] >= User.dj_steps[:dj_cancelations] }
+  validates :rate_per_hour, presence: true, numericality: { greater_than_or_equal_to: 0 ,less_than_or_equal_to: 3000 }, if: -> {  User.dj_steps[step || user.step] >= User.dj_steps[:dj_cancelations] }
   validates :city, length: { in: 3..30 },presence: true, format: { with: /\A[[:alpha:]]+[\s-]?[[:alpha:]]+[\s-]?[[:alpha:]]+\z/, message: "City name is incorrect, use symbols a-z, A-Z, - and space"} , if: -> {  User.dj_steps[step || user.step] >= User.dj_steps[:dj_cancelations] }
   validates_attachment_content_type :sample, :content_type => %w(audio/mpeg audio/x-mpeg audio/mp3 audio/x-mp3 audio/mpeg3 audio/x-mpeg3 audio/mpg audio/x-mpg audio/x-mpegaudio)
 

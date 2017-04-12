@@ -44,7 +44,7 @@
                         page: 1,
                         per_page: 12,
                         price_from: 0,
-                        price_to: 1000
+                        price_to: 3000
                     };
 
                     $scope.filtersDialog = function(){
