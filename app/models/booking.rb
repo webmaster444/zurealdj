@@ -56,8 +56,21 @@ class Booking < ActiveRecord::Base
   def date_validation
     if to_date && from_date
       event = Event.find event_id
-      self.errors.add :from_date, "From date must be greater or equal than Event start date." if event && from_date < event.start_date
-      self.errors.add :to_date, "To date must be less or equal than Event end date." if event && to_date > event.end_date
+      if event && from_date < event.start_date
+        if event && from_date.beginning_of_day + 24.hours > event.start_date
+          self.errors.add :from_date, "From Time must be greater than in event."
+        else
+          self.errors.add :from_date, "From date must be greater or equal than Event start date."
+        end
+
+      end
+      if event && to_date > event.end_date
+        if event && to_date < event.end_date.end_of_day
+          self.errors.add :to_date, "To Time must be less than in event."
+          else
+            self.errors.add :to_date, "To date must be less or equal than Event end date."
+        end
+      end
       self.errors.add :to_date, "To Date must be greater than from date." if to_date < from_date
     end
   end
