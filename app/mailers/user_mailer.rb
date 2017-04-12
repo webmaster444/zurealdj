@@ -8,8 +8,6 @@ class UserMailer  < ActionMailer::Base
   def email_confirmation(user_id)
     @user = User.find(user_id)
     @hostname = ENV['HOST_NAME']
-    puts("------------------------------")
-    puts(@hostname.inspect)
     mail(to: @user.email, from: sender.user_name, subject: 'Email confirmation instructions.')
   end
 
