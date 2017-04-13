@@ -36,6 +36,7 @@ class Event < ActiveRecord::Base
   validate :date_validation
 
   after_update :notify_event_update
+  before_validation :check_status
 
 
   def unread_messages_count_for(user, from_user = nil)
@@ -111,6 +112,13 @@ class Event < ActiveRecord::Base
                           notification_type: :event_deleted,
                           event_id: self.id,
                           message: "Sorry, event '#{ self.title }' was cancelled"
+    end
+  end
+
+  def check_status
+    if self.status == "Finished"
+      self.errors.add :error, "Event finished. You can't make any changes to it."
+      false
     end
   end
 end

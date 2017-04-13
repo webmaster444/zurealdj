@@ -129,7 +129,7 @@ class Organizer::EventsController < ApplicationController
     if @event.save
       render json: { message: I18n.t('event.messages.success_upsert') }
     else
-      render json: { validation_errors: @event.errors }, status: :unprocessable_entity
+      render json: { validation_errors: @event.errors, errors: @event.errors[:error] }, status: :unprocessable_entity
     end
   end
 
