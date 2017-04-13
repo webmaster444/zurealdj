@@ -1,5 +1,6 @@
 json.djs @djs.each do |dj|
   json.name dj.name
+  json.dj_or_venue_name dj.dj_or_venue_name
   json.avatar paperclip_url(dj.avatar, :large)
   json.id dj.id
   json.dj_id dj['dj_id']

@@ -4,6 +4,7 @@ json.personal_url @user.personal_url
 json.rate_per_hour @dj.rate_per_hour
 json.free_to_hire @dj.free_to_hire
 json.name @user.name
+json.dj_or_venue_name @user.dj_or_venue_name
 json.avatar do
   json.url paperclip_url(@user.avatar, :large)
   json.small paperclip_url(@user.avatar, :small)

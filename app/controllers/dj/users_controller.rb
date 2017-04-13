@@ -81,7 +81,7 @@ class Dj::UsersController < Dj::BaseController
   private
 
   def profile_params
-    allowed_params = params.permit(:name, :width, :height, :crop_x, :crop_y, :crop_w, :crop_h, :crop_rotate,
+    allowed_params = params.permit(:name, :dj_or_venue_name, :width, :height, :crop_x, :crop_y, :crop_w, :crop_h, :crop_rotate,
                   :crop_scale_x, :crop_scale_y, :avatar, :about,
                   dj_attributes: [ :rate_per_hour, :free_to_hire, :city, :country_flag_code, :sample, :sample_title],
                    event_category_ids: [], genre_ids: [], equipment_ids: [])

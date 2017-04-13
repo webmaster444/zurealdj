@@ -73,6 +73,7 @@
                 var ratePerHour = 0;
                 var free_to_hire = false;
                 fd.append('name', user.name || '');
+                fd.append('dj_or_venue_name', user.dj_or_venue_name || '');
                 fd.append('dj_attributes[city]', user.city || '');
                 fd.append('dj_attributes[country_flag_code]', user.country ? user.country.code : '');
                 fd.append('about', user.about || '');

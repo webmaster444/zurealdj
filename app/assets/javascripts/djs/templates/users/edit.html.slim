@@ -6,7 +6,7 @@
     .menu-block
       .menu-item
         .menu-title
-          | Main info
+          | About Me
         a.edit-btn ng-click="step = 1"
           | Edit
       .menu-item
@@ -38,13 +38,19 @@
   .page-block
     .general-inf#dj-id-1 ng-show="!isMobile() || step == 1"
       .content-title
-        | Main info
+        | About Me
       .content
         .col-avatar
           div.avatar image=true cropper='true' aspectratio="1.0" ng-model="user.avatar"
           a.text-active onclick="$('.plus label:first-child').trigger('click')"
             | Change photo
         .col-content
+          .form-group
+            .form-title
+              | DJ Name
+            input.register-input.edit-input type="text" ng-model="user.dj_or_venue_name"
+            .error ng-repeat="error in validation_errors.dj_or_venue_name"
+              | {{ error }}
           .form-group
             .form-title
               | Name
@@ -77,7 +83,7 @@
               | {{ error }}
           .form-group
             .form-title
-              | About
+              | Experience
             textarea.zureal-textarea.dj-edit-textarea#aboutId type="text" ng-model="user.about"
             .error ng-repeat="error in validation_errors.about"
               | {{ error }}

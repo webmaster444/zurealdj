@@ -9,6 +9,10 @@
     .inf-container
       .inf
         .name.user-name-desktop
+          | {{ user.dj_or_venue_name }}
+        .name.user-name-desktop ng-hide="user.dj_or_venue_name"
+          | {{ user.name }}
+        .dj-name.user-name-desktop ng-show="user.dj_or_venue_name"
           | {{ user.name }}
         span.rating-icons[uib-rating ng-model="user.rating" max="5" state-on="'fire fire-active icon'" state-off="'fire fire-inactive icon'" enable-reset='false' read-only='true' ]
         .role.small-text

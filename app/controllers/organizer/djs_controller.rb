@@ -121,6 +121,7 @@ class Organizer::DjsController < Organizer::BaseController
     else
       q.project(users[:id],
                 users[:name],
+                users[:dj_or_venue_name],
                 users[:avatar_file_name],
                 users[:avatar_content_type],
                 users[:avatar_file_size],
@@ -128,6 +129,7 @@ class Organizer::DjsController < Organizer::BaseController
                 users[:personal_url],
                 djs[:id].as('dj_id'),
                 djs[:city],
+                djs[:country_flag_code],
                 djs[:free_to_hire],
                 "(array(SELECT json_build_object(
                        'id', genres.id,
