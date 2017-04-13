@@ -87,6 +87,10 @@
       a.icon.like-active ng-click="removeFromFavorites(dj)" ng-show="dj.in_favorites"
       .inf
         a.name href="#djs/{{ dj.personal_url || dj.id }}"
+          | {{ dj.dj_or_venue_name }}
+        a.name href="#djs/{{ dj.personal_url || dj.id }}" ng-hide="dj.dj_or_venue_name"
+          | {{ dj.name }}
+        .small-text.address ng-show="dj.dj_or_venue_name"
           | {{ dj.name }}
         .small-text.address ng-hide="dj.city || dj.country"
           | Adress : Empty

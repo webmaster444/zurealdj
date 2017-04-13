@@ -94,7 +94,7 @@ class Organizer::DjsController < Organizer::BaseController
             .join(subscriptions, Arel::Nodes::OuterJoin).on(users[:subscription_id].eq(subscriptions[:id]))
             .where(subscriptions[:dj_can_be_visible_for_browsing].eq(true))
 
-    q.where(users[:name].matches("%#{ params[:name] }%"))                 if params[:name].present?
+    q.where(users[:name].matches("%#{ params[:name] }%").or(users[:dj_or_venue_name].matches("%#{ params[:name] }%")))                if params[:name].present?
     q.where(djs[:rate_per_hour].gteq(params[:price_from]))  if params[:price_from].present?
     q.where(djs[:rate_per_hour].lteq(params[:price_to]))      if params[:price_to].present?
 

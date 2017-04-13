@@ -86,6 +86,10 @@
               | Rated
             .inf
               a.name href="#djs/{{ dj.personal_url || dj.id }}"
+                | {{ dj.dj_or_venue_name }}
+              a.name href="#djs/{{ dj.personal_url || dj.id }}" ng-hide="dj.dj_or_venue_name"
+                | {{ dj.name }}
+              .small-text.address ng-show="dj.dj_or_venue_name"
                 | {{ dj.name }}
               .small-text.address ng-hide="dj.city || dj.country"
                 | Adress : Empty

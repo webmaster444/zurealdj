@@ -32,6 +32,7 @@ json.djs @event.djs.each do |dj|
   user = dj.user
   booking = Booking.where(dj_id: dj.id, event_id: @event.id).first
   json.name user.name
+  json.dj_or_venue_name user.dj_or_venue_name
   json.avatar paperclip_url(user.avatar, :large)
   json.id user.id
   json.dj_id dj.id
