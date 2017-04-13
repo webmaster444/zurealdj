@@ -64,8 +64,11 @@ div.page
             img.content-icon ng-src="{{ top_dj.avatar }}"
 
             span.text-name
+              | {{ top_dj.dj_or_venue_name }}
+            span.text-name ng-hide="top_dj.dj_or_venue_name"
               | {{ top_dj.name }}
-
+            span.text-description.text-top-dj ng-show="top_dj.dj_or_venue_name"
+              | {{ top_dj.name }}
             span.text-description.text-top-dj
               | {{ top_dj.about }}
 

@@ -43,7 +43,7 @@ class Organizer::UsersController < Organizer::BaseController
   private
 
   def profile_params
-    allowed_params = params.permit(:name, :width, :height, :crop_x, :crop_y, :crop_w, :crop_h, :crop_rotate,
+    allowed_params = params.permit(:name, :dj_or_venue_name, :width, :height, :crop_x, :crop_y, :crop_w, :crop_h, :crop_rotate,
                   :crop_scale_x, :crop_scale_y, :avatar, :company_name, :about,
                   organizer_attributes: [:city, :country_flag_code], event_category_ids: [], genre_ids: [])
     allowed_params[:organizer_attributes][:id] = current_user.organizer.id

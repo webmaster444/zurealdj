@@ -28,7 +28,7 @@
   .page-block
     .general-inf#org-id-1 ng-show="!isMobile() || step == 1"
       .content-title
-        | Main info
+        | About Us
       .content
         .col-avatar
           div.avatar image=true cropper='true' aspectratio="1.0" ng-model="user.avatar"
@@ -40,6 +40,12 @@
               | Name
             input.register-input.edit-input type="text" ng-model="user.name"
             .error ng-repeat="error in validation_errors.name"
+              | {{ error }}
+          .form-group
+            .form-title
+              | Venue Name
+            input.register-input.edit-input type="text" ng-model="user.dj_or_venue_name"
+            .error ng-repeat="error in validation_errors.dj_or_venue_name"
               | {{ error }}
           .form-group
             .form-title
@@ -67,8 +73,8 @@
               | {{ error }}
           .form-group
             .form-title
-              | About
-            textarea.zureal-textarea.dj-edit-textarea#aboutId type="text" ng-model="user.about"
+              | General Info
+            textarea.zureal-textarea.dj-edit-textarea#aboutId type="text" placeholder="tell us something about your company or why you book djs"  ng-model="user.about"
             .error ng-repeat="error in validation_errors.about"
               | {{ error }}
 
