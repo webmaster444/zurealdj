@@ -2,24 +2,24 @@ div.page-head
   div ng-include="'landing/templates/common/small_header.html'"
 
   .text-center.txt ng-hide="isMobile()"
-    | ZuReal DJ Australia's Newest Platform to Book a DJ
+    | ZuReal DJ Australia’s Premier Online DJ Booking Platform
   img.big-logo src="/images/icons/img-logo-zu-big.png"
   .text-center.txt ng-show="isMobile()"
-    | ZuReal DJ Australia's Newest Platform to Book a DJ
+    | ZuReal DJ Australia’s Premier Online DJ Booking Platform
   div.button-block.text-center
     .col-user-role
       img.role-icon src="/images/icons/img-big-org.png"
       .role-name
         | Organiser
       a.btn-link ng-click="$state.go('home'); openRegistrationDialog('organizer')"
-        | Need a DJ?
+        | I Need a DJ
 
     .col-user-role
       img.role-icon src="/images/icons/img-big-dj.png"
       .role-name
         | DJ
       a.btn-link ng-click="$state.go('home'); openRegistrationDialog('dj')"
-        | Are you a DJ?
+        | I'm a DJ
   div#space
   div.cursor-pointer ng-click="scroll()" ng-hide="isMobile()"
     img.img-mouse.text-center src="/images/icons/ic-mouse@2x.png"
