@@ -244,7 +244,10 @@
 
 
 [device='mobile']
-
+  .box-audio
+    max-width: 100%
+    width: 100%
+    min-width: 320px
   .user-name-desktop, .device-desktop
     display: none
 
@@ -340,19 +343,28 @@
         line-height: 1.43
         letter-spacing: 0.9px
         padding: 7.5px 0
-        color: #8a8a8a
+        color: #555555
     .general
       display: inline-block
       width: 100%
       padding-bottom: 30px
+      .commentars
+        .block-title
+          margin-left: 20px
+        .block
+          padding: 0
+
+
+
+
       .block-title
         font-size: 16px
         font-weight: 500
         letter-spacing: 1px
         margin: 15px 0
       .title-bold
-        font-weight: 600
-        font-family: CeraPro
+        font-weight: 500
+        font-family: CeraPro-Medium
         font-size: 16px
         font-style: normal
         font-stretch: normal
@@ -369,8 +381,6 @@
       .equipments
         padding: 0
         display: block
-        max-width: 340px
-        min-width: 340px
         .block-title
           margin-left: 20px
           font-family: CeraPro
@@ -410,7 +420,6 @@
             img
               width: 48px
               height: 48px
-              border: solid 1.5px #b05dfd
               margin: 0 auto
               margin-right: 21px
               margin-left: 21px
@@ -428,6 +437,38 @@
       .listen
         .box-audio
           .player
+            height: 70px
+            padding: 15px 20px
+            margin: 0
+            .rz-pointer
+              top: -6px !important
+            .time-slider
+              left: 70px
+              top: 15px
+              width: auto
+              right: 120px
+            .white
+              right: 84px
+              top: 37px
+              left: initial
+            .color
+              left: initial
+              right: 81px
+              top: 38px
+            .btn-volume
+              right: 80px
+              top: 43px
+              left: initial
+              width: 15px
+              height: 15px
+            .volume-slider
+              left: initial
+              top: initial
+              right: 10px
+              width: 70px
+            .player-btn
+              height: 40px
+              width: 40px
             .file-name
               overflow: hidden
               text-overflow: ellipsis
@@ -436,20 +477,22 @@
               -webkit-line-clamp: 2
               line-height: 1.43
               letter-spacing: 0.9px
-              max-height: 85px
-              max-width: 290px
-              @media (max-width: 470px)
-                max-width: 255px
-            .duration
-              position: relative
-              top: -10px
-              left: 325px
+              max-width: 54%
+              height: 40px
               font-family: CeraPro
-              font-weight: normal
-              font-style: normal
-              font-stretch: normal
-              @media (max-width: 470px)
-                left: 275px
+              font-size: 14px
+              color: #555555
+              left: 70px
+              top: 15px
+            .duration
+              position: absolute
+              top: 35px
+              right: 20px
+              font-family: CeraPro
+              font-size: 14px
+              line-height: 1.43
+              letter-spacing: 0.9px
+              color: #c6bfc7
           .play
             .file-name
               overflow: hidden
@@ -457,44 +500,24 @@
               display: -webkit-box
               -webkit-box-orient: vertical
               -webkit-line-clamp: 1
-              max-height: 28px
+              max-height: 20px
               line-height: 1.43
               letter-spacing: 0.9px
-              @media (max-width: 380px)
-                max-height: 17px
-              @media (max-width: 230px)
-                max-height: 10px
             .duration
-              left: 245px
-              top: 0px
-            @media (max-width: 500px)
-              .volume-slider
-                position: relative
-                top: -10px
-                left: -80px
-                margin-left: 25px
-                max-width: 140px
-                @media (max-width: 375px)
-                  left: -60px
-              .duration
-                left: 245px
-                @media (max-width: 470px)
-                  left: 210px
-              .time-slider
-                top: calc(100% - 60px)
-                @media (max-width: 250px)
-                  top: calc(100% - 50px)
+              right: 15px
+              top: 15px
+
+
       .comments
-        min-width: 340px
         .comment-item
           .top-block
             .avatar
               width: 40px
               height: 40px
             .user-name
-              font-family: CeraPro
+              font-family: CeraPro-Medium
               font-size: 14px
-              font-weight: 600
+              font-weight: 500
               font-style: normal
               font-stretch: normal
               line-height: 1.43
@@ -525,6 +548,7 @@
                 height: 16px
           .content
             min-width: 280px
+            width: 100%
             max-width: 100%
             font-family: CeraPro
             font-size: 14px

@@ -121,24 +121,25 @@
           .show-more.comments-show-more
             a ng-click="showMore()" ng-show="comments.length < comments_count"
               | Show More
-        .block.device-mobile
-          .block-title.title-bold
-            | {{ comments_count }} Comments
-          .block.comments
-            .comment-item ng-repeat="comment in comments track by $index"
-              .top-block
-                img.avatar ng-src="{{ comment.avatar }}"
-                .user-name
-                  | {{ comment.org_name }}
-                .created-at
-                  | {{ comment.created_at }}
-                .rating
-                  span.rating-icons[uib-rating ng-model="comment.rating" max="5" state-on="'fire fire-active icon'" state-off="'fire fire-inactive icon'" enable-reset='false' read-only='true' ]
-              .content
-                .comment-text
-                  | {{ comment.comment }}
-                .event-title
-                  | {{ comment.event_title }}
-          .show-more.comments-show-more
-            a ng-click="showMore()" ng-show="comments.length < comments_count"
-              | Show More
+        .device-mobile
+          .commentars
+            .block-title.title-bold
+              | {{ comments_count }} Comments
+            .block.comments
+              .comment-item ng-repeat="comment in comments track by $index"
+                .top-block
+                  img.avatar ng-src="{{ comment.avatar }}"
+                  .user-name
+                    | {{ comment.org_name }}
+                  .created-at
+                    | {{ comment.created_at }}
+                  .rating
+                    span.rating-icons[uib-rating ng-model="comment.rating" max="5" state-on="'fire fire-active icon'" state-off="'fire fire-inactive icon'" enable-reset='false' read-only='true' ]
+                .content
+                  .comment-text
+                    | {{ comment.comment }}
+                  .event-title
+                    | {{ comment.event_title }}
+            .show-more.comments-show-more
+              a ng-click="showMore()" ng-show="comments.length < comments_count"
+                | Show More
