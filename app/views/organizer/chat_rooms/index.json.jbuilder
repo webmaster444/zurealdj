@@ -8,7 +8,7 @@ json.events @events.each do |event|
   json.address event.address
   json.start_date event.start_date.try(:strftime, "%d/%m/%Y")
   json.end_date event.end_date.try(:strftime, "%d/%m/%Y")
-  json.image event.image.url
+  json.image event.image.try(:url, :small)
   json.djs event.djs.each do |dj|
     next unless event.booking_for(dj).confirmed?
     json.id dj.user.id
@@ -24,6 +24,8 @@ json.events @events.each do |event|
       json.user_avatar last_message.user_avatar
       json.body last_message.body
       json.date time_ago_in_words(last_message.created_at) + ' ago'
+      json.read last_message.read
+      json.incoming last_message.to_user_id == current_user.id
     end if last_message
   end
   json.unread_messages_count event.unread_messages_count_for(current_user)

@@ -2,8 +2,11 @@
   .row
     .chat-sidebar ng-class="{active: !current_event}"
       .chat-search
-        i.fa.fa-search
-        input type="text" ng-model="q"
+        .inbox
+          | Inbox
+        .searchbox
+          i.fa.fa-search
+          input type="text" ng-model="q"
       ul[dj-scroll]
         li.blank-chat ng-show="events.length == 0"
           | Your chats will be here
@@ -11,7 +14,7 @@
           .chat-user.cursor-pointer ng-click="event.dropdownOpen = !event.dropdownOpen"
             img.eventImg ng-src="{{event.image}}"
             .chat-user-name
-              a.chat-user-name
+              a.chat-user-name.event-title
                 | {{ event.title }}
               .unread-message-count
                 | {{ event.djs.length }} DJ's
@@ -19,7 +22,7 @@
               .unread-messages-count
                 | {{ event.unread_messages_count }}
             i.fa ng-class="{'fa-chevron-down': !event.dropdownOpen, 'fa-chevron-up': event.dropdownOpen}"
-          ul ng-repeat="dj in event.djs" ng-show="event.dropdownOpen"
+          ul ng-repeat="dj in event.djs" ng-show="event.dropdownOpen" ng-class="{ 'selectedEvent': event.dropdownOpen}"
             li ng-click="setCurrentEvent(event, dj)"
               .chat-user ng-class="{'current-chat': event == current_event && dj == current_dj }"
                 img ng-src="{{dj.avatar}}" style="background-color: white; border-radius: 100%"
@@ -28,7 +31,7 @@
                   | {{ dj.name }}
                 .dj-gray-text.last-date ng-if="dj.last_message"
                   | {{ dj.last_message.date }}
-                .unread-message ng-if="dj.last_message"
+                .unread-message ng-if="dj.last_message" ng-class="{'unread' : (dj.last_message.read == false && dj.last_message.incoming == true)}"
                   img ng-src="{{ dj.last_message.user_avatar }}"
                   .dj-gray-text
                     | {{ dj.last_message.body }}
@@ -38,7 +41,7 @@
           .show-more.small ng-show="eventsCount && events.length < eventsCount"
             a.show-more.small ng-click="showMoreEvents()"
               | Show More
-    .chat-body ng-class="{active: current_event}"
+    .chat-body ng-class="{active: current_event, 'show-event':event.show}"
       .chat-header
         .dj-gray-text ng-hide="current_event"
           | Choose event to discuss
@@ -49,9 +52,10 @@
             img ng-src="{{current_dj.avatar}}"
               i.fa.fa-circle ng-show="current_dj.online"
           | {{ current_dj.name }}
-        .eventChat ng-show="current_event"
+          i.fa ng-class="{'fa-chevron-down': !event.show, 'fa-chevron-up': event.show}" ng-click="event.show = !event.show"
+        .eventChat ng-show="current_event" ng-class="{'show-event':event.show}"
           a.dj-black-link
-          | {{ current_event.title }}
+            | {{ current_event.title }}
           img ng-src="{{current_event.image}}"
       .chat-discussion[dj-scroll]
         .show-more.small ng-show="messages.length < messagesCount"
@@ -59,14 +63,14 @@
             | Show More
         .blank-chat ng-hide="current_event"
           | Your chat history will be here
-        .chat-message.right ng-repeat="message in messages track by $index" ng-click="markAsRead(message)" class="{{ !message.read && message.incoming? 'unread cursor-pointer' : '' }}"
-          img.message-avatar ng-src="{{message.avatar}}"
-          .message
-            a.pink-link>
+        .chat-message.right ng-repeat="message in messages track by $index" ng-click="markAsRead(message)" class="{{ !message.read && message.incoming? 'unread cursor-pointer' : '' }}" ng-class="{'own-message-box' : !message.incoming, 'user-change' : message.incoming != messages[$index-1].incoming || message.longAgo, 'short' : message.body.length < 9}"
+          img.message-avatar ng-src="{{message.avatar}}" ng-class="{'own-msg-ava' : !message.incoming }" ng-show="(message.longAgo || message.incoming != messages[$index-1].incoming)"
+          .message ng-class="{'own-message' : !message.incoming }"
+            a.pink-link> ng-class="{'recent' : !message.longAgo }"
               | {{ message.name }}
-            span.dj-gray-text
+            span.dj-gray-text ng-class="{'own' : !message.incoming , 'recent': !message.longAgo}"
               | {{ message.date }}
-            .message-content
+            .message-content ng-class="{'short' : message.body.length < 9}"
               | {{ message.body }}
 
       form.chat-message-form ng-submit="send()" name="chatForm"

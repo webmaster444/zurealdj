@@ -6,6 +6,7 @@
   box-shadow: 0 2px 30px 0 rgba(0, 0, 0, 0.08)
   .chat-body
     @media (min-width: $mobile-max-width)
+      vertical-align: top
       width: 66.66666666%
       display: inline-block
       .back-to-list-icon
@@ -14,16 +15,22 @@
       display: none
       &.active
         display: block
+      &.show-event
+        height: 127px
+        .slimScrollDiv
+          top: 210px
     .back-to-list-icon
       margin-right: 10px
       img
         width: 9px
-        height: 13px
+        height: 9px
 
   .chat-sidebar
     @media (min-width: $mobile-max-width)
       width: 33.33333333%
       display: inline-block
+      .slimScrollDiv
+        max-height: 444px
     @media (max-width: $mobile-max-width)
       display: none
       &.active
@@ -34,9 +41,15 @@
       padding: 0
       margin: 0
       list-style-type: none
-      height: 450px
+      height: 100% !important
       overflow-y: auto
       overflow-x: hidden
+      @media (max-width: $mobile-max-width)
+        margin-top: 53px
+
+        .selectedEvent
+          background: #f9f8fa
+          border: solid 1px #f5f5f5
       & > li
         & > ul
           padding: 0
@@ -54,7 +67,7 @@
                 padding: 0px 6px !important
     .chat-user
       border-top: 1px solid #f5f5f5
-      padding: 15px 60px 15px 85px
+      padding: 15px 20px 15px 85px
       position: relative
       min-height: 90px
       & > img
@@ -80,9 +93,12 @@
         cursor: pointer
         font-size: 10px
       .unread-message
-        margin-top: 10px
+        margin-top: 5px
         position: relative
-        padding: 0px 30px
+        padding: 5px 30px
+        height: 30px
+        &.unread
+          background: #e6e6e6
 
         .dj-gray-text
           overflow: hidden
@@ -91,8 +107,8 @@
           letter-spacing: normal
         & > img
           position: absolute
-          top: 0
-          left: 0
+          top: 5px
+          left: 1px
           width: 20px
           height: 20px
           border-radius: 100px
@@ -105,8 +121,9 @@
       .unread-messages
         text-align: right
         position: absolute
-        top: 50px
-        right: 15px
+        top: 48px
+        right: 20px
+
         &-count
           background-color: $current-color
           border-radius: 50px
@@ -125,31 +142,73 @@
         white-space: nowrap
         text-overflow: ellipsis
         max-width: 140px
+        @media (max-width: $mobile-max-width)
+          max-width: 95%
       .last-date
         position: absolute
         top: 16px
         right: 20px
     .chat-search
       position: relative
-      i.fa.fa-search
-        position: absolute
-        top: 22px
-        left: 30px
-        font-size: 16px
+      .inbox
+        font-size: 20px
+        line-height: 1.5
+        letter-spacing: 1.4px
+        text-align: center
         color: #555555
-      input
-        width: 100%
-        border: none
-        outline: none
+        margin-bottom: 15px
+        @media (min-width: $mobile-max-width)
+          display: none
+      .searchbox
+        i.fa.fa-search
+          position: absolute
+          top: 22px
+          left: 30px
+          font-size: 16px
+          color: #555555
+          @media (max-width: $mobile-max-width)
+            top: 72px
+            left: 25px
+        @media (max-width: $mobile-max-width)
+          width: 100%
+          height: 40px
+          border-radius: 100px
+          border: solid 1px #f5f5f5
+          padding: 10px 10px 0px 40px
+
+        input
+          width: 100%
+          border: none
+          outline: none
+
       padding: 20px 20px 20px 50px
       height: 60px
       border-bottom: solid 1px #f5f5f5
+      @media (max-width: $mobile-max-width)
+        padding: 15px 10px 5px 10px
+        height: 115px
+        border-bottom: solid 1px #f5f5f5
   .chat-header
-    height: 61px
-    padding: 20px 70px 5px 20px
+    height: 60px
+    min-height: 60px
+    max-height: 60px
+    padding: 10px 70px 5px 20px
     border-bottom: 1px solid #f5f5f5
     position: relative
     text-align: right
+    @media (max-width: $mobile-max-width)
+      padding: 20px 20px 5px 20px
+      &.show-event
+        height: 130px
+      border-bottom: none
+    .dj-gray-text
+      margin-top: 10px
+    @media (max-width: $mobile-max-width)
+      padding: 10px 20px 5px 20px
+      &.show-event
+        height: 130px
+      border-bottom: none
+
     .eventChat
       display: inline-block
       position: absolute
@@ -163,20 +222,45 @@
         height: 40px
         border-radius: 4px
         margin-left: 15px
+      @media (max-width: $mobile-max-width)
+        &.show-event
+          img
+            position: absolute
+            left: 0
+            top: 0px
+            margin-left: 0
+        left: 20px
+        text-align: left
+        padding-left: 50px
+        height: 40px
+        top: 75px
+
     .receiver
-      display: inline-block
       text-align: left
-      left: 20px
-      top: 10px
-      position: absolute
+      position: relative
       font-family: CeraPro-Medium
       font-size: 20px
       font-weight: 500
       color: #555555
+      @media (max-width: $mobile-max-width)
+        font-size: 14px
+        width: 100%
+        i
+          position: absolute
+          right: 20px
+          top: 14px
+          font-size: 10px
       .imgContain
         display: inline-block
         position: relative
         margin-right: 15px
+        i.fa-circle
+          display: block
+          color: #38e357
+          font-size: 7px
+          position: absolute
+          top: 34px
+          right: 0
         img
           border-radius: 100px
           width: 40px
@@ -186,16 +270,34 @@
           border-radius: 100px
           width: 40px
           height: 40px
+    @media (min-width: $mobile-max-width)
+      i
+        display: none
 
 
   .chat-discussion, .slimScrollDiv .chat-discussion
-    height: 400px
+    height: 384px
     overflow-y: auto
     padding: 0px 75px 0px 20px
+    @media (max-width: $mobile-max-width)
+      background: #f9f8fa
+      padding: 0px 10px 30px 10px
+      &.event-show
+        top: 210px
     .chat-message
       position: relative
       padding: 5px 5px 5px 55px
-      min-height: 60px
+      min-height: 30px
+      &.user-change
+        margin-top: 25px
+      @media (max-width: $mobile-max-width)
+
+        &.short
+          min-height: 0
+
+        &.own-message-box
+          padding: 5px 55px 5px 5px
+
       .message-avatar
         position: absolute
         top: 5px
@@ -203,7 +305,34 @@
         border-radius: 100px
         width: 40px
         height: 40px
+        @media (max-width: $mobile-max-width)
+          &.own-msg-ava
+            left: initial
+            right: 0px
       .message
+        @media (max-width: $mobile-max-width)
+          margin-right: 20px
+          border-radius: 4px
+          background-color: #ffffff
+          box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.08)
+
+          &.own-message
+            margin-right: 0px
+            margin-left: 20px
+          .pink-link
+            display: none
+
+          .dj-gray-text
+            position: absolute
+            bottom: 11px
+            right: 30px
+            &.own
+              right: 60px
+        @media (min-width: $mobile-max-width)
+
+          .recent
+            display: none
+
         &-author
           font-family: CeraPro-Medium
           font-size: 16px
@@ -217,12 +346,44 @@
           font-size: 16px
           line-height: 1.5
           color: #555555
+          @media (max-width: $mobile-max-width)
+            padding: 10px 10px 35px 10px
+            font-size: 14px
+            &.short
+              padding: 10px 10px 5px 10px
+
+  @media (max-width: $mobile-max-width)
+    .slimScrollDiv
+      position: absolute !important
+      top: 141px
+      left: 0
+      right: 0
+      bottom: 43px
+      width: auto
+      height: auto !important
+      overflow: visible !important
+      &.show-event
+        top: 210px
+      .chat-discussion
+        height: 100% !important
+
 
   .chat-message-form
     position: relative
     padding: 10px 64px 0 0
     border: solid 1px #f5f5f5
     height: 60px
+    @media (max-width: $mobile-max-width)
+      left: 0px
+      bottom: 0px
+      padding: 9px 60px 0px 0px
+      position: absolute
+      height: 44px
+      right: 0px
+      background: white
+      box-shadow: rgba(0, 0, 0, 0.0784314) 0px -2px 20px 0px
+
+
     input
       height: 40px
       border-radius: 100px
@@ -231,6 +392,13 @@
       border: solid 1px #e6e6e6
       font-size: 16px
       line-height: 1.5
+      @media (max-width: $mobile-max-width)
+        border: none
+        font-size: 14px
+        color: #555555
+        height: 24px
+        padding-left: 20px
+
     a
       position: absolute
       top: 20px
@@ -239,6 +407,8 @@
       color: $current-color
       &:hover
         color: $current-color
+      @media (max-width: $mobile-max-width)
+        top: 12px
 
   .ng-hide-add
     -webkit-animation: 0.2s lightSpeedOut ease
