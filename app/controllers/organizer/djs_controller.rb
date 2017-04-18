@@ -62,8 +62,17 @@ class Organizer::DjsController < Organizer::BaseController
   end
 
   def show
-    @user = user
-    @dj = dj
+    if user
+      @user = user
+      if dj
+        @dj = dj
+      else
+        render json: {errors: ['DJ not found.'], redirect_url: '/organizer#djs'}, status: 404
+      end
+    else
+      render json: {errors: ['DJ not found.'], redirect_url: '/organizer#djs'}, status: 404
+    end
+
   end
 
   private

@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   get '/admin', to: "pages#admin"
   get '/dj', to: "pages#dj"
   get '/organizer', to: "pages#organizer"
+  get '/djs/:url', to: "pages#url"
 
   scope '(:locale)' do
     resources :country_flags, only: [:index]

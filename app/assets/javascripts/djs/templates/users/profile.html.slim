@@ -38,6 +38,11 @@
           .block-title.title-bold
             | General Information
           table
+            tr ng-show="user.personal_url"
+              td.td-title
+                | Personal URL:
+              td.td-content
+                | {{ user.personal_url }}
             tr ng-show="user.city || user.country"
               td.td-title
                 | Address:

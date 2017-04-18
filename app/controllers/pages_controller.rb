@@ -16,4 +16,16 @@ class PagesController < ApplicationController
   def organizer
     render layout: 'organizer'
   end
+
+  def url
+    if !current_user.nil?
+      if current_user.organizer?
+        redirect_to "/organizer#/djs/#{params[:url]}"
+      else
+        redirect_to action: "dj"
+      end
+    else
+      redirect_to action: "index"
+    end
+  end
 end

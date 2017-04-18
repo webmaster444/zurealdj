@@ -148,6 +148,11 @@
                 if($state.current.name == 'dj'){
                     djs.show($stateParams.id).success(function(data){
                         $scope.user = data;
+                    })
+                    .error(function (data) {
+                        if(data.redirect_url){
+                            $state.go('djs');
+                        }
                     });
 
                     $scope.book = function(){
