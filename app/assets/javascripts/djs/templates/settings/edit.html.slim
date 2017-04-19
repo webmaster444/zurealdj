@@ -71,11 +71,11 @@
             .col-title
               | Email
             .col-field#email
-              input.zureal-input type="email" value="{{ oldEmail }}" ng-disabled="true"
+              input.zureal-input type="email" ng-model="user.email" ng-disabled="true"
             .col-title ng-hide="activeEdit != 2"
               | New Email
             .col-field ng-hide="activeEdit != 2"
-              input.zureal-input type="email" ng-model="user.email" ng-disabled="activeEdit != 2"
+              input.zureal-input type="email" ng-model="user.new_email" ng-disabled="activeEdit != 2"
             .col-action
               a.edit ng-click="!activeEdit? activeEdit = 2 : true" class="{{ activeEdit? 'cursor-default' : '' }}"
                 | Edit

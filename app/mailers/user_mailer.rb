@@ -8,7 +8,11 @@ class UserMailer  < ActionMailer::Base
   def email_confirmation(user_id)
     @user = User.find(user_id)
     @hostname = ENV['HOST_NAME']
-    mail(to: @user.email, from: sender.user_name, subject: 'Email confirmation instructions.')
+    if @user.new_email.nil?
+      mail(to: @user.email, from: sender.user_name, subject: 'Email confirmation instructions.')
+    else
+      mail(to: @user.new_email, from: sender.user_name, subject: 'New email confirmation instructions.')
+    end
   end
 
   def user_notify(data)

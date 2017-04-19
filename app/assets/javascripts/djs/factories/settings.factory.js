@@ -10,9 +10,7 @@
             upsert: function(user){
                 var fd = new FormData();
 
-                if(user.email){
-                    fd.append('email', user.email);
-                }
+                fd.append('new_email', user.new_email || '');
                 if(user.personal_url){
                     fd.append('personal_url', user.personal_url);
                 }

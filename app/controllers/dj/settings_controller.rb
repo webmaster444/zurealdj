@@ -16,7 +16,11 @@ class Dj::SettingsController < Dj::BaseController
       @user.assign_attributes setting_params
 
       if @user.save
-        render json: { message: I18n.t('settings.messages.settings_updated') }
+        if params[:new_email].nil? || params[:new_email] == ''
+          render json: { message: I18n.t('settings.messages.settings_updated') }
+        else
+          render json: { message: "Settings successfully updated. Please check email to confirm new email."}
+        end
       else
         render json: { errors: @user.errors.full_messages }, status: :unprocessable_entity
       end
@@ -37,6 +41,6 @@ class Dj::SettingsController < Dj::BaseController
   private
 
     def setting_params
-      params.permit :email, :personal_url, :password, :password_confirmation
+      params.permit :new_email, :personal_url, :password, :password_confirmation
     end
 end

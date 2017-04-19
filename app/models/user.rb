@@ -19,6 +19,8 @@ class User < ActiveRecord::Base
   validates :email, uniqueness: { case_sensitive: false, message: "This email address is already registered." },
                     format: { with: /\A[a-zA-Z0-9]+[a-zA-Z0-9\._-]*[a-zA-Z0-9]+@[a-zA-Z0-9]+[-_]*[a-zA-Z0-9\.]+[a-zA-Z0-9]+\.[a-zA-Z]{2,}\z/, message: "Email address is incorrect"},
                     presence: true
+  validates :new_email, format: { with: /\A[a-zA-Z0-9]+[a-zA-Z0-9\._-]*[a-zA-Z0-9]+@[a-zA-Z0-9]+[-_]*[a-zA-Z0-9\.]+[a-zA-Z0-9]+\.[a-zA-Z]{2,}\z/, message: "Email address is incorrect"}, allow_blank: true
+  validate :new_email_in_email_scope
 
   validates :personal_url, uniqueness: { case_sensitive: false, message: "This personal url is already registered."}, allow_blank: true
   validates :company_name, length: { in: 2..30 }, uniqueness: { case_sensitive: false, message: "This company name is already registered."}, if: :validate_company_name?
@@ -29,6 +31,7 @@ class User < ActiveRecord::Base
   after_create :create_dependent_record
   after_create :send_confirmation_email
   before_destroy :validate_destroy
+  before_update :check_new_email
   scope :admins, -> { where(role_id: Role.admin.id ) }
   belongs_to :role
 
@@ -184,6 +187,11 @@ class User < ActiveRecord::Base
     UserMailer.email_confirmation(self.id).deliver_later
   end
 
+  def send_confirmation_of_new_email
+    self.confirmation_token = encrypt(self.new_email)
+    UserMailer.email_confirmation(self.id).deliver_later
+  end
+
   def downcase_email
     self.email = self.email.downcase if self.email
   end
@@ -248,4 +256,18 @@ class User < ActiveRecord::Base
     end
   end
 
+  def new_email_in_email_scope
+    self.errors.add :base, 'Such email is already registered.' if User.all.map(&:email).include? self.new_email
+  end
+
+  def check_new_email
+    if self.new_email_changed? && !self.new_email.nil?
+        if self.new_email != ''
+         send_confirmation_of_new_email
+        else
+          self.new_email = nil
+          self.confirmation_token = nil
+        end
+    end
+  end
 end

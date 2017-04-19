@@ -28,7 +28,6 @@
                 $scope.retrieveSettings = function() {
                     settings.show().success(function(data){
                         $scope.user = data;
-                        $scope.oldEmail = data.email;
                     });
                 };
 

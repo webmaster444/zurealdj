@@ -40,10 +40,17 @@ class UsersController < ApplicationController
     @user = User.find_by_confirmation_token params[:t]
 
     if @user
-      @user.update_attributes confirmation_token: nil, confirmed: true
-      sign_in @user
-      flash[:message] = 'Email confirmed successfully !'
-      redirect_to self.send("#{ @user.role.name }_path", anchor: "/event_types_step")
+      if @user.new_email.nil?
+        @user.update_attributes confirmation_token: nil, confirmed: true
+        sign_in @user
+        flash[:message] = 'Email confirmed successfully !'
+        redirect_to self.send("#{ @user.role.name }_path", anchor: "/event_types_step")
+      else
+        @user.update_attributes confirmation_token: nil, email: @user.new_email, new_email: nil
+        sign_in @user
+        flash[:message] = 'New email confirmed successfully !'
+        redirect_to self.send("#{ @user.role.name }_path")
+      end
     else
       flash[:error] = 'Wrong confirmation token !'
       redirect_to root_path
