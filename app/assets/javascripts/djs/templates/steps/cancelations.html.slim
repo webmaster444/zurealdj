@@ -34,7 +34,7 @@ div.page-block.registration
         label for="cancellation" style="font-size: 18px"
           span
           | I agree with
-        a.small-text.hover href="/#cancelation" target="_blank"
+        a.small-text.hover ng-click="policyDialog()"
           |  Cancellation Policy
       .error ng-repeat="error in validation_errors['agree']"
         | {{ error }}

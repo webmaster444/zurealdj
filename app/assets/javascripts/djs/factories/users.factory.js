@@ -10,6 +10,10 @@
                 return $http.get('/dj/profile');
             },
 
+            policy: function(){
+                return $http.get('/static_pages/cancelations')
+            },
+
             submit_event_types: function(event_types){
                 event_types = _.select(event_types, function(i){ return i.selected });
                 event_types = _.map(event_types, function(i){ return i.id });

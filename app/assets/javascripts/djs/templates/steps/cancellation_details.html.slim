@@ -1,0 +1,14 @@
+div style="padding:20px"
+  h1
+    |Cancellation policy
+  div.page.static-pages
+    .page-block style="margin-bottom:30px"
+      div.pages-content ng-bind-html="page"
+
+  .step.small-text style="height:40px"
+    .pull-left
+      a.slider-btn.back ng-click="cancel()"
+        | Cancel
+    .pull-right
+      a.small-text.slider-btn.next ng-click="accept()"
+        | Accept
