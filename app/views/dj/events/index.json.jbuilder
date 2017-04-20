@@ -3,6 +3,7 @@ json.events @events.each do |event|
   json.created_at event.created_at.try(:strftime, "%d/%m/%Y")
   json.title event.title
   json.city event.city
+  json.venue_name event.venue_name
   json.country CountryFlag.find(event['country_flag_code']).try(:[], :title)
   json.start_date event.start_date.try(:strftime, "%d/%m/%Y") if event.start_date.present?
   json.start_time  timeformat(event.start_date) if event.start_date.present?

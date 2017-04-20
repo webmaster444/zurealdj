@@ -54,6 +54,8 @@
               td.td-title
                 | Address:
               td.td-content
+                span
+                  | {{ event.venue_name }},
                 span ng-show="event.city"
                   | {{ event.city}}
                   span ng-show="event.country"
@@ -67,9 +69,9 @@
                 | {{ event.genres_string }}
             tr
               td.td-title
-                | Types of events:
+                | Event type:
               td.td-content
-                | {{ event.event_types_string }}
+                | {{ event.event_type }}
             tr
               td.td-title
                 | Dj slots:

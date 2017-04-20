@@ -24,7 +24,13 @@
           input.zureal-input type="text" ng-model="event.title"
         .error ng-repeat="error in validation_errors.title"
           | {{ error }}
-
+      .form-row
+        .form-title
+          | Venue Address
+        .form-container
+          input.zureal-input type="text" ng-model="event.venue_name"
+        .error ng-repeat="error in validation_errors.venue_name"
+          | {{ error }}
       .form-row
         .form-title
           | Type

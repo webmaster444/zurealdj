@@ -4,6 +4,7 @@ json.event do
   json.updated_at time_ago_in_words(@event.updated_at) + ' ' + t('datetime.ago') + ' ' + t('datetime.at') + ' ' + @event.updated_at.strftime("%H:%M")
   json.title @event.title
   json.city @event.city
+  json.venue_name event.venue_name
   json.country @event.country_flag
   json.address @event.address
   json.start_date @event.start_date.strftime("%d/%m/%Y ") + timeformat(@event.start_date) if @event.start_date.present?

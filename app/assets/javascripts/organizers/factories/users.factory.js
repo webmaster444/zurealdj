@@ -53,7 +53,6 @@
             save: function(user){
                 var fd = new FormData();
                 fd.append('name', user.name || '');
-                fd.append('dj_or_venue_name', user.dj_or_venue_name || '');
                 fd.append('company_name', user.company_name || '');
                 fd.append('organizer_attributes[city]', user.city || '');
                 fd.append('organizer_attributes[country_flag_code]', user.country ? user.country.code : '');

@@ -146,7 +146,7 @@ class Organizer::EventsController < ApplicationController
 
   def event_params
     allowed_params = params.permit :width, :height, :crop_x, :crop_y, :crop_w, :crop_h, :crop_rotate, :crop_scale_x,
-                                  :crop_scale_y, :image, :title, :country_flag_code, :city, :event_category_id, :dj_slots
+                                  :crop_scale_y, :image, :title, :country_flag_code, :city, :venue_name,:event_category_id, :dj_slots
 
     start_date = nil
 

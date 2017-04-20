@@ -1,6 +1,7 @@
 json.id @event.id
 json.title @event.title
 json.city @event.city
+json.venue_name @event.venue_name
 json.country @event.country_flag
 json.dj_slots @event.dj_slots
 json.start_date @event.start_date.strftime("%d/%m/%Y") if @event.start_date.present?
@@ -24,6 +25,8 @@ json.event_category do
   json.id event_category.id
   json.title event_category.title
 end if @event.event_category_id.present?
+
+json.event_type EventCategory.find(@event.event_category_id).title
 
 json.created_at @event.created_at.strftime("%d/%m/%Y")
 json.updated_at @event.created_at.strftime("%d/%m/%Y")

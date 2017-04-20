@@ -43,12 +43,6 @@
               | {{ error }}
           .form-group
             .form-title
-              | Venue Name
-            input.register-input.edit-input type="text" ng-model="user.dj_or_venue_name"
-            .error ng-repeat="error in validation_errors.dj_or_venue_name"
-              | {{ error }}
-          .form-group
-            .form-title
               | Country:
             .dj-dropdown[uib-dropdown]
               i.fa.fa-chevron-down

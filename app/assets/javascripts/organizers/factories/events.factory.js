@@ -8,6 +8,9 @@
 
                 fd.append('title', event.title || '');
                 fd.append('city', event.city || '');
+                if(event.venue_name){
+                    fd.append('venue_name', event.venue_name );
+                }
                 if(event.country && event.country.code){
                     fd.append('country_flag_code', event.country.code);
                 }

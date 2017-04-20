@@ -24,6 +24,7 @@ class Event < ActiveRecord::Base
   validates :end_date, presence: true
   validates :event_category_id, presence: true
   validates :dj_slots, presence: true
+  validates :venue_name, presence: true
 
   validates :crop_x, presence: true
   validates :crop_y, presence: true

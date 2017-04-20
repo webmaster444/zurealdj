@@ -93,6 +93,8 @@
       .event-title
         | {{ event.title }}
       .small-text.address
+        span
+          | {{ event.venue_name }},
         span ng-show="event.city"
           | {{ event.city}}
           span ng-show="event.country"

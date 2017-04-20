@@ -58,14 +58,19 @@
                   | {{ event.country.title }}
             tr
               td.td-title
+                | Venue Address:
+              td.td-content
+                | {{ event.venue_name }}
+            tr
+              td.td-title
                 | Genres:
               td.td-content
                 | {{ event.genres_string }}
             tr
               td.td-title
-                | Types of events:
+                | Event type:
               td.td-content
-                | {{ event.event_types_string }}
+                | {{ event.event_type }}
             tr
               td.td-title
                 | Dj slots:

@@ -1,7 +1,6 @@
 json.personal_url @user.personal_url
 json.company_name @user.company_name
 json.name @user.name
-json.dj_or_venue_name @user.dj_or_venue_name
 json.id @user.id
 json.avatar do
   json.url paperclip_url(@user.avatar, :large)
