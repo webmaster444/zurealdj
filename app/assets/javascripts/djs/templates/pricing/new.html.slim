@@ -1,7 +1,7 @@
 .stripe-form
   form method="POST" name="stripeForm" ng-submit="requestStripeToken($event)"
     .dj-header
-      | Buy subscription
+      | Buy Subscription
     .row.form-group
       .col-md-2
         | Card Number
@@ -11,22 +11,22 @@
           | {{ validation_errors.card_number }}
     .row.form-group
       .col-md-2
-        | Expiration (MM/YY)
-      .col-md-4
+        | Expiry (MM/YY)
+      .col-md-2
         input.zureal-input type="text" size="2"  maxlength="2" data-stripe="exp_month"
         .error ng-show="validation_errors.exp_month"
           | {{ validation_errors.exp_month }}
-      .col-md-1
+      .col-md-1.text-center
         h2
           | /
-      .col-md-5
+      .col-md-2
         input.zureal-input type="text"  maxlength="2" size="2" data-stripe="exp_year"
         .error ng-show="validation_errors.exp_year"
           | {{ validation_errors.exp_year }}
-    .row.form-group
-      .col-md-2
+
+      .col-md-1.text-center
         | CVC
-      .col-md-10
+      .col-md-4
         input.zureal-input type="text" size="4" maxlength="4" data-stripe="cvc"
         .error ng-show="validation_errors.cvc"
           | {{ validation_errors.cvc }}

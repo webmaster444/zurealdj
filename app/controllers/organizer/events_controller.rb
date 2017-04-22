@@ -157,7 +157,6 @@ class Organizer::EventsController < ApplicationController
         shour = hour.to_i
         shour = hour.to_i + 12 if meridiem == 'PM'
         shour = 12 if shour >= 24
-      puts()
 
       start_date = DateTime.new  start_date.year, start_date.month, start_date.day, shour , minute.to_i
     end
