@@ -13,9 +13,18 @@ angular.module('formInput.timepicker').directive('timepicker', ['$filter', funct
             for(var h = 0; h <= 12; h++){
                 for(var m = 0; m < 60; m = m + 15){
                     if(h == 0 && m == 0) {
+                        if(meridiem[a] == 'AM'){
+                            scope.times.push({
+                            lable: String("0" + h).slice(-2) + ':' + String("0" + m).slice(-2) + ' ' + meridiem[a]
+                        });
+                        }
 
                     }else if(h == 12 && m > 0 && meridiem[a] == 'PM'){
 
+                    }else if(h == 12 && m >= 0 && meridiem[a] == 'AM'){
+                        scope.times.push({
+                            lable: String("0" + h).slice(-2) + ':' + String("0" + m).slice(-2) + ' ' + 'PM'
+                        });
                     }else if(h == 0 && meridiem[a] == 'PM'){
 
                     }else{

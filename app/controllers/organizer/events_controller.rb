@@ -154,8 +154,12 @@ class Organizer::EventsController < ApplicationController
       start_date = Date.parse(params[:start_date])
 
       /^(?<hour>.*):(?<minute>.*)\s(?<meridiem>.*)/i =~ params[:start_time]
+        shour = hour.to_i
+        shour = hour.to_i + 12 if meridiem == 'PM'
+        shour = 12 if shour >= 24
+      puts()
 
-      start_date = DateTime.new  start_date.year, start_date.month, start_date.day, hour.to_i + (meridiem == 'AM' ? 0 : 12), minute.to_i
+      start_date = DateTime.new  start_date.year, start_date.month, start_date.day, shour , minute.to_i
     end
 
     allowed_params[:start_date] = start_date
@@ -165,8 +169,10 @@ class Organizer::EventsController < ApplicationController
       end_date = Date.parse(params[:end_date])
 
       /^(?<hour>.*):(?<minute>.*)\s(?<meridiem>.*)/i =~ params[:end_time]
-
-      end_date = DateTime.new  end_date.year, end_date.month, end_date.day, hour.to_i + (meridiem == 'AM'? 0 : 12), minute.to_i
+      shour = hour.to_i
+      shour = hour.to_i + 12 if meridiem == 'PM'
+      shour = 12 if shour >= 24
+      end_date = DateTime.new  end_date.year, end_date.month, end_date.day, shour, minute.to_i
     end
 
     allowed_params[:end_date] = end_date
