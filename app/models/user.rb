@@ -21,7 +21,9 @@ class User < ActiveRecord::Base
                     presence: true
   validates :new_email, format: { with: /\A[a-zA-Z0-9]+[a-zA-Z0-9\._-]*[a-zA-Z0-9]+@[a-zA-Z0-9]+[-_]*[a-zA-Z0-9\.]+[a-zA-Z0-9]+\.[a-zA-Z]{2,}\z/, message: "Email address is incorrect"}, allow_blank: true
   validate :new_email_in_email_scope
-
+  validates :personal_url, uniqueness: { case_sensitive: false, message: "This url is already in use." },
+            format: { with: /\A[a-zA-Z0-9_-]+\z/, message: 'Can only contain letters, numbers, symbols (-_) '}, allow_blank: true,
+            length: {minimum: 3}
   validates :personal_url, uniqueness: { case_sensitive: false, message: "This personal url is already registered."}, allow_blank: true
   validates :company_name, length: { in: 2..30 }, uniqueness: { case_sensitive: false, message: "This company name is already registered."}, if: :validate_company_name?
 
