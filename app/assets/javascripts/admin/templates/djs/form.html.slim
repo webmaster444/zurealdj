@@ -1,0 +1,209 @@
+.wrapper.wrapper-content
+  .row.animated.fadeIn
+    .col-md-12
+      .ibox.float-e-margins
+        h3
+          | {{ I18n.t('dj.edit' ) }}
+        .ibox-content
+          form.edit-profile ng-submit="submitDj()" name="DjForm" novalidate=true
+            .form-group
+              .row
+                .col-sm-2
+                  label.control-label
+                    | {{ I18n.t('dj.fields.photo') }}:
+                .col-sm-10
+                  div image=true ng-model="dj.avatar"
+                  .error ng-show="DjsForm.avatar.$invalid && submitted"
+                    | {{ I18n.t('validations.cant_be_blank')}}
+
+                  .error ng-repeat="error in validation_errors['avatar']"
+                    | {{ error }}
+
+              .hr-line-dashed
+
+            .form-group
+              .row
+                .col-sm-2
+                  label.control-label
+                    | {{ I18n.t('dj.fields.name') }}:
+                .col-sm-10
+                  input.form-control type="text" placeholder="{{ I18n.t('dj.fields.name') }}" required=true class="{{ DjForm.name.$invalid && submitted ? 'validation-error' : ''}}" name="name" ng-model="dj.name"
+                  .error ng-show="DjsForm.name.$invalid && submitted"
+                    | {{ I18n.t('validations.cant_be_blank')}}
+
+                  .error ng-repeat="error in validation_errors['name']"
+                    | {{ error }}
+
+              .hr-line-dashed
+
+            .form-group
+              .row
+                .col-sm-2
+                  label.control-label
+                    | {{ I18n.t('user.fields.email') }}:
+                .col-sm-10
+                  input.form-control type="text" placeholder="{{ I18n.t('user.fields.email') }}" required=true class="{{ DjForm.email.$invalid && submitted ? 'validation-error' : ''}}" name="email" ng-model="dj.email"
+                  .error ng-show="DjsForm.email.$invalid && submitted"
+                    | {{ I18n.t('validations.cant_be_blank')}}
+
+                  .error ng-repeat="error in validation_errors['email']"
+                    | {{ error }}
+
+              .hr-line-dashed
+
+            .form-group
+              .row
+                .col-sm-2
+                  label.control-label
+                    | {{ I18n.t('user.fields.personal_url') }}:
+                .col-sm-10
+                  input.form-control type="text" placeholder="{{ I18n.t('user.fields.personal_url') }}" required=true class="{{ DjForm.personal_url.$invalid && submitted ? 'validation-error' : ''}}" name="personal_url" ng-model="dj.personal_url"
+                  .error ng-show="DjsForm.personal_url.$invalid && submitted"
+                    | {{ I18n.t('validations.cant_be_blank')}}
+
+                  .error ng-repeat="error in validation_errors['personal_url']"
+                    | {{ error }}
+
+              .hr-line-dashed
+
+
+            .form-group
+              .row
+                .col-sm-2
+                  label.control-label
+                    | {{ I18n.t('dj.fields.city') }}:
+                .col-sm-10
+                  input.form-control type="text" placeholder="{{ I18n.t('dj.fields.city') }}" required=true class="{{ DjForm.city.$invalid && submitted ? 'validation-error' : ''}}" name="city" ng-model="dj.city"
+                  .error ng-show="DjsForm.city.$invalid && submitted"
+                    | {{ I18n.t('validations.cant_be_blank')}}
+
+                  .error ng-repeat="error in validation_errors['city']"
+                    | {{ error }}
+
+              .hr-line-dashed
+            .form-group
+              .row
+                .col-sm-2
+                  label.control-label
+                    | {{ I18n.t('dj.fields.country') }}:
+                .col-sm-10
+                  .zureal-btn-dropdown
+                    .btn-group uib-dropdown=""
+                      a.zureal-dropdown#country-dropdown ng-disabled="disabled" uib-dropdown-toggle=""
+                        span ng-hide="dj.country"
+                          | Please choose a country
+
+                        span ng-show="dj.country"
+                          span.flag class="{{ dj.country.code }}"
+                          | {{ dj.country.title }}
+                      ul.dropdown-menu aria-labelledby="country-dropdown" role="menu" dropdown-menu=true
+                        li ng-repeat="country in flags"
+                          a ng-click="dj.country = country" style="cursor: pointer"
+                            span.flag class="{{ country.code }}"
+                            | {{ country.title }}
+                    .error ng-repeat="error in validation_errors.country"
+                      | {{ error }}
+
+              .hr-line-dashed
+            .form-group
+              .row
+                .col-sm-2
+                  label.control-label
+                    | {{ I18n.t('dj.fields.about') }}:
+                .col-sm-10
+                  textarea.form-control placeholder="{{ I18n.t('dj.fields.about') }}" required=true class="{{ DjForm.about.$invalid && submitted ? 'validation-error' : ''}}" name="about" ng-model="dj.about" style="width: 100%" rows="5"
+                  .error ng-show="DjsForm.about.$invalid && submitted"
+                    | {{ I18n.t('validations.cant_be_blank')}}
+
+                  .error ng-repeat="error in validation_errors['about']"
+                    | {{ error }}
+
+              .hr-line-dashed
+            .form-group
+              .row
+                .col-sm-2
+                  label.control-label
+                    | {{ I18n.t('dj.fields.sample') }}:
+                .col-sm-10
+                  audio controls=true data-ng-src="{{ trustSrc(dj.sample_url) }}" ng-show="dj.sample_url"
+                  label style="cursor: pointer"
+                    span style="margin-left: 20px"
+                      | Upload
+                    input.hide#sample-input type="file"
+
+                  .error ng-repeat="error in validation_errors.sample"
+                    | {{ error }}
+
+              .hr-line-dashed
+
+            .form-group
+              .row
+                .col-sm-2
+                  label.control-label
+                    | Genres:
+                .col-sm-10
+                  .col-sm-4.col-lg-3.col-xs-12 ng-repeat="genre in dj.genres"
+                    input.inline type="checkbox" value="{{ genre.id }}" ng-model="genre.selected"
+
+                      | {{ genre.title }}
+
+                  .error ng-repeat="error in validation_errors.genres"
+                    | {{ error }}
+
+              .hr-line-dashed
+
+            .form-group
+              .row
+                .col-sm-2
+                  label.control-label
+                    | Event types:
+                .col-sm-10
+                  .col-sm-4.col-lg-3.col-xs-12 ng-repeat="event_type in dj.event_types"
+                    input.inline type="checkbox" value="{{ event_type.id }}" ng-model="event_type.selected"
+
+                      | {{ event_type.title }}
+
+                  .error ng-repeat="error in validation_errors.event_types"
+                    | {{ error }}
+
+              .hr-line-dashed
+
+            .form-group
+              .row
+                .col-sm-2
+                  label.control-label
+                    | Equipments:
+                .col-sm-10
+                  .col-sm-4.col-lg-3.col-xs-12 ng-repeat="equipment in dj.equipments"
+                    input.inline type="checkbox" value="{{ equipment.id }}" ng-model="equipment.selected"
+
+                      | {{ equipment.title }}
+
+                  .error ng-repeat="error in validation_errors.equipments"
+                    | {{ error }}
+
+            .form-group
+              .row
+                .col-sm-2
+                  label.control-label
+                    | Rate per hour:
+                .col-sm-10.form-row.small-text
+
+                  label
+                    | Mark as free to hire
+                    input type="checkbox" ng-model="dj.free_to_hire"
+                  div ng-hide="dj.free_to_hire"
+                    input.form-control type="number" placeholder="amount $" required=true class="{{ DjForm.rate_per_hour.$invalid && submitted ? 'validation-error' : ''}}" name="rate_per_hour" ng-model="dj.rate_per_hour" style="width: 100%"
+                    .error ng-show="DjsForm.rate_per_hour.$invalid && submitted"
+                      | {{ I18n.t('validations.cant_be_blank')}}
+
+                    .error ng-repeat="error in validation_errors['rate_per_hour']"
+                      | {{ error }}
+
+              .hr-line-dashed
+
+            .form-group
+              .row
+                .col-sm-4.col-sm-offset-2
+                  button.ladda-button.btn.btn-info data-style="expand-left" ladda="formPending"
+                    | {{ I18n.t('actions.submit') }}

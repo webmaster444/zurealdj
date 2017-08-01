@@ -1,0 +1,123 @@
+.profile
+  .profile-header
+    .background-img style="{{ user.avatar_present? ('background-image: url(' + user.avatar.original + ')') : '' }}"
+      .custom-blur
+  .user-name-mobile-auto
+    .user-name-mobile
+      | {{ user.name }}
+  .page-block.relative
+    .inf-container
+      .inf
+        .name.user-name-desktop
+          | {{ user.dj_or_venue_name }}
+        .name.user-name-desktop ng-hide="user.dj_or_venue_name"
+          | {{ user.name }}
+        .dj-name.user-name-desktop ng-show="user.dj_or_venue_name"
+          | {{ user.name }}
+        span.rating-icons[uib-rating ng-model="user.rating" max="5" state-on="'fire fire-active icon'" state-off="'fire fire-inactive icon'" enable-reset='false' read-only="true"]
+        .role.small-text
+          | Artist
+  .profile-content
+    .page-block
+      .profile-avatar
+        .img-avatar style="background-image: url({{ user.avatar.original }})"
+          .gradient
+        a.btn-action.purple.btn-book-now ng-click="book()"
+          | Book Now
+
+        a.icon.like ng-click="addToFavorites(user)" ng-hide="user.in_favorites"
+        a.icon.like-active ng-click="removeFromFavorites(user)" ng-show="user.in_favorites"
+        .content
+          div ng-show="user.about"
+            .title
+              | Experience
+            .text
+              | {{ user.about }}
+
+
+      .general
+        .block
+          .block-title
+            | General Information
+          table
+            tr ng-show="user.city || user.country"
+              td.td-title
+                | Address:
+              td.td-content
+                span ng-show="user.city"
+                  | {{ user.city}}
+                  span ng-show="user.country"
+                    | {{ ', ' }}
+                span
+                  | {{ user.country.title }}
+            tr ng-show="user.genres_string"
+              td.td-title
+                | Genres:
+              td.td-content
+                | {{ user.genres_string }}
+            tr ng-show="user.event_types_string"
+              td.td-title
+                | Types of events:
+              td.td-content
+                | {{ user.event_types_string }}
+
+          hr
+        .content-mobile
+          .block
+            .title
+              | Artist
+            div.rating-icons[uib-rating ng-model="user.rating" max="5" state-on="'fire fire-active icon'" state-off="'fire fire-inactive icon'" enable-reset='false' read-only="true"]
+          .block ng-show="user.about"
+            .title
+              | Experience
+            .text
+              | {{ user.about }}
+
+          hr
+        .listen ng-show="user.sample.url"
+          .block-title
+            | Listen
+          div audio=true ng-model="user.sample"
+
+          hr
+        .block.equipments
+          .block-title
+            | Equipment
+          .equipments
+            label.select-button ng-repeat="equipment in user.equipments"
+              .text-center.btn-equipment.isactive ng-show="equipment.selected"
+                img ng-src="{{ equipment.icon }}"
+                .title
+                  | {{ equipment.title }}
+          hr
+        .block
+          .block-title
+            | Booking information
+          table
+            tr ng-switch="user.free_to_hire"
+              td.td-content ng-switch-when="false"
+                | {{ user.rate_per_hour }} $
+              td.td-content ng-switch-when="true"
+                | free to hire
+
+          hr
+        .block
+          .block-title
+            | {{ comments_count }} Comments
+          .block.comments
+            .comment-item ng-repeat="comment in comments track by $index"
+              img.avatar ng-src="{{ comment.avatar }}"
+              .content
+                .user-name
+                  | {{ comment.org_name }}
+                .comment-text
+                  | {{ comment.comment }}
+                .event-title
+                  | {{ comment.event_title }}
+                .created-at
+                  | {{ comment.created_at }}
+              .rating
+                span.rating-icons[uib-rating ng-model="comment.rating" max="5" state-on="'fire fire-active icon'" state-off="'fire fire-inactive icon'" enable-reset='false' read-only='true' ]
+          .show-more.comments-show-more
+            a ng-click="showMore()" ng-show="comments.length < comments_count"
+              | Show More

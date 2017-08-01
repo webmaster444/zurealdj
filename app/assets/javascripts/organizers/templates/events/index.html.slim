@@ -1,0 +1,123 @@
+.page-block
+  .margin50
+  .shadow-block.djs-search
+    a.mobile-caption ng-click="filtersCollapsed = !filtersCollapsed"
+      | Bookings
+      i.fa.fa-chevron-down ng-show="filtersCollapsed"
+      i.fa.fa-chevron-up ng-hide="filtersCollapsed"
+    div uib-collapse="filtersCollapsed" ng-init="filtersCollapsed = false"
+      .explore-block
+        i.fa.fa-search
+        input.form-control.input-lg type="text" ng-model="filters.name" placeholder="Find a Booking"
+        .btn-group uib-dropdown=true is-open="isopen" auto-close="outsideClick"
+          a#toggle-button type="button" uib-dropdown-toggle=true ng-disabled="disabled" ng-click="isOpen()"
+            | Filtering
+            i.fa.fa-chevron-down<
+          .dropdown-menu uib-dropdown-menu=true role="menu" aria-labelledby="toggle-button"
+            .zurealdj-header-1
+              | Price range
+            table style="width: 100%"
+              tr
+                td style="width: 100px"
+                  input type="number" ng-model="filters.price_from"
+                td
+                  rzslider rz-slider-model="filters.price_from" rz-slider-high="filters.price_to" rz-slider-options="slider.options"
+                td style="width: 100px"
+                  input type="number" ng-model="filters.price_to"
+            hr
+            .zurealdj-header-1
+              | Event types
+            .row
+              .col-md-3 ng-repeat="event_type in filters.event_types"
+                input type="checkbox" ng-model="event_type.checked" id="et{{ event_type.id }}"
+                label for="et{{ event_type.id }}"
+                  span
+                  | {{ event_type.title }}
+            hr
+            .zurealdj-header-1
+              | Genres
+            .row
+              .col-md-3 ng-repeat="genre in filters.genres"
+                input type="checkbox" ng-model="genre.checked" id="g{{ genre.id }}"
+                label for="g{{ genre.id }}"
+                  span
+                  | {{ genre.title }}
+            hr
+              .actions
+                .pull-left
+                  a.slider-btn.cancel ng-click="resetFilters();isopen = false;"
+                    | Reset
+                .pull-right
+                  a.slider-btn.apply ng-click="retrieveEvents();isopen = false;"
+                    | Show {{ count }} Bookings
+        .mobile-only
+          a.mobile-dropdown ng-click="filtersDialog()"
+            | Filtering
+            i.fa.fa-chevron-down
+        button.search-button.book
+          | Find a Booking
+  div.events-actions
+    .pull-left
+      .add-event ng-click="openEventDialog()"
+        a.pink-link
+          | Add new event
+    .pull-right
+      span.dj-dropdown.sorting-dropdown[uib-dropdown]
+
+        a.zureal-dropdown[ng-disabled="disabled" uib-dropdown-toggle]
+          span
+            | Sorting
+            img.margin-left-ten src="/images/icons/ic-drop-purple.png"
+        ul.dropdown-menu aria-labelledby="sorting-dropdown" role="menu" uib-dropdown-menu=true
+          li
+            a ng-click="setSortType('created_at', 'desc')" class="{{ getSortType() == 'Newest' ? 'active' : '' }}"
+              | Newest
+          li
+            a ng-click="setSortType('created_at', 'asc')" class="{{ getSortType() == 'Oldest' ? 'active' : '' }}"
+              | Oldest
+          li
+            a ng-click="setSortType('title', 'asc')" class="{{ getSortType() == 'A-Z' ? 'active' : '' }}"
+              | A - Z
+          li
+            a ng-click="setSortType('title', 'desc')" class="{{ getSortType() == 'Z-A' ? 'active' : '' }}"
+              | Z - A
+
+    .text-center.events-count
+      | {{ events.length }} of {{ count }} Events
+  a.event-item ng-repeat="event in events track by $index" href="#events/{{ event.id }}"
+    span.status class="{{ event.status }}"
+      | {{ event.status }}
+    .djs
+      img.dj ng-repeat="dj in event.djs | limitTo: djsCount()" ng-src="{{ dj.avatar }}"
+      .plus.small-text
+        | +{{ event.djs.length - djsCount() > 0? event.djs.length - djsCount() : 0 }}
+    .djs-count
+      | {{ event.djs.length }} DJ's
+    img.event-image ng-src="{{ event.image }}"
+    .event-inf
+      .event-title
+        | {{ event.title }}
+      .small-text.address
+        span
+          | {{ event.venue_name }},
+        span ng-show="event.city"
+          | {{ event.city}}
+          span ng-show="event.country"
+            | {{ ', ' }}
+        span
+          | {{ event.country }}
+      table
+        tr
+          td.date-titles
+            | Start date:
+          td.small-text.dateval
+            | {{ event.start_date }}
+        tr
+          td.date-titles
+            | End date:
+          td.small-text.dateval
+            | {{ event.end_date }}
+
+  .show-more
+    a.show-more ng-click="showMore()" ng-hide="events.length == count"
+      | Show More

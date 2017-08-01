@@ -1,0 +1,52 @@
+@import "variables_and_functions"
+
+.selected-filters, .selected-box
+  .clear-filters
+    font-weight: 500
+    line-height: 1.17
+    text-align: center
+    color: #b05dfc
+    display: block
+    font-size: 12px
+    letter-spacing: 0.8px
+    padding: 8px 33px
+    border-radius: 100px
+    border: 1px solid #b05dfc
+    width: 100px
+    &::selection
+      background: transparent
+  .filter-item
+    background-color: #fafafa
+    display: inline-block
+    padding: 13px 15px
+    border-radius: 100px
+    .filter-title
+      line-height: 1
+      color: #555555
+      display: inline-block
+      font-size: 14px
+    .btn-close
+      display: inline-block
+      position: static
+      width: 10px
+      height: 10px
+      margin-left: 12px
+
+[device='desktop']
+  .selected-filters, .selected-box
+    margin-top: 30px
+    .clear-filters
+      margin: 10px auto -20px
+    .filter-item
+      margin: 8px 5px
+      .btn-close
+        vertical-align: middle
+
+
+[device='mobile']
+  .selected-filters, .selected-box
+    .clear-filters
+      margin: auto
+      margin-top: 10px
+    .filter-item
+      margin: 5px

@@ -1,0 +1,72 @@
+.wrapper.wrapper-content
+  .row.animated.fadeIn
+    .col-md-12
+      .ibox.float-e-margins
+        .ibox-content
+          h3
+            | Subscriptions
+          .row
+            .col-md-6
+            .col-md-6.text-right
+              button.btn.btn-info ui-sref="new_subscription"
+                | Add subscription
+          table.table.table-striped.dragndrop
+            thead
+              tr
+                th
+                th
+                  | Title
+                th
+                  | Description
+                th
+                  | Price
+                th
+                  | Period
+                th
+                  | For
+                th
+                  | Access
+                th
+            tbody ng-show="total == 0"
+              td colspan="5"
+                .text-center
+                  | No results found
+
+            tbody dnd-list="subscriptions"
+              tr ng-repeat="subscription in subscriptions" dnd-draggable="subscription" dnd-moved="subscriptions.splice($index, 1)"
+                td style="min-width: 10px; width: 10px"
+                  i.fa.fa-ellipsis-v
+                td
+                  | {{ subscription.title }}
+                td
+                  | {{ subscription.description }}
+                td
+                  | {{ subscription.price }}
+                td
+                  | {{ subscription.period_count }} {{ subscription.period }}
+                td
+                  | {{ subscription.subscription_for }}
+                td ng-show="subscription.full_access"
+                  ul.dj-access-list
+                    li.active
+                      | Premium membership and full access
+                td ng-show="subscription.subscription_for == 'dj' && !subscription.full_access"
+                  ul.dj-access-list
+                    li ng-class="{active: subscription.dj_can_be_visible_for_browsing }"
+                      | Can be visible for browsing
+                    li ng-class="{active: subscription.dj_can_confirm_booking }"
+                      | Can confirm booking
+                td ng-show="subscription.subscription_for == 'organizer' && !subscription.full_access"
+                  ul.dj-access-list
+                    li ng-class="{active: subscription.org_can_add_dj_to_favorites }"
+                      | Can add dj to favorites
+                    li ng-class="{active: subscription.org_can_book_dj }"
+                      | Can book dj
+                    li ng-class="{active: subscription.org_can_create_event }"
+                      | Can create event
+                td.text-right
+                  a.btn-xs.btn.btn-warning.btn-outline> href="#subscriptions/{{subscription.id}}/edit"
+                    | {{ I18n.t('actions.edit') }}
+                  a.btn-xs.btn.btn-danger.btn-outline ng-click="destroy(subscription.id)"
+                    | {{ I18n.t('actions.delete') }}
+              tr.dndPlaceholder

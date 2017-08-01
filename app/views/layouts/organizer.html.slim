@@ -1,0 +1,13 @@
+html(lang="en")
+  head
+    meta content="width=device-width, initial-scale=1" name="viewport"
+    = stylesheet_link_tag "user", :media => "all"
+    = javascript_include_tag "application"
+    = csrf_meta_tags
+    script type="text/javascript" src="https://js.stripe.com/v2/"
+  body ng-app="ZurealdjOrganizerApp" ng-controller="HomeController" ng-init="flash = { message: '#{ flash[:message] }', error: '#{ flash[:error] }' }"
+    div.organizer-page
+      div ng-include="'organizers/templates/common/topnavbar.html'" ng-hide="no_second_navbar"
+      div ui-view=""
+      div ng-include="'common/templates/footer.html'"
+    div toaster-container='' toaster-options="{'close-button': true}"

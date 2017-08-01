@@ -1,0 +1,95 @@
+nav.navbar-default.navbar-static-side.ng-scope role="navigation"
+  .slimScrollDiv style="position: relative; width: auto; height: 100%;"
+    .sidebar-collapse style="width: auto;"
+      ul#side-menu.nav.metismenu side-navigation=""
+        li
+          a href="/"
+            img.zureal-logo ng-src="/images/icons/img-logo-zu-big.png"
+        li ng-class=("{active: $state.current.name.includes('organizer')}")
+          a href="#organizers"
+            .organizers-nav-icon.nav-icon
+            span.nav-label
+              | Organisers
+        li ng-class=("{active: $state.current.name.includes('dj')}")
+          a href="#djs"
+            .djs-nav-icon.nav-icon
+            span.nav-label
+              | DJ
+        li ng-class=("{active: $state.current.name.includes('booking')}")
+          a href="#bookings"
+            .other-nav-icon.nav-icon
+            span.nav-label
+              |  BOOKING
+        li ng-class=("{active: $state.current.name.includes('event')}")
+          a href="#events"
+            .events-nav-icon.nav-icon
+            span.nav-label
+              | Events
+        li ng-class=("{active: ['about_slides', 'subscriptions', 'edit_subscription', 'new_subscription', 'equipments', 'genres', 'event_categories'].includes($state.current.name) }")
+          a href="#"
+            .other-nav-icon.nav-icon
+            span.nav-label Content
+            span.fa.arrow
+          ul.nav.nav-second-level.collapse ng-class=("{in: ['about_slides', 'subscriptions', 'subscription', 'cancelation', 'equipments', 'genres', 'event_categories'].includes($state.current.name) }")
+            li.active ui-sref-active="active"
+              a href="#about_slides"
+                | About slides
+            li.active ui-sref-active="active"
+              a href="#event_categories"
+                | Event types
+            li.active ui-sref-active="active"
+              a href="#genres"
+                | Genres
+            li.active ui-sref-active="active"
+              a href="#equipments"
+                | Equipments
+            li.active ui-sref-active="active"
+              a href="#subscriptions"
+                | Subscriptions
+        li ng-class=("{active: ['edit_who_we_are_page', 'edit_crew_page', 'edit_how_we_work_page', 'edit_policies_page', 'edit_terms_n_conditions_page', 'edit_cancelations_page', 'edit_contact_us_page','edit_help_center_page','edit_courses_page'].includes($state.current.name) }")
+          a href="#"
+            .other-nav-icon.nav-icon
+            span.nav-label
+              | Static pages
+            span.fa.arrow
+          ul.nav.nav-second-level.collapse ng-class=("{in: ['edit_who_we_are_page', 'edit_crew_page', 'edit_how_we_work_page', 'edit_policies_page', 'edit_terms_n_conditions_page', 'edit_cancelations_page', 'edit_contact_us_page','edit_help_center_page','edit_courses_page'].includes($state.current.name) }")
+            li.active ui-sref-active="active"
+              a href="#who_we_are_page/edit"
+                | Careers pages
+            li.active ui-sref-active="active"
+              a href="#crew_page/edit"
+                | Crew pages
+            li.active ui-sref-active="active"
+              a href="#how_we_work_page/edit"
+                |  How we work pages
+            li.active ui-sref-active="active"
+              a href="#policies_page/edit"
+                | Policies pages
+            li.active ui-sref-active="active"
+              a href="#terms_n_conditions_page/edit"
+                | Terms n conditions pages
+            li.active ui-sref-active="active"
+              a href="#cancelations_page/edit"
+                | {{ I18n.t('headers.cancelations_pages') }}
+            li.active ui-sref-active="active"
+              a href="#contact_us_page/edit"
+                | Contact Us
+            li.active ui-sref-active="active"
+              a href="#courses_page/edit"
+                | Courses
+            li.active ui-sref-active="active"
+              a href="#help_center_page/edit"
+                | Help Center
+        li ng-class=("{active: $state.current.name.includes('email_sender')}")
+          a href="#"
+            .other-nav-icon.nav-icon
+            span.nav-label System
+            span.fa.arrow
+          ul.nav.nav-second-level.collapse ng-class=("{in: $state.current.name.includes('email_sender')}")
+            li.active ui-sref-active="active"
+              a href="#email_sender"
+                | {{ I18n.t('headers.email_sender') }}
+              a href="#profile"
+                | My profile
+              a href="#admins"
+                |Admins list

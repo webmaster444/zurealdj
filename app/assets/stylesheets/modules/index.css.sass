@@ -1,0 +1,377 @@
+@import "variables_and_functions"
+
+.profile-item
+  display: inline-block
+  border-radius: 4px
+  border: solid 1px #f5f5f5
+  vertical-align: top
+  img
+    border-radius: 4px
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.2), rgba(255, 255, 255, 0) 50%, rgba(0, 0, 0, 0.2))
+    background: -webkit-linear-gradient(to bottom, rgba(0, 0, 0, 0.2), rgba(255, 255, 255, 0) 50%, rgba(0, 0, 0, 0.2))
+    background: -o-linear-gradient(to bottom, rgba(0, 0, 0, 0.2), rgba(255, 255, 255, 0) 50%, rgba(0, 0, 0, 0.2))
+    background: -moz-linear-gradient(to bottom, rgba(0, 0, 0, 0.2), rgba(255, 255, 255, 0) 50%, rgba(0, 0, 0, 0.2))
+    background-color: white
+.profile-item, .event-item
+  .inf
+    padding: 25px 30px
+  .inf, .event-inf
+    color: #555555
+    .small-text
+      font-size: 16px
+    .name, .event-title
+      color: #555555
+    a.name
+      &:hover
+        color: $current-color
+    .genres
+      display: inline-block
+      color: #8a8a8a
+      letter-spacing: 1px
+      line-height: 1.5
+    .address
+      letter-spacing: 1.3px
+      overflow: hidden
+      text-overflow: ellipsis
+      white-space: nowrap
+
+.index
+  margin: auto
+
+.show-more
+  text-align: center
+  a
+    font-weight: 500
+    color: #b05dfc
+    background-color: white
+    font-size: 16px
+    letter-spacing: 1.5px
+    border-radius: 100px
+    box-shadow: 0 2px 30px 0 rgba(176, 93, 252, 0.8)
+    opacity: 0.2
+    &:hover
+      opacity: 1
+    &::selection
+      background: transparent
+    &:active
+      border: 1px solid rgba(176, 93, 252, 0.62)
+
+
+.event-item
+  width: 100%
+  height: 200px
+  border-radius: 4px
+  background-color: white
+  border-bottom: solid 1px #f5f5f5
+  @media (min-width: $mobile-max-width)
+    border: solid 1px #f5f5f5
+  margin: 40px 0
+  position: relative
+  display: block
+  .event-image
+    width: 200px
+    height: 200px
+    vertical-align: top
+  .status
+    font-size: 16px
+    font-weight: 500
+    letter-spacing: 1.5px
+    text-align: right
+    color: $current-color
+    position: absolute
+    top: 30px
+    right: 30px
+  .event-inf
+    display: inline-block
+    margin: 25px 30px auto 30px
+    table
+      margin-top: 25px
+      td
+        padding: 4px 0
+        padding-right: 20px
+      td.light-grey
+        min-width: 90px
+  .djs-count
+    display: none
+  .djs
+    position: absolute
+    top: 100px
+    right: 30px
+    height: 70px
+    width: 100%
+    max-width: 450px
+    text-align: right
+    .dj
+      width: 70px
+      height: 70px
+      border-radius: 4px
+      background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.2), rgba(255, 255, 255, 0) 50%, rgba(0, 0, 0, 0.2))
+      margin: 0 10px
+    .plus
+      width: 70px
+      height: 70px
+      border-radius: 4px
+      background-color: white
+      border: solid 1px #ffcce7
+      display: inline-block
+      vertical-align: middle
+      padding: 23px 0
+      color: #ff7dc0
+      text-align: center
+      margin-left: 10px
+
+
+.sorting-dropdown
+  width: 150px
+  @media (min-width: $mobile-max-width)
+    margin-top: -15px
+  *::selection
+    background: transparent
+  i.fa
+    right: 38px !important
+    color: $current-color
+  [uib-dropdown-toggle]
+    border: none !important
+    padding-left: 38px !important
+    *
+      color: $current-color
+  [uib-dropdown-menu]
+    .active
+      color: $current-color !important
+
+
+[device='desktop']
+  .index
+    @media (max-width: 1199px)
+      width: 800px
+    @media (max-width: 799px)
+      width: 400px
+  .show-more
+    margin: 100px auto
+    a
+      padding: 15px 40px
+    &.small
+      margin: 20px auto
+      a
+        font-size: 13px
+      padding: 7px 18px
+  .profile-item
+    vertical-align: top
+    width: 360px
+    margin: 20px
+    position: relative
+    text-align: center
+    .like, .like-active, .delete
+      position: absolute
+      top: 25px
+      right: 25px
+    img
+      width: 360px
+      height: 360px
+  .profile-item, .event-item
+    .inf, .event-inf
+      text-align: left
+      .name, .event-title
+        font-size: 28px
+        letter-spacing: 1.8px
+      .genres
+        margin-top: 20px
+      .address
+        letter-spacing: 1px
+
+[device='mobile']
+  .margin50
+    display: none
+  .index
+    text-align: center
+  .show-more
+    margin: 50px auto
+    a
+      padding: 10px 30px
+  .profile-item
+    width: 250px
+    margin: 20px
+    position: relative
+    .like, .like-active, .delete
+      position: absolute
+      top: 16px
+      right: 16px
+    img
+      width: 250px
+      height: 242px
+      margin-bottom: 20px
+    .inf
+      padding: 20px
+      text-align: left
+      .name
+        font-size: 20px
+        line-height: 1.1
+        letter-spacing: 1.3px
+      .genres
+        margin-top: 12px
+      .address
+        margin-top: 8px
+
+@media (max-width: $mobile-max-width)
+  .sorting-dropdown
+    width: 70px
+    *::selection
+      background: transparent
+    i.fa
+      right: 0 !important
+      top: auto !important
+      color: $current-color
+    [uib-dropdown-toggle]
+      border: none !important
+      padding: 0 !important
+      height: auto !important
+    [uib-dropdown-menu]
+      position: absolute
+      top: 0 !important
+      right: 0 !important
+      left: auto !important
+      width: 150px !important
+  .sorting-dropdown.open
+    [uib-dropdown-toggle]
+      box-shadow: none !important
+
+  .events-actions
+    margin: 20px
+    margin-bottom: 0
+    *
+      font-size: 14px
+      font-weight: 500
+      font-style: normal
+      font-stretch: normal
+      line-height: 1.43
+      letter-spacing: normal
+    .events-count
+      padding-top: 50px
+      vertical-align: top
+      font-size: 16px
+      letter-spacing: 1.5px
+      color: #cccccc
+
+  .event-item
+    margin: 0px 0
+    height: auto
+    padding: 20px 20px 0px 20px
+    .event-image
+      width: 65px
+      height: 65px
+      border-radius: 4px
+    .event-title
+      overflow: hidden
+      text-overflow: ellipsis
+      white-space: nowrap
+      font-size: 16px !important
+      font-weight: 500
+      letter-spacing: 1px
+      line-height: normal
+      font-family: CeraPro-Medium
+      margin-bottom: 5px
+    .small-text
+      font-size: 14px !important
+      line-height: 1.43
+      letter-spacing: 1.3px
+    .event-inf
+      display: inline-block
+      margin: 0px auto 45px 10px
+      max-width: 73%
+      table
+        margin-top: 30px
+        td
+          padding: 0px 10px 0px 0px
+        td.light-grey
+          min-width: 100px
+        td.dateval
+          color: #555555
+    .djs
+      display: none
+    .djs-count
+      width: 65px
+      height: 40px
+      border-radius: 4px
+      background-color: white
+      border: solid 1px #ffcce7
+      display: inline-block
+      padding: 12px 0
+      color: #ff7dc0
+      text-align: center
+      position: absolute
+      top: 95px
+      font-size: 12px
+      line-height: 1.17
+      letter-spacing: 0.8px
+    .status
+      top: 140px
+      right: auto
+      left: 95px
+      font-size: 14px
+      letter-spacing: 0.9px
+      font-weight: normal
+
+ul.notifications-list
+  list-style-type: none
+  padding: 0
+  margin: 0
+  transition: max-height 0.15s ease-out
+  li
+    border-bottom: 1px solid #f5f5f5
+    position: relative
+    padding: 30px 20px 30px 120px
+    cursor: pointer
+    height: auto
+    min-height: 138px
+    img
+      position: absolute
+      top: 30px
+      left: 20px
+      width: 80px
+      height: 80px
+      border-radius: 4px
+    .extra-text
+      font-family: CeraPro
+      font-size: 14px
+      line-height: 1.43
+      letter-spacing: 0.9px
+      text-align: right
+      color: #b05dfc
+      position: absolute
+      bottom: 20px
+      right: 20px
+
+.unread
+  background-color: #e5e5e5
+
+@media (max-width: $mobile-max-width)
+  .date-titles
+    font-family: CeraPro
+    font-size: 14px
+    line-height: 1.43
+    letter-spacing: 1.3px
+    color: #938e94
+    padding-right: 10px
+  .add-event
+    background: url('/images/icons/ic-plus-small.svg')
+    background-repeat: no-repeat
+    padding-left: 17.5px
+    background-position-y: 3px
+
+
+@media (min-width: $mobile-max-width)
+  .add-event
+    background: url('/images/icons/ic-plus-small-fat.png')
+    background-repeat: no-repeat
+    padding-left: 22px
+    background-position-y: 5px
+  .date-titles
+    font-size: 16px
+    line-height: 1.5
+    letter-spacing: 1px
+    color: #8a8a8a
+  .events-count
+    vertical-align: top
+    font-size: 16px
+    letter-spacing: 1.5px
+    color: #cccccc

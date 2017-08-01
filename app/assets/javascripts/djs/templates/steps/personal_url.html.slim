@@ -1,0 +1,27 @@
+div.page-block.registration
+  .text-center
+    img.small-logo.display-inline-block src="/images/icons/img-logo-zu-purple.png"
+  hr
+  .navigation-bar.text-center
+    .step.small-text
+      .pull-left
+        a.slider-btn.back ng-click="back()"
+          | Back
+      | Step 4 of 5
+      .pull-right
+        a.small-text.slider-btn.next ng-click="next()"
+          | Next
+  hr
+  div
+    .question.text-center
+      | Enter a unique url for your profile
+    .select.text-center.small-text
+      | You will only be able to update it once later, so choose wisely!
+    .container
+      .error ng-repeat="error in validation_errors.personal_url"
+        | {{ error }}
+      .text-center
+        input.register-input.text-left type="text" ng-model="user.personal_url"
+    .text-center.leave-it-blanck
+      | Leave it blank, if you want the system to decide a url for you
+  div.tmp

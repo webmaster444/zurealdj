@@ -1,0 +1,24 @@
+.wrapper.wrapper-content
+  .row.animated.fadeIn
+    .col-md-12
+      .ibox.float-e-margins
+        .ibox-content
+          h3 ng-show="$state.current.name == 'new_about_slide'"
+            | Create new slide
+          h3 ng-show="$state.current.name == 'edit_about_slide'"
+            | Edit slide
+          form ng-submit="save()" name="AboutSlideForm" novalidate=true
+            .form-group
+              .row
+                .col-sm-2
+                  label.control-label
+                    | Slide content:
+                .col-sm-10
+                  textarea.form-control placeholder="Content" required=true ng-class="{ 'validation-error': validation_errors.content }" name="content" ng-model="slide.content"
+
+                  .error ng-repeat="error in validation_errors.content"
+                    | {{ error }}
+
+            .form-group
+              button.ladda-button.btn.btn-info data-style="expand-left" ladda="formPending"
+                | {{ I18n.t('actions.submit') }}

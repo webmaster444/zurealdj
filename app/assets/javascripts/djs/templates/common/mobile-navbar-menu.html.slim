@@ -1,0 +1,101 @@
+.top-mobile-navbar
+  .container
+    ul
+      li.mobile-only
+        .mobile-menu-button ng-click="closeThisDialog()"
+      li
+        a
+          img.profile-image> ng-src="{{ $current_user.avatar.url == '/images/img-profile-photo.png'? '/images/icons/img-profile-photo-mini.png' : $current_user.avatar.url}}"
+          span
+            | {{ $current_user.name }}
+    .row
+      .col-xs-6.text-center
+        a.dj-black-link href="#messages"
+          | Inbox
+          .count< ng-show="unread_messages_count"
+            | {{ unread_messages_count }}
+      .col-xs-6.text-center
+        a href="#notifications"
+          i.dj-bell
+          i.fa.fa-circle.notification-icon ng-show="unread_notifications_count > 0"
+
+  ul.mobile-menu uib-collapse="menuCollapsed" ng-init="menuCollapsed = false"
+    li
+      table
+        tr
+          td.plan-title
+            | {{ $current_user.subscription.title || "Limited" }}
+          td.upgrade_plan
+            a.upgrade_plan href="#pricing"
+              | Upgrade plan
+    li
+      a href="#profile" ng-class="{active: ['profile', 'edit_profile'].includes($state.current.name)}"
+        | Profile
+    li
+      a href="#events" ng-class="{active: ['events'].includes($state.current.name)}"
+        | Bookings
+    li
+      a href="#settings" ng-class="{active: ['settings'].includes($state.current.name)}"
+        | Settings
+    li
+      a ng-click="logout()"
+        | Sign out
+    li.text-center
+      a ng-click="footerCollapsed = false; menuCollapsed = true"
+        i.fa.fa-chevron-up
+
+  ul.mobile-footer uib-collapse="footerCollapsed" ng-init="footerCollapsed = false"
+    li.text-center
+      a ng-click="footerCollapsed = true; menuCollapsed = false"
+        i.fa.fa-chevron-down
+    li
+      | Company
+      ul
+        li
+          a
+            | Contact Us
+        li
+          a
+            | Courses
+    li
+      | Support
+      ul
+        li
+          a href="/#terms_n_conditions"
+            | Terms & Conditions
+        li
+          a href="/#crew"
+            | The Crew
+        li
+          a href="/#how_we_work"
+            | How We Work
+        li
+          a href="/#who_we_are"
+            | Careers
+        li
+          a href="/#cancelations"
+            | Cancelations
+        li
+          a href="/#policies"
+            | Policies
+        li
+          a href="/#cancellation_policy"
+            | Cancellation Policy
+        li
+          a
+            | Help Center
+      li
+        | Follow Us
+        ul
+          li
+            a.col-social href=""
+              .ic-mixcloud.icon
+            a.col-social href=""
+              .ic-facebook.icon
+            a.col-social href=""
+              .ic-instagram.icon
+      li
+        ul
+          li
+            a
+              | © 2016 ZuReal

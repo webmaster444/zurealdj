@@ -1,0 +1,29 @@
+div.page-block.registration
+  .text-center
+    img.small-logo.display-inline-block src="/images/icons/img-logo-zu-purple.png"
+  hr
+  .navigation-bar.text-center
+    .step.small-text
+      .pull-left
+        a.slider-btn.back ng-click="back()"
+          | Back
+      | Step 3 of 5
+      .pull-right
+        a.small-text.slider-btn.next ng-click="next()"
+          | Next
+  hr
+  div
+    .question.text-center
+      | What type of equipment can you play?
+    .select.text-center.small-text
+      | Personalize your profile by creating your technical rider
+    .equipments-container
+      .error ng-repeat="error in validation_errors.equipments"
+        | {{ error }}
+      label.select-button ng-repeat="equipment in equipments"
+        .btn-equipment.text-center class="{{ equipment.selected? 'active': '' }}"
+          img ng-src="{{ equipment.icon }}"
+          .title
+            | {{ equipment.title }}
+        input.hide type="checkbox" value="{{ equipment.id }}" ng-model="equipment.selected"
+    div.tmp

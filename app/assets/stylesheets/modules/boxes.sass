@@ -1,0 +1,365 @@
+@import 'variables_and_functions'
+
+.margin50
+  height: 50px
+
+.mobile-caption
+  display: none
+
+.explore-block
+  padding: 0 0 0 50px
+  width: 100%
+  border-radius: 100px
+  background-color: white
+  border: solid 1px #f5f5f5
+  position: relative
+  .mobile-only
+    display: none
+  & > input
+    height: 60px
+    border: 0
+    width: calc(100% - 301px)
+    font-size: 16px
+    letter-spacing: 1px
+    color: #cccccc
+    @media (max-width: $mobile-max-width)
+      width: 100%
+    display: inline-block
+  .fa-search
+    color: #555555
+    font-size: 16.5px
+    position: absolute
+    top: 22px
+    left: 25px
+    font-weight: 100
+  [uib-dropdown]
+    margin: 0 10px
+    position: static
+    #toggle-button
+      font-size: 16px
+      color: #555555
+      i.fa.fa-chevron-down
+        font-weight: 100
+        font-size: 11px
+      @media (max-width: $mobile-max-width)
+        display: none
+    .dropdown-menu
+      box-shadow: 0 2px 20px 0 rgba(0, 0, 0, 0.08)
+      max-height: none
+      max-width: 835px
+      width: calc(100vw - 150px)
+      padding: 30px
+      position: absolute
+      top: 25px
+      left: 25px
+    .zurealdj-header-1
+      margin-bottom: 20px
+  .search-button
+    position: absolute
+    right: 0px
+    width: 200px
+    height: 60px
+    border-radius: 100px
+    border: 0
+    background-color: #b05dfd
+    font-size: 18px
+    font-weight: 500
+    font-style: normal
+    font-stretch: normal
+    letter-spacing: 1.7px
+    color: #ffffff
+    outline: none
+
+.dropdown-menu, .djs-search-mobile
+  input[type="number"]
+    width: 100px
+    height: 50px
+    border-radius: 100px
+    background-color: #ffffff
+    border: solid 1px #f5f5f5
+    outline: none
+    padding: 10px 25px 10px 30px
+  td
+    position: relative
+    i.fa.fa-dollar
+      position: absolute
+      left: 20px
+      top: 30px
+  .rzslider-td
+    padding: 0 5px 20px 5px
+    .rz-bubble
+      display: none
+  hr
+    margin: 30px 0
+  .zureal-checkbox
+    display: inline-block
+    width: 190px
+    margin: 7px 0
+    label
+      font-size: 14px !important
+  .actions
+    .pull-left, .pull-right
+      margin-bottom: 15px
+
+.djs-search-mobile
+  padding: 20px
+  padding-bottom: 50px
+  .filter-header
+    font-size: 16px
+    font-weight: 500
+    line-height: 1.5
+    letter-spacing: 0.7px
+  hr
+    margin: 20px 0
+  .zurealdj-header-1
+    font-size: 14px
+    font-weight: normal
+    font-style: normal
+    font-stretch: normal
+    line-height: 1.43
+    letter-spacing: normal
+    margin-bottom: 15px
+  .price-filter
+    position: relative
+    .rzslider
+      margin-top: 10px
+    .price-from, .price-to
+      margin-top: 20px
+      position: relative
+      display: inline-block
+      i.fa.fa-dollar
+        position: absolute
+        left: 20px
+        top: 18px
+    .price-to
+      right: 0
+      position: absolute
+
+@media (max-width: $mobile-max-width)
+  .shadow-block
+    padding: 50px
+    border-radius: 4px
+    background-color: #ffffff
+    box-shadow: 0 -20px 2px 0 white, 0 2px 20px 0 rgba(0, 0, 0, 0.08)
+
+  .djs-search
+    padding: 10px
+    margin-top: -20px
+    .mobile-caption
+      font-size: 20px
+      line-height: 1.5
+      letter-spacing: 1.4px
+      text-align: center
+      width: 100%
+      display: block
+      color: #555555
+      i.fa
+        font-size: 10px
+        margin-left: 10px
+        vertical-align: middle
+    .explore-block
+      padding-left: 25px
+      padding-right: 20px
+      margin-bottom: 60px
+      margin-top: 10px
+      & > input
+        height: auto
+        font-size: 16px
+        line-height: 1.5
+        color: #c6bfc7
+        padding: 8px auto
+    .mobile-only
+      display: inline-block
+      position: absolute
+      left: 0
+      top: 50px
+      padding: 10px
+      *
+        font-size: 14px
+        line-height: 1.43
+        color: #555555
+      i.fa
+        font-size: 10px
+        margin-left: 5px
+    .search-button
+      position: absolute
+      width: 100px
+      height: 40px
+      font-size: 12px
+      letter-spacing: 0.8px
+      right: 0
+      top: 50px
+    .book
+      width: 130px
+    .fa-search
+      top: 10px
+      left: 10px
+      font-size: 18px
+    .selected-filters
+      margin-top: 70px
+      hr
+        display: block !important
+        margin: 0
+        margin-bottom: 10px
+
+
+@media (max-width: $mobile-max-width)
+  .desktop-only
+    display: none !important
+
+@media (min-width: $mobile-max-width)
+  .mobile-only
+    display: none !important
+
+  .shadow-block
+    padding: 50px
+    border-radius: 4px
+    background-color: #ffffff
+    box-shadow: 0 2px 20px 0 rgba(0, 0, 0, 0.08)
+    margin-bottom: 50px
+
+.ngdialog.ngdialog-theme-default .ngdialog-content
+  padding: 0
+
+.dj-mobile-ng-dialog
+  .ngdialog-content
+    background-color: #ffffff !important
+    box-shadow: 0 2px 20px 0 rgba(0, 0, 0, 0.08)
+    @media (min-width: $mobile-max-width)
+      border-radius: 4px
+      width: 70% !important
+    @media (max-width: $mobile-max-width)
+      border-radius: 0 !important
+      position: absolute !important
+      width: 100% !important
+      min-height: 100%
+      right: 0
+      left: 0
+      top: 0
+      .row
+        margin: 0 !important
+  .ngdialog-close
+    @media (min-width: $mobile-max-width)
+      display: none
+
+.no-padding
+  padding: 0 !important
+
+.no-left-padding
+  padding-left: 0 !important
+
+.no-right-padding
+  padding-right: 0 !important
+
+.page-block
+  max-width: 1240px
+  margin: auto
+
+[ng-app='ZurealdjOrganizerApp'], [ng-app='ZurealdjDjApp'], [ng-app='ZurealdjLandingApp']
+  .sweet-alert
+    font-family: CeraPro
+    font-style: normal
+    font-stretch: normal
+    font-weight: normal
+    color: #555555
+    text-align: center
+    padding: 30px
+    width: 400px
+    margin-left: 0
+    left: calc(50vw - 200px)
+    word-wrap: break-word
+    @media (max-width: 400px)
+      width: 100vw
+      left: 0
+      right: 0
+      margin: 0
+      padding: 30px 15px
+    h2
+      font-size: 28px
+      font-weight: 500
+      line-height: 1.29
+      letter-spacing: 1.8px
+      margin-top: 10px
+    p
+      font-size: 16px
+      line-height: 1.5
+      letter-spacing: 1.5px
+
+    .sa-button-container
+      margin-top: 50px
+      .cancel
+        background-color: white
+        float: left
+        &:hover
+          background-color: white
+      .sa-confirm-button-container
+        float: right
+      .cancel, .confirm
+        border-radius: 100px
+        margin-top: 0
+
+.sweet-alert.confirm-only
+  .sa-button-container
+    margin-top: 20px
+    .sa-confirm-button-container
+      float: none !important
+  h2
+    background-image:  url(/images/icons/img-logo-zu-purple.png)
+    background-position: center
+    background-size: contain
+    background-repeat: no-repeat
+    width: 158px
+    height: 55px
+    display: block !important
+    margin: auto
+    margin-bottom: 20px
+
+@media (min-width: $mobile-max-width)
+  .page-block
+    padding: 0 20px
+
+
+.org-form, .rate-dialog
+  .ngdialog-content
+    max-width: 959px !important
+    width: auto !important
+    @media (min-width: $mobile-max-width)
+      .ngdialog-close
+        display: none
+  .ngdialog-overlay
+    pointer-events: none
+
+.rate-dialog
+  .ngdialog-content
+    max-width: 880px !important
+
+[device='mobile']
+  .org-form
+    overflow-x: hidden
+
+.dj-header
+  text-align: center
+  font-family: CeraPro
+  font-size: 32px
+  letter-spacing: 3px
+  color: #555555
+  padding: 50px
+
+.small-logo
+  width: 158px
+  height: 55px
+  margin-top: 13px
+
+.badge
+  position: absolute
+  top: 0
+  color: white
+  background-color: $current-color
+  font-size: 8px
+  padding: 5px 4px 3px 4px
+
+.notification-icon
+  position: absolute
+  top: 7px
+  font-size: 7px
+  color: #b05dfc

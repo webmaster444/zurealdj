@@ -1,0 +1,37 @@
+@import 'variables'
+
+ul.dj-access-list
+  margin: 0
+  li
+    list-style-image: url(/images/icons/ic-delete-red.svg)
+    &.active
+      list-style-image: url(/images/icons/ic-check-green.svg)
+
+table.dragndrop
+  tr
+    cursor: move
+    td
+      .fa-ellipsis-v
+        color: $current-color
+        font-size: 25px
+
+
+.item, .placeholder
+  padding: 2px
+  width: 50px
+  height: 20px
+  border: 1px solid #333
+  background: #EEE
+
+.placeholder
+  background: #AEF
+
+.dragndrop
+  .dndPlaceholder
+    height: 20px
+    border: 0
+    display: table-row
+    background-color: grey
+
+  .dndDraggingSource
+    display: none

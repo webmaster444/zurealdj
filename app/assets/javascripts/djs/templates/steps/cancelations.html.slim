@@ -1,0 +1,41 @@
+div.page-block.registration
+  .text-center
+    img.small-logo.display-inline-block src="/images/icons/img-logo-zu-purple.png"
+  hr
+  .navigation-bar.text-center
+    .step.small-text
+      .pull-left
+        a.slider-btn.back ng-click="back()"
+          | Back
+      | Step 5 of 5
+      .pull-right
+        a.small-text.slider-btn.next ng-click="next()"
+          | Next
+  hr
+  div.cancellationStep
+    .question.text-center
+      | Enter your rate of pay per hour
+    .form-row.small-text
+      .zureal-checkbox.inline-block
+        input type="checkbox" ng-model="user.free_to_hire" id="free_to_hire"
+        label for="free_to_hire" style="font-size: 18px"
+          span
+          | Mark as free to hire
+    .form-row.small-text ng-hide="user.free_to_hire"
+      | Rate per hour:
+      .inline-block
+        input.register-input.step-5-input type="number"  ng-model="user.rate_per_hour" placeholder="amount $"
+    .error ng-repeat="error in validation_errors['rate_per_hour']"
+      | {{ error }}
+
+    .form-row.text-center
+      .zureal-checkbox.inline-block
+        input type="checkbox" ng-model="user.agree" id="cancellation"
+        label for="cancellation" style="font-size: 18px"
+          span
+          | I agree with
+        a.small-text.hover ng-click="policyDialog()"
+          |  Cancellation Policy
+      .error ng-repeat="error in validation_errors['agree']"
+        | {{ error }}
+  div.tmp

@@ -1,0 +1,35 @@
+.wrapper.wrapper-content
+  .row.animated.fadeIn
+    .col-md-12
+      .ibox.float-e-margins
+        .ibox-content
+          h3 ng-show="$state.current.name == 'new_equipment'"
+            | {{ I18n.t('equipment.new' ) }}
+          h3 ng-show="$state.current.name == 'edit_equipment'"
+            | {{ I18n.t('equipment.edit' ) }}
+          form ng-submit="submitEquipment()" name="EquipmentForm" novalidate=true
+            .form-group
+              .row
+                .col-sm-2.text-right
+                  label.control-label
+                    | {{ I18n.t('equipment.fields.icon') }}:
+                .col-sm-10
+                  div image=true ng-model="equipment.icon"
+                  .error ng-repeat="error in validation_errors['icon']"
+                    | {{ error }}
+
+            .form-group
+              .row
+                .col-sm-2.text-right
+                  label.control-label
+                    | {{ I18n.t('equipment.fields.title') }}:
+                .col-sm-10
+                  input.form-control type="text" placeholder="{{ I18n.t('equipment.fields.title') }}" required=true class="{{ EquipmentForm.title.$invalid && submitted ? 'validation-error' : ''}}" name="title" ng-model="equipment.title"
+                  .error ng-repeat="error in validation_errors['title']"
+                    | {{ error }}
+
+            .form-group
+              .row
+                .col-sm-4.col-sm-offset-2
+                  button.ladda-button.btn.btn-info data-style="expand-left" ladda="formPending"
+                    | {{ I18n.t('actions.submit') }}

@@ -1,0 +1,170 @@
+.wrapper.wrapper-content
+  .row.animated.fadeIn
+    .col-md-12
+      .ibox.float-e-margins
+        .ibox-content
+
+          h3
+            | {{ I18n.t('organizer.edit' ) }}
+
+          form ng-submit="submitOrganization()" name="OrganizationForm" novalidate=true
+
+            .form-group
+              .row
+                .col-sm-2
+                  label.control-label
+                    | {{ I18n.t('organizer.fields.photo') }}:
+                .col-sm-10
+                  div image=true ng-model="organizer.avatar"
+                  .error ng-show="organizersForm.avatar.$invalid && submitted"
+                    | {{ I18n.t('validations.cant_be_blank')}}
+
+                  .error ng-repeat="error in validation_errors['avatar']"
+                    | {{ error }}
+
+              .hr-line-dashed
+
+            .form-group
+              .row
+                .col-sm-2
+                  label.control-label
+                    | {{ I18n.t('organizer.fields.name') }}:
+                .col-sm-10
+                  input.form-control type="text" placeholder="{{ I18n.t('organizer.fields.name') }}" required=true class="{{ organizerForm.name.$invalid && submitted ? 'validation-error' : ''}}" name="name" ng-model="organizer.name"
+                  .error ng-show="organizersForm.name.$invalid && submitted"
+                    | {{ I18n.t('validations.cant_be_blank')}}
+
+                  .error ng-repeat="error in validation_errors['name']"
+                    | {{ error }}
+
+              .hr-line-dashed
+
+            .form-group
+              .row
+                .col-sm-2
+                  label.control-label
+                    | {{ I18n.t('user.fields.email') }}:
+                .col-sm-10
+                  input.form-control type="text" placeholder="{{ I18n.t('user.fields.email') }}" required=true class="{{ organizerForm.email.$invalid && submitted ? 'validation-error' : ''}}" name="email" ng-model="organizer.email"
+                  .error ng-show="organizersForm.email.$invalid && submitted"
+                    | {{ I18n.t('validations.cant_be_blank')}}
+
+                  .error ng-repeat="error in validation_errors['email']"
+                    | {{ error }}
+
+              .hr-line-dashed
+
+            .form-group
+              .row
+                .col-sm-2
+                  label.control-label
+                    | Company name:
+                .col-sm-10
+                  input.form-control type="text" placeholder="Company name" required=true class="{{ organizerForm.name.$invalid && submitted ? 'validation-error' : ''}}" name="company_name" ng-model="organizer.company_name"
+                  .error ng-show="organizersForm.company_name.$invalid && submitted"
+                    | {{ I18n.t('validations.cant_be_blank')}}
+
+                  .error ng-repeat="error in validation_errors['company_name']"
+                    | {{ error }}
+
+              .hr-line-dashed
+            .form-group
+              .row
+                .col-sm-2
+                  label.control-label
+                    | {{ I18n.t('user.fields.personal_url') }}:
+                .col-sm-10
+                  input.form-control type="text" placeholder="{{ I18n.t('user.fields.personal_url') }}" required=true class="{{ organizerForm.personal_url.$invalid && submitted ? 'validation-error' : ''}}" name="personal_url" ng-model="organizer.personal_url"
+                  .error ng-show="organizersForm.personal_url.$invalid && submitted"
+                    | {{ I18n.t('validations.cant_be_blank')}}
+
+                  .error ng-repeat="error in validation_errors['personal_url']"
+                    | {{ error }}
+
+              .hr-line-dashed
+
+            .form-group
+              .row
+                .col-sm-2
+                  label.control-label
+                    | {{ I18n.t('organizer.fields.city') }}:
+                .col-sm-10
+                  input.form-control type="text" placeholder="{{ I18n.t('organizer.fields.city') }}" required=true class="{{ OrganizationForm.city.$invalid && submitted ? 'validation-error' : ''}}" name="city" ng-model="organizer.city"
+                  .error ng-show="OrganizationsForm.city.$invalid && submitted"
+                    | {{ I18n.t('validations.cant_be_blank')}}
+
+                  .error ng-repeat="error in validation_errors['city']"
+                    | {{ error }}
+
+            .form-group
+              .row
+                .col-sm-2
+                  label.control-label
+                    | {{ I18n.t('organizer.fields.country') }}:
+                .col-sm-10
+                  .zureal-btn-dropdown
+                    .btn-group uib-dropdown=""
+                      a.zureal-dropdown#country-dropdown ng-disabled="disabled" uib-dropdown-toggle=""
+                        span ng-hide="organizer.country"
+                          | Please choose a country
+
+                        span ng-show="organizer.country"
+                          span.flag class="{{ organizer.country.code }}"
+                          | {{ organizer.country.title }}
+                      ul.dropdown-menu aria-labelledby="country-dropdown" role="menu" dropdown-menu=true
+                        li ng-repeat="country in flags"
+                          a ng-click="organizer.country = country" style="cursor: pointer"
+                            span.flag class="{{ country.code }}"
+                            | {{ country.title }}
+                    .error ng-repeat="error in validation_errors.country"
+                      | {{ error }}z
+
+            .form-group
+              .row
+                .col-sm-2
+                  label.control-label
+                    | {{ I18n.t('organizer.fields.about') }}:
+                .col-sm-10
+                  textarea.form-control placeholder="{{ I18n.t('organizer.fields.about') }}" required=true class="{{ OrganizationForm.about.$invalid && submitted ? 'validation-error' : ''}}" name="about" ng-model="organizer.about" style="width: 100%"
+                  .error ng-show="OrganizationsForm.about.$invalid && submitted"
+                    | {{ I18n.t('validations.cant_be_blank')}}
+
+                  .error ng-repeat="error in validation_errors['about']"
+                    | {{ error }}
+            .form-group
+              .row
+                .col-sm-2
+                  label.control-label
+                    | Genres:
+                .col-sm-10
+                  .col-sm-4.col-lg-3.col-xs-12 ng-repeat="genre in organizer.genres"
+                    input.inline type="checkbox" value="{{ genre.id }}" ng-model="genre.selected"
+
+                      | {{ genre.title }}
+
+                  .error ng-repeat="error in validation_errors.genres"
+                    | {{ error }}
+
+              .hr-line-dashed
+
+            .form-group
+              .row
+                .col-sm-2
+                  label.control-label
+                    | Event types:
+                .col-sm-10
+                  .col-sm-4.col-lg-3.col-xs-12 ng-repeat="event_type in organizer.event_types"
+                    input.inline type="checkbox" value="{{ event_type.id }}" ng-model="event_type.selected"
+
+                      | {{ event_type.title }}
+
+                  .error ng-repeat="error in validation_errors.event_types"
+                    | {{ error }}
+
+              .hr-line-dashed
+
+            .form-group
+              .row
+                .col-sm-4.col-sm-offset-2
+                  button.ladda-button.btn.btn-info data-style="expand-left" ladda="formPending"
+                    | {{ I18n.t('actions.submit') }}

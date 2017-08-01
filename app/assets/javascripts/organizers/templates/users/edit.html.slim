@@ -1,0 +1,118 @@
+.edit-profile
+  a.btn-close ng-click="step = 0" ng-show="isMobile() && step"
+  .edit-menu ng-show="isMobile() && !step"
+    .menu-head
+      | Edit profile
+    .menu-block
+      .menu-item
+        .menu-title
+          | About Us
+        a.edit-btn ng-click="step = 1"
+          | Edit
+      .menu-item
+        .menu-title
+          | Company or agency name
+        a.edit-btn ng-click="step = 2"
+          | Edit
+      .menu-item
+        .menu-title
+          | Types of events
+        a.edit-btn ng-click="step = 3"
+          | Edit
+      .menu-item
+        .menu-title
+          | Genres
+        a.edit-btn ng-click="step = 4"
+          | Edit
+
+  .page-block
+    .general-inf#org-id-1 ng-show="!isMobile() || step == 1"
+      .content-title
+        | About Us
+      .content
+        .col-avatar
+          div.avatar image=true cropper='true' aspectratio="1.0" ng-model="user.avatar"
+          a.text-active onclick="$('.plus label:first-child').trigger('click')"
+            | Change photo
+        .col-content
+          .form-group
+            .form-title
+              | Name
+            input.register-input.edit-input type="text" ng-model="user.name"
+            .error ng-repeat="error in validation_errors.name"
+              | {{ error }}
+          .form-group
+            .form-title
+              | Country:
+            .dj-dropdown[uib-dropdown]
+              i.fa.fa-chevron-down
+              a.edit-input.zureal-dropdown[ng-disabled="disabled" uib-dropdown-toggle]
+                span ng-hide="user.country"
+                  | Please choose a country
+                span ng-show="user.country"
+                  span.flag class="{{ user.country.code }}"
+                  | {{ user.country.title }}
+              ul.dropdown-menu aria-labelledby="country-dropdown" role="menu" uib-dropdown-menu=true
+                li ng-repeat="country in countries"
+                  a ng-click="user.country = country" style="cursor: pointer"
+                    span.flag class="{{ country.code }}"
+                    | {{ country.title }}
+            .error ng-repeat="error in validation_errors.country"
+              | {{ error }}
+          .form-group
+            .form-title
+              | City
+            input.register-input.edit-input type="text" ng-model="user.city"
+            .error ng-repeat="error in validation_errors['organizer.city']"
+              | {{ error }}
+          .form-group
+            .form-title
+              | General Info
+            textarea.zureal-textarea.dj-edit-textarea#aboutId type="text" placeholder="tell us something about your company or why you book djs"  ng-model="user.about"
+            .error ng-repeat="error in validation_errors.about"
+              | {{ error }}
+
+    .content-block#org-id-2 ng-show="!isMobile() || step == 2"
+      hr.margin50
+      .content-title
+        | Company or agency name
+      .container
+        .error ng-repeat="error in validation_errors.company_name"
+          | {{ error }}
+        .form-group.text-center
+          input.register-input.edit-input type="text" ng-model="user.company_name"
+        .leave-it-blanck
+          | (Optional)
+
+      hr
+    .content-block#org-id-3 ng-show="!isMobile() || step == 3"
+      .content-title
+        | Types of Events
+      .container
+        .error ng-repeat="error in validation_errors.event_categories"
+          | {{ error }}
+        label.select-button ng-repeat="event_type in user.event_types"
+          .btn-checkbox.text-center class="{{ event_type.selected? 'active': '' }}"
+            | {{ event_type.title }}
+          input.hide type="checkbox" value="{{ event_type.id }}" ng-model="event_type.selected"
+
+      hr
+    .content-block#org-id-4 ng-show="!isMobile() || step == 4"
+      .content-title
+        | Genres
+      .container
+        .error ng-repeat="error in validation_errors.genres"
+          | {{ error }}
+        label.select-button ng-repeat="genre in user.genres"
+          .btn-checkbox.text-center class="{{ genre.selected? 'active': '' }}"
+            | {{ genre.title }}
+          input.hide type="checkbox" value="{{ genre.id }}" ng-model="genre.selected"
+
+      hr
+    .actions-block ng-show="!isMobile() || step"
+      .pull-left
+        a.small-text.slider-btn.cancel href="#profile"
+          | Cancel
+      .pull-right
+        a.small-text.slider-btn.apply data-style="expand-left" ladda="processing" type="submit" ng-click="save()"
+          | Save

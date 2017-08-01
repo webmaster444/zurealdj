@@ -1,0 +1,150 @@
+.profile
+  .profile-header
+    .background-img style="{{ user.avatar_present? ('background-image: url(' + user.avatar.original + ')') : '' }}"
+      .custom-blur
+  .user-name-mobile-auto
+    .user-name-mobile
+      | {{ user.name }}
+  .page-block.relative
+    .inf-container
+      .inf
+        .name.user-name-desktop
+          | {{ user.dj_or_venue_name }}
+        .name.user-name-desktop ng-hide="user.dj_or_venue_name"
+          | {{ user.name }}
+        .dj-name.user-name-desktop ng-show="user.dj_or_venue_name"
+          | {{ user.name }}
+        span.rating-icons[uib-rating ng-model="user.rating" max="5" state-on="'fire fire-active icon'" state-off="'fire fire-inactive icon'" enable-reset='false' read-only='true' ]
+        .role.small-text
+          | Artist
+
+  .profile-content
+    .page-block
+      .profile-avatar
+        .img-avatar style="background-image: url({{ user.avatar.url }})"
+          .gradient
+        a.btn-action.purple.top-pictures href="#edit_profile"
+          | Edit
+        .content
+          div ng-show="user.about"
+            .title
+              | Experience
+            .text
+              | {{ user.about }}
+
+
+      .general
+        .block
+          .block-title.title-bold
+            | General Information
+          table
+            tr ng-show="user.personal_url"
+              td.td-title
+                | Personal URL:
+              td.td-content
+                | {{ user.personal_url }}
+            tr ng-show="user.city || user.country"
+              td.td-title
+                | Address:
+              td.td-content
+                span ng-show="user.city"
+                  | {{ user.city}}
+                  span ng-show="user.country"
+                    | {{ ', ' }}
+                span
+                  | {{ user.country.title }}
+            tr ng-show="user.genres_string"
+              td.td-title
+                | Genres:
+              td.td-content
+                | {{ user.genres_string }}
+            tr ng-show="user.event_types_string"
+              td.td-title
+                | Types of events:
+              td.td-content
+                | {{ user.event_types_string }}
+          hr
+        .content-mobile
+          .block
+            .title.title-bold
+              | Artist
+            span.rating-icons[uib-rating ng-model="user.rating" max="5" state-on="'fire fire-active icon'" state-off="'fire fire-inactive icon'" enable-reset='false' read-only='true' ]
+          .block ng-show="user.about"
+            .title.title-bold
+              | Experience
+            .text
+              | {{ user.about }}
+
+          hr
+        .listen ng-show="user.sample.url"
+          .block-title.title-bold
+            | Listen
+          div audio=true ng-model="user.sample"
+
+          hr
+        .block.equipments
+          .block-title
+            | Equipment
+          div
+            label.select-button ng-show="equipment.selected" ng-repeat="equipment in user.equipments"
+              .text-center.btn-equipment.isactive
+                img ng-src="{{ equipment.icon }}"
+                .title
+                  | {{ equipment.title }}
+          hr
+        .block
+          .block-title.title-bold
+            | Booking information
+          table
+            tr ng-switch="user.free_to_hire"
+              td.td-title
+                | Rate per hour:
+              td.td-content ng-switch-when="false"
+                | {{ user.rate_per_hour }} $
+              td.td-content ng-switch-when="true"
+                | free
+
+
+          hr
+        .block.device-desktop
+          .block-title
+            | {{ comments_count }} Comments
+          .block.comments
+            .comment-item ng-repeat="comment in comments track by $index"
+              img.avatar ng-src="{{ comment.avatar }}"
+              .content
+                .user-name
+                  | {{ comment.org_name }}
+                .comment-text
+                  | {{ comment.comment }}
+                .event-title
+                  | {{ comment.event_title }}
+                .created-at
+                  | {{ comment.created_at }}
+              .rating
+                span.rating-icons[uib-rating ng-model="comment.rating" max="5" state-on="'fire fire-active icon'" state-off="'fire fire-inactive icon'" enable-reset='false' read-only='true' ]
+          .show-more.comments-show-more
+            a ng-click="showMore()" ng-show="comments.length < comments_count"
+              | Show More
+        .device-mobile
+          .commentars
+            .block-title.title-bold
+              | {{ comments_count }} Comments
+            .block.comments
+              .comment-item ng-repeat="comment in comments track by $index"
+                .top-block
+                  img.avatar ng-src="{{ comment.avatar }}"
+                  .user-name
+                    | {{ comment.org_name }}
+                  .created-at
+                    | {{ comment.created_at }}
+                  .rating
+                    span.rating-icons[uib-rating ng-model="comment.rating" max="5" state-on="'fire fire-active icon'" state-off="'fire fire-inactive icon'" enable-reset='false' read-only='true' ]
+                .content
+                  .comment-text
+                    | {{ comment.comment }}
+                  .event-title
+                    | {{ comment.event_title }}
+            .show-more.comments-show-more
+              a ng-click="showMore()" ng-show="comments.length < comments_count"
+                | Show More

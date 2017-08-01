@@ -1,0 +1,37 @@
+.wrapper.wrapper-content
+  .row.animated.fadeIn
+    .col-md-12
+      .ibox.float-e-margins
+        .ibox-content
+          h3
+            | {{ I18n.t('headers.equipments' ) }}
+          .filters-bar ng-include="'admin/templates/common/filters-bar.html'"
+          .filters-container.collapse
+            .col-sm-3
+              input.form-control type="text" ng-model="filters.title" placeholder="{{ I18n.t('genre.fields.title') }}"
+            .row
+              .col-sm-offset-9.col-sm-3
+                .button.btn.btn-danger.btn-outline ng-models="filters" ng-click="resetFilters()" style="margin-top: 20px; float: right;" Reset
+
+          table.table.table-striped.table-responsive
+            thead
+              tr
+                th
+                  | {{ I18n.t('equipment.fields.icon') }}
+                th ng-model="filters" tablesort=true tablesort-name="title" tablesort-title="{{ I18n.t('equipment.fields.title') }}"
+                th ng-model="filters" tablesort=true tablesort-name="created_at" tablesort-title="Created At"
+                th.text-right
+                  | Actions
+            tbody
+              tr ng-repeat="equipment in equipments"
+                td
+                  img ng-src="{{equipment.icon}}" style="height: 100px"
+                td
+                  | {{ equipment.title }}
+                td
+                  | {{ equipment.created_at }}
+                td.text-right
+                  a.btn-xs.btn.btn-warning.btn-outline href="#equipment/{{equipment.id}}/edit"
+                    | {{ I18n.t('actions.edit') }}
+                  a.btn-xs.btn.btn-danger.btn-outline ng-click="destroy(equipment.id)"
+                    | {{ I18n.t('actions.delete') }}

@@ -1,0 +1,19 @@
+.wrapper.wrapper-content
+  .row.animated.fadeIn
+    .col-md-12
+      .ibox.float-e-margins
+        .ibox-content
+          .page-title
+            h3
+              | Edit Courses page
+            .pull-right
+              a.btn.btn-default href="#home"
+                | Cancel
+              a.btn.ladda-button.btn-info data-style="expand-left" ladda="formPending" ng-click="save()"
+                | Save
+          .row
+            .col-sm-2
+              label.control-label
+                | Content:
+            .col-sm-10
+              div redactor=true required=true ng-model="page.content" file-upload-path="/attachments/courses_page_content"

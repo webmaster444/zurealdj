@@ -1,0 +1,82 @@
+ul.notifications-list
+  li ng-repeat="notification in notifications" ng-class="{unread: !notification.read}" ng-click="markAsRead(notification)"
+    div                                                                             ng-if="notification.notification_type == 'rated'"
+      img ng-src="{{notification.from_user.avatar}}"
+      .dj-black-text
+        | {{ notification.from_user.name }} rated you
+      div.stars uib-rating=true ng-model="notification.star.stars" read-only="true"
+
+
+    div                                                                           ng-if="notification.notification_type == 'event_canceled'"
+      img ng-src="{{notification.event.image}}" ng-if="notification.event"
+      .dj-black-text ng-if="notification.event"
+        | {{ notification.event.title }}
+      .dj-black-text ng-if="!notification.event"
+        | {{ notification.message }}
+      .dj-gray-text ng-if="notification.event"
+        | {{ notification.event.country }}, {{ notification.event.city }}
+      .extra-text
+        | Event Canceled
+
+    div                                                                           ng-if="notification.notification_type == 'booking_requested'"
+      img ng-src="{{notification.event.image}}" ng-if="notification.event"
+      .dj-black-text                            ng-if="notification.event"
+        | {{ notification.event.title }}
+      .dj-black-text ng-if="!notification.event"
+        | {{ notification.message }}
+      .dj-gray-text                             ng-if="notification.event"
+        | {{ notification.event.country }}, {{ notification.event.city }}
+      .extra-text
+        | Booking Requested
+
+    div                                                                         ng-if="notification.notification_type == 'booking_confirmed'"
+      img ng-src="{{notification.event.image}}" ng-if="notification.event"
+      .dj-black-text ng-if="notification.event"
+        | {{ notification.event.title }}
+      .dj-black-text ng-if="!notification.event"
+        | {{ notification.message }}
+      .dj-gray-text ng-if="notification.event"
+        | {{ notification.event.country }}, {{ notification.event.city }}
+      .extra-text
+        | Dj accept booking
+
+    div                                                                       ng-if="notification.notification_type == 'booking_cancelled'"
+      img ng-src="{{notification.event.image}}" ng-if="notification.event"
+      .dj-black-text ng-if="notification.event"
+        | {{ notification.event.title }}
+      .dj-black-text ng-if="!notification.event"
+        | {{ notification.message }}
+      .dj-gray-text ng-if="notification.event"
+        | {{ notification.event.country }}, {{ notification.event.city }}
+      .extra-text
+        | Dj rejected booking
+
+    div                                                                       ng-if="notification.notification_type == 'event_modified'"
+      img ng-src="{{notification.event.image}}" ng-if="notification.event"
+      .dj-black-text ng-if="notification.event"
+        | {{ notification.event.title }}
+      .dj-black-text ng-if="!notification.event"
+        | {{ notification.message }}
+      .dj-gray-text ng-if="notification.event"
+        | {{ notification.event.country }}, {{ notification.event.city }}
+      .extra-text
+        | Event was modified
+
+    div                                                                       ng-if="notification.notification_type == 'event_deleted'"
+      img ng-src="{{notification.event.image}}" ng-if="notification.event"
+      .dj-black-text ng-if="notification.event"
+        | {{ notification.event.title }}
+      .dj-black-text ng-if="!notification.event"
+        | {{ notification.message }}
+      .dj-gray-text ng-if="notification.event"
+        | {{ notification.event.country }}, {{ notification.event.city }}
+      .extra-text
+        | Event cancelled
+
+    .dj-gray-text
+      | {{ notification.created_at }}
+  li.spinner ng-hide="notifications"
+    i.fa.fa-spinner.fa-spin
+  li.spinner ng-show="notifications.length == 0"
+    .dj-gray-text
+      | No new notifications

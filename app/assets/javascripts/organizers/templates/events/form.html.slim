@@ -1,0 +1,133 @@
+.edit-event
+  .zurealdj-header-1
+    span ng-hide="event.id"
+      | Add New Event
+    span ng-show="event.id"
+      | Edit Event
+    hr
+    .pull-right
+      a.pink-link ng-click="destroy(event.id)" ng-show="event.id"
+        | Delete Event
+  .row
+    .col-event-image
+      div image=true cropper='true' aspectratio="1.0" ng-model="event.image"
+      .text-center
+        a.pink-link onclick="$('.plus label:first-child').trigger('click')"
+          | Change photo
+      .error ng-repeat="error in validation_errors.image"
+        | {{ error }}
+    .col-event-form
+      .form-row
+        .form-title
+          | Event name
+        .form-container
+          input.zureal-input type="text" ng-model="event.title"
+        .error ng-repeat="error in validation_errors.title"
+          | {{ error }}
+      .form-row
+        .form-title
+          | Venue Address
+        .form-container
+          input.zureal-input type="text" ng-model="event.venue_name"
+        .error ng-repeat="error in validation_errors.venue_name"
+          | {{ error }}
+      .form-row
+        .form-title
+          | Type
+        .form-container
+          span.dj-dropdown[uib-dropdown on-toggle="toggled(open)"]
+            a[id="simple-dropdown" uib-dropdown-toggle]
+              | {{ event.event_category ? event.event_category.title : "Select" }}
+            i.fa.fa-chevron-down
+            ul.dropdown-menu[uib-dropdown-menu aria-labelledby="simple-dropdown"]
+              li ng-repeat="event_type in event_types"
+                a ng-click="event.event_category = event_type"
+                  | {{ event_type.title }}
+        .error ng-repeat="error in validation_errors.event_category_id"
+          | {{ error }}
+
+      .form-row
+        .form-title
+          | Genres
+        .form-container
+          span.dj-dropdown[uib-dropdown on-toggle="toggled(open)"]
+            a[id="simple-dropdown" uib-dropdown-toggle]
+              | Select
+            i.fa.fa-chevron-down
+            ul.dropdown-menu[uib-dropdown-menu aria-labelledby="simple-dropdown"]
+              li ng-repeat="genre in genres" ng-hide="genre.checked"
+                a ng-click="genre.checked = true"
+                  | {{ genre.title }}
+            .selected-box ng-show="checkSelectedGenres()"
+              .filter-item ng-repeat="genre in genres" ng-show="genre.checked"
+                .filter-title
+                  | {{ genre.title }}
+                a.btn-close ng-click="genre.checked = false"
+
+      .form-row
+        .form-title
+          | Country:
+        .form-container
+          span.dj-dropdown[uib-dropdown]
+            i.fa.fa-chevron-down
+            a[ng-disabled="disabled" uib-dropdown-toggle]
+              span ng-hide="event.country"
+                | Country
+              span ng-show="event.country"
+                span.flag class="{{ event.country.code }}"
+                | {{ event.country.title }}
+            ul.dropdown-menu aria-labelledby="country-dropdown" role="menu" uib-dropdown-menu=true
+              li ng-repeat="country in countries"
+                a ng-click="event.country = country" style="cursor: pointer"
+                  span.flag class="{{ country.code }}"
+                  | {{ country.title }}
+        .error ng-repeat="error in validation_errors.country_flag_code"
+          | {{ error }}
+
+      .form-row
+        .form-title
+          | City
+        .form-container
+          input.zureal-input type="text" ng-model="event.city"
+        .error ng-repeat="error in validation_errors.city"
+          | {{ error }}
+
+      .form-row
+        .form-title
+          | From
+        .form-container
+          p.dj-datepicker ng-class="{'active': start_date_opened}"
+            a.datepicker-dropdown-togle ng-click="start_date_opened = true"
+            input type="text" uib-datepicker-popup="{{ 'dd/MM/yyyy' }}" ng-model="event.start_date" is-open="start_date_opened" datepicker-options="startDateOptions" close-text="Close" alt-input-formats="altInputFormats" show-button-bar="false" placeholder="Start Date"
+            i.fa.fa-chevron-down
+          span[timepicker ng-model="event.start_time" placeholder="'Start Time'"]
+        .error ng-repeat="error in validation_errors.start_date"
+          | {{ error }}
+
+      .form-row
+        .form-title
+          | To
+        .form-container
+          p.dj-datepicker ng-class="{'active': end_date_opened}"
+            a.datepicker-dropdown-togle ng-click="end_date_opened = true"
+            input ng-change="closePopup()" type="text" uib-datepicker-popup="{{ 'dd/MM/yyyy' }}" ng-model="event.end_date" is-open="end_date_opened" datepicker-options="endDateOptions" close-text="Close" alt-input-formats="altInputFormats" show-button-bar="false" placeholder="End Date"
+            i.fa.fa-chevron-down
+          span[timepicker ng-model="event.end_time" placeholder="'End Time'"]
+        .error ng-repeat="error in validation_errors.end_date"
+          | {{ error }}
+
+      .form-row
+        .form-title
+          | DJ slots
+        .form-container
+          span countpicker=true ng-model="event.dj_slots"
+        .error ng-repeat="error in validation_errors.dj_slots"
+          | {{ error }}
+  hr
+    .row.buttons
+      .pull-left
+        button.slider-btn.cancel ng-click="cancel()"
+          | Cancel
+      .pull-right
+        button.slider-btn.apply data-style="expand-left" ladda="processing" ng-click="save()"
+          | Save

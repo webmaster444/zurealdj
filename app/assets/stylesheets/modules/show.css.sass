@@ -1,0 +1,579 @@
+@import "variables_and_functions"
+
+.profile, .event
+  .profile-content, .event-content
+    .profile-avatar, .event-image
+      .img-avatar, .img-event
+        background-repeat: no-repeat
+        background-size: cover
+        background-position: center
+        border-radius: 4px
+        background-color: white
+        .gradient
+          background-color: white
+          background: linear-gradient(to bottom, rgba(0, 0, 0, 0.2), rgba(255, 255, 255, 0) 50%, rgba(0, 0, 0, 0.2))
+          background: -webkit-linear-gradient(to bottom, rgba(0, 0, 0, 0.2), rgba(255, 255, 255, 0) 50%, rgba(0, 0, 0, 0.2))
+          background: -o-linear-gradient(to bottom, rgba(0, 0, 0, 0.2), rgba(255, 255, 255, 0) 50%, rgba(0, 0, 0, 0.2))
+          background: -moz-linear-gradient(to bottom, rgba(0, 0, 0, 0.2), rgba(255, 255, 255, 0) 50%, rgba(0, 0, 0, 0.2))
+          width: 100%
+          height: 100%
+          border-radius: 8px
+  .inf-container
+    .inf
+      .name
+        color: #555555
+        text-overflow: ellipsis
+        max-width: 800px
+        overflow: hidden
+  .general
+    .block-title
+      color: #555555
+    table
+      tr
+        td
+          font-weight: normal
+          font-style: normal
+          font-stretch: normal
+        .td-content
+          color: #555555
+        .td-title
+          color: #8a8a8a
+        .active
+          color: #b05dfc
+
+.comments
+  box-shadow: 0 2px 30px 0 rgba(0, 0, 0, 0.08)
+  padding: 0 10px
+  .comment-item
+    padding: 20px
+    position: relative
+    border-bottom: 1px dotted #f5f5f5
+    .avatar
+      width: 80px
+      height: 80px
+      border-radius: 100%
+      display: inline-block
+    .content
+      max-width: calc(100% - 120px)
+      display: inline-block
+      vertical-align: top
+      color: #555555
+      font-style: normal
+      font-stretch: normal
+      line-height: normal
+      font-weight: normal
+      letter-spacing: 1px
+      font-size: 16px
+      margin: 0 20px
+      *
+        margin: 10px 0
+        word-wrap: break-word
+    .user-name
+      font-size: 20px
+      font-weight: 500
+      letter-spacing: 1.3px
+      overflow: hidden
+      text-overflow: ellipsis
+      height: 25px
+      width: 100%
+    .comment
+      line-height: 1.63
+    .event-title, .created-at
+      color: #c6bfc7
+    .created-at
+      position: absolute
+      bottom: 10px
+      right: 20px
+    .rating
+      position: absolute
+      top: 10px
+      right: 20px
+
+.comments-show-more
+  margin: 40px 0 !important
+
+[device='desktop']
+
+  .user-name-mobile-auto, .device-mobile
+    display: none
+
+  .event
+    .artists
+      .title
+        font-size: 32px
+        letter-spacing: 3px
+        color: #555555
+        text-align: center
+        margin-top: 70px
+      .container
+        margin-top: 50px
+  .profile, .event
+    height: auto
+    padding-bottom: 100px
+    position: relative
+    .relative
+      position: relative
+    .inf-container
+      width: 100%
+      height: 100%
+      position: absolute
+      .inf
+        display: inline-block
+        position: absolute
+        bottom: 35px
+        left: 400px
+        .name, .title
+          font-size: 32px
+          letter-spacing: 3px
+          color: white
+          margin-bottom: 10px
+        .dj-name
+          font-size: 16px
+          letter-spacing: 3px
+          color: white
+          margin-bottom: 10px
+        .role, .title, .small-text
+          color: white
+    .profile-header, .event-header
+      width: 100%
+      height: 360px
+      padding: 0
+      .background-img
+        width: 100%
+        height: 100%
+        background-repeat: no-repeat
+        background-size: cover
+        background-position: center
+        -webkit-filter: blur(5px)
+        -moz-filter: blur(5px)
+        -o-filter: blur(5px)
+        -ms-filter: blur(5px)
+        filter: blur(5px)
+      .custom-blur
+        width: 100%
+        height: 100%
+        background-color: rgba(84, 84, 84, 0.7)
+    .profile-content, .event-content
+      margin: 0
+      .profile-avatar, .event-image
+        position: absolute
+        top: 70px
+        display: inline-block
+        width: 360px
+        height: 360px
+        border-radius: 4px
+        box-shadow: 0 2px 20px 0 rgba(0, 0, 0, 0.08)
+        text-align: center
+        @media screen and (max-width: 850px)
+          display: block
+          position: relative
+          top: 0
+          margin-top: -300px
+        .img-avatar, .img-event
+          display: inline-block
+          width: 360px
+          background-repeat: no-repeat
+          background-size: cover
+          background-position: center
+          border-radius: 4px
+          background-color: white
+          .gradient
+            width: 100%
+            height: 100%
+        .btn-book-now
+          margin-top: -80px
+          margin-left: -70px
+        .like, .like-active
+          position: absolute
+          left: 280px
+          top: 280px
+        .content
+          padding: 30px
+          background-color: white
+          box-shadow: 0 4px 4px rgba(0, 0, 0, 0.08)
+          min-height: 224px
+          width: 360px
+          color: #555555
+          font-size: 16px
+          letter-spacing: 1px
+          white-space: pre-wrap
+          word-wrap: break-word
+          text-align: left
+          .title
+            font-weight: 500
+            margin-bottom: 15px
+          .text
+            color: #8a8a8a
+            line-height: 1.5
+            margin-bottom: 15px
+        a
+          display: inline-block
+    .small-text
+      font-size: 16px
+      font-weight: 500
+      letter-spacing: 1.5px
+    .general
+      display: inline-block
+      padding: 20px
+      margin: 20px
+      margin-left: 400px
+      width: calc(100% - 400px)
+      min-height: 215px
+      @media screen and (max-width: 850px)
+        display: block
+        margin-left: 0
+        width: 100%
+      .content-mobile
+        display: none
+      .block-title
+        font-size: 20px
+        font-weight: 500
+        letter-spacing: 1.3px
+        color: #555555
+        margin-bottom: 25px
+      table
+        tr
+          td
+            letter-spacing: 1.5px
+            font-size: 16px
+          .td-content
+            line-height: 1.88
+          .td-title
+            width: 240px
+            line-height: 1.88
+
+
+[device='mobile']
+  .box-audio
+    max-width: 100%
+    width: 100%
+    min-width: 320px
+  .user-name-desktop, .device-desktop
+    display: none
+
+  .user-name-mobile-auto
+    position: absolute
+    left: 0px
+    right: 0px
+    width: 100%
+
+  .user-name-mobile
+    font-size: 20px
+    text-align: center
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.08)
+    padding: 20px 0
+    height: 63px
+    max-height: 63px
+    position: relative
+    left: 0px
+    right: 0px
+
+  @media (max-width: $mobile-max-width)
+    .profile-content
+      margin-top: 45px
+
+  word-wrap: break-word
+  .event
+    .artists
+      .title
+        font-size: 20px
+        letter-spacing: 3px
+        color: #555555
+        text-align: center
+      .container
+        margin-top: 50px
+    .general
+      padding-bottom: 0 !important
+  .profile, .event
+    padding: 0
+    margin: 0
+    hr
+      display: none
+    .page-block
+      width: 100%
+      max-width: 100% !important
+      padding: 0
+    .profile-header
+      display: none
+    .inf-container
+      margin: 0
+      padding: 0
+      .inf
+        padding-top: 63px
+        @media (max-width: $mobile-max-width)
+          padding-top: 43px
+        .role, .rating-icons, .genres-event-type, .address
+          display: none
+        .name, .title
+          font-size: 20px
+          line-height: 1.5
+          letter-spacing: 1.4px
+          text-align: center
+          padding: 20px 10px
+          box-shadow: 0 2px 20px 0 rgba(0, 0, 0, 0.08)
+          width: 100%
+          max-height: 60px
+          overflow: hidden
+          text-overflow: ellipsis
+          white-space: nowrap
+    .profile-content, .event-content
+      .profile-avatar, .event-image
+        position: relative
+        text-align: center
+        .img-avatar, .img-event
+          width: 280px
+          height: 270px
+          margin: 25px auto
+          border-radius: 4px
+        .btn-book-now
+          display: block
+          margin: -70px auto 0 auto
+          width: 120px
+        .content
+          display: none
+        .like, .like-active
+          position: absolute
+          top: 10px
+          right: 30px
+    .content-mobile
+      .title
+        font-size: 16px
+        font-weight: 500
+        letter-spacing: 1px
+        margin: 15px 0
+      .text
+        font-size: 14px
+        line-height: 1.43
+        letter-spacing: 0.9px
+        padding: 7.5px 0
+        color: #555555
+    .general
+      display: inline-block
+      width: 100%
+      padding-bottom: 30px
+      .commentars
+        .block-title
+          margin-left: 20px
+        .block
+          padding: 0
+
+
+
+
+      .block-title
+        font-size: 16px
+        font-weight: 500
+        letter-spacing: 1px
+        margin: 15px 0
+      .title-bold
+        font-weight: 500
+        font-family: CeraPro-Medium
+        font-size: 16px
+        font-style: normal
+        font-stretch: normal
+        line-height: normal
+        letter-spacing: 1px
+        color: #555555
+      .block
+        padding: 0 20px
+        margin-bottom: 30px
+      .listen
+        margin-bottom: 30px
+        .block-title
+          padding: 0 20px
+      .equipments
+        padding: 0
+        display: block
+        .block-title
+          margin-left: 20px
+          font-family: CeraPro
+          font-size: 16px
+          font-weight: 600
+          font-style: normal
+          font-stretch: normal
+          line-height: normal
+          letter-spacing: 1px
+          color: #555555
+        .select-button
+          margin: 2.5px
+          border: none
+          .text-center
+            width: 90px
+            height: 80px
+          .btn-equipment
+            border: none
+            .title
+              width: 82px
+              font-family: CeraPro
+              font-size: 14px
+              font-weight: normal
+              font-style: normal
+              font-stretch: normal
+              line-height: 1.14
+              letter-spacing: -0.3px
+              text-align: center
+              color: #4a4a4a
+              overflow: hidden
+              text-overflow: ellipsis
+              display: -webkit-box
+              -webkit-box-orient: vertical
+              -webkit-line-clamp: 1
+              text-align: center
+              padding-top: 10px
+            img
+              width: 48px
+              height: 48px
+              margin: 0 auto
+              margin-right: 21px
+              margin-left: 21px
+      table
+        tr
+          td
+            font-size: 14px
+            line-height: 1.43
+            letter-spacing: 0.9px
+            padding: 7px 0
+            vertical-align: top
+          .td-title
+            width: 140px
+            padding-right: 10px
+      .listen
+        .box-audio
+          .player
+            height: 70px
+            padding: 15px 20px
+            margin: 0
+            .rz-pointer
+              top: -6px !important
+            .time-slider
+              left: 70px
+              top: 15px
+              width: auto
+              right: 120px
+            .white
+              right: 84px
+              top: 37px
+              left: initial
+            .color
+              left: initial
+              right: 81px
+              top: 38px
+            .btn-volume
+              right: 80px
+              top: 43px
+              left: initial
+              width: 15px
+              height: 15px
+            .volume-slider
+              left: initial
+              top: initial
+              right: 10px
+              width: 70px
+            .player-btn
+              height: 40px
+              width: 40px
+            .file-name
+              overflow: hidden
+              text-overflow: ellipsis
+              display: -webkit-box
+              -webkit-box-orient: vertical
+              -webkit-line-clamp: 2
+              line-height: 1.43
+              letter-spacing: 0.9px
+              max-width: 54%
+              height: 40px
+              font-family: CeraPro
+              font-size: 14px
+              color: #555555
+              left: 70px
+              top: 15px
+            .duration
+              position: absolute
+              top: 35px
+              right: 20px
+              font-family: CeraPro
+              font-size: 14px
+              line-height: 1.43
+              letter-spacing: 0.9px
+              color: #c6bfc7
+          .play
+            .file-name
+              overflow: hidden
+              text-overflow: ellipsis
+              display: -webkit-box
+              -webkit-box-orient: vertical
+              -webkit-line-clamp: 1
+              max-height: 20px
+              line-height: 1.43
+              letter-spacing: 0.9px
+            .duration
+              right: 15px
+              top: 15px
+
+
+      .comments
+        .comment-item
+          .top-block
+            .avatar
+              width: 40px
+              height: 40px
+            .user-name
+              font-family: CeraPro-Medium
+              font-size: 14px
+              font-weight: 500
+              font-style: normal
+              font-stretch: normal
+              line-height: 1.43
+              letter-spacing: normal
+              color: #555555
+              position: absolute
+              top: 15px
+              left: 80px
+            .created-at
+              font-family: CeraPro
+              font-size: 14px
+              font-weight: normal
+              font-style: normal
+              font-stretch: normal
+              line-height: 1.43
+              letter-spacing: normal
+              text-align: right
+              color: #c6bfc7
+              position: absolute
+              top: 15px
+              left: 0px
+            .rating
+              position: absolute
+              top: 30px
+              left: 80px
+              .fire
+                width: 12px
+                height: 16px
+          .content
+            min-width: 280px
+            width: 100%
+            max-width: 100%
+            font-family: CeraPro
+            font-size: 14px
+            font-weight: normal
+            font-style: normal
+            font-stretch: normal
+            line-height: 1.29
+            letter-spacing: normal
+            position: relative
+            top: 0px
+            left: -20px
+            .comment-text
+              min-width: 280px
+              width: 100%
+              color: #4a4a4a
+            .event-title
+              color: #c6bfc7
+
+
+
+
+[device='mobile'][orientation='landscape']
+  .profile, .event
+    max-width: 100vmin
+    margin: auto

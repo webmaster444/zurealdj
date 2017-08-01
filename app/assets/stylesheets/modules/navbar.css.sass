@@ -1,0 +1,340 @@
+@import "variables_and_functions"
+
+.right-menu-desktop
+  min-width: 510px
+
+.right-menu-mobile
+  max-width: 250px
+
+.profile-user-name-desktop
+  overflow: hidden
+  white-space: nowrap
+  text-overflow: ellipsis
+  width: 80px
+  display: inline-block
+  text-align: left
+  margin-right: 5px
+  -webkit-touch-callout: none
+  -webkit-user-select: none
+  -khtml-user-select: none
+  -moz-user-select: none
+  -ms-user-select: none
+  user-select: none
+
+.display-inline-block
+  display: inline-block
+
+.second-nav
+  box-shadow: 0 1px 0 0 #f5f5f5
+  .second-menu
+    list-style-type: none
+    margin: 0
+    width: auto
+    display: inline-block
+    #first
+      margin-left: 0
+    li
+      display: inline-block
+      margin-left: 25px
+      margin-right: 25px
+      padding: 25px 5px
+      vertical-align: middle
+      a
+        font-size: 16px
+        color: #555555
+        &:active, &:hover, &:visited
+          color: #555555
+    .active
+      border-bottom: 2px solid $current-color
+
+.top-navbar
+  #toggle-notifications
+    padding: 15px
+  height: 80px
+  box-shadow: 0 1px 0 0 #f5f5f5
+  .container
+    & > table
+      height: 100%
+      width: 100%
+      & > tbody
+        & > tr
+          & > td
+            vertical-align: middle
+            & > ul
+              text-align: right
+              list-style-type: none
+              margin: 0
+              & > li
+                padding-left: 50px
+                display: inline-block
+                vertical-align: middle
+                height: 100%
+  .mobile-menu-button
+    width: 20px
+    height: 16px
+    background-size: contain
+    background-image: url('/images/icons/ic-menu-mobile-1.png')
+    background-repeat: no-repeat
+    margin-right: 20px
+  .logo
+    width: 158px
+    height: 55px
+  .profile-image
+    width: 44px
+    height: 44px
+    border-radius: 50%
+  [uib-dropdown]
+    display: inline-block
+    position: relative
+    // i.fa
+    //  position: absolute
+    //  top: 19px
+    //  right: 17px
+    //  font-size: 12px
+    [uib-dropdown-toggle]
+      border-radius: 100px
+      background-color: #ffffff
+      height: 50px
+      font-size: 16px
+      font-weight: 500
+      color: #555555
+      outline: none
+      display: inline-block
+      padding: 3px 25px 3px 3px
+      &[aria-expanded=true]
+        box-shadow: 0 2px 30px 0 rgba(0, 0, 0, 0.08)
+      .drop
+        background-image: url(/images/icons/ic-drop-grey@3x.png)
+        width: 9px
+        height: 5px
+        display: inline-block
+        background-size: cover
+        vertical-align: middle
+        position: absolute
+        right: 10px
+        top: calc(50% - 2.5px)
+    [uib-dropdown-menu]
+      width: 100%
+      height: 100px
+      border-radius: 4px
+      background-color: #ffffff
+      box-shadow: 0 2px 20px 0 rgba(0, 0, 0, 0.08)
+      top: 115%
+      li
+        &:not(:last-child)
+          border-bottom: 1px solid #f5f5f5
+        height: 49px
+        padding-top: 6px
+        &:hover
+          background-color: #f0f0f0
+        a:hover
+          background-color: transparent
+        a
+          font-size: 16px
+          font-weight: 500
+          color: #555555
+
+  .dj-profile-dropdown
+    [uib-dropdown-toggle]
+      min-width: 160px
+      width: auto
+      text-align: left
+    [uib-dropdown-menu]
+      height: auto
+      min-width: 250px
+      width: auto !important
+      right: 0
+      left: auto
+      li:nth-child(2)
+        padding: 0 20px
+        padding-top: 15px
+        table
+          width: auto
+          min-width: 100%
+          position: static
+          margin: 0
+          td
+            white-space: nowrap
+          td.plan-title
+            padding-right: 20px
+          td.upgrade_plan
+            text-align: right
+            width: 170px
+            a.upgrade_plan
+              font-size: 12px
+              font-weight: 500
+              line-height: 1.17
+              text-align: center
+              color: #b05dfc !important
+              padding: 8px 13px
+              border-radius: 100px
+              border: solid 1px #b05dfd
+              background-color: transparent
+              position: static
+              &:hover
+                background-color: white
+
+.top-mobile-navbar
+  &  >.container
+    box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.08)
+    & > ul
+      padding: 0
+      vertical-align: middle
+      display: table-cell
+      height: 64px
+      list-style-type: none
+      margin: 0
+      & > li
+        display: inline-block
+        vertical-align: middle
+        a
+          font-size: 16px
+          color: #555555
+    .col-xs-6
+      height: 48px
+      padding: 10px
+      a
+        vertical-align: middle
+    .col-xs-6:first-child
+      border-right: 1px solid #f5f5f5
+  .mobile-menu-button
+    width: 20px
+    height: 16px
+    background-size: contain
+    background-image: url('/images/icons/ic-menu-mobile-1.png')
+    background-repeat: no-repeat
+    margin-right: 20px
+  .profile-image
+    width: 44px
+    height: 44px
+    border-radius: 50%
+  ul.mobile-menu
+    padding: 0
+    margin: 0
+    list-style-type: none
+    li
+      display: block
+      padding: 15px 30px
+      border-bottom: 1px solid #f5f5f5
+      a
+        font-size: 16px
+        color: #555555
+        &.active
+          font-weight: 500
+          color: $current-color
+      i.fa
+        font-size: 10px
+      table
+        min-width: 99%
+        margin-top: 10px
+      td.plan-title
+        padding-right: 20px
+      td.upgrade_plan
+        width: 45%
+        text-align: center
+        a.upgrade_plan
+          font-size: 12px
+          font-weight: 500
+          line-height: 1.17
+          text-align: center
+          color: #b05dfc !important
+          padding: 8px 13px
+          border-radius: 100px
+          border: solid 1px #b05dfd
+          background-color: transparent
+          position: static
+          &:hover
+            background-color: white
+  ul.mobile-footer
+    background-color: #5c595a
+    padding: 0
+    margin: 0
+    list-style-type: none
+    & > li
+      display: block
+      padding: 15px 30px
+      font-size: 16px
+      font-weight: 500
+      line-height: 1
+      letter-spacing: 1.1px
+      color: #ffffff
+      text-align: center
+      & > a
+        color: white
+      & > ul
+        padding: 20px
+        list-style-type: none
+        margin: 0
+        & > li
+          padding: 10px
+          & > a
+            font-size: 14px
+            line-height: 1
+            letter-spacing: 1px
+            color: #8a8a8a
+      i.fa
+        font-size: 10px
+
+.dj-bell
+  display: inline-block
+  width: 18px
+  height: 20px
+  background-size: contain
+  background-repeat: no-repeat
+  background-image: url(/images/icons/ic-notification-black@3x.png)
+  &:hover, &.active
+    background-image: url(/images/icons/ic-notification-purple@3x.png)
+
+#notifications-menu
+  width: 560px
+  border-radius: 4px
+  background-color: #ffffff
+  box-shadow: 0 2px 30px 0 rgba(0, 0, 0, 0.08)
+  left: auto
+  right: 0
+  height: auto
+  max-height: none
+  .dj-dropdown-header
+    text-align: center
+    padding: 25px
+    border-bottom: 1px solid #f5f5f5
+  .dj-dropdown-footer
+    text-align: center
+    padding: 25px
+    border-top: 1px solid #f5f5f5
+  ul
+    list-style-type: none
+    padding: 0
+    margin: 0
+    transition: max-height 0.15s ease-out
+    li
+      position: relative
+      padding: 30px 20px 30px 120px
+      cursor: pointer
+      height: auto
+      min-height: 138px
+      &.spinner
+        min-height: auto
+        padding: 10px
+        text-align: center
+      img
+        position: absolute
+        top: 30px
+        left: 20px
+        width: 80px
+        height: 80px
+        border-radius: 4px
+      .extra-text
+        font-family: CeraPro
+        font-size: 14px
+        line-height: 1.43
+        letter-spacing: 0.9px
+        text-align: right
+        color: #b05dfc
+        position: absolute
+        bottom: 20px
+        right: 20px
+
+@media (max-width: $mobile-max-width)
+  .navbar
+    margin-bottom: 0px !important

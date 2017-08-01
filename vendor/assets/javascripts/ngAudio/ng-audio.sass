@@ -1,0 +1,245 @@
+@function calc-w-small($arg)
+  @return $arg / 3.2 * 1vmin
+
+.box-audio
+  max-width: 760px
+  min-width: 385px
+  padding: 0
+  text-align: center
+  *::selection
+    background: transparent !important
+  .player
+    width: 100%
+    margin: 15px 0
+    padding: 30px 30px 25px 30px
+    text-align: left
+    border-radius: 4px
+    background-color: #ffffff
+    position: relative
+    .player-btn
+      display: inline-block
+      background-position: center
+      background-size: contain
+      background-repeat: no-repeat
+      background-color: white
+      width: 50px
+      height: 50px
+    .btn-play
+      background-image: url('/images/icons/ic-pause@3x.png')
+    .btn-pause
+      background-image: url('/images/icons/ic-play@3x.png')
+    .btn-volume
+      background-image: url('/images/icons/ic-voll.png')
+      display: inline-block
+      background-position: center
+      background-size: contain
+      background-repeat: no-repeat
+      width: 13px
+      height: 15px
+      position: absolute
+      right: 140px
+      top: 60px
+    .silent-mode-btn
+      position: absolute
+    .color
+      color: #b05dfc
+    .white
+      color: white
+      font-weight: bolder
+    .duration
+      position: absolute
+      top: 30px
+      right: 30px
+      font-size: 20px
+      line-height: 1
+      letter-spacing: 1.3px
+      color: #c6bfc7
+      display: inline-block
+    .file-name
+      color: #555555
+      position: absolute
+      overflow: hidden
+      text-overflow: ellipsis
+      &::selection
+        background: lightgray !important
+    .file-name-input
+      border-radius: 100px
+      background-color: white
+      border: solid 1px #e1c3fd
+      padding: 8px 30px
+      font-size: 16px
+      font-weight: 500
+      font-style: normal
+      font-stretch: normal
+      line-height: 1.5
+      width: 100%
+      color: #555555
+      outline: none
+      &::selection
+        background: lightgray !important
+    form
+      margin: 0
+      padding: 0
+      display: block
+      position: absolute
+      left: 95px
+      top: 15px
+      width: calc(100% - 275px)
+    .rz-bar-wrapper
+      display: inline-block
+      cursor: pointer
+    .time-slider
+      position: absolute
+    .volume-slider
+      position: absolute
+    .volume-slider, .time-slider
+      min-width: 0 !important
+      .rz-bar-wrapper, .rz-bar
+        min-width: 0 !important
+      .rz-selection
+        background-color: #b05dfc !important
+        visibility: visible !important
+      .rz-bubble
+        display: none
+  .action-edit
+    display: block
+    margin: 30px auto 9px auto
+    padding: 0
+  .edit-btn, .save-btn, .delete-btn, .cancel-btn
+    font-size: 16px
+    font-weight: 500
+    letter-spacing: 1.5px
+    color: #b05dfc
+    margin: 0 15px
+    padding: 5px
+    min-width: 100px
+    display: inline-block
+    border-radius: 50px
+    &:hover
+      box-shadow: 0 2px 30px 0 rgba(0, 0, 0, 0.08)
+  .delete-btn
+    margin: 9px 15px
+  .cancel-btn
+    color: #c6bfc7
+  label.upload
+    display: block
+    span
+      font-size: 16px
+      font-weight: 500
+      letter-spacing: 1.5px
+      color: #b05dfc
+      padding: 5px 20px
+      min-width: 100px
+      display: inline-block
+      border-radius: 50px
+      &:hover
+        box-shadow: 0 2px 30px 0 rgba(0, 0, 0, 0.08)
+
+[device='desktop']
+  .player
+    box-shadow: 0 2px 30px 0 rgba(0, 0, 0, 0.08)
+    .time-slider
+      left: 100px
+      width: calc(100% - 285px)
+      min-width: 100px
+      margin-right: 32px
+    .volume-slider
+      left: calc(100% - 130px)
+      width: 100px
+      .rz-selection, .rz-bar-wrapper
+        max-width: 100px
+    .color
+      font-size: 20px
+      top: 55px
+      right: 142px
+    .white
+      font-size: 40px
+      top: 43px
+      right: 134px
+    .file-name
+      font-size: 18px
+      line-height: 1.11
+      letter-spacing: 1.1px
+      left: 100px
+      top: 30px
+      max-width: 460px
+      width: calc(100% - 285px)
+      height: 20px
+    .volume-slider
+      left: calc(100% - 130px)
+      width: 100px
+
+[device='mobile']
+  .box-audio
+    position: relative
+    display: inline-block
+    max-width: 100vmin
+    width: 100vmin
+    .file-name, .file-name-input, .duration, .edit-btn, .save-btn, .delete-btn, .cancel-btn, label.upload span
+      font-size: calc-w-small(14)
+      font-weight: normal
+      font-style: normal
+      font-stretch: normal
+      line-height: 1.43
+      letter-spacing: calc-w-small(0.9)
+      &:hover
+        box-shadow: none
+        border: none
+    .player
+      box-shadow: 0 calc-w-small(2) calc-w-small(30) 0 rgba(0, 0, 0, 0.08)
+      height: calc-w-small(70)
+      padding: calc-w-small(15) calc-w-small(20)
+      .player-btn
+        width: calc-w-small(40)
+        height: calc-w-small(40)
+      .file-name
+        height: calc-w-small(35)
+        left: calc-w-small(70)
+        top: calc-w-small(15)
+        max-width: calc-w-small(230)
+      form
+        left: calc-w-small(70)
+        top: calc-w-small(10)
+        width: calc-w-small(230)
+      .duration
+        top: calc-w-small(42)
+        right: calc-w-small(20)
+      .time-slider
+        left: calc-w-small(20)
+        top: calc-w-small(65)
+        width: 87%
+      .volume-slider
+        left: calc-w-small(100)
+        top: calc-w-small(39)
+        width: calc-w-small(107)
+      .btn-volume
+        width: calc-w-small(13)
+        height: calc-w-small(15)
+        position: absolute
+        left: calc-w-small(75)
+        top: calc-w-small(45)
+      .color
+        font-size: calc-w-small(18)
+        top: calc-w-small(41)
+        left: calc-w-small(76)
+      .white
+        font-size: calc-w-small(25)
+        top: calc-w-small(37)
+        left: calc-w-small(75)
+        color: white
+      .rz-bar-wrapper, .rz-bar
+        height: calc-w-small(3) !important
+        border-radius: 100px
+      .rz-pointer
+        width: calc-w-small(10) !important
+        height: calc-w-small(10) !important
+    .play
+      height: calc-w-small(95)
+      display: inline-block
+
+[device='mobile'][orientation='landscape']
+  .player
+    .volume-slider
+      top: calc-w-small(31)
+    .time-slider
+      top: calc-w-small(55)

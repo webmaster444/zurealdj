@@ -1,0 +1,35 @@
+class Equipment < ApplicationRecord
+
+  has_attached_file :icon, styles: { medium: '300x300>', thumb: '100x100>' }, default_url: '/images/missing_picture.png'
+  validates_attachment_content_type :icon, content_type: /\Aimage\/.*\Z/
+
+  has_and_belongs_to_many :users
+
+  def self.search_query(params)
+    params[:per_page] ||= 10
+    equipments = Equipment.arel_table
+
+    fields = [
+        equipments[:id],
+        equipments[:title],
+        equipments[:created_at]
+    ]
+
+    query = equipments
+                .project(Arel.star)
+                .group(fields)
+
+    if !params[:sort_column].blank? && ['asc', 'desc'].include?(params[:sort_type])
+      query = query.order(equipments[params[:sort_column.to_sym]].send(params[:sort_type] == 'asc' ? :asc : :desc))
+    else
+      query = query.order(equipments[:id].desc)
+    end
+
+    query.where(equipments[:title].matches("%#{ params[:title] }%"))                                if params[:title].present?
+    query.where(equipments[:created_at].gteq(Date.parse(params[:date_from]).beginning_of_day))      if params[:date_from].present?
+    query.where(equipments[:created_at].lteq(Date.parse(params[:date_to]).end_of_day))              if params[:date_to].present?
+
+    query
+  end
+
+end

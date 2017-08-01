@@ -1,0 +1,77 @@
+.navbar.top-navbar
+  .container
+    table
+      tr
+        td.left-menu
+          a href="/"
+            img.logo src="/images/icons/img-logo-zu-purple.png"
+        td.right-menu
+          ul.desktop-only.right-menu-desktop
+            li
+              a.dj-black-link href="#messages"
+                | Inbox
+                .count ng-show="unread_messages_count > 0"
+                  | {{ unread_messages_count }}
+            li
+              .dropdown.dj-notifications-dropdown[uib-dropdown is-open="$parent.notificationsDropdownOpen" auto-close="outsideClick" on-toggle="openNotifications()"]
+                a#toggle-notifications type="button" uib-dropdown-toggle=true ng-disabled="disabled"
+                  i.dj-bell ng-class="$parent.notificationsDropdownOpen ? 'active': ''"
+                  i.fa.fa-circle.notification-icon aria-hidden="true" ng-show="unread_notifications_count > 0"
+
+                #notifications-menu.dropdown-menu uib-dropdown-menu=true role="menu" aria-labelledby="toggle-notifications"
+                  .dj-dropdown-header
+                    a.dj-black-link
+                      | Notifications
+                  div ng-include="'common/templates/notifications-dropdown.html'"
+                  .dj-dropdown-footer
+                    a.pink-link href="#notifications" ng-click="$parent.notificationsDropdownOpen = false"
+                      | Show All
+
+            li
+              .dropdown.dj-profile-dropdown[uib-dropdown]
+                a.dropdown-toggle.count-info[aria-expanded="false" aria-haspopup="true" uib-dropdown-toggle]
+                  img.profile-image> ng-src="{{ $current_user.avatar_present? $current_user.avatar.small : '/images/icons/img-profile-photo-mini.png' }}"
+                  div.profile-user-name-desktop
+                    | {{ $current_user.name }}
+                  .drop<
+                ul[uib-dropdown-menu]
+                  li
+                    a href="#edit_profile"
+                      | Edit profile
+                  li
+                    table
+                      tr
+                        td.plan-title
+                          | {{ $current_user.subscription.title || "Limited" }}
+                        td.upgrade_plan
+                          a.upgrade_plan href="#pricing"
+                            | Upgrade plan
+                  li
+                    a href="#profile"
+                      | Profile
+                  li
+                    a ng-click="logout()" href="#"
+                      | Sign out
+          ul.mobile-only.right-menu-mobile
+             li
+               .mobile-menu-button ng-click="openMobileMenu()"
+
+
+.second-nav.desktop-only
+  .page-block
+    ul.second-menu
+      li#first ng-class="{active: ['djs', 'dj'].includes($state.current.name)}"
+        a href="#djs"
+          | Browse DJs
+      li class="{{ $state.current.name.indexOf('profile') >= 0 ? 'active' : '' }}"
+        a href="#profile"
+          | Profile
+      li class="{{ $state.current.name.indexOf('event') >= 0 ? 'active' : '' }}"
+        a href="#events"
+          | Bookings
+      li class="{{ $state.current.name.indexOf('favorites') >= 0 ? 'active' : '' }}"
+        a href="#favorites"
+          | My Faves
+      li class="{{ $state.current.name.indexOf('settings') >= 0 ? 'active' : '' }}"
+        a href="#settings"
+          | Settings

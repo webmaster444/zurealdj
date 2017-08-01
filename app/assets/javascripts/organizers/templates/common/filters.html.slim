@@ -1,0 +1,41 @@
+.djs-search-mobile
+  .text-center.filter-header
+    | Filtering
+  hr
+  div
+    .zurealdj-header-1
+      | Price range
+    .price-filter
+      rzslider rz-slider-model="filters.price_from" rz-slider-high="filters.price_to" rz-slider-options="slider.options"
+      .price-from
+        i.fa.fa-dollar
+        input.price-input type="number" ng-model="filters.price_from"
+      .price-to
+        i.fa.fa-dollar
+        input.price-input type="number" ng-model="filters.price_to"
+    hr
+    .zurealdj-header-1
+      | Event types
+    div
+      .zureal-checkbox ng-repeat="event_type in filters.event_types"
+        input type="checkbox" ng-model="event_type.checked" id="et{{ $index }}-mobile"
+        label for="et{{ $index }}-mobile"
+          span
+          | {{ event_type.title }}
+    hr
+    .zurealdj-header-1
+      | Genres
+    div
+      .zureal-checkbox ng-repeat="genre in filters.genres"
+        input type="checkbox" ng-model="genre.checked" id="g{{ $index }}-mobile"
+        label for="g{{ $index }}-mobile"
+          span
+          | {{ genre.title }}
+    hr
+      .actions
+        .pull-left
+          a.slider-btn.cancel ng-click="resetFilters()"
+            | Reset
+        .pull-right
+          a.slider-btn.apply ng-click="retrieveDjs(); closeFilterDialog()"
+            | Show {{ count }} DJs

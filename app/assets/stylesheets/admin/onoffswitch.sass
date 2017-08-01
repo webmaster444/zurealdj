@@ -1,0 +1,100 @@
+@import "variables"
+
+.onoffswitch.multiple-status
+.onoffswitch
+  position: relative
+  width: 90px
+  -webkit-user-select: none
+  -moz-user-select: none
+  -ms-user-select: none
+
+.onoffswitch-checkbox
+  display: none
+
+.onoffswitch-label
+  display: block
+  overflow: hidden
+  cursor: pointer
+  border-radius: 20px
+  border: 1px solid gray
+  box-shadow: 0 2px 30px 0 rgba(0, 0, 0, 0.08)
+
+.onoffswitch-inner
+  display: block
+  width: 200%
+  margin-left: -100%
+  transition: margin 0.3s ease-in 0s
+  &:before, &:after
+    display: block
+    float: left
+    width: 50%
+    height: 25px
+    padding: 0
+    line-height: 16px
+    font-size: 12px
+    color: white
+    font-family: Trebuchet, Arial, sans-serif
+    font-weight: bold
+    box-sizing: border-box
+  &:before
+    content: "ACTIVE"
+    padding: 5px 0
+    padding-left: 10px
+    background-color: $current-color
+    color: #FFFFFF
+  &:after
+    content: "INACTIVE"
+    padding: 5px 0
+    padding-right: 7px
+    background-color: white
+    color: gray
+    text-align: right
+
+.onoffswitch-switch
+  display: block
+  width: 25px
+  height: 25px !important
+  margin: 0
+  background: #FFFFFF
+  position: absolute
+  top: 1px
+  bottom: 0
+  right: 65px
+  border: 1px solid gray
+  border-radius: 20px
+  transition: all 0.3s ease-in 0s
+
+.onoffswitch-checkbox:checked + .onoffswitch-label
+  .onoffswitch-inner
+    margin-left: 0
+  .onoffswitch-switch
+    right: 0px
+
+.onoffswitch.multiple-status
+  width: 100px
+
+.onoffswitch-inner.multiple-status
+  &:before
+    content: "APPROVED"
+    background-color: #23C6C8
+    color: #FFFFFF
+  &:after
+    content: "REJECTED"
+    background-color: $current-color
+    color: #FFFFFF
+
+.onoffswitch-switch.multiple-status
+  right: 83px
+
+.onoffswitch-inner.custom
+  &:before
+    content: "OPEN"
+    padding-left: 5px
+    background-color: $current-color
+    color: #FFFFFF
+  &:after
+    content: "CLOSE"
+    padding-right: 5px
+    background-color: #EEEEEE
+    color: #999999
+    text-align: right

@@ -1,0 +1,31 @@
+div
+  div.login-alert
+    a.btn-close href='#' ng-show='isMobile()' ng-click="$parent.ngDialogClose()"
+
+    .text-center
+      div style="margin-bottom: 30px"
+        .h1-text
+          | Recovery account
+      div
+        .text-description
+          | Enter your email address and we will
+        .text-description
+          | send you a link to reset your
+        .text-description
+          | password
+
+    form.m-t role="form" novalidate=true ng-submit="submitForgotPassword()"
+
+      .form-group
+        input.landing-input placeholder=("Email address") type="email" ng-model="email"
+
+      .hr-line-dashed
+
+      button.ladda-button.btn-submit type="submit"  data-style="expand-left" ladda="formPending"
+        | Submit
+
+      div.text-center style="margin-top: 15px"
+        .text-description style="color: #8a8a8a"
+          | Remember your credentials?
+          a.text-description.current-color ng-click="openLoginDialog()"
+            |  Log in

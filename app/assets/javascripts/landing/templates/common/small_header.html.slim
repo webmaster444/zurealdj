@@ -1,0 +1,22 @@
+div class="{{ $state.current.name == 'home'? 'home' : 'pages' }}"
+  div.head-nav
+    .page-block
+      a href="/" ng-hide="isMobile()"
+        img.small-logo.white-logo  src="/images/icons/img-logo-zu-small.png"
+        img.small-logo.purple-logo  src="/images/icons/img-logo-zu-purple.png"
+      div class="{{ isMobile()? 'text-center' : 'pull-right' }}"
+        a.head-link href="#pricing"
+          span
+            | Pricing
+        a.head-link ng-click="$state.go('home'); openLoginDialog()" ng-hide="current_user"
+          span
+            | Log in
+        a.head-link ng-click="$state.go('home'); openRegistrationDialog()" style="margin-right: 0" ng-hide="current_user"
+          span
+            | Sign up
+        a.head-link ng-show="current_user" href="/{{ current_user.role }}#/profile"
+          span
+            | {{ current_user.email }}
+        a.head-link ng-click="logout()" style="margin-right: 0" ng-show="current_user"
+          span
+            | Logout

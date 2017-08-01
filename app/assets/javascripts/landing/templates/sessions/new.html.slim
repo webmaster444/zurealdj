@@ -1,0 +1,37 @@
+div
+  div.login-alert
+    a.btn-close href='#' ng-show='isMobile()' ng-click="$parent.ngDialogClose()"
+    .text-center#welcome-to-zureal
+      .h1-text
+        | Welcome to
+      img.small-logo.display-inline-block src="/images/icons/img-logo-zu-purple.png"
+    .text-center.btn-tab
+      a.btn-white.btn-tab.btn-tab-left
+        | Log in
+      a.btn-white.btn-tab.btn-tab-right.btn-tab-light ng-click="openRegistrationDialog()"
+        | Sign up
+
+    form.m-t novalidate=true ng-submit="submitLoginCredentials()" name="loginForm"
+
+      .form-group
+        input.landing-input placeholder="Email address" required="" type="email" ng-model="session.email" name="email"
+
+      .form-group
+        input.landing-input placeholder="Password" required="" type="password" ng-model="session.password" name="password"
+      div ng-show="validation_errors"
+        .error ng-repeat="error in validation_errors"
+          | {{ error }}
+      .hr-line-dashed
+
+      button.btn-submit.ladda-button data-style="expand-left" ladda="processing" type="submit"
+        | Log in
+
+      .text-center style="margin: 15px auto"
+        a.blue ng-click="loginViaFacebook()"
+          | Log in with Facebook
+
+      .hr-line-dashed
+
+      .text-center style="margin: 15px auto"
+        a.current-color ng-click="openForgotPasswordDialog()"
+          | Forgot password?

@@ -1,0 +1,107 @@
+div.page
+  div ng-include="'landing/templates/common/header.html'"
+
+  div.page-content-dark.transform style="margin-top: -50px"
+    div.page-block.how-it-works.transform-none
+      .text-center.h1-text
+        | HOW IT WORKS
+      div.content.text-center
+        .col-center
+          .col-md-3.col-center
+            .row
+              div.circle-white
+                img.content-icon src="/images/icons/ic-profile.png"
+            .row
+              span.text-h2
+                | Become a member
+            .row
+              span.text-description
+                | Join ZuReal and fill your profile info
+
+          .col-md-3.col-center
+            .row
+              div.circle-white
+                img.content-icon src="/images/icons/ic-event.png"
+            .row
+              span.text-h2
+                | Create an event
+            .row
+              span.text-description
+                | Create and describe your events as you like
+
+        .col-center
+          .col-md-3.col-center
+            .row
+              div.circle-white
+                img.content-icon src="/images/icons/ic-book-dj.png"
+            .row
+              span.text-h2
+                | Book DJs
+            .row
+              span.text-description
+                | Explore our DJ data base and find the best
+
+          .col-md-3.col-center
+            .row
+              div.circle-white
+                img.content-icon src="/images/icons/ic-play-live.png"
+            .row
+              span.text-h2
+                | Play Live
+            .row
+              span.text-description
+                | DJs are hired for various events Australia wide
+      div style="height: 130px; width: 100%; clear: both"
+
+  div.page-content-light.transform
+    div.page-block.djs.transform-none
+      .text-center.h1-text
+        | HOT RIGHT NOW
+      .content.text-center
+        .row
+          .col-md-4.col-sm-4.col-xs-4.col-center ng-repeat="top_dj in top_rated_djs"
+
+            img.content-icon ng-src="{{ top_dj.avatar }}"
+
+            span.text-name
+              | {{ top_dj.dj_or_venue_name }}
+            span.text-name ng-hide="top_dj.dj_or_venue_name"
+              | {{ top_dj.name }}
+            span.text-description.text-top-dj ng-show="top_dj.dj_or_venue_name"
+              | {{ top_dj.name }}
+            span.text-description.text-top-dj
+              | {{ top_dj.about }}
+
+
+      div style="height: 60px; width: 100%; clear: both"
+
+  div.page-content-dark.transform
+    div.page-block.transform-none
+      .text-center.h1-text
+        | ZUREAL THEORY
+      img.ic_quote src="/images/icons/ic-quote.png"
+      div uib-carousel=true interval="0" active="true" no-wrap="false"
+        div uib-slide=true ng-repeat="slide in slides" index="$index"
+          .carousel-caption
+            p
+              | {{ slide.content }}
+              img src="/images/founder_320.png"
+              .Magnetik-Zu
+                | Magnetik Zu
+              .Founder
+                | Founder
+
+  div.page-content-light.transform
+    div.instagram-feed.page-block.text-center.transform-none
+      .h1-text
+        | INSTAGRAM FEED
+      div.news
+        .row
+          .col-center ng-repeat="feed_img in instagram_feed" ng-if="$even"
+            .col-md-3.col-center ng-hide="$index > 3 && isMobile()"
+              img src="{{ feed_img.img_low_url }}"
+            .col-md-3.col-center ng-hide="$index > 3 && isMobile()" ng-if="instagram_feed[ $index+1 ]"
+              img src="{{ instagram_feed[ $index+1 ].img_low_url }}" ng-if="instagram_feed[ $index+1 ]"
+
+  div.page-footer.transform
+  div ng-include="'common/templates/footer.html'"

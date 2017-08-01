@@ -1,0 +1,115 @@
+.event
+  .event-header
+    .background-img style="{{ event.image.url != '/images/img-event-photo.png' ? ('background-image: url(' + event.image.original + ')') : '' }}"
+      .custom-blur
+  .page-block.relative
+    .inf-container
+      .inf
+        .title
+          | {{ event.title }}
+
+  .event-content
+    .page-block
+      .event-image
+        .img-event style="background-image: url({{ event.image.url }})"
+          .gradient
+        a.btn-action.purple.top-pictures ng-click="openEventDialog(event.id)"
+          | Edit
+
+      .general
+        .block
+          .block-title
+            | Main Information
+          table
+            tr
+              td.td-title
+                | Start date:
+              td.td-content
+                | {{ event.start_date }}
+            tr
+              td.td-title
+                | Start time:
+              td.td-content
+                | {{ event.start_time }}
+            tr
+              td.td-title
+                | End date:
+              td.td-content
+                | {{ event.end_date }}
+            tr
+              td.td-title
+                | End time:
+              td.td-content
+                | {{ event.end_time }}
+            tr
+              td.td-title
+                | Status:
+              td.td-content.status class="{{ event.status }}"
+                | {{ event.status }}
+            tr
+              td.td-title
+                | Address:
+              td.td-content
+                span ng-show="event.city"
+                  | {{ event.city}}
+                  span ng-show="event.country"
+                    | {{ ', ' }}
+                span
+                  | {{ event.country.title }}
+            tr
+              td.td-title
+                | Venue Address:
+              td.td-content
+                | {{ event.venue_name }}
+            tr
+              td.td-title
+                | Genres:
+              td.td-content
+                | {{ event.genres_string }}
+            tr
+              td.td-title
+                | Event type:
+              td.td-content
+                | {{ event.event_type }}
+            tr
+              td.td-title
+                | Dj slots:
+              td.td-content
+                | {{ event.djs.length }} of {{ event.dj_slots }}
+
+    .page-block
+      .artists
+        .title
+          | Artists
+        .index
+          .profile-item ng-repeat="dj in event.djs track by $index"
+            img ng-src="{{ dj.avatar }}"
+            a.icon.delete ng-click="djDestroy(dj.booking_id, dj.name)"
+            a.btn-action.purple.top-pictures ng-click="openRateDialog(dj)" ng-show="!dj.rated && dj.booking_status == 'Confirmed'"
+              | Rate Now!
+            span.btn-action.white.top-pictures ng-show="dj.booking_status == 'Confirmed' && dj.rated"
+              | Rated
+            .inf
+              a.name href="#djs/{{ dj.personal_url || dj.id }}"
+                | {{ dj.dj_or_venue_name }}
+              a.name href="#djs/{{ dj.personal_url || dj.id }}" ng-hide="dj.dj_or_venue_name"
+                | {{ dj.name }}
+              .small-text.address ng-show="dj.dj_or_venue_name"
+                | {{ dj.name }}
+              .small-text.address ng-hide="dj.city || dj.country"
+                | Adress : Empty
+              .small-text.address ng-show="dj.city || dj.country"
+                span ng-show="dj.city"
+                  | {{ dj.city}}
+                  span ng-show="dj.country"
+                    | {{ ', ' }}
+                span
+                  | {{ dj.country }}
+              .small-text.genres
+                | {{ dj.genres }}
+              .rating
+                span.rating-icons[uib-rating ng-model="dj.rating" max="5" state-on="'fire fire-active icon'" state-off="'fire fire-inactive icon'" enable-reset='false' read-only="true"]
+              .small-text.genres
+                | Booking Status:
+                span.status class="{{ dj.booking_status }}"
+                  | {{ ' ' + dj.booking_status }}

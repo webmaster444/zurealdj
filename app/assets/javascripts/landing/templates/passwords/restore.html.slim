@@ -1,0 +1,22 @@
+div
+
+  div.login-alert
+    a.btn-close href='#' ng-show='isMobile()' ng-click="$parent.ngDialogClose()"
+
+    form.m-t role="form" novalidate=true ng-submit="submitResetPassword()"
+
+      .form-group
+        input.landing-input placeholder="Password" type="password" ng-model="password" name='password'
+
+      .form-group
+        input.landing-input placeholder="Password Confirmation" type="password" ng-model="password_confirmation" name='password_confirmation'
+
+      .hr-line-dashed
+
+      input.btn-submit data-style="expand-left" ladda="formPending" type="submit" value="Submit"
+
+    div.text-center style="margin-top: 15px"
+      .text-description style="color: #8a8a8a"
+        | Remember your credentials?
+        a.text-description.current-color ng-click="openLoginDialog()"
+          |  Log in

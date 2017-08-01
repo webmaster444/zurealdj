@@ -1,0 +1,27 @@
+div.page-block.registration
+  .text-center
+    img.small-logo.display-inline-block src="/images/icons/img-logo-zu-purple.png"
+  hr
+  .navigation-bar.text-center
+    .step.small-text
+      .pull-left
+        a.slider-btn.back ng-click="back()"
+          | Back
+      | Step 3 of 4
+      .pull-right
+        a.small-text.slider-btn.next ng-click="next()"
+          | Next
+  hr
+  div
+    .question.text-center
+      | Enter the company or agency name which you represent
+    .select.text-center.small-text
+      | You're almost ready to create an event and start booking artists!
+    .container
+      .error ng-repeat="error in validation_errors.company_name"
+        | {{ error }}
+      .text-center
+        input.register-input.text-left type="text" ng-model="user.company_name"
+    .text-center.leave-it-blanck
+      | (Optional)
+  div.tmp

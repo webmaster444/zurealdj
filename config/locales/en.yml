@@ -1,0 +1,268 @@
+# Files in the config/locales directory are used for internationalization
+# and are automatically loaded by Rails. If you want to use locales other
+# than English, add the necessary files in this directory.
+#
+# To use the locales, use `I18n.t`:
+#
+#     I18n.t 'hello'
+#
+# In views, this is aliased to just `t`:
+#
+#     <%= t('hello') %>
+#
+# To use a different locale, set it with `I18n.locale`:
+#
+#     I18n.locale = :es
+#
+# This would use the information in config/locales/es.yml.
+#
+# To learn more, please read the Rails Internationalization guide
+# available at http://guides.rubyonrails.org/i18n.html.
+
+en:
+  hello: "Hello world"
+  languages:
+    english: 'English'
+    ukrainian: 'Ukrainian'
+    language: "Language"
+
+  profile:
+    edit_profile: 'Edit profile'
+    labels:
+      login: 'Login'
+      password: 'Password'
+      password_confirmation: 'Password Confirmation'
+      leave_blank: "Leave blank if you don't want to change it"
+      current_password: 'Current Password'
+    messages:
+      wrong_current_password: 'Wrong current password.'
+      profile_updated: 'Profile successfully updated.'
+
+  settings:
+    messages:
+      wrong_current_password: 'Wrong Old password.'
+      settings_updated: 'Settings successfully updated.'
+
+  validations:
+    cant_be_blank: "Can't be blank."
+
+  headers:
+    organizers: 'Organisers'
+    djs: 'DJs'
+    bookings: 'Bookings'
+    events: 'Events'
+    genres: 'Genres'
+    cancelations: 'Cancelations'
+    event_categories: 'Event categories'
+    equipments: 'Equipments'
+    who_we_are_pages: 'Who we are pages'
+    crew_pages: 'Crew pages'
+    how_we_work_pages: 'How we work pages'
+    policies_pages: 'Policies pages'
+    terms_n_conditions_pages: 'Terms n conditions pages'
+    cancelations_pages: 'Cancelations pages'
+    email_sender: "Email sender"
+
+  datetime:
+    ago: 'ago'
+    at: 'at'
+  validations:
+    cant_be_blank: "Can't be blank."
+
+  actions:
+    title: "Actions"
+    submit: "Submit"
+    confirm: "Confirm"
+    cancel: "Cancel"
+    edit: 'Edit'
+    delete: 'Delete'
+    view: 'View'
+
+  cancelations_page:
+    new: "New Cancelations page"
+    edit: "Edit Cancelations page"
+    fields:
+      content: "Content"
+      created_at: "Created at"
+      updated_at: "Updated at"
+    messages:
+      success_upsert: 'Cancelations page successfully saved.'
+
+  email_sender:
+    fields:
+      address: "Addsess"
+      port: "Port"
+      domain: "Domain"
+      authentication: "Authentication"
+      user_name: "User Name"
+      password: "Password"
+      enable_starttls_auto: "Enable Starttls Auto"
+
+  terms_n_conditions_page:
+    new: "New Terms n conditions page"
+    edit: "Edit Terms n conditions page"
+    fields:
+      content: "Content"
+      created_at: "Created at"
+      updated_at: "Updated at"
+    messages:
+      success_upsert: 'Terms n conditions page successfully saved.'
+
+  policies_page:
+    new: "New Policies page"
+    edit: "Edit Policies page"
+    fields:
+      content: "Content"
+      created_at: "Created at"
+      updated_at: "Updated at"
+    messages:
+      success_upsert: 'Policies page successfully saved.'
+
+  how_we_work_page:
+    new: "New How we work page"
+    edit: "Edit How we work page"
+    fields:
+      content: "Content"
+      created_at: "Created at"
+      updated_at: "Updated at"
+    messages:
+      success_upsert: 'How we work page successfully saved.'
+
+  crew_page:
+    new: "New Crew page"
+    edit: "Edit Crew page"
+    fields:
+      content: "Content"
+      created_at: "Created at"
+      updated_at: "Updated at"
+    messages:
+      success_upsert: 'Crew page successfully saved.'
+
+  who_we_are_page:
+    new: "New Who we are page"
+    edit: "Edit Who we are page"
+    fields:
+      content: "Content"
+      created_at: "Created at"
+      updated_at: "Updated at"
+    messages:
+      success_upsert: 'Who we are page successfully saved.'
+
+  equipment:
+    new: "New Equipment"
+    edit: "Edit Equipment"
+    fields:
+      icon: "Icon"
+      title: "Title"
+      created_at: "Created at"
+      updated_at: "Updated at"
+    messages:
+      success_upsert: 'Equipment successfully saved.'
+
+  event_category:
+    new: "New Event category"
+    edit: "Edit Event category"
+    fields:
+      title: "Title"
+      created_at: "Created at"
+      updated_at: "Updated at"
+    messages:
+      success_upsert: 'Event category successfully saved.'
+
+  cancelation:
+    new: "New Cancelation"
+    edit: "Edit Cancelation"
+    fields:
+      title: "Title"
+      created_at: "Created at"
+      updated_at: "Updated at"
+    messages:
+      success_upsert: 'Cancelation successfully saved.'
+
+  genre:
+    new: "New Genre"
+    edit: "Edit Genre"
+    fields:
+      title: "Title"
+      created_at: "Created at"
+      updated_at: "Updated at"
+    messages:
+      success_upsert: 'Genre successfully saved.'
+
+  event:
+    new: "New Event"
+    edit: "Edit Event"
+    fields:
+      title: "Title"
+      city: "City"
+      country: "Country"
+      start_date: "Start date"
+      end_date: "End date"
+      image: "Image"
+    messages:
+      success_upsert: 'Event successfully saved.'
+
+  booking:
+    new: "New Booking"
+    edit: "Edit Booking"
+    fields:
+      from_date: "From date"
+      to_date: "To date"
+      rate: "Rate"
+      status: "Status"
+      dj: "DJ"
+      organizer: "Organizer"
+      event: "Event"
+    messages:
+      success_upsert: 'Booking successfully saved.'
+
+  general:
+    created_at: "Created at"
+    updated_at: "Updated at"
+
+  dj:
+    new: "New DJ"
+    edit: "Edit DJ"
+    fields:
+      name: "Name"
+      city: "City"
+      country: "Country"
+      about: "About"
+      sample: "Sample"
+      price: "Price"
+      photo: "Photo"
+      created_at: "Created at"
+      updated_at: "Updated at"
+    messages:
+      success_upsert: 'DJ successfully saved.'
+
+  organizer:
+    new: "New Organiser"
+    edit: "Edit Organiser"
+    fields:
+      city: "City"
+      country: "Country"
+      about: "About"
+      created_at: "Created at"
+      updated_at: "Updated at"
+      photo: "Photo"
+      name: "Name"
+    messages:
+      success_upsert: 'Organiser successfully saved.'
+
+  user:
+    fields:
+      email: 'Email'
+      personal_url: 'Personal url'
+      password: 'Password'
+      password_confirmation: 'Password confirmation'
+
+  about_slide:
+    new: "Add new slide"
+    edit: "Edit slide"
+    content: "Slide text"
+    messages:
+      success_upsert: "Successfully saved"
+
+  errors:
+    format: "%{message}"

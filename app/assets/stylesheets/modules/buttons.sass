@@ -1,0 +1,346 @@
+@import 'variables_and_functions'
+
+.btn-submit
+  background-color: $current-color
+  border: none
+  color:  white
+  display: inline-block
+  outline: none
+  font-weight: 500
+  text-align: center
+  border-radius: 25px
+  padding: 14px
+  margin: 15px auto
+  font-size: 18px
+  letter-spacing: 1.7px
+  width: 100%
+  &:hover, &:active
+    background-color: $current-color
+    color:  white
+
+.btn-white
+  background-color: white
+  border: 1px solid $current-color
+  color:  $current-color
+  display: inline-block
+  &:hover, &:active
+    background-color: white
+    color:  $current-color
+    border: 1px solid $current-color
+
+.icon
+  display: inline-block
+  background-position: center
+  background-size: contain
+  background-repeat: no-repeat
+.ic-mixcloud
+  background-image: url(/images/icons/ic-mixcloud.png)
+  width: 30px
+  height: 18px
+.ic-facebook
+  background-image: url(/images/icons/ic-facebook.png)
+  width: 9px
+  height: 18px
+.ic-instagram
+  background-image: url(/images/icons/ic-instagram.png)
+  width: 21px
+  height: 21px
+.like
+  background-image: url(/images/icons/ic-like.png)
+  &:hover
+    background-image: url(/images/icons/ic-like-hover.png)
+.like-active
+  background-image: url(/images/icons/ic-like-active.png)
+.delete
+  background-image: url(/images/icons/ic-delete-dj.png)
+
+.btn-close
+  background-image: url(/images/icons/ic-close-grey@2x.png)
+  background-position: center
+  background-size: cover
+  background-repeat: no-repeat
+  padding: 0
+  position: absolute
+
+.hover
+  &:hover
+    color: $current-color !important
+
+.btn-equipment
+  width: 138px
+  height: 124px
+  border-radius: 4px
+  background-color: white
+  border: solid 1px #f5f5f5
+  margin: 25px 7px
+  vertical-align: top
+  .title
+    font-size: 16px !important
+    line-height: 1
+    letter-spacing: -0.3px !important
+    text-align: center
+    color: #cccccc
+    margin: 0 auto !important
+  img
+    height: 48px
+    opacity: 0.3
+    -webkit-filter: grayscale(100%)
+    filter: grayscale(100%)
+    margin: 20px auto
+
+.btn-equipment.isactive
+  border: none
+  img
+    -webkit-filter: none !important
+    filter: none !important
+    opacity: 1
+  .title
+    color: #4a4a4a !important
+
+.btn-equipment.active
+  img
+    -webkit-filter: none !important
+    filter: none !important
+    opacity: 1
+  .title
+    color: #4a4a4a !important
+
+.select-button
+  display: inline-block
+  margin: 0
+  .btn-checkbox
+    display: inline-block
+    border-radius: 4px
+    background-color: white
+    width: 190px
+    margin: 5px 25px
+    padding: 10px 20px
+    font-size: 14px
+    line-height: 1.43
+    color: #c6bfc7
+    border: solid 1px #f5f5f5
+  .active
+    color: $current-color
+    box-shadow: 0 2px 30px 0 rgba(0, 0, 0, 0.08)
+
+
+[device='desktop']
+  .btn-white
+    border-radius: 25px
+    padding: 15px 33px
+    margin: 15px auto
+    font-size: 16px
+  .slider-btn
+    padding: 13px 36px
+    border-radius: 100px
+    font-size: 18px
+    font-weight: 500
+    letter-spacing: 1.7px
+  .next, .apply
+    background-color: #b05dfc
+    color: white !important
+    border: solid 1px #afafaf
+  .back, .cancel
+    background-color: white
+    color: $current-color !important
+    border: solid 1px #e6e6e6
+  .btn-equipment
+    margin: 25px 7px
+  .like, .like-active, .delete
+    width: 50px
+    height: 50px
+
+  .col-social
+    margin: auto 20px
+    padding: 0
+    display: inline-block
+  .col-social#first
+    margin-left: 20px
+
+.pink-link
+  font-size: 16px
+  font-weight: 500
+  letter-spacing: 1.5px
+  color: #b05dfc
+  &:hover
+    color: #b05dfc
+
+.dj-black-link
+  font-size: 16px
+  color: #555555
+  font-weight: normal
+  &:hover
+    font-weight: 600
+  .count
+    display: inline-block
+    height: 18px
+    padding: 0 5.5px
+    border-radius: 18px
+    background-color: #b05dfc
+    font-size: 13px
+    font-weight: 500
+    color: #ffffff
+
+.dj-black-text
+  font-size: 16px
+  color: #555555
+  font-weight: normal
+  font-weight: 500
+
+.dj-gray-text
+  font-family: CeraPro
+  font-size: 14px
+  font-weight: normal
+  font-style: normal
+  font-stretch: normal
+  line-height: 1.43
+  letter-spacing: 1.3px
+  color: #938e94
+
+//  Cancel button
+.btn.btn-outline-primary
+  border-radius: 100px
+  border: solid 1px #e6e6e6
+  padding: 14px 31px
+  font-family: CeraPro
+  font-size: 16px
+  font-weight: 500
+  letter-spacing: 1px
+  text-align: center
+  color: $current-color
+
+.btn.btn-primary
+  border-radius: 100px
+  border: solid 1px #e6e6e6
+  padding: 14px 31px
+  font-family: CeraPro
+  font-size: 16px
+  font-weight: 500
+  letter-spacing: 1px
+  text-align: center
+  color: white
+
+.rating
+  margin-top: 10px
+
+.rating-icons
+  color: #fff918
+  font-size: 20px
+  span
+    outline: none !important
+
+.fire
+  width: 15px
+  height: 20px
+
+.fire-inactive
+  background-image: url(/images/icons/ic-fire-grey@3x.png)
+
+.fire-active
+  background-image: url(/images/icons/ic-fire-yellow@3x.png)
+
+.green, .status.active, .status.confirmed
+  color: #45b64a !important
+
+.red, .status.cancelled, .status.finished
+  color: #fc5d77 !important
+
+.purple, .status.pending, .status.upcoming
+  color: #b05dfc !important
+
+.btn-action
+  text-align: center
+  border-radius: 100px
+  padding: 15px 30px
+  min-width: 235px
+  font-size: 16px
+  font-weight: 500
+  letter-spacing: 1.5px
+  display: inline-block
+
+.btn-action.purple
+  background-color: $current-color
+  color: white !important
+
+.btn-action.white
+  background-color: white
+  color: #8a8a8a
+
+.top-pictures
+  margin-top: -70px
+
+
+[device='mobile']
+  .btn-equipment
+    margin: 5px
+  .select-button
+    margin: auto 5px
+    text-align: center
+  .btn-checkbox
+    margin: 5px auto
+    text-align: left
+  .like, .like-active, .delete
+    width: 40px
+    height: 40px
+  .col-social
+    margin: auto 20px
+  .slider-btn
+    padding: 10px 20px
+    border-radius: 100px
+  .next, .apply
+    background-color: #b05dfc
+    color: white !important
+  .back, .cancel
+    background-color: white
+    color: $current-color !important
+    border: solid 1px #e6e6e6
+  .btn-action
+    padding: 13px 20px
+    font-size: 12px
+    font-weight: 500
+    line-height: 1.17
+    letter-spacing: 0.8px
+    min-width: 100px
+  .btn-submit
+    letter-spacing: 1.3px
+  .btn-white
+    border-radius: 25px
+    padding: 13px 33px
+    margin: 15px auto
+    font-size: 14px
+    border-width: 1px
+    &:hover, &:active
+      border-width: 1px
+
+.dj-btn-outline
+  padding: 13px 51px
+  border-radius: 100px
+  background-color: #ffffff
+  border: solid 1px #b05dfd
+  font-size: 16px
+  font-weight: 500
+  letter-spacing: 1.5px
+  color: #b05dfc
+  cursor: pointer
+  display: inline-block
+  &:hover
+    background-color: #b05dfd
+    color: white
+
+.dj-btn-muted
+  padding: 13px 51px
+  border-radius: 100px
+  background-color: #ffffff
+  border: solid 1px #c7bfc7
+  font-size: 16px
+  font-weight: 500
+  letter-spacing: 1.5px
+  text-align: center
+  color: #c6bfc7
+  display: inline-block
+  &:hover
+    color: #c6bfc7
+.flex
+  display: flex
+.margin-left-ten
+  margin-left: 10px

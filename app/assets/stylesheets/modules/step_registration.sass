@@ -1,0 +1,140 @@
+@import "variables_and_functions"
+
+.dj-page, .organizer-page
+  font-family: CeraPro
+  font-weight: normal
+  font-style: normal
+  font-stretch: normal
+  .page-footer
+    margin: 0 !important
+
+.registration, .edit-profile
+  .question
+    text-align: center
+    color: #555555
+    letter-spacing: 3px
+  .small-text
+    text-align: center
+    color: #555555
+    line-height: 1.33
+  .error
+    text-align: center
+    margin: 10px 0
+  .leave-it-blanck
+    text-align: center
+    color: #8a8a8a
+    line-height: 1.5
+    letter-spacing: 1.5px
+  .dash
+    color: #e6e6e6
+    font-size: 20px
+    font-weight: normal
+  hr
+    width: 300%
+    margin-left: -100%
+.edit-profile
+  hr
+    width: 100%
+    margin: inherit
+
+.inline-block
+  display: inline-block
+
+
+
+[device='desktop']
+  .registration, .edit-profile
+    .step
+      margin: 23px auto
+    .question
+      font-size: 32px
+      margin-top: 50px
+    .small-text
+      font-size: 18px
+      letter-spacing: 1.7px
+    .select
+      margin-top: 20px
+    .form-row
+      margin: 15px auto
+      padding: 0
+    .container
+      margin-top: 50px
+      max-width: 1000px
+    .tmp
+      min-height: 200px
+    .leave-it-blanck
+      font-size: 16px
+      margin-top: 50px
+    .equipments-container
+      max-width: 800px !important
+      margin: auto
+      margin-top: 25px
+      width: auto
+    .step-5-input
+      width: 170px
+      display: inline-block
+      margin: 15px
+
+
+
+[device='mobile']
+  .dj-page, .organizer-page
+    .page-footer
+      display: none
+  .registration, .edit-profile
+    padding: 0 10px
+    text-align: center
+    .small-logo
+      width: 150px
+      height: 50px
+      margin-top: 20px
+    .step
+      margin: 15px auto
+    .question
+      font-size: 20px
+      margin-top: 30px
+      display: inline-block
+    .small-text
+      font-size: 14px
+      letter-spacing: 1.3px
+    .select
+      margin-top: 20px
+      display: inline-block
+    .form-row
+      margin: 20px 10px
+      text-align: left
+      .inline-block
+        text-align: center
+        width: 100%
+        .step-5-input
+          text-align: left
+          display: inline-block
+          margin-top: 20px
+    .container
+      max-width: 100vmin
+      margin-top: 10px
+    .register-input
+      margin: 30px 0
+    .leave-it-blanck
+      font-size: 14px
+      display: inline-block
+    .equipments-container
+      margin: auto
+      margin-top: 10px
+      max-width: 310px
+      .select-button
+        margin: auto
+    .step-5-input
+      width: 130px
+      display: inline-block
+      margin: 5px
+    .text-center
+      max-width: 90vmin
+
+
+
+[device='mobile'][orientation='landscape']
+  .registration
+    max-width: 110vmin
+    .equipments-container
+      width: 100vmin

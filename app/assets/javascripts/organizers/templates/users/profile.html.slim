@@ -1,0 +1,63 @@
+.profile
+  .profile-header
+    .background-img style="{{ user.avatar_present? ('background-image: url(' + user.avatar.original + ')') : '' }}"
+      .custom-blur
+  .user-name-mobile-auto
+    .user-name-mobile
+      | {{ user.name }}
+  .page-block.relative
+    .inf-container
+      .inf
+        .name.user-name-desktop
+          | {{ user.name }}
+  .profile-content
+    .page-block
+      .profile-avatar
+        .img-avatar style="background-image: url({{ user.avatar.url }})"
+          .gradient
+        a.btn-action.purple.top-pictures href="#edit_profile"
+          | Edit
+        .content
+          div ng-show="user.about"
+            .title
+              | General Info
+            .text
+              | {{ user.about }}
+
+      .general
+        .block
+          .block-title
+            | About Us
+          table
+            tr ng-show="user.city || user.country"
+              td.td-title
+                | Address:
+              td.td-content
+                span ng-show="user.city"
+                  | {{ user.city}}
+                  span ng-show="user.country"
+                    | {{ ', ' }}
+                span
+                  | {{ user.country.title }}
+            tr ng-show="user.company_name"
+              td.td-title
+                | Company:
+              td.td-content
+                | {{ user.company_name }}
+            tr ng-show="user.genres_string"
+              td.td-title
+                | Genres:
+              td.td-content
+                | {{ user.genres_string }}
+            tr ng-show="user.event_types_string"
+              td.td-title
+                | Types of events:
+              td.td-content
+                | {{ user.event_types_string }}
+
+        .content-mobile
+          .block ng-show="user.about"
+            .title
+              | About
+            .text
+              | {{ user.about }}
