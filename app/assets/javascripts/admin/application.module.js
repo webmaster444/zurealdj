@@ -239,8 +239,7 @@
                     url: '/courses',
                     templateUrl: 'admin/templates/courses/index.html',
                     controller: 'CoursesController'
-                })
-            ;
+                });
     }]);
 
     ZurealdjAdminApp.run(['$http', '$rootScope', 'AuthHttp', '$state', '$timeout', function($http, $rootScope, AuthHttp, $state, $timeout){
