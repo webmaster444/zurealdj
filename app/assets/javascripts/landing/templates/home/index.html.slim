@@ -97,16 +97,27 @@ div.page
         | COURSES
       div.content.text-center
         .col-center ng-repeat="course in courses" ng-if="$even"
-          .col-md-3.col-center ng-hide="$idnex > 3 && isMobile()"
+          .col-md-3.col-center
             .row
               div.circle-white
-                img.content-icon src="{{ course.icon_url }}"
+                img.content-icon src="{{ course.icon }}"
             .row
               span.text-h2
-                | {{ course.headline }}
+                | {{ course.title }}
             .row
               span.text-description
                 | {{ course.detail }}
+
+          .col-md-3.col-center ng-if="courses[$index+1]"
+            .row
+              div.circle-white
+                img.content-icon src="{{ courses[$index+1].icon }}"
+            .row
+              span.text-h2
+                | {{ courses[$index+1].title }}
+            .row
+              span.text-description
+                | {{ courses[$index+1].detail }}
 
   div.page-footer.transform
   div ng-include="'common/templates/footer.html'"

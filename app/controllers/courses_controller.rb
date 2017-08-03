@@ -1,9 +1,9 @@
-class CourseController < ApplicationController
+class CoursesController < ApplicationController
   before_action :set_default_response_format
   skip_before_action :authenticate_user
 
   def index
-    @courses = Course.user_recent_media(:count => 8)
+    @courses = Course.all
   end
 
   protected

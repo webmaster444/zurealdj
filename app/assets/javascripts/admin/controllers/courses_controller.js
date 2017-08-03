@@ -96,7 +96,6 @@
 
                     $scope.course = {};
 
-
                     if($state.current.name == 'edit_course'){
                         courses.show($stateParams.id)
                             .success(function(data){

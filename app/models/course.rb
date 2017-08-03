@@ -27,6 +27,7 @@ class Course < ApplicationRecord
     end
 
     query.where(courses[:title].matches("%#{ params[:title] }%"))                                if params[:title].present?
+    query.where(courses[:detail].matches("%#{ params[:detail] }%"))                              if params[:detail].present?
     query.where(courses[:created_at].gteq(Date.parse(params[:date_from]).beginning_of_day))      if params[:date_from].present?
     query.where(courses[:created_at].lteq(Date.parse(params[:date_to]).end_of_day))              if params[:date_to].present?
 

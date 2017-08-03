@@ -52,7 +52,6 @@ class Admin::CoursesController < ApplicationController
   end
 
   def show
-
   end
 
   # related models actions

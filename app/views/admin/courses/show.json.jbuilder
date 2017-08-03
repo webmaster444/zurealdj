@@ -5,6 +5,7 @@ json.course do
     json.url @course.icon.url
   end
   json.title @course.title
+  json.detail @course.detail
   json.created_at @course.created_at
   json.updated_at @course.updated_at
 end
