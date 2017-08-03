@@ -66,6 +66,7 @@ Rails.application.routes.draw do
           post :update_order
         end
       end
+      resources :courses, only: [:index, :create, :update, :destroy, :show]
     end
 
     namespace :dj do

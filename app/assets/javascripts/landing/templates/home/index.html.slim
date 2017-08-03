@@ -92,16 +92,21 @@ div.page
                 | Founder
 
   div.page-content-light.transform
-    div.instagram-feed.page-block.text-center.transform-none
+    div.courses.page-block.text-center.transform-none
       .h1-text
-        | INSTAGRAM FEED
-      div.news
-        .row
-          .col-center ng-repeat="feed_img in instagram_feed" ng-if="$even"
-            .col-md-3.col-center ng-hide="$index > 3 && isMobile()"
-              img src="{{ feed_img.img_low_url }}"
-            .col-md-3.col-center ng-hide="$index > 3 && isMobile()" ng-if="instagram_feed[ $index+1 ]"
-              img src="{{ instagram_feed[ $index+1 ].img_low_url }}" ng-if="instagram_feed[ $index+1 ]"
+        | COURSES
+      div.content.text-center
+        .col-center ng-repeat="course in courses" ng-if="$even"
+          .col-md-3.col-center ng-hide="$idnex > 3 && isMobile()"
+            .row
+              div.circle-white
+                img.content-icon src="{{ course.icon_url }}"
+            .row
+              span.text-h2
+                | {{ course.headline }}
+            .row
+              span.text-description
+                | {{ course.detail }}
 
   div.page-footer.transform
   div ng-include="'common/templates/footer.html'"

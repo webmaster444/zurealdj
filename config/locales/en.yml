@@ -62,6 +62,7 @@ en:
     terms_n_conditions_pages: 'Terms n conditions pages'
     cancelations_pages: 'Cancelations pages'
     email_sender: "Email sender"
+    courses: "Courses"
 
   datetime:
     ago: 'ago'
@@ -263,6 +264,18 @@ en:
     content: "Slide text"
     messages:
       success_upsert: "Successfully saved"
+
+  course:
+    new: "New Course"
+    edit: "Edit Course"
+    fields:
+      icon: "Icon"
+      title: "Title"
+      detail: "Detail"
+      created_at: "Created at"
+      updated_at: "Updated at"
+    messages:
+      success_upsert: 'Course successfully saved.'
 
   errors:
     format: "%{message}"

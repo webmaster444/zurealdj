@@ -1,0 +1,45 @@
+.wrapper.wrapper-content
+  .row.animated.fadeIn
+    .col-md-12
+      .ibox.float-e-margins
+        .ibox-content
+          h3 ng-show="$state.current.name == 'new_course'"
+            | {{ I18n.t('course.new' ) }}
+          h3 ng-show="$state.current.name == 'edit_course'"
+            | {{ I18n.t('course.edit' ) }}
+          form ng-submit="submitCourse()" name="CourseForm" novalidate=true
+            .form-group
+              .row
+                .col-sm-2.text-right
+                  label.control-label
+                    | {{ I18n.t('course.fields.icon') }}:
+                .col-sm-10
+                  div image=true ng-model="course.icon"
+                  .error ng-repeat="error in validation_errors['icon']"
+                    | {{ error }}
+
+            .form-group
+              .row
+                .col-sm-2.text-right
+                  label.control-label
+                    | {{ I18n.t('course.fields.title') }}:
+                .col-sm-10
+                  input.form-control type="text" placeholder="{{ I18n.t('course.fields.title') }}" required=true class="{{ CourseForm.title.$invalid && submitted ? 'validation-error' : ''}}" name="title" ng-model="course.title"
+                  .error ng-repeat="error in validation_errors['title']"
+                    | {{ error }}
+
+            .form-group
+              .row
+                .col-sm-2.text-right
+                  label.control-label
+                    | {{ I18n.t('course.fields.detail') }}:
+                .col-sm-10
+                  textarea.form-control type="text" placeholder="{{ I18n.t('course.fields.detail') }}" required=true class="{{ CourseForm.detail.$invalid && submitted ? 'validation-error' : ''}}" name="detail" ng-model="course.detail" rows=6
+                  .error ng-repeat="error in validation_errors['detail']"
+                    | {{ error }}
+
+            .form-group
+              .row
+                .col-sm-4.col-sm-offset-2
+                  button.ladda-button.btn.btn-info data-style="expand-left" ladda="formPending"
+                    | {{ I18n.t('actions.submit') }}

@@ -1,6 +1,6 @@
 class Admin::CoursePagesController < ApplicationController
 
-def update
+  def update
     @article = CoursePage.first_or_create
 
     if @article.update_attributes course_page_params

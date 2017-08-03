@@ -225,6 +225,21 @@
                     templateUrl: 'admin/templates/courses_page/form.html',
                     controller: 'CoursePagesController'
                 })
+                .state('new_course',{
+                    url: '/course/new',
+                    templateUrl: 'admin/templates/courses/form.html',
+                    controller: 'CoursesController'
+                })
+                .state('edit_course',{
+                    url: '/course/:id/edit',
+                    templateUrl: 'admin/templates/courses/form.html',
+                    controller: 'CoursesController'
+                })
+                .state('courses',{
+                    url: '/courses',
+                    templateUrl: 'admin/templates/courses/index.html',
+                    controller: 'CoursesController'
+                })
             ;
     }]);
 
