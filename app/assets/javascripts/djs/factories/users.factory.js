@@ -60,11 +60,10 @@
                     dj_attributes: {
 
                         rate_per_hour: ratePerHour,
-                        free_to_hire: free_to_hire
-
+                        free_to_hire: free_to_hire,
+                        negotiation: user.negotiation
                     },
                     agree: user.agree,
-
                 })
             },
 

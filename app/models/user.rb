@@ -187,7 +187,7 @@ class User < ActiveRecord::Base
   def send_confirmation_email
     return if self.confirmed
     self.update_attribute :confirmation_token, encrypt(self.email)
-    UserMailer.email_confirmation(self.id).deliver_later
+    UserMailer.email_confirmation(self.id).deliver
   end
 
   def send_confirmation_of_new_email

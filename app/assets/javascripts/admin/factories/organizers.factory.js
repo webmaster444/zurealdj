@@ -12,7 +12,7 @@
                 fd.append('user[personal_url]', organizations.personal_url || '');
                 fd.append('user[company_name]', organizations.company_name || '');
                 fd.append('user[about]', organizations.about || '');
-                fd.append('user[organizer_attributes][city]', organizations.city || '' );
+                fd.append('user[organizer_attributes][address]', organizations.address || '' );
 
                 if(organizations.country){
                     fd.append('user[organizer_attributes][country_flag_code]', organizations.country.code );

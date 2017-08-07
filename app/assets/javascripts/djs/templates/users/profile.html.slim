@@ -103,7 +103,9 @@
                 | {{ user.rate_per_hour }} $
               td.td-content ng-switch-when="true"
                 | free
-
+            tr ng-switch="user.negotiation" ng-if="user.negotiation"
+              td.td-title
+                | Negotiation Opened
 
           hr
         .block.device-desktop

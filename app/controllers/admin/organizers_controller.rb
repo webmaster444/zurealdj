@@ -54,7 +54,7 @@ class Admin::OrganizersController < Admin::BaseController
   def organizer_params
     allowed_params = params.require(:user).permit(:name, :email, :personal_url, :company_name, :width, :height, :crop_x, :crop_y, :crop_w, :crop_h, :crop_rotate,
                                                   :crop_scale_x, :crop_scale_y, :avatar, :about,
-                                                  organizer_attributes: [:city, :country_flag_code],
+                                                  organizer_attributes: [:address, :country_flag_code],
                                                   event_category_ids: [], genre_ids: [])
     allowed_params[:organizer_attributes][:id] = @organizer.id
     allowed_params

@@ -1,6 +1,7 @@
 json.personal_url "#{ENV['HOST_NAME']}/djs/#{@user.personal_url}"
 json.rate_per_hour @user.dj.rate_per_hour
 json.free_to_hire @user.dj.free_to_hire
+json.negotiation @user.dj.negotiation
 json.id @user.id
 json.name @user.name
 json.dj_or_venue_name @user.dj_or_venue_name

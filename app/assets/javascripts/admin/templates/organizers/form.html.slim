@@ -87,13 +87,13 @@
               .row
                 .col-sm-2
                   label.control-label
-                    | {{ I18n.t('organizer.fields.city') }}:
+                    | {{ I18n.t('organizer.fields.address') }}:
                 .col-sm-10
-                  input.form-control type="text" placeholder="{{ I18n.t('organizer.fields.city') }}" required=true class="{{ OrganizationForm.city.$invalid && submitted ? 'validation-error' : ''}}" name="city" ng-model="organizer.city"
-                  .error ng-show="OrganizationsForm.city.$invalid && submitted"
+                  input.form-control type="text" placeholder="{{ I18n.t('organizer.fields.address') }}" required=true class="{{ OrganizationForm.address.$invalid && submitted ? 'validation-error' : ''}}" name="address" ng-model="organizer.address"
+                  .error ng-show="OrganizationsForm.address.$invalid && submitted"
                     | {{ I18n.t('validations.cant_be_blank')}}
 
-                  .error ng-repeat="error in validation_errors['city']"
+                  .error ng-repeat="error in validation_errors['address']"
                     | {{ error }}
 
             .form-group

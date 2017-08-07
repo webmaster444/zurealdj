@@ -6,7 +6,7 @@ class Organizer < ActiveRecord::Base
   belongs_to :user
 
   attr_accessor :step
-  validates :city, length: { in: 3..30 }, presence: true, format: { with: /\A[[:alpha:]]+[\s-]?[[:alpha:]]+[\s-]?[[:alpha:]]+\z/, message: "City name is incorrect, use symbols a-z, A-Z, - and space"} , if: -> {  User.organizer_steps[step || user.step] >= User.organizer_steps[:organizer_personal_url] }
+  validates :address, length: { in: 3..30 }, presence: true, format: { with: /\A[[:alpha:]]+[\s-]?[[:alpha:]]+[\s-]?[[:alpha:]]+\z/, message: "City name is incorrect, use symbols a-z, A-Z, - and space"} , if: -> {  User.organizer_steps[step || user.step] >= User.organizer_steps[:organizer_personal_url] }
   def country_flag
     CountryFlag.find(country_flag_code)
   end
@@ -45,7 +45,7 @@ class Organizer < ActiveRecord::Base
         users[:subscription_id],
         organizers[:created_at],
         organizers[:id].as('dj_id'),
-        organizers[:city],
+        organizers[:address],
         organizers[:country_flag_code],
         subscription[:free],
         subscription[:id].as('subs_id')
@@ -67,7 +67,7 @@ class Organizer < ActiveRecord::Base
     end
     countries = CountryFlag.find_by_country_name(options[:country])       if options[:country].present?
     q.where(users[:name].matches("%#{options[:name]}%"))                  if options[:name].present?
-    q.where(organizers[:city].matches("%#{ options[:city] }%"))           if options[:city].present?
+    q.where(organizers[:address].matches("%#{ options[:address] }%"))           if options[:address].present?
     q.where(organizers[:country_flag_code].in(countries))                 if options[:country].present?
     q.where(organizers[:created_at].gteq(options[:date_from].to_date))    if options[:date_from].present?
     q.where(organizers[:created_at].lteq(options[:date_to].to_date))      if options[:date_to].present?

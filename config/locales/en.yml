@@ -243,6 +243,7 @@ en:
     edit: "Edit Organiser"
     fields:
       city: "City"
+      address: "Address"
       country: "Country"
       about: "About"
       created_at: "Created at"

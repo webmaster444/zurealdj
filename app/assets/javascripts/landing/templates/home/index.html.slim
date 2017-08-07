@@ -58,17 +58,15 @@ div.page
       .text-center.h1-text
         | HOT RIGHT NOW
       .content.text-center
-        .row
+        .col-center
           .col-md-4.col-sm-4.col-xs-4.col-center ng-repeat="fav_dj in fav_djs"
-
             img.content-icon ng-src="{{ fav_dj.image }}"
-
-            span.text-name
-              | {{ fav_dj.dj_name }}
-            span.text-name ng-hide="fav_dj.dj_or_venue_name"
-              | {{ fav_dj.name }}
-            span.text-description.text-fav-dj
-              | {{ fav_dj.detail }}
+            .row
+              span.text-name
+                | {{ fav_dj.dj_name }}
+            .row
+              span.text-description.text-fav-dj
+                | {{ fav_dj.detail }}
 
 
       div style="height: 60px; width: 100%; clear: both"

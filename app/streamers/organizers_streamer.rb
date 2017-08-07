@@ -30,7 +30,7 @@ class OrganizersStreamer
             organizer.id,
             organizer.name,
             organizer.email,
-            organizer.city,
+            organizer.address,
             CountryFlag.name_by_id(organizer.country_flag_code),
             organizer.about,
             organizer.created_at.strftime("%d/%m/%Y"),

@@ -152,6 +152,14 @@
         | Rate per hour:
         .inline-block
           input.register-input.edit-input.step-5-input type="number" ng-model="user.rate_per_hour" placeholder="amount $"
+      .form-row.small-text
+        .error ng-repeat="error in validation_errors['dj.negotiation']"
+          | {{ error }}
+        .zureal-checkbox.inline-block
+          input type="checkbox" ng-model="user.negotiation" id="negotiation"
+          label for="negotiation" style="font-size: 18px"
+            span
+            | Open to Negotiation
 
       hr
     .actions-block ng-show="!isMobile() || step"

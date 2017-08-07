@@ -30,6 +30,15 @@ div.page-block.registration
 
     .form-row.text-center
       .zureal-checkbox.inline-block
+        input type="checkbox" ng-model="user.negotiation" id="negotiation"
+        label for="negotiation" style="font-size: 18px"
+          span
+          | Open to Negotiation
+      .error ng-repeat="error in validation_errors['negotiation']"
+        | {{ error }}
+
+    .form-row.text-center
+      .zureal-checkbox.inline-block
         input type="checkbox" ng-model="user.agree" id="cancellation"
         label for="cancellation" style="font-size: 18px"
           span

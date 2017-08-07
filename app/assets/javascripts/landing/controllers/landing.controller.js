@@ -7,7 +7,7 @@
             function ($scope, $state, ngDialog, $stateParams, $timeout, $sce, slides, fav_djs, courses) {
 
                 $scope.slides = [];
-                $scope.top_rated_djs = [];
+                $scope.fav_djs = [];
                 $scope.instagram_feed = [];
 
                 slides.all().success(function (data) {

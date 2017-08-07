@@ -8,7 +8,7 @@ json.avatar do
   json.original paperclip_url(@user.avatar, :original)
 end
 json.avatar_present true if @user.avatar_file_name
-json.city @user.organizer.city
+json.address @user.organizer.address
 json.country @user.organizer.country_flag
 json.stars @user.rate
 json.about @user.about

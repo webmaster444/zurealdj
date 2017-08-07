@@ -83,14 +83,14 @@ class Dj::UsersController < Dj::BaseController
   def profile_params
     allowed_params = params.permit(:name, :dj_or_venue_name, :width, :height, :crop_x, :crop_y, :crop_w, :crop_h, :crop_rotate,
                   :crop_scale_x, :crop_scale_y, :avatar, :about,
-                  dj_attributes: [ :rate_per_hour, :free_to_hire, :city, :country_flag_code, :sample, :sample_title],
+                  dj_attributes: [ :rate_per_hour, :free_to_hire, :city, :country_flag_code, :sample, :sample_title, :negotiation],
                    event_category_ids: [], genre_ids: [], equipment_ids: [])
     allowed_params[:dj_attributes][:id] = current_user.dj.id
     allowed_params
   end
 
   def step_params
-    allowed_params = params.permit :personal_url, :agree, dj_attributes: [:rate_per_hour, :free_to_hire],
+    allowed_params = params.permit :personal_url, :agree, dj_attributes: [:rate_per_hour, :free_to_hire, :negotiation],
                    event_category_ids: [], genre_ids: [], equipment_ids: []
     allowed_params[:dj_step] =  @user.next_step
     allowed_params

@@ -75,7 +75,7 @@
                   | {{ I18n.t('organizer.fields.photo') }}
                 th ng-model="filters" tablesort=true tablesort-name="name"              tablesort-title="{{ I18n.t('organizer.fields.name') }}"
                 th ng-model="filters" tablesort=true tablesort-name="email"             tablesort-title="{{ I18n.t('user.fields.email') }}"
-                th ng-model="filters" tablesort=true tablesort-name="city"              tablesort-title="{{ I18n.t('organizer.fields.city') }}"
+                th ng-model="filters" tablesort=true tablesort-name="address"              tablesort-title="{{ I18n.t('organizer.fields.address') }}"
                 th ng-model="filters" tablesort=true tablesort-name="country_flag_code" tablesort-title="{{ I18n.t('organizer.fields.country') }}"
                 th ng-model="filters" tablesort=true tablesort-name="personal_url"      tablesort-title="Personal Url"
                 th ng-model="filters" tablesort=true tablesort-name="created_at"        tablesort-title="Registration Date"
@@ -92,7 +92,7 @@
                 td
                   | {{ organizer.email }}
                 td
-                  | {{ organizer.city }}
+                  | {{ organizer.address }}
                 td.col-flag
                   span.flag class="{{ organizer.country.code }}"
                   | {{ organizer.country.title }}

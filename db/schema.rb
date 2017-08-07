@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170806055532) do
+ActiveRecord::Schema.define(version: 20170807105225) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -96,6 +96,7 @@ ActiveRecord::Schema.define(version: 20170806055532) do
     t.string   "sample_title"
     t.integer  "rate_per_hour"
     t.boolean  "free_to_hire"
+    t.boolean  "negotiation"
     t.index ["photo_id"], name: "index_djs_on_photo_id", using: :btree
     t.index ["sample_id"], name: "index_djs_on_sample_id", using: :btree
     t.index ["user_id"], name: "index_djs_on_user_id", using: :btree
@@ -264,7 +265,7 @@ ActiveRecord::Schema.define(version: 20170806055532) do
   end
 
   create_table "organizers", force: :cascade do |t|
-    t.string   "city"
+    t.string   "address"
     t.string   "country_flag_code"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -356,6 +357,7 @@ ActiveRecord::Schema.define(version: 20170806055532) do
     t.datetime "subscription_expires_at"
     t.string   "dj_or_venue_name"
     t.string   "new_email"
+    t.boolean  "negotiation"
   end
 
   create_table "who_we_are_pages", force: :cascade do |t|

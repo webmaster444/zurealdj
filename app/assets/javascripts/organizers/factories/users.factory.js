@@ -54,7 +54,7 @@
                 var fd = new FormData();
                 fd.append('name', user.name || '');
                 fd.append('company_name', user.company_name || '');
-                fd.append('organizer_attributes[city]', user.city || '');
+                fd.append('organizer_attributes[address]', user.address || '');
                 fd.append('organizer_attributes[country_flag_code]', user.country ? user.country.code : '');
                 fd.append('about', user.about || '');
                 _.each(user.event_types, function(i){

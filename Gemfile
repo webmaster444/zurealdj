@@ -78,3 +78,4 @@ gem 'stripe'
 gem 'sidekiq'
 gem 'whenever'
 gem 'instagram'
+gem 'dotenv-rails', groups: [:development, :test]

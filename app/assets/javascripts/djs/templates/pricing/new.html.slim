@@ -4,6 +4,13 @@
       | Buy Subscription
     .row.form-group
       .col-md-2
+        | Card Name
+      .col-md-10
+        input.zureal-input type="text" size="20" maxlength="16" data-stripe="name"
+        .error ng-show="validation_errors.card_name"
+          | {{ validation_errors.card_name }}
+    .row.form-group
+      .col-md-2
         | Card Number
       .col-md-10
         input.zureal-input type="text" size="20" maxlength="16" data-stripe="number"

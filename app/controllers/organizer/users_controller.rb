@@ -33,6 +33,7 @@ class Organizer::UsersController < Organizer::BaseController
 
   def update_profile
     @user = current_user
+    
     if @user.update_attributes profile_params
       render json: {message: 'Profile updated.'}
     else
@@ -45,7 +46,7 @@ class Organizer::UsersController < Organizer::BaseController
   def profile_params
     allowed_params = params.permit(:name, :width, :height, :crop_x, :crop_y, :crop_w, :crop_h, :crop_rotate,
                   :crop_scale_x, :crop_scale_y, :avatar, :company_name, :about,
-                  organizer_attributes: [:city, :country_flag_code], event_category_ids: [], genre_ids: [])
+                  organizer_attributes: [:address, :country_flag_code], event_category_ids: [], genre_ids: [])
     allowed_params[:organizer_attributes][:id] = current_user.organizer.id
     allowed_params
   end

@@ -20,8 +20,6 @@
             $scope.user = {};
             var userOriginalData = {};
 
-
-
             users.profile().success(function(data){
                 $scope.user = data;
                 userOriginalData = _.clone($scope.user);
