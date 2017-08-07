@@ -67,6 +67,7 @@ Rails.application.routes.draw do
         end
       end
       resources :courses, only: [:index, :create, :update, :destroy, :show]
+      resources :fav_djs, only: [:index, :create, :update, :destroy, :show]
     end
 
     namespace :dj do

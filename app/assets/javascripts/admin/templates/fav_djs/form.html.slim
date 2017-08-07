@@ -1,0 +1,47 @@
+.wrapper.wrapper-content
+  .row.animated.fadeIn
+    .col-md-12
+      .ibox.float-e-margins
+        .ibox-content
+          h3 ng-show="$state.current.name == 'new_fav_dj'"
+            | {{ I18n.t('fav_dj.new' ) }}
+          h3 ng-show="$state.current.name == 'edit_fav_dj'"
+            | {{ I18n.t('fav_dj.edit' ) }}
+          form ng-submit="submitFavDj()" name="FavDjForm" novalidate=true
+            .form-group
+              .row
+                .col-sm-2.text-right
+                  label.control-label
+                    | {{ I18n.t('fav_dj.fields.image') }}:
+                .col-sm-10
+                  div image=true ng-model="fav_dj.image"
+                  .error ng-repeat="error in validation_errors['image']"
+                    | {{ error }}
+
+            .form-group
+              .row
+                .col-sm-2.text-right
+                  label.control-label
+                    | {{ I18n.t('fav_dj.fields.dj') }}:
+                .col-sm-10
+                  select.form-control required=true class="{{ FavDjForm.dj.$invalid && submitted ? 'validation-error' : ''}}" name="dj_id" ng-model="fav_dj.dj_id"
+                    option ng-repeat="dj in djs" value="{{ dj.id }}" ng-disabled="!dj.id" ng-selected=" dj.id == fav_dj.dj_id "
+                      | {{ dj.name }}
+                  .error ng-repeat="error in validation_errors['dj']"
+                    | {{ error }}
+
+            .form-group
+              .row
+                .col-sm-2.text-right
+                  label.control-label
+                    | {{ I18n.t('fav_dj.fields.detail') }}:
+                .col-sm-10
+                  textarea.form-control type="text" placeholder="{{ I18n.t('fav_dj.fields.detail') }}" required=true class="{{ FavDjForm.detail.$invalid && submitted ? 'validation-error' : ''}}" name="detail" ng-model="fav_dj.detail" rows=6
+                  .error ng-repeat="error in validation_errors['detail']"
+                    | {{ error }}
+
+            .form-group
+              .row
+                .col-sm-4.col-sm-offset-2
+                  button.ladda-button.btn.btn-info data-style="expand-left" ladda="formPending"
+                    | {{ I18n.t('actions.submit') }}

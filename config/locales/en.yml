@@ -63,6 +63,7 @@ en:
     cancelations_pages: 'Cancelations pages'
     email_sender: "Email sender"
     courses: "Courses"
+    fav_djs: "Favourite Djs"
 
   datetime:
     ago: 'ago'
@@ -276,6 +277,20 @@ en:
       updated_at: "Updated at"
     messages:
       success_upsert: 'Course successfully saved.'
+
+  fav_dj:
+    new: "New Favourite Dj"
+    edit: "Edit Favourite Dj"
+    fields:
+      image: "Image"
+      organizer: "Organizer"
+      dj: "Dj"
+      detail: "Detail"
+      select_an_dj: "Select an Dj"
+      created_at: "Created at"
+      updated_at: "Updated at"
+    messages:
+      success_upsert: 'Favourite Dj successfully saved.'
 
   errors:
     format: "%{message}"

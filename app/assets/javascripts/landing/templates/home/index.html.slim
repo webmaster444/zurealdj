@@ -99,25 +99,15 @@ div.page
         .col-center ng-repeat="course in courses" ng-if="$even"
           .col-md-3.col-center
             .row
-              div.circle-white
+              a href="/#course"
                 img.content-icon src="{{ course.icon }}"
-            .row
-              span.text-h2
-                | {{ course.title }}
-            .row
-              span.text-description
-                | {{ course.detail }}
 
           .col-md-3.col-center ng-if="courses[$index+1]"
             .row
-              div.circle-white
+              a href="/#course"
                 img.content-icon src="{{ courses[$index+1].icon }}"
-            .row
-              span.text-h2
-                | {{ courses[$index+1].title }}
-            .row
-              span.text-description
-                | {{ courses[$index+1].detail }}
+
+  div.page-content-light.transform
 
   div.page-footer.transform
   div ng-include="'common/templates/footer.html'"

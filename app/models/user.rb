@@ -4,6 +4,7 @@ class User < ActiveRecord::Base
   has_and_belongs_to_many :genres
   has_and_belongs_to_many :equipments
   has_one :dj, dependent: :destroy
+  has_many :fav_djs, primary_key: 'dj_id', class_name: FavDj
   has_one :organizer, dependent: :destroy
   has_many :stars, foreign_key: :to_user_id
   has_many :messages_to_me, foreign_key: :from_user_id, class_name: Message, dependent: :destroy

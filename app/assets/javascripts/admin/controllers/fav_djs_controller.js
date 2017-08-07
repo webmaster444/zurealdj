@@ -3,18 +3,19 @@
     "use strict";
 
     angular.module('ZurealdjAdminApp')
-        .controller('CoursesController', ['$scope', '$state', 'ngDialog', '$stateParams', '$timeout', '$sce', 'SweetAlert', 'CoursesFactory',
-            function ($scope, $state, ngDialog, $stateParams, $timeout, $sce, SweetAlert, courses) {
+        .controller('FavDjsController', ['$scope', '$state', 'ngDialog', '$stateParams', '$timeout', '$sce', 'SweetAlert', 'DjsFactory', 'FavDjsFactory',
+            function ($scope, $state, ngDialog, $stateParams, $timeout, $sce, SweetAlert, djs, fav_djs ) {
                 $scope.I18n = I18n;
                 $scope._ = _;
                 $scope.$state = $state;
+                $scope.fav_dj = {id: "-1"};
 
                 $scope.getHtml = function(html){
                     return $sce.trustAsHtml(html);
                 };
 
-                if($state.current.name == 'courses'){
-                    $scope.course = [];
+                if($state.current.name == 'fav_djs'){
+                    $scope.fav_dj = [];
                     $scope.resetFilters = function(){
                         $scope.filters = {
                             per_page: 10
@@ -30,17 +31,18 @@
                         }
                         timer= $timeout(function(){
                             if($scope.page > Math.ceil($scope.count / $scope.filters.per_page)) $scope.page = 1;
-                            $scope.retrieveCourses();
+                            $scope.retrieveFavDjs();
                         }, 500)
                     }, true);
 
                     $scope.page = 1;
-                    $scope.retrieveCourses = function(){
-                        courses.all({page: $scope.page, query: $scope.filters}).success(function (data) {
-                            $scope.courses = data.courses;
+                    $scope.retrieveFavDjs = function(){
+                        fav_djs.all({page: $scope.page, query: $scope.filters}).success(function (data) {
+
+                            $scope.fav_djs = data.fav_djs;
                             $scope.count = data.count;
 
-                            var pagination = $('#courses-pagination');
+                            var pagination = $('#fav_djs-pagination');
                             pagination.empty();
                             pagination.removeData('twbs-pagination');
                             pagination.unbind('page');
@@ -52,7 +54,7 @@
                                     visiblePages: 9,
                                     onPageClick: function (event, page) {
                                         $scope.page = page;
-                                        $scope.retrieveCourses();
+                                        $scope.retrieveFavDjs();
                                     }
                                 })
                             }
@@ -61,10 +63,10 @@
                         });
                     };
 
-                    $scope.retrieveCourses();
+                    $scope.retrieveFavDjs();
 
                     $scope.downloadCSV = function () {
-                        courses.downloadCSV({query: $scope.filters})
+                        fav_djs.downloadCSV({query: $scope.filters})
                     }
                 }
 
@@ -72,7 +74,7 @@
                     var scope = $scope;
                     SweetAlert.swal({
                             title: "Are you sure?",
-                            text: "Your will not be able to recover this courses!",
+                            text: "Your will not be able to recover this fav_djs!",
                             type: "warning",
                             showCancelButton: true,
                             confirmButtonColor: "#DD6B55",confirmButtonText: "Yes, delete it!",
@@ -82,8 +84,8 @@
                             allowOutsideClick: true },
                         function(isConfirm){
                             if (isConfirm) {
-                                courses.destroy(id).success(function(){
-                                    $scope.retrieveCourses();
+                                fav_djs.destroy(id).success(function(){
+                                    $scope.retrieveFavDjs();
                                 });
                             } else {
 
@@ -92,31 +94,40 @@
                     );
                 };
 
-                if($state.current.name == 'new_course' || $state.current.name == 'edit_course'){
+                if($state.current.name == 'new_fav_dj' || $state.current.name == 'edit_fav_dj'){
 
-                    $scope.course = {};
+                    if($state.current.name == 'new_fav_dj'){
+                        djs.all({}).success(function(data){
+                            $scope.djs = [{name: I18n.t('fav_dj.fields.select_an_dj'), id: ''}].concat(data.djs);
+                            $scope.fav_dj = $scope.djs[0];
+                        });
+                    }
 
-                    if($state.current.name == 'edit_course'){
-                        courses.show($stateParams.id)
+                    if($state.current.name == 'edit_fav_dj'){
+                        djs.all({}).success(function(data){
+                            $scope.djs = [{name: I18n.t('fav_dj.fields.select_an_dj'), id: ''}].concat(data.djs);
+                        });
+
+                        fav_djs.show($stateParams.id)
                             .success(function(data){
                                 $timeout(function(){
-                                    $scope.course = data.course;
+                                    $scope.fav_dj = data.fav_dj;
                                 }, 0);
                             }
                         )
                     }
 
-                    $scope.submitCourse = function(){
+                    $scope.submitFavDj = function(){
                         $scope.submitted = true;
-                        if($scope.CourseForm.$invalid ){
+                        if($scope.FavDjForm.$invalid ){
                             return false;
                         }
 
                         $scope.formPending = true;
-                        courses.upsert($scope.course)
+                        fav_djs.upsert($scope.fav_dj)
                             .success(function(){
                                 $scope.formPending = false;
-                                $state.go('courses')
+                                $state.go('fav_djs')
                             })
                             .error(function(data){
                                 $scope.validation_errors = data.errors;
@@ -125,10 +136,9 @@
                     };
                 }
 
-                if($state.current.name == 'show_course'){
-                    courses.show($stateParams.id).success(function(data){
-                        $scope.course = data.course;
-
+                if($state.current.name == 'show_fav_dj'){
+                    fav_djs.show($stateParams.id).success(function(data){
+                        $scope.fav_dj = data.fav_dj;
                     });
                 }
             }])

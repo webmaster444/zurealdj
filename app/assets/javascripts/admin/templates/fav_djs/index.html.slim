@@ -4,7 +4,7 @@
       .ibox.float-e-margins
         .ibox-content
           h3
-            | {{ I18n.t('headers.courses' ) }}
+            | {{ I18n.t('headers.fav_djs' ) }}
           .filters-bar ng-include="'admin/templates/common/filters-bar.html'"
           .filters-container.collapse
             .col-sm-3
@@ -17,21 +17,21 @@
             thead
               tr
                 th
-                  | {{ I18n.t('course.fields.icon') }}
-                th ng-model="filters" tablesort=true tablesort-name="title" tablesort-title="{{ I18n.t('course.fields.title') }}"
-                th ng-model="filters" tablesort=true tablesort-name="title" tablesort-title="{{ I18n.t('course.fields.detail') }}"
+                  | {{ I18n.t('fav_dj.fields.image') }}
+                th ng-model="filters" tablesort=true tablesort-name="dj" tablesort-title="{{ I18n.t('fav_dj.fields.dj') }}"
+                th ng-model="filters" tablesort=true tablesort-name="detail" tablesort-title="{{ I18n.t('fav_dj.fields.detail')}}"
                 th.text-right
                   | Actions
             tbody
-              tr ng-repeat="course in courses"
+              tr ng-repeat="fav_dj in fav_djs"
                 td
-                  img ng-src="{{course.icon}}" style="height: 100px"
+                  img ng-src="{{fav_dj.image}}" style="height: 100px"
                 td
-                  | {{ course.title }}
+                  | {{ fav_dj.dj_name }}
                 td
-                  | {{ course.detail }}
+                  | {{ fav_dj.detail }}
                 td.text-right
-                  a.btn-xs.btn.btn-warning.btn-outline href="#course/{{course.id}}/edit"
+                  a.btn-xs.btn.btn-warning.btn-outline href="#fav_dj/{{fav_dj.id}}/edit"
                     | {{ I18n.t('actions.edit') }}
-                  a.btn-xs.btn.btn-danger.btn-outline ng-click="destroy(course.id)"
+                  a.btn-xs.btn.btn-danger.btn-outline ng-click="destroy(fav_dj.id)"
                     | {{ I18n.t('actions.delete') }}

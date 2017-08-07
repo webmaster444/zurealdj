@@ -239,6 +239,21 @@
                     url: '/courses',
                     templateUrl: 'admin/templates/courses/index.html',
                     controller: 'CoursesController'
+                })
+                .state('new_fav_dj',{
+                    url: '/fav_dj/new',
+                    templateUrl: 'admin/templates/fav_djs/form.html',
+                    controller: 'FavDjsController'
+                })
+                .state('edit_fav_dj',{
+                    url: '/fav_dj/:id/edit',
+                    templateUrl: 'admin/templates/fav_djs/form.html',
+                    controller: 'FavDjsController'
+                })
+                .state('fav_djs',{
+                    url: '/fav_djs',
+                    templateUrl: 'admin/templates/fav_djs/index.html',
+                    controller: 'FavDjsController'
                 });
     }]);
 

@@ -25,6 +25,16 @@ nav.navbar-default.navbar-static-side.ng-scope role="navigation"
             .events-nav-icon.nav-icon
             span.nav-label
               | Events
+        li ng-class=("{active: $state.current.name.includes('courses')}")
+          a href="#courses"
+            .other-nav-icon.nav-icon
+            span.nav-label
+              | Courses
+        li ng-class=("{active: $state.current.name.includes('fav_djs')}")
+          a href="#fav_djs"
+            .other-nav-icon.nav-icon
+            span.nav-label
+              | Favourite Djs
         li ng-class=("{active: ['about_slides', 'subscriptions', 'edit_subscription', 'new_subscription', 'equipments', 'genres', 'event_categories'].includes($state.current.name) }")
           a href="#"
             .other-nav-icon.nav-icon
@@ -46,9 +56,6 @@ nav.navbar-default.navbar-static-side.ng-scope role="navigation"
             li.active ui-sref-active="active"
               a href="#subscriptions"
                 | Subscriptions
-            li.active ui-sref-active="active"
-              a href="#courses"
-                | Courses
 
         li ng-class=("{active: ['edit_who_we_are_page', 'edit_crew_page', 'edit_how_we_work_page', 'edit_policies_page', 'edit_terms_n_conditions_page', 'edit_cancelations_page', 'edit_contact_us_page','edit_help_center_page','edit_courses_page'].includes($state.current.name) }")
           a href="#"

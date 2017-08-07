@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170803141334) do
+ActiveRecord::Schema.define(version: 20170806055532) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -179,6 +179,24 @@ ActiveRecord::Schema.define(version: 20170803141334) do
     t.integer "event_id"
     t.index ["event_id"], name: "index_events_genres_on_event_id", using: :btree
     t.index ["genre_id"], name: "index_events_genres_on_genre_id", using: :btree
+  end
+
+  create_table "fav_djs", force: :cascade do |t|
+    t.integer  "dj_id"
+    t.string   "image_file_name"
+    t.string   "image_content_type"
+    t.integer  "image_file_size"
+    t.datetime "image_update_at"
+    t.float    "crop_x"
+    t.float    "crop_y"
+    t.float    "crop_w"
+    t.float    "crop_h"
+    t.float    "crop_rotate"
+    t.float    "crop_scale_x"
+    t.float    "crop_scale_y"
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
+    t.text     "detail"
   end
 
   create_table "favorite_djs", force: :cascade do |t|
