@@ -3,8 +3,8 @@
     "use strict";
 
     angular.module('ZurealdjLandingApp')
-        .controller('LandingController', ['$scope', '$state', 'ngDialog', '$stateParams', '$timeout', '$sce', 'SlidesFactory', 'TopRatedDjsFactory', 'CoursesFactory',
-            function ($scope, $state, ngDialog, $stateParams, $timeout, $sce, slides, top_rated_djs, courses) {
+        .controller('LandingController', ['$scope', '$state', 'ngDialog', '$stateParams', '$timeout', '$sce', 'SlidesFactory', 'FavDjsFactory', 'CoursesFactory',
+            function ($scope, $state, ngDialog, $stateParams, $timeout, $sce, slides, fav_djs, courses) {
 
                 $scope.slides = [];
                 $scope.top_rated_djs = [];
@@ -14,8 +14,8 @@
                     $scope.slides = data.slides;
                 });
 
-                top_rated_djs.all().success(function (data) {
-                    $scope.top_rated_djs = data.top_djs;
+                fav_djs.all().success(function (data) {
+                    $scope.fav_djs = data.fav_djs;
                 });
 
                 courses.all().success(function (data) {

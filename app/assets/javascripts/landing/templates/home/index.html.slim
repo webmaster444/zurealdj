@@ -54,23 +54,21 @@ div.page
       div style="height: 130px; width: 100%; clear: both"
 
   div.page-content-light.transform
-    div.page-block.djs.transform-none
+    div.page-block.fav_djs.transform-none
       .text-center.h1-text
         | HOT RIGHT NOW
       .content.text-center
         .row
-          .col-md-4.col-sm-4.col-xs-4.col-center ng-repeat="top_dj in top_rated_djs"
+          .col-md-4.col-sm-4.col-xs-4.col-center ng-repeat="fav_dj in fav_djs"
 
-            img.content-icon ng-src="{{ top_dj.avatar }}"
+            img.content-icon ng-src="{{ fav_dj.image }}"
 
             span.text-name
-              | {{ top_dj.dj_or_venue_name }}
-            span.text-name ng-hide="top_dj.dj_or_venue_name"
-              | {{ top_dj.name }}
-            span.text-description.text-top-dj ng-show="top_dj.dj_or_venue_name"
-              | {{ top_dj.name }}
-            span.text-description.text-top-dj
-              | {{ top_dj.about }}
+              | {{ fav_dj.dj_name }}
+            span.text-name ng-hide="fav_dj.dj_or_venue_name"
+              | {{ fav_dj.name }}
+            span.text-description.text-fav-dj
+              | {{ fav_dj.detail }}
 
 
       div style="height: 60px; width: 100%; clear: both"

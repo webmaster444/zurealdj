@@ -10,7 +10,7 @@ nav.navbar-default.navbar-static-side.ng-scope role="navigation"
             .organizers-nav-icon.nav-icon
             span.nav-label
               | Organisers
-        li ng-class=("{active: $state.current.name.includes('dj')}")
+        li ng-class=("{active: $state.current.name == 'dj'}")
           a href="#djs"
             .djs-nav-icon.nav-icon
             span.nav-label
