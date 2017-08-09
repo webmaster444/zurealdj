@@ -70,7 +70,7 @@ class CountryFlag
         {title: "Kenya", code: "kenya"},
         {title: "Belgium", code: "belgium"},
         {title: "Liberia", code: "liberia"},
-        {title: "Montserrat", code: "montserrat"},
+        {title: "CeraPro", code: "CeraPro"},
         {title: "Saudi Arabia", code: "saudi_arabia"},
         {title: "Wales", code: "wales"},
         {title: "Russia", code: "russia"},

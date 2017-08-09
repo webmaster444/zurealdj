@@ -5,68 +5,65 @@ div.page
     div.page-block.how-it-works.transform-none
       .text-center.h1-text
         | HOW IT WORKS
-      div.content.text-center
-        .col-center
-          .col-md-3.col-center
-            .row
-              div.circle-white
-                img.content-icon src="/images/icons/ic-profile.png"
-            .row
-              span.text-h2
-                | Become a member
-            .row
-              span.text-description
-                | Join ZuReal and fill your profile info
+      div.container.text-center
+        .col-md-3.col-sm-6.col-xs-12
+          .row
+            div.circle-white
+              img.content-icon src="/images/icons/ic-profile.png"
+          .row
+            span.text-h2
+              | Become a member
+          .row
+            span.text-description
+              | Join ZuReal and fill your profile info
 
-          .col-md-3.col-center
-            .row
-              div.circle-white
-                img.content-icon src="/images/icons/ic-event.png"
-            .row
-              span.text-h2
-                | Create an event
-            .row
-              span.text-description
-                | Create and describe your events as you like
+        .col-md-3.col-sm-6.col-xs-12
+          .row
+            div.circle-white
+              img.content-icon src="/images/icons/ic-event.png"
+          .row
+            span.text-h2
+              | Create an event
+          .row
+            span.text-description
+              | Create and describe your events as you like
 
-        .col-center
-          .col-md-3.col-center
-            .row
-              div.circle-white
-                img.content-icon src="/images/icons/ic-book-dj.png"
-            .row
-              span.text-h2
-                | Book DJs
-            .row
-              span.text-description
-                | Explore our DJ data base and find the best
+        .col-md-3.col-sm-6.col-xs-12
+          .row
+            div.circle-white
+              img.content-icon src="/images/icons/ic-book-dj.png"
+          .row
+            span.text-h2
+              | Book DJs
+          .row
+            span.text-description
+              | Explore our DJ data base and find the best
 
-          .col-md-3.col-center
-            .row
-              div.circle-white
-                img.content-icon src="/images/icons/ic-play-live.png"
-            .row
-              span.text-h2
-                | Play Live
-            .row
-              span.text-description
-                | DJs are hired for various events Australia wide
+        .col-md-3.col-sm-6.col-xs-12
+          .row
+            div.circle-white
+              img.content-icon src="/images/icons/ic-play-live.png"
+          .row
+            span.text-h2
+              | Play Live
+          .row
+            span.text-description
+              | DJs are hired for various events Australia wide
       div style="height: 130px; width: 100%; clear: both"
 
   div.page-content-light.transform
     div.page-block.fav_djs.transform-none
       .text-center.h1-text
         | HOT RIGHT NOW
-      .content.text-center
-        .col-center
-          .col-md-4.col-sm-4.col-xs-4.col-center ng-repeat="fav_dj in fav_djs"
-            img.content-icon ng-src="{{ fav_dj.image }}"
-            .row
-              span.text-name
-                | {{ fav_dj.dj_name }}
-            .row
-              span.text-description.text-fav-dj
-                | {{ fav_dj.detail }}
+      .container.text-center
+        .col-md-4.col-sm-4.col-xs-12 ng-repeat="fav_dj in fav_djs"
+          img.content-icon ng-src="{{ fav_dj.image }}"
+          .row
+            span.text-name
+              | {{ fav_dj.dj_name }}
+          .row
+            span.text-description.text-fav-dj
+              | {{ fav_dj.detail }}
 
 
       div style="height: 60px; width: 100%; clear: both"
@@ -91,17 +88,10 @@ div.page
     div.courses.page-block.text-center.transform-none
       .h1-text
         | COURSES
-      div.content.text-center
-        .col-center ng-repeat="course in courses" ng-if="$even"
-          .col-md-3.col-center
-            .row
-              a href="/#course"
-                img.content-icon src="{{ course.icon }}"
-
-          .col-md-3.col-center ng-if="courses[$index+1]"
-            .row
-              a href="/#course"
-                img.content-icon src="{{ courses[$index+1].icon }}"
+      div.container.text-center
+        .col-sm-3.col-xs-12 ng-repeat="course in courses"
+          a href="/#course"
+            img.content-icon src="{{ course.icon }}"
 
   div.page-content-light.transform
 
