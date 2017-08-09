@@ -17,13 +17,15 @@
                 $scope.retrieveSubscriptions();
 
                 $scope.select = function(subscription_id){
-                    $scope.selected_subscription_id = subscription_id;
                     ngDialog.closeAll();
                     ngDialog.open({
                         templateUrl: 'djs/templates/pricing/new.html',
                         disableAnimation: true,
                         className: 'ngdialog-theme-default dj-mobile-ng-dialog',
                         controller: ['$scope', function(scope){
+                            
+                            scope.subscription_id = subscription_id;
+
                             scope.requestStripeToken = function($event){
                                 var form = $event.target;
                                 scope.validation_errors = {};
@@ -39,7 +41,8 @@
                                             }
                                             scope.processing = false;
                                         }else{
-                                            subscriptions.get({stripe_token: data.id, subscription_id: $scope.selected_subscription_id})
+                                            
+                                            subscriptions.get({stripe_token: data.id, subscription_id: scope.subscription_id})
                                                 .success(function(){
                                                     scope.closeThisDialog();
                                                     $scope.retrieveSubscriptions();

@@ -11,7 +11,7 @@
               | {{ subscription.title }}
             .dj-subscription-description ng-show="subscription.description"
               | {{ subscription.description }}
-            .dj-subscription-access ng-hide="subscription.price == 'Free' "
+            .dj-subscription-period ng-hide="subscription.price == 'Free' "
               | {{ subscription.period_count }} {{ subscription.period }}
             .dj-subscription-access ng-show="subscription.full_access"
               ul.dj-access-list

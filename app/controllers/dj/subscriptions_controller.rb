@@ -17,7 +17,7 @@ class Dj::SubscriptionsController < Dj::BaseController
       charge = Stripe::Charge.create(
           :customer    => customer.id,
           :amount      => @subscription.price,
-          :description => 'Dj customer',
+          :description => @subscription.description,
           :currency    => 'usd'
       )
     end
