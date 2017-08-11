@@ -1,2 +1,0 @@
-module Dj::ChargesHelper
-end
