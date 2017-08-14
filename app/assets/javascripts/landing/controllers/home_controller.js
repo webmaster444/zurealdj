@@ -44,7 +44,7 @@
                     });
                 };
 
-                $scope.openRegistrationDialog = function(role = null){
+                $scope.openRegistrationDialog = function(role){
 
                     $scope.userrole = role;
                     ngDialog.closeAll();

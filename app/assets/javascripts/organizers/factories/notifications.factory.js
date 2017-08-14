@@ -2,7 +2,7 @@
     'use strict';
     angular.module('ZurealdjOrganizerApp').factory('NotificationsFactory', ['AuthHttp', function($http){
         return {
-            all: function(options = {}){
+            all: function(options){
 
                 var url = '/notifications.json?';
 
