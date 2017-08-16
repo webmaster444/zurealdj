@@ -76,6 +76,7 @@ gem 'sprockets-rails', '2.3.3'
 gem 'fb_graph2'
 gem 'stripe'
 gem 'sidekiq'
+gem 'sinatra', github: 'sinatra/sinatra'
 gem 'whenever'
 gem 'instagram'
 gem 'dotenv-rails', groups: [:development, :test]
