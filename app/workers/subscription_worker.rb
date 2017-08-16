@@ -1,7 +1,7 @@
 class SubscriptionWorker
   include Sidekiq::Worker
   sidekiq_options queue: "subscription"
-  # sidekiq_options retry: false
+  sidekiq_options retry: false
 
   def perform()
     User.where("subscription_id IS NOT NULL AND subscription_expires_at < ?", Time.now).find_each do |person|
