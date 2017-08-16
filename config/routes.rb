@@ -99,7 +99,6 @@ Rails.application.routes.draw do
       resources :chat_rooms, only: [:index]
       resources :messages, only: [:index, :update]
       resources :subscriptions, only: [:index, :create]
-      resources :charges      
     end
 
     namespace :organizer do
