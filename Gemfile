@@ -80,3 +80,4 @@ gem 'sinatra', github: 'sinatra/sinatra'
 gem 'whenever'
 gem 'instagram'
 gem 'dotenv-rails', groups: [:development, :test]
+gem 'rails_12factor'
