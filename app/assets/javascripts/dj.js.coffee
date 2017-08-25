@@ -45,18 +45,10 @@
 #= require ion-sound/js/ion.sound
 #= require_tree ./common
 #= require_tree ./directives
-#= require ./landing/application.module.js
-#= require_tree ./landing/factories
-#= require_tree ./landing/controllers
-#= require_tree ./landing/templates
-# require ./djs/application.module.js
-# require_tree ./djs/factories
-# require_tree ./djs/controllers
-# require_tree ./djs/templates
-# require ./organizers/application.module.js
-# require_tree ./organizers/factories
-# require_tree ./organizers/controllers
-# require_tree ./organizers/templates
+#= require ./djs/application.module.js
+#= require_tree ./djs/factories
+#= require_tree ./djs/controllers
+#= require_tree ./djs/templates
 
 $(document).ready ->
   $('#side-menu').slimScroll
