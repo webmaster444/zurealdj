@@ -1,9 +1,0 @@
-I"Š(function() {
-  $(document).ready(function() {
-    return $('#side-menu').slimScroll({
-      height: '100%'
-    });
-  });
-
-}).call(this);
-:ET

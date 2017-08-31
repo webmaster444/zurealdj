@@ -56,7 +56,7 @@ GEM
       railties (>= 4.2, < 6)
       sprockets (>= 3.0, < 5)
       tilt
-    angularjs-rails (1.6.2)
+    angularjs-rails (1.5.8)
     arel (7.1.4)
     attr_required (1.0.1)
     autoprefixer-rails (7.1.3)
@@ -317,7 +317,7 @@ PLATFORMS
 
 DEPENDENCIES
   angular-rails-templates
-  angularjs-rails
+  angularjs-rails (= 1.5.8)
   aws-sdk (< 2.0)
   bootstrap-sass
   bootstrap-tooltip-rails

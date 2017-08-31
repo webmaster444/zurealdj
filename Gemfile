@@ -57,7 +57,7 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'pg'
 gem 'slim'
 gem 'slim-rails'
-gem 'angularjs-rails'
+gem 'angularjs-rails', '1.5.8'
 gem 'angular-rails-templates'
 gem 'bootstrap-sass'
 gem 'will_paginate-bootstrap', '~> 1.0.1'
