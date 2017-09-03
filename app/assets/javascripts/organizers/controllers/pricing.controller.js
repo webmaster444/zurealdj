@@ -20,7 +20,7 @@
                     $scope.selected_subscription_id = subscription_id;
                     ngDialog.closeAll();
                     ngDialog.open({
-                        templateUrl: 'djs/templates/pricing/new.html',
+                        templateUrl: 'organizers/templates/pricing/new.html',
                         disableAnimation: true,
                         className: 'ngdialog-theme-default dj-mobile-ng-dialog',
                         controller: ['$scope', function(scope){
