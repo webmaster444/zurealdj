@@ -28,8 +28,8 @@ class Organizer::SubscriptionsController < Organizer::BaseController
     current_user.save
 
     render json: {message: "Subscription purchased."}
-
-  rescue Exception => e
-    render json: {errors: [e.message]}, status: :unprocessable_entity
+  
+    rescue Exception => e
+      render json: {errors: [e.message]}, status: :unprocessable_entity
   end
 end
