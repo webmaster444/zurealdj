@@ -6,7 +6,7 @@ class Organizer < ActiveRecord::Base
   belongs_to :user
 
   attr_accessor :step
-  validates :address, length: { in: 3..30 }, presence: true, format: { with: /\A[[:alpha:]]+[\s-]?[[:alpha:]]+[\s-]?[[:alpha:]]+\z/, message: "City name is incorrect, use symbols a-z, A-Z, - and space"} , if: -> {  User.organizer_steps[step || user.step] >= User.organizer_steps[:organizer_personal_url] }
+  validates :address, length: { minimum: 3 }, presence: true, if: -> {  User.organizer_steps[step || user.step] >= User.organizer_steps[:organizer_personal_url] }
   def country_flag
     CountryFlag.find(country_flag_code)
   end
